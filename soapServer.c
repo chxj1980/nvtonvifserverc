@@ -59,8 +59,10 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve(struct soap *soap)
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve_request(struct soap *soap)
 {
 	soap_peek_element(soap);
+#if 0
 	if (!soap_match_tag(soap, soap->tag, "SOAP-ENV:Fault"))
 		return soap_serve_SOAP_ENV__Fault(soap);
+#endif
 	if (!soap_match_tag(soap, soap->tag, "wsdd:Hello"))
 		return soap_serve___wsdd__Hello(soap);
 	if (!soap_match_tag(soap, soap->tag, "wsdd:Bye"))
@@ -389,6 +391,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_request(struct soap *soap)
 }
 #endif
 
+#if 0
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve_SOAP_ENV__Fault(struct soap *soap)
 {	struct SOAP_ENV__Fault soap_tmp_SOAP_ENV__Fault;
 	soap_default_SOAP_ENV__Fault(soap, &soap_tmp_SOAP_ENV__Fault);
@@ -404,6 +407,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_SOAP_ENV__Fault(struct soap *soap)
 		return soap->error;
 	return soap_closesock(soap);
 }
+#endif
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve___wsdd__Hello(struct soap *soap)
 {	struct __wsdd__Hello soap_tmp___wsdd__Hello;
