@@ -20,6 +20,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 #define SOAP_NAMESPACE_OF_wsnt	"http://docs.oasis-open.org/wsn/b-2"
 #define SOAP_NAMESPACE_OF_wsrfbf	"http://docs.oasis-open.org/wsrf/bf-2"
 #define SOAP_NAMESPACE_OF_wstop	"http://docs.oasis-open.org/wsn/t-1"
+#define SOAP_NAMESPACE_OF_trt	"http://www.onvif.org/ver10/media/wsdl"
 #include "stdsoap2.h"
 #if GSOAP_VERSION != 20814
 # error "GSOAP VERSION MISMATCH IN GENERATED CODE: PLEASE REINSTALL PACKAGE"
@@ -8806,8 +8807,1463 @@ struct wstop__QueryExpressionType
 };
 #endif
 
+#ifndef SOAP_TYPE_trt__Capabilities
+#define SOAP_TYPE_trt__Capabilities (1365)
+/* trt:Capabilities */
+struct trt__Capabilities
+{
+	struct trt__ProfileCapabilities *ProfileCapabilities;	/* required element of type trt:ProfileCapabilities */
+	struct trt__StreamingCapabilities *StreamingCapabilities;	/* required element of type trt:StreamingCapabilities */
+	int __size;	/* sequence of elements <-any> */
+	char *__any;
+	enum xsd__boolean *SnapshotUri;	/* optional attribute of type xsd:boolean */
+	enum xsd__boolean *Rotation;	/* optional attribute of type xsd:boolean */
+	char *__anyAttribute;	/* optional attribute of type xsd:anyType */
+};
+#endif
+
+#ifndef SOAP_TYPE_trt__ProfileCapabilities
+#define SOAP_TYPE_trt__ProfileCapabilities (1366)
+/* trt:ProfileCapabilities */
+struct trt__ProfileCapabilities
+{
+	int __size;	/* sequence of elements <-any> */
+	char *__any;
+	int *MaximumNumberOfProfiles;	/* optional attribute of type xsd:int */
+	char *__anyAttribute;	/* optional attribute of type xsd:anyType */
+};
+#endif
+
+#ifndef SOAP_TYPE_trt__StreamingCapabilities
+#define SOAP_TYPE_trt__StreamingCapabilities (1368)
+/* trt:StreamingCapabilities */
+struct trt__StreamingCapabilities
+{
+	int __size;	/* sequence of elements <-any> */
+	char *__any;
+	enum xsd__boolean *RTPMulticast;	/* optional attribute of type xsd:boolean */
+	enum xsd__boolean *RTP_USCORETCP;	/* optional attribute of type xsd:boolean */
+	enum xsd__boolean *RTP_USCORERTSP_USCORETCP;	/* optional attribute of type xsd:boolean */
+	enum xsd__boolean *NonAggregateControl;	/* optional attribute of type xsd:boolean */
+	char *__anyAttribute;	/* optional attribute of type xsd:anyType */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetServiceCapabilities
+#define SOAP_TYPE__trt__GetServiceCapabilities (1370)
+/* trt:GetServiceCapabilities */
+struct _trt__GetServiceCapabilities
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetServiceCapabilitiesResponse
+#define SOAP_TYPE__trt__GetServiceCapabilitiesResponse (1371)
+/* trt:GetServiceCapabilitiesResponse */
+struct _trt__GetServiceCapabilitiesResponse
+{
+	struct trt__Capabilities *Capabilities;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type trt:Capabilities */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoSources
+#define SOAP_TYPE__trt__GetVideoSources (1373)
+/* trt:GetVideoSources */
+struct _trt__GetVideoSources
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoSourcesResponse
+#define SOAP_TYPE__trt__GetVideoSourcesResponse (1374)
+/* trt:GetVideoSourcesResponse */
+struct _trt__GetVideoSourcesResponse
+{
+	int __sizeVideoSources;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <VideoSources> */
+	struct tt__VideoSource *VideoSources;	/* optional element of type tt:VideoSource */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioSources
+#define SOAP_TYPE__trt__GetAudioSources (1377)
+/* trt:GetAudioSources */
+struct _trt__GetAudioSources
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioSourcesResponse
+#define SOAP_TYPE__trt__GetAudioSourcesResponse (1378)
+/* trt:GetAudioSourcesResponse */
+struct _trt__GetAudioSourcesResponse
+{
+	int __sizeAudioSources;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <AudioSources> */
+	struct tt__AudioSource *AudioSources;	/* optional element of type tt:AudioSource */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputs
+#define SOAP_TYPE__trt__GetAudioOutputs (1381)
+/* trt:GetAudioOutputs */
+struct _trt__GetAudioOutputs
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputsResponse
+#define SOAP_TYPE__trt__GetAudioOutputsResponse (1382)
+/* trt:GetAudioOutputsResponse */
+struct _trt__GetAudioOutputsResponse
+{
+	int __sizeAudioOutputs;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <AudioOutputs> */
+	struct tt__AudioOutput *AudioOutputs;	/* optional element of type tt:AudioOutput */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__CreateProfile
+#define SOAP_TYPE__trt__CreateProfile (1385)
+/* trt:CreateProfile */
+struct _trt__CreateProfile
+{
+	char *Name;	/* required element of type tt:Name */
+	char *Token;	/* optional element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__CreateProfileResponse
+#define SOAP_TYPE__trt__CreateProfileResponse (1386)
+/* trt:CreateProfileResponse */
+struct _trt__CreateProfileResponse
+{
+	struct tt__Profile *Profile;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:Profile */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetProfile
+#define SOAP_TYPE__trt__GetProfile (1388)
+/* trt:GetProfile */
+struct _trt__GetProfile
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetProfileResponse
+#define SOAP_TYPE__trt__GetProfileResponse (1389)
+/* trt:GetProfileResponse */
+struct _trt__GetProfileResponse
+{
+	struct tt__Profile *Profile;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:Profile */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetProfiles
+#define SOAP_TYPE__trt__GetProfiles (1390)
+/* trt:GetProfiles */
+struct _trt__GetProfiles
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetProfilesResponse
+#define SOAP_TYPE__trt__GetProfilesResponse (1391)
+/* trt:GetProfilesResponse */
+struct _trt__GetProfilesResponse
+{
+	int __sizeProfiles;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Profiles> */
+	struct tt__Profile *Profiles;	/* optional element of type tt:Profile */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddVideoEncoderConfiguration
+#define SOAP_TYPE__trt__AddVideoEncoderConfiguration (1392)
+/* trt:AddVideoEncoderConfiguration */
+struct _trt__AddVideoEncoderConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddVideoEncoderConfigurationResponse
+#define SOAP_TYPE__trt__AddVideoEncoderConfigurationResponse (1393)
+/* trt:AddVideoEncoderConfigurationResponse */
+struct _trt__AddVideoEncoderConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveVideoEncoderConfiguration
+#define SOAP_TYPE__trt__RemoveVideoEncoderConfiguration (1394)
+/* trt:RemoveVideoEncoderConfiguration */
+struct _trt__RemoveVideoEncoderConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveVideoEncoderConfigurationResponse
+#define SOAP_TYPE__trt__RemoveVideoEncoderConfigurationResponse (1395)
+/* trt:RemoveVideoEncoderConfigurationResponse */
+struct _trt__RemoveVideoEncoderConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddVideoSourceConfiguration
+#define SOAP_TYPE__trt__AddVideoSourceConfiguration (1396)
+/* trt:AddVideoSourceConfiguration */
+struct _trt__AddVideoSourceConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddVideoSourceConfigurationResponse
+#define SOAP_TYPE__trt__AddVideoSourceConfigurationResponse (1397)
+/* trt:AddVideoSourceConfigurationResponse */
+struct _trt__AddVideoSourceConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveVideoSourceConfiguration
+#define SOAP_TYPE__trt__RemoveVideoSourceConfiguration (1398)
+/* trt:RemoveVideoSourceConfiguration */
+struct _trt__RemoveVideoSourceConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveVideoSourceConfigurationResponse
+#define SOAP_TYPE__trt__RemoveVideoSourceConfigurationResponse (1399)
+/* trt:RemoveVideoSourceConfigurationResponse */
+struct _trt__RemoveVideoSourceConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddAudioEncoderConfiguration
+#define SOAP_TYPE__trt__AddAudioEncoderConfiguration (1400)
+/* trt:AddAudioEncoderConfiguration */
+struct _trt__AddAudioEncoderConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddAudioEncoderConfigurationResponse
+#define SOAP_TYPE__trt__AddAudioEncoderConfigurationResponse (1401)
+/* trt:AddAudioEncoderConfigurationResponse */
+struct _trt__AddAudioEncoderConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveAudioEncoderConfiguration
+#define SOAP_TYPE__trt__RemoveAudioEncoderConfiguration (1402)
+/* trt:RemoveAudioEncoderConfiguration */
+struct _trt__RemoveAudioEncoderConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveAudioEncoderConfigurationResponse
+#define SOAP_TYPE__trt__RemoveAudioEncoderConfigurationResponse (1403)
+/* trt:RemoveAudioEncoderConfigurationResponse */
+struct _trt__RemoveAudioEncoderConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddAudioSourceConfiguration
+#define SOAP_TYPE__trt__AddAudioSourceConfiguration (1404)
+/* trt:AddAudioSourceConfiguration */
+struct _trt__AddAudioSourceConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddAudioSourceConfigurationResponse
+#define SOAP_TYPE__trt__AddAudioSourceConfigurationResponse (1405)
+/* trt:AddAudioSourceConfigurationResponse */
+struct _trt__AddAudioSourceConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveAudioSourceConfiguration
+#define SOAP_TYPE__trt__RemoveAudioSourceConfiguration (1406)
+/* trt:RemoveAudioSourceConfiguration */
+struct _trt__RemoveAudioSourceConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveAudioSourceConfigurationResponse
+#define SOAP_TYPE__trt__RemoveAudioSourceConfigurationResponse (1407)
+/* trt:RemoveAudioSourceConfigurationResponse */
+struct _trt__RemoveAudioSourceConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddPTZConfiguration
+#define SOAP_TYPE__trt__AddPTZConfiguration (1408)
+/* trt:AddPTZConfiguration */
+struct _trt__AddPTZConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddPTZConfigurationResponse
+#define SOAP_TYPE__trt__AddPTZConfigurationResponse (1409)
+/* trt:AddPTZConfigurationResponse */
+struct _trt__AddPTZConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemovePTZConfiguration
+#define SOAP_TYPE__trt__RemovePTZConfiguration (1410)
+/* trt:RemovePTZConfiguration */
+struct _trt__RemovePTZConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemovePTZConfigurationResponse
+#define SOAP_TYPE__trt__RemovePTZConfigurationResponse (1411)
+/* trt:RemovePTZConfigurationResponse */
+struct _trt__RemovePTZConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddVideoAnalyticsConfiguration
+#define SOAP_TYPE__trt__AddVideoAnalyticsConfiguration (1412)
+/* trt:AddVideoAnalyticsConfiguration */
+struct _trt__AddVideoAnalyticsConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE__trt__AddVideoAnalyticsConfigurationResponse (1413)
+/* trt:AddVideoAnalyticsConfigurationResponse */
+struct _trt__AddVideoAnalyticsConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveVideoAnalyticsConfiguration
+#define SOAP_TYPE__trt__RemoveVideoAnalyticsConfiguration (1414)
+/* trt:RemoveVideoAnalyticsConfiguration */
+struct _trt__RemoveVideoAnalyticsConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE__trt__RemoveVideoAnalyticsConfigurationResponse (1415)
+/* trt:RemoveVideoAnalyticsConfigurationResponse */
+struct _trt__RemoveVideoAnalyticsConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddMetadataConfiguration
+#define SOAP_TYPE__trt__AddMetadataConfiguration (1416)
+/* trt:AddMetadataConfiguration */
+struct _trt__AddMetadataConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddMetadataConfigurationResponse
+#define SOAP_TYPE__trt__AddMetadataConfigurationResponse (1417)
+/* trt:AddMetadataConfigurationResponse */
+struct _trt__AddMetadataConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveMetadataConfiguration
+#define SOAP_TYPE__trt__RemoveMetadataConfiguration (1418)
+/* trt:RemoveMetadataConfiguration */
+struct _trt__RemoveMetadataConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveMetadataConfigurationResponse
+#define SOAP_TYPE__trt__RemoveMetadataConfigurationResponse (1419)
+/* trt:RemoveMetadataConfigurationResponse */
+struct _trt__RemoveMetadataConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddAudioOutputConfiguration
+#define SOAP_TYPE__trt__AddAudioOutputConfiguration (1420)
+/* trt:AddAudioOutputConfiguration */
+struct _trt__AddAudioOutputConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddAudioOutputConfigurationResponse
+#define SOAP_TYPE__trt__AddAudioOutputConfigurationResponse (1421)
+/* trt:AddAudioOutputConfigurationResponse */
+struct _trt__AddAudioOutputConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveAudioOutputConfiguration
+#define SOAP_TYPE__trt__RemoveAudioOutputConfiguration (1422)
+/* trt:RemoveAudioOutputConfiguration */
+struct _trt__RemoveAudioOutputConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveAudioOutputConfigurationResponse
+#define SOAP_TYPE__trt__RemoveAudioOutputConfigurationResponse (1423)
+/* trt:RemoveAudioOutputConfigurationResponse */
+struct _trt__RemoveAudioOutputConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddAudioDecoderConfiguration
+#define SOAP_TYPE__trt__AddAudioDecoderConfiguration (1424)
+/* trt:AddAudioDecoderConfiguration */
+struct _trt__AddAudioDecoderConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__AddAudioDecoderConfigurationResponse
+#define SOAP_TYPE__trt__AddAudioDecoderConfigurationResponse (1425)
+/* trt:AddAudioDecoderConfigurationResponse */
+struct _trt__AddAudioDecoderConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveAudioDecoderConfiguration
+#define SOAP_TYPE__trt__RemoveAudioDecoderConfiguration (1426)
+/* trt:RemoveAudioDecoderConfiguration */
+struct _trt__RemoveAudioDecoderConfiguration
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__RemoveAudioDecoderConfigurationResponse
+#define SOAP_TYPE__trt__RemoveAudioDecoderConfigurationResponse (1427)
+/* trt:RemoveAudioDecoderConfigurationResponse */
+struct _trt__RemoveAudioDecoderConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__DeleteProfile
+#define SOAP_TYPE__trt__DeleteProfile (1428)
+/* trt:DeleteProfile */
+struct _trt__DeleteProfile
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__DeleteProfileResponse
+#define SOAP_TYPE__trt__DeleteProfileResponse (1429)
+/* trt:DeleteProfileResponse */
+struct _trt__DeleteProfileResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfigurations
+#define SOAP_TYPE__trt__GetVideoEncoderConfigurations (1430)
+/* trt:GetVideoEncoderConfigurations */
+struct _trt__GetVideoEncoderConfigurations
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetVideoEncoderConfigurationsResponse (1431)
+/* trt:GetVideoEncoderConfigurationsResponse */
+struct _trt__GetVideoEncoderConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__VideoEncoderConfiguration *Configurations;	/* optional element of type tt:VideoEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfigurations
+#define SOAP_TYPE__trt__GetVideoSourceConfigurations (1432)
+/* trt:GetVideoSourceConfigurations */
+struct _trt__GetVideoSourceConfigurations
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfigurationsResponse
+#define SOAP_TYPE__trt__GetVideoSourceConfigurationsResponse (1433)
+/* trt:GetVideoSourceConfigurationsResponse */
+struct _trt__GetVideoSourceConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__VideoSourceConfiguration *Configurations;	/* optional element of type tt:VideoSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfigurations
+#define SOAP_TYPE__trt__GetAudioEncoderConfigurations (1434)
+/* trt:GetAudioEncoderConfigurations */
+struct _trt__GetAudioEncoderConfigurations
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetAudioEncoderConfigurationsResponse (1435)
+/* trt:GetAudioEncoderConfigurationsResponse */
+struct _trt__GetAudioEncoderConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__AudioEncoderConfiguration *Configurations;	/* optional element of type tt:AudioEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfigurations
+#define SOAP_TYPE__trt__GetAudioSourceConfigurations (1436)
+/* trt:GetAudioSourceConfigurations */
+struct _trt__GetAudioSourceConfigurations
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfigurationsResponse
+#define SOAP_TYPE__trt__GetAudioSourceConfigurationsResponse (1437)
+/* trt:GetAudioSourceConfigurationsResponse */
+struct _trt__GetAudioSourceConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__AudioSourceConfiguration *Configurations;	/* optional element of type tt:AudioSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoAnalyticsConfigurations
+#define SOAP_TYPE__trt__GetVideoAnalyticsConfigurations (1438)
+/* trt:GetVideoAnalyticsConfigurations */
+struct _trt__GetVideoAnalyticsConfigurations
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoAnalyticsConfigurationsResponse
+#define SOAP_TYPE__trt__GetVideoAnalyticsConfigurationsResponse (1439)
+/* trt:GetVideoAnalyticsConfigurationsResponse */
+struct _trt__GetVideoAnalyticsConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__VideoAnalyticsConfiguration *Configurations;	/* optional element of type tt:VideoAnalyticsConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfigurations
+#define SOAP_TYPE__trt__GetMetadataConfigurations (1440)
+/* trt:GetMetadataConfigurations */
+struct _trt__GetMetadataConfigurations
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfigurationsResponse
+#define SOAP_TYPE__trt__GetMetadataConfigurationsResponse (1441)
+/* trt:GetMetadataConfigurationsResponse */
+struct _trt__GetMetadataConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__MetadataConfiguration *Configurations;	/* optional element of type tt:MetadataConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfigurations
+#define SOAP_TYPE__trt__GetAudioOutputConfigurations (1442)
+/* trt:GetAudioOutputConfigurations */
+struct _trt__GetAudioOutputConfigurations
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfigurationsResponse
+#define SOAP_TYPE__trt__GetAudioOutputConfigurationsResponse (1443)
+/* trt:GetAudioOutputConfigurationsResponse */
+struct _trt__GetAudioOutputConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__AudioOutputConfiguration *Configurations;	/* optional element of type tt:AudioOutputConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfigurations
+#define SOAP_TYPE__trt__GetAudioDecoderConfigurations (1444)
+/* trt:GetAudioDecoderConfigurations */
+struct _trt__GetAudioDecoderConfigurations
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetAudioDecoderConfigurationsResponse (1445)
+/* trt:GetAudioDecoderConfigurationsResponse */
+struct _trt__GetAudioDecoderConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__AudioDecoderConfiguration *Configurations;	/* optional element of type tt:AudioDecoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfiguration
+#define SOAP_TYPE__trt__GetVideoSourceConfiguration (1446)
+/* trt:GetVideoSourceConfiguration */
+struct _trt__GetVideoSourceConfiguration
+{
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfigurationResponse
+#define SOAP_TYPE__trt__GetVideoSourceConfigurationResponse (1447)
+/* trt:GetVideoSourceConfigurationResponse */
+struct _trt__GetVideoSourceConfigurationResponse
+{
+	struct tt__VideoSourceConfiguration *Configuration;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:VideoSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfiguration
+#define SOAP_TYPE__trt__GetVideoEncoderConfiguration (1448)
+/* trt:GetVideoEncoderConfiguration */
+struct _trt__GetVideoEncoderConfiguration
+{
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfigurationResponse
+#define SOAP_TYPE__trt__GetVideoEncoderConfigurationResponse (1449)
+/* trt:GetVideoEncoderConfigurationResponse */
+struct _trt__GetVideoEncoderConfigurationResponse
+{
+	struct tt__VideoEncoderConfiguration *Configuration;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:VideoEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfiguration
+#define SOAP_TYPE__trt__GetAudioSourceConfiguration (1450)
+/* trt:GetAudioSourceConfiguration */
+struct _trt__GetAudioSourceConfiguration
+{
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfigurationResponse
+#define SOAP_TYPE__trt__GetAudioSourceConfigurationResponse (1451)
+/* trt:GetAudioSourceConfigurationResponse */
+struct _trt__GetAudioSourceConfigurationResponse
+{
+	struct tt__AudioSourceConfiguration *Configuration;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:AudioSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfiguration
+#define SOAP_TYPE__trt__GetAudioEncoderConfiguration (1452)
+/* trt:GetAudioEncoderConfiguration */
+struct _trt__GetAudioEncoderConfiguration
+{
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfigurationResponse
+#define SOAP_TYPE__trt__GetAudioEncoderConfigurationResponse (1453)
+/* trt:GetAudioEncoderConfigurationResponse */
+struct _trt__GetAudioEncoderConfigurationResponse
+{
+	struct tt__AudioEncoderConfiguration *Configuration;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:AudioEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoAnalyticsConfiguration
+#define SOAP_TYPE__trt__GetVideoAnalyticsConfiguration (1454)
+/* trt:GetVideoAnalyticsConfiguration */
+struct _trt__GetVideoAnalyticsConfiguration
+{
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE__trt__GetVideoAnalyticsConfigurationResponse (1455)
+/* trt:GetVideoAnalyticsConfigurationResponse */
+struct _trt__GetVideoAnalyticsConfigurationResponse
+{
+	struct tt__VideoAnalyticsConfiguration *Configuration;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:VideoAnalyticsConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfiguration
+#define SOAP_TYPE__trt__GetMetadataConfiguration (1456)
+/* trt:GetMetadataConfiguration */
+struct _trt__GetMetadataConfiguration
+{
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfigurationResponse
+#define SOAP_TYPE__trt__GetMetadataConfigurationResponse (1457)
+/* trt:GetMetadataConfigurationResponse */
+struct _trt__GetMetadataConfigurationResponse
+{
+	struct tt__MetadataConfiguration *Configuration;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:MetadataConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfiguration
+#define SOAP_TYPE__trt__GetAudioOutputConfiguration (1458)
+/* trt:GetAudioOutputConfiguration */
+struct _trt__GetAudioOutputConfiguration
+{
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfigurationResponse
+#define SOAP_TYPE__trt__GetAudioOutputConfigurationResponse (1459)
+/* trt:GetAudioOutputConfigurationResponse */
+struct _trt__GetAudioOutputConfigurationResponse
+{
+	struct tt__AudioOutputConfiguration *Configuration;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:AudioOutputConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfiguration
+#define SOAP_TYPE__trt__GetAudioDecoderConfiguration (1460)
+/* trt:GetAudioDecoderConfiguration */
+struct _trt__GetAudioDecoderConfiguration
+{
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfigurationResponse
+#define SOAP_TYPE__trt__GetAudioDecoderConfigurationResponse (1461)
+/* trt:GetAudioDecoderConfigurationResponse */
+struct _trt__GetAudioDecoderConfigurationResponse
+{
+	struct tt__AudioDecoderConfiguration *Configuration;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:AudioDecoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoEncoderConfigurations
+#define SOAP_TYPE__trt__GetCompatibleVideoEncoderConfigurations (1462)
+/* trt:GetCompatibleVideoEncoderConfigurations */
+struct _trt__GetCompatibleVideoEncoderConfigurations
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoEncoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleVideoEncoderConfigurationsResponse (1463)
+/* trt:GetCompatibleVideoEncoderConfigurationsResponse */
+struct _trt__GetCompatibleVideoEncoderConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__VideoEncoderConfiguration *Configurations;	/* optional element of type tt:VideoEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoSourceConfigurations
+#define SOAP_TYPE__trt__GetCompatibleVideoSourceConfigurations (1464)
+/* trt:GetCompatibleVideoSourceConfigurations */
+struct _trt__GetCompatibleVideoSourceConfigurations
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoSourceConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleVideoSourceConfigurationsResponse (1465)
+/* trt:GetCompatibleVideoSourceConfigurationsResponse */
+struct _trt__GetCompatibleVideoSourceConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__VideoSourceConfiguration *Configurations;	/* optional element of type tt:VideoSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioEncoderConfigurations
+#define SOAP_TYPE__trt__GetCompatibleAudioEncoderConfigurations (1466)
+/* trt:GetCompatibleAudioEncoderConfigurations */
+struct _trt__GetCompatibleAudioEncoderConfigurations
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioEncoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleAudioEncoderConfigurationsResponse (1467)
+/* trt:GetCompatibleAudioEncoderConfigurationsResponse */
+struct _trt__GetCompatibleAudioEncoderConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__AudioEncoderConfiguration *Configurations;	/* optional element of type tt:AudioEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioSourceConfigurations
+#define SOAP_TYPE__trt__GetCompatibleAudioSourceConfigurations (1468)
+/* trt:GetCompatibleAudioSourceConfigurations */
+struct _trt__GetCompatibleAudioSourceConfigurations
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioSourceConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleAudioSourceConfigurationsResponse (1469)
+/* trt:GetCompatibleAudioSourceConfigurationsResponse */
+struct _trt__GetCompatibleAudioSourceConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__AudioSourceConfiguration *Configurations;	/* optional element of type tt:AudioSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoAnalyticsConfigurations
+#define SOAP_TYPE__trt__GetCompatibleVideoAnalyticsConfigurations (1470)
+/* trt:GetCompatibleVideoAnalyticsConfigurations */
+struct _trt__GetCompatibleVideoAnalyticsConfigurations
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoAnalyticsConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleVideoAnalyticsConfigurationsResponse (1471)
+/* trt:GetCompatibleVideoAnalyticsConfigurationsResponse */
+struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__VideoAnalyticsConfiguration *Configurations;	/* optional element of type tt:VideoAnalyticsConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleMetadataConfigurations
+#define SOAP_TYPE__trt__GetCompatibleMetadataConfigurations (1472)
+/* trt:GetCompatibleMetadataConfigurations */
+struct _trt__GetCompatibleMetadataConfigurations
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleMetadataConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleMetadataConfigurationsResponse (1473)
+/* trt:GetCompatibleMetadataConfigurationsResponse */
+struct _trt__GetCompatibleMetadataConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__MetadataConfiguration *Configurations;	/* optional element of type tt:MetadataConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioOutputConfigurations
+#define SOAP_TYPE__trt__GetCompatibleAudioOutputConfigurations (1474)
+/* trt:GetCompatibleAudioOutputConfigurations */
+struct _trt__GetCompatibleAudioOutputConfigurations
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioOutputConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleAudioOutputConfigurationsResponse (1475)
+/* trt:GetCompatibleAudioOutputConfigurationsResponse */
+struct _trt__GetCompatibleAudioOutputConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__AudioOutputConfiguration *Configurations;	/* optional element of type tt:AudioOutputConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioDecoderConfigurations
+#define SOAP_TYPE__trt__GetCompatibleAudioDecoderConfigurations (1476)
+/* trt:GetCompatibleAudioDecoderConfigurations */
+struct _trt__GetCompatibleAudioDecoderConfigurations
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioDecoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleAudioDecoderConfigurationsResponse (1477)
+/* trt:GetCompatibleAudioDecoderConfigurationsResponse */
+struct _trt__GetCompatibleAudioDecoderConfigurationsResponse
+{
+	int __sizeConfigurations;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* sequence of elements <Configurations> */
+	struct tt__AudioDecoderConfiguration *Configurations;	/* optional element of type tt:AudioDecoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetVideoEncoderConfiguration
+#define SOAP_TYPE__trt__SetVideoEncoderConfiguration (1478)
+/* trt:SetVideoEncoderConfiguration */
+struct _trt__SetVideoEncoderConfiguration
+{
+	struct tt__VideoEncoderConfiguration *Configuration;	/* required element of type tt:VideoEncoderConfiguration */
+	enum xsd__boolean ForcePersistence;	/* required element of type xsd:boolean */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetVideoEncoderConfigurationResponse
+#define SOAP_TYPE__trt__SetVideoEncoderConfigurationResponse (1479)
+/* trt:SetVideoEncoderConfigurationResponse */
+struct _trt__SetVideoEncoderConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetVideoSourceConfiguration
+#define SOAP_TYPE__trt__SetVideoSourceConfiguration (1480)
+/* trt:SetVideoSourceConfiguration */
+struct _trt__SetVideoSourceConfiguration
+{
+	struct tt__VideoSourceConfiguration *Configuration;	/* required element of type tt:VideoSourceConfiguration */
+	enum xsd__boolean ForcePersistence;	/* required element of type xsd:boolean */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetVideoSourceConfigurationResponse
+#define SOAP_TYPE__trt__SetVideoSourceConfigurationResponse (1481)
+/* trt:SetVideoSourceConfigurationResponse */
+struct _trt__SetVideoSourceConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetAudioEncoderConfiguration
+#define SOAP_TYPE__trt__SetAudioEncoderConfiguration (1482)
+/* trt:SetAudioEncoderConfiguration */
+struct _trt__SetAudioEncoderConfiguration
+{
+	struct tt__AudioEncoderConfiguration *Configuration;	/* required element of type tt:AudioEncoderConfiguration */
+	enum xsd__boolean ForcePersistence;	/* required element of type xsd:boolean */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetAudioEncoderConfigurationResponse
+#define SOAP_TYPE__trt__SetAudioEncoderConfigurationResponse (1483)
+/* trt:SetAudioEncoderConfigurationResponse */
+struct _trt__SetAudioEncoderConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetAudioSourceConfiguration
+#define SOAP_TYPE__trt__SetAudioSourceConfiguration (1484)
+/* trt:SetAudioSourceConfiguration */
+struct _trt__SetAudioSourceConfiguration
+{
+	struct tt__AudioSourceConfiguration *Configuration;	/* required element of type tt:AudioSourceConfiguration */
+	enum xsd__boolean ForcePersistence;	/* required element of type xsd:boolean */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetAudioSourceConfigurationResponse
+#define SOAP_TYPE__trt__SetAudioSourceConfigurationResponse (1485)
+/* trt:SetAudioSourceConfigurationResponse */
+struct _trt__SetAudioSourceConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetVideoAnalyticsConfiguration
+#define SOAP_TYPE__trt__SetVideoAnalyticsConfiguration (1486)
+/* trt:SetVideoAnalyticsConfiguration */
+struct _trt__SetVideoAnalyticsConfiguration
+{
+	struct tt__VideoAnalyticsConfiguration *Configuration;	/* required element of type tt:VideoAnalyticsConfiguration */
+	enum xsd__boolean ForcePersistence;	/* required element of type xsd:boolean */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE__trt__SetVideoAnalyticsConfigurationResponse (1487)
+/* trt:SetVideoAnalyticsConfigurationResponse */
+struct _trt__SetVideoAnalyticsConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetMetadataConfiguration
+#define SOAP_TYPE__trt__SetMetadataConfiguration (1488)
+/* trt:SetMetadataConfiguration */
+struct _trt__SetMetadataConfiguration
+{
+	struct tt__MetadataConfiguration *Configuration;	/* required element of type tt:MetadataConfiguration */
+	enum xsd__boolean ForcePersistence;	/* required element of type xsd:boolean */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetMetadataConfigurationResponse
+#define SOAP_TYPE__trt__SetMetadataConfigurationResponse (1489)
+/* trt:SetMetadataConfigurationResponse */
+struct _trt__SetMetadataConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetAudioOutputConfiguration
+#define SOAP_TYPE__trt__SetAudioOutputConfiguration (1490)
+/* trt:SetAudioOutputConfiguration */
+struct _trt__SetAudioOutputConfiguration
+{
+	struct tt__AudioOutputConfiguration *Configuration;	/* required element of type tt:AudioOutputConfiguration */
+	enum xsd__boolean ForcePersistence;	/* required element of type xsd:boolean */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetAudioOutputConfigurationResponse
+#define SOAP_TYPE__trt__SetAudioOutputConfigurationResponse (1491)
+/* trt:SetAudioOutputConfigurationResponse */
+struct _trt__SetAudioOutputConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetAudioDecoderConfiguration
+#define SOAP_TYPE__trt__SetAudioDecoderConfiguration (1492)
+/* trt:SetAudioDecoderConfiguration */
+struct _trt__SetAudioDecoderConfiguration
+{
+	struct tt__AudioDecoderConfiguration *Configuration;	/* required element of type tt:AudioDecoderConfiguration */
+	enum xsd__boolean ForcePersistence;	/* required element of type xsd:boolean */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetAudioDecoderConfigurationResponse
+#define SOAP_TYPE__trt__SetAudioDecoderConfigurationResponse (1493)
+/* trt:SetAudioDecoderConfigurationResponse */
+struct _trt__SetAudioDecoderConfigurationResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfigurationOptions
+#define SOAP_TYPE__trt__GetVideoSourceConfigurationOptions (1494)
+/* trt:GetVideoSourceConfigurationOptions */
+struct _trt__GetVideoSourceConfigurationOptions
+{
+	char *ConfigurationToken;	/* optional element of type tt:ReferenceToken */
+	char *ProfileToken;	/* optional element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetVideoSourceConfigurationOptionsResponse (1495)
+/* trt:GetVideoSourceConfigurationOptionsResponse */
+struct _trt__GetVideoSourceConfigurationOptionsResponse
+{
+	struct tt__VideoSourceConfigurationOptions *Options;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:VideoSourceConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfigurationOptions
+#define SOAP_TYPE__trt__GetVideoEncoderConfigurationOptions (1497)
+/* trt:GetVideoEncoderConfigurationOptions */
+struct _trt__GetVideoEncoderConfigurationOptions
+{
+	char *ConfigurationToken;	/* optional element of type tt:ReferenceToken */
+	char *ProfileToken;	/* optional element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetVideoEncoderConfigurationOptionsResponse (1498)
+/* trt:GetVideoEncoderConfigurationOptionsResponse */
+struct _trt__GetVideoEncoderConfigurationOptionsResponse
+{
+	struct tt__VideoEncoderConfigurationOptions *Options;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:VideoEncoderConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfigurationOptions
+#define SOAP_TYPE__trt__GetAudioSourceConfigurationOptions (1500)
+/* trt:GetAudioSourceConfigurationOptions */
+struct _trt__GetAudioSourceConfigurationOptions
+{
+	char *ConfigurationToken;	/* optional element of type tt:ReferenceToken */
+	char *ProfileToken;	/* optional element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetAudioSourceConfigurationOptionsResponse (1501)
+/* trt:GetAudioSourceConfigurationOptionsResponse */
+struct _trt__GetAudioSourceConfigurationOptionsResponse
+{
+	struct tt__AudioSourceConfigurationOptions *Options;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:AudioSourceConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfigurationOptions
+#define SOAP_TYPE__trt__GetAudioEncoderConfigurationOptions (1503)
+/* trt:GetAudioEncoderConfigurationOptions */
+struct _trt__GetAudioEncoderConfigurationOptions
+{
+	char *ConfigurationToken;	/* optional element of type tt:ReferenceToken */
+	char *ProfileToken;	/* optional element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetAudioEncoderConfigurationOptionsResponse (1504)
+/* trt:GetAudioEncoderConfigurationOptionsResponse */
+struct _trt__GetAudioEncoderConfigurationOptionsResponse
+{
+	struct tt__AudioEncoderConfigurationOptions *Options;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:AudioEncoderConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfigurationOptions
+#define SOAP_TYPE__trt__GetMetadataConfigurationOptions (1505)
+/* trt:GetMetadataConfigurationOptions */
+struct _trt__GetMetadataConfigurationOptions
+{
+	char *ConfigurationToken;	/* optional element of type tt:ReferenceToken */
+	char *ProfileToken;	/* optional element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetMetadataConfigurationOptionsResponse (1506)
+/* trt:GetMetadataConfigurationOptionsResponse */
+struct _trt__GetMetadataConfigurationOptionsResponse
+{
+	struct tt__MetadataConfigurationOptions *Options;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:MetadataConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfigurationOptions
+#define SOAP_TYPE__trt__GetAudioOutputConfigurationOptions (1508)
+/* trt:GetAudioOutputConfigurationOptions */
+struct _trt__GetAudioOutputConfigurationOptions
+{
+	char *ConfigurationToken;	/* optional element of type tt:ReferenceToken */
+	char *ProfileToken;	/* optional element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetAudioOutputConfigurationOptionsResponse (1509)
+/* trt:GetAudioOutputConfigurationOptionsResponse */
+struct _trt__GetAudioOutputConfigurationOptionsResponse
+{
+	struct tt__AudioOutputConfigurationOptions *Options;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:AudioOutputConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfigurationOptions
+#define SOAP_TYPE__trt__GetAudioDecoderConfigurationOptions (1511)
+/* trt:GetAudioDecoderConfigurationOptions */
+struct _trt__GetAudioDecoderConfigurationOptions
+{
+	char *ConfigurationToken;	/* optional element of type tt:ReferenceToken */
+	char *ProfileToken;	/* optional element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetAudioDecoderConfigurationOptionsResponse (1512)
+/* trt:GetAudioDecoderConfigurationOptionsResponse */
+struct _trt__GetAudioDecoderConfigurationOptionsResponse
+{
+	struct tt__AudioDecoderConfigurationOptions *Options;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:AudioDecoderConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define SOAP_TYPE__trt__GetGuaranteedNumberOfVideoEncoderInstances (1513)
+/* trt:GetGuaranteedNumberOfVideoEncoderInstances */
+struct _trt__GetGuaranteedNumberOfVideoEncoderInstances
+{
+	char *ConfigurationToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse
+#define SOAP_TYPE__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse (1514)
+/* trt:GetGuaranteedNumberOfVideoEncoderInstancesResponse */
+struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse
+{
+	int TotalNumber;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type xsd:int */
+	int *JPEG;	/* optional element of type xsd:int */
+	int *H264;	/* optional element of type xsd:int */
+	int *MPEG4;	/* optional element of type xsd:int */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetStreamUri
+#define SOAP_TYPE__trt__GetStreamUri (1515)
+/* trt:GetStreamUri */
+struct _trt__GetStreamUri
+{
+	struct tt__StreamSetup *StreamSetup;	/* required element of type tt:StreamSetup */
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetStreamUriResponse
+#define SOAP_TYPE__trt__GetStreamUriResponse (1516)
+/* trt:GetStreamUriResponse */
+struct _trt__GetStreamUriResponse
+{
+	struct tt__MediaUri *MediaUri;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:MediaUri */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__StartMulticastStreaming
+#define SOAP_TYPE__trt__StartMulticastStreaming (1518)
+/* trt:StartMulticastStreaming */
+struct _trt__StartMulticastStreaming
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__StartMulticastStreamingResponse
+#define SOAP_TYPE__trt__StartMulticastStreamingResponse (1519)
+/* trt:StartMulticastStreamingResponse */
+struct _trt__StartMulticastStreamingResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__StopMulticastStreaming
+#define SOAP_TYPE__trt__StopMulticastStreaming (1520)
+/* trt:StopMulticastStreaming */
+struct _trt__StopMulticastStreaming
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__StopMulticastStreamingResponse
+#define SOAP_TYPE__trt__StopMulticastStreamingResponse (1521)
+/* trt:StopMulticastStreamingResponse */
+struct _trt__StopMulticastStreamingResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetSynchronizationPoint
+#define SOAP_TYPE__trt__SetSynchronizationPoint (1522)
+/* trt:SetSynchronizationPoint */
+struct _trt__SetSynchronizationPoint
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__SetSynchronizationPointResponse
+#define SOAP_TYPE__trt__SetSynchronizationPointResponse (1523)
+/* trt:SetSynchronizationPointResponse */
+struct _trt__SetSynchronizationPointResponse
+{
+#ifdef WITH_NOEMPTYSTRUCT
+	char dummy;	/* dummy member to enable compilation */
+#endif
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetSnapshotUri
+#define SOAP_TYPE__trt__GetSnapshotUri (1524)
+/* trt:GetSnapshotUri */
+struct _trt__GetSnapshotUri
+{
+	char *ProfileToken;	/* required element of type tt:ReferenceToken */
+};
+#endif
+
+#ifndef SOAP_TYPE__trt__GetSnapshotUriResponse
+#define SOAP_TYPE__trt__GetSnapshotUriResponse (1525)
+/* trt:GetSnapshotUriResponse */
+struct _trt__GetSnapshotUriResponse
+{
+	struct tt__MediaUri *MediaUri;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type tt:MediaUri */
+};
+#endif
+
 #ifndef SOAP_TYPE_tt__VideoSource
-#define SOAP_TYPE_tt__VideoSource (1365)
+#define SOAP_TYPE_tt__VideoSource (1375)
 /* tt:VideoSource */
 struct tt__VideoSource
 {
@@ -8821,7 +10277,7 @@ struct tt__VideoSource
 #endif
 
 #ifndef SOAP_TYPE_tt__AudioSource
-#define SOAP_TYPE_tt__AudioSource (1368)
+#define SOAP_TYPE_tt__AudioSource (1379)
 /* tt:AudioSource */
 struct tt__AudioSource
 {
@@ -8998,7 +10454,7 @@ struct tt__MetadataConfiguration
 #endif
 
 #ifndef SOAP_TYPE_tt__VideoOutput
-#define SOAP_TYPE_tt__VideoOutput (1380)
+#define SOAP_TYPE_tt__VideoOutput (1539)
 /* tt:VideoOutput */
 struct tt__VideoOutput
 {
@@ -9013,7 +10469,7 @@ struct tt__VideoOutput
 #endif
 
 #ifndef SOAP_TYPE_tt__VideoOutputConfiguration
-#define SOAP_TYPE_tt__VideoOutputConfiguration (1383)
+#define SOAP_TYPE_tt__VideoOutputConfiguration (1542)
 /* tt:VideoOutputConfiguration */
 struct tt__VideoOutputConfiguration
 {
@@ -9028,7 +10484,7 @@ struct tt__VideoOutputConfiguration
 #endif
 
 #ifndef SOAP_TYPE_tt__AudioOutput
-#define SOAP_TYPE_tt__AudioOutput (1384)
+#define SOAP_TYPE_tt__AudioOutput (1383)
 /* tt:AudioOutput */
 struct tt__AudioOutput
 {
@@ -9110,7 +10566,7 @@ struct tt__RelayOutput
 #endif
 
 #ifndef SOAP_TYPE_tt__DigitalInput
-#define SOAP_TYPE_tt__DigitalInput (1390)
+#define SOAP_TYPE_tt__DigitalInput (1548)
 /* tt:DigitalInput */
 struct tt__DigitalInput
 {
@@ -9122,7 +10578,7 @@ struct tt__DigitalInput
 #endif
 
 #ifndef SOAP_TYPE_tt__PTZNode
-#define SOAP_TYPE_tt__PTZNode (1391)
+#define SOAP_TYPE_tt__PTZNode (1549)
 /* tt:PTZNode */
 struct tt__PTZNode
 {
@@ -9177,7 +10633,7 @@ struct tt__Object
 #endif
 
 #ifndef SOAP_TYPE_tt__EventFilter
-#define SOAP_TYPE_tt__EventFilter (1399)
+#define SOAP_TYPE_tt__EventFilter (1557)
 /* tt:EventFilter */
 struct tt__EventFilter
 {
@@ -9188,7 +10644,7 @@ struct tt__EventFilter
 #endif
 
 #ifndef SOAP_TYPE_tt__AnalyticsEngine
-#define SOAP_TYPE_tt__AnalyticsEngine (1400)
+#define SOAP_TYPE_tt__AnalyticsEngine (1558)
 /* tt:AnalyticsEngine */
 struct tt__AnalyticsEngine
 {
@@ -9203,7 +10659,7 @@ struct tt__AnalyticsEngine
 #endif
 
 #ifndef SOAP_TYPE_tt__AnalyticsEngineInput
-#define SOAP_TYPE_tt__AnalyticsEngineInput (1402)
+#define SOAP_TYPE_tt__AnalyticsEngineInput (1560)
 /* tt:AnalyticsEngineInput */
 struct tt__AnalyticsEngineInput
 {
@@ -9220,7 +10676,7 @@ struct tt__AnalyticsEngineInput
 #endif
 
 #ifndef SOAP_TYPE_tt__AnalyticsEngineControl
-#define SOAP_TYPE_tt__AnalyticsEngineControl (1405)
+#define SOAP_TYPE_tt__AnalyticsEngineControl (1563)
 /* tt:AnalyticsEngineControl */
 struct tt__AnalyticsEngineControl
 {
@@ -9243,7 +10699,7 @@ struct tt__AnalyticsEngineControl
 #endif
 
 #ifndef SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_ErrorCode (1407)
+#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_ErrorCode (1565)
 /* wsnt:SubscribeCreationFailedFaultType-ErrorCode */
 struct _wsnt__SubscribeCreationFailedFaultType_ErrorCode
 {
@@ -9252,7 +10708,7 @@ struct _wsnt__SubscribeCreationFailedFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_Description
-#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_Description (1409)
+#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_Description (1567)
 /* Primitive wsnt:SubscribeCreationFailedFaultType-Description schema type: */
 struct _wsnt__SubscribeCreationFailedFaultType_Description
 {
@@ -9262,7 +10718,7 @@ struct _wsnt__SubscribeCreationFailedFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_FaultCause (1411)
+#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_FaultCause (1569)
 /* wsnt:SubscribeCreationFailedFaultType-FaultCause */
 struct _wsnt__SubscribeCreationFailedFaultType_FaultCause
 {
@@ -9271,7 +10727,7 @@ struct _wsnt__SubscribeCreationFailedFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__SubscribeCreationFailedFaultType
-#define SOAP_TYPE_wsnt__SubscribeCreationFailedFaultType (1406)
+#define SOAP_TYPE_wsnt__SubscribeCreationFailedFaultType (1564)
 /* wsnt:SubscribeCreationFailedFaultType */
 struct wsnt__SubscribeCreationFailedFaultType
 {
@@ -9288,7 +10744,7 @@ struct wsnt__SubscribeCreationFailedFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidFilterFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__InvalidFilterFaultType_ErrorCode (1414)
+#define SOAP_TYPE__wsnt__InvalidFilterFaultType_ErrorCode (1572)
 /* wsnt:InvalidFilterFaultType-ErrorCode */
 struct _wsnt__InvalidFilterFaultType_ErrorCode
 {
@@ -9297,7 +10753,7 @@ struct _wsnt__InvalidFilterFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidFilterFaultType_Description
-#define SOAP_TYPE__wsnt__InvalidFilterFaultType_Description (1416)
+#define SOAP_TYPE__wsnt__InvalidFilterFaultType_Description (1574)
 /* Primitive wsnt:InvalidFilterFaultType-Description schema type: */
 struct _wsnt__InvalidFilterFaultType_Description
 {
@@ -9307,7 +10763,7 @@ struct _wsnt__InvalidFilterFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidFilterFaultType_FaultCause
-#define SOAP_TYPE__wsnt__InvalidFilterFaultType_FaultCause (1418)
+#define SOAP_TYPE__wsnt__InvalidFilterFaultType_FaultCause (1576)
 /* wsnt:InvalidFilterFaultType-FaultCause */
 struct _wsnt__InvalidFilterFaultType_FaultCause
 {
@@ -9316,7 +10772,7 @@ struct _wsnt__InvalidFilterFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__InvalidFilterFaultType
-#define SOAP_TYPE_wsnt__InvalidFilterFaultType (1413)
+#define SOAP_TYPE_wsnt__InvalidFilterFaultType (1571)
 /* wsnt:InvalidFilterFaultType */
 struct wsnt__InvalidFilterFaultType
 {
@@ -9335,7 +10791,7 @@ struct wsnt__InvalidFilterFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode (1421)
+#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode (1579)
 /* wsnt:TopicExpressionDialectUnknownFaultType-ErrorCode */
 struct _wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode
 {
@@ -9344,7 +10800,7 @@ struct _wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_Description
-#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_Description (1423)
+#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_Description (1581)
 /* Primitive wsnt:TopicExpressionDialectUnknownFaultType-Description schema type: */
 struct _wsnt__TopicExpressionDialectUnknownFaultType_Description
 {
@@ -9354,7 +10810,7 @@ struct _wsnt__TopicExpressionDialectUnknownFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_FaultCause
-#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_FaultCause (1425)
+#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_FaultCause (1583)
 /* wsnt:TopicExpressionDialectUnknownFaultType-FaultCause */
 struct _wsnt__TopicExpressionDialectUnknownFaultType_FaultCause
 {
@@ -9363,7 +10819,7 @@ struct _wsnt__TopicExpressionDialectUnknownFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__TopicExpressionDialectUnknownFaultType
-#define SOAP_TYPE_wsnt__TopicExpressionDialectUnknownFaultType (1420)
+#define SOAP_TYPE_wsnt__TopicExpressionDialectUnknownFaultType (1578)
 /* wsnt:TopicExpressionDialectUnknownFaultType */
 struct wsnt__TopicExpressionDialectUnknownFaultType
 {
@@ -9380,7 +10836,7 @@ struct wsnt__TopicExpressionDialectUnknownFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_ErrorCode (1428)
+#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_ErrorCode (1586)
 /* wsnt:InvalidTopicExpressionFaultType-ErrorCode */
 struct _wsnt__InvalidTopicExpressionFaultType_ErrorCode
 {
@@ -9389,7 +10845,7 @@ struct _wsnt__InvalidTopicExpressionFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_Description
-#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_Description (1430)
+#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_Description (1588)
 /* Primitive wsnt:InvalidTopicExpressionFaultType-Description schema type: */
 struct _wsnt__InvalidTopicExpressionFaultType_Description
 {
@@ -9399,7 +10855,7 @@ struct _wsnt__InvalidTopicExpressionFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_FaultCause
-#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_FaultCause (1432)
+#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_FaultCause (1590)
 /* wsnt:InvalidTopicExpressionFaultType-FaultCause */
 struct _wsnt__InvalidTopicExpressionFaultType_FaultCause
 {
@@ -9408,7 +10864,7 @@ struct _wsnt__InvalidTopicExpressionFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__InvalidTopicExpressionFaultType
-#define SOAP_TYPE_wsnt__InvalidTopicExpressionFaultType (1427)
+#define SOAP_TYPE_wsnt__InvalidTopicExpressionFaultType (1585)
 /* wsnt:InvalidTopicExpressionFaultType */
 struct wsnt__InvalidTopicExpressionFaultType
 {
@@ -9425,7 +10881,7 @@ struct wsnt__InvalidTopicExpressionFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__TopicNotSupportedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_ErrorCode (1435)
+#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_ErrorCode (1593)
 /* wsnt:TopicNotSupportedFaultType-ErrorCode */
 struct _wsnt__TopicNotSupportedFaultType_ErrorCode
 {
@@ -9434,7 +10890,7 @@ struct _wsnt__TopicNotSupportedFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__TopicNotSupportedFaultType_Description
-#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_Description (1437)
+#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_Description (1595)
 /* Primitive wsnt:TopicNotSupportedFaultType-Description schema type: */
 struct _wsnt__TopicNotSupportedFaultType_Description
 {
@@ -9444,7 +10900,7 @@ struct _wsnt__TopicNotSupportedFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__TopicNotSupportedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_FaultCause (1439)
+#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_FaultCause (1597)
 /* wsnt:TopicNotSupportedFaultType-FaultCause */
 struct _wsnt__TopicNotSupportedFaultType_FaultCause
 {
@@ -9453,7 +10909,7 @@ struct _wsnt__TopicNotSupportedFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__TopicNotSupportedFaultType
-#define SOAP_TYPE_wsnt__TopicNotSupportedFaultType (1434)
+#define SOAP_TYPE_wsnt__TopicNotSupportedFaultType (1592)
 /* wsnt:TopicNotSupportedFaultType */
 struct wsnt__TopicNotSupportedFaultType
 {
@@ -9470,7 +10926,7 @@ struct wsnt__TopicNotSupportedFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode (1442)
+#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode (1600)
 /* wsnt:MultipleTopicsSpecifiedFaultType-ErrorCode */
 struct _wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode
 {
@@ -9479,7 +10935,7 @@ struct _wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_Description
-#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_Description (1444)
+#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_Description (1602)
 /* Primitive wsnt:MultipleTopicsSpecifiedFaultType-Description schema type: */
 struct _wsnt__MultipleTopicsSpecifiedFaultType_Description
 {
@@ -9489,7 +10945,7 @@ struct _wsnt__MultipleTopicsSpecifiedFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_FaultCause (1446)
+#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_FaultCause (1604)
 /* wsnt:MultipleTopicsSpecifiedFaultType-FaultCause */
 struct _wsnt__MultipleTopicsSpecifiedFaultType_FaultCause
 {
@@ -9498,7 +10954,7 @@ struct _wsnt__MultipleTopicsSpecifiedFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__MultipleTopicsSpecifiedFaultType
-#define SOAP_TYPE_wsnt__MultipleTopicsSpecifiedFaultType (1441)
+#define SOAP_TYPE_wsnt__MultipleTopicsSpecifiedFaultType (1599)
 /* wsnt:MultipleTopicsSpecifiedFaultType */
 struct wsnt__MultipleTopicsSpecifiedFaultType
 {
@@ -9515,7 +10971,7 @@ struct wsnt__MultipleTopicsSpecifiedFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode (1449)
+#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode (1607)
 /* wsnt:InvalidProducerPropertiesExpressionFaultType-ErrorCode */
 struct _wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode
 {
@@ -9524,7 +10980,7 @@ struct _wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_Description
-#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_Description (1451)
+#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_Description (1609)
 /* Primitive wsnt:InvalidProducerPropertiesExpressionFaultType-Description schema type: */
 struct _wsnt__InvalidProducerPropertiesExpressionFaultType_Description
 {
@@ -9534,7 +10990,7 @@ struct _wsnt__InvalidProducerPropertiesExpressionFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause
-#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause (1453)
+#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause (1611)
 /* wsnt:InvalidProducerPropertiesExpressionFaultType-FaultCause */
 struct _wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause
 {
@@ -9543,7 +10999,7 @@ struct _wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__InvalidProducerPropertiesExpressionFaultType
-#define SOAP_TYPE_wsnt__InvalidProducerPropertiesExpressionFaultType (1448)
+#define SOAP_TYPE_wsnt__InvalidProducerPropertiesExpressionFaultType (1606)
 /* wsnt:InvalidProducerPropertiesExpressionFaultType */
 struct wsnt__InvalidProducerPropertiesExpressionFaultType
 {
@@ -9560,7 +11016,7 @@ struct wsnt__InvalidProducerPropertiesExpressionFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_ErrorCode (1456)
+#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_ErrorCode (1614)
 /* wsnt:InvalidMessageContentExpressionFaultType-ErrorCode */
 struct _wsnt__InvalidMessageContentExpressionFaultType_ErrorCode
 {
@@ -9569,7 +11025,7 @@ struct _wsnt__InvalidMessageContentExpressionFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_Description
-#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_Description (1458)
+#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_Description (1616)
 /* Primitive wsnt:InvalidMessageContentExpressionFaultType-Description schema type: */
 struct _wsnt__InvalidMessageContentExpressionFaultType_Description
 {
@@ -9579,7 +11035,7 @@ struct _wsnt__InvalidMessageContentExpressionFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_FaultCause
-#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_FaultCause (1460)
+#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_FaultCause (1618)
 /* wsnt:InvalidMessageContentExpressionFaultType-FaultCause */
 struct _wsnt__InvalidMessageContentExpressionFaultType_FaultCause
 {
@@ -9588,7 +11044,7 @@ struct _wsnt__InvalidMessageContentExpressionFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__InvalidMessageContentExpressionFaultType
-#define SOAP_TYPE_wsnt__InvalidMessageContentExpressionFaultType (1455)
+#define SOAP_TYPE_wsnt__InvalidMessageContentExpressionFaultType (1613)
 /* wsnt:InvalidMessageContentExpressionFaultType */
 struct wsnt__InvalidMessageContentExpressionFaultType
 {
@@ -9605,7 +11061,7 @@ struct wsnt__InvalidMessageContentExpressionFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode (1463)
+#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode (1621)
 /* wsnt:UnrecognizedPolicyRequestFaultType-ErrorCode */
 struct _wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode
 {
@@ -9614,7 +11070,7 @@ struct _wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_Description
-#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_Description (1465)
+#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_Description (1623)
 /* Primitive wsnt:UnrecognizedPolicyRequestFaultType-Description schema type: */
 struct _wsnt__UnrecognizedPolicyRequestFaultType_Description
 {
@@ -9624,7 +11080,7 @@ struct _wsnt__UnrecognizedPolicyRequestFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_FaultCause (1467)
+#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_FaultCause (1625)
 /* wsnt:UnrecognizedPolicyRequestFaultType-FaultCause */
 struct _wsnt__UnrecognizedPolicyRequestFaultType_FaultCause
 {
@@ -9633,7 +11089,7 @@ struct _wsnt__UnrecognizedPolicyRequestFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__UnrecognizedPolicyRequestFaultType
-#define SOAP_TYPE_wsnt__UnrecognizedPolicyRequestFaultType (1462)
+#define SOAP_TYPE_wsnt__UnrecognizedPolicyRequestFaultType (1620)
 /* wsnt:UnrecognizedPolicyRequestFaultType */
 struct wsnt__UnrecognizedPolicyRequestFaultType
 {
@@ -9652,7 +11108,7 @@ struct wsnt__UnrecognizedPolicyRequestFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_ErrorCode (1470)
+#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_ErrorCode (1628)
 /* wsnt:UnsupportedPolicyRequestFaultType-ErrorCode */
 struct _wsnt__UnsupportedPolicyRequestFaultType_ErrorCode
 {
@@ -9661,7 +11117,7 @@ struct _wsnt__UnsupportedPolicyRequestFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_Description
-#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_Description (1472)
+#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_Description (1630)
 /* Primitive wsnt:UnsupportedPolicyRequestFaultType-Description schema type: */
 struct _wsnt__UnsupportedPolicyRequestFaultType_Description
 {
@@ -9671,7 +11127,7 @@ struct _wsnt__UnsupportedPolicyRequestFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_FaultCause (1474)
+#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_FaultCause (1632)
 /* wsnt:UnsupportedPolicyRequestFaultType-FaultCause */
 struct _wsnt__UnsupportedPolicyRequestFaultType_FaultCause
 {
@@ -9680,7 +11136,7 @@ struct _wsnt__UnsupportedPolicyRequestFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__UnsupportedPolicyRequestFaultType
-#define SOAP_TYPE_wsnt__UnsupportedPolicyRequestFaultType (1469)
+#define SOAP_TYPE_wsnt__UnsupportedPolicyRequestFaultType (1627)
 /* wsnt:UnsupportedPolicyRequestFaultType */
 struct wsnt__UnsupportedPolicyRequestFaultType
 {
@@ -9699,7 +11155,7 @@ struct wsnt__UnsupportedPolicyRequestFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_ErrorCode (1477)
+#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_ErrorCode (1635)
 /* wsnt:NotifyMessageNotSupportedFaultType-ErrorCode */
 struct _wsnt__NotifyMessageNotSupportedFaultType_ErrorCode
 {
@@ -9708,7 +11164,7 @@ struct _wsnt__NotifyMessageNotSupportedFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_Description
-#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_Description (1479)
+#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_Description (1637)
 /* Primitive wsnt:NotifyMessageNotSupportedFaultType-Description schema type: */
 struct _wsnt__NotifyMessageNotSupportedFaultType_Description
 {
@@ -9718,7 +11174,7 @@ struct _wsnt__NotifyMessageNotSupportedFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_FaultCause (1481)
+#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_FaultCause (1639)
 /* wsnt:NotifyMessageNotSupportedFaultType-FaultCause */
 struct _wsnt__NotifyMessageNotSupportedFaultType_FaultCause
 {
@@ -9727,7 +11183,7 @@ struct _wsnt__NotifyMessageNotSupportedFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__NotifyMessageNotSupportedFaultType
-#define SOAP_TYPE_wsnt__NotifyMessageNotSupportedFaultType (1476)
+#define SOAP_TYPE_wsnt__NotifyMessageNotSupportedFaultType (1634)
 /* wsnt:NotifyMessageNotSupportedFaultType */
 struct wsnt__NotifyMessageNotSupportedFaultType
 {
@@ -9744,7 +11200,7 @@ struct wsnt__NotifyMessageNotSupportedFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode (1484)
+#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode (1642)
 /* wsnt:UnacceptableInitialTerminationTimeFaultType-ErrorCode */
 struct _wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode
 {
@@ -9753,7 +11209,7 @@ struct _wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_Description
-#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_Description (1486)
+#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_Description (1644)
 /* Primitive wsnt:UnacceptableInitialTerminationTimeFaultType-Description schema type: */
 struct _wsnt__UnacceptableInitialTerminationTimeFaultType_Description
 {
@@ -9763,7 +11219,7 @@ struct _wsnt__UnacceptableInitialTerminationTimeFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause (1488)
+#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause (1646)
 /* wsnt:UnacceptableInitialTerminationTimeFaultType-FaultCause */
 struct _wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause
 {
@@ -9772,7 +11228,7 @@ struct _wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__UnacceptableInitialTerminationTimeFaultType
-#define SOAP_TYPE_wsnt__UnacceptableInitialTerminationTimeFaultType (1483)
+#define SOAP_TYPE_wsnt__UnacceptableInitialTerminationTimeFaultType (1641)
 /* wsnt:UnacceptableInitialTerminationTimeFaultType */
 struct wsnt__UnacceptableInitialTerminationTimeFaultType
 {
@@ -9791,7 +11247,7 @@ struct wsnt__UnacceptableInitialTerminationTimeFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode (1491)
+#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode (1649)
 /* wsnt:NoCurrentMessageOnTopicFaultType-ErrorCode */
 struct _wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode
 {
@@ -9800,7 +11256,7 @@ struct _wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_Description
-#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_Description (1493)
+#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_Description (1651)
 /* Primitive wsnt:NoCurrentMessageOnTopicFaultType-Description schema type: */
 struct _wsnt__NoCurrentMessageOnTopicFaultType_Description
 {
@@ -9810,7 +11266,7 @@ struct _wsnt__NoCurrentMessageOnTopicFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_FaultCause
-#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_FaultCause (1495)
+#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_FaultCause (1653)
 /* wsnt:NoCurrentMessageOnTopicFaultType-FaultCause */
 struct _wsnt__NoCurrentMessageOnTopicFaultType_FaultCause
 {
@@ -9819,7 +11275,7 @@ struct _wsnt__NoCurrentMessageOnTopicFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__NoCurrentMessageOnTopicFaultType
-#define SOAP_TYPE_wsnt__NoCurrentMessageOnTopicFaultType (1490)
+#define SOAP_TYPE_wsnt__NoCurrentMessageOnTopicFaultType (1648)
 /* wsnt:NoCurrentMessageOnTopicFaultType */
 struct wsnt__NoCurrentMessageOnTopicFaultType
 {
@@ -9836,7 +11292,7 @@ struct wsnt__NoCurrentMessageOnTopicFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_ErrorCode (1498)
+#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_ErrorCode (1656)
 /* wsnt:UnableToGetMessagesFaultType-ErrorCode */
 struct _wsnt__UnableToGetMessagesFaultType_ErrorCode
 {
@@ -9845,7 +11301,7 @@ struct _wsnt__UnableToGetMessagesFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_Description
-#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_Description (1500)
+#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_Description (1658)
 /* Primitive wsnt:UnableToGetMessagesFaultType-Description schema type: */
 struct _wsnt__UnableToGetMessagesFaultType_Description
 {
@@ -9855,7 +11311,7 @@ struct _wsnt__UnableToGetMessagesFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_FaultCause (1502)
+#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_FaultCause (1660)
 /* wsnt:UnableToGetMessagesFaultType-FaultCause */
 struct _wsnt__UnableToGetMessagesFaultType_FaultCause
 {
@@ -9864,7 +11320,7 @@ struct _wsnt__UnableToGetMessagesFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__UnableToGetMessagesFaultType
-#define SOAP_TYPE_wsnt__UnableToGetMessagesFaultType (1497)
+#define SOAP_TYPE_wsnt__UnableToGetMessagesFaultType (1655)
 /* wsnt:UnableToGetMessagesFaultType */
 struct wsnt__UnableToGetMessagesFaultType
 {
@@ -9881,7 +11337,7 @@ struct wsnt__UnableToGetMessagesFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_ErrorCode (1505)
+#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_ErrorCode (1663)
 /* wsnt:UnableToDestroyPullPointFaultType-ErrorCode */
 struct _wsnt__UnableToDestroyPullPointFaultType_ErrorCode
 {
@@ -9890,7 +11346,7 @@ struct _wsnt__UnableToDestroyPullPointFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_Description
-#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_Description (1507)
+#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_Description (1665)
 /* Primitive wsnt:UnableToDestroyPullPointFaultType-Description schema type: */
 struct _wsnt__UnableToDestroyPullPointFaultType_Description
 {
@@ -9900,7 +11356,7 @@ struct _wsnt__UnableToDestroyPullPointFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_FaultCause (1509)
+#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_FaultCause (1667)
 /* wsnt:UnableToDestroyPullPointFaultType-FaultCause */
 struct _wsnt__UnableToDestroyPullPointFaultType_FaultCause
 {
@@ -9909,7 +11365,7 @@ struct _wsnt__UnableToDestroyPullPointFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__UnableToDestroyPullPointFaultType
-#define SOAP_TYPE_wsnt__UnableToDestroyPullPointFaultType (1504)
+#define SOAP_TYPE_wsnt__UnableToDestroyPullPointFaultType (1662)
 /* wsnt:UnableToDestroyPullPointFaultType */
 struct wsnt__UnableToDestroyPullPointFaultType
 {
@@ -9926,7 +11382,7 @@ struct wsnt__UnableToDestroyPullPointFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_ErrorCode (1512)
+#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_ErrorCode (1670)
 /* wsnt:UnableToCreatePullPointFaultType-ErrorCode */
 struct _wsnt__UnableToCreatePullPointFaultType_ErrorCode
 {
@@ -9935,7 +11391,7 @@ struct _wsnt__UnableToCreatePullPointFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_Description
-#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_Description (1514)
+#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_Description (1672)
 /* Primitive wsnt:UnableToCreatePullPointFaultType-Description schema type: */
 struct _wsnt__UnableToCreatePullPointFaultType_Description
 {
@@ -9945,7 +11401,7 @@ struct _wsnt__UnableToCreatePullPointFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_FaultCause (1516)
+#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_FaultCause (1674)
 /* wsnt:UnableToCreatePullPointFaultType-FaultCause */
 struct _wsnt__UnableToCreatePullPointFaultType_FaultCause
 {
@@ -9954,7 +11410,7 @@ struct _wsnt__UnableToCreatePullPointFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__UnableToCreatePullPointFaultType
-#define SOAP_TYPE_wsnt__UnableToCreatePullPointFaultType (1511)
+#define SOAP_TYPE_wsnt__UnableToCreatePullPointFaultType (1669)
 /* wsnt:UnableToCreatePullPointFaultType */
 struct wsnt__UnableToCreatePullPointFaultType
 {
@@ -9971,7 +11427,7 @@ struct wsnt__UnableToCreatePullPointFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_ErrorCode (1519)
+#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_ErrorCode (1677)
 /* wsnt:UnacceptableTerminationTimeFaultType-ErrorCode */
 struct _wsnt__UnacceptableTerminationTimeFaultType_ErrorCode
 {
@@ -9980,7 +11436,7 @@ struct _wsnt__UnacceptableTerminationTimeFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_Description
-#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_Description (1521)
+#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_Description (1679)
 /* Primitive wsnt:UnacceptableTerminationTimeFaultType-Description schema type: */
 struct _wsnt__UnacceptableTerminationTimeFaultType_Description
 {
@@ -9990,7 +11446,7 @@ struct _wsnt__UnacceptableTerminationTimeFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_FaultCause (1523)
+#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_FaultCause (1681)
 /* wsnt:UnacceptableTerminationTimeFaultType-FaultCause */
 struct _wsnt__UnacceptableTerminationTimeFaultType_FaultCause
 {
@@ -9999,7 +11455,7 @@ struct _wsnt__UnacceptableTerminationTimeFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__UnacceptableTerminationTimeFaultType
-#define SOAP_TYPE_wsnt__UnacceptableTerminationTimeFaultType (1518)
+#define SOAP_TYPE_wsnt__UnacceptableTerminationTimeFaultType (1676)
 /* wsnt:UnacceptableTerminationTimeFaultType */
 struct wsnt__UnacceptableTerminationTimeFaultType
 {
@@ -10018,7 +11474,7 @@ struct wsnt__UnacceptableTerminationTimeFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_ErrorCode (1526)
+#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_ErrorCode (1684)
 /* wsnt:UnableToDestroySubscriptionFaultType-ErrorCode */
 struct _wsnt__UnableToDestroySubscriptionFaultType_ErrorCode
 {
@@ -10027,7 +11483,7 @@ struct _wsnt__UnableToDestroySubscriptionFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_Description
-#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_Description (1528)
+#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_Description (1686)
 /* Primitive wsnt:UnableToDestroySubscriptionFaultType-Description schema type: */
 struct _wsnt__UnableToDestroySubscriptionFaultType_Description
 {
@@ -10037,7 +11493,7 @@ struct _wsnt__UnableToDestroySubscriptionFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_FaultCause (1530)
+#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_FaultCause (1688)
 /* wsnt:UnableToDestroySubscriptionFaultType-FaultCause */
 struct _wsnt__UnableToDestroySubscriptionFaultType_FaultCause
 {
@@ -10046,7 +11502,7 @@ struct _wsnt__UnableToDestroySubscriptionFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__UnableToDestroySubscriptionFaultType
-#define SOAP_TYPE_wsnt__UnableToDestroySubscriptionFaultType (1525)
+#define SOAP_TYPE_wsnt__UnableToDestroySubscriptionFaultType (1683)
 /* wsnt:UnableToDestroySubscriptionFaultType */
 struct wsnt__UnableToDestroySubscriptionFaultType
 {
@@ -10063,7 +11519,7 @@ struct wsnt__UnableToDestroySubscriptionFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__PauseFailedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__PauseFailedFaultType_ErrorCode (1533)
+#define SOAP_TYPE__wsnt__PauseFailedFaultType_ErrorCode (1691)
 /* wsnt:PauseFailedFaultType-ErrorCode */
 struct _wsnt__PauseFailedFaultType_ErrorCode
 {
@@ -10072,7 +11528,7 @@ struct _wsnt__PauseFailedFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__PauseFailedFaultType_Description
-#define SOAP_TYPE__wsnt__PauseFailedFaultType_Description (1535)
+#define SOAP_TYPE__wsnt__PauseFailedFaultType_Description (1693)
 /* Primitive wsnt:PauseFailedFaultType-Description schema type: */
 struct _wsnt__PauseFailedFaultType_Description
 {
@@ -10082,7 +11538,7 @@ struct _wsnt__PauseFailedFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__PauseFailedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__PauseFailedFaultType_FaultCause (1537)
+#define SOAP_TYPE__wsnt__PauseFailedFaultType_FaultCause (1695)
 /* wsnt:PauseFailedFaultType-FaultCause */
 struct _wsnt__PauseFailedFaultType_FaultCause
 {
@@ -10091,7 +11547,7 @@ struct _wsnt__PauseFailedFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__PauseFailedFaultType
-#define SOAP_TYPE_wsnt__PauseFailedFaultType (1532)
+#define SOAP_TYPE_wsnt__PauseFailedFaultType (1690)
 /* wsnt:PauseFailedFaultType */
 struct wsnt__PauseFailedFaultType
 {
@@ -10108,7 +11564,7 @@ struct wsnt__PauseFailedFaultType
 #endif
 
 #ifndef SOAP_TYPE__wsnt__ResumeFailedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__ResumeFailedFaultType_ErrorCode (1540)
+#define SOAP_TYPE__wsnt__ResumeFailedFaultType_ErrorCode (1698)
 /* wsnt:ResumeFailedFaultType-ErrorCode */
 struct _wsnt__ResumeFailedFaultType_ErrorCode
 {
@@ -10117,7 +11573,7 @@ struct _wsnt__ResumeFailedFaultType_ErrorCode
 #endif
 
 #ifndef SOAP_TYPE__wsnt__ResumeFailedFaultType_Description
-#define SOAP_TYPE__wsnt__ResumeFailedFaultType_Description (1542)
+#define SOAP_TYPE__wsnt__ResumeFailedFaultType_Description (1700)
 /* Primitive wsnt:ResumeFailedFaultType-Description schema type: */
 struct _wsnt__ResumeFailedFaultType_Description
 {
@@ -10127,7 +11583,7 @@ struct _wsnt__ResumeFailedFaultType_Description
 #endif
 
 #ifndef SOAP_TYPE__wsnt__ResumeFailedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__ResumeFailedFaultType_FaultCause (1544)
+#define SOAP_TYPE__wsnt__ResumeFailedFaultType_FaultCause (1702)
 /* wsnt:ResumeFailedFaultType-FaultCause */
 struct _wsnt__ResumeFailedFaultType_FaultCause
 {
@@ -10136,7 +11592,7 @@ struct _wsnt__ResumeFailedFaultType_FaultCause
 #endif
 
 #ifndef SOAP_TYPE_wsnt__ResumeFailedFaultType
-#define SOAP_TYPE_wsnt__ResumeFailedFaultType (1539)
+#define SOAP_TYPE_wsnt__ResumeFailedFaultType (1697)
 /* wsnt:ResumeFailedFaultType */
 struct wsnt__ResumeFailedFaultType
 {
@@ -10153,7 +11609,7 @@ struct wsnt__ResumeFailedFaultType
 #endif
 
 #ifndef SOAP_TYPE__wstop__TopicNamespaceType_Topic
-#define SOAP_TYPE__wstop__TopicNamespaceType_Topic (1547)
+#define SOAP_TYPE__wstop__TopicNamespaceType_Topic (1705)
 /* wstop:TopicNamespaceType-Topic */
 struct _wstop__TopicNamespaceType_Topic
 {
@@ -10172,7 +11628,7 @@ struct _wstop__TopicNamespaceType_Topic
 #endif
 
 #ifndef SOAP_TYPE_wstop__TopicNamespaceType
-#define SOAP_TYPE_wstop__TopicNamespaceType (1546)
+#define SOAP_TYPE_wstop__TopicNamespaceType (1704)
 /* wstop:TopicNamespaceType */
 struct wstop__TopicNamespaceType
 {
@@ -10189,7 +11645,7 @@ struct wstop__TopicNamespaceType
 #endif
 
 #ifndef SOAP_TYPE_wstop__TopicType
-#define SOAP_TYPE_wstop__TopicType (1549)
+#define SOAP_TYPE_wstop__TopicType (1707)
 /* wstop:TopicType */
 struct wstop__TopicType
 {
@@ -10219,7 +11675,7 @@ struct wstop__TopicSetType
 #endif
 
 #ifndef SOAP_TYPE___tdn__Hello
-#define SOAP_TYPE___tdn__Hello (1553)
+#define SOAP_TYPE___tdn__Hello (1711)
 /* Operation wrapper: */
 struct __tdn__Hello
 {
@@ -10228,7 +11684,7 @@ struct __tdn__Hello
 #endif
 
 #ifndef SOAP_TYPE___tdn__Bye
-#define SOAP_TYPE___tdn__Bye (1555)
+#define SOAP_TYPE___tdn__Bye (1713)
 /* Operation wrapper: */
 struct __tdn__Bye
 {
@@ -10237,7 +11693,7 @@ struct __tdn__Bye
 #endif
 
 #ifndef SOAP_TYPE___tdn__Probe
-#define SOAP_TYPE___tdn__Probe (1557)
+#define SOAP_TYPE___tdn__Probe (1715)
 /* Operation wrapper: */
 struct __tdn__Probe
 {
@@ -10246,7 +11702,7 @@ struct __tdn__Probe
 #endif
 
 #ifndef SOAP_TYPE___tds__GetServices
-#define SOAP_TYPE___tds__GetServices (1561)
+#define SOAP_TYPE___tds__GetServices (1719)
 /* Operation wrapper: */
 struct __tds__GetServices
 {
@@ -10255,7 +11711,7 @@ struct __tds__GetServices
 #endif
 
 #ifndef SOAP_TYPE___tds__GetServiceCapabilities
-#define SOAP_TYPE___tds__GetServiceCapabilities (1565)
+#define SOAP_TYPE___tds__GetServiceCapabilities (1723)
 /* Operation wrapper: */
 struct __tds__GetServiceCapabilities
 {
@@ -10264,7 +11720,7 @@ struct __tds__GetServiceCapabilities
 #endif
 
 #ifndef SOAP_TYPE___tds__GetDeviceInformation
-#define SOAP_TYPE___tds__GetDeviceInformation (1569)
+#define SOAP_TYPE___tds__GetDeviceInformation (1727)
 /* Operation wrapper: */
 struct __tds__GetDeviceInformation
 {
@@ -10273,7 +11729,7 @@ struct __tds__GetDeviceInformation
 #endif
 
 #ifndef SOAP_TYPE___tds__SetSystemDateAndTime
-#define SOAP_TYPE___tds__SetSystemDateAndTime (1573)
+#define SOAP_TYPE___tds__SetSystemDateAndTime (1731)
 /* Operation wrapper: */
 struct __tds__SetSystemDateAndTime
 {
@@ -10282,7 +11738,7 @@ struct __tds__SetSystemDateAndTime
 #endif
 
 #ifndef SOAP_TYPE___tds__GetSystemDateAndTime
-#define SOAP_TYPE___tds__GetSystemDateAndTime (1577)
+#define SOAP_TYPE___tds__GetSystemDateAndTime (1735)
 /* Operation wrapper: */
 struct __tds__GetSystemDateAndTime
 {
@@ -10291,7 +11747,7 @@ struct __tds__GetSystemDateAndTime
 #endif
 
 #ifndef SOAP_TYPE___tds__SetSystemFactoryDefault
-#define SOAP_TYPE___tds__SetSystemFactoryDefault (1581)
+#define SOAP_TYPE___tds__SetSystemFactoryDefault (1739)
 /* Operation wrapper: */
 struct __tds__SetSystemFactoryDefault
 {
@@ -10300,7 +11756,7 @@ struct __tds__SetSystemFactoryDefault
 #endif
 
 #ifndef SOAP_TYPE___tds__UpgradeSystemFirmware
-#define SOAP_TYPE___tds__UpgradeSystemFirmware (1585)
+#define SOAP_TYPE___tds__UpgradeSystemFirmware (1743)
 /* Operation wrapper: */
 struct __tds__UpgradeSystemFirmware
 {
@@ -10309,7 +11765,7 @@ struct __tds__UpgradeSystemFirmware
 #endif
 
 #ifndef SOAP_TYPE___tds__SystemReboot
-#define SOAP_TYPE___tds__SystemReboot (1589)
+#define SOAP_TYPE___tds__SystemReboot (1747)
 /* Operation wrapper: */
 struct __tds__SystemReboot
 {
@@ -10318,7 +11774,7 @@ struct __tds__SystemReboot
 #endif
 
 #ifndef SOAP_TYPE___tds__RestoreSystem
-#define SOAP_TYPE___tds__RestoreSystem (1593)
+#define SOAP_TYPE___tds__RestoreSystem (1751)
 /* Operation wrapper: */
 struct __tds__RestoreSystem
 {
@@ -10327,7 +11783,7 @@ struct __tds__RestoreSystem
 #endif
 
 #ifndef SOAP_TYPE___tds__GetSystemBackup
-#define SOAP_TYPE___tds__GetSystemBackup (1597)
+#define SOAP_TYPE___tds__GetSystemBackup (1755)
 /* Operation wrapper: */
 struct __tds__GetSystemBackup
 {
@@ -10336,7 +11792,7 @@ struct __tds__GetSystemBackup
 #endif
 
 #ifndef SOAP_TYPE___tds__GetSystemLog
-#define SOAP_TYPE___tds__GetSystemLog (1601)
+#define SOAP_TYPE___tds__GetSystemLog (1759)
 /* Operation wrapper: */
 struct __tds__GetSystemLog
 {
@@ -10345,7 +11801,7 @@ struct __tds__GetSystemLog
 #endif
 
 #ifndef SOAP_TYPE___tds__GetSystemSupportInformation
-#define SOAP_TYPE___tds__GetSystemSupportInformation (1605)
+#define SOAP_TYPE___tds__GetSystemSupportInformation (1763)
 /* Operation wrapper: */
 struct __tds__GetSystemSupportInformation
 {
@@ -10354,7 +11810,7 @@ struct __tds__GetSystemSupportInformation
 #endif
 
 #ifndef SOAP_TYPE___tds__GetScopes
-#define SOAP_TYPE___tds__GetScopes (1609)
+#define SOAP_TYPE___tds__GetScopes (1767)
 /* Operation wrapper: */
 struct __tds__GetScopes
 {
@@ -10363,7 +11819,7 @@ struct __tds__GetScopes
 #endif
 
 #ifndef SOAP_TYPE___tds__SetScopes
-#define SOAP_TYPE___tds__SetScopes (1613)
+#define SOAP_TYPE___tds__SetScopes (1771)
 /* Operation wrapper: */
 struct __tds__SetScopes
 {
@@ -10372,7 +11828,7 @@ struct __tds__SetScopes
 #endif
 
 #ifndef SOAP_TYPE___tds__AddScopes
-#define SOAP_TYPE___tds__AddScopes (1617)
+#define SOAP_TYPE___tds__AddScopes (1775)
 /* Operation wrapper: */
 struct __tds__AddScopes
 {
@@ -10381,7 +11837,7 @@ struct __tds__AddScopes
 #endif
 
 #ifndef SOAP_TYPE___tds__RemoveScopes
-#define SOAP_TYPE___tds__RemoveScopes (1621)
+#define SOAP_TYPE___tds__RemoveScopes (1779)
 /* Operation wrapper: */
 struct __tds__RemoveScopes
 {
@@ -10390,7 +11846,7 @@ struct __tds__RemoveScopes
 #endif
 
 #ifndef SOAP_TYPE___tds__GetDiscoveryMode
-#define SOAP_TYPE___tds__GetDiscoveryMode (1625)
+#define SOAP_TYPE___tds__GetDiscoveryMode (1783)
 /* Operation wrapper: */
 struct __tds__GetDiscoveryMode
 {
@@ -10399,7 +11855,7 @@ struct __tds__GetDiscoveryMode
 #endif
 
 #ifndef SOAP_TYPE___tds__SetDiscoveryMode
-#define SOAP_TYPE___tds__SetDiscoveryMode (1629)
+#define SOAP_TYPE___tds__SetDiscoveryMode (1787)
 /* Operation wrapper: */
 struct __tds__SetDiscoveryMode
 {
@@ -10408,7 +11864,7 @@ struct __tds__SetDiscoveryMode
 #endif
 
 #ifndef SOAP_TYPE___tds__GetRemoteDiscoveryMode
-#define SOAP_TYPE___tds__GetRemoteDiscoveryMode (1633)
+#define SOAP_TYPE___tds__GetRemoteDiscoveryMode (1791)
 /* Operation wrapper: */
 struct __tds__GetRemoteDiscoveryMode
 {
@@ -10417,7 +11873,7 @@ struct __tds__GetRemoteDiscoveryMode
 #endif
 
 #ifndef SOAP_TYPE___tds__SetRemoteDiscoveryMode
-#define SOAP_TYPE___tds__SetRemoteDiscoveryMode (1637)
+#define SOAP_TYPE___tds__SetRemoteDiscoveryMode (1795)
 /* Operation wrapper: */
 struct __tds__SetRemoteDiscoveryMode
 {
@@ -10426,7 +11882,7 @@ struct __tds__SetRemoteDiscoveryMode
 #endif
 
 #ifndef SOAP_TYPE___tds__GetDPAddresses
-#define SOAP_TYPE___tds__GetDPAddresses (1641)
+#define SOAP_TYPE___tds__GetDPAddresses (1799)
 /* Operation wrapper: */
 struct __tds__GetDPAddresses
 {
@@ -10435,7 +11891,7 @@ struct __tds__GetDPAddresses
 #endif
 
 #ifndef SOAP_TYPE___tds__GetEndpointReference
-#define SOAP_TYPE___tds__GetEndpointReference (1645)
+#define SOAP_TYPE___tds__GetEndpointReference (1803)
 /* Operation wrapper: */
 struct __tds__GetEndpointReference
 {
@@ -10444,7 +11900,7 @@ struct __tds__GetEndpointReference
 #endif
 
 #ifndef SOAP_TYPE___tds__GetRemoteUser
-#define SOAP_TYPE___tds__GetRemoteUser (1649)
+#define SOAP_TYPE___tds__GetRemoteUser (1807)
 /* Operation wrapper: */
 struct __tds__GetRemoteUser
 {
@@ -10453,7 +11909,7 @@ struct __tds__GetRemoteUser
 #endif
 
 #ifndef SOAP_TYPE___tds__SetRemoteUser
-#define SOAP_TYPE___tds__SetRemoteUser (1653)
+#define SOAP_TYPE___tds__SetRemoteUser (1811)
 /* Operation wrapper: */
 struct __tds__SetRemoteUser
 {
@@ -10462,7 +11918,7 @@ struct __tds__SetRemoteUser
 #endif
 
 #ifndef SOAP_TYPE___tds__GetUsers
-#define SOAP_TYPE___tds__GetUsers (1657)
+#define SOAP_TYPE___tds__GetUsers (1815)
 /* Operation wrapper: */
 struct __tds__GetUsers
 {
@@ -10471,7 +11927,7 @@ struct __tds__GetUsers
 #endif
 
 #ifndef SOAP_TYPE___tds__CreateUsers
-#define SOAP_TYPE___tds__CreateUsers (1661)
+#define SOAP_TYPE___tds__CreateUsers (1819)
 /* Operation wrapper: */
 struct __tds__CreateUsers
 {
@@ -10480,7 +11936,7 @@ struct __tds__CreateUsers
 #endif
 
 #ifndef SOAP_TYPE___tds__DeleteUsers
-#define SOAP_TYPE___tds__DeleteUsers (1665)
+#define SOAP_TYPE___tds__DeleteUsers (1823)
 /* Operation wrapper: */
 struct __tds__DeleteUsers
 {
@@ -10489,7 +11945,7 @@ struct __tds__DeleteUsers
 #endif
 
 #ifndef SOAP_TYPE___tds__SetUser
-#define SOAP_TYPE___tds__SetUser (1669)
+#define SOAP_TYPE___tds__SetUser (1827)
 /* Operation wrapper: */
 struct __tds__SetUser
 {
@@ -10498,7 +11954,7 @@ struct __tds__SetUser
 #endif
 
 #ifndef SOAP_TYPE___tds__GetWsdlUrl
-#define SOAP_TYPE___tds__GetWsdlUrl (1673)
+#define SOAP_TYPE___tds__GetWsdlUrl (1831)
 /* Operation wrapper: */
 struct __tds__GetWsdlUrl
 {
@@ -10507,7 +11963,7 @@ struct __tds__GetWsdlUrl
 #endif
 
 #ifndef SOAP_TYPE___tds__GetCapabilities
-#define SOAP_TYPE___tds__GetCapabilities (1677)
+#define SOAP_TYPE___tds__GetCapabilities (1835)
 /* Operation wrapper: */
 struct __tds__GetCapabilities
 {
@@ -10516,7 +11972,7 @@ struct __tds__GetCapabilities
 #endif
 
 #ifndef SOAP_TYPE___tds__SetDPAddresses
-#define SOAP_TYPE___tds__SetDPAddresses (1681)
+#define SOAP_TYPE___tds__SetDPAddresses (1839)
 /* Operation wrapper: */
 struct __tds__SetDPAddresses
 {
@@ -10525,7 +11981,7 @@ struct __tds__SetDPAddresses
 #endif
 
 #ifndef SOAP_TYPE___tds__GetHostname
-#define SOAP_TYPE___tds__GetHostname (1685)
+#define SOAP_TYPE___tds__GetHostname (1843)
 /* Operation wrapper: */
 struct __tds__GetHostname
 {
@@ -10534,7 +11990,7 @@ struct __tds__GetHostname
 #endif
 
 #ifndef SOAP_TYPE___tds__SetHostname
-#define SOAP_TYPE___tds__SetHostname (1689)
+#define SOAP_TYPE___tds__SetHostname (1847)
 /* Operation wrapper: */
 struct __tds__SetHostname
 {
@@ -10543,7 +11999,7 @@ struct __tds__SetHostname
 #endif
 
 #ifndef SOAP_TYPE___tds__SetHostnameFromDHCP
-#define SOAP_TYPE___tds__SetHostnameFromDHCP (1693)
+#define SOAP_TYPE___tds__SetHostnameFromDHCP (1851)
 /* Operation wrapper: */
 struct __tds__SetHostnameFromDHCP
 {
@@ -10552,7 +12008,7 @@ struct __tds__SetHostnameFromDHCP
 #endif
 
 #ifndef SOAP_TYPE___tds__GetDNS
-#define SOAP_TYPE___tds__GetDNS (1697)
+#define SOAP_TYPE___tds__GetDNS (1855)
 /* Operation wrapper: */
 struct __tds__GetDNS
 {
@@ -10561,7 +12017,7 @@ struct __tds__GetDNS
 #endif
 
 #ifndef SOAP_TYPE___tds__SetDNS
-#define SOAP_TYPE___tds__SetDNS (1701)
+#define SOAP_TYPE___tds__SetDNS (1859)
 /* Operation wrapper: */
 struct __tds__SetDNS
 {
@@ -10570,7 +12026,7 @@ struct __tds__SetDNS
 #endif
 
 #ifndef SOAP_TYPE___tds__GetNTP
-#define SOAP_TYPE___tds__GetNTP (1705)
+#define SOAP_TYPE___tds__GetNTP (1863)
 /* Operation wrapper: */
 struct __tds__GetNTP
 {
@@ -10579,7 +12035,7 @@ struct __tds__GetNTP
 #endif
 
 #ifndef SOAP_TYPE___tds__SetNTP
-#define SOAP_TYPE___tds__SetNTP (1709)
+#define SOAP_TYPE___tds__SetNTP (1867)
 /* Operation wrapper: */
 struct __tds__SetNTP
 {
@@ -10588,7 +12044,7 @@ struct __tds__SetNTP
 #endif
 
 #ifndef SOAP_TYPE___tds__GetDynamicDNS
-#define SOAP_TYPE___tds__GetDynamicDNS (1713)
+#define SOAP_TYPE___tds__GetDynamicDNS (1871)
 /* Operation wrapper: */
 struct __tds__GetDynamicDNS
 {
@@ -10597,7 +12053,7 @@ struct __tds__GetDynamicDNS
 #endif
 
 #ifndef SOAP_TYPE___tds__SetDynamicDNS
-#define SOAP_TYPE___tds__SetDynamicDNS (1717)
+#define SOAP_TYPE___tds__SetDynamicDNS (1875)
 /* Operation wrapper: */
 struct __tds__SetDynamicDNS
 {
@@ -10606,7 +12062,7 @@ struct __tds__SetDynamicDNS
 #endif
 
 #ifndef SOAP_TYPE___tds__GetNetworkInterfaces
-#define SOAP_TYPE___tds__GetNetworkInterfaces (1721)
+#define SOAP_TYPE___tds__GetNetworkInterfaces (1879)
 /* Operation wrapper: */
 struct __tds__GetNetworkInterfaces
 {
@@ -10615,7 +12071,7 @@ struct __tds__GetNetworkInterfaces
 #endif
 
 #ifndef SOAP_TYPE___tds__SetNetworkInterfaces
-#define SOAP_TYPE___tds__SetNetworkInterfaces (1725)
+#define SOAP_TYPE___tds__SetNetworkInterfaces (1883)
 /* Operation wrapper: */
 struct __tds__SetNetworkInterfaces
 {
@@ -10624,7 +12080,7 @@ struct __tds__SetNetworkInterfaces
 #endif
 
 #ifndef SOAP_TYPE___tds__GetNetworkProtocols
-#define SOAP_TYPE___tds__GetNetworkProtocols (1729)
+#define SOAP_TYPE___tds__GetNetworkProtocols (1887)
 /* Operation wrapper: */
 struct __tds__GetNetworkProtocols
 {
@@ -10633,7 +12089,7 @@ struct __tds__GetNetworkProtocols
 #endif
 
 #ifndef SOAP_TYPE___tds__SetNetworkProtocols
-#define SOAP_TYPE___tds__SetNetworkProtocols (1733)
+#define SOAP_TYPE___tds__SetNetworkProtocols (1891)
 /* Operation wrapper: */
 struct __tds__SetNetworkProtocols
 {
@@ -10642,7 +12098,7 @@ struct __tds__SetNetworkProtocols
 #endif
 
 #ifndef SOAP_TYPE___tds__GetNetworkDefaultGateway
-#define SOAP_TYPE___tds__GetNetworkDefaultGateway (1737)
+#define SOAP_TYPE___tds__GetNetworkDefaultGateway (1895)
 /* Operation wrapper: */
 struct __tds__GetNetworkDefaultGateway
 {
@@ -10651,7 +12107,7 @@ struct __tds__GetNetworkDefaultGateway
 #endif
 
 #ifndef SOAP_TYPE___tds__SetNetworkDefaultGateway
-#define SOAP_TYPE___tds__SetNetworkDefaultGateway (1741)
+#define SOAP_TYPE___tds__SetNetworkDefaultGateway (1899)
 /* Operation wrapper: */
 struct __tds__SetNetworkDefaultGateway
 {
@@ -10660,7 +12116,7 @@ struct __tds__SetNetworkDefaultGateway
 #endif
 
 #ifndef SOAP_TYPE___tds__GetZeroConfiguration
-#define SOAP_TYPE___tds__GetZeroConfiguration (1745)
+#define SOAP_TYPE___tds__GetZeroConfiguration (1903)
 /* Operation wrapper: */
 struct __tds__GetZeroConfiguration
 {
@@ -10669,7 +12125,7 @@ struct __tds__GetZeroConfiguration
 #endif
 
 #ifndef SOAP_TYPE___tds__SetZeroConfiguration
-#define SOAP_TYPE___tds__SetZeroConfiguration (1749)
+#define SOAP_TYPE___tds__SetZeroConfiguration (1907)
 /* Operation wrapper: */
 struct __tds__SetZeroConfiguration
 {
@@ -10678,7 +12134,7 @@ struct __tds__SetZeroConfiguration
 #endif
 
 #ifndef SOAP_TYPE___tds__GetIPAddressFilter
-#define SOAP_TYPE___tds__GetIPAddressFilter (1753)
+#define SOAP_TYPE___tds__GetIPAddressFilter (1911)
 /* Operation wrapper: */
 struct __tds__GetIPAddressFilter
 {
@@ -10687,7 +12143,7 @@ struct __tds__GetIPAddressFilter
 #endif
 
 #ifndef SOAP_TYPE___tds__SetIPAddressFilter
-#define SOAP_TYPE___tds__SetIPAddressFilter (1757)
+#define SOAP_TYPE___tds__SetIPAddressFilter (1915)
 /* Operation wrapper: */
 struct __tds__SetIPAddressFilter
 {
@@ -10696,7 +12152,7 @@ struct __tds__SetIPAddressFilter
 #endif
 
 #ifndef SOAP_TYPE___tds__AddIPAddressFilter
-#define SOAP_TYPE___tds__AddIPAddressFilter (1761)
+#define SOAP_TYPE___tds__AddIPAddressFilter (1919)
 /* Operation wrapper: */
 struct __tds__AddIPAddressFilter
 {
@@ -10705,7 +12161,7 @@ struct __tds__AddIPAddressFilter
 #endif
 
 #ifndef SOAP_TYPE___tds__RemoveIPAddressFilter
-#define SOAP_TYPE___tds__RemoveIPAddressFilter (1765)
+#define SOAP_TYPE___tds__RemoveIPAddressFilter (1923)
 /* Operation wrapper: */
 struct __tds__RemoveIPAddressFilter
 {
@@ -10714,7 +12170,7 @@ struct __tds__RemoveIPAddressFilter
 #endif
 
 #ifndef SOAP_TYPE___tds__GetAccessPolicy
-#define SOAP_TYPE___tds__GetAccessPolicy (1769)
+#define SOAP_TYPE___tds__GetAccessPolicy (1927)
 /* Operation wrapper: */
 struct __tds__GetAccessPolicy
 {
@@ -10723,7 +12179,7 @@ struct __tds__GetAccessPolicy
 #endif
 
 #ifndef SOAP_TYPE___tds__SetAccessPolicy
-#define SOAP_TYPE___tds__SetAccessPolicy (1773)
+#define SOAP_TYPE___tds__SetAccessPolicy (1931)
 /* Operation wrapper: */
 struct __tds__SetAccessPolicy
 {
@@ -10732,7 +12188,7 @@ struct __tds__SetAccessPolicy
 #endif
 
 #ifndef SOAP_TYPE___tds__CreateCertificate
-#define SOAP_TYPE___tds__CreateCertificate (1777)
+#define SOAP_TYPE___tds__CreateCertificate (1935)
 /* Operation wrapper: */
 struct __tds__CreateCertificate
 {
@@ -10741,7 +12197,7 @@ struct __tds__CreateCertificate
 #endif
 
 #ifndef SOAP_TYPE___tds__GetCertificates
-#define SOAP_TYPE___tds__GetCertificates (1781)
+#define SOAP_TYPE___tds__GetCertificates (1939)
 /* Operation wrapper: */
 struct __tds__GetCertificates
 {
@@ -10750,7 +12206,7 @@ struct __tds__GetCertificates
 #endif
 
 #ifndef SOAP_TYPE___tds__GetCertificatesStatus
-#define SOAP_TYPE___tds__GetCertificatesStatus (1785)
+#define SOAP_TYPE___tds__GetCertificatesStatus (1943)
 /* Operation wrapper: */
 struct __tds__GetCertificatesStatus
 {
@@ -10759,7 +12215,7 @@ struct __tds__GetCertificatesStatus
 #endif
 
 #ifndef SOAP_TYPE___tds__SetCertificatesStatus
-#define SOAP_TYPE___tds__SetCertificatesStatus (1789)
+#define SOAP_TYPE___tds__SetCertificatesStatus (1947)
 /* Operation wrapper: */
 struct __tds__SetCertificatesStatus
 {
@@ -10768,7 +12224,7 @@ struct __tds__SetCertificatesStatus
 #endif
 
 #ifndef SOAP_TYPE___tds__DeleteCertificates
-#define SOAP_TYPE___tds__DeleteCertificates (1793)
+#define SOAP_TYPE___tds__DeleteCertificates (1951)
 /* Operation wrapper: */
 struct __tds__DeleteCertificates
 {
@@ -10777,7 +12233,7 @@ struct __tds__DeleteCertificates
 #endif
 
 #ifndef SOAP_TYPE___tds__GetPkcs10Request
-#define SOAP_TYPE___tds__GetPkcs10Request (1797)
+#define SOAP_TYPE___tds__GetPkcs10Request (1955)
 /* Operation wrapper: */
 struct __tds__GetPkcs10Request
 {
@@ -10786,7 +12242,7 @@ struct __tds__GetPkcs10Request
 #endif
 
 #ifndef SOAP_TYPE___tds__LoadCertificates
-#define SOAP_TYPE___tds__LoadCertificates (1801)
+#define SOAP_TYPE___tds__LoadCertificates (1959)
 /* Operation wrapper: */
 struct __tds__LoadCertificates
 {
@@ -10795,7 +12251,7 @@ struct __tds__LoadCertificates
 #endif
 
 #ifndef SOAP_TYPE___tds__GetClientCertificateMode
-#define SOAP_TYPE___tds__GetClientCertificateMode (1805)
+#define SOAP_TYPE___tds__GetClientCertificateMode (1963)
 /* Operation wrapper: */
 struct __tds__GetClientCertificateMode
 {
@@ -10804,7 +12260,7 @@ struct __tds__GetClientCertificateMode
 #endif
 
 #ifndef SOAP_TYPE___tds__SetClientCertificateMode
-#define SOAP_TYPE___tds__SetClientCertificateMode (1809)
+#define SOAP_TYPE___tds__SetClientCertificateMode (1967)
 /* Operation wrapper: */
 struct __tds__SetClientCertificateMode
 {
@@ -10813,7 +12269,7 @@ struct __tds__SetClientCertificateMode
 #endif
 
 #ifndef SOAP_TYPE___tds__GetRelayOutputs
-#define SOAP_TYPE___tds__GetRelayOutputs (1813)
+#define SOAP_TYPE___tds__GetRelayOutputs (1971)
 /* Operation wrapper: */
 struct __tds__GetRelayOutputs
 {
@@ -10822,7 +12278,7 @@ struct __tds__GetRelayOutputs
 #endif
 
 #ifndef SOAP_TYPE___tds__SetRelayOutputSettings
-#define SOAP_TYPE___tds__SetRelayOutputSettings (1817)
+#define SOAP_TYPE___tds__SetRelayOutputSettings (1975)
 /* Operation wrapper: */
 struct __tds__SetRelayOutputSettings
 {
@@ -10831,7 +12287,7 @@ struct __tds__SetRelayOutputSettings
 #endif
 
 #ifndef SOAP_TYPE___tds__SetRelayOutputState
-#define SOAP_TYPE___tds__SetRelayOutputState (1821)
+#define SOAP_TYPE___tds__SetRelayOutputState (1979)
 /* Operation wrapper: */
 struct __tds__SetRelayOutputState
 {
@@ -10840,7 +12296,7 @@ struct __tds__SetRelayOutputState
 #endif
 
 #ifndef SOAP_TYPE___tds__SendAuxiliaryCommand
-#define SOAP_TYPE___tds__SendAuxiliaryCommand (1825)
+#define SOAP_TYPE___tds__SendAuxiliaryCommand (1983)
 /* Operation wrapper: */
 struct __tds__SendAuxiliaryCommand
 {
@@ -10849,7 +12305,7 @@ struct __tds__SendAuxiliaryCommand
 #endif
 
 #ifndef SOAP_TYPE___tds__GetCACertificates
-#define SOAP_TYPE___tds__GetCACertificates (1829)
+#define SOAP_TYPE___tds__GetCACertificates (1987)
 /* Operation wrapper: */
 struct __tds__GetCACertificates
 {
@@ -10858,7 +12314,7 @@ struct __tds__GetCACertificates
 #endif
 
 #ifndef SOAP_TYPE___tds__LoadCertificateWithPrivateKey
-#define SOAP_TYPE___tds__LoadCertificateWithPrivateKey (1833)
+#define SOAP_TYPE___tds__LoadCertificateWithPrivateKey (1991)
 /* Operation wrapper: */
 struct __tds__LoadCertificateWithPrivateKey
 {
@@ -10867,7 +12323,7 @@ struct __tds__LoadCertificateWithPrivateKey
 #endif
 
 #ifndef SOAP_TYPE___tds__GetCertificateInformation
-#define SOAP_TYPE___tds__GetCertificateInformation (1837)
+#define SOAP_TYPE___tds__GetCertificateInformation (1995)
 /* Operation wrapper: */
 struct __tds__GetCertificateInformation
 {
@@ -10876,7 +12332,7 @@ struct __tds__GetCertificateInformation
 #endif
 
 #ifndef SOAP_TYPE___tds__LoadCACertificates
-#define SOAP_TYPE___tds__LoadCACertificates (1841)
+#define SOAP_TYPE___tds__LoadCACertificates (1999)
 /* Operation wrapper: */
 struct __tds__LoadCACertificates
 {
@@ -10885,7 +12341,7 @@ struct __tds__LoadCACertificates
 #endif
 
 #ifndef SOAP_TYPE___tds__CreateDot1XConfiguration
-#define SOAP_TYPE___tds__CreateDot1XConfiguration (1845)
+#define SOAP_TYPE___tds__CreateDot1XConfiguration (2003)
 /* Operation wrapper: */
 struct __tds__CreateDot1XConfiguration
 {
@@ -10894,7 +12350,7 @@ struct __tds__CreateDot1XConfiguration
 #endif
 
 #ifndef SOAP_TYPE___tds__SetDot1XConfiguration
-#define SOAP_TYPE___tds__SetDot1XConfiguration (1849)
+#define SOAP_TYPE___tds__SetDot1XConfiguration (2007)
 /* Operation wrapper: */
 struct __tds__SetDot1XConfiguration
 {
@@ -10903,7 +12359,7 @@ struct __tds__SetDot1XConfiguration
 #endif
 
 #ifndef SOAP_TYPE___tds__GetDot1XConfiguration
-#define SOAP_TYPE___tds__GetDot1XConfiguration (1853)
+#define SOAP_TYPE___tds__GetDot1XConfiguration (2011)
 /* Operation wrapper: */
 struct __tds__GetDot1XConfiguration
 {
@@ -10912,7 +12368,7 @@ struct __tds__GetDot1XConfiguration
 #endif
 
 #ifndef SOAP_TYPE___tds__GetDot1XConfigurations
-#define SOAP_TYPE___tds__GetDot1XConfigurations (1857)
+#define SOAP_TYPE___tds__GetDot1XConfigurations (2015)
 /* Operation wrapper: */
 struct __tds__GetDot1XConfigurations
 {
@@ -10921,7 +12377,7 @@ struct __tds__GetDot1XConfigurations
 #endif
 
 #ifndef SOAP_TYPE___tds__DeleteDot1XConfiguration
-#define SOAP_TYPE___tds__DeleteDot1XConfiguration (1861)
+#define SOAP_TYPE___tds__DeleteDot1XConfiguration (2019)
 /* Operation wrapper: */
 struct __tds__DeleteDot1XConfiguration
 {
@@ -10930,7 +12386,7 @@ struct __tds__DeleteDot1XConfiguration
 #endif
 
 #ifndef SOAP_TYPE___tds__GetDot11Capabilities
-#define SOAP_TYPE___tds__GetDot11Capabilities (1865)
+#define SOAP_TYPE___tds__GetDot11Capabilities (2023)
 /* Operation wrapper: */
 struct __tds__GetDot11Capabilities
 {
@@ -10939,7 +12395,7 @@ struct __tds__GetDot11Capabilities
 #endif
 
 #ifndef SOAP_TYPE___tds__GetDot11Status
-#define SOAP_TYPE___tds__GetDot11Status (1869)
+#define SOAP_TYPE___tds__GetDot11Status (2027)
 /* Operation wrapper: */
 struct __tds__GetDot11Status
 {
@@ -10948,7 +12404,7 @@ struct __tds__GetDot11Status
 #endif
 
 #ifndef SOAP_TYPE___tds__ScanAvailableDot11Networks
-#define SOAP_TYPE___tds__ScanAvailableDot11Networks (1873)
+#define SOAP_TYPE___tds__ScanAvailableDot11Networks (2031)
 /* Operation wrapper: */
 struct __tds__ScanAvailableDot11Networks
 {
@@ -10957,7 +12413,7 @@ struct __tds__ScanAvailableDot11Networks
 #endif
 
 #ifndef SOAP_TYPE___tds__GetSystemUris
-#define SOAP_TYPE___tds__GetSystemUris (1877)
+#define SOAP_TYPE___tds__GetSystemUris (2035)
 /* Operation wrapper: */
 struct __tds__GetSystemUris
 {
@@ -10966,7 +12422,7 @@ struct __tds__GetSystemUris
 #endif
 
 #ifndef SOAP_TYPE___tds__StartFirmwareUpgrade
-#define SOAP_TYPE___tds__StartFirmwareUpgrade (1881)
+#define SOAP_TYPE___tds__StartFirmwareUpgrade (2039)
 /* Operation wrapper: */
 struct __tds__StartFirmwareUpgrade
 {
@@ -10975,11 +12431,650 @@ struct __tds__StartFirmwareUpgrade
 #endif
 
 #ifndef SOAP_TYPE___tds__StartSystemRestore
-#define SOAP_TYPE___tds__StartSystemRestore (1885)
+#define SOAP_TYPE___tds__StartSystemRestore (2043)
 /* Operation wrapper: */
 struct __tds__StartSystemRestore
 {
 	struct _tds__StartSystemRestore *tds__StartSystemRestore;	/* optional element of type tds:StartSystemRestore */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetServiceCapabilities
+#define SOAP_TYPE___trt__GetServiceCapabilities (2047)
+/* Operation wrapper: */
+struct __trt__GetServiceCapabilities
+{
+	struct _trt__GetServiceCapabilities *trt__GetServiceCapabilities;	/* optional element of type trt:GetServiceCapabilities */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetVideoSources
+#define SOAP_TYPE___trt__GetVideoSources (2051)
+/* Operation wrapper: */
+struct __trt__GetVideoSources
+{
+	struct _trt__GetVideoSources *trt__GetVideoSources;	/* optional element of type trt:GetVideoSources */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioSources
+#define SOAP_TYPE___trt__GetAudioSources (2055)
+/* Operation wrapper: */
+struct __trt__GetAudioSources
+{
+	struct _trt__GetAudioSources *trt__GetAudioSources;	/* optional element of type trt:GetAudioSources */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioOutputs
+#define SOAP_TYPE___trt__GetAudioOutputs (2059)
+/* Operation wrapper: */
+struct __trt__GetAudioOutputs
+{
+	struct _trt__GetAudioOutputs *trt__GetAudioOutputs;	/* optional element of type trt:GetAudioOutputs */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__CreateProfile
+#define SOAP_TYPE___trt__CreateProfile (2063)
+/* Operation wrapper: */
+struct __trt__CreateProfile
+{
+	struct _trt__CreateProfile *trt__CreateProfile;	/* optional element of type trt:CreateProfile */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetProfile
+#define SOAP_TYPE___trt__GetProfile (2067)
+/* Operation wrapper: */
+struct __trt__GetProfile
+{
+	struct _trt__GetProfile *trt__GetProfile;	/* optional element of type trt:GetProfile */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetProfiles
+#define SOAP_TYPE___trt__GetProfiles (2071)
+/* Operation wrapper: */
+struct __trt__GetProfiles
+{
+	struct _trt__GetProfiles *trt__GetProfiles;	/* optional element of type trt:GetProfiles */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__AddVideoEncoderConfiguration
+#define SOAP_TYPE___trt__AddVideoEncoderConfiguration (2075)
+/* Operation wrapper: */
+struct __trt__AddVideoEncoderConfiguration
+{
+	struct _trt__AddVideoEncoderConfiguration *trt__AddVideoEncoderConfiguration;	/* optional element of type trt:AddVideoEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__AddVideoSourceConfiguration
+#define SOAP_TYPE___trt__AddVideoSourceConfiguration (2079)
+/* Operation wrapper: */
+struct __trt__AddVideoSourceConfiguration
+{
+	struct _trt__AddVideoSourceConfiguration *trt__AddVideoSourceConfiguration;	/* optional element of type trt:AddVideoSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__AddAudioEncoderConfiguration
+#define SOAP_TYPE___trt__AddAudioEncoderConfiguration (2083)
+/* Operation wrapper: */
+struct __trt__AddAudioEncoderConfiguration
+{
+	struct _trt__AddAudioEncoderConfiguration *trt__AddAudioEncoderConfiguration;	/* optional element of type trt:AddAudioEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__AddAudioSourceConfiguration
+#define SOAP_TYPE___trt__AddAudioSourceConfiguration (2087)
+/* Operation wrapper: */
+struct __trt__AddAudioSourceConfiguration
+{
+	struct _trt__AddAudioSourceConfiguration *trt__AddAudioSourceConfiguration;	/* optional element of type trt:AddAudioSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__AddPTZConfiguration
+#define SOAP_TYPE___trt__AddPTZConfiguration (2091)
+/* Operation wrapper: */
+struct __trt__AddPTZConfiguration
+{
+	struct _trt__AddPTZConfiguration *trt__AddPTZConfiguration;	/* optional element of type trt:AddPTZConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__AddVideoAnalyticsConfiguration
+#define SOAP_TYPE___trt__AddVideoAnalyticsConfiguration (2095)
+/* Operation wrapper: */
+struct __trt__AddVideoAnalyticsConfiguration
+{
+	struct _trt__AddVideoAnalyticsConfiguration *trt__AddVideoAnalyticsConfiguration;	/* optional element of type trt:AddVideoAnalyticsConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__AddMetadataConfiguration
+#define SOAP_TYPE___trt__AddMetadataConfiguration (2099)
+/* Operation wrapper: */
+struct __trt__AddMetadataConfiguration
+{
+	struct _trt__AddMetadataConfiguration *trt__AddMetadataConfiguration;	/* optional element of type trt:AddMetadataConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__AddAudioOutputConfiguration
+#define SOAP_TYPE___trt__AddAudioOutputConfiguration (2103)
+/* Operation wrapper: */
+struct __trt__AddAudioOutputConfiguration
+{
+	struct _trt__AddAudioOutputConfiguration *trt__AddAudioOutputConfiguration;	/* optional element of type trt:AddAudioOutputConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__AddAudioDecoderConfiguration
+#define SOAP_TYPE___trt__AddAudioDecoderConfiguration (2107)
+/* Operation wrapper: */
+struct __trt__AddAudioDecoderConfiguration
+{
+	struct _trt__AddAudioDecoderConfiguration *trt__AddAudioDecoderConfiguration;	/* optional element of type trt:AddAudioDecoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__RemoveVideoEncoderConfiguration
+#define SOAP_TYPE___trt__RemoveVideoEncoderConfiguration (2111)
+/* Operation wrapper: */
+struct __trt__RemoveVideoEncoderConfiguration
+{
+	struct _trt__RemoveVideoEncoderConfiguration *trt__RemoveVideoEncoderConfiguration;	/* optional element of type trt:RemoveVideoEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__RemoveVideoSourceConfiguration
+#define SOAP_TYPE___trt__RemoveVideoSourceConfiguration (2115)
+/* Operation wrapper: */
+struct __trt__RemoveVideoSourceConfiguration
+{
+	struct _trt__RemoveVideoSourceConfiguration *trt__RemoveVideoSourceConfiguration;	/* optional element of type trt:RemoveVideoSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__RemoveAudioEncoderConfiguration
+#define SOAP_TYPE___trt__RemoveAudioEncoderConfiguration (2119)
+/* Operation wrapper: */
+struct __trt__RemoveAudioEncoderConfiguration
+{
+	struct _trt__RemoveAudioEncoderConfiguration *trt__RemoveAudioEncoderConfiguration;	/* optional element of type trt:RemoveAudioEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__RemoveAudioSourceConfiguration
+#define SOAP_TYPE___trt__RemoveAudioSourceConfiguration (2123)
+/* Operation wrapper: */
+struct __trt__RemoveAudioSourceConfiguration
+{
+	struct _trt__RemoveAudioSourceConfiguration *trt__RemoveAudioSourceConfiguration;	/* optional element of type trt:RemoveAudioSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__RemovePTZConfiguration
+#define SOAP_TYPE___trt__RemovePTZConfiguration (2127)
+/* Operation wrapper: */
+struct __trt__RemovePTZConfiguration
+{
+	struct _trt__RemovePTZConfiguration *trt__RemovePTZConfiguration;	/* optional element of type trt:RemovePTZConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__RemoveVideoAnalyticsConfiguration
+#define SOAP_TYPE___trt__RemoveVideoAnalyticsConfiguration (2131)
+/* Operation wrapper: */
+struct __trt__RemoveVideoAnalyticsConfiguration
+{
+	struct _trt__RemoveVideoAnalyticsConfiguration *trt__RemoveVideoAnalyticsConfiguration;	/* optional element of type trt:RemoveVideoAnalyticsConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__RemoveMetadataConfiguration
+#define SOAP_TYPE___trt__RemoveMetadataConfiguration (2135)
+/* Operation wrapper: */
+struct __trt__RemoveMetadataConfiguration
+{
+	struct _trt__RemoveMetadataConfiguration *trt__RemoveMetadataConfiguration;	/* optional element of type trt:RemoveMetadataConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__RemoveAudioOutputConfiguration
+#define SOAP_TYPE___trt__RemoveAudioOutputConfiguration (2139)
+/* Operation wrapper: */
+struct __trt__RemoveAudioOutputConfiguration
+{
+	struct _trt__RemoveAudioOutputConfiguration *trt__RemoveAudioOutputConfiguration;	/* optional element of type trt:RemoveAudioOutputConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__RemoveAudioDecoderConfiguration
+#define SOAP_TYPE___trt__RemoveAudioDecoderConfiguration (2143)
+/* Operation wrapper: */
+struct __trt__RemoveAudioDecoderConfiguration
+{
+	struct _trt__RemoveAudioDecoderConfiguration *trt__RemoveAudioDecoderConfiguration;	/* optional element of type trt:RemoveAudioDecoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__DeleteProfile
+#define SOAP_TYPE___trt__DeleteProfile (2147)
+/* Operation wrapper: */
+struct __trt__DeleteProfile
+{
+	struct _trt__DeleteProfile *trt__DeleteProfile;	/* optional element of type trt:DeleteProfile */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetVideoSourceConfigurations
+#define SOAP_TYPE___trt__GetVideoSourceConfigurations (2151)
+/* Operation wrapper: */
+struct __trt__GetVideoSourceConfigurations
+{
+	struct _trt__GetVideoSourceConfigurations *trt__GetVideoSourceConfigurations;	/* optional element of type trt:GetVideoSourceConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetVideoEncoderConfigurations
+#define SOAP_TYPE___trt__GetVideoEncoderConfigurations (2155)
+/* Operation wrapper: */
+struct __trt__GetVideoEncoderConfigurations
+{
+	struct _trt__GetVideoEncoderConfigurations *trt__GetVideoEncoderConfigurations;	/* optional element of type trt:GetVideoEncoderConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioSourceConfigurations
+#define SOAP_TYPE___trt__GetAudioSourceConfigurations (2159)
+/* Operation wrapper: */
+struct __trt__GetAudioSourceConfigurations
+{
+	struct _trt__GetAudioSourceConfigurations *trt__GetAudioSourceConfigurations;	/* optional element of type trt:GetAudioSourceConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioEncoderConfigurations
+#define SOAP_TYPE___trt__GetAudioEncoderConfigurations (2163)
+/* Operation wrapper: */
+struct __trt__GetAudioEncoderConfigurations
+{
+	struct _trt__GetAudioEncoderConfigurations *trt__GetAudioEncoderConfigurations;	/* optional element of type trt:GetAudioEncoderConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetVideoAnalyticsConfigurations
+#define SOAP_TYPE___trt__GetVideoAnalyticsConfigurations (2167)
+/* Operation wrapper: */
+struct __trt__GetVideoAnalyticsConfigurations
+{
+	struct _trt__GetVideoAnalyticsConfigurations *trt__GetVideoAnalyticsConfigurations;	/* optional element of type trt:GetVideoAnalyticsConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetMetadataConfigurations
+#define SOAP_TYPE___trt__GetMetadataConfigurations (2171)
+/* Operation wrapper: */
+struct __trt__GetMetadataConfigurations
+{
+	struct _trt__GetMetadataConfigurations *trt__GetMetadataConfigurations;	/* optional element of type trt:GetMetadataConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioOutputConfigurations
+#define SOAP_TYPE___trt__GetAudioOutputConfigurations (2175)
+/* Operation wrapper: */
+struct __trt__GetAudioOutputConfigurations
+{
+	struct _trt__GetAudioOutputConfigurations *trt__GetAudioOutputConfigurations;	/* optional element of type trt:GetAudioOutputConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioDecoderConfigurations
+#define SOAP_TYPE___trt__GetAudioDecoderConfigurations (2179)
+/* Operation wrapper: */
+struct __trt__GetAudioDecoderConfigurations
+{
+	struct _trt__GetAudioDecoderConfigurations *trt__GetAudioDecoderConfigurations;	/* optional element of type trt:GetAudioDecoderConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetVideoSourceConfiguration
+#define SOAP_TYPE___trt__GetVideoSourceConfiguration (2183)
+/* Operation wrapper: */
+struct __trt__GetVideoSourceConfiguration
+{
+	struct _trt__GetVideoSourceConfiguration *trt__GetVideoSourceConfiguration;	/* optional element of type trt:GetVideoSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetVideoEncoderConfiguration
+#define SOAP_TYPE___trt__GetVideoEncoderConfiguration (2187)
+/* Operation wrapper: */
+struct __trt__GetVideoEncoderConfiguration
+{
+	struct _trt__GetVideoEncoderConfiguration *trt__GetVideoEncoderConfiguration;	/* optional element of type trt:GetVideoEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioSourceConfiguration
+#define SOAP_TYPE___trt__GetAudioSourceConfiguration (2191)
+/* Operation wrapper: */
+struct __trt__GetAudioSourceConfiguration
+{
+	struct _trt__GetAudioSourceConfiguration *trt__GetAudioSourceConfiguration;	/* optional element of type trt:GetAudioSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioEncoderConfiguration
+#define SOAP_TYPE___trt__GetAudioEncoderConfiguration (2195)
+/* Operation wrapper: */
+struct __trt__GetAudioEncoderConfiguration
+{
+	struct _trt__GetAudioEncoderConfiguration *trt__GetAudioEncoderConfiguration;	/* optional element of type trt:GetAudioEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetVideoAnalyticsConfiguration
+#define SOAP_TYPE___trt__GetVideoAnalyticsConfiguration (2199)
+/* Operation wrapper: */
+struct __trt__GetVideoAnalyticsConfiguration
+{
+	struct _trt__GetVideoAnalyticsConfiguration *trt__GetVideoAnalyticsConfiguration;	/* optional element of type trt:GetVideoAnalyticsConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetMetadataConfiguration
+#define SOAP_TYPE___trt__GetMetadataConfiguration (2203)
+/* Operation wrapper: */
+struct __trt__GetMetadataConfiguration
+{
+	struct _trt__GetMetadataConfiguration *trt__GetMetadataConfiguration;	/* optional element of type trt:GetMetadataConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioOutputConfiguration
+#define SOAP_TYPE___trt__GetAudioOutputConfiguration (2207)
+/* Operation wrapper: */
+struct __trt__GetAudioOutputConfiguration
+{
+	struct _trt__GetAudioOutputConfiguration *trt__GetAudioOutputConfiguration;	/* optional element of type trt:GetAudioOutputConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioDecoderConfiguration
+#define SOAP_TYPE___trt__GetAudioDecoderConfiguration (2211)
+/* Operation wrapper: */
+struct __trt__GetAudioDecoderConfiguration
+{
+	struct _trt__GetAudioDecoderConfiguration *trt__GetAudioDecoderConfiguration;	/* optional element of type trt:GetAudioDecoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetCompatibleVideoEncoderConfigurations
+#define SOAP_TYPE___trt__GetCompatibleVideoEncoderConfigurations (2215)
+/* Operation wrapper: */
+struct __trt__GetCompatibleVideoEncoderConfigurations
+{
+	struct _trt__GetCompatibleVideoEncoderConfigurations *trt__GetCompatibleVideoEncoderConfigurations;	/* optional element of type trt:GetCompatibleVideoEncoderConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetCompatibleVideoSourceConfigurations
+#define SOAP_TYPE___trt__GetCompatibleVideoSourceConfigurations (2219)
+/* Operation wrapper: */
+struct __trt__GetCompatibleVideoSourceConfigurations
+{
+	struct _trt__GetCompatibleVideoSourceConfigurations *trt__GetCompatibleVideoSourceConfigurations;	/* optional element of type trt:GetCompatibleVideoSourceConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetCompatibleAudioEncoderConfigurations
+#define SOAP_TYPE___trt__GetCompatibleAudioEncoderConfigurations (2223)
+/* Operation wrapper: */
+struct __trt__GetCompatibleAudioEncoderConfigurations
+{
+	struct _trt__GetCompatibleAudioEncoderConfigurations *trt__GetCompatibleAudioEncoderConfigurations;	/* optional element of type trt:GetCompatibleAudioEncoderConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetCompatibleAudioSourceConfigurations
+#define SOAP_TYPE___trt__GetCompatibleAudioSourceConfigurations (2227)
+/* Operation wrapper: */
+struct __trt__GetCompatibleAudioSourceConfigurations
+{
+	struct _trt__GetCompatibleAudioSourceConfigurations *trt__GetCompatibleAudioSourceConfigurations;	/* optional element of type trt:GetCompatibleAudioSourceConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetCompatibleVideoAnalyticsConfigurations
+#define SOAP_TYPE___trt__GetCompatibleVideoAnalyticsConfigurations (2231)
+/* Operation wrapper: */
+struct __trt__GetCompatibleVideoAnalyticsConfigurations
+{
+	struct _trt__GetCompatibleVideoAnalyticsConfigurations *trt__GetCompatibleVideoAnalyticsConfigurations;	/* optional element of type trt:GetCompatibleVideoAnalyticsConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetCompatibleMetadataConfigurations
+#define SOAP_TYPE___trt__GetCompatibleMetadataConfigurations (2235)
+/* Operation wrapper: */
+struct __trt__GetCompatibleMetadataConfigurations
+{
+	struct _trt__GetCompatibleMetadataConfigurations *trt__GetCompatibleMetadataConfigurations;	/* optional element of type trt:GetCompatibleMetadataConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetCompatibleAudioOutputConfigurations
+#define SOAP_TYPE___trt__GetCompatibleAudioOutputConfigurations (2239)
+/* Operation wrapper: */
+struct __trt__GetCompatibleAudioOutputConfigurations
+{
+	struct _trt__GetCompatibleAudioOutputConfigurations *trt__GetCompatibleAudioOutputConfigurations;	/* optional element of type trt:GetCompatibleAudioOutputConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetCompatibleAudioDecoderConfigurations
+#define SOAP_TYPE___trt__GetCompatibleAudioDecoderConfigurations (2243)
+/* Operation wrapper: */
+struct __trt__GetCompatibleAudioDecoderConfigurations
+{
+	struct _trt__GetCompatibleAudioDecoderConfigurations *trt__GetCompatibleAudioDecoderConfigurations;	/* optional element of type trt:GetCompatibleAudioDecoderConfigurations */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__SetVideoSourceConfiguration
+#define SOAP_TYPE___trt__SetVideoSourceConfiguration (2247)
+/* Operation wrapper: */
+struct __trt__SetVideoSourceConfiguration
+{
+	struct _trt__SetVideoSourceConfiguration *trt__SetVideoSourceConfiguration;	/* optional element of type trt:SetVideoSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__SetVideoEncoderConfiguration
+#define SOAP_TYPE___trt__SetVideoEncoderConfiguration (2251)
+/* Operation wrapper: */
+struct __trt__SetVideoEncoderConfiguration
+{
+	struct _trt__SetVideoEncoderConfiguration *trt__SetVideoEncoderConfiguration;	/* optional element of type trt:SetVideoEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__SetAudioSourceConfiguration
+#define SOAP_TYPE___trt__SetAudioSourceConfiguration (2255)
+/* Operation wrapper: */
+struct __trt__SetAudioSourceConfiguration
+{
+	struct _trt__SetAudioSourceConfiguration *trt__SetAudioSourceConfiguration;	/* optional element of type trt:SetAudioSourceConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__SetAudioEncoderConfiguration
+#define SOAP_TYPE___trt__SetAudioEncoderConfiguration (2259)
+/* Operation wrapper: */
+struct __trt__SetAudioEncoderConfiguration
+{
+	struct _trt__SetAudioEncoderConfiguration *trt__SetAudioEncoderConfiguration;	/* optional element of type trt:SetAudioEncoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__SetVideoAnalyticsConfiguration
+#define SOAP_TYPE___trt__SetVideoAnalyticsConfiguration (2263)
+/* Operation wrapper: */
+struct __trt__SetVideoAnalyticsConfiguration
+{
+	struct _trt__SetVideoAnalyticsConfiguration *trt__SetVideoAnalyticsConfiguration;	/* optional element of type trt:SetVideoAnalyticsConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__SetMetadataConfiguration
+#define SOAP_TYPE___trt__SetMetadataConfiguration (2267)
+/* Operation wrapper: */
+struct __trt__SetMetadataConfiguration
+{
+	struct _trt__SetMetadataConfiguration *trt__SetMetadataConfiguration;	/* optional element of type trt:SetMetadataConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__SetAudioOutputConfiguration
+#define SOAP_TYPE___trt__SetAudioOutputConfiguration (2271)
+/* Operation wrapper: */
+struct __trt__SetAudioOutputConfiguration
+{
+	struct _trt__SetAudioOutputConfiguration *trt__SetAudioOutputConfiguration;	/* optional element of type trt:SetAudioOutputConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__SetAudioDecoderConfiguration
+#define SOAP_TYPE___trt__SetAudioDecoderConfiguration (2275)
+/* Operation wrapper: */
+struct __trt__SetAudioDecoderConfiguration
+{
+	struct _trt__SetAudioDecoderConfiguration *trt__SetAudioDecoderConfiguration;	/* optional element of type trt:SetAudioDecoderConfiguration */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetVideoSourceConfigurationOptions
+#define SOAP_TYPE___trt__GetVideoSourceConfigurationOptions (2279)
+/* Operation wrapper: */
+struct __trt__GetVideoSourceConfigurationOptions
+{
+	struct _trt__GetVideoSourceConfigurationOptions *trt__GetVideoSourceConfigurationOptions;	/* optional element of type trt:GetVideoSourceConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetVideoEncoderConfigurationOptions
+#define SOAP_TYPE___trt__GetVideoEncoderConfigurationOptions (2283)
+/* Operation wrapper: */
+struct __trt__GetVideoEncoderConfigurationOptions
+{
+	struct _trt__GetVideoEncoderConfigurationOptions *trt__GetVideoEncoderConfigurationOptions;	/* optional element of type trt:GetVideoEncoderConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioSourceConfigurationOptions
+#define SOAP_TYPE___trt__GetAudioSourceConfigurationOptions (2287)
+/* Operation wrapper: */
+struct __trt__GetAudioSourceConfigurationOptions
+{
+	struct _trt__GetAudioSourceConfigurationOptions *trt__GetAudioSourceConfigurationOptions;	/* optional element of type trt:GetAudioSourceConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioEncoderConfigurationOptions
+#define SOAP_TYPE___trt__GetAudioEncoderConfigurationOptions (2291)
+/* Operation wrapper: */
+struct __trt__GetAudioEncoderConfigurationOptions
+{
+	struct _trt__GetAudioEncoderConfigurationOptions *trt__GetAudioEncoderConfigurationOptions;	/* optional element of type trt:GetAudioEncoderConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetMetadataConfigurationOptions
+#define SOAP_TYPE___trt__GetMetadataConfigurationOptions (2295)
+/* Operation wrapper: */
+struct __trt__GetMetadataConfigurationOptions
+{
+	struct _trt__GetMetadataConfigurationOptions *trt__GetMetadataConfigurationOptions;	/* optional element of type trt:GetMetadataConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioOutputConfigurationOptions
+#define SOAP_TYPE___trt__GetAudioOutputConfigurationOptions (2299)
+/* Operation wrapper: */
+struct __trt__GetAudioOutputConfigurationOptions
+{
+	struct _trt__GetAudioOutputConfigurationOptions *trt__GetAudioOutputConfigurationOptions;	/* optional element of type trt:GetAudioOutputConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetAudioDecoderConfigurationOptions
+#define SOAP_TYPE___trt__GetAudioDecoderConfigurationOptions (2303)
+/* Operation wrapper: */
+struct __trt__GetAudioDecoderConfigurationOptions
+{
+	struct _trt__GetAudioDecoderConfigurationOptions *trt__GetAudioDecoderConfigurationOptions;	/* optional element of type trt:GetAudioDecoderConfigurationOptions */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define SOAP_TYPE___trt__GetGuaranteedNumberOfVideoEncoderInstances (2307)
+/* Operation wrapper: */
+struct __trt__GetGuaranteedNumberOfVideoEncoderInstances
+{
+	struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *trt__GetGuaranteedNumberOfVideoEncoderInstances;	/* optional element of type trt:GetGuaranteedNumberOfVideoEncoderInstances */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetStreamUri
+#define SOAP_TYPE___trt__GetStreamUri (2311)
+/* Operation wrapper: */
+struct __trt__GetStreamUri
+{
+	struct _trt__GetStreamUri *trt__GetStreamUri;	/* optional element of type trt:GetStreamUri */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__StartMulticastStreaming
+#define SOAP_TYPE___trt__StartMulticastStreaming (2315)
+/* Operation wrapper: */
+struct __trt__StartMulticastStreaming
+{
+	struct _trt__StartMulticastStreaming *trt__StartMulticastStreaming;	/* optional element of type trt:StartMulticastStreaming */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__StopMulticastStreaming
+#define SOAP_TYPE___trt__StopMulticastStreaming (2319)
+/* Operation wrapper: */
+struct __trt__StopMulticastStreaming
+{
+	struct _trt__StopMulticastStreaming *trt__StopMulticastStreaming;	/* optional element of type trt:StopMulticastStreaming */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__SetSynchronizationPoint
+#define SOAP_TYPE___trt__SetSynchronizationPoint (2323)
+/* Operation wrapper: */
+struct __trt__SetSynchronizationPoint
+{
+	struct _trt__SetSynchronizationPoint *trt__SetSynchronizationPoint;	/* optional element of type trt:SetSynchronizationPoint */
+};
+#endif
+
+#ifndef SOAP_TYPE___trt__GetSnapshotUri
+#define SOAP_TYPE___trt__GetSnapshotUri (2327)
+/* Operation wrapper: */
+struct __trt__GetSnapshotUri
+{
+	struct _trt__GetSnapshotUri *trt__GetSnapshotUri;	/* optional element of type trt:GetSnapshotUri */
 };
 #endif
 
@@ -11548,6 +13643,148 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__StartFirmwareUpgrade(struct soap*, struct _tds_
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__StartSystemRestore(struct soap*, struct _tds__StartSystemRestore *tds__StartSystemRestore, struct _tds__StartSystemRestoreResponse *tds__StartSystemRestoreResponse);
 
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetServiceCapabilities(struct soap*, struct _trt__GetServiceCapabilities *trt__GetServiceCapabilities, struct _trt__GetServiceCapabilitiesResponse *trt__GetServiceCapabilitiesResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSources(struct soap*, struct _trt__GetVideoSources *trt__GetVideoSources, struct _trt__GetVideoSourcesResponse *trt__GetVideoSourcesResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioSources(struct soap*, struct _trt__GetAudioSources *trt__GetAudioSources, struct _trt__GetAudioSourcesResponse *trt__GetAudioSourcesResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioOutputs(struct soap*, struct _trt__GetAudioOutputs *trt__GetAudioOutputs, struct _trt__GetAudioOutputsResponse *trt__GetAudioOutputsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__CreateProfile(struct soap*, struct _trt__CreateProfile *trt__CreateProfile, struct _trt__CreateProfileResponse *trt__CreateProfileResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfile(struct soap*, struct _trt__GetProfile *trt__GetProfile, struct _trt__GetProfileResponse *trt__GetProfileResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfiles(struct soap*, struct _trt__GetProfiles *trt__GetProfiles, struct _trt__GetProfilesResponse *trt__GetProfilesResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__AddVideoEncoderConfiguration(struct soap*, struct _trt__AddVideoEncoderConfiguration *trt__AddVideoEncoderConfiguration, struct _trt__AddVideoEncoderConfigurationResponse *trt__AddVideoEncoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__AddVideoSourceConfiguration(struct soap*, struct _trt__AddVideoSourceConfiguration *trt__AddVideoSourceConfiguration, struct _trt__AddVideoSourceConfigurationResponse *trt__AddVideoSourceConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__AddAudioEncoderConfiguration(struct soap*, struct _trt__AddAudioEncoderConfiguration *trt__AddAudioEncoderConfiguration, struct _trt__AddAudioEncoderConfigurationResponse *trt__AddAudioEncoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__AddAudioSourceConfiguration(struct soap*, struct _trt__AddAudioSourceConfiguration *trt__AddAudioSourceConfiguration, struct _trt__AddAudioSourceConfigurationResponse *trt__AddAudioSourceConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__AddPTZConfiguration(struct soap*, struct _trt__AddPTZConfiguration *trt__AddPTZConfiguration, struct _trt__AddPTZConfigurationResponse *trt__AddPTZConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__AddVideoAnalyticsConfiguration(struct soap*, struct _trt__AddVideoAnalyticsConfiguration *trt__AddVideoAnalyticsConfiguration, struct _trt__AddVideoAnalyticsConfigurationResponse *trt__AddVideoAnalyticsConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__AddMetadataConfiguration(struct soap*, struct _trt__AddMetadataConfiguration *trt__AddMetadataConfiguration, struct _trt__AddMetadataConfigurationResponse *trt__AddMetadataConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__AddAudioOutputConfiguration(struct soap*, struct _trt__AddAudioOutputConfiguration *trt__AddAudioOutputConfiguration, struct _trt__AddAudioOutputConfigurationResponse *trt__AddAudioOutputConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__AddAudioDecoderConfiguration(struct soap*, struct _trt__AddAudioDecoderConfiguration *trt__AddAudioDecoderConfiguration, struct _trt__AddAudioDecoderConfigurationResponse *trt__AddAudioDecoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveVideoEncoderConfiguration(struct soap*, struct _trt__RemoveVideoEncoderConfiguration *trt__RemoveVideoEncoderConfiguration, struct _trt__RemoveVideoEncoderConfigurationResponse *trt__RemoveVideoEncoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveVideoSourceConfiguration(struct soap*, struct _trt__RemoveVideoSourceConfiguration *trt__RemoveVideoSourceConfiguration, struct _trt__RemoveVideoSourceConfigurationResponse *trt__RemoveVideoSourceConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveAudioEncoderConfiguration(struct soap*, struct _trt__RemoveAudioEncoderConfiguration *trt__RemoveAudioEncoderConfiguration, struct _trt__RemoveAudioEncoderConfigurationResponse *trt__RemoveAudioEncoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveAudioSourceConfiguration(struct soap*, struct _trt__RemoveAudioSourceConfiguration *trt__RemoveAudioSourceConfiguration, struct _trt__RemoveAudioSourceConfigurationResponse *trt__RemoveAudioSourceConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__RemovePTZConfiguration(struct soap*, struct _trt__RemovePTZConfiguration *trt__RemovePTZConfiguration, struct _trt__RemovePTZConfigurationResponse *trt__RemovePTZConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveVideoAnalyticsConfiguration(struct soap*, struct _trt__RemoveVideoAnalyticsConfiguration *trt__RemoveVideoAnalyticsConfiguration, struct _trt__RemoveVideoAnalyticsConfigurationResponse *trt__RemoveVideoAnalyticsConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveMetadataConfiguration(struct soap*, struct _trt__RemoveMetadataConfiguration *trt__RemoveMetadataConfiguration, struct _trt__RemoveMetadataConfigurationResponse *trt__RemoveMetadataConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveAudioOutputConfiguration(struct soap*, struct _trt__RemoveAudioOutputConfiguration *trt__RemoveAudioOutputConfiguration, struct _trt__RemoveAudioOutputConfigurationResponse *trt__RemoveAudioOutputConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveAudioDecoderConfiguration(struct soap*, struct _trt__RemoveAudioDecoderConfiguration *trt__RemoveAudioDecoderConfiguration, struct _trt__RemoveAudioDecoderConfigurationResponse *trt__RemoveAudioDecoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__DeleteProfile(struct soap*, struct _trt__DeleteProfile *trt__DeleteProfile, struct _trt__DeleteProfileResponse *trt__DeleteProfileResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSourceConfigurations(struct soap*, struct _trt__GetVideoSourceConfigurations *trt__GetVideoSourceConfigurations, struct _trt__GetVideoSourceConfigurationsResponse *trt__GetVideoSourceConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoEncoderConfigurations(struct soap*, struct _trt__GetVideoEncoderConfigurations *trt__GetVideoEncoderConfigurations, struct _trt__GetVideoEncoderConfigurationsResponse *trt__GetVideoEncoderConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioSourceConfigurations(struct soap*, struct _trt__GetAudioSourceConfigurations *trt__GetAudioSourceConfigurations, struct _trt__GetAudioSourceConfigurationsResponse *trt__GetAudioSourceConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioEncoderConfigurations(struct soap*, struct _trt__GetAudioEncoderConfigurations *trt__GetAudioEncoderConfigurations, struct _trt__GetAudioEncoderConfigurationsResponse *trt__GetAudioEncoderConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoAnalyticsConfigurations(struct soap*, struct _trt__GetVideoAnalyticsConfigurations *trt__GetVideoAnalyticsConfigurations, struct _trt__GetVideoAnalyticsConfigurationsResponse *trt__GetVideoAnalyticsConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetMetadataConfigurations(struct soap*, struct _trt__GetMetadataConfigurations *trt__GetMetadataConfigurations, struct _trt__GetMetadataConfigurationsResponse *trt__GetMetadataConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioOutputConfigurations(struct soap*, struct _trt__GetAudioOutputConfigurations *trt__GetAudioOutputConfigurations, struct _trt__GetAudioOutputConfigurationsResponse *trt__GetAudioOutputConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioDecoderConfigurations(struct soap*, struct _trt__GetAudioDecoderConfigurations *trt__GetAudioDecoderConfigurations, struct _trt__GetAudioDecoderConfigurationsResponse *trt__GetAudioDecoderConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSourceConfiguration(struct soap*, struct _trt__GetVideoSourceConfiguration *trt__GetVideoSourceConfiguration, struct _trt__GetVideoSourceConfigurationResponse *trt__GetVideoSourceConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoEncoderConfiguration(struct soap*, struct _trt__GetVideoEncoderConfiguration *trt__GetVideoEncoderConfiguration, struct _trt__GetVideoEncoderConfigurationResponse *trt__GetVideoEncoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioSourceConfiguration(struct soap*, struct _trt__GetAudioSourceConfiguration *trt__GetAudioSourceConfiguration, struct _trt__GetAudioSourceConfigurationResponse *trt__GetAudioSourceConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioEncoderConfiguration(struct soap*, struct _trt__GetAudioEncoderConfiguration *trt__GetAudioEncoderConfiguration, struct _trt__GetAudioEncoderConfigurationResponse *trt__GetAudioEncoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoAnalyticsConfiguration(struct soap*, struct _trt__GetVideoAnalyticsConfiguration *trt__GetVideoAnalyticsConfiguration, struct _trt__GetVideoAnalyticsConfigurationResponse *trt__GetVideoAnalyticsConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetMetadataConfiguration(struct soap*, struct _trt__GetMetadataConfiguration *trt__GetMetadataConfiguration, struct _trt__GetMetadataConfigurationResponse *trt__GetMetadataConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioOutputConfiguration(struct soap*, struct _trt__GetAudioOutputConfiguration *trt__GetAudioOutputConfiguration, struct _trt__GetAudioOutputConfigurationResponse *trt__GetAudioOutputConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioDecoderConfiguration(struct soap*, struct _trt__GetAudioDecoderConfiguration *trt__GetAudioDecoderConfiguration, struct _trt__GetAudioDecoderConfigurationResponse *trt__GetAudioDecoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleVideoEncoderConfigurations(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurations *trt__GetCompatibleVideoEncoderConfigurations, struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *trt__GetCompatibleVideoEncoderConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleVideoSourceConfigurations(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurations *trt__GetCompatibleVideoSourceConfigurations, struct _trt__GetCompatibleVideoSourceConfigurationsResponse *trt__GetCompatibleVideoSourceConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleAudioEncoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurations *trt__GetCompatibleAudioEncoderConfigurations, struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *trt__GetCompatibleAudioEncoderConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleAudioSourceConfigurations(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurations *trt__GetCompatibleAudioSourceConfigurations, struct _trt__GetCompatibleAudioSourceConfigurationsResponse *trt__GetCompatibleAudioSourceConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurations *trt__GetCompatibleVideoAnalyticsConfigurations, struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *trt__GetCompatibleVideoAnalyticsConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleMetadataConfigurations(struct soap*, struct _trt__GetCompatibleMetadataConfigurations *trt__GetCompatibleMetadataConfigurations, struct _trt__GetCompatibleMetadataConfigurationsResponse *trt__GetCompatibleMetadataConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleAudioOutputConfigurations(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurations *trt__GetCompatibleAudioOutputConfigurations, struct _trt__GetCompatibleAudioOutputConfigurationsResponse *trt__GetCompatibleAudioOutputConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleAudioDecoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurations *trt__GetCompatibleAudioDecoderConfigurations, struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *trt__GetCompatibleAudioDecoderConfigurationsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__SetVideoSourceConfiguration(struct soap*, struct _trt__SetVideoSourceConfiguration *trt__SetVideoSourceConfiguration, struct _trt__SetVideoSourceConfigurationResponse *trt__SetVideoSourceConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__SetVideoEncoderConfiguration(struct soap*, struct _trt__SetVideoEncoderConfiguration *trt__SetVideoEncoderConfiguration, struct _trt__SetVideoEncoderConfigurationResponse *trt__SetVideoEncoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__SetAudioSourceConfiguration(struct soap*, struct _trt__SetAudioSourceConfiguration *trt__SetAudioSourceConfiguration, struct _trt__SetAudioSourceConfigurationResponse *trt__SetAudioSourceConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__SetAudioEncoderConfiguration(struct soap*, struct _trt__SetAudioEncoderConfiguration *trt__SetAudioEncoderConfiguration, struct _trt__SetAudioEncoderConfigurationResponse *trt__SetAudioEncoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__SetVideoAnalyticsConfiguration(struct soap*, struct _trt__SetVideoAnalyticsConfiguration *trt__SetVideoAnalyticsConfiguration, struct _trt__SetVideoAnalyticsConfigurationResponse *trt__SetVideoAnalyticsConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__SetMetadataConfiguration(struct soap*, struct _trt__SetMetadataConfiguration *trt__SetMetadataConfiguration, struct _trt__SetMetadataConfigurationResponse *trt__SetMetadataConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__SetAudioOutputConfiguration(struct soap*, struct _trt__SetAudioOutputConfiguration *trt__SetAudioOutputConfiguration, struct _trt__SetAudioOutputConfigurationResponse *trt__SetAudioOutputConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__SetAudioDecoderConfiguration(struct soap*, struct _trt__SetAudioDecoderConfiguration *trt__SetAudioDecoderConfiguration, struct _trt__SetAudioDecoderConfigurationResponse *trt__SetAudioDecoderConfigurationResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSourceConfigurationOptions(struct soap*, struct _trt__GetVideoSourceConfigurationOptions *trt__GetVideoSourceConfigurationOptions, struct _trt__GetVideoSourceConfigurationOptionsResponse *trt__GetVideoSourceConfigurationOptionsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoEncoderConfigurationOptions(struct soap*, struct _trt__GetVideoEncoderConfigurationOptions *trt__GetVideoEncoderConfigurationOptions, struct _trt__GetVideoEncoderConfigurationOptionsResponse *trt__GetVideoEncoderConfigurationOptionsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioSourceConfigurationOptions(struct soap*, struct _trt__GetAudioSourceConfigurationOptions *trt__GetAudioSourceConfigurationOptions, struct _trt__GetAudioSourceConfigurationOptionsResponse *trt__GetAudioSourceConfigurationOptionsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioEncoderConfigurationOptions(struct soap*, struct _trt__GetAudioEncoderConfigurationOptions *trt__GetAudioEncoderConfigurationOptions, struct _trt__GetAudioEncoderConfigurationOptionsResponse *trt__GetAudioEncoderConfigurationOptionsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetMetadataConfigurationOptions(struct soap*, struct _trt__GetMetadataConfigurationOptions *trt__GetMetadataConfigurationOptions, struct _trt__GetMetadataConfigurationOptionsResponse *trt__GetMetadataConfigurationOptionsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioOutputConfigurationOptions(struct soap*, struct _trt__GetAudioOutputConfigurationOptions *trt__GetAudioOutputConfigurationOptions, struct _trt__GetAudioOutputConfigurationOptionsResponse *trt__GetAudioOutputConfigurationOptionsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioDecoderConfigurationOptions(struct soap*, struct _trt__GetAudioDecoderConfigurationOptions *trt__GetAudioDecoderConfigurationOptions, struct _trt__GetAudioDecoderConfigurationOptionsResponse *trt__GetAudioDecoderConfigurationOptionsResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *trt__GetGuaranteedNumberOfVideoEncoderInstances, struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetStreamUri(struct soap*, struct _trt__GetStreamUri *trt__GetStreamUri, struct _trt__GetStreamUriResponse *trt__GetStreamUriResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__StartMulticastStreaming(struct soap*, struct _trt__StartMulticastStreaming *trt__StartMulticastStreaming, struct _trt__StartMulticastStreamingResponse *trt__StartMulticastStreamingResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__StopMulticastStreaming(struct soap*, struct _trt__StopMulticastStreaming *trt__StopMulticastStreaming, struct _trt__StopMulticastStreamingResponse *trt__StopMulticastStreamingResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__SetSynchronizationPoint(struct soap*, struct _trt__SetSynchronizationPoint *trt__SetSynchronizationPoint, struct _trt__SetSynchronizationPointResponse *trt__SetSynchronizationPointResponse);
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetSnapshotUri(struct soap*, struct _trt__GetSnapshotUri *trt__GetSnapshotUri, struct _trt__GetSnapshotUriResponse *trt__GetSnapshotUriResponse);
+
 /******************************************************************************\
  *                                                                            *
  * Server-Side Skeletons to Invoke Service Operations                         *
@@ -11741,6 +13978,148 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tds__GetSystemUris(struct soap*);
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tds__StartFirmwareUpgrade(struct soap*);
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tds__StartSystemRestore(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetServiceCapabilities(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetVideoSources(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioSources(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioOutputs(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__CreateProfile(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetProfile(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetProfiles(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__AddVideoEncoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__AddVideoSourceConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__AddAudioEncoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__AddAudioSourceConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__AddPTZConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__AddVideoAnalyticsConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__AddMetadataConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__AddAudioOutputConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__AddAudioDecoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__RemoveVideoEncoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__RemoveVideoSourceConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__RemoveAudioEncoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__RemoveAudioSourceConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__RemovePTZConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__RemoveVideoAnalyticsConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__RemoveMetadataConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__RemoveAudioOutputConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__RemoveAudioDecoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__DeleteProfile(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetVideoSourceConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetVideoEncoderConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioSourceConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioEncoderConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetVideoAnalyticsConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetMetadataConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioOutputConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioDecoderConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetVideoSourceConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetVideoEncoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioSourceConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioEncoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetVideoAnalyticsConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetMetadataConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioOutputConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioDecoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetCompatibleVideoEncoderConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetCompatibleVideoSourceConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetCompatibleAudioEncoderConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetCompatibleAudioSourceConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetCompatibleMetadataConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetCompatibleAudioOutputConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetCompatibleAudioDecoderConfigurations(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__SetVideoSourceConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__SetVideoEncoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__SetAudioSourceConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__SetAudioEncoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__SetVideoAnalyticsConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__SetMetadataConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__SetAudioOutputConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__SetAudioDecoderConfiguration(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetVideoSourceConfigurationOptions(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetVideoEncoderConfigurationOptions(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioSourceConfigurationOptions(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioEncoderConfigurationOptions(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetMetadataConfigurationOptions(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioOutputConfigurationOptions(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetAudioDecoderConfigurationOptions(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetStreamUri(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__StartMulticastStreaming(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__StopMulticastStreaming(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__SetSynchronizationPoint(struct soap*);
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___trt__GetSnapshotUri(struct soap*);
 
 #ifdef __cplusplus
 }

@@ -90,18 +90,13 @@ SOAP_FMAC3 int * SOAP_FMAC4 soap_get_int(struct soap*, int *, const char*, const
 #ifndef SOAP_TYPE_xsd__duration
 #define SOAP_TYPE_xsd__duration (218)
 #endif
-// SOAP_FMAC1 void SOAP_FMAC2 soap_default_xsd__duration(struct soap*, LONG64 *);
-#define soap_default_xsd__duration(soap, a) soap_default_unsignedLONG64(soap, (ULONG64 *)a)
+SOAP_FMAC1 void SOAP_FMAC2 soap_default_xsd__duration(struct soap*, LONG64 *);
 
 SOAP_FMAC3S const char* SOAP_FMAC4S soap_xsd__duration2s(struct soap*, LONG64);
-
-// SOAP_FMAC1 int SOAP_FMAC2 soap_out_xsd__duration(struct soap*, const char*, int, const LONG64 *, const char*);
-#define soap_out_xsd__duration(soap,a,b,c,d) soap_out_unsignedLONG64(soap, a, b, (ULONG64 *)c, d)
+SOAP_FMAC1 int SOAP_FMAC2 soap_out_xsd__duration(struct soap*, const char*, int, const LONG64 *, const char*);
 
 SOAP_FMAC3S int SOAP_FMAC4S soap_s2xsd__duration(struct soap*, const char*, LONG64 *);
-
-// SOAP_FMAC1 LONG64 * SOAP_FMAC2 soap_in_xsd__duration(struct soap*, const char*, LONG64 *, const char*);
-#define soap_in_xsd__duration(soap, a, b, c) (LONG64*)soap_in_unsignedLONG64(soap,a,(ULONG64 *)b,c)
+SOAP_FMAC1 LONG64 * SOAP_FMAC2 soap_in_xsd__duration(struct soap*, const char*, LONG64 *, const char*);
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_put_xsd__duration(struct soap*, const LONG64 *, const char*, const char*);
 
@@ -1770,8 +1765,1499 @@ SOAP_FMAC3 enum wsu__tTimestampFault * SOAP_FMAC4 soap_get_wsu__tTimestampFault(
 #endif
 
 
+#ifndef SOAP_TYPE___trt__GetSnapshotUri
+#define SOAP_TYPE___trt__GetSnapshotUri (2327)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetSnapshotUri(struct soap*, struct __trt__GetSnapshotUri *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetSnapshotUri(struct soap*, const struct __trt__GetSnapshotUri *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetSnapshotUri(struct soap*, const char*, int, const struct __trt__GetSnapshotUri *, const char*);
+SOAP_FMAC3 struct __trt__GetSnapshotUri * SOAP_FMAC4 soap_in___trt__GetSnapshotUri(struct soap*, const char*, struct __trt__GetSnapshotUri *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetSnapshotUri(struct soap*, const struct __trt__GetSnapshotUri *, const char*, const char*);
+
+#ifndef soap_write___trt__GetSnapshotUri
+#define soap_write___trt__GetSnapshotUri(soap, data) ( soap_begin(soap), soap_serialize___trt__GetSnapshotUri(soap, data), soap_begin_send(soap) || soap_put___trt__GetSnapshotUri(soap, data, "-trt:GetSnapshotUri", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetSnapshotUri * SOAP_FMAC4 soap_get___trt__GetSnapshotUri(struct soap*, struct __trt__GetSnapshotUri *, const char*, const char*);
+
+#ifndef soap_read___trt__GetSnapshotUri
+#define soap_read___trt__GetSnapshotUri(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetSnapshotUri(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__SetSynchronizationPoint
+#define SOAP_TYPE___trt__SetSynchronizationPoint (2323)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__SetSynchronizationPoint(struct soap*, struct __trt__SetSynchronizationPoint *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__SetSynchronizationPoint(struct soap*, const struct __trt__SetSynchronizationPoint *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__SetSynchronizationPoint(struct soap*, const char*, int, const struct __trt__SetSynchronizationPoint *, const char*);
+SOAP_FMAC3 struct __trt__SetSynchronizationPoint * SOAP_FMAC4 soap_in___trt__SetSynchronizationPoint(struct soap*, const char*, struct __trt__SetSynchronizationPoint *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__SetSynchronizationPoint(struct soap*, const struct __trt__SetSynchronizationPoint *, const char*, const char*);
+
+#ifndef soap_write___trt__SetSynchronizationPoint
+#define soap_write___trt__SetSynchronizationPoint(soap, data) ( soap_begin(soap), soap_serialize___trt__SetSynchronizationPoint(soap, data), soap_begin_send(soap) || soap_put___trt__SetSynchronizationPoint(soap, data, "-trt:SetSynchronizationPoint", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__SetSynchronizationPoint * SOAP_FMAC4 soap_get___trt__SetSynchronizationPoint(struct soap*, struct __trt__SetSynchronizationPoint *, const char*, const char*);
+
+#ifndef soap_read___trt__SetSynchronizationPoint
+#define soap_read___trt__SetSynchronizationPoint(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__SetSynchronizationPoint(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__StopMulticastStreaming
+#define SOAP_TYPE___trt__StopMulticastStreaming (2319)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__StopMulticastStreaming(struct soap*, struct __trt__StopMulticastStreaming *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__StopMulticastStreaming(struct soap*, const struct __trt__StopMulticastStreaming *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__StopMulticastStreaming(struct soap*, const char*, int, const struct __trt__StopMulticastStreaming *, const char*);
+SOAP_FMAC3 struct __trt__StopMulticastStreaming * SOAP_FMAC4 soap_in___trt__StopMulticastStreaming(struct soap*, const char*, struct __trt__StopMulticastStreaming *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__StopMulticastStreaming(struct soap*, const struct __trt__StopMulticastStreaming *, const char*, const char*);
+
+#ifndef soap_write___trt__StopMulticastStreaming
+#define soap_write___trt__StopMulticastStreaming(soap, data) ( soap_begin(soap), soap_serialize___trt__StopMulticastStreaming(soap, data), soap_begin_send(soap) || soap_put___trt__StopMulticastStreaming(soap, data, "-trt:StopMulticastStreaming", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__StopMulticastStreaming * SOAP_FMAC4 soap_get___trt__StopMulticastStreaming(struct soap*, struct __trt__StopMulticastStreaming *, const char*, const char*);
+
+#ifndef soap_read___trt__StopMulticastStreaming
+#define soap_read___trt__StopMulticastStreaming(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__StopMulticastStreaming(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__StartMulticastStreaming
+#define SOAP_TYPE___trt__StartMulticastStreaming (2315)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__StartMulticastStreaming(struct soap*, struct __trt__StartMulticastStreaming *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__StartMulticastStreaming(struct soap*, const struct __trt__StartMulticastStreaming *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__StartMulticastStreaming(struct soap*, const char*, int, const struct __trt__StartMulticastStreaming *, const char*);
+SOAP_FMAC3 struct __trt__StartMulticastStreaming * SOAP_FMAC4 soap_in___trt__StartMulticastStreaming(struct soap*, const char*, struct __trt__StartMulticastStreaming *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__StartMulticastStreaming(struct soap*, const struct __trt__StartMulticastStreaming *, const char*, const char*);
+
+#ifndef soap_write___trt__StartMulticastStreaming
+#define soap_write___trt__StartMulticastStreaming(soap, data) ( soap_begin(soap), soap_serialize___trt__StartMulticastStreaming(soap, data), soap_begin_send(soap) || soap_put___trt__StartMulticastStreaming(soap, data, "-trt:StartMulticastStreaming", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__StartMulticastStreaming * SOAP_FMAC4 soap_get___trt__StartMulticastStreaming(struct soap*, struct __trt__StartMulticastStreaming *, const char*, const char*);
+
+#ifndef soap_read___trt__StartMulticastStreaming
+#define soap_read___trt__StartMulticastStreaming(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__StartMulticastStreaming(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetStreamUri
+#define SOAP_TYPE___trt__GetStreamUri (2311)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetStreamUri(struct soap*, struct __trt__GetStreamUri *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetStreamUri(struct soap*, const struct __trt__GetStreamUri *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetStreamUri(struct soap*, const char*, int, const struct __trt__GetStreamUri *, const char*);
+SOAP_FMAC3 struct __trt__GetStreamUri * SOAP_FMAC4 soap_in___trt__GetStreamUri(struct soap*, const char*, struct __trt__GetStreamUri *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetStreamUri(struct soap*, const struct __trt__GetStreamUri *, const char*, const char*);
+
+#ifndef soap_write___trt__GetStreamUri
+#define soap_write___trt__GetStreamUri(soap, data) ( soap_begin(soap), soap_serialize___trt__GetStreamUri(soap, data), soap_begin_send(soap) || soap_put___trt__GetStreamUri(soap, data, "-trt:GetStreamUri", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetStreamUri * SOAP_FMAC4 soap_get___trt__GetStreamUri(struct soap*, struct __trt__GetStreamUri *, const char*, const char*);
+
+#ifndef soap_read___trt__GetStreamUri
+#define soap_read___trt__GetStreamUri(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetStreamUri(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define SOAP_TYPE___trt__GetGuaranteedNumberOfVideoEncoderInstances (2307)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, struct __trt__GetGuaranteedNumberOfVideoEncoderInstances *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, const struct __trt__GetGuaranteedNumberOfVideoEncoderInstances *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, const char*, int, const struct __trt__GetGuaranteedNumberOfVideoEncoderInstances *, const char*);
+SOAP_FMAC3 struct __trt__GetGuaranteedNumberOfVideoEncoderInstances * SOAP_FMAC4 soap_in___trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, const char*, struct __trt__GetGuaranteedNumberOfVideoEncoderInstances *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, const struct __trt__GetGuaranteedNumberOfVideoEncoderInstances *, const char*, const char*);
+
+#ifndef soap_write___trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define soap_write___trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data) ( soap_begin(soap), soap_serialize___trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data), soap_begin_send(soap) || soap_put___trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data, "-trt:GetGuaranteedNumberOfVideoEncoderInstances", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetGuaranteedNumberOfVideoEncoderInstances * SOAP_FMAC4 soap_get___trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, struct __trt__GetGuaranteedNumberOfVideoEncoderInstances *, const char*, const char*);
+
+#ifndef soap_read___trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define soap_read___trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioDecoderConfigurationOptions
+#define SOAP_TYPE___trt__GetAudioDecoderConfigurationOptions (2303)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioDecoderConfigurationOptions(struct soap*, struct __trt__GetAudioDecoderConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioDecoderConfigurationOptions(struct soap*, const struct __trt__GetAudioDecoderConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioDecoderConfigurationOptions(struct soap*, const char*, int, const struct __trt__GetAudioDecoderConfigurationOptions *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioDecoderConfigurationOptions * SOAP_FMAC4 soap_in___trt__GetAudioDecoderConfigurationOptions(struct soap*, const char*, struct __trt__GetAudioDecoderConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioDecoderConfigurationOptions(struct soap*, const struct __trt__GetAudioDecoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioDecoderConfigurationOptions
+#define soap_write___trt__GetAudioDecoderConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioDecoderConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioDecoderConfigurationOptions(soap, data, "-trt:GetAudioDecoderConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioDecoderConfigurationOptions * SOAP_FMAC4 soap_get___trt__GetAudioDecoderConfigurationOptions(struct soap*, struct __trt__GetAudioDecoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioDecoderConfigurationOptions
+#define soap_read___trt__GetAudioDecoderConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioDecoderConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioOutputConfigurationOptions
+#define SOAP_TYPE___trt__GetAudioOutputConfigurationOptions (2299)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioOutputConfigurationOptions(struct soap*, struct __trt__GetAudioOutputConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioOutputConfigurationOptions(struct soap*, const struct __trt__GetAudioOutputConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioOutputConfigurationOptions(struct soap*, const char*, int, const struct __trt__GetAudioOutputConfigurationOptions *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioOutputConfigurationOptions * SOAP_FMAC4 soap_in___trt__GetAudioOutputConfigurationOptions(struct soap*, const char*, struct __trt__GetAudioOutputConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioOutputConfigurationOptions(struct soap*, const struct __trt__GetAudioOutputConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioOutputConfigurationOptions
+#define soap_write___trt__GetAudioOutputConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioOutputConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioOutputConfigurationOptions(soap, data, "-trt:GetAudioOutputConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioOutputConfigurationOptions * SOAP_FMAC4 soap_get___trt__GetAudioOutputConfigurationOptions(struct soap*, struct __trt__GetAudioOutputConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioOutputConfigurationOptions
+#define soap_read___trt__GetAudioOutputConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioOutputConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetMetadataConfigurationOptions
+#define SOAP_TYPE___trt__GetMetadataConfigurationOptions (2295)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetMetadataConfigurationOptions(struct soap*, struct __trt__GetMetadataConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetMetadataConfigurationOptions(struct soap*, const struct __trt__GetMetadataConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetMetadataConfigurationOptions(struct soap*, const char*, int, const struct __trt__GetMetadataConfigurationOptions *, const char*);
+SOAP_FMAC3 struct __trt__GetMetadataConfigurationOptions * SOAP_FMAC4 soap_in___trt__GetMetadataConfigurationOptions(struct soap*, const char*, struct __trt__GetMetadataConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetMetadataConfigurationOptions(struct soap*, const struct __trt__GetMetadataConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write___trt__GetMetadataConfigurationOptions
+#define soap_write___trt__GetMetadataConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize___trt__GetMetadataConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put___trt__GetMetadataConfigurationOptions(soap, data, "-trt:GetMetadataConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetMetadataConfigurationOptions * SOAP_FMAC4 soap_get___trt__GetMetadataConfigurationOptions(struct soap*, struct __trt__GetMetadataConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read___trt__GetMetadataConfigurationOptions
+#define soap_read___trt__GetMetadataConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetMetadataConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioEncoderConfigurationOptions
+#define SOAP_TYPE___trt__GetAudioEncoderConfigurationOptions (2291)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioEncoderConfigurationOptions(struct soap*, struct __trt__GetAudioEncoderConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioEncoderConfigurationOptions(struct soap*, const struct __trt__GetAudioEncoderConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioEncoderConfigurationOptions(struct soap*, const char*, int, const struct __trt__GetAudioEncoderConfigurationOptions *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioEncoderConfigurationOptions * SOAP_FMAC4 soap_in___trt__GetAudioEncoderConfigurationOptions(struct soap*, const char*, struct __trt__GetAudioEncoderConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioEncoderConfigurationOptions(struct soap*, const struct __trt__GetAudioEncoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioEncoderConfigurationOptions
+#define soap_write___trt__GetAudioEncoderConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioEncoderConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioEncoderConfigurationOptions(soap, data, "-trt:GetAudioEncoderConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioEncoderConfigurationOptions * SOAP_FMAC4 soap_get___trt__GetAudioEncoderConfigurationOptions(struct soap*, struct __trt__GetAudioEncoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioEncoderConfigurationOptions
+#define soap_read___trt__GetAudioEncoderConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioEncoderConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioSourceConfigurationOptions
+#define SOAP_TYPE___trt__GetAudioSourceConfigurationOptions (2287)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioSourceConfigurationOptions(struct soap*, struct __trt__GetAudioSourceConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioSourceConfigurationOptions(struct soap*, const struct __trt__GetAudioSourceConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioSourceConfigurationOptions(struct soap*, const char*, int, const struct __trt__GetAudioSourceConfigurationOptions *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioSourceConfigurationOptions * SOAP_FMAC4 soap_in___trt__GetAudioSourceConfigurationOptions(struct soap*, const char*, struct __trt__GetAudioSourceConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioSourceConfigurationOptions(struct soap*, const struct __trt__GetAudioSourceConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioSourceConfigurationOptions
+#define soap_write___trt__GetAudioSourceConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioSourceConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioSourceConfigurationOptions(soap, data, "-trt:GetAudioSourceConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioSourceConfigurationOptions * SOAP_FMAC4 soap_get___trt__GetAudioSourceConfigurationOptions(struct soap*, struct __trt__GetAudioSourceConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioSourceConfigurationOptions
+#define soap_read___trt__GetAudioSourceConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioSourceConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetVideoEncoderConfigurationOptions
+#define SOAP_TYPE___trt__GetVideoEncoderConfigurationOptions (2283)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetVideoEncoderConfigurationOptions(struct soap*, struct __trt__GetVideoEncoderConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetVideoEncoderConfigurationOptions(struct soap*, const struct __trt__GetVideoEncoderConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetVideoEncoderConfigurationOptions(struct soap*, const char*, int, const struct __trt__GetVideoEncoderConfigurationOptions *, const char*);
+SOAP_FMAC3 struct __trt__GetVideoEncoderConfigurationOptions * SOAP_FMAC4 soap_in___trt__GetVideoEncoderConfigurationOptions(struct soap*, const char*, struct __trt__GetVideoEncoderConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetVideoEncoderConfigurationOptions(struct soap*, const struct __trt__GetVideoEncoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write___trt__GetVideoEncoderConfigurationOptions
+#define soap_write___trt__GetVideoEncoderConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize___trt__GetVideoEncoderConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put___trt__GetVideoEncoderConfigurationOptions(soap, data, "-trt:GetVideoEncoderConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetVideoEncoderConfigurationOptions * SOAP_FMAC4 soap_get___trt__GetVideoEncoderConfigurationOptions(struct soap*, struct __trt__GetVideoEncoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read___trt__GetVideoEncoderConfigurationOptions
+#define soap_read___trt__GetVideoEncoderConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetVideoEncoderConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetVideoSourceConfigurationOptions
+#define SOAP_TYPE___trt__GetVideoSourceConfigurationOptions (2279)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetVideoSourceConfigurationOptions(struct soap*, struct __trt__GetVideoSourceConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetVideoSourceConfigurationOptions(struct soap*, const struct __trt__GetVideoSourceConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetVideoSourceConfigurationOptions(struct soap*, const char*, int, const struct __trt__GetVideoSourceConfigurationOptions *, const char*);
+SOAP_FMAC3 struct __trt__GetVideoSourceConfigurationOptions * SOAP_FMAC4 soap_in___trt__GetVideoSourceConfigurationOptions(struct soap*, const char*, struct __trt__GetVideoSourceConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetVideoSourceConfigurationOptions(struct soap*, const struct __trt__GetVideoSourceConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write___trt__GetVideoSourceConfigurationOptions
+#define soap_write___trt__GetVideoSourceConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize___trt__GetVideoSourceConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put___trt__GetVideoSourceConfigurationOptions(soap, data, "-trt:GetVideoSourceConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetVideoSourceConfigurationOptions * SOAP_FMAC4 soap_get___trt__GetVideoSourceConfigurationOptions(struct soap*, struct __trt__GetVideoSourceConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read___trt__GetVideoSourceConfigurationOptions
+#define soap_read___trt__GetVideoSourceConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetVideoSourceConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__SetAudioDecoderConfiguration
+#define SOAP_TYPE___trt__SetAudioDecoderConfiguration (2275)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__SetAudioDecoderConfiguration(struct soap*, struct __trt__SetAudioDecoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__SetAudioDecoderConfiguration(struct soap*, const struct __trt__SetAudioDecoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__SetAudioDecoderConfiguration(struct soap*, const char*, int, const struct __trt__SetAudioDecoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__SetAudioDecoderConfiguration * SOAP_FMAC4 soap_in___trt__SetAudioDecoderConfiguration(struct soap*, const char*, struct __trt__SetAudioDecoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__SetAudioDecoderConfiguration(struct soap*, const struct __trt__SetAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__SetAudioDecoderConfiguration
+#define soap_write___trt__SetAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__SetAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__SetAudioDecoderConfiguration(soap, data, "-trt:SetAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__SetAudioDecoderConfiguration * SOAP_FMAC4 soap_get___trt__SetAudioDecoderConfiguration(struct soap*, struct __trt__SetAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__SetAudioDecoderConfiguration
+#define soap_read___trt__SetAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__SetAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__SetAudioOutputConfiguration
+#define SOAP_TYPE___trt__SetAudioOutputConfiguration (2271)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__SetAudioOutputConfiguration(struct soap*, struct __trt__SetAudioOutputConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__SetAudioOutputConfiguration(struct soap*, const struct __trt__SetAudioOutputConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__SetAudioOutputConfiguration(struct soap*, const char*, int, const struct __trt__SetAudioOutputConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__SetAudioOutputConfiguration * SOAP_FMAC4 soap_in___trt__SetAudioOutputConfiguration(struct soap*, const char*, struct __trt__SetAudioOutputConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__SetAudioOutputConfiguration(struct soap*, const struct __trt__SetAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__SetAudioOutputConfiguration
+#define soap_write___trt__SetAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__SetAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__SetAudioOutputConfiguration(soap, data, "-trt:SetAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__SetAudioOutputConfiguration * SOAP_FMAC4 soap_get___trt__SetAudioOutputConfiguration(struct soap*, struct __trt__SetAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__SetAudioOutputConfiguration
+#define soap_read___trt__SetAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__SetAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__SetMetadataConfiguration
+#define SOAP_TYPE___trt__SetMetadataConfiguration (2267)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__SetMetadataConfiguration(struct soap*, struct __trt__SetMetadataConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__SetMetadataConfiguration(struct soap*, const struct __trt__SetMetadataConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__SetMetadataConfiguration(struct soap*, const char*, int, const struct __trt__SetMetadataConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__SetMetadataConfiguration * SOAP_FMAC4 soap_in___trt__SetMetadataConfiguration(struct soap*, const char*, struct __trt__SetMetadataConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__SetMetadataConfiguration(struct soap*, const struct __trt__SetMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__SetMetadataConfiguration
+#define soap_write___trt__SetMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__SetMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__SetMetadataConfiguration(soap, data, "-trt:SetMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__SetMetadataConfiguration * SOAP_FMAC4 soap_get___trt__SetMetadataConfiguration(struct soap*, struct __trt__SetMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__SetMetadataConfiguration
+#define soap_read___trt__SetMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__SetMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__SetVideoAnalyticsConfiguration
+#define SOAP_TYPE___trt__SetVideoAnalyticsConfiguration (2263)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__SetVideoAnalyticsConfiguration(struct soap*, struct __trt__SetVideoAnalyticsConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__SetVideoAnalyticsConfiguration(struct soap*, const struct __trt__SetVideoAnalyticsConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__SetVideoAnalyticsConfiguration(struct soap*, const char*, int, const struct __trt__SetVideoAnalyticsConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__SetVideoAnalyticsConfiguration * SOAP_FMAC4 soap_in___trt__SetVideoAnalyticsConfiguration(struct soap*, const char*, struct __trt__SetVideoAnalyticsConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__SetVideoAnalyticsConfiguration(struct soap*, const struct __trt__SetVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__SetVideoAnalyticsConfiguration
+#define soap_write___trt__SetVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__SetVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__SetVideoAnalyticsConfiguration(soap, data, "-trt:SetVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__SetVideoAnalyticsConfiguration * SOAP_FMAC4 soap_get___trt__SetVideoAnalyticsConfiguration(struct soap*, struct __trt__SetVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__SetVideoAnalyticsConfiguration
+#define soap_read___trt__SetVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__SetVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__SetAudioEncoderConfiguration
+#define SOAP_TYPE___trt__SetAudioEncoderConfiguration (2259)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__SetAudioEncoderConfiguration(struct soap*, struct __trt__SetAudioEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__SetAudioEncoderConfiguration(struct soap*, const struct __trt__SetAudioEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__SetAudioEncoderConfiguration(struct soap*, const char*, int, const struct __trt__SetAudioEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__SetAudioEncoderConfiguration * SOAP_FMAC4 soap_in___trt__SetAudioEncoderConfiguration(struct soap*, const char*, struct __trt__SetAudioEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__SetAudioEncoderConfiguration(struct soap*, const struct __trt__SetAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__SetAudioEncoderConfiguration
+#define soap_write___trt__SetAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__SetAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__SetAudioEncoderConfiguration(soap, data, "-trt:SetAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__SetAudioEncoderConfiguration * SOAP_FMAC4 soap_get___trt__SetAudioEncoderConfiguration(struct soap*, struct __trt__SetAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__SetAudioEncoderConfiguration
+#define soap_read___trt__SetAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__SetAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__SetAudioSourceConfiguration
+#define SOAP_TYPE___trt__SetAudioSourceConfiguration (2255)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__SetAudioSourceConfiguration(struct soap*, struct __trt__SetAudioSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__SetAudioSourceConfiguration(struct soap*, const struct __trt__SetAudioSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__SetAudioSourceConfiguration(struct soap*, const char*, int, const struct __trt__SetAudioSourceConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__SetAudioSourceConfiguration * SOAP_FMAC4 soap_in___trt__SetAudioSourceConfiguration(struct soap*, const char*, struct __trt__SetAudioSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__SetAudioSourceConfiguration(struct soap*, const struct __trt__SetAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__SetAudioSourceConfiguration
+#define soap_write___trt__SetAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__SetAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__SetAudioSourceConfiguration(soap, data, "-trt:SetAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__SetAudioSourceConfiguration * SOAP_FMAC4 soap_get___trt__SetAudioSourceConfiguration(struct soap*, struct __trt__SetAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__SetAudioSourceConfiguration
+#define soap_read___trt__SetAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__SetAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__SetVideoEncoderConfiguration
+#define SOAP_TYPE___trt__SetVideoEncoderConfiguration (2251)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__SetVideoEncoderConfiguration(struct soap*, struct __trt__SetVideoEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__SetVideoEncoderConfiguration(struct soap*, const struct __trt__SetVideoEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__SetVideoEncoderConfiguration(struct soap*, const char*, int, const struct __trt__SetVideoEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__SetVideoEncoderConfiguration * SOAP_FMAC4 soap_in___trt__SetVideoEncoderConfiguration(struct soap*, const char*, struct __trt__SetVideoEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__SetVideoEncoderConfiguration(struct soap*, const struct __trt__SetVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__SetVideoEncoderConfiguration
+#define soap_write___trt__SetVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__SetVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__SetVideoEncoderConfiguration(soap, data, "-trt:SetVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__SetVideoEncoderConfiguration * SOAP_FMAC4 soap_get___trt__SetVideoEncoderConfiguration(struct soap*, struct __trt__SetVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__SetVideoEncoderConfiguration
+#define soap_read___trt__SetVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__SetVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__SetVideoSourceConfiguration
+#define SOAP_TYPE___trt__SetVideoSourceConfiguration (2247)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__SetVideoSourceConfiguration(struct soap*, struct __trt__SetVideoSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__SetVideoSourceConfiguration(struct soap*, const struct __trt__SetVideoSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__SetVideoSourceConfiguration(struct soap*, const char*, int, const struct __trt__SetVideoSourceConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__SetVideoSourceConfiguration * SOAP_FMAC4 soap_in___trt__SetVideoSourceConfiguration(struct soap*, const char*, struct __trt__SetVideoSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__SetVideoSourceConfiguration(struct soap*, const struct __trt__SetVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__SetVideoSourceConfiguration
+#define soap_write___trt__SetVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__SetVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__SetVideoSourceConfiguration(soap, data, "-trt:SetVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__SetVideoSourceConfiguration * SOAP_FMAC4 soap_get___trt__SetVideoSourceConfiguration(struct soap*, struct __trt__SetVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__SetVideoSourceConfiguration
+#define soap_read___trt__SetVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__SetVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetCompatibleAudioDecoderConfigurations
+#define SOAP_TYPE___trt__GetCompatibleAudioDecoderConfigurations (2243)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetCompatibleAudioDecoderConfigurations(struct soap*, struct __trt__GetCompatibleAudioDecoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetCompatibleAudioDecoderConfigurations(struct soap*, const struct __trt__GetCompatibleAudioDecoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetCompatibleAudioDecoderConfigurations(struct soap*, const char*, int, const struct __trt__GetCompatibleAudioDecoderConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetCompatibleAudioDecoderConfigurations * SOAP_FMAC4 soap_in___trt__GetCompatibleAudioDecoderConfigurations(struct soap*, const char*, struct __trt__GetCompatibleAudioDecoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetCompatibleAudioDecoderConfigurations(struct soap*, const struct __trt__GetCompatibleAudioDecoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetCompatibleAudioDecoderConfigurations
+#define soap_write___trt__GetCompatibleAudioDecoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetCompatibleAudioDecoderConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetCompatibleAudioDecoderConfigurations(soap, data, "-trt:GetCompatibleAudioDecoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetCompatibleAudioDecoderConfigurations * SOAP_FMAC4 soap_get___trt__GetCompatibleAudioDecoderConfigurations(struct soap*, struct __trt__GetCompatibleAudioDecoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetCompatibleAudioDecoderConfigurations
+#define soap_read___trt__GetCompatibleAudioDecoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetCompatibleAudioDecoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetCompatibleAudioOutputConfigurations
+#define SOAP_TYPE___trt__GetCompatibleAudioOutputConfigurations (2239)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetCompatibleAudioOutputConfigurations(struct soap*, struct __trt__GetCompatibleAudioOutputConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetCompatibleAudioOutputConfigurations(struct soap*, const struct __trt__GetCompatibleAudioOutputConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetCompatibleAudioOutputConfigurations(struct soap*, const char*, int, const struct __trt__GetCompatibleAudioOutputConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetCompatibleAudioOutputConfigurations * SOAP_FMAC4 soap_in___trt__GetCompatibleAudioOutputConfigurations(struct soap*, const char*, struct __trt__GetCompatibleAudioOutputConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetCompatibleAudioOutputConfigurations(struct soap*, const struct __trt__GetCompatibleAudioOutputConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetCompatibleAudioOutputConfigurations
+#define soap_write___trt__GetCompatibleAudioOutputConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetCompatibleAudioOutputConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetCompatibleAudioOutputConfigurations(soap, data, "-trt:GetCompatibleAudioOutputConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetCompatibleAudioOutputConfigurations * SOAP_FMAC4 soap_get___trt__GetCompatibleAudioOutputConfigurations(struct soap*, struct __trt__GetCompatibleAudioOutputConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetCompatibleAudioOutputConfigurations
+#define soap_read___trt__GetCompatibleAudioOutputConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetCompatibleAudioOutputConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetCompatibleMetadataConfigurations
+#define SOAP_TYPE___trt__GetCompatibleMetadataConfigurations (2235)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetCompatibleMetadataConfigurations(struct soap*, struct __trt__GetCompatibleMetadataConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetCompatibleMetadataConfigurations(struct soap*, const struct __trt__GetCompatibleMetadataConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetCompatibleMetadataConfigurations(struct soap*, const char*, int, const struct __trt__GetCompatibleMetadataConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetCompatibleMetadataConfigurations * SOAP_FMAC4 soap_in___trt__GetCompatibleMetadataConfigurations(struct soap*, const char*, struct __trt__GetCompatibleMetadataConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetCompatibleMetadataConfigurations(struct soap*, const struct __trt__GetCompatibleMetadataConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetCompatibleMetadataConfigurations
+#define soap_write___trt__GetCompatibleMetadataConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetCompatibleMetadataConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetCompatibleMetadataConfigurations(soap, data, "-trt:GetCompatibleMetadataConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetCompatibleMetadataConfigurations * SOAP_FMAC4 soap_get___trt__GetCompatibleMetadataConfigurations(struct soap*, struct __trt__GetCompatibleMetadataConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetCompatibleMetadataConfigurations
+#define soap_read___trt__GetCompatibleMetadataConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetCompatibleMetadataConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetCompatibleVideoAnalyticsConfigurations
+#define SOAP_TYPE___trt__GetCompatibleVideoAnalyticsConfigurations (2231)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, struct __trt__GetCompatibleVideoAnalyticsConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, const struct __trt__GetCompatibleVideoAnalyticsConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, const char*, int, const struct __trt__GetCompatibleVideoAnalyticsConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetCompatibleVideoAnalyticsConfigurations * SOAP_FMAC4 soap_in___trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, const char*, struct __trt__GetCompatibleVideoAnalyticsConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, const struct __trt__GetCompatibleVideoAnalyticsConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetCompatibleVideoAnalyticsConfigurations
+#define soap_write___trt__GetCompatibleVideoAnalyticsConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetCompatibleVideoAnalyticsConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetCompatibleVideoAnalyticsConfigurations(soap, data, "-trt:GetCompatibleVideoAnalyticsConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetCompatibleVideoAnalyticsConfigurations * SOAP_FMAC4 soap_get___trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, struct __trt__GetCompatibleVideoAnalyticsConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetCompatibleVideoAnalyticsConfigurations
+#define soap_read___trt__GetCompatibleVideoAnalyticsConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetCompatibleVideoAnalyticsConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetCompatibleAudioSourceConfigurations
+#define SOAP_TYPE___trt__GetCompatibleAudioSourceConfigurations (2227)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetCompatibleAudioSourceConfigurations(struct soap*, struct __trt__GetCompatibleAudioSourceConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetCompatibleAudioSourceConfigurations(struct soap*, const struct __trt__GetCompatibleAudioSourceConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetCompatibleAudioSourceConfigurations(struct soap*, const char*, int, const struct __trt__GetCompatibleAudioSourceConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetCompatibleAudioSourceConfigurations * SOAP_FMAC4 soap_in___trt__GetCompatibleAudioSourceConfigurations(struct soap*, const char*, struct __trt__GetCompatibleAudioSourceConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetCompatibleAudioSourceConfigurations(struct soap*, const struct __trt__GetCompatibleAudioSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetCompatibleAudioSourceConfigurations
+#define soap_write___trt__GetCompatibleAudioSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetCompatibleAudioSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetCompatibleAudioSourceConfigurations(soap, data, "-trt:GetCompatibleAudioSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetCompatibleAudioSourceConfigurations * SOAP_FMAC4 soap_get___trt__GetCompatibleAudioSourceConfigurations(struct soap*, struct __trt__GetCompatibleAudioSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetCompatibleAudioSourceConfigurations
+#define soap_read___trt__GetCompatibleAudioSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetCompatibleAudioSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetCompatibleAudioEncoderConfigurations
+#define SOAP_TYPE___trt__GetCompatibleAudioEncoderConfigurations (2223)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetCompatibleAudioEncoderConfigurations(struct soap*, struct __trt__GetCompatibleAudioEncoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetCompatibleAudioEncoderConfigurations(struct soap*, const struct __trt__GetCompatibleAudioEncoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetCompatibleAudioEncoderConfigurations(struct soap*, const char*, int, const struct __trt__GetCompatibleAudioEncoderConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetCompatibleAudioEncoderConfigurations * SOAP_FMAC4 soap_in___trt__GetCompatibleAudioEncoderConfigurations(struct soap*, const char*, struct __trt__GetCompatibleAudioEncoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetCompatibleAudioEncoderConfigurations(struct soap*, const struct __trt__GetCompatibleAudioEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetCompatibleAudioEncoderConfigurations
+#define soap_write___trt__GetCompatibleAudioEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetCompatibleAudioEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetCompatibleAudioEncoderConfigurations(soap, data, "-trt:GetCompatibleAudioEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetCompatibleAudioEncoderConfigurations * SOAP_FMAC4 soap_get___trt__GetCompatibleAudioEncoderConfigurations(struct soap*, struct __trt__GetCompatibleAudioEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetCompatibleAudioEncoderConfigurations
+#define soap_read___trt__GetCompatibleAudioEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetCompatibleAudioEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetCompatibleVideoSourceConfigurations
+#define SOAP_TYPE___trt__GetCompatibleVideoSourceConfigurations (2219)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetCompatibleVideoSourceConfigurations(struct soap*, struct __trt__GetCompatibleVideoSourceConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetCompatibleVideoSourceConfigurations(struct soap*, const struct __trt__GetCompatibleVideoSourceConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetCompatibleVideoSourceConfigurations(struct soap*, const char*, int, const struct __trt__GetCompatibleVideoSourceConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetCompatibleVideoSourceConfigurations * SOAP_FMAC4 soap_in___trt__GetCompatibleVideoSourceConfigurations(struct soap*, const char*, struct __trt__GetCompatibleVideoSourceConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetCompatibleVideoSourceConfigurations(struct soap*, const struct __trt__GetCompatibleVideoSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetCompatibleVideoSourceConfigurations
+#define soap_write___trt__GetCompatibleVideoSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetCompatibleVideoSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetCompatibleVideoSourceConfigurations(soap, data, "-trt:GetCompatibleVideoSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetCompatibleVideoSourceConfigurations * SOAP_FMAC4 soap_get___trt__GetCompatibleVideoSourceConfigurations(struct soap*, struct __trt__GetCompatibleVideoSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetCompatibleVideoSourceConfigurations
+#define soap_read___trt__GetCompatibleVideoSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetCompatibleVideoSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetCompatibleVideoEncoderConfigurations
+#define SOAP_TYPE___trt__GetCompatibleVideoEncoderConfigurations (2215)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetCompatibleVideoEncoderConfigurations(struct soap*, struct __trt__GetCompatibleVideoEncoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetCompatibleVideoEncoderConfigurations(struct soap*, const struct __trt__GetCompatibleVideoEncoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetCompatibleVideoEncoderConfigurations(struct soap*, const char*, int, const struct __trt__GetCompatibleVideoEncoderConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetCompatibleVideoEncoderConfigurations * SOAP_FMAC4 soap_in___trt__GetCompatibleVideoEncoderConfigurations(struct soap*, const char*, struct __trt__GetCompatibleVideoEncoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetCompatibleVideoEncoderConfigurations(struct soap*, const struct __trt__GetCompatibleVideoEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetCompatibleVideoEncoderConfigurations
+#define soap_write___trt__GetCompatibleVideoEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetCompatibleVideoEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetCompatibleVideoEncoderConfigurations(soap, data, "-trt:GetCompatibleVideoEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetCompatibleVideoEncoderConfigurations * SOAP_FMAC4 soap_get___trt__GetCompatibleVideoEncoderConfigurations(struct soap*, struct __trt__GetCompatibleVideoEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetCompatibleVideoEncoderConfigurations
+#define soap_read___trt__GetCompatibleVideoEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetCompatibleVideoEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioDecoderConfiguration
+#define SOAP_TYPE___trt__GetAudioDecoderConfiguration (2211)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioDecoderConfiguration(struct soap*, struct __trt__GetAudioDecoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioDecoderConfiguration(struct soap*, const struct __trt__GetAudioDecoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioDecoderConfiguration(struct soap*, const char*, int, const struct __trt__GetAudioDecoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioDecoderConfiguration * SOAP_FMAC4 soap_in___trt__GetAudioDecoderConfiguration(struct soap*, const char*, struct __trt__GetAudioDecoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioDecoderConfiguration(struct soap*, const struct __trt__GetAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioDecoderConfiguration
+#define soap_write___trt__GetAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioDecoderConfiguration(soap, data, "-trt:GetAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioDecoderConfiguration * SOAP_FMAC4 soap_get___trt__GetAudioDecoderConfiguration(struct soap*, struct __trt__GetAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioDecoderConfiguration
+#define soap_read___trt__GetAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioOutputConfiguration
+#define SOAP_TYPE___trt__GetAudioOutputConfiguration (2207)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioOutputConfiguration(struct soap*, struct __trt__GetAudioOutputConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioOutputConfiguration(struct soap*, const struct __trt__GetAudioOutputConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioOutputConfiguration(struct soap*, const char*, int, const struct __trt__GetAudioOutputConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioOutputConfiguration * SOAP_FMAC4 soap_in___trt__GetAudioOutputConfiguration(struct soap*, const char*, struct __trt__GetAudioOutputConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioOutputConfiguration(struct soap*, const struct __trt__GetAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioOutputConfiguration
+#define soap_write___trt__GetAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioOutputConfiguration(soap, data, "-trt:GetAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioOutputConfiguration * SOAP_FMAC4 soap_get___trt__GetAudioOutputConfiguration(struct soap*, struct __trt__GetAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioOutputConfiguration
+#define soap_read___trt__GetAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetMetadataConfiguration
+#define SOAP_TYPE___trt__GetMetadataConfiguration (2203)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetMetadataConfiguration(struct soap*, struct __trt__GetMetadataConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetMetadataConfiguration(struct soap*, const struct __trt__GetMetadataConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetMetadataConfiguration(struct soap*, const char*, int, const struct __trt__GetMetadataConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__GetMetadataConfiguration * SOAP_FMAC4 soap_in___trt__GetMetadataConfiguration(struct soap*, const char*, struct __trt__GetMetadataConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetMetadataConfiguration(struct soap*, const struct __trt__GetMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__GetMetadataConfiguration
+#define soap_write___trt__GetMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__GetMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__GetMetadataConfiguration(soap, data, "-trt:GetMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetMetadataConfiguration * SOAP_FMAC4 soap_get___trt__GetMetadataConfiguration(struct soap*, struct __trt__GetMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__GetMetadataConfiguration
+#define soap_read___trt__GetMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetVideoAnalyticsConfiguration
+#define SOAP_TYPE___trt__GetVideoAnalyticsConfiguration (2199)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetVideoAnalyticsConfiguration(struct soap*, struct __trt__GetVideoAnalyticsConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetVideoAnalyticsConfiguration(struct soap*, const struct __trt__GetVideoAnalyticsConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetVideoAnalyticsConfiguration(struct soap*, const char*, int, const struct __trt__GetVideoAnalyticsConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__GetVideoAnalyticsConfiguration * SOAP_FMAC4 soap_in___trt__GetVideoAnalyticsConfiguration(struct soap*, const char*, struct __trt__GetVideoAnalyticsConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetVideoAnalyticsConfiguration(struct soap*, const struct __trt__GetVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__GetVideoAnalyticsConfiguration
+#define soap_write___trt__GetVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__GetVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__GetVideoAnalyticsConfiguration(soap, data, "-trt:GetVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetVideoAnalyticsConfiguration * SOAP_FMAC4 soap_get___trt__GetVideoAnalyticsConfiguration(struct soap*, struct __trt__GetVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__GetVideoAnalyticsConfiguration
+#define soap_read___trt__GetVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioEncoderConfiguration
+#define SOAP_TYPE___trt__GetAudioEncoderConfiguration (2195)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioEncoderConfiguration(struct soap*, struct __trt__GetAudioEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioEncoderConfiguration(struct soap*, const struct __trt__GetAudioEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioEncoderConfiguration(struct soap*, const char*, int, const struct __trt__GetAudioEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioEncoderConfiguration * SOAP_FMAC4 soap_in___trt__GetAudioEncoderConfiguration(struct soap*, const char*, struct __trt__GetAudioEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioEncoderConfiguration(struct soap*, const struct __trt__GetAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioEncoderConfiguration
+#define soap_write___trt__GetAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioEncoderConfiguration(soap, data, "-trt:GetAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioEncoderConfiguration * SOAP_FMAC4 soap_get___trt__GetAudioEncoderConfiguration(struct soap*, struct __trt__GetAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioEncoderConfiguration
+#define soap_read___trt__GetAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioSourceConfiguration
+#define SOAP_TYPE___trt__GetAudioSourceConfiguration (2191)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioSourceConfiguration(struct soap*, struct __trt__GetAudioSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioSourceConfiguration(struct soap*, const struct __trt__GetAudioSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioSourceConfiguration(struct soap*, const char*, int, const struct __trt__GetAudioSourceConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioSourceConfiguration * SOAP_FMAC4 soap_in___trt__GetAudioSourceConfiguration(struct soap*, const char*, struct __trt__GetAudioSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioSourceConfiguration(struct soap*, const struct __trt__GetAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioSourceConfiguration
+#define soap_write___trt__GetAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioSourceConfiguration(soap, data, "-trt:GetAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioSourceConfiguration * SOAP_FMAC4 soap_get___trt__GetAudioSourceConfiguration(struct soap*, struct __trt__GetAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioSourceConfiguration
+#define soap_read___trt__GetAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetVideoEncoderConfiguration
+#define SOAP_TYPE___trt__GetVideoEncoderConfiguration (2187)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetVideoEncoderConfiguration(struct soap*, struct __trt__GetVideoEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetVideoEncoderConfiguration(struct soap*, const struct __trt__GetVideoEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetVideoEncoderConfiguration(struct soap*, const char*, int, const struct __trt__GetVideoEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__GetVideoEncoderConfiguration * SOAP_FMAC4 soap_in___trt__GetVideoEncoderConfiguration(struct soap*, const char*, struct __trt__GetVideoEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetVideoEncoderConfiguration(struct soap*, const struct __trt__GetVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__GetVideoEncoderConfiguration
+#define soap_write___trt__GetVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__GetVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__GetVideoEncoderConfiguration(soap, data, "-trt:GetVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetVideoEncoderConfiguration * SOAP_FMAC4 soap_get___trt__GetVideoEncoderConfiguration(struct soap*, struct __trt__GetVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__GetVideoEncoderConfiguration
+#define soap_read___trt__GetVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetVideoSourceConfiguration
+#define SOAP_TYPE___trt__GetVideoSourceConfiguration (2183)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetVideoSourceConfiguration(struct soap*, struct __trt__GetVideoSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetVideoSourceConfiguration(struct soap*, const struct __trt__GetVideoSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetVideoSourceConfiguration(struct soap*, const char*, int, const struct __trt__GetVideoSourceConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__GetVideoSourceConfiguration * SOAP_FMAC4 soap_in___trt__GetVideoSourceConfiguration(struct soap*, const char*, struct __trt__GetVideoSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetVideoSourceConfiguration(struct soap*, const struct __trt__GetVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__GetVideoSourceConfiguration
+#define soap_write___trt__GetVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__GetVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__GetVideoSourceConfiguration(soap, data, "-trt:GetVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetVideoSourceConfiguration * SOAP_FMAC4 soap_get___trt__GetVideoSourceConfiguration(struct soap*, struct __trt__GetVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__GetVideoSourceConfiguration
+#define soap_read___trt__GetVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioDecoderConfigurations
+#define SOAP_TYPE___trt__GetAudioDecoderConfigurations (2179)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioDecoderConfigurations(struct soap*, struct __trt__GetAudioDecoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioDecoderConfigurations(struct soap*, const struct __trt__GetAudioDecoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioDecoderConfigurations(struct soap*, const char*, int, const struct __trt__GetAudioDecoderConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioDecoderConfigurations * SOAP_FMAC4 soap_in___trt__GetAudioDecoderConfigurations(struct soap*, const char*, struct __trt__GetAudioDecoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioDecoderConfigurations(struct soap*, const struct __trt__GetAudioDecoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioDecoderConfigurations
+#define soap_write___trt__GetAudioDecoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioDecoderConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioDecoderConfigurations(soap, data, "-trt:GetAudioDecoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioDecoderConfigurations * SOAP_FMAC4 soap_get___trt__GetAudioDecoderConfigurations(struct soap*, struct __trt__GetAudioDecoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioDecoderConfigurations
+#define soap_read___trt__GetAudioDecoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioDecoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioOutputConfigurations
+#define SOAP_TYPE___trt__GetAudioOutputConfigurations (2175)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioOutputConfigurations(struct soap*, struct __trt__GetAudioOutputConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioOutputConfigurations(struct soap*, const struct __trt__GetAudioOutputConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioOutputConfigurations(struct soap*, const char*, int, const struct __trt__GetAudioOutputConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioOutputConfigurations * SOAP_FMAC4 soap_in___trt__GetAudioOutputConfigurations(struct soap*, const char*, struct __trt__GetAudioOutputConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioOutputConfigurations(struct soap*, const struct __trt__GetAudioOutputConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioOutputConfigurations
+#define soap_write___trt__GetAudioOutputConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioOutputConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioOutputConfigurations(soap, data, "-trt:GetAudioOutputConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioOutputConfigurations * SOAP_FMAC4 soap_get___trt__GetAudioOutputConfigurations(struct soap*, struct __trt__GetAudioOutputConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioOutputConfigurations
+#define soap_read___trt__GetAudioOutputConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioOutputConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetMetadataConfigurations
+#define SOAP_TYPE___trt__GetMetadataConfigurations (2171)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetMetadataConfigurations(struct soap*, struct __trt__GetMetadataConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetMetadataConfigurations(struct soap*, const struct __trt__GetMetadataConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetMetadataConfigurations(struct soap*, const char*, int, const struct __trt__GetMetadataConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetMetadataConfigurations * SOAP_FMAC4 soap_in___trt__GetMetadataConfigurations(struct soap*, const char*, struct __trt__GetMetadataConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetMetadataConfigurations(struct soap*, const struct __trt__GetMetadataConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetMetadataConfigurations
+#define soap_write___trt__GetMetadataConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetMetadataConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetMetadataConfigurations(soap, data, "-trt:GetMetadataConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetMetadataConfigurations * SOAP_FMAC4 soap_get___trt__GetMetadataConfigurations(struct soap*, struct __trt__GetMetadataConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetMetadataConfigurations
+#define soap_read___trt__GetMetadataConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetMetadataConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetVideoAnalyticsConfigurations
+#define SOAP_TYPE___trt__GetVideoAnalyticsConfigurations (2167)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetVideoAnalyticsConfigurations(struct soap*, struct __trt__GetVideoAnalyticsConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetVideoAnalyticsConfigurations(struct soap*, const struct __trt__GetVideoAnalyticsConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetVideoAnalyticsConfigurations(struct soap*, const char*, int, const struct __trt__GetVideoAnalyticsConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetVideoAnalyticsConfigurations * SOAP_FMAC4 soap_in___trt__GetVideoAnalyticsConfigurations(struct soap*, const char*, struct __trt__GetVideoAnalyticsConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetVideoAnalyticsConfigurations(struct soap*, const struct __trt__GetVideoAnalyticsConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetVideoAnalyticsConfigurations
+#define soap_write___trt__GetVideoAnalyticsConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetVideoAnalyticsConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetVideoAnalyticsConfigurations(soap, data, "-trt:GetVideoAnalyticsConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetVideoAnalyticsConfigurations * SOAP_FMAC4 soap_get___trt__GetVideoAnalyticsConfigurations(struct soap*, struct __trt__GetVideoAnalyticsConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetVideoAnalyticsConfigurations
+#define soap_read___trt__GetVideoAnalyticsConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetVideoAnalyticsConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioEncoderConfigurations
+#define SOAP_TYPE___trt__GetAudioEncoderConfigurations (2163)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioEncoderConfigurations(struct soap*, struct __trt__GetAudioEncoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioEncoderConfigurations(struct soap*, const struct __trt__GetAudioEncoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioEncoderConfigurations(struct soap*, const char*, int, const struct __trt__GetAudioEncoderConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioEncoderConfigurations * SOAP_FMAC4 soap_in___trt__GetAudioEncoderConfigurations(struct soap*, const char*, struct __trt__GetAudioEncoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioEncoderConfigurations(struct soap*, const struct __trt__GetAudioEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioEncoderConfigurations
+#define soap_write___trt__GetAudioEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioEncoderConfigurations(soap, data, "-trt:GetAudioEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioEncoderConfigurations * SOAP_FMAC4 soap_get___trt__GetAudioEncoderConfigurations(struct soap*, struct __trt__GetAudioEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioEncoderConfigurations
+#define soap_read___trt__GetAudioEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioSourceConfigurations
+#define SOAP_TYPE___trt__GetAudioSourceConfigurations (2159)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioSourceConfigurations(struct soap*, struct __trt__GetAudioSourceConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioSourceConfigurations(struct soap*, const struct __trt__GetAudioSourceConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioSourceConfigurations(struct soap*, const char*, int, const struct __trt__GetAudioSourceConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioSourceConfigurations * SOAP_FMAC4 soap_in___trt__GetAudioSourceConfigurations(struct soap*, const char*, struct __trt__GetAudioSourceConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioSourceConfigurations(struct soap*, const struct __trt__GetAudioSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioSourceConfigurations
+#define soap_write___trt__GetAudioSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioSourceConfigurations(soap, data, "-trt:GetAudioSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioSourceConfigurations * SOAP_FMAC4 soap_get___trt__GetAudioSourceConfigurations(struct soap*, struct __trt__GetAudioSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioSourceConfigurations
+#define soap_read___trt__GetAudioSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetVideoEncoderConfigurations
+#define SOAP_TYPE___trt__GetVideoEncoderConfigurations (2155)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetVideoEncoderConfigurations(struct soap*, struct __trt__GetVideoEncoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetVideoEncoderConfigurations(struct soap*, const struct __trt__GetVideoEncoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetVideoEncoderConfigurations(struct soap*, const char*, int, const struct __trt__GetVideoEncoderConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetVideoEncoderConfigurations * SOAP_FMAC4 soap_in___trt__GetVideoEncoderConfigurations(struct soap*, const char*, struct __trt__GetVideoEncoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetVideoEncoderConfigurations(struct soap*, const struct __trt__GetVideoEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetVideoEncoderConfigurations
+#define soap_write___trt__GetVideoEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetVideoEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetVideoEncoderConfigurations(soap, data, "-trt:GetVideoEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetVideoEncoderConfigurations * SOAP_FMAC4 soap_get___trt__GetVideoEncoderConfigurations(struct soap*, struct __trt__GetVideoEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetVideoEncoderConfigurations
+#define soap_read___trt__GetVideoEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetVideoEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetVideoSourceConfigurations
+#define SOAP_TYPE___trt__GetVideoSourceConfigurations (2151)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetVideoSourceConfigurations(struct soap*, struct __trt__GetVideoSourceConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetVideoSourceConfigurations(struct soap*, const struct __trt__GetVideoSourceConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetVideoSourceConfigurations(struct soap*, const char*, int, const struct __trt__GetVideoSourceConfigurations *, const char*);
+SOAP_FMAC3 struct __trt__GetVideoSourceConfigurations * SOAP_FMAC4 soap_in___trt__GetVideoSourceConfigurations(struct soap*, const char*, struct __trt__GetVideoSourceConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetVideoSourceConfigurations(struct soap*, const struct __trt__GetVideoSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_write___trt__GetVideoSourceConfigurations
+#define soap_write___trt__GetVideoSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize___trt__GetVideoSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put___trt__GetVideoSourceConfigurations(soap, data, "-trt:GetVideoSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetVideoSourceConfigurations * SOAP_FMAC4 soap_get___trt__GetVideoSourceConfigurations(struct soap*, struct __trt__GetVideoSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_read___trt__GetVideoSourceConfigurations
+#define soap_read___trt__GetVideoSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetVideoSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__DeleteProfile
+#define SOAP_TYPE___trt__DeleteProfile (2147)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__DeleteProfile(struct soap*, struct __trt__DeleteProfile *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__DeleteProfile(struct soap*, const struct __trt__DeleteProfile *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__DeleteProfile(struct soap*, const char*, int, const struct __trt__DeleteProfile *, const char*);
+SOAP_FMAC3 struct __trt__DeleteProfile * SOAP_FMAC4 soap_in___trt__DeleteProfile(struct soap*, const char*, struct __trt__DeleteProfile *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__DeleteProfile(struct soap*, const struct __trt__DeleteProfile *, const char*, const char*);
+
+#ifndef soap_write___trt__DeleteProfile
+#define soap_write___trt__DeleteProfile(soap, data) ( soap_begin(soap), soap_serialize___trt__DeleteProfile(soap, data), soap_begin_send(soap) || soap_put___trt__DeleteProfile(soap, data, "-trt:DeleteProfile", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__DeleteProfile * SOAP_FMAC4 soap_get___trt__DeleteProfile(struct soap*, struct __trt__DeleteProfile *, const char*, const char*);
+
+#ifndef soap_read___trt__DeleteProfile
+#define soap_read___trt__DeleteProfile(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__DeleteProfile(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__RemoveAudioDecoderConfiguration
+#define SOAP_TYPE___trt__RemoveAudioDecoderConfiguration (2143)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__RemoveAudioDecoderConfiguration(struct soap*, struct __trt__RemoveAudioDecoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__RemoveAudioDecoderConfiguration(struct soap*, const struct __trt__RemoveAudioDecoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__RemoveAudioDecoderConfiguration(struct soap*, const char*, int, const struct __trt__RemoveAudioDecoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__RemoveAudioDecoderConfiguration * SOAP_FMAC4 soap_in___trt__RemoveAudioDecoderConfiguration(struct soap*, const char*, struct __trt__RemoveAudioDecoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__RemoveAudioDecoderConfiguration(struct soap*, const struct __trt__RemoveAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__RemoveAudioDecoderConfiguration
+#define soap_write___trt__RemoveAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__RemoveAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__RemoveAudioDecoderConfiguration(soap, data, "-trt:RemoveAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__RemoveAudioDecoderConfiguration * SOAP_FMAC4 soap_get___trt__RemoveAudioDecoderConfiguration(struct soap*, struct __trt__RemoveAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__RemoveAudioDecoderConfiguration
+#define soap_read___trt__RemoveAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__RemoveAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__RemoveAudioOutputConfiguration
+#define SOAP_TYPE___trt__RemoveAudioOutputConfiguration (2139)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__RemoveAudioOutputConfiguration(struct soap*, struct __trt__RemoveAudioOutputConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__RemoveAudioOutputConfiguration(struct soap*, const struct __trt__RemoveAudioOutputConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__RemoveAudioOutputConfiguration(struct soap*, const char*, int, const struct __trt__RemoveAudioOutputConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__RemoveAudioOutputConfiguration * SOAP_FMAC4 soap_in___trt__RemoveAudioOutputConfiguration(struct soap*, const char*, struct __trt__RemoveAudioOutputConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__RemoveAudioOutputConfiguration(struct soap*, const struct __trt__RemoveAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__RemoveAudioOutputConfiguration
+#define soap_write___trt__RemoveAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__RemoveAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__RemoveAudioOutputConfiguration(soap, data, "-trt:RemoveAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__RemoveAudioOutputConfiguration * SOAP_FMAC4 soap_get___trt__RemoveAudioOutputConfiguration(struct soap*, struct __trt__RemoveAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__RemoveAudioOutputConfiguration
+#define soap_read___trt__RemoveAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__RemoveAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__RemoveMetadataConfiguration
+#define SOAP_TYPE___trt__RemoveMetadataConfiguration (2135)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__RemoveMetadataConfiguration(struct soap*, struct __trt__RemoveMetadataConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__RemoveMetadataConfiguration(struct soap*, const struct __trt__RemoveMetadataConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__RemoveMetadataConfiguration(struct soap*, const char*, int, const struct __trt__RemoveMetadataConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__RemoveMetadataConfiguration * SOAP_FMAC4 soap_in___trt__RemoveMetadataConfiguration(struct soap*, const char*, struct __trt__RemoveMetadataConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__RemoveMetadataConfiguration(struct soap*, const struct __trt__RemoveMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__RemoveMetadataConfiguration
+#define soap_write___trt__RemoveMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__RemoveMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__RemoveMetadataConfiguration(soap, data, "-trt:RemoveMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__RemoveMetadataConfiguration * SOAP_FMAC4 soap_get___trt__RemoveMetadataConfiguration(struct soap*, struct __trt__RemoveMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__RemoveMetadataConfiguration
+#define soap_read___trt__RemoveMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__RemoveMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__RemoveVideoAnalyticsConfiguration
+#define SOAP_TYPE___trt__RemoveVideoAnalyticsConfiguration (2131)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__RemoveVideoAnalyticsConfiguration(struct soap*, struct __trt__RemoveVideoAnalyticsConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__RemoveVideoAnalyticsConfiguration(struct soap*, const struct __trt__RemoveVideoAnalyticsConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__RemoveVideoAnalyticsConfiguration(struct soap*, const char*, int, const struct __trt__RemoveVideoAnalyticsConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__RemoveVideoAnalyticsConfiguration * SOAP_FMAC4 soap_in___trt__RemoveVideoAnalyticsConfiguration(struct soap*, const char*, struct __trt__RemoveVideoAnalyticsConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__RemoveVideoAnalyticsConfiguration(struct soap*, const struct __trt__RemoveVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__RemoveVideoAnalyticsConfiguration
+#define soap_write___trt__RemoveVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__RemoveVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__RemoveVideoAnalyticsConfiguration(soap, data, "-trt:RemoveVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__RemoveVideoAnalyticsConfiguration * SOAP_FMAC4 soap_get___trt__RemoveVideoAnalyticsConfiguration(struct soap*, struct __trt__RemoveVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__RemoveVideoAnalyticsConfiguration
+#define soap_read___trt__RemoveVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__RemoveVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__RemovePTZConfiguration
+#define SOAP_TYPE___trt__RemovePTZConfiguration (2127)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__RemovePTZConfiguration(struct soap*, struct __trt__RemovePTZConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__RemovePTZConfiguration(struct soap*, const struct __trt__RemovePTZConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__RemovePTZConfiguration(struct soap*, const char*, int, const struct __trt__RemovePTZConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__RemovePTZConfiguration * SOAP_FMAC4 soap_in___trt__RemovePTZConfiguration(struct soap*, const char*, struct __trt__RemovePTZConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__RemovePTZConfiguration(struct soap*, const struct __trt__RemovePTZConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__RemovePTZConfiguration
+#define soap_write___trt__RemovePTZConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__RemovePTZConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__RemovePTZConfiguration(soap, data, "-trt:RemovePTZConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__RemovePTZConfiguration * SOAP_FMAC4 soap_get___trt__RemovePTZConfiguration(struct soap*, struct __trt__RemovePTZConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__RemovePTZConfiguration
+#define soap_read___trt__RemovePTZConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__RemovePTZConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__RemoveAudioSourceConfiguration
+#define SOAP_TYPE___trt__RemoveAudioSourceConfiguration (2123)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__RemoveAudioSourceConfiguration(struct soap*, struct __trt__RemoveAudioSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__RemoveAudioSourceConfiguration(struct soap*, const struct __trt__RemoveAudioSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__RemoveAudioSourceConfiguration(struct soap*, const char*, int, const struct __trt__RemoveAudioSourceConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__RemoveAudioSourceConfiguration * SOAP_FMAC4 soap_in___trt__RemoveAudioSourceConfiguration(struct soap*, const char*, struct __trt__RemoveAudioSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__RemoveAudioSourceConfiguration(struct soap*, const struct __trt__RemoveAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__RemoveAudioSourceConfiguration
+#define soap_write___trt__RemoveAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__RemoveAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__RemoveAudioSourceConfiguration(soap, data, "-trt:RemoveAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__RemoveAudioSourceConfiguration * SOAP_FMAC4 soap_get___trt__RemoveAudioSourceConfiguration(struct soap*, struct __trt__RemoveAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__RemoveAudioSourceConfiguration
+#define soap_read___trt__RemoveAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__RemoveAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__RemoveAudioEncoderConfiguration
+#define SOAP_TYPE___trt__RemoveAudioEncoderConfiguration (2119)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__RemoveAudioEncoderConfiguration(struct soap*, struct __trt__RemoveAudioEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__RemoveAudioEncoderConfiguration(struct soap*, const struct __trt__RemoveAudioEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__RemoveAudioEncoderConfiguration(struct soap*, const char*, int, const struct __trt__RemoveAudioEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__RemoveAudioEncoderConfiguration * SOAP_FMAC4 soap_in___trt__RemoveAudioEncoderConfiguration(struct soap*, const char*, struct __trt__RemoveAudioEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__RemoveAudioEncoderConfiguration(struct soap*, const struct __trt__RemoveAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__RemoveAudioEncoderConfiguration
+#define soap_write___trt__RemoveAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__RemoveAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__RemoveAudioEncoderConfiguration(soap, data, "-trt:RemoveAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__RemoveAudioEncoderConfiguration * SOAP_FMAC4 soap_get___trt__RemoveAudioEncoderConfiguration(struct soap*, struct __trt__RemoveAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__RemoveAudioEncoderConfiguration
+#define soap_read___trt__RemoveAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__RemoveAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__RemoveVideoSourceConfiguration
+#define SOAP_TYPE___trt__RemoveVideoSourceConfiguration (2115)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__RemoveVideoSourceConfiguration(struct soap*, struct __trt__RemoveVideoSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__RemoveVideoSourceConfiguration(struct soap*, const struct __trt__RemoveVideoSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__RemoveVideoSourceConfiguration(struct soap*, const char*, int, const struct __trt__RemoveVideoSourceConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__RemoveVideoSourceConfiguration * SOAP_FMAC4 soap_in___trt__RemoveVideoSourceConfiguration(struct soap*, const char*, struct __trt__RemoveVideoSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__RemoveVideoSourceConfiguration(struct soap*, const struct __trt__RemoveVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__RemoveVideoSourceConfiguration
+#define soap_write___trt__RemoveVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__RemoveVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__RemoveVideoSourceConfiguration(soap, data, "-trt:RemoveVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__RemoveVideoSourceConfiguration * SOAP_FMAC4 soap_get___trt__RemoveVideoSourceConfiguration(struct soap*, struct __trt__RemoveVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__RemoveVideoSourceConfiguration
+#define soap_read___trt__RemoveVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__RemoveVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__RemoveVideoEncoderConfiguration
+#define SOAP_TYPE___trt__RemoveVideoEncoderConfiguration (2111)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__RemoveVideoEncoderConfiguration(struct soap*, struct __trt__RemoveVideoEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__RemoveVideoEncoderConfiguration(struct soap*, const struct __trt__RemoveVideoEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__RemoveVideoEncoderConfiguration(struct soap*, const char*, int, const struct __trt__RemoveVideoEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__RemoveVideoEncoderConfiguration * SOAP_FMAC4 soap_in___trt__RemoveVideoEncoderConfiguration(struct soap*, const char*, struct __trt__RemoveVideoEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__RemoveVideoEncoderConfiguration(struct soap*, const struct __trt__RemoveVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__RemoveVideoEncoderConfiguration
+#define soap_write___trt__RemoveVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__RemoveVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__RemoveVideoEncoderConfiguration(soap, data, "-trt:RemoveVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__RemoveVideoEncoderConfiguration * SOAP_FMAC4 soap_get___trt__RemoveVideoEncoderConfiguration(struct soap*, struct __trt__RemoveVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__RemoveVideoEncoderConfiguration
+#define soap_read___trt__RemoveVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__RemoveVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__AddAudioDecoderConfiguration
+#define SOAP_TYPE___trt__AddAudioDecoderConfiguration (2107)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__AddAudioDecoderConfiguration(struct soap*, struct __trt__AddAudioDecoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__AddAudioDecoderConfiguration(struct soap*, const struct __trt__AddAudioDecoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__AddAudioDecoderConfiguration(struct soap*, const char*, int, const struct __trt__AddAudioDecoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__AddAudioDecoderConfiguration * SOAP_FMAC4 soap_in___trt__AddAudioDecoderConfiguration(struct soap*, const char*, struct __trt__AddAudioDecoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__AddAudioDecoderConfiguration(struct soap*, const struct __trt__AddAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__AddAudioDecoderConfiguration
+#define soap_write___trt__AddAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__AddAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__AddAudioDecoderConfiguration(soap, data, "-trt:AddAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__AddAudioDecoderConfiguration * SOAP_FMAC4 soap_get___trt__AddAudioDecoderConfiguration(struct soap*, struct __trt__AddAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__AddAudioDecoderConfiguration
+#define soap_read___trt__AddAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__AddAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__AddAudioOutputConfiguration
+#define SOAP_TYPE___trt__AddAudioOutputConfiguration (2103)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__AddAudioOutputConfiguration(struct soap*, struct __trt__AddAudioOutputConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__AddAudioOutputConfiguration(struct soap*, const struct __trt__AddAudioOutputConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__AddAudioOutputConfiguration(struct soap*, const char*, int, const struct __trt__AddAudioOutputConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__AddAudioOutputConfiguration * SOAP_FMAC4 soap_in___trt__AddAudioOutputConfiguration(struct soap*, const char*, struct __trt__AddAudioOutputConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__AddAudioOutputConfiguration(struct soap*, const struct __trt__AddAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__AddAudioOutputConfiguration
+#define soap_write___trt__AddAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__AddAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__AddAudioOutputConfiguration(soap, data, "-trt:AddAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__AddAudioOutputConfiguration * SOAP_FMAC4 soap_get___trt__AddAudioOutputConfiguration(struct soap*, struct __trt__AddAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__AddAudioOutputConfiguration
+#define soap_read___trt__AddAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__AddAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__AddMetadataConfiguration
+#define SOAP_TYPE___trt__AddMetadataConfiguration (2099)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__AddMetadataConfiguration(struct soap*, struct __trt__AddMetadataConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__AddMetadataConfiguration(struct soap*, const struct __trt__AddMetadataConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__AddMetadataConfiguration(struct soap*, const char*, int, const struct __trt__AddMetadataConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__AddMetadataConfiguration * SOAP_FMAC4 soap_in___trt__AddMetadataConfiguration(struct soap*, const char*, struct __trt__AddMetadataConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__AddMetadataConfiguration(struct soap*, const struct __trt__AddMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__AddMetadataConfiguration
+#define soap_write___trt__AddMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__AddMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__AddMetadataConfiguration(soap, data, "-trt:AddMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__AddMetadataConfiguration * SOAP_FMAC4 soap_get___trt__AddMetadataConfiguration(struct soap*, struct __trt__AddMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__AddMetadataConfiguration
+#define soap_read___trt__AddMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__AddMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__AddVideoAnalyticsConfiguration
+#define SOAP_TYPE___trt__AddVideoAnalyticsConfiguration (2095)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__AddVideoAnalyticsConfiguration(struct soap*, struct __trt__AddVideoAnalyticsConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__AddVideoAnalyticsConfiguration(struct soap*, const struct __trt__AddVideoAnalyticsConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__AddVideoAnalyticsConfiguration(struct soap*, const char*, int, const struct __trt__AddVideoAnalyticsConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__AddVideoAnalyticsConfiguration * SOAP_FMAC4 soap_in___trt__AddVideoAnalyticsConfiguration(struct soap*, const char*, struct __trt__AddVideoAnalyticsConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__AddVideoAnalyticsConfiguration(struct soap*, const struct __trt__AddVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__AddVideoAnalyticsConfiguration
+#define soap_write___trt__AddVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__AddVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__AddVideoAnalyticsConfiguration(soap, data, "-trt:AddVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__AddVideoAnalyticsConfiguration * SOAP_FMAC4 soap_get___trt__AddVideoAnalyticsConfiguration(struct soap*, struct __trt__AddVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__AddVideoAnalyticsConfiguration
+#define soap_read___trt__AddVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__AddVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__AddPTZConfiguration
+#define SOAP_TYPE___trt__AddPTZConfiguration (2091)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__AddPTZConfiguration(struct soap*, struct __trt__AddPTZConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__AddPTZConfiguration(struct soap*, const struct __trt__AddPTZConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__AddPTZConfiguration(struct soap*, const char*, int, const struct __trt__AddPTZConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__AddPTZConfiguration * SOAP_FMAC4 soap_in___trt__AddPTZConfiguration(struct soap*, const char*, struct __trt__AddPTZConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__AddPTZConfiguration(struct soap*, const struct __trt__AddPTZConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__AddPTZConfiguration
+#define soap_write___trt__AddPTZConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__AddPTZConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__AddPTZConfiguration(soap, data, "-trt:AddPTZConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__AddPTZConfiguration * SOAP_FMAC4 soap_get___trt__AddPTZConfiguration(struct soap*, struct __trt__AddPTZConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__AddPTZConfiguration
+#define soap_read___trt__AddPTZConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__AddPTZConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__AddAudioSourceConfiguration
+#define SOAP_TYPE___trt__AddAudioSourceConfiguration (2087)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__AddAudioSourceConfiguration(struct soap*, struct __trt__AddAudioSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__AddAudioSourceConfiguration(struct soap*, const struct __trt__AddAudioSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__AddAudioSourceConfiguration(struct soap*, const char*, int, const struct __trt__AddAudioSourceConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__AddAudioSourceConfiguration * SOAP_FMAC4 soap_in___trt__AddAudioSourceConfiguration(struct soap*, const char*, struct __trt__AddAudioSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__AddAudioSourceConfiguration(struct soap*, const struct __trt__AddAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__AddAudioSourceConfiguration
+#define soap_write___trt__AddAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__AddAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__AddAudioSourceConfiguration(soap, data, "-trt:AddAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__AddAudioSourceConfiguration * SOAP_FMAC4 soap_get___trt__AddAudioSourceConfiguration(struct soap*, struct __trt__AddAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__AddAudioSourceConfiguration
+#define soap_read___trt__AddAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__AddAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__AddAudioEncoderConfiguration
+#define SOAP_TYPE___trt__AddAudioEncoderConfiguration (2083)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__AddAudioEncoderConfiguration(struct soap*, struct __trt__AddAudioEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__AddAudioEncoderConfiguration(struct soap*, const struct __trt__AddAudioEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__AddAudioEncoderConfiguration(struct soap*, const char*, int, const struct __trt__AddAudioEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__AddAudioEncoderConfiguration * SOAP_FMAC4 soap_in___trt__AddAudioEncoderConfiguration(struct soap*, const char*, struct __trt__AddAudioEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__AddAudioEncoderConfiguration(struct soap*, const struct __trt__AddAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__AddAudioEncoderConfiguration
+#define soap_write___trt__AddAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__AddAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__AddAudioEncoderConfiguration(soap, data, "-trt:AddAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__AddAudioEncoderConfiguration * SOAP_FMAC4 soap_get___trt__AddAudioEncoderConfiguration(struct soap*, struct __trt__AddAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__AddAudioEncoderConfiguration
+#define soap_read___trt__AddAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__AddAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__AddVideoSourceConfiguration
+#define SOAP_TYPE___trt__AddVideoSourceConfiguration (2079)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__AddVideoSourceConfiguration(struct soap*, struct __trt__AddVideoSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__AddVideoSourceConfiguration(struct soap*, const struct __trt__AddVideoSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__AddVideoSourceConfiguration(struct soap*, const char*, int, const struct __trt__AddVideoSourceConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__AddVideoSourceConfiguration * SOAP_FMAC4 soap_in___trt__AddVideoSourceConfiguration(struct soap*, const char*, struct __trt__AddVideoSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__AddVideoSourceConfiguration(struct soap*, const struct __trt__AddVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__AddVideoSourceConfiguration
+#define soap_write___trt__AddVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__AddVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__AddVideoSourceConfiguration(soap, data, "-trt:AddVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__AddVideoSourceConfiguration * SOAP_FMAC4 soap_get___trt__AddVideoSourceConfiguration(struct soap*, struct __trt__AddVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__AddVideoSourceConfiguration
+#define soap_read___trt__AddVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__AddVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__AddVideoEncoderConfiguration
+#define SOAP_TYPE___trt__AddVideoEncoderConfiguration (2075)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__AddVideoEncoderConfiguration(struct soap*, struct __trt__AddVideoEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__AddVideoEncoderConfiguration(struct soap*, const struct __trt__AddVideoEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__AddVideoEncoderConfiguration(struct soap*, const char*, int, const struct __trt__AddVideoEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct __trt__AddVideoEncoderConfiguration * SOAP_FMAC4 soap_in___trt__AddVideoEncoderConfiguration(struct soap*, const char*, struct __trt__AddVideoEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__AddVideoEncoderConfiguration(struct soap*, const struct __trt__AddVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write___trt__AddVideoEncoderConfiguration
+#define soap_write___trt__AddVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize___trt__AddVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put___trt__AddVideoEncoderConfiguration(soap, data, "-trt:AddVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__AddVideoEncoderConfiguration * SOAP_FMAC4 soap_get___trt__AddVideoEncoderConfiguration(struct soap*, struct __trt__AddVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read___trt__AddVideoEncoderConfiguration
+#define soap_read___trt__AddVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__AddVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetProfiles
+#define SOAP_TYPE___trt__GetProfiles (2071)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetProfiles(struct soap*, struct __trt__GetProfiles *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetProfiles(struct soap*, const struct __trt__GetProfiles *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetProfiles(struct soap*, const char*, int, const struct __trt__GetProfiles *, const char*);
+SOAP_FMAC3 struct __trt__GetProfiles * SOAP_FMAC4 soap_in___trt__GetProfiles(struct soap*, const char*, struct __trt__GetProfiles *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetProfiles(struct soap*, const struct __trt__GetProfiles *, const char*, const char*);
+
+#ifndef soap_write___trt__GetProfiles
+#define soap_write___trt__GetProfiles(soap, data) ( soap_begin(soap), soap_serialize___trt__GetProfiles(soap, data), soap_begin_send(soap) || soap_put___trt__GetProfiles(soap, data, "-trt:GetProfiles", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetProfiles * SOAP_FMAC4 soap_get___trt__GetProfiles(struct soap*, struct __trt__GetProfiles *, const char*, const char*);
+
+#ifndef soap_read___trt__GetProfiles
+#define soap_read___trt__GetProfiles(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetProfiles(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetProfile
+#define SOAP_TYPE___trt__GetProfile (2067)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetProfile(struct soap*, struct __trt__GetProfile *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetProfile(struct soap*, const struct __trt__GetProfile *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetProfile(struct soap*, const char*, int, const struct __trt__GetProfile *, const char*);
+SOAP_FMAC3 struct __trt__GetProfile * SOAP_FMAC4 soap_in___trt__GetProfile(struct soap*, const char*, struct __trt__GetProfile *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetProfile(struct soap*, const struct __trt__GetProfile *, const char*, const char*);
+
+#ifndef soap_write___trt__GetProfile
+#define soap_write___trt__GetProfile(soap, data) ( soap_begin(soap), soap_serialize___trt__GetProfile(soap, data), soap_begin_send(soap) || soap_put___trt__GetProfile(soap, data, "-trt:GetProfile", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetProfile * SOAP_FMAC4 soap_get___trt__GetProfile(struct soap*, struct __trt__GetProfile *, const char*, const char*);
+
+#ifndef soap_read___trt__GetProfile
+#define soap_read___trt__GetProfile(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetProfile(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__CreateProfile
+#define SOAP_TYPE___trt__CreateProfile (2063)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__CreateProfile(struct soap*, struct __trt__CreateProfile *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__CreateProfile(struct soap*, const struct __trt__CreateProfile *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__CreateProfile(struct soap*, const char*, int, const struct __trt__CreateProfile *, const char*);
+SOAP_FMAC3 struct __trt__CreateProfile * SOAP_FMAC4 soap_in___trt__CreateProfile(struct soap*, const char*, struct __trt__CreateProfile *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__CreateProfile(struct soap*, const struct __trt__CreateProfile *, const char*, const char*);
+
+#ifndef soap_write___trt__CreateProfile
+#define soap_write___trt__CreateProfile(soap, data) ( soap_begin(soap), soap_serialize___trt__CreateProfile(soap, data), soap_begin_send(soap) || soap_put___trt__CreateProfile(soap, data, "-trt:CreateProfile", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__CreateProfile * SOAP_FMAC4 soap_get___trt__CreateProfile(struct soap*, struct __trt__CreateProfile *, const char*, const char*);
+
+#ifndef soap_read___trt__CreateProfile
+#define soap_read___trt__CreateProfile(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__CreateProfile(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioOutputs
+#define SOAP_TYPE___trt__GetAudioOutputs (2059)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioOutputs(struct soap*, struct __trt__GetAudioOutputs *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioOutputs(struct soap*, const struct __trt__GetAudioOutputs *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioOutputs(struct soap*, const char*, int, const struct __trt__GetAudioOutputs *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioOutputs * SOAP_FMAC4 soap_in___trt__GetAudioOutputs(struct soap*, const char*, struct __trt__GetAudioOutputs *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioOutputs(struct soap*, const struct __trt__GetAudioOutputs *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioOutputs
+#define soap_write___trt__GetAudioOutputs(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioOutputs(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioOutputs(soap, data, "-trt:GetAudioOutputs", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioOutputs * SOAP_FMAC4 soap_get___trt__GetAudioOutputs(struct soap*, struct __trt__GetAudioOutputs *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioOutputs
+#define soap_read___trt__GetAudioOutputs(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioOutputs(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetAudioSources
+#define SOAP_TYPE___trt__GetAudioSources (2055)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetAudioSources(struct soap*, struct __trt__GetAudioSources *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetAudioSources(struct soap*, const struct __trt__GetAudioSources *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetAudioSources(struct soap*, const char*, int, const struct __trt__GetAudioSources *, const char*);
+SOAP_FMAC3 struct __trt__GetAudioSources * SOAP_FMAC4 soap_in___trt__GetAudioSources(struct soap*, const char*, struct __trt__GetAudioSources *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetAudioSources(struct soap*, const struct __trt__GetAudioSources *, const char*, const char*);
+
+#ifndef soap_write___trt__GetAudioSources
+#define soap_write___trt__GetAudioSources(soap, data) ( soap_begin(soap), soap_serialize___trt__GetAudioSources(soap, data), soap_begin_send(soap) || soap_put___trt__GetAudioSources(soap, data, "-trt:GetAudioSources", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetAudioSources * SOAP_FMAC4 soap_get___trt__GetAudioSources(struct soap*, struct __trt__GetAudioSources *, const char*, const char*);
+
+#ifndef soap_read___trt__GetAudioSources
+#define soap_read___trt__GetAudioSources(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetAudioSources(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetVideoSources
+#define SOAP_TYPE___trt__GetVideoSources (2051)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetVideoSources(struct soap*, struct __trt__GetVideoSources *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetVideoSources(struct soap*, const struct __trt__GetVideoSources *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetVideoSources(struct soap*, const char*, int, const struct __trt__GetVideoSources *, const char*);
+SOAP_FMAC3 struct __trt__GetVideoSources * SOAP_FMAC4 soap_in___trt__GetVideoSources(struct soap*, const char*, struct __trt__GetVideoSources *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetVideoSources(struct soap*, const struct __trt__GetVideoSources *, const char*, const char*);
+
+#ifndef soap_write___trt__GetVideoSources
+#define soap_write___trt__GetVideoSources(soap, data) ( soap_begin(soap), soap_serialize___trt__GetVideoSources(soap, data), soap_begin_send(soap) || soap_put___trt__GetVideoSources(soap, data, "-trt:GetVideoSources", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetVideoSources * SOAP_FMAC4 soap_get___trt__GetVideoSources(struct soap*, struct __trt__GetVideoSources *, const char*, const char*);
+
+#ifndef soap_read___trt__GetVideoSources
+#define soap_read___trt__GetVideoSources(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetVideoSources(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___trt__GetServiceCapabilities
+#define SOAP_TYPE___trt__GetServiceCapabilities (2047)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___trt__GetServiceCapabilities(struct soap*, struct __trt__GetServiceCapabilities *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___trt__GetServiceCapabilities(struct soap*, const struct __trt__GetServiceCapabilities *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___trt__GetServiceCapabilities(struct soap*, const char*, int, const struct __trt__GetServiceCapabilities *, const char*);
+SOAP_FMAC3 struct __trt__GetServiceCapabilities * SOAP_FMAC4 soap_in___trt__GetServiceCapabilities(struct soap*, const char*, struct __trt__GetServiceCapabilities *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___trt__GetServiceCapabilities(struct soap*, const struct __trt__GetServiceCapabilities *, const char*, const char*);
+
+#ifndef soap_write___trt__GetServiceCapabilities
+#define soap_write___trt__GetServiceCapabilities(soap, data) ( soap_begin(soap), soap_serialize___trt__GetServiceCapabilities(soap, data), soap_begin_send(soap) || soap_put___trt__GetServiceCapabilities(soap, data, "-trt:GetServiceCapabilities", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __trt__GetServiceCapabilities * SOAP_FMAC4 soap_get___trt__GetServiceCapabilities(struct soap*, struct __trt__GetServiceCapabilities *, const char*, const char*);
+
+#ifndef soap_read___trt__GetServiceCapabilities
+#define soap_read___trt__GetServiceCapabilities(soap, data) ( soap_begin_recv(soap) || !soap_get___trt__GetServiceCapabilities(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
 #ifndef SOAP_TYPE___tds__StartSystemRestore
-#define SOAP_TYPE___tds__StartSystemRestore (1885)
+#define SOAP_TYPE___tds__StartSystemRestore (2043)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__StartSystemRestore(struct soap*, struct __tds__StartSystemRestore *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__StartSystemRestore(struct soap*, const struct __tds__StartSystemRestore *);
@@ -1792,7 +3278,7 @@ SOAP_FMAC3 struct __tds__StartSystemRestore * SOAP_FMAC4 soap_get___tds__StartSy
 
 
 #ifndef SOAP_TYPE___tds__StartFirmwareUpgrade
-#define SOAP_TYPE___tds__StartFirmwareUpgrade (1881)
+#define SOAP_TYPE___tds__StartFirmwareUpgrade (2039)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__StartFirmwareUpgrade(struct soap*, struct __tds__StartFirmwareUpgrade *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__StartFirmwareUpgrade(struct soap*, const struct __tds__StartFirmwareUpgrade *);
@@ -1813,7 +3299,7 @@ SOAP_FMAC3 struct __tds__StartFirmwareUpgrade * SOAP_FMAC4 soap_get___tds__Start
 
 
 #ifndef SOAP_TYPE___tds__GetSystemUris
-#define SOAP_TYPE___tds__GetSystemUris (1877)
+#define SOAP_TYPE___tds__GetSystemUris (2035)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetSystemUris(struct soap*, struct __tds__GetSystemUris *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetSystemUris(struct soap*, const struct __tds__GetSystemUris *);
@@ -1834,7 +3320,7 @@ SOAP_FMAC3 struct __tds__GetSystemUris * SOAP_FMAC4 soap_get___tds__GetSystemUri
 
 
 #ifndef SOAP_TYPE___tds__ScanAvailableDot11Networks
-#define SOAP_TYPE___tds__ScanAvailableDot11Networks (1873)
+#define SOAP_TYPE___tds__ScanAvailableDot11Networks (2031)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__ScanAvailableDot11Networks(struct soap*, struct __tds__ScanAvailableDot11Networks *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__ScanAvailableDot11Networks(struct soap*, const struct __tds__ScanAvailableDot11Networks *);
@@ -1855,7 +3341,7 @@ SOAP_FMAC3 struct __tds__ScanAvailableDot11Networks * SOAP_FMAC4 soap_get___tds_
 
 
 #ifndef SOAP_TYPE___tds__GetDot11Status
-#define SOAP_TYPE___tds__GetDot11Status (1869)
+#define SOAP_TYPE___tds__GetDot11Status (2027)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetDot11Status(struct soap*, struct __tds__GetDot11Status *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetDot11Status(struct soap*, const struct __tds__GetDot11Status *);
@@ -1876,7 +3362,7 @@ SOAP_FMAC3 struct __tds__GetDot11Status * SOAP_FMAC4 soap_get___tds__GetDot11Sta
 
 
 #ifndef SOAP_TYPE___tds__GetDot11Capabilities
-#define SOAP_TYPE___tds__GetDot11Capabilities (1865)
+#define SOAP_TYPE___tds__GetDot11Capabilities (2023)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetDot11Capabilities(struct soap*, struct __tds__GetDot11Capabilities *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetDot11Capabilities(struct soap*, const struct __tds__GetDot11Capabilities *);
@@ -1897,7 +3383,7 @@ SOAP_FMAC3 struct __tds__GetDot11Capabilities * SOAP_FMAC4 soap_get___tds__GetDo
 
 
 #ifndef SOAP_TYPE___tds__DeleteDot1XConfiguration
-#define SOAP_TYPE___tds__DeleteDot1XConfiguration (1861)
+#define SOAP_TYPE___tds__DeleteDot1XConfiguration (2019)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__DeleteDot1XConfiguration(struct soap*, struct __tds__DeleteDot1XConfiguration *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__DeleteDot1XConfiguration(struct soap*, const struct __tds__DeleteDot1XConfiguration *);
@@ -1918,7 +3404,7 @@ SOAP_FMAC3 struct __tds__DeleteDot1XConfiguration * SOAP_FMAC4 soap_get___tds__D
 
 
 #ifndef SOAP_TYPE___tds__GetDot1XConfigurations
-#define SOAP_TYPE___tds__GetDot1XConfigurations (1857)
+#define SOAP_TYPE___tds__GetDot1XConfigurations (2015)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetDot1XConfigurations(struct soap*, struct __tds__GetDot1XConfigurations *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetDot1XConfigurations(struct soap*, const struct __tds__GetDot1XConfigurations *);
@@ -1939,7 +3425,7 @@ SOAP_FMAC3 struct __tds__GetDot1XConfigurations * SOAP_FMAC4 soap_get___tds__Get
 
 
 #ifndef SOAP_TYPE___tds__GetDot1XConfiguration
-#define SOAP_TYPE___tds__GetDot1XConfiguration (1853)
+#define SOAP_TYPE___tds__GetDot1XConfiguration (2011)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetDot1XConfiguration(struct soap*, struct __tds__GetDot1XConfiguration *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetDot1XConfiguration(struct soap*, const struct __tds__GetDot1XConfiguration *);
@@ -1960,7 +3446,7 @@ SOAP_FMAC3 struct __tds__GetDot1XConfiguration * SOAP_FMAC4 soap_get___tds__GetD
 
 
 #ifndef SOAP_TYPE___tds__SetDot1XConfiguration
-#define SOAP_TYPE___tds__SetDot1XConfiguration (1849)
+#define SOAP_TYPE___tds__SetDot1XConfiguration (2007)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetDot1XConfiguration(struct soap*, struct __tds__SetDot1XConfiguration *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetDot1XConfiguration(struct soap*, const struct __tds__SetDot1XConfiguration *);
@@ -1981,7 +3467,7 @@ SOAP_FMAC3 struct __tds__SetDot1XConfiguration * SOAP_FMAC4 soap_get___tds__SetD
 
 
 #ifndef SOAP_TYPE___tds__CreateDot1XConfiguration
-#define SOAP_TYPE___tds__CreateDot1XConfiguration (1845)
+#define SOAP_TYPE___tds__CreateDot1XConfiguration (2003)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__CreateDot1XConfiguration(struct soap*, struct __tds__CreateDot1XConfiguration *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__CreateDot1XConfiguration(struct soap*, const struct __tds__CreateDot1XConfiguration *);
@@ -2002,7 +3488,7 @@ SOAP_FMAC3 struct __tds__CreateDot1XConfiguration * SOAP_FMAC4 soap_get___tds__C
 
 
 #ifndef SOAP_TYPE___tds__LoadCACertificates
-#define SOAP_TYPE___tds__LoadCACertificates (1841)
+#define SOAP_TYPE___tds__LoadCACertificates (1999)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__LoadCACertificates(struct soap*, struct __tds__LoadCACertificates *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__LoadCACertificates(struct soap*, const struct __tds__LoadCACertificates *);
@@ -2023,7 +3509,7 @@ SOAP_FMAC3 struct __tds__LoadCACertificates * SOAP_FMAC4 soap_get___tds__LoadCAC
 
 
 #ifndef SOAP_TYPE___tds__GetCertificateInformation
-#define SOAP_TYPE___tds__GetCertificateInformation (1837)
+#define SOAP_TYPE___tds__GetCertificateInformation (1995)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetCertificateInformation(struct soap*, struct __tds__GetCertificateInformation *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetCertificateInformation(struct soap*, const struct __tds__GetCertificateInformation *);
@@ -2044,7 +3530,7 @@ SOAP_FMAC3 struct __tds__GetCertificateInformation * SOAP_FMAC4 soap_get___tds__
 
 
 #ifndef SOAP_TYPE___tds__LoadCertificateWithPrivateKey
-#define SOAP_TYPE___tds__LoadCertificateWithPrivateKey (1833)
+#define SOAP_TYPE___tds__LoadCertificateWithPrivateKey (1991)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__LoadCertificateWithPrivateKey(struct soap*, struct __tds__LoadCertificateWithPrivateKey *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__LoadCertificateWithPrivateKey(struct soap*, const struct __tds__LoadCertificateWithPrivateKey *);
@@ -2065,7 +3551,7 @@ SOAP_FMAC3 struct __tds__LoadCertificateWithPrivateKey * SOAP_FMAC4 soap_get___t
 
 
 #ifndef SOAP_TYPE___tds__GetCACertificates
-#define SOAP_TYPE___tds__GetCACertificates (1829)
+#define SOAP_TYPE___tds__GetCACertificates (1987)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetCACertificates(struct soap*, struct __tds__GetCACertificates *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetCACertificates(struct soap*, const struct __tds__GetCACertificates *);
@@ -2086,7 +3572,7 @@ SOAP_FMAC3 struct __tds__GetCACertificates * SOAP_FMAC4 soap_get___tds__GetCACer
 
 
 #ifndef SOAP_TYPE___tds__SendAuxiliaryCommand
-#define SOAP_TYPE___tds__SendAuxiliaryCommand (1825)
+#define SOAP_TYPE___tds__SendAuxiliaryCommand (1983)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SendAuxiliaryCommand(struct soap*, struct __tds__SendAuxiliaryCommand *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SendAuxiliaryCommand(struct soap*, const struct __tds__SendAuxiliaryCommand *);
@@ -2107,7 +3593,7 @@ SOAP_FMAC3 struct __tds__SendAuxiliaryCommand * SOAP_FMAC4 soap_get___tds__SendA
 
 
 #ifndef SOAP_TYPE___tds__SetRelayOutputState
-#define SOAP_TYPE___tds__SetRelayOutputState (1821)
+#define SOAP_TYPE___tds__SetRelayOutputState (1979)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetRelayOutputState(struct soap*, struct __tds__SetRelayOutputState *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetRelayOutputState(struct soap*, const struct __tds__SetRelayOutputState *);
@@ -2128,7 +3614,7 @@ SOAP_FMAC3 struct __tds__SetRelayOutputState * SOAP_FMAC4 soap_get___tds__SetRel
 
 
 #ifndef SOAP_TYPE___tds__SetRelayOutputSettings
-#define SOAP_TYPE___tds__SetRelayOutputSettings (1817)
+#define SOAP_TYPE___tds__SetRelayOutputSettings (1975)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetRelayOutputSettings(struct soap*, struct __tds__SetRelayOutputSettings *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetRelayOutputSettings(struct soap*, const struct __tds__SetRelayOutputSettings *);
@@ -2149,7 +3635,7 @@ SOAP_FMAC3 struct __tds__SetRelayOutputSettings * SOAP_FMAC4 soap_get___tds__Set
 
 
 #ifndef SOAP_TYPE___tds__GetRelayOutputs
-#define SOAP_TYPE___tds__GetRelayOutputs (1813)
+#define SOAP_TYPE___tds__GetRelayOutputs (1971)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetRelayOutputs(struct soap*, struct __tds__GetRelayOutputs *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetRelayOutputs(struct soap*, const struct __tds__GetRelayOutputs *);
@@ -2170,7 +3656,7 @@ SOAP_FMAC3 struct __tds__GetRelayOutputs * SOAP_FMAC4 soap_get___tds__GetRelayOu
 
 
 #ifndef SOAP_TYPE___tds__SetClientCertificateMode
-#define SOAP_TYPE___tds__SetClientCertificateMode (1809)
+#define SOAP_TYPE___tds__SetClientCertificateMode (1967)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetClientCertificateMode(struct soap*, struct __tds__SetClientCertificateMode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetClientCertificateMode(struct soap*, const struct __tds__SetClientCertificateMode *);
@@ -2191,7 +3677,7 @@ SOAP_FMAC3 struct __tds__SetClientCertificateMode * SOAP_FMAC4 soap_get___tds__S
 
 
 #ifndef SOAP_TYPE___tds__GetClientCertificateMode
-#define SOAP_TYPE___tds__GetClientCertificateMode (1805)
+#define SOAP_TYPE___tds__GetClientCertificateMode (1963)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetClientCertificateMode(struct soap*, struct __tds__GetClientCertificateMode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetClientCertificateMode(struct soap*, const struct __tds__GetClientCertificateMode *);
@@ -2212,7 +3698,7 @@ SOAP_FMAC3 struct __tds__GetClientCertificateMode * SOAP_FMAC4 soap_get___tds__G
 
 
 #ifndef SOAP_TYPE___tds__LoadCertificates
-#define SOAP_TYPE___tds__LoadCertificates (1801)
+#define SOAP_TYPE___tds__LoadCertificates (1959)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__LoadCertificates(struct soap*, struct __tds__LoadCertificates *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__LoadCertificates(struct soap*, const struct __tds__LoadCertificates *);
@@ -2233,7 +3719,7 @@ SOAP_FMAC3 struct __tds__LoadCertificates * SOAP_FMAC4 soap_get___tds__LoadCerti
 
 
 #ifndef SOAP_TYPE___tds__GetPkcs10Request
-#define SOAP_TYPE___tds__GetPkcs10Request (1797)
+#define SOAP_TYPE___tds__GetPkcs10Request (1955)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetPkcs10Request(struct soap*, struct __tds__GetPkcs10Request *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetPkcs10Request(struct soap*, const struct __tds__GetPkcs10Request *);
@@ -2254,7 +3740,7 @@ SOAP_FMAC3 struct __tds__GetPkcs10Request * SOAP_FMAC4 soap_get___tds__GetPkcs10
 
 
 #ifndef SOAP_TYPE___tds__DeleteCertificates
-#define SOAP_TYPE___tds__DeleteCertificates (1793)
+#define SOAP_TYPE___tds__DeleteCertificates (1951)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__DeleteCertificates(struct soap*, struct __tds__DeleteCertificates *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__DeleteCertificates(struct soap*, const struct __tds__DeleteCertificates *);
@@ -2275,7 +3761,7 @@ SOAP_FMAC3 struct __tds__DeleteCertificates * SOAP_FMAC4 soap_get___tds__DeleteC
 
 
 #ifndef SOAP_TYPE___tds__SetCertificatesStatus
-#define SOAP_TYPE___tds__SetCertificatesStatus (1789)
+#define SOAP_TYPE___tds__SetCertificatesStatus (1947)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetCertificatesStatus(struct soap*, struct __tds__SetCertificatesStatus *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetCertificatesStatus(struct soap*, const struct __tds__SetCertificatesStatus *);
@@ -2296,7 +3782,7 @@ SOAP_FMAC3 struct __tds__SetCertificatesStatus * SOAP_FMAC4 soap_get___tds__SetC
 
 
 #ifndef SOAP_TYPE___tds__GetCertificatesStatus
-#define SOAP_TYPE___tds__GetCertificatesStatus (1785)
+#define SOAP_TYPE___tds__GetCertificatesStatus (1943)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetCertificatesStatus(struct soap*, struct __tds__GetCertificatesStatus *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetCertificatesStatus(struct soap*, const struct __tds__GetCertificatesStatus *);
@@ -2317,7 +3803,7 @@ SOAP_FMAC3 struct __tds__GetCertificatesStatus * SOAP_FMAC4 soap_get___tds__GetC
 
 
 #ifndef SOAP_TYPE___tds__GetCertificates
-#define SOAP_TYPE___tds__GetCertificates (1781)
+#define SOAP_TYPE___tds__GetCertificates (1939)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetCertificates(struct soap*, struct __tds__GetCertificates *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetCertificates(struct soap*, const struct __tds__GetCertificates *);
@@ -2338,7 +3824,7 @@ SOAP_FMAC3 struct __tds__GetCertificates * SOAP_FMAC4 soap_get___tds__GetCertifi
 
 
 #ifndef SOAP_TYPE___tds__CreateCertificate
-#define SOAP_TYPE___tds__CreateCertificate (1777)
+#define SOAP_TYPE___tds__CreateCertificate (1935)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__CreateCertificate(struct soap*, struct __tds__CreateCertificate *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__CreateCertificate(struct soap*, const struct __tds__CreateCertificate *);
@@ -2359,7 +3845,7 @@ SOAP_FMAC3 struct __tds__CreateCertificate * SOAP_FMAC4 soap_get___tds__CreateCe
 
 
 #ifndef SOAP_TYPE___tds__SetAccessPolicy
-#define SOAP_TYPE___tds__SetAccessPolicy (1773)
+#define SOAP_TYPE___tds__SetAccessPolicy (1931)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetAccessPolicy(struct soap*, struct __tds__SetAccessPolicy *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetAccessPolicy(struct soap*, const struct __tds__SetAccessPolicy *);
@@ -2380,7 +3866,7 @@ SOAP_FMAC3 struct __tds__SetAccessPolicy * SOAP_FMAC4 soap_get___tds__SetAccessP
 
 
 #ifndef SOAP_TYPE___tds__GetAccessPolicy
-#define SOAP_TYPE___tds__GetAccessPolicy (1769)
+#define SOAP_TYPE___tds__GetAccessPolicy (1927)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetAccessPolicy(struct soap*, struct __tds__GetAccessPolicy *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetAccessPolicy(struct soap*, const struct __tds__GetAccessPolicy *);
@@ -2401,7 +3887,7 @@ SOAP_FMAC3 struct __tds__GetAccessPolicy * SOAP_FMAC4 soap_get___tds__GetAccessP
 
 
 #ifndef SOAP_TYPE___tds__RemoveIPAddressFilter
-#define SOAP_TYPE___tds__RemoveIPAddressFilter (1765)
+#define SOAP_TYPE___tds__RemoveIPAddressFilter (1923)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__RemoveIPAddressFilter(struct soap*, struct __tds__RemoveIPAddressFilter *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__RemoveIPAddressFilter(struct soap*, const struct __tds__RemoveIPAddressFilter *);
@@ -2422,7 +3908,7 @@ SOAP_FMAC3 struct __tds__RemoveIPAddressFilter * SOAP_FMAC4 soap_get___tds__Remo
 
 
 #ifndef SOAP_TYPE___tds__AddIPAddressFilter
-#define SOAP_TYPE___tds__AddIPAddressFilter (1761)
+#define SOAP_TYPE___tds__AddIPAddressFilter (1919)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__AddIPAddressFilter(struct soap*, struct __tds__AddIPAddressFilter *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__AddIPAddressFilter(struct soap*, const struct __tds__AddIPAddressFilter *);
@@ -2443,7 +3929,7 @@ SOAP_FMAC3 struct __tds__AddIPAddressFilter * SOAP_FMAC4 soap_get___tds__AddIPAd
 
 
 #ifndef SOAP_TYPE___tds__SetIPAddressFilter
-#define SOAP_TYPE___tds__SetIPAddressFilter (1757)
+#define SOAP_TYPE___tds__SetIPAddressFilter (1915)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetIPAddressFilter(struct soap*, struct __tds__SetIPAddressFilter *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetIPAddressFilter(struct soap*, const struct __tds__SetIPAddressFilter *);
@@ -2464,7 +3950,7 @@ SOAP_FMAC3 struct __tds__SetIPAddressFilter * SOAP_FMAC4 soap_get___tds__SetIPAd
 
 
 #ifndef SOAP_TYPE___tds__GetIPAddressFilter
-#define SOAP_TYPE___tds__GetIPAddressFilter (1753)
+#define SOAP_TYPE___tds__GetIPAddressFilter (1911)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetIPAddressFilter(struct soap*, struct __tds__GetIPAddressFilter *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetIPAddressFilter(struct soap*, const struct __tds__GetIPAddressFilter *);
@@ -2485,7 +3971,7 @@ SOAP_FMAC3 struct __tds__GetIPAddressFilter * SOAP_FMAC4 soap_get___tds__GetIPAd
 
 
 #ifndef SOAP_TYPE___tds__SetZeroConfiguration
-#define SOAP_TYPE___tds__SetZeroConfiguration (1749)
+#define SOAP_TYPE___tds__SetZeroConfiguration (1907)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetZeroConfiguration(struct soap*, struct __tds__SetZeroConfiguration *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetZeroConfiguration(struct soap*, const struct __tds__SetZeroConfiguration *);
@@ -2506,7 +3992,7 @@ SOAP_FMAC3 struct __tds__SetZeroConfiguration * SOAP_FMAC4 soap_get___tds__SetZe
 
 
 #ifndef SOAP_TYPE___tds__GetZeroConfiguration
-#define SOAP_TYPE___tds__GetZeroConfiguration (1745)
+#define SOAP_TYPE___tds__GetZeroConfiguration (1903)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetZeroConfiguration(struct soap*, struct __tds__GetZeroConfiguration *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetZeroConfiguration(struct soap*, const struct __tds__GetZeroConfiguration *);
@@ -2527,7 +4013,7 @@ SOAP_FMAC3 struct __tds__GetZeroConfiguration * SOAP_FMAC4 soap_get___tds__GetZe
 
 
 #ifndef SOAP_TYPE___tds__SetNetworkDefaultGateway
-#define SOAP_TYPE___tds__SetNetworkDefaultGateway (1741)
+#define SOAP_TYPE___tds__SetNetworkDefaultGateway (1899)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetNetworkDefaultGateway(struct soap*, struct __tds__SetNetworkDefaultGateway *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetNetworkDefaultGateway(struct soap*, const struct __tds__SetNetworkDefaultGateway *);
@@ -2548,7 +4034,7 @@ SOAP_FMAC3 struct __tds__SetNetworkDefaultGateway * SOAP_FMAC4 soap_get___tds__S
 
 
 #ifndef SOAP_TYPE___tds__GetNetworkDefaultGateway
-#define SOAP_TYPE___tds__GetNetworkDefaultGateway (1737)
+#define SOAP_TYPE___tds__GetNetworkDefaultGateway (1895)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetNetworkDefaultGateway(struct soap*, struct __tds__GetNetworkDefaultGateway *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetNetworkDefaultGateway(struct soap*, const struct __tds__GetNetworkDefaultGateway *);
@@ -2569,7 +4055,7 @@ SOAP_FMAC3 struct __tds__GetNetworkDefaultGateway * SOAP_FMAC4 soap_get___tds__G
 
 
 #ifndef SOAP_TYPE___tds__SetNetworkProtocols
-#define SOAP_TYPE___tds__SetNetworkProtocols (1733)
+#define SOAP_TYPE___tds__SetNetworkProtocols (1891)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetNetworkProtocols(struct soap*, struct __tds__SetNetworkProtocols *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetNetworkProtocols(struct soap*, const struct __tds__SetNetworkProtocols *);
@@ -2590,7 +4076,7 @@ SOAP_FMAC3 struct __tds__SetNetworkProtocols * SOAP_FMAC4 soap_get___tds__SetNet
 
 
 #ifndef SOAP_TYPE___tds__GetNetworkProtocols
-#define SOAP_TYPE___tds__GetNetworkProtocols (1729)
+#define SOAP_TYPE___tds__GetNetworkProtocols (1887)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetNetworkProtocols(struct soap*, struct __tds__GetNetworkProtocols *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetNetworkProtocols(struct soap*, const struct __tds__GetNetworkProtocols *);
@@ -2611,7 +4097,7 @@ SOAP_FMAC3 struct __tds__GetNetworkProtocols * SOAP_FMAC4 soap_get___tds__GetNet
 
 
 #ifndef SOAP_TYPE___tds__SetNetworkInterfaces
-#define SOAP_TYPE___tds__SetNetworkInterfaces (1725)
+#define SOAP_TYPE___tds__SetNetworkInterfaces (1883)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetNetworkInterfaces(struct soap*, struct __tds__SetNetworkInterfaces *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetNetworkInterfaces(struct soap*, const struct __tds__SetNetworkInterfaces *);
@@ -2632,7 +4118,7 @@ SOAP_FMAC3 struct __tds__SetNetworkInterfaces * SOAP_FMAC4 soap_get___tds__SetNe
 
 
 #ifndef SOAP_TYPE___tds__GetNetworkInterfaces
-#define SOAP_TYPE___tds__GetNetworkInterfaces (1721)
+#define SOAP_TYPE___tds__GetNetworkInterfaces (1879)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetNetworkInterfaces(struct soap*, struct __tds__GetNetworkInterfaces *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetNetworkInterfaces(struct soap*, const struct __tds__GetNetworkInterfaces *);
@@ -2653,7 +4139,7 @@ SOAP_FMAC3 struct __tds__GetNetworkInterfaces * SOAP_FMAC4 soap_get___tds__GetNe
 
 
 #ifndef SOAP_TYPE___tds__SetDynamicDNS
-#define SOAP_TYPE___tds__SetDynamicDNS (1717)
+#define SOAP_TYPE___tds__SetDynamicDNS (1875)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetDynamicDNS(struct soap*, struct __tds__SetDynamicDNS *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetDynamicDNS(struct soap*, const struct __tds__SetDynamicDNS *);
@@ -2674,7 +4160,7 @@ SOAP_FMAC3 struct __tds__SetDynamicDNS * SOAP_FMAC4 soap_get___tds__SetDynamicDN
 
 
 #ifndef SOAP_TYPE___tds__GetDynamicDNS
-#define SOAP_TYPE___tds__GetDynamicDNS (1713)
+#define SOAP_TYPE___tds__GetDynamicDNS (1871)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetDynamicDNS(struct soap*, struct __tds__GetDynamicDNS *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetDynamicDNS(struct soap*, const struct __tds__GetDynamicDNS *);
@@ -2695,7 +4181,7 @@ SOAP_FMAC3 struct __tds__GetDynamicDNS * SOAP_FMAC4 soap_get___tds__GetDynamicDN
 
 
 #ifndef SOAP_TYPE___tds__SetNTP
-#define SOAP_TYPE___tds__SetNTP (1709)
+#define SOAP_TYPE___tds__SetNTP (1867)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetNTP(struct soap*, struct __tds__SetNTP *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetNTP(struct soap*, const struct __tds__SetNTP *);
@@ -2716,7 +4202,7 @@ SOAP_FMAC3 struct __tds__SetNTP * SOAP_FMAC4 soap_get___tds__SetNTP(struct soap*
 
 
 #ifndef SOAP_TYPE___tds__GetNTP
-#define SOAP_TYPE___tds__GetNTP (1705)
+#define SOAP_TYPE___tds__GetNTP (1863)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetNTP(struct soap*, struct __tds__GetNTP *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetNTP(struct soap*, const struct __tds__GetNTP *);
@@ -2737,7 +4223,7 @@ SOAP_FMAC3 struct __tds__GetNTP * SOAP_FMAC4 soap_get___tds__GetNTP(struct soap*
 
 
 #ifndef SOAP_TYPE___tds__SetDNS
-#define SOAP_TYPE___tds__SetDNS (1701)
+#define SOAP_TYPE___tds__SetDNS (1859)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetDNS(struct soap*, struct __tds__SetDNS *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetDNS(struct soap*, const struct __tds__SetDNS *);
@@ -2758,7 +4244,7 @@ SOAP_FMAC3 struct __tds__SetDNS * SOAP_FMAC4 soap_get___tds__SetDNS(struct soap*
 
 
 #ifndef SOAP_TYPE___tds__GetDNS
-#define SOAP_TYPE___tds__GetDNS (1697)
+#define SOAP_TYPE___tds__GetDNS (1855)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetDNS(struct soap*, struct __tds__GetDNS *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetDNS(struct soap*, const struct __tds__GetDNS *);
@@ -2779,7 +4265,7 @@ SOAP_FMAC3 struct __tds__GetDNS * SOAP_FMAC4 soap_get___tds__GetDNS(struct soap*
 
 
 #ifndef SOAP_TYPE___tds__SetHostnameFromDHCP
-#define SOAP_TYPE___tds__SetHostnameFromDHCP (1693)
+#define SOAP_TYPE___tds__SetHostnameFromDHCP (1851)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetHostnameFromDHCP(struct soap*, struct __tds__SetHostnameFromDHCP *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetHostnameFromDHCP(struct soap*, const struct __tds__SetHostnameFromDHCP *);
@@ -2800,7 +4286,7 @@ SOAP_FMAC3 struct __tds__SetHostnameFromDHCP * SOAP_FMAC4 soap_get___tds__SetHos
 
 
 #ifndef SOAP_TYPE___tds__SetHostname
-#define SOAP_TYPE___tds__SetHostname (1689)
+#define SOAP_TYPE___tds__SetHostname (1847)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetHostname(struct soap*, struct __tds__SetHostname *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetHostname(struct soap*, const struct __tds__SetHostname *);
@@ -2821,7 +4307,7 @@ SOAP_FMAC3 struct __tds__SetHostname * SOAP_FMAC4 soap_get___tds__SetHostname(st
 
 
 #ifndef SOAP_TYPE___tds__GetHostname
-#define SOAP_TYPE___tds__GetHostname (1685)
+#define SOAP_TYPE___tds__GetHostname (1843)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetHostname(struct soap*, struct __tds__GetHostname *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetHostname(struct soap*, const struct __tds__GetHostname *);
@@ -2842,7 +4328,7 @@ SOAP_FMAC3 struct __tds__GetHostname * SOAP_FMAC4 soap_get___tds__GetHostname(st
 
 
 #ifndef SOAP_TYPE___tds__SetDPAddresses
-#define SOAP_TYPE___tds__SetDPAddresses (1681)
+#define SOAP_TYPE___tds__SetDPAddresses (1839)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetDPAddresses(struct soap*, struct __tds__SetDPAddresses *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetDPAddresses(struct soap*, const struct __tds__SetDPAddresses *);
@@ -2863,7 +4349,7 @@ SOAP_FMAC3 struct __tds__SetDPAddresses * SOAP_FMAC4 soap_get___tds__SetDPAddres
 
 
 #ifndef SOAP_TYPE___tds__GetCapabilities
-#define SOAP_TYPE___tds__GetCapabilities (1677)
+#define SOAP_TYPE___tds__GetCapabilities (1835)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetCapabilities(struct soap*, struct __tds__GetCapabilities *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetCapabilities(struct soap*, const struct __tds__GetCapabilities *);
@@ -2884,7 +4370,7 @@ SOAP_FMAC3 struct __tds__GetCapabilities * SOAP_FMAC4 soap_get___tds__GetCapabil
 
 
 #ifndef SOAP_TYPE___tds__GetWsdlUrl
-#define SOAP_TYPE___tds__GetWsdlUrl (1673)
+#define SOAP_TYPE___tds__GetWsdlUrl (1831)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetWsdlUrl(struct soap*, struct __tds__GetWsdlUrl *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetWsdlUrl(struct soap*, const struct __tds__GetWsdlUrl *);
@@ -2905,7 +4391,7 @@ SOAP_FMAC3 struct __tds__GetWsdlUrl * SOAP_FMAC4 soap_get___tds__GetWsdlUrl(stru
 
 
 #ifndef SOAP_TYPE___tds__SetUser
-#define SOAP_TYPE___tds__SetUser (1669)
+#define SOAP_TYPE___tds__SetUser (1827)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetUser(struct soap*, struct __tds__SetUser *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetUser(struct soap*, const struct __tds__SetUser *);
@@ -2926,7 +4412,7 @@ SOAP_FMAC3 struct __tds__SetUser * SOAP_FMAC4 soap_get___tds__SetUser(struct soa
 
 
 #ifndef SOAP_TYPE___tds__DeleteUsers
-#define SOAP_TYPE___tds__DeleteUsers (1665)
+#define SOAP_TYPE___tds__DeleteUsers (1823)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__DeleteUsers(struct soap*, struct __tds__DeleteUsers *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__DeleteUsers(struct soap*, const struct __tds__DeleteUsers *);
@@ -2947,7 +4433,7 @@ SOAP_FMAC3 struct __tds__DeleteUsers * SOAP_FMAC4 soap_get___tds__DeleteUsers(st
 
 
 #ifndef SOAP_TYPE___tds__CreateUsers
-#define SOAP_TYPE___tds__CreateUsers (1661)
+#define SOAP_TYPE___tds__CreateUsers (1819)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__CreateUsers(struct soap*, struct __tds__CreateUsers *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__CreateUsers(struct soap*, const struct __tds__CreateUsers *);
@@ -2968,7 +4454,7 @@ SOAP_FMAC3 struct __tds__CreateUsers * SOAP_FMAC4 soap_get___tds__CreateUsers(st
 
 
 #ifndef SOAP_TYPE___tds__GetUsers
-#define SOAP_TYPE___tds__GetUsers (1657)
+#define SOAP_TYPE___tds__GetUsers (1815)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetUsers(struct soap*, struct __tds__GetUsers *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetUsers(struct soap*, const struct __tds__GetUsers *);
@@ -2989,7 +4475,7 @@ SOAP_FMAC3 struct __tds__GetUsers * SOAP_FMAC4 soap_get___tds__GetUsers(struct s
 
 
 #ifndef SOAP_TYPE___tds__SetRemoteUser
-#define SOAP_TYPE___tds__SetRemoteUser (1653)
+#define SOAP_TYPE___tds__SetRemoteUser (1811)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetRemoteUser(struct soap*, struct __tds__SetRemoteUser *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetRemoteUser(struct soap*, const struct __tds__SetRemoteUser *);
@@ -3010,7 +4496,7 @@ SOAP_FMAC3 struct __tds__SetRemoteUser * SOAP_FMAC4 soap_get___tds__SetRemoteUse
 
 
 #ifndef SOAP_TYPE___tds__GetRemoteUser
-#define SOAP_TYPE___tds__GetRemoteUser (1649)
+#define SOAP_TYPE___tds__GetRemoteUser (1807)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetRemoteUser(struct soap*, struct __tds__GetRemoteUser *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetRemoteUser(struct soap*, const struct __tds__GetRemoteUser *);
@@ -3031,7 +4517,7 @@ SOAP_FMAC3 struct __tds__GetRemoteUser * SOAP_FMAC4 soap_get___tds__GetRemoteUse
 
 
 #ifndef SOAP_TYPE___tds__GetEndpointReference
-#define SOAP_TYPE___tds__GetEndpointReference (1645)
+#define SOAP_TYPE___tds__GetEndpointReference (1803)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetEndpointReference(struct soap*, struct __tds__GetEndpointReference *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetEndpointReference(struct soap*, const struct __tds__GetEndpointReference *);
@@ -3052,7 +4538,7 @@ SOAP_FMAC3 struct __tds__GetEndpointReference * SOAP_FMAC4 soap_get___tds__GetEn
 
 
 #ifndef SOAP_TYPE___tds__GetDPAddresses
-#define SOAP_TYPE___tds__GetDPAddresses (1641)
+#define SOAP_TYPE___tds__GetDPAddresses (1799)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetDPAddresses(struct soap*, struct __tds__GetDPAddresses *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetDPAddresses(struct soap*, const struct __tds__GetDPAddresses *);
@@ -3073,7 +4559,7 @@ SOAP_FMAC3 struct __tds__GetDPAddresses * SOAP_FMAC4 soap_get___tds__GetDPAddres
 
 
 #ifndef SOAP_TYPE___tds__SetRemoteDiscoveryMode
-#define SOAP_TYPE___tds__SetRemoteDiscoveryMode (1637)
+#define SOAP_TYPE___tds__SetRemoteDiscoveryMode (1795)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetRemoteDiscoveryMode(struct soap*, struct __tds__SetRemoteDiscoveryMode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetRemoteDiscoveryMode(struct soap*, const struct __tds__SetRemoteDiscoveryMode *);
@@ -3094,7 +4580,7 @@ SOAP_FMAC3 struct __tds__SetRemoteDiscoveryMode * SOAP_FMAC4 soap_get___tds__Set
 
 
 #ifndef SOAP_TYPE___tds__GetRemoteDiscoveryMode
-#define SOAP_TYPE___tds__GetRemoteDiscoveryMode (1633)
+#define SOAP_TYPE___tds__GetRemoteDiscoveryMode (1791)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetRemoteDiscoveryMode(struct soap*, struct __tds__GetRemoteDiscoveryMode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetRemoteDiscoveryMode(struct soap*, const struct __tds__GetRemoteDiscoveryMode *);
@@ -3115,7 +4601,7 @@ SOAP_FMAC3 struct __tds__GetRemoteDiscoveryMode * SOAP_FMAC4 soap_get___tds__Get
 
 
 #ifndef SOAP_TYPE___tds__SetDiscoveryMode
-#define SOAP_TYPE___tds__SetDiscoveryMode (1629)
+#define SOAP_TYPE___tds__SetDiscoveryMode (1787)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetDiscoveryMode(struct soap*, struct __tds__SetDiscoveryMode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetDiscoveryMode(struct soap*, const struct __tds__SetDiscoveryMode *);
@@ -3136,7 +4622,7 @@ SOAP_FMAC3 struct __tds__SetDiscoveryMode * SOAP_FMAC4 soap_get___tds__SetDiscov
 
 
 #ifndef SOAP_TYPE___tds__GetDiscoveryMode
-#define SOAP_TYPE___tds__GetDiscoveryMode (1625)
+#define SOAP_TYPE___tds__GetDiscoveryMode (1783)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetDiscoveryMode(struct soap*, struct __tds__GetDiscoveryMode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetDiscoveryMode(struct soap*, const struct __tds__GetDiscoveryMode *);
@@ -3157,7 +4643,7 @@ SOAP_FMAC3 struct __tds__GetDiscoveryMode * SOAP_FMAC4 soap_get___tds__GetDiscov
 
 
 #ifndef SOAP_TYPE___tds__RemoveScopes
-#define SOAP_TYPE___tds__RemoveScopes (1621)
+#define SOAP_TYPE___tds__RemoveScopes (1779)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__RemoveScopes(struct soap*, struct __tds__RemoveScopes *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__RemoveScopes(struct soap*, const struct __tds__RemoveScopes *);
@@ -3178,7 +4664,7 @@ SOAP_FMAC3 struct __tds__RemoveScopes * SOAP_FMAC4 soap_get___tds__RemoveScopes(
 
 
 #ifndef SOAP_TYPE___tds__AddScopes
-#define SOAP_TYPE___tds__AddScopes (1617)
+#define SOAP_TYPE___tds__AddScopes (1775)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__AddScopes(struct soap*, struct __tds__AddScopes *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__AddScopes(struct soap*, const struct __tds__AddScopes *);
@@ -3199,7 +4685,7 @@ SOAP_FMAC3 struct __tds__AddScopes * SOAP_FMAC4 soap_get___tds__AddScopes(struct
 
 
 #ifndef SOAP_TYPE___tds__SetScopes
-#define SOAP_TYPE___tds__SetScopes (1613)
+#define SOAP_TYPE___tds__SetScopes (1771)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetScopes(struct soap*, struct __tds__SetScopes *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetScopes(struct soap*, const struct __tds__SetScopes *);
@@ -3220,7 +4706,7 @@ SOAP_FMAC3 struct __tds__SetScopes * SOAP_FMAC4 soap_get___tds__SetScopes(struct
 
 
 #ifndef SOAP_TYPE___tds__GetScopes
-#define SOAP_TYPE___tds__GetScopes (1609)
+#define SOAP_TYPE___tds__GetScopes (1767)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetScopes(struct soap*, struct __tds__GetScopes *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetScopes(struct soap*, const struct __tds__GetScopes *);
@@ -3241,7 +4727,7 @@ SOAP_FMAC3 struct __tds__GetScopes * SOAP_FMAC4 soap_get___tds__GetScopes(struct
 
 
 #ifndef SOAP_TYPE___tds__GetSystemSupportInformation
-#define SOAP_TYPE___tds__GetSystemSupportInformation (1605)
+#define SOAP_TYPE___tds__GetSystemSupportInformation (1763)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetSystemSupportInformation(struct soap*, struct __tds__GetSystemSupportInformation *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetSystemSupportInformation(struct soap*, const struct __tds__GetSystemSupportInformation *);
@@ -3262,7 +4748,7 @@ SOAP_FMAC3 struct __tds__GetSystemSupportInformation * SOAP_FMAC4 soap_get___tds
 
 
 #ifndef SOAP_TYPE___tds__GetSystemLog
-#define SOAP_TYPE___tds__GetSystemLog (1601)
+#define SOAP_TYPE___tds__GetSystemLog (1759)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetSystemLog(struct soap*, struct __tds__GetSystemLog *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetSystemLog(struct soap*, const struct __tds__GetSystemLog *);
@@ -3283,7 +4769,7 @@ SOAP_FMAC3 struct __tds__GetSystemLog * SOAP_FMAC4 soap_get___tds__GetSystemLog(
 
 
 #ifndef SOAP_TYPE___tds__GetSystemBackup
-#define SOAP_TYPE___tds__GetSystemBackup (1597)
+#define SOAP_TYPE___tds__GetSystemBackup (1755)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetSystemBackup(struct soap*, struct __tds__GetSystemBackup *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetSystemBackup(struct soap*, const struct __tds__GetSystemBackup *);
@@ -3304,7 +4790,7 @@ SOAP_FMAC3 struct __tds__GetSystemBackup * SOAP_FMAC4 soap_get___tds__GetSystemB
 
 
 #ifndef SOAP_TYPE___tds__RestoreSystem
-#define SOAP_TYPE___tds__RestoreSystem (1593)
+#define SOAP_TYPE___tds__RestoreSystem (1751)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__RestoreSystem(struct soap*, struct __tds__RestoreSystem *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__RestoreSystem(struct soap*, const struct __tds__RestoreSystem *);
@@ -3325,7 +4811,7 @@ SOAP_FMAC3 struct __tds__RestoreSystem * SOAP_FMAC4 soap_get___tds__RestoreSyste
 
 
 #ifndef SOAP_TYPE___tds__SystemReboot
-#define SOAP_TYPE___tds__SystemReboot (1589)
+#define SOAP_TYPE___tds__SystemReboot (1747)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SystemReboot(struct soap*, struct __tds__SystemReboot *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SystemReboot(struct soap*, const struct __tds__SystemReboot *);
@@ -3346,7 +4832,7 @@ SOAP_FMAC3 struct __tds__SystemReboot * SOAP_FMAC4 soap_get___tds__SystemReboot(
 
 
 #ifndef SOAP_TYPE___tds__UpgradeSystemFirmware
-#define SOAP_TYPE___tds__UpgradeSystemFirmware (1585)
+#define SOAP_TYPE___tds__UpgradeSystemFirmware (1743)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__UpgradeSystemFirmware(struct soap*, struct __tds__UpgradeSystemFirmware *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__UpgradeSystemFirmware(struct soap*, const struct __tds__UpgradeSystemFirmware *);
@@ -3367,7 +4853,7 @@ SOAP_FMAC3 struct __tds__UpgradeSystemFirmware * SOAP_FMAC4 soap_get___tds__Upgr
 
 
 #ifndef SOAP_TYPE___tds__SetSystemFactoryDefault
-#define SOAP_TYPE___tds__SetSystemFactoryDefault (1581)
+#define SOAP_TYPE___tds__SetSystemFactoryDefault (1739)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetSystemFactoryDefault(struct soap*, struct __tds__SetSystemFactoryDefault *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetSystemFactoryDefault(struct soap*, const struct __tds__SetSystemFactoryDefault *);
@@ -3388,7 +4874,7 @@ SOAP_FMAC3 struct __tds__SetSystemFactoryDefault * SOAP_FMAC4 soap_get___tds__Se
 
 
 #ifndef SOAP_TYPE___tds__GetSystemDateAndTime
-#define SOAP_TYPE___tds__GetSystemDateAndTime (1577)
+#define SOAP_TYPE___tds__GetSystemDateAndTime (1735)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetSystemDateAndTime(struct soap*, struct __tds__GetSystemDateAndTime *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetSystemDateAndTime(struct soap*, const struct __tds__GetSystemDateAndTime *);
@@ -3409,7 +4895,7 @@ SOAP_FMAC3 struct __tds__GetSystemDateAndTime * SOAP_FMAC4 soap_get___tds__GetSy
 
 
 #ifndef SOAP_TYPE___tds__SetSystemDateAndTime
-#define SOAP_TYPE___tds__SetSystemDateAndTime (1573)
+#define SOAP_TYPE___tds__SetSystemDateAndTime (1731)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__SetSystemDateAndTime(struct soap*, struct __tds__SetSystemDateAndTime *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__SetSystemDateAndTime(struct soap*, const struct __tds__SetSystemDateAndTime *);
@@ -3430,7 +4916,7 @@ SOAP_FMAC3 struct __tds__SetSystemDateAndTime * SOAP_FMAC4 soap_get___tds__SetSy
 
 
 #ifndef SOAP_TYPE___tds__GetDeviceInformation
-#define SOAP_TYPE___tds__GetDeviceInformation (1569)
+#define SOAP_TYPE___tds__GetDeviceInformation (1727)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetDeviceInformation(struct soap*, struct __tds__GetDeviceInformation *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetDeviceInformation(struct soap*, const struct __tds__GetDeviceInformation *);
@@ -3451,7 +4937,7 @@ SOAP_FMAC3 struct __tds__GetDeviceInformation * SOAP_FMAC4 soap_get___tds__GetDe
 
 
 #ifndef SOAP_TYPE___tds__GetServiceCapabilities
-#define SOAP_TYPE___tds__GetServiceCapabilities (1565)
+#define SOAP_TYPE___tds__GetServiceCapabilities (1723)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetServiceCapabilities(struct soap*, struct __tds__GetServiceCapabilities *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetServiceCapabilities(struct soap*, const struct __tds__GetServiceCapabilities *);
@@ -3472,7 +4958,7 @@ SOAP_FMAC3 struct __tds__GetServiceCapabilities * SOAP_FMAC4 soap_get___tds__Get
 
 
 #ifndef SOAP_TYPE___tds__GetServices
-#define SOAP_TYPE___tds__GetServices (1561)
+#define SOAP_TYPE___tds__GetServices (1719)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tds__GetServices(struct soap*, struct __tds__GetServices *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tds__GetServices(struct soap*, const struct __tds__GetServices *);
@@ -3493,7 +4979,7 @@ SOAP_FMAC3 struct __tds__GetServices * SOAP_FMAC4 soap_get___tds__GetServices(st
 
 
 #ifndef SOAP_TYPE___tdn__Probe
-#define SOAP_TYPE___tdn__Probe (1557)
+#define SOAP_TYPE___tdn__Probe (1715)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tdn__Probe(struct soap*, struct __tdn__Probe *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tdn__Probe(struct soap*, const struct __tdn__Probe *);
@@ -3514,7 +5000,7 @@ SOAP_FMAC3 struct __tdn__Probe * SOAP_FMAC4 soap_get___tdn__Probe(struct soap*, 
 
 
 #ifndef SOAP_TYPE___tdn__Bye
-#define SOAP_TYPE___tdn__Bye (1555)
+#define SOAP_TYPE___tdn__Bye (1713)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tdn__Bye(struct soap*, struct __tdn__Bye *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tdn__Bye(struct soap*, const struct __tdn__Bye *);
@@ -3535,7 +5021,7 @@ SOAP_FMAC3 struct __tdn__Bye * SOAP_FMAC4 soap_get___tdn__Bye(struct soap*, stru
 
 
 #ifndef SOAP_TYPE___tdn__Hello
-#define SOAP_TYPE___tdn__Hello (1553)
+#define SOAP_TYPE___tdn__Hello (1711)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default___tdn__Hello(struct soap*, struct __tdn__Hello *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tdn__Hello(struct soap*, const struct __tdn__Hello *);
@@ -3556,7 +5042,7 @@ SOAP_FMAC3 struct __tdn__Hello * SOAP_FMAC4 soap_get___tdn__Hello(struct soap*, 
 
 
 #ifndef SOAP_TYPE_wstop__TopicType
-#define SOAP_TYPE_wstop__TopicType (1549)
+#define SOAP_TYPE_wstop__TopicType (1707)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wstop__TopicType(struct soap*, struct wstop__TopicType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wstop__TopicType(struct soap*, const struct wstop__TopicType *);
@@ -3577,7 +5063,7 @@ SOAP_FMAC3 struct wstop__TopicType * SOAP_FMAC4 soap_get_wstop__TopicType(struct
 
 
 #ifndef SOAP_TYPE__wstop__TopicNamespaceType_Topic
-#define SOAP_TYPE__wstop__TopicNamespaceType_Topic (1547)
+#define SOAP_TYPE__wstop__TopicNamespaceType_Topic (1705)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wstop__TopicNamespaceType_Topic(struct soap*, struct _wstop__TopicNamespaceType_Topic *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wstop__TopicNamespaceType_Topic(struct soap*, const struct _wstop__TopicNamespaceType_Topic *);
@@ -3598,7 +5084,7 @@ SOAP_FMAC3 struct _wstop__TopicNamespaceType_Topic * SOAP_FMAC4 soap_get__wstop_
 
 
 #ifndef SOAP_TYPE_wstop__TopicNamespaceType
-#define SOAP_TYPE_wstop__TopicNamespaceType (1546)
+#define SOAP_TYPE_wstop__TopicNamespaceType (1704)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wstop__TopicNamespaceType(struct soap*, struct wstop__TopicNamespaceType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wstop__TopicNamespaceType(struct soap*, const struct wstop__TopicNamespaceType *);
@@ -3619,7 +5105,7 @@ SOAP_FMAC3 struct wstop__TopicNamespaceType * SOAP_FMAC4 soap_get_wstop__TopicNa
 
 
 #ifndef SOAP_TYPE__wsnt__ResumeFailedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__ResumeFailedFaultType_FaultCause (1544)
+#define SOAP_TYPE__wsnt__ResumeFailedFaultType_FaultCause (1702)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__ResumeFailedFaultType_FaultCause(struct soap*, struct _wsnt__ResumeFailedFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__ResumeFailedFaultType_FaultCause(struct soap*, const struct _wsnt__ResumeFailedFaultType_FaultCause *);
@@ -3640,7 +5126,7 @@ SOAP_FMAC3 struct _wsnt__ResumeFailedFaultType_FaultCause * SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE__wsnt__ResumeFailedFaultType_Description
-#define SOAP_TYPE__wsnt__ResumeFailedFaultType_Description (1542)
+#define SOAP_TYPE__wsnt__ResumeFailedFaultType_Description (1700)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__ResumeFailedFaultType_Description(struct soap*, struct _wsnt__ResumeFailedFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__ResumeFailedFaultType_Description(struct soap*, const struct _wsnt__ResumeFailedFaultType_Description *);
@@ -3661,7 +5147,7 @@ SOAP_FMAC3 struct _wsnt__ResumeFailedFaultType_Description * SOAP_FMAC4 soap_get
 
 
 #ifndef SOAP_TYPE__wsnt__ResumeFailedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__ResumeFailedFaultType_ErrorCode (1540)
+#define SOAP_TYPE__wsnt__ResumeFailedFaultType_ErrorCode (1698)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__ResumeFailedFaultType_ErrorCode(struct soap*, struct _wsnt__ResumeFailedFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__ResumeFailedFaultType_ErrorCode(struct soap*, const struct _wsnt__ResumeFailedFaultType_ErrorCode *);
@@ -3682,7 +5168,7 @@ SOAP_FMAC3 struct _wsnt__ResumeFailedFaultType_ErrorCode * SOAP_FMAC4 soap_get__
 
 
 #ifndef SOAP_TYPE_wsnt__ResumeFailedFaultType
-#define SOAP_TYPE_wsnt__ResumeFailedFaultType (1539)
+#define SOAP_TYPE_wsnt__ResumeFailedFaultType (1697)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__ResumeFailedFaultType(struct soap*, struct wsnt__ResumeFailedFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__ResumeFailedFaultType(struct soap*, const struct wsnt__ResumeFailedFaultType *);
@@ -3703,7 +5189,7 @@ SOAP_FMAC3 struct wsnt__ResumeFailedFaultType * SOAP_FMAC4 soap_get_wsnt__Resume
 
 
 #ifndef SOAP_TYPE__wsnt__PauseFailedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__PauseFailedFaultType_FaultCause (1537)
+#define SOAP_TYPE__wsnt__PauseFailedFaultType_FaultCause (1695)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__PauseFailedFaultType_FaultCause(struct soap*, struct _wsnt__PauseFailedFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__PauseFailedFaultType_FaultCause(struct soap*, const struct _wsnt__PauseFailedFaultType_FaultCause *);
@@ -3724,7 +5210,7 @@ SOAP_FMAC3 struct _wsnt__PauseFailedFaultType_FaultCause * SOAP_FMAC4 soap_get__
 
 
 #ifndef SOAP_TYPE__wsnt__PauseFailedFaultType_Description
-#define SOAP_TYPE__wsnt__PauseFailedFaultType_Description (1535)
+#define SOAP_TYPE__wsnt__PauseFailedFaultType_Description (1693)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__PauseFailedFaultType_Description(struct soap*, struct _wsnt__PauseFailedFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__PauseFailedFaultType_Description(struct soap*, const struct _wsnt__PauseFailedFaultType_Description *);
@@ -3745,7 +5231,7 @@ SOAP_FMAC3 struct _wsnt__PauseFailedFaultType_Description * SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE__wsnt__PauseFailedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__PauseFailedFaultType_ErrorCode (1533)
+#define SOAP_TYPE__wsnt__PauseFailedFaultType_ErrorCode (1691)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__PauseFailedFaultType_ErrorCode(struct soap*, struct _wsnt__PauseFailedFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__PauseFailedFaultType_ErrorCode(struct soap*, const struct _wsnt__PauseFailedFaultType_ErrorCode *);
@@ -3766,7 +5252,7 @@ SOAP_FMAC3 struct _wsnt__PauseFailedFaultType_ErrorCode * SOAP_FMAC4 soap_get__w
 
 
 #ifndef SOAP_TYPE_wsnt__PauseFailedFaultType
-#define SOAP_TYPE_wsnt__PauseFailedFaultType (1532)
+#define SOAP_TYPE_wsnt__PauseFailedFaultType (1690)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__PauseFailedFaultType(struct soap*, struct wsnt__PauseFailedFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__PauseFailedFaultType(struct soap*, const struct wsnt__PauseFailedFaultType *);
@@ -3787,7 +5273,7 @@ SOAP_FMAC3 struct wsnt__PauseFailedFaultType * SOAP_FMAC4 soap_get_wsnt__PauseFa
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_FaultCause (1530)
+#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_FaultCause (1688)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToDestroySubscriptionFaultType_FaultCause(struct soap*, struct _wsnt__UnableToDestroySubscriptionFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToDestroySubscriptionFaultType_FaultCause(struct soap*, const struct _wsnt__UnableToDestroySubscriptionFaultType_FaultCause *);
@@ -3808,7 +5294,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroySubscriptionFaultType_FaultCause * SOAP_
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_Description
-#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_Description (1528)
+#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_Description (1686)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToDestroySubscriptionFaultType_Description(struct soap*, struct _wsnt__UnableToDestroySubscriptionFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToDestroySubscriptionFaultType_Description(struct soap*, const struct _wsnt__UnableToDestroySubscriptionFaultType_Description *);
@@ -3829,7 +5315,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroySubscriptionFaultType_Description * SOAP
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_ErrorCode (1526)
+#define SOAP_TYPE__wsnt__UnableToDestroySubscriptionFaultType_ErrorCode (1684)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToDestroySubscriptionFaultType_ErrorCode(struct soap*, struct _wsnt__UnableToDestroySubscriptionFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToDestroySubscriptionFaultType_ErrorCode(struct soap*, const struct _wsnt__UnableToDestroySubscriptionFaultType_ErrorCode *);
@@ -3850,7 +5336,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroySubscriptionFaultType_ErrorCode * SOAP_F
 
 
 #ifndef SOAP_TYPE_wsnt__UnableToDestroySubscriptionFaultType
-#define SOAP_TYPE_wsnt__UnableToDestroySubscriptionFaultType (1525)
+#define SOAP_TYPE_wsnt__UnableToDestroySubscriptionFaultType (1683)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__UnableToDestroySubscriptionFaultType(struct soap*, struct wsnt__UnableToDestroySubscriptionFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__UnableToDestroySubscriptionFaultType(struct soap*, const struct wsnt__UnableToDestroySubscriptionFaultType *);
@@ -3871,7 +5357,7 @@ SOAP_FMAC3 struct wsnt__UnableToDestroySubscriptionFaultType * SOAP_FMAC4 soap_g
 
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_FaultCause (1523)
+#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_FaultCause (1681)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnacceptableTerminationTimeFaultType_FaultCause(struct soap*, struct _wsnt__UnacceptableTerminationTimeFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnacceptableTerminationTimeFaultType_FaultCause(struct soap*, const struct _wsnt__UnacceptableTerminationTimeFaultType_FaultCause *);
@@ -3892,7 +5378,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableTerminationTimeFaultType_FaultCause * SOAP_
 
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_Description
-#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_Description (1521)
+#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_Description (1679)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnacceptableTerminationTimeFaultType_Description(struct soap*, struct _wsnt__UnacceptableTerminationTimeFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnacceptableTerminationTimeFaultType_Description(struct soap*, const struct _wsnt__UnacceptableTerminationTimeFaultType_Description *);
@@ -3913,7 +5399,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableTerminationTimeFaultType_Description * SOAP
 
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_ErrorCode (1519)
+#define SOAP_TYPE__wsnt__UnacceptableTerminationTimeFaultType_ErrorCode (1677)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnacceptableTerminationTimeFaultType_ErrorCode(struct soap*, struct _wsnt__UnacceptableTerminationTimeFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnacceptableTerminationTimeFaultType_ErrorCode(struct soap*, const struct _wsnt__UnacceptableTerminationTimeFaultType_ErrorCode *);
@@ -3934,7 +5420,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableTerminationTimeFaultType_ErrorCode * SOAP_F
 
 
 #ifndef SOAP_TYPE_wsnt__UnacceptableTerminationTimeFaultType
-#define SOAP_TYPE_wsnt__UnacceptableTerminationTimeFaultType (1518)
+#define SOAP_TYPE_wsnt__UnacceptableTerminationTimeFaultType (1676)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__UnacceptableTerminationTimeFaultType(struct soap*, struct wsnt__UnacceptableTerminationTimeFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__UnacceptableTerminationTimeFaultType(struct soap*, const struct wsnt__UnacceptableTerminationTimeFaultType *);
@@ -3955,7 +5441,7 @@ SOAP_FMAC3 struct wsnt__UnacceptableTerminationTimeFaultType * SOAP_FMAC4 soap_g
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_FaultCause (1516)
+#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_FaultCause (1674)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToCreatePullPointFaultType_FaultCause(struct soap*, struct _wsnt__UnableToCreatePullPointFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToCreatePullPointFaultType_FaultCause(struct soap*, const struct _wsnt__UnableToCreatePullPointFaultType_FaultCause *);
@@ -3976,7 +5462,7 @@ SOAP_FMAC3 struct _wsnt__UnableToCreatePullPointFaultType_FaultCause * SOAP_FMAC
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_Description
-#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_Description (1514)
+#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_Description (1672)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToCreatePullPointFaultType_Description(struct soap*, struct _wsnt__UnableToCreatePullPointFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToCreatePullPointFaultType_Description(struct soap*, const struct _wsnt__UnableToCreatePullPointFaultType_Description *);
@@ -3997,7 +5483,7 @@ SOAP_FMAC3 struct _wsnt__UnableToCreatePullPointFaultType_Description * SOAP_FMA
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_ErrorCode (1512)
+#define SOAP_TYPE__wsnt__UnableToCreatePullPointFaultType_ErrorCode (1670)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToCreatePullPointFaultType_ErrorCode(struct soap*, struct _wsnt__UnableToCreatePullPointFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToCreatePullPointFaultType_ErrorCode(struct soap*, const struct _wsnt__UnableToCreatePullPointFaultType_ErrorCode *);
@@ -4018,7 +5504,7 @@ SOAP_FMAC3 struct _wsnt__UnableToCreatePullPointFaultType_ErrorCode * SOAP_FMAC4
 
 
 #ifndef SOAP_TYPE_wsnt__UnableToCreatePullPointFaultType
-#define SOAP_TYPE_wsnt__UnableToCreatePullPointFaultType (1511)
+#define SOAP_TYPE_wsnt__UnableToCreatePullPointFaultType (1669)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__UnableToCreatePullPointFaultType(struct soap*, struct wsnt__UnableToCreatePullPointFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__UnableToCreatePullPointFaultType(struct soap*, const struct wsnt__UnableToCreatePullPointFaultType *);
@@ -4039,7 +5525,7 @@ SOAP_FMAC3 struct wsnt__UnableToCreatePullPointFaultType * SOAP_FMAC4 soap_get_w
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_FaultCause (1509)
+#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_FaultCause (1667)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToDestroyPullPointFaultType_FaultCause(struct soap*, struct _wsnt__UnableToDestroyPullPointFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToDestroyPullPointFaultType_FaultCause(struct soap*, const struct _wsnt__UnableToDestroyPullPointFaultType_FaultCause *);
@@ -4060,7 +5546,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroyPullPointFaultType_FaultCause * SOAP_FMA
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_Description
-#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_Description (1507)
+#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_Description (1665)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToDestroyPullPointFaultType_Description(struct soap*, struct _wsnt__UnableToDestroyPullPointFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToDestroyPullPointFaultType_Description(struct soap*, const struct _wsnt__UnableToDestroyPullPointFaultType_Description *);
@@ -4081,7 +5567,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroyPullPointFaultType_Description * SOAP_FM
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_ErrorCode (1505)
+#define SOAP_TYPE__wsnt__UnableToDestroyPullPointFaultType_ErrorCode (1663)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToDestroyPullPointFaultType_ErrorCode(struct soap*, struct _wsnt__UnableToDestroyPullPointFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToDestroyPullPointFaultType_ErrorCode(struct soap*, const struct _wsnt__UnableToDestroyPullPointFaultType_ErrorCode *);
@@ -4102,7 +5588,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroyPullPointFaultType_ErrorCode * SOAP_FMAC
 
 
 #ifndef SOAP_TYPE_wsnt__UnableToDestroyPullPointFaultType
-#define SOAP_TYPE_wsnt__UnableToDestroyPullPointFaultType (1504)
+#define SOAP_TYPE_wsnt__UnableToDestroyPullPointFaultType (1662)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__UnableToDestroyPullPointFaultType(struct soap*, struct wsnt__UnableToDestroyPullPointFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__UnableToDestroyPullPointFaultType(struct soap*, const struct wsnt__UnableToDestroyPullPointFaultType *);
@@ -4123,7 +5609,7 @@ SOAP_FMAC3 struct wsnt__UnableToDestroyPullPointFaultType * SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_FaultCause (1502)
+#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_FaultCause (1660)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToGetMessagesFaultType_FaultCause(struct soap*, struct _wsnt__UnableToGetMessagesFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToGetMessagesFaultType_FaultCause(struct soap*, const struct _wsnt__UnableToGetMessagesFaultType_FaultCause *);
@@ -4144,7 +5630,7 @@ SOAP_FMAC3 struct _wsnt__UnableToGetMessagesFaultType_FaultCause * SOAP_FMAC4 so
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_Description
-#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_Description (1500)
+#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_Description (1658)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToGetMessagesFaultType_Description(struct soap*, struct _wsnt__UnableToGetMessagesFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToGetMessagesFaultType_Description(struct soap*, const struct _wsnt__UnableToGetMessagesFaultType_Description *);
@@ -4165,7 +5651,7 @@ SOAP_FMAC3 struct _wsnt__UnableToGetMessagesFaultType_Description * SOAP_FMAC4 s
 
 
 #ifndef SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_ErrorCode (1498)
+#define SOAP_TYPE__wsnt__UnableToGetMessagesFaultType_ErrorCode (1656)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnableToGetMessagesFaultType_ErrorCode(struct soap*, struct _wsnt__UnableToGetMessagesFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnableToGetMessagesFaultType_ErrorCode(struct soap*, const struct _wsnt__UnableToGetMessagesFaultType_ErrorCode *);
@@ -4186,7 +5672,7 @@ SOAP_FMAC3 struct _wsnt__UnableToGetMessagesFaultType_ErrorCode * SOAP_FMAC4 soa
 
 
 #ifndef SOAP_TYPE_wsnt__UnableToGetMessagesFaultType
-#define SOAP_TYPE_wsnt__UnableToGetMessagesFaultType (1497)
+#define SOAP_TYPE_wsnt__UnableToGetMessagesFaultType (1655)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__UnableToGetMessagesFaultType(struct soap*, struct wsnt__UnableToGetMessagesFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__UnableToGetMessagesFaultType(struct soap*, const struct wsnt__UnableToGetMessagesFaultType *);
@@ -4207,7 +5693,7 @@ SOAP_FMAC3 struct wsnt__UnableToGetMessagesFaultType * SOAP_FMAC4 soap_get_wsnt_
 
 
 #ifndef SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_FaultCause
-#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_FaultCause (1495)
+#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_FaultCause (1653)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__NoCurrentMessageOnTopicFaultType_FaultCause(struct soap*, struct _wsnt__NoCurrentMessageOnTopicFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__NoCurrentMessageOnTopicFaultType_FaultCause(struct soap*, const struct _wsnt__NoCurrentMessageOnTopicFaultType_FaultCause *);
@@ -4228,7 +5714,7 @@ SOAP_FMAC3 struct _wsnt__NoCurrentMessageOnTopicFaultType_FaultCause * SOAP_FMAC
 
 
 #ifndef SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_Description
-#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_Description (1493)
+#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_Description (1651)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__NoCurrentMessageOnTopicFaultType_Description(struct soap*, struct _wsnt__NoCurrentMessageOnTopicFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__NoCurrentMessageOnTopicFaultType_Description(struct soap*, const struct _wsnt__NoCurrentMessageOnTopicFaultType_Description *);
@@ -4249,7 +5735,7 @@ SOAP_FMAC3 struct _wsnt__NoCurrentMessageOnTopicFaultType_Description * SOAP_FMA
 
 
 #ifndef SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode (1491)
+#define SOAP_TYPE__wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode (1649)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode(struct soap*, struct _wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode(struct soap*, const struct _wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode *);
@@ -4270,7 +5756,7 @@ SOAP_FMAC3 struct _wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode * SOAP_FMAC4
 
 
 #ifndef SOAP_TYPE_wsnt__NoCurrentMessageOnTopicFaultType
-#define SOAP_TYPE_wsnt__NoCurrentMessageOnTopicFaultType (1490)
+#define SOAP_TYPE_wsnt__NoCurrentMessageOnTopicFaultType (1648)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__NoCurrentMessageOnTopicFaultType(struct soap*, struct wsnt__NoCurrentMessageOnTopicFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__NoCurrentMessageOnTopicFaultType(struct soap*, const struct wsnt__NoCurrentMessageOnTopicFaultType *);
@@ -4291,7 +5777,7 @@ SOAP_FMAC3 struct wsnt__NoCurrentMessageOnTopicFaultType * SOAP_FMAC4 soap_get_w
 
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause (1488)
+#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause (1646)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause(struct soap*, struct _wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause(struct soap*, const struct _wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause *);
@@ -4312,7 +5798,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause 
 
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_Description
-#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_Description (1486)
+#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_Description (1644)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnacceptableInitialTerminationTimeFaultType_Description(struct soap*, struct _wsnt__UnacceptableInitialTerminationTimeFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnacceptableInitialTerminationTimeFaultType_Description(struct soap*, const struct _wsnt__UnacceptableInitialTerminationTimeFaultType_Description *);
@@ -4333,7 +5819,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableInitialTerminationTimeFaultType_Description
 
 
 #ifndef SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode (1484)
+#define SOAP_TYPE__wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode (1642)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode(struct soap*, struct _wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode(struct soap*, const struct _wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode *);
@@ -4354,7 +5840,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode *
 
 
 #ifndef SOAP_TYPE_wsnt__UnacceptableInitialTerminationTimeFaultType
-#define SOAP_TYPE_wsnt__UnacceptableInitialTerminationTimeFaultType (1483)
+#define SOAP_TYPE_wsnt__UnacceptableInitialTerminationTimeFaultType (1641)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__UnacceptableInitialTerminationTimeFaultType(struct soap*, struct wsnt__UnacceptableInitialTerminationTimeFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__UnacceptableInitialTerminationTimeFaultType(struct soap*, const struct wsnt__UnacceptableInitialTerminationTimeFaultType *);
@@ -4375,7 +5861,7 @@ SOAP_FMAC3 struct wsnt__UnacceptableInitialTerminationTimeFaultType * SOAP_FMAC4
 
 
 #ifndef SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_FaultCause (1481)
+#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_FaultCause (1639)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__NotifyMessageNotSupportedFaultType_FaultCause(struct soap*, struct _wsnt__NotifyMessageNotSupportedFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__NotifyMessageNotSupportedFaultType_FaultCause(struct soap*, const struct _wsnt__NotifyMessageNotSupportedFaultType_FaultCause *);
@@ -4396,7 +5882,7 @@ SOAP_FMAC3 struct _wsnt__NotifyMessageNotSupportedFaultType_FaultCause * SOAP_FM
 
 
 #ifndef SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_Description
-#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_Description (1479)
+#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_Description (1637)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__NotifyMessageNotSupportedFaultType_Description(struct soap*, struct _wsnt__NotifyMessageNotSupportedFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__NotifyMessageNotSupportedFaultType_Description(struct soap*, const struct _wsnt__NotifyMessageNotSupportedFaultType_Description *);
@@ -4417,7 +5903,7 @@ SOAP_FMAC3 struct _wsnt__NotifyMessageNotSupportedFaultType_Description * SOAP_F
 
 
 #ifndef SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_ErrorCode (1477)
+#define SOAP_TYPE__wsnt__NotifyMessageNotSupportedFaultType_ErrorCode (1635)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__NotifyMessageNotSupportedFaultType_ErrorCode(struct soap*, struct _wsnt__NotifyMessageNotSupportedFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__NotifyMessageNotSupportedFaultType_ErrorCode(struct soap*, const struct _wsnt__NotifyMessageNotSupportedFaultType_ErrorCode *);
@@ -4438,7 +5924,7 @@ SOAP_FMAC3 struct _wsnt__NotifyMessageNotSupportedFaultType_ErrorCode * SOAP_FMA
 
 
 #ifndef SOAP_TYPE_wsnt__NotifyMessageNotSupportedFaultType
-#define SOAP_TYPE_wsnt__NotifyMessageNotSupportedFaultType (1476)
+#define SOAP_TYPE_wsnt__NotifyMessageNotSupportedFaultType (1634)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__NotifyMessageNotSupportedFaultType(struct soap*, struct wsnt__NotifyMessageNotSupportedFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__NotifyMessageNotSupportedFaultType(struct soap*, const struct wsnt__NotifyMessageNotSupportedFaultType *);
@@ -4459,7 +5945,7 @@ SOAP_FMAC3 struct wsnt__NotifyMessageNotSupportedFaultType * SOAP_FMAC4 soap_get
 
 
 #ifndef SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_FaultCause (1474)
+#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_FaultCause (1632)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnsupportedPolicyRequestFaultType_FaultCause(struct soap*, struct _wsnt__UnsupportedPolicyRequestFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnsupportedPolicyRequestFaultType_FaultCause(struct soap*, const struct _wsnt__UnsupportedPolicyRequestFaultType_FaultCause *);
@@ -4480,7 +5966,7 @@ SOAP_FMAC3 struct _wsnt__UnsupportedPolicyRequestFaultType_FaultCause * SOAP_FMA
 
 
 #ifndef SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_Description
-#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_Description (1472)
+#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_Description (1630)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnsupportedPolicyRequestFaultType_Description(struct soap*, struct _wsnt__UnsupportedPolicyRequestFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnsupportedPolicyRequestFaultType_Description(struct soap*, const struct _wsnt__UnsupportedPolicyRequestFaultType_Description *);
@@ -4501,7 +5987,7 @@ SOAP_FMAC3 struct _wsnt__UnsupportedPolicyRequestFaultType_Description * SOAP_FM
 
 
 #ifndef SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_ErrorCode (1470)
+#define SOAP_TYPE__wsnt__UnsupportedPolicyRequestFaultType_ErrorCode (1628)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnsupportedPolicyRequestFaultType_ErrorCode(struct soap*, struct _wsnt__UnsupportedPolicyRequestFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnsupportedPolicyRequestFaultType_ErrorCode(struct soap*, const struct _wsnt__UnsupportedPolicyRequestFaultType_ErrorCode *);
@@ -4522,7 +6008,7 @@ SOAP_FMAC3 struct _wsnt__UnsupportedPolicyRequestFaultType_ErrorCode * SOAP_FMAC
 
 
 #ifndef SOAP_TYPE_wsnt__UnsupportedPolicyRequestFaultType
-#define SOAP_TYPE_wsnt__UnsupportedPolicyRequestFaultType (1469)
+#define SOAP_TYPE_wsnt__UnsupportedPolicyRequestFaultType (1627)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__UnsupportedPolicyRequestFaultType(struct soap*, struct wsnt__UnsupportedPolicyRequestFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__UnsupportedPolicyRequestFaultType(struct soap*, const struct wsnt__UnsupportedPolicyRequestFaultType *);
@@ -4543,7 +6029,7 @@ SOAP_FMAC3 struct wsnt__UnsupportedPolicyRequestFaultType * SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_FaultCause
-#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_FaultCause (1467)
+#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_FaultCause (1625)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnrecognizedPolicyRequestFaultType_FaultCause(struct soap*, struct _wsnt__UnrecognizedPolicyRequestFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnrecognizedPolicyRequestFaultType_FaultCause(struct soap*, const struct _wsnt__UnrecognizedPolicyRequestFaultType_FaultCause *);
@@ -4564,7 +6050,7 @@ SOAP_FMAC3 struct _wsnt__UnrecognizedPolicyRequestFaultType_FaultCause * SOAP_FM
 
 
 #ifndef SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_Description
-#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_Description (1465)
+#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_Description (1623)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnrecognizedPolicyRequestFaultType_Description(struct soap*, struct _wsnt__UnrecognizedPolicyRequestFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnrecognizedPolicyRequestFaultType_Description(struct soap*, const struct _wsnt__UnrecognizedPolicyRequestFaultType_Description *);
@@ -4585,7 +6071,7 @@ SOAP_FMAC3 struct _wsnt__UnrecognizedPolicyRequestFaultType_Description * SOAP_F
 
 
 #ifndef SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode (1463)
+#define SOAP_TYPE__wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode (1621)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode(struct soap*, struct _wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode(struct soap*, const struct _wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode *);
@@ -4606,7 +6092,7 @@ SOAP_FMAC3 struct _wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode * SOAP_FMA
 
 
 #ifndef SOAP_TYPE_wsnt__UnrecognizedPolicyRequestFaultType
-#define SOAP_TYPE_wsnt__UnrecognizedPolicyRequestFaultType (1462)
+#define SOAP_TYPE_wsnt__UnrecognizedPolicyRequestFaultType (1620)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__UnrecognizedPolicyRequestFaultType(struct soap*, struct wsnt__UnrecognizedPolicyRequestFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__UnrecognizedPolicyRequestFaultType(struct soap*, const struct wsnt__UnrecognizedPolicyRequestFaultType *);
@@ -4627,7 +6113,7 @@ SOAP_FMAC3 struct wsnt__UnrecognizedPolicyRequestFaultType * SOAP_FMAC4 soap_get
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_FaultCause
-#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_FaultCause (1460)
+#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_FaultCause (1618)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidMessageContentExpressionFaultType_FaultCause(struct soap*, struct _wsnt__InvalidMessageContentExpressionFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidMessageContentExpressionFaultType_FaultCause(struct soap*, const struct _wsnt__InvalidMessageContentExpressionFaultType_FaultCause *);
@@ -4648,7 +6134,7 @@ SOAP_FMAC3 struct _wsnt__InvalidMessageContentExpressionFaultType_FaultCause * S
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_Description
-#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_Description (1458)
+#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_Description (1616)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidMessageContentExpressionFaultType_Description(struct soap*, struct _wsnt__InvalidMessageContentExpressionFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidMessageContentExpressionFaultType_Description(struct soap*, const struct _wsnt__InvalidMessageContentExpressionFaultType_Description *);
@@ -4669,7 +6155,7 @@ SOAP_FMAC3 struct _wsnt__InvalidMessageContentExpressionFaultType_Description * 
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_ErrorCode (1456)
+#define SOAP_TYPE__wsnt__InvalidMessageContentExpressionFaultType_ErrorCode (1614)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidMessageContentExpressionFaultType_ErrorCode(struct soap*, struct _wsnt__InvalidMessageContentExpressionFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidMessageContentExpressionFaultType_ErrorCode(struct soap*, const struct _wsnt__InvalidMessageContentExpressionFaultType_ErrorCode *);
@@ -4690,7 +6176,7 @@ SOAP_FMAC3 struct _wsnt__InvalidMessageContentExpressionFaultType_ErrorCode * SO
 
 
 #ifndef SOAP_TYPE_wsnt__InvalidMessageContentExpressionFaultType
-#define SOAP_TYPE_wsnt__InvalidMessageContentExpressionFaultType (1455)
+#define SOAP_TYPE_wsnt__InvalidMessageContentExpressionFaultType (1613)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__InvalidMessageContentExpressionFaultType(struct soap*, struct wsnt__InvalidMessageContentExpressionFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__InvalidMessageContentExpressionFaultType(struct soap*, const struct wsnt__InvalidMessageContentExpressionFaultType *);
@@ -4711,7 +6197,7 @@ SOAP_FMAC3 struct wsnt__InvalidMessageContentExpressionFaultType * SOAP_FMAC4 so
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause
-#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause (1453)
+#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause (1611)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause(struct soap*, struct _wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause(struct soap*, const struct _wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause *);
@@ -4732,7 +6218,7 @@ SOAP_FMAC3 struct _wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_Description
-#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_Description (1451)
+#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_Description (1609)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidProducerPropertiesExpressionFaultType_Description(struct soap*, struct _wsnt__InvalidProducerPropertiesExpressionFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidProducerPropertiesExpressionFaultType_Description(struct soap*, const struct _wsnt__InvalidProducerPropertiesExpressionFaultType_Description *);
@@ -4753,7 +6239,7 @@ SOAP_FMAC3 struct _wsnt__InvalidProducerPropertiesExpressionFaultType_Descriptio
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode (1449)
+#define SOAP_TYPE__wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode (1607)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode(struct soap*, struct _wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode(struct soap*, const struct _wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode *);
@@ -4774,7 +6260,7 @@ SOAP_FMAC3 struct _wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode 
 
 
 #ifndef SOAP_TYPE_wsnt__InvalidProducerPropertiesExpressionFaultType
-#define SOAP_TYPE_wsnt__InvalidProducerPropertiesExpressionFaultType (1448)
+#define SOAP_TYPE_wsnt__InvalidProducerPropertiesExpressionFaultType (1606)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__InvalidProducerPropertiesExpressionFaultType(struct soap*, struct wsnt__InvalidProducerPropertiesExpressionFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__InvalidProducerPropertiesExpressionFaultType(struct soap*, const struct wsnt__InvalidProducerPropertiesExpressionFaultType *);
@@ -4795,7 +6281,7 @@ SOAP_FMAC3 struct wsnt__InvalidProducerPropertiesExpressionFaultType * SOAP_FMAC
 
 
 #ifndef SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_FaultCause (1446)
+#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_FaultCause (1604)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__MultipleTopicsSpecifiedFaultType_FaultCause(struct soap*, struct _wsnt__MultipleTopicsSpecifiedFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__MultipleTopicsSpecifiedFaultType_FaultCause(struct soap*, const struct _wsnt__MultipleTopicsSpecifiedFaultType_FaultCause *);
@@ -4816,7 +6302,7 @@ SOAP_FMAC3 struct _wsnt__MultipleTopicsSpecifiedFaultType_FaultCause * SOAP_FMAC
 
 
 #ifndef SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_Description
-#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_Description (1444)
+#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_Description (1602)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__MultipleTopicsSpecifiedFaultType_Description(struct soap*, struct _wsnt__MultipleTopicsSpecifiedFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__MultipleTopicsSpecifiedFaultType_Description(struct soap*, const struct _wsnt__MultipleTopicsSpecifiedFaultType_Description *);
@@ -4837,7 +6323,7 @@ SOAP_FMAC3 struct _wsnt__MultipleTopicsSpecifiedFaultType_Description * SOAP_FMA
 
 
 #ifndef SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode (1442)
+#define SOAP_TYPE__wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode (1600)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode(struct soap*, struct _wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode(struct soap*, const struct _wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode *);
@@ -4858,7 +6344,7 @@ SOAP_FMAC3 struct _wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode * SOAP_FMAC4
 
 
 #ifndef SOAP_TYPE_wsnt__MultipleTopicsSpecifiedFaultType
-#define SOAP_TYPE_wsnt__MultipleTopicsSpecifiedFaultType (1441)
+#define SOAP_TYPE_wsnt__MultipleTopicsSpecifiedFaultType (1599)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__MultipleTopicsSpecifiedFaultType(struct soap*, struct wsnt__MultipleTopicsSpecifiedFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__MultipleTopicsSpecifiedFaultType(struct soap*, const struct wsnt__MultipleTopicsSpecifiedFaultType *);
@@ -4879,7 +6365,7 @@ SOAP_FMAC3 struct wsnt__MultipleTopicsSpecifiedFaultType * SOAP_FMAC4 soap_get_w
 
 
 #ifndef SOAP_TYPE__wsnt__TopicNotSupportedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_FaultCause (1439)
+#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_FaultCause (1597)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__TopicNotSupportedFaultType_FaultCause(struct soap*, struct _wsnt__TopicNotSupportedFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__TopicNotSupportedFaultType_FaultCause(struct soap*, const struct _wsnt__TopicNotSupportedFaultType_FaultCause *);
@@ -4900,7 +6386,7 @@ SOAP_FMAC3 struct _wsnt__TopicNotSupportedFaultType_FaultCause * SOAP_FMAC4 soap
 
 
 #ifndef SOAP_TYPE__wsnt__TopicNotSupportedFaultType_Description
-#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_Description (1437)
+#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_Description (1595)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__TopicNotSupportedFaultType_Description(struct soap*, struct _wsnt__TopicNotSupportedFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__TopicNotSupportedFaultType_Description(struct soap*, const struct _wsnt__TopicNotSupportedFaultType_Description *);
@@ -4921,7 +6407,7 @@ SOAP_FMAC3 struct _wsnt__TopicNotSupportedFaultType_Description * SOAP_FMAC4 soa
 
 
 #ifndef SOAP_TYPE__wsnt__TopicNotSupportedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_ErrorCode (1435)
+#define SOAP_TYPE__wsnt__TopicNotSupportedFaultType_ErrorCode (1593)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__TopicNotSupportedFaultType_ErrorCode(struct soap*, struct _wsnt__TopicNotSupportedFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__TopicNotSupportedFaultType_ErrorCode(struct soap*, const struct _wsnt__TopicNotSupportedFaultType_ErrorCode *);
@@ -4942,7 +6428,7 @@ SOAP_FMAC3 struct _wsnt__TopicNotSupportedFaultType_ErrorCode * SOAP_FMAC4 soap_
 
 
 #ifndef SOAP_TYPE_wsnt__TopicNotSupportedFaultType
-#define SOAP_TYPE_wsnt__TopicNotSupportedFaultType (1434)
+#define SOAP_TYPE_wsnt__TopicNotSupportedFaultType (1592)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__TopicNotSupportedFaultType(struct soap*, struct wsnt__TopicNotSupportedFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__TopicNotSupportedFaultType(struct soap*, const struct wsnt__TopicNotSupportedFaultType *);
@@ -4963,7 +6449,7 @@ SOAP_FMAC3 struct wsnt__TopicNotSupportedFaultType * SOAP_FMAC4 soap_get_wsnt__T
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_FaultCause
-#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_FaultCause (1432)
+#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_FaultCause (1590)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidTopicExpressionFaultType_FaultCause(struct soap*, struct _wsnt__InvalidTopicExpressionFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidTopicExpressionFaultType_FaultCause(struct soap*, const struct _wsnt__InvalidTopicExpressionFaultType_FaultCause *);
@@ -4984,7 +6470,7 @@ SOAP_FMAC3 struct _wsnt__InvalidTopicExpressionFaultType_FaultCause * SOAP_FMAC4
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_Description
-#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_Description (1430)
+#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_Description (1588)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidTopicExpressionFaultType_Description(struct soap*, struct _wsnt__InvalidTopicExpressionFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidTopicExpressionFaultType_Description(struct soap*, const struct _wsnt__InvalidTopicExpressionFaultType_Description *);
@@ -5005,7 +6491,7 @@ SOAP_FMAC3 struct _wsnt__InvalidTopicExpressionFaultType_Description * SOAP_FMAC
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_ErrorCode (1428)
+#define SOAP_TYPE__wsnt__InvalidTopicExpressionFaultType_ErrorCode (1586)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidTopicExpressionFaultType_ErrorCode(struct soap*, struct _wsnt__InvalidTopicExpressionFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidTopicExpressionFaultType_ErrorCode(struct soap*, const struct _wsnt__InvalidTopicExpressionFaultType_ErrorCode *);
@@ -5026,7 +6512,7 @@ SOAP_FMAC3 struct _wsnt__InvalidTopicExpressionFaultType_ErrorCode * SOAP_FMAC4 
 
 
 #ifndef SOAP_TYPE_wsnt__InvalidTopicExpressionFaultType
-#define SOAP_TYPE_wsnt__InvalidTopicExpressionFaultType (1427)
+#define SOAP_TYPE_wsnt__InvalidTopicExpressionFaultType (1585)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__InvalidTopicExpressionFaultType(struct soap*, struct wsnt__InvalidTopicExpressionFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__InvalidTopicExpressionFaultType(struct soap*, const struct wsnt__InvalidTopicExpressionFaultType *);
@@ -5047,7 +6533,7 @@ SOAP_FMAC3 struct wsnt__InvalidTopicExpressionFaultType * SOAP_FMAC4 soap_get_ws
 
 
 #ifndef SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_FaultCause
-#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_FaultCause (1425)
+#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_FaultCause (1583)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__TopicExpressionDialectUnknownFaultType_FaultCause(struct soap*, struct _wsnt__TopicExpressionDialectUnknownFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__TopicExpressionDialectUnknownFaultType_FaultCause(struct soap*, const struct _wsnt__TopicExpressionDialectUnknownFaultType_FaultCause *);
@@ -5068,7 +6554,7 @@ SOAP_FMAC3 struct _wsnt__TopicExpressionDialectUnknownFaultType_FaultCause * SOA
 
 
 #ifndef SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_Description
-#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_Description (1423)
+#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_Description (1581)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__TopicExpressionDialectUnknownFaultType_Description(struct soap*, struct _wsnt__TopicExpressionDialectUnknownFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__TopicExpressionDialectUnknownFaultType_Description(struct soap*, const struct _wsnt__TopicExpressionDialectUnknownFaultType_Description *);
@@ -5089,7 +6575,7 @@ SOAP_FMAC3 struct _wsnt__TopicExpressionDialectUnknownFaultType_Description * SO
 
 
 #ifndef SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode (1421)
+#define SOAP_TYPE__wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode (1579)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode(struct soap*, struct _wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode(struct soap*, const struct _wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode *);
@@ -5110,7 +6596,7 @@ SOAP_FMAC3 struct _wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode * SOAP
 
 
 #ifndef SOAP_TYPE_wsnt__TopicExpressionDialectUnknownFaultType
-#define SOAP_TYPE_wsnt__TopicExpressionDialectUnknownFaultType (1420)
+#define SOAP_TYPE_wsnt__TopicExpressionDialectUnknownFaultType (1578)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__TopicExpressionDialectUnknownFaultType(struct soap*, struct wsnt__TopicExpressionDialectUnknownFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__TopicExpressionDialectUnknownFaultType(struct soap*, const struct wsnt__TopicExpressionDialectUnknownFaultType *);
@@ -5131,7 +6617,7 @@ SOAP_FMAC3 struct wsnt__TopicExpressionDialectUnknownFaultType * SOAP_FMAC4 soap
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidFilterFaultType_FaultCause
-#define SOAP_TYPE__wsnt__InvalidFilterFaultType_FaultCause (1418)
+#define SOAP_TYPE__wsnt__InvalidFilterFaultType_FaultCause (1576)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidFilterFaultType_FaultCause(struct soap*, struct _wsnt__InvalidFilterFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidFilterFaultType_FaultCause(struct soap*, const struct _wsnt__InvalidFilterFaultType_FaultCause *);
@@ -5152,7 +6638,7 @@ SOAP_FMAC3 struct _wsnt__InvalidFilterFaultType_FaultCause * SOAP_FMAC4 soap_get
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidFilterFaultType_Description
-#define SOAP_TYPE__wsnt__InvalidFilterFaultType_Description (1416)
+#define SOAP_TYPE__wsnt__InvalidFilterFaultType_Description (1574)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidFilterFaultType_Description(struct soap*, struct _wsnt__InvalidFilterFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidFilterFaultType_Description(struct soap*, const struct _wsnt__InvalidFilterFaultType_Description *);
@@ -5173,7 +6659,7 @@ SOAP_FMAC3 struct _wsnt__InvalidFilterFaultType_Description * SOAP_FMAC4 soap_ge
 
 
 #ifndef SOAP_TYPE__wsnt__InvalidFilterFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__InvalidFilterFaultType_ErrorCode (1414)
+#define SOAP_TYPE__wsnt__InvalidFilterFaultType_ErrorCode (1572)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__InvalidFilterFaultType_ErrorCode(struct soap*, struct _wsnt__InvalidFilterFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__InvalidFilterFaultType_ErrorCode(struct soap*, const struct _wsnt__InvalidFilterFaultType_ErrorCode *);
@@ -5194,7 +6680,7 @@ SOAP_FMAC3 struct _wsnt__InvalidFilterFaultType_ErrorCode * SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_wsnt__InvalidFilterFaultType
-#define SOAP_TYPE_wsnt__InvalidFilterFaultType (1413)
+#define SOAP_TYPE_wsnt__InvalidFilterFaultType (1571)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__InvalidFilterFaultType(struct soap*, struct wsnt__InvalidFilterFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__InvalidFilterFaultType(struct soap*, const struct wsnt__InvalidFilterFaultType *);
@@ -5215,7 +6701,7 @@ SOAP_FMAC3 struct wsnt__InvalidFilterFaultType * SOAP_FMAC4 soap_get_wsnt__Inval
 
 
 #ifndef SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_FaultCause
-#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_FaultCause (1411)
+#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_FaultCause (1569)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__SubscribeCreationFailedFaultType_FaultCause(struct soap*, struct _wsnt__SubscribeCreationFailedFaultType_FaultCause *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__SubscribeCreationFailedFaultType_FaultCause(struct soap*, const struct _wsnt__SubscribeCreationFailedFaultType_FaultCause *);
@@ -5236,7 +6722,7 @@ SOAP_FMAC3 struct _wsnt__SubscribeCreationFailedFaultType_FaultCause * SOAP_FMAC
 
 
 #ifndef SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_Description
-#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_Description (1409)
+#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_Description (1567)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__SubscribeCreationFailedFaultType_Description(struct soap*, struct _wsnt__SubscribeCreationFailedFaultType_Description *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__SubscribeCreationFailedFaultType_Description(struct soap*, const struct _wsnt__SubscribeCreationFailedFaultType_Description *);
@@ -5257,7 +6743,7 @@ SOAP_FMAC3 struct _wsnt__SubscribeCreationFailedFaultType_Description * SOAP_FMA
 
 
 #ifndef SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_ErrorCode
-#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_ErrorCode (1407)
+#define SOAP_TYPE__wsnt__SubscribeCreationFailedFaultType_ErrorCode (1565)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__wsnt__SubscribeCreationFailedFaultType_ErrorCode(struct soap*, struct _wsnt__SubscribeCreationFailedFaultType_ErrorCode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsnt__SubscribeCreationFailedFaultType_ErrorCode(struct soap*, const struct _wsnt__SubscribeCreationFailedFaultType_ErrorCode *);
@@ -5278,7 +6764,7 @@ SOAP_FMAC3 struct _wsnt__SubscribeCreationFailedFaultType_ErrorCode * SOAP_FMAC4
 
 
 #ifndef SOAP_TYPE_wsnt__SubscribeCreationFailedFaultType
-#define SOAP_TYPE_wsnt__SubscribeCreationFailedFaultType (1406)
+#define SOAP_TYPE_wsnt__SubscribeCreationFailedFaultType (1564)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_wsnt__SubscribeCreationFailedFaultType(struct soap*, struct wsnt__SubscribeCreationFailedFaultType *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_wsnt__SubscribeCreationFailedFaultType(struct soap*, const struct wsnt__SubscribeCreationFailedFaultType *);
@@ -5299,7 +6785,7 @@ SOAP_FMAC3 struct wsnt__SubscribeCreationFailedFaultType * SOAP_FMAC4 soap_get_w
 
 
 #ifndef SOAP_TYPE_tt__AnalyticsEngineControl
-#define SOAP_TYPE_tt__AnalyticsEngineControl (1405)
+#define SOAP_TYPE_tt__AnalyticsEngineControl (1563)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__AnalyticsEngineControl(struct soap*, struct tt__AnalyticsEngineControl *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__AnalyticsEngineControl(struct soap*, const struct tt__AnalyticsEngineControl *);
@@ -5320,7 +6806,7 @@ SOAP_FMAC3 struct tt__AnalyticsEngineControl * SOAP_FMAC4 soap_get_tt__Analytics
 
 
 #ifndef SOAP_TYPE_tt__AnalyticsEngineInput
-#define SOAP_TYPE_tt__AnalyticsEngineInput (1402)
+#define SOAP_TYPE_tt__AnalyticsEngineInput (1560)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__AnalyticsEngineInput(struct soap*, struct tt__AnalyticsEngineInput *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__AnalyticsEngineInput(struct soap*, const struct tt__AnalyticsEngineInput *);
@@ -5341,7 +6827,7 @@ SOAP_FMAC3 struct tt__AnalyticsEngineInput * SOAP_FMAC4 soap_get_tt__AnalyticsEn
 
 
 #ifndef SOAP_TYPE_tt__AnalyticsEngine
-#define SOAP_TYPE_tt__AnalyticsEngine (1400)
+#define SOAP_TYPE_tt__AnalyticsEngine (1558)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__AnalyticsEngine(struct soap*, struct tt__AnalyticsEngine *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__AnalyticsEngine(struct soap*, const struct tt__AnalyticsEngine *);
@@ -5362,7 +6848,7 @@ SOAP_FMAC3 struct tt__AnalyticsEngine * SOAP_FMAC4 soap_get_tt__AnalyticsEngine(
 
 
 #ifndef SOAP_TYPE_tt__EventFilter
-#define SOAP_TYPE_tt__EventFilter (1399)
+#define SOAP_TYPE_tt__EventFilter (1557)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__EventFilter(struct soap*, struct tt__EventFilter *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__EventFilter(struct soap*, const struct tt__EventFilter *);
@@ -5383,7 +6869,7 @@ SOAP_FMAC3 struct tt__EventFilter * SOAP_FMAC4 soap_get_tt__EventFilter(struct s
 
 
 #ifndef SOAP_TYPE_tt__PTZNode
-#define SOAP_TYPE_tt__PTZNode (1391)
+#define SOAP_TYPE_tt__PTZNode (1549)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__PTZNode(struct soap*, struct tt__PTZNode *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__PTZNode(struct soap*, const struct tt__PTZNode *);
@@ -5404,7 +6890,7 @@ SOAP_FMAC3 struct tt__PTZNode * SOAP_FMAC4 soap_get_tt__PTZNode(struct soap*, st
 
 
 #ifndef SOAP_TYPE_tt__DigitalInput
-#define SOAP_TYPE_tt__DigitalInput (1390)
+#define SOAP_TYPE_tt__DigitalInput (1548)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__DigitalInput(struct soap*, struct tt__DigitalInput *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__DigitalInput(struct soap*, const struct tt__DigitalInput *);
@@ -5424,29 +6910,8 @@ SOAP_FMAC3 struct tt__DigitalInput * SOAP_FMAC4 soap_get_tt__DigitalInput(struct
 #endif
 
 
-#ifndef SOAP_TYPE_tt__AudioOutput
-#define SOAP_TYPE_tt__AudioOutput (1384)
-#endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__AudioOutput(struct soap*, struct tt__AudioOutput *);
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__AudioOutput(struct soap*, const struct tt__AudioOutput *);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_tt__AudioOutput(struct soap*, const char*, int, const struct tt__AudioOutput *, const char*);
-SOAP_FMAC3 struct tt__AudioOutput * SOAP_FMAC4 soap_in_tt__AudioOutput(struct soap*, const char*, struct tt__AudioOutput *, const char*);
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_tt__AudioOutput(struct soap*, const struct tt__AudioOutput *, const char*, const char*);
-
-#ifndef soap_write_tt__AudioOutput
-#define soap_write_tt__AudioOutput(soap, data) ( soap_begin(soap), soap_serialize_tt__AudioOutput(soap, data), soap_begin_send(soap) || soap_put_tt__AudioOutput(soap, data, "tt:AudioOutput", NULL) || soap_end_send(soap), soap->error )
-#endif
-
-SOAP_FMAC3 struct tt__AudioOutput * SOAP_FMAC4 soap_get_tt__AudioOutput(struct soap*, struct tt__AudioOutput *, const char*, const char*);
-
-#ifndef soap_read_tt__AudioOutput
-#define soap_read_tt__AudioOutput(soap, data) ( soap_begin_recv(soap) || !soap_get_tt__AudioOutput(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
-#endif
-
-
 #ifndef SOAP_TYPE_tt__VideoOutputConfiguration
-#define SOAP_TYPE_tt__VideoOutputConfiguration (1383)
+#define SOAP_TYPE_tt__VideoOutputConfiguration (1542)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__VideoOutputConfiguration(struct soap*, struct tt__VideoOutputConfiguration *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__VideoOutputConfiguration(struct soap*, const struct tt__VideoOutputConfiguration *);
@@ -5467,7 +6932,7 @@ SOAP_FMAC3 struct tt__VideoOutputConfiguration * SOAP_FMAC4 soap_get_tt__VideoOu
 
 
 #ifndef SOAP_TYPE_tt__VideoOutput
-#define SOAP_TYPE_tt__VideoOutput (1380)
+#define SOAP_TYPE_tt__VideoOutput (1539)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__VideoOutput(struct soap*, struct tt__VideoOutput *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__VideoOutput(struct soap*, const struct tt__VideoOutput *);
@@ -5487,8 +6952,2885 @@ SOAP_FMAC3 struct tt__VideoOutput * SOAP_FMAC4 soap_get_tt__VideoOutput(struct s
 #endif
 
 
+#ifndef SOAP_TYPE__trt__GetSnapshotUriResponse
+#define SOAP_TYPE__trt__GetSnapshotUriResponse (1525)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetSnapshotUriResponse(struct soap*, struct _trt__GetSnapshotUriResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetSnapshotUriResponse(struct soap*, const struct _trt__GetSnapshotUriResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetSnapshotUriResponse(struct soap*, const char*, int, const struct _trt__GetSnapshotUriResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetSnapshotUriResponse * SOAP_FMAC4 soap_in__trt__GetSnapshotUriResponse(struct soap*, const char*, struct _trt__GetSnapshotUriResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetSnapshotUriResponse(struct soap*, const struct _trt__GetSnapshotUriResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetSnapshotUriResponse
+#define soap_write__trt__GetSnapshotUriResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetSnapshotUriResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetSnapshotUriResponse(soap, data, "trt:GetSnapshotUriResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetSnapshotUriResponse * SOAP_FMAC4 soap_get__trt__GetSnapshotUriResponse(struct soap*, struct _trt__GetSnapshotUriResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetSnapshotUriResponse
+#define soap_read__trt__GetSnapshotUriResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetSnapshotUriResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetSnapshotUri
+#define SOAP_TYPE__trt__GetSnapshotUri (1524)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetSnapshotUri(struct soap*, struct _trt__GetSnapshotUri *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetSnapshotUri(struct soap*, const struct _trt__GetSnapshotUri *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetSnapshotUri(struct soap*, const char*, int, const struct _trt__GetSnapshotUri *, const char*);
+SOAP_FMAC3 struct _trt__GetSnapshotUri * SOAP_FMAC4 soap_in__trt__GetSnapshotUri(struct soap*, const char*, struct _trt__GetSnapshotUri *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetSnapshotUri(struct soap*, const struct _trt__GetSnapshotUri *, const char*, const char*);
+
+#ifndef soap_write__trt__GetSnapshotUri
+#define soap_write__trt__GetSnapshotUri(soap, data) ( soap_begin(soap), soap_serialize__trt__GetSnapshotUri(soap, data), soap_begin_send(soap) || soap_put__trt__GetSnapshotUri(soap, data, "trt:GetSnapshotUri", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetSnapshotUri * SOAP_FMAC4 soap_get__trt__GetSnapshotUri(struct soap*, struct _trt__GetSnapshotUri *, const char*, const char*);
+
+#ifndef soap_read__trt__GetSnapshotUri
+#define soap_read__trt__GetSnapshotUri(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetSnapshotUri(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetSynchronizationPointResponse
+#define SOAP_TYPE__trt__SetSynchronizationPointResponse (1523)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetSynchronizationPointResponse(struct soap*, struct _trt__SetSynchronizationPointResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetSynchronizationPointResponse(struct soap*, const struct _trt__SetSynchronizationPointResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetSynchronizationPointResponse(struct soap*, const char*, int, const struct _trt__SetSynchronizationPointResponse *, const char*);
+SOAP_FMAC3 struct _trt__SetSynchronizationPointResponse * SOAP_FMAC4 soap_in__trt__SetSynchronizationPointResponse(struct soap*, const char*, struct _trt__SetSynchronizationPointResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetSynchronizationPointResponse(struct soap*, const struct _trt__SetSynchronizationPointResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__SetSynchronizationPointResponse
+#define soap_write__trt__SetSynchronizationPointResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__SetSynchronizationPointResponse(soap, data), soap_begin_send(soap) || soap_put__trt__SetSynchronizationPointResponse(soap, data, "trt:SetSynchronizationPointResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetSynchronizationPointResponse * SOAP_FMAC4 soap_get__trt__SetSynchronizationPointResponse(struct soap*, struct _trt__SetSynchronizationPointResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__SetSynchronizationPointResponse
+#define soap_read__trt__SetSynchronizationPointResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetSynchronizationPointResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetSynchronizationPoint
+#define SOAP_TYPE__trt__SetSynchronizationPoint (1522)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetSynchronizationPoint(struct soap*, struct _trt__SetSynchronizationPoint *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetSynchronizationPoint(struct soap*, const struct _trt__SetSynchronizationPoint *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetSynchronizationPoint(struct soap*, const char*, int, const struct _trt__SetSynchronizationPoint *, const char*);
+SOAP_FMAC3 struct _trt__SetSynchronizationPoint * SOAP_FMAC4 soap_in__trt__SetSynchronizationPoint(struct soap*, const char*, struct _trt__SetSynchronizationPoint *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetSynchronizationPoint(struct soap*, const struct _trt__SetSynchronizationPoint *, const char*, const char*);
+
+#ifndef soap_write__trt__SetSynchronizationPoint
+#define soap_write__trt__SetSynchronizationPoint(soap, data) ( soap_begin(soap), soap_serialize__trt__SetSynchronizationPoint(soap, data), soap_begin_send(soap) || soap_put__trt__SetSynchronizationPoint(soap, data, "trt:SetSynchronizationPoint", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetSynchronizationPoint * SOAP_FMAC4 soap_get__trt__SetSynchronizationPoint(struct soap*, struct _trt__SetSynchronizationPoint *, const char*, const char*);
+
+#ifndef soap_read__trt__SetSynchronizationPoint
+#define soap_read__trt__SetSynchronizationPoint(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetSynchronizationPoint(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__StopMulticastStreamingResponse
+#define SOAP_TYPE__trt__StopMulticastStreamingResponse (1521)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__StopMulticastStreamingResponse(struct soap*, struct _trt__StopMulticastStreamingResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__StopMulticastStreamingResponse(struct soap*, const struct _trt__StopMulticastStreamingResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__StopMulticastStreamingResponse(struct soap*, const char*, int, const struct _trt__StopMulticastStreamingResponse *, const char*);
+SOAP_FMAC3 struct _trt__StopMulticastStreamingResponse * SOAP_FMAC4 soap_in__trt__StopMulticastStreamingResponse(struct soap*, const char*, struct _trt__StopMulticastStreamingResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__StopMulticastStreamingResponse(struct soap*, const struct _trt__StopMulticastStreamingResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__StopMulticastStreamingResponse
+#define soap_write__trt__StopMulticastStreamingResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__StopMulticastStreamingResponse(soap, data), soap_begin_send(soap) || soap_put__trt__StopMulticastStreamingResponse(soap, data, "trt:StopMulticastStreamingResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__StopMulticastStreamingResponse * SOAP_FMAC4 soap_get__trt__StopMulticastStreamingResponse(struct soap*, struct _trt__StopMulticastStreamingResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__StopMulticastStreamingResponse
+#define soap_read__trt__StopMulticastStreamingResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__StopMulticastStreamingResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__StopMulticastStreaming
+#define SOAP_TYPE__trt__StopMulticastStreaming (1520)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__StopMulticastStreaming(struct soap*, struct _trt__StopMulticastStreaming *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__StopMulticastStreaming(struct soap*, const struct _trt__StopMulticastStreaming *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__StopMulticastStreaming(struct soap*, const char*, int, const struct _trt__StopMulticastStreaming *, const char*);
+SOAP_FMAC3 struct _trt__StopMulticastStreaming * SOAP_FMAC4 soap_in__trt__StopMulticastStreaming(struct soap*, const char*, struct _trt__StopMulticastStreaming *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__StopMulticastStreaming(struct soap*, const struct _trt__StopMulticastStreaming *, const char*, const char*);
+
+#ifndef soap_write__trt__StopMulticastStreaming
+#define soap_write__trt__StopMulticastStreaming(soap, data) ( soap_begin(soap), soap_serialize__trt__StopMulticastStreaming(soap, data), soap_begin_send(soap) || soap_put__trt__StopMulticastStreaming(soap, data, "trt:StopMulticastStreaming", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__StopMulticastStreaming * SOAP_FMAC4 soap_get__trt__StopMulticastStreaming(struct soap*, struct _trt__StopMulticastStreaming *, const char*, const char*);
+
+#ifndef soap_read__trt__StopMulticastStreaming
+#define soap_read__trt__StopMulticastStreaming(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__StopMulticastStreaming(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__StartMulticastStreamingResponse
+#define SOAP_TYPE__trt__StartMulticastStreamingResponse (1519)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__StartMulticastStreamingResponse(struct soap*, struct _trt__StartMulticastStreamingResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__StartMulticastStreamingResponse(struct soap*, const struct _trt__StartMulticastStreamingResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__StartMulticastStreamingResponse(struct soap*, const char*, int, const struct _trt__StartMulticastStreamingResponse *, const char*);
+SOAP_FMAC3 struct _trt__StartMulticastStreamingResponse * SOAP_FMAC4 soap_in__trt__StartMulticastStreamingResponse(struct soap*, const char*, struct _trt__StartMulticastStreamingResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__StartMulticastStreamingResponse(struct soap*, const struct _trt__StartMulticastStreamingResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__StartMulticastStreamingResponse
+#define soap_write__trt__StartMulticastStreamingResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__StartMulticastStreamingResponse(soap, data), soap_begin_send(soap) || soap_put__trt__StartMulticastStreamingResponse(soap, data, "trt:StartMulticastStreamingResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__StartMulticastStreamingResponse * SOAP_FMAC4 soap_get__trt__StartMulticastStreamingResponse(struct soap*, struct _trt__StartMulticastStreamingResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__StartMulticastStreamingResponse
+#define soap_read__trt__StartMulticastStreamingResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__StartMulticastStreamingResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__StartMulticastStreaming
+#define SOAP_TYPE__trt__StartMulticastStreaming (1518)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__StartMulticastStreaming(struct soap*, struct _trt__StartMulticastStreaming *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__StartMulticastStreaming(struct soap*, const struct _trt__StartMulticastStreaming *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__StartMulticastStreaming(struct soap*, const char*, int, const struct _trt__StartMulticastStreaming *, const char*);
+SOAP_FMAC3 struct _trt__StartMulticastStreaming * SOAP_FMAC4 soap_in__trt__StartMulticastStreaming(struct soap*, const char*, struct _trt__StartMulticastStreaming *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__StartMulticastStreaming(struct soap*, const struct _trt__StartMulticastStreaming *, const char*, const char*);
+
+#ifndef soap_write__trt__StartMulticastStreaming
+#define soap_write__trt__StartMulticastStreaming(soap, data) ( soap_begin(soap), soap_serialize__trt__StartMulticastStreaming(soap, data), soap_begin_send(soap) || soap_put__trt__StartMulticastStreaming(soap, data, "trt:StartMulticastStreaming", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__StartMulticastStreaming * SOAP_FMAC4 soap_get__trt__StartMulticastStreaming(struct soap*, struct _trt__StartMulticastStreaming *, const char*, const char*);
+
+#ifndef soap_read__trt__StartMulticastStreaming
+#define soap_read__trt__StartMulticastStreaming(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__StartMulticastStreaming(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetStreamUriResponse
+#define SOAP_TYPE__trt__GetStreamUriResponse (1516)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetStreamUriResponse(struct soap*, struct _trt__GetStreamUriResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetStreamUriResponse(struct soap*, const struct _trt__GetStreamUriResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetStreamUriResponse(struct soap*, const char*, int, const struct _trt__GetStreamUriResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetStreamUriResponse * SOAP_FMAC4 soap_in__trt__GetStreamUriResponse(struct soap*, const char*, struct _trt__GetStreamUriResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetStreamUriResponse(struct soap*, const struct _trt__GetStreamUriResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetStreamUriResponse
+#define soap_write__trt__GetStreamUriResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetStreamUriResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetStreamUriResponse(soap, data, "trt:GetStreamUriResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetStreamUriResponse * SOAP_FMAC4 soap_get__trt__GetStreamUriResponse(struct soap*, struct _trt__GetStreamUriResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetStreamUriResponse
+#define soap_read__trt__GetStreamUriResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetStreamUriResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetStreamUri
+#define SOAP_TYPE__trt__GetStreamUri (1515)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetStreamUri(struct soap*, struct _trt__GetStreamUri *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetStreamUri(struct soap*, const struct _trt__GetStreamUri *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetStreamUri(struct soap*, const char*, int, const struct _trt__GetStreamUri *, const char*);
+SOAP_FMAC3 struct _trt__GetStreamUri * SOAP_FMAC4 soap_in__trt__GetStreamUri(struct soap*, const char*, struct _trt__GetStreamUri *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetStreamUri(struct soap*, const struct _trt__GetStreamUri *, const char*, const char*);
+
+#ifndef soap_write__trt__GetStreamUri
+#define soap_write__trt__GetStreamUri(soap, data) ( soap_begin(soap), soap_serialize__trt__GetStreamUri(soap, data), soap_begin_send(soap) || soap_put__trt__GetStreamUri(soap, data, "trt:GetStreamUri", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetStreamUri * SOAP_FMAC4 soap_get__trt__GetStreamUri(struct soap*, struct _trt__GetStreamUri *, const char*, const char*);
+
+#ifndef soap_read__trt__GetStreamUri
+#define soap_read__trt__GetStreamUri(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetStreamUri(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse
+#define SOAP_TYPE__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse (1514)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, const struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, const char*, int, const struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse * SOAP_FMAC4 soap_in__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, const char*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, const struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse
+#define soap_write__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(soap, data, "trt:GetGuaranteedNumberOfVideoEncoderInstancesResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse * SOAP_FMAC4 soap_get__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse
+#define soap_read__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define SOAP_TYPE__trt__GetGuaranteedNumberOfVideoEncoderInstances (1513)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, const struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, const char*, int, const struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *, const char*);
+SOAP_FMAC3 struct _trt__GetGuaranteedNumberOfVideoEncoderInstances * SOAP_FMAC4 soap_in__trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, const char*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, const struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *, const char*, const char*);
+
+#ifndef soap_write__trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define soap_write__trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data) ( soap_begin(soap), soap_serialize__trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data), soap_begin_send(soap) || soap_put__trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data, "trt:GetGuaranteedNumberOfVideoEncoderInstances", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetGuaranteedNumberOfVideoEncoderInstances * SOAP_FMAC4 soap_get__trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *, const char*, const char*);
+
+#ifndef soap_read__trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define soap_read__trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetAudioDecoderConfigurationOptionsResponse (1512)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationOptionsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, const struct _trt__GetAudioDecoderConfigurationOptionsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, const char*, int, const struct _trt__GetAudioDecoderConfigurationOptionsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationOptionsResponse * SOAP_FMAC4 soap_in__trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetAudioDecoderConfigurationOptionsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, const struct _trt__GetAudioDecoderConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioDecoderConfigurationOptionsResponse
+#define soap_write__trt__GetAudioDecoderConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioDecoderConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioDecoderConfigurationOptionsResponse(soap, data, "trt:GetAudioDecoderConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationOptionsResponse * SOAP_FMAC4 soap_get__trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioDecoderConfigurationOptionsResponse
+#define soap_read__trt__GetAudioDecoderConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioDecoderConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfigurationOptions
+#define SOAP_TYPE__trt__GetAudioDecoderConfigurationOptions (1511)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioDecoderConfigurationOptions(struct soap*, struct _trt__GetAudioDecoderConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioDecoderConfigurationOptions(struct soap*, const struct _trt__GetAudioDecoderConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioDecoderConfigurationOptions(struct soap*, const char*, int, const struct _trt__GetAudioDecoderConfigurationOptions *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationOptions * SOAP_FMAC4 soap_in__trt__GetAudioDecoderConfigurationOptions(struct soap*, const char*, struct _trt__GetAudioDecoderConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioDecoderConfigurationOptions(struct soap*, const struct _trt__GetAudioDecoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioDecoderConfigurationOptions
+#define soap_write__trt__GetAudioDecoderConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioDecoderConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioDecoderConfigurationOptions(soap, data, "trt:GetAudioDecoderConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationOptions * SOAP_FMAC4 soap_get__trt__GetAudioDecoderConfigurationOptions(struct soap*, struct _trt__GetAudioDecoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioDecoderConfigurationOptions
+#define soap_read__trt__GetAudioDecoderConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioDecoderConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetAudioOutputConfigurationOptionsResponse (1509)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioOutputConfigurationOptionsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, const struct _trt__GetAudioOutputConfigurationOptionsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, const char*, int, const struct _trt__GetAudioOutputConfigurationOptionsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationOptionsResponse * SOAP_FMAC4 soap_in__trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetAudioOutputConfigurationOptionsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, const struct _trt__GetAudioOutputConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioOutputConfigurationOptionsResponse
+#define soap_write__trt__GetAudioOutputConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioOutputConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioOutputConfigurationOptionsResponse(soap, data, "trt:GetAudioOutputConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationOptionsResponse * SOAP_FMAC4 soap_get__trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioOutputConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioOutputConfigurationOptionsResponse
+#define soap_read__trt__GetAudioOutputConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioOutputConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfigurationOptions
+#define SOAP_TYPE__trt__GetAudioOutputConfigurationOptions (1508)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioOutputConfigurationOptions(struct soap*, struct _trt__GetAudioOutputConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioOutputConfigurationOptions(struct soap*, const struct _trt__GetAudioOutputConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioOutputConfigurationOptions(struct soap*, const char*, int, const struct _trt__GetAudioOutputConfigurationOptions *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationOptions * SOAP_FMAC4 soap_in__trt__GetAudioOutputConfigurationOptions(struct soap*, const char*, struct _trt__GetAudioOutputConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioOutputConfigurationOptions(struct soap*, const struct _trt__GetAudioOutputConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioOutputConfigurationOptions
+#define soap_write__trt__GetAudioOutputConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioOutputConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioOutputConfigurationOptions(soap, data, "trt:GetAudioOutputConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationOptions * SOAP_FMAC4 soap_get__trt__GetAudioOutputConfigurationOptions(struct soap*, struct _trt__GetAudioOutputConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioOutputConfigurationOptions
+#define soap_read__trt__GetAudioOutputConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioOutputConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetMetadataConfigurationOptionsResponse (1506)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetMetadataConfigurationOptionsResponse(struct soap*, struct _trt__GetMetadataConfigurationOptionsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetMetadataConfigurationOptionsResponse(struct soap*, const struct _trt__GetMetadataConfigurationOptionsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetMetadataConfigurationOptionsResponse(struct soap*, const char*, int, const struct _trt__GetMetadataConfigurationOptionsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationOptionsResponse * SOAP_FMAC4 soap_in__trt__GetMetadataConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetMetadataConfigurationOptionsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetMetadataConfigurationOptionsResponse(struct soap*, const struct _trt__GetMetadataConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetMetadataConfigurationOptionsResponse
+#define soap_write__trt__GetMetadataConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetMetadataConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetMetadataConfigurationOptionsResponse(soap, data, "trt:GetMetadataConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationOptionsResponse * SOAP_FMAC4 soap_get__trt__GetMetadataConfigurationOptionsResponse(struct soap*, struct _trt__GetMetadataConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetMetadataConfigurationOptionsResponse
+#define soap_read__trt__GetMetadataConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetMetadataConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfigurationOptions
+#define SOAP_TYPE__trt__GetMetadataConfigurationOptions (1505)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetMetadataConfigurationOptions(struct soap*, struct _trt__GetMetadataConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetMetadataConfigurationOptions(struct soap*, const struct _trt__GetMetadataConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetMetadataConfigurationOptions(struct soap*, const char*, int, const struct _trt__GetMetadataConfigurationOptions *, const char*);
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationOptions * SOAP_FMAC4 soap_in__trt__GetMetadataConfigurationOptions(struct soap*, const char*, struct _trt__GetMetadataConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetMetadataConfigurationOptions(struct soap*, const struct _trt__GetMetadataConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write__trt__GetMetadataConfigurationOptions
+#define soap_write__trt__GetMetadataConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize__trt__GetMetadataConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put__trt__GetMetadataConfigurationOptions(soap, data, "trt:GetMetadataConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationOptions * SOAP_FMAC4 soap_get__trt__GetMetadataConfigurationOptions(struct soap*, struct _trt__GetMetadataConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read__trt__GetMetadataConfigurationOptions
+#define soap_read__trt__GetMetadataConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetMetadataConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetAudioEncoderConfigurationOptionsResponse (1504)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationOptionsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, const struct _trt__GetAudioEncoderConfigurationOptionsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, const char*, int, const struct _trt__GetAudioEncoderConfigurationOptionsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationOptionsResponse * SOAP_FMAC4 soap_in__trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetAudioEncoderConfigurationOptionsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, const struct _trt__GetAudioEncoderConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioEncoderConfigurationOptionsResponse
+#define soap_write__trt__GetAudioEncoderConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioEncoderConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioEncoderConfigurationOptionsResponse(soap, data, "trt:GetAudioEncoderConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationOptionsResponse * SOAP_FMAC4 soap_get__trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioEncoderConfigurationOptionsResponse
+#define soap_read__trt__GetAudioEncoderConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioEncoderConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfigurationOptions
+#define SOAP_TYPE__trt__GetAudioEncoderConfigurationOptions (1503)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioEncoderConfigurationOptions(struct soap*, struct _trt__GetAudioEncoderConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioEncoderConfigurationOptions(struct soap*, const struct _trt__GetAudioEncoderConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioEncoderConfigurationOptions(struct soap*, const char*, int, const struct _trt__GetAudioEncoderConfigurationOptions *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationOptions * SOAP_FMAC4 soap_in__trt__GetAudioEncoderConfigurationOptions(struct soap*, const char*, struct _trt__GetAudioEncoderConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioEncoderConfigurationOptions(struct soap*, const struct _trt__GetAudioEncoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioEncoderConfigurationOptions
+#define soap_write__trt__GetAudioEncoderConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioEncoderConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioEncoderConfigurationOptions(soap, data, "trt:GetAudioEncoderConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationOptions * SOAP_FMAC4 soap_get__trt__GetAudioEncoderConfigurationOptions(struct soap*, struct _trt__GetAudioEncoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioEncoderConfigurationOptions
+#define soap_read__trt__GetAudioEncoderConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioEncoderConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetAudioSourceConfigurationOptionsResponse (1501)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioSourceConfigurationOptionsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, const struct _trt__GetAudioSourceConfigurationOptionsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, const char*, int, const struct _trt__GetAudioSourceConfigurationOptionsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationOptionsResponse * SOAP_FMAC4 soap_in__trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetAudioSourceConfigurationOptionsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, const struct _trt__GetAudioSourceConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioSourceConfigurationOptionsResponse
+#define soap_write__trt__GetAudioSourceConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioSourceConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioSourceConfigurationOptionsResponse(soap, data, "trt:GetAudioSourceConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationOptionsResponse * SOAP_FMAC4 soap_get__trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioSourceConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioSourceConfigurationOptionsResponse
+#define soap_read__trt__GetAudioSourceConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioSourceConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfigurationOptions
+#define SOAP_TYPE__trt__GetAudioSourceConfigurationOptions (1500)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioSourceConfigurationOptions(struct soap*, struct _trt__GetAudioSourceConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioSourceConfigurationOptions(struct soap*, const struct _trt__GetAudioSourceConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioSourceConfigurationOptions(struct soap*, const char*, int, const struct _trt__GetAudioSourceConfigurationOptions *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationOptions * SOAP_FMAC4 soap_in__trt__GetAudioSourceConfigurationOptions(struct soap*, const char*, struct _trt__GetAudioSourceConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioSourceConfigurationOptions(struct soap*, const struct _trt__GetAudioSourceConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioSourceConfigurationOptions
+#define soap_write__trt__GetAudioSourceConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioSourceConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioSourceConfigurationOptions(soap, data, "trt:GetAudioSourceConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationOptions * SOAP_FMAC4 soap_get__trt__GetAudioSourceConfigurationOptions(struct soap*, struct _trt__GetAudioSourceConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioSourceConfigurationOptions
+#define soap_read__trt__GetAudioSourceConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioSourceConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetVideoEncoderConfigurationOptionsResponse (1498)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationOptionsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, const struct _trt__GetVideoEncoderConfigurationOptionsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, const char*, int, const struct _trt__GetVideoEncoderConfigurationOptionsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationOptionsResponse * SOAP_FMAC4 soap_in__trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetVideoEncoderConfigurationOptionsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, const struct _trt__GetVideoEncoderConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoEncoderConfigurationOptionsResponse
+#define soap_write__trt__GetVideoEncoderConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoEncoderConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoEncoderConfigurationOptionsResponse(soap, data, "trt:GetVideoEncoderConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationOptionsResponse * SOAP_FMAC4 soap_get__trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoEncoderConfigurationOptionsResponse
+#define soap_read__trt__GetVideoEncoderConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoEncoderConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfigurationOptions
+#define SOAP_TYPE__trt__GetVideoEncoderConfigurationOptions (1497)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoEncoderConfigurationOptions(struct soap*, struct _trt__GetVideoEncoderConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoEncoderConfigurationOptions(struct soap*, const struct _trt__GetVideoEncoderConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoEncoderConfigurationOptions(struct soap*, const char*, int, const struct _trt__GetVideoEncoderConfigurationOptions *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationOptions * SOAP_FMAC4 soap_in__trt__GetVideoEncoderConfigurationOptions(struct soap*, const char*, struct _trt__GetVideoEncoderConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoEncoderConfigurationOptions(struct soap*, const struct _trt__GetVideoEncoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoEncoderConfigurationOptions
+#define soap_write__trt__GetVideoEncoderConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoEncoderConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoEncoderConfigurationOptions(soap, data, "trt:GetVideoEncoderConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationOptions * SOAP_FMAC4 soap_get__trt__GetVideoEncoderConfigurationOptions(struct soap*, struct _trt__GetVideoEncoderConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoEncoderConfigurationOptions
+#define soap_read__trt__GetVideoEncoderConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoEncoderConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfigurationOptionsResponse
+#define SOAP_TYPE__trt__GetVideoSourceConfigurationOptionsResponse (1495)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, struct _trt__GetVideoSourceConfigurationOptionsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, const struct _trt__GetVideoSourceConfigurationOptionsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, const char*, int, const struct _trt__GetVideoSourceConfigurationOptionsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationOptionsResponse * SOAP_FMAC4 soap_in__trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetVideoSourceConfigurationOptionsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, const struct _trt__GetVideoSourceConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoSourceConfigurationOptionsResponse
+#define soap_write__trt__GetVideoSourceConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoSourceConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoSourceConfigurationOptionsResponse(soap, data, "trt:GetVideoSourceConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationOptionsResponse * SOAP_FMAC4 soap_get__trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, struct _trt__GetVideoSourceConfigurationOptionsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoSourceConfigurationOptionsResponse
+#define soap_read__trt__GetVideoSourceConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoSourceConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfigurationOptions
+#define SOAP_TYPE__trt__GetVideoSourceConfigurationOptions (1494)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoSourceConfigurationOptions(struct soap*, struct _trt__GetVideoSourceConfigurationOptions *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoSourceConfigurationOptions(struct soap*, const struct _trt__GetVideoSourceConfigurationOptions *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoSourceConfigurationOptions(struct soap*, const char*, int, const struct _trt__GetVideoSourceConfigurationOptions *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationOptions * SOAP_FMAC4 soap_in__trt__GetVideoSourceConfigurationOptions(struct soap*, const char*, struct _trt__GetVideoSourceConfigurationOptions *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoSourceConfigurationOptions(struct soap*, const struct _trt__GetVideoSourceConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoSourceConfigurationOptions
+#define soap_write__trt__GetVideoSourceConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoSourceConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoSourceConfigurationOptions(soap, data, "trt:GetVideoSourceConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationOptions * SOAP_FMAC4 soap_get__trt__GetVideoSourceConfigurationOptions(struct soap*, struct _trt__GetVideoSourceConfigurationOptions *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoSourceConfigurationOptions
+#define soap_read__trt__GetVideoSourceConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoSourceConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetAudioDecoderConfigurationResponse
+#define SOAP_TYPE__trt__SetAudioDecoderConfigurationResponse (1493)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetAudioDecoderConfigurationResponse(struct soap*, struct _trt__SetAudioDecoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetAudioDecoderConfigurationResponse(struct soap*, const struct _trt__SetAudioDecoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetAudioDecoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__SetAudioDecoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__SetAudioDecoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__SetAudioDecoderConfigurationResponse(struct soap*, const char*, struct _trt__SetAudioDecoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetAudioDecoderConfigurationResponse(struct soap*, const struct _trt__SetAudioDecoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__SetAudioDecoderConfigurationResponse
+#define soap_write__trt__SetAudioDecoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__SetAudioDecoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__SetAudioDecoderConfigurationResponse(soap, data, "trt:SetAudioDecoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioDecoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__SetAudioDecoderConfigurationResponse(struct soap*, struct _trt__SetAudioDecoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__SetAudioDecoderConfigurationResponse
+#define soap_read__trt__SetAudioDecoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetAudioDecoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetAudioDecoderConfiguration
+#define SOAP_TYPE__trt__SetAudioDecoderConfiguration (1492)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetAudioDecoderConfiguration(struct soap*, struct _trt__SetAudioDecoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetAudioDecoderConfiguration(struct soap*, const struct _trt__SetAudioDecoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetAudioDecoderConfiguration(struct soap*, const char*, int, const struct _trt__SetAudioDecoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__SetAudioDecoderConfiguration * SOAP_FMAC4 soap_in__trt__SetAudioDecoderConfiguration(struct soap*, const char*, struct _trt__SetAudioDecoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetAudioDecoderConfiguration(struct soap*, const struct _trt__SetAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__SetAudioDecoderConfiguration
+#define soap_write__trt__SetAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__SetAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__SetAudioDecoderConfiguration(soap, data, "trt:SetAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioDecoderConfiguration * SOAP_FMAC4 soap_get__trt__SetAudioDecoderConfiguration(struct soap*, struct _trt__SetAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__SetAudioDecoderConfiguration
+#define soap_read__trt__SetAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetAudioOutputConfigurationResponse
+#define SOAP_TYPE__trt__SetAudioOutputConfigurationResponse (1491)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetAudioOutputConfigurationResponse(struct soap*, struct _trt__SetAudioOutputConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetAudioOutputConfigurationResponse(struct soap*, const struct _trt__SetAudioOutputConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetAudioOutputConfigurationResponse(struct soap*, const char*, int, const struct _trt__SetAudioOutputConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__SetAudioOutputConfigurationResponse * SOAP_FMAC4 soap_in__trt__SetAudioOutputConfigurationResponse(struct soap*, const char*, struct _trt__SetAudioOutputConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetAudioOutputConfigurationResponse(struct soap*, const struct _trt__SetAudioOutputConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__SetAudioOutputConfigurationResponse
+#define soap_write__trt__SetAudioOutputConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__SetAudioOutputConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__SetAudioOutputConfigurationResponse(soap, data, "trt:SetAudioOutputConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioOutputConfigurationResponse * SOAP_FMAC4 soap_get__trt__SetAudioOutputConfigurationResponse(struct soap*, struct _trt__SetAudioOutputConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__SetAudioOutputConfigurationResponse
+#define soap_read__trt__SetAudioOutputConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetAudioOutputConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetAudioOutputConfiguration
+#define SOAP_TYPE__trt__SetAudioOutputConfiguration (1490)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetAudioOutputConfiguration(struct soap*, struct _trt__SetAudioOutputConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetAudioOutputConfiguration(struct soap*, const struct _trt__SetAudioOutputConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetAudioOutputConfiguration(struct soap*, const char*, int, const struct _trt__SetAudioOutputConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__SetAudioOutputConfiguration * SOAP_FMAC4 soap_in__trt__SetAudioOutputConfiguration(struct soap*, const char*, struct _trt__SetAudioOutputConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetAudioOutputConfiguration(struct soap*, const struct _trt__SetAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__SetAudioOutputConfiguration
+#define soap_write__trt__SetAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__SetAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__SetAudioOutputConfiguration(soap, data, "trt:SetAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioOutputConfiguration * SOAP_FMAC4 soap_get__trt__SetAudioOutputConfiguration(struct soap*, struct _trt__SetAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__SetAudioOutputConfiguration
+#define soap_read__trt__SetAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetMetadataConfigurationResponse
+#define SOAP_TYPE__trt__SetMetadataConfigurationResponse (1489)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetMetadataConfigurationResponse(struct soap*, struct _trt__SetMetadataConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetMetadataConfigurationResponse(struct soap*, const struct _trt__SetMetadataConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetMetadataConfigurationResponse(struct soap*, const char*, int, const struct _trt__SetMetadataConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__SetMetadataConfigurationResponse * SOAP_FMAC4 soap_in__trt__SetMetadataConfigurationResponse(struct soap*, const char*, struct _trt__SetMetadataConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetMetadataConfigurationResponse(struct soap*, const struct _trt__SetMetadataConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__SetMetadataConfigurationResponse
+#define soap_write__trt__SetMetadataConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__SetMetadataConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__SetMetadataConfigurationResponse(soap, data, "trt:SetMetadataConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetMetadataConfigurationResponse * SOAP_FMAC4 soap_get__trt__SetMetadataConfigurationResponse(struct soap*, struct _trt__SetMetadataConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__SetMetadataConfigurationResponse
+#define soap_read__trt__SetMetadataConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetMetadataConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetMetadataConfiguration
+#define SOAP_TYPE__trt__SetMetadataConfiguration (1488)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetMetadataConfiguration(struct soap*, struct _trt__SetMetadataConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetMetadataConfiguration(struct soap*, const struct _trt__SetMetadataConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetMetadataConfiguration(struct soap*, const char*, int, const struct _trt__SetMetadataConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__SetMetadataConfiguration * SOAP_FMAC4 soap_in__trt__SetMetadataConfiguration(struct soap*, const char*, struct _trt__SetMetadataConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetMetadataConfiguration(struct soap*, const struct _trt__SetMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__SetMetadataConfiguration
+#define soap_write__trt__SetMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__SetMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__SetMetadataConfiguration(soap, data, "trt:SetMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetMetadataConfiguration * SOAP_FMAC4 soap_get__trt__SetMetadataConfiguration(struct soap*, struct _trt__SetMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__SetMetadataConfiguration
+#define soap_read__trt__SetMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE__trt__SetVideoAnalyticsConfigurationResponse (1487)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__SetVideoAnalyticsConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetVideoAnalyticsConfigurationResponse(struct soap*, const struct _trt__SetVideoAnalyticsConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetVideoAnalyticsConfigurationResponse(struct soap*, const char*, int, const struct _trt__SetVideoAnalyticsConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__SetVideoAnalyticsConfigurationResponse * SOAP_FMAC4 soap_in__trt__SetVideoAnalyticsConfigurationResponse(struct soap*, const char*, struct _trt__SetVideoAnalyticsConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetVideoAnalyticsConfigurationResponse(struct soap*, const struct _trt__SetVideoAnalyticsConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__SetVideoAnalyticsConfigurationResponse
+#define soap_write__trt__SetVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__SetVideoAnalyticsConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__SetVideoAnalyticsConfigurationResponse(soap, data, "trt:SetVideoAnalyticsConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoAnalyticsConfigurationResponse * SOAP_FMAC4 soap_get__trt__SetVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__SetVideoAnalyticsConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__SetVideoAnalyticsConfigurationResponse
+#define soap_read__trt__SetVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetVideoAnalyticsConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetVideoAnalyticsConfiguration
+#define SOAP_TYPE__trt__SetVideoAnalyticsConfiguration (1486)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetVideoAnalyticsConfiguration(struct soap*, struct _trt__SetVideoAnalyticsConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetVideoAnalyticsConfiguration(struct soap*, const struct _trt__SetVideoAnalyticsConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetVideoAnalyticsConfiguration(struct soap*, const char*, int, const struct _trt__SetVideoAnalyticsConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__SetVideoAnalyticsConfiguration * SOAP_FMAC4 soap_in__trt__SetVideoAnalyticsConfiguration(struct soap*, const char*, struct _trt__SetVideoAnalyticsConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetVideoAnalyticsConfiguration(struct soap*, const struct _trt__SetVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__SetVideoAnalyticsConfiguration
+#define soap_write__trt__SetVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__SetVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__SetVideoAnalyticsConfiguration(soap, data, "trt:SetVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoAnalyticsConfiguration * SOAP_FMAC4 soap_get__trt__SetVideoAnalyticsConfiguration(struct soap*, struct _trt__SetVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__SetVideoAnalyticsConfiguration
+#define soap_read__trt__SetVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetAudioSourceConfigurationResponse
+#define SOAP_TYPE__trt__SetAudioSourceConfigurationResponse (1485)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetAudioSourceConfigurationResponse(struct soap*, struct _trt__SetAudioSourceConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetAudioSourceConfigurationResponse(struct soap*, const struct _trt__SetAudioSourceConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetAudioSourceConfigurationResponse(struct soap*, const char*, int, const struct _trt__SetAudioSourceConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__SetAudioSourceConfigurationResponse * SOAP_FMAC4 soap_in__trt__SetAudioSourceConfigurationResponse(struct soap*, const char*, struct _trt__SetAudioSourceConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetAudioSourceConfigurationResponse(struct soap*, const struct _trt__SetAudioSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__SetAudioSourceConfigurationResponse
+#define soap_write__trt__SetAudioSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__SetAudioSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__SetAudioSourceConfigurationResponse(soap, data, "trt:SetAudioSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioSourceConfigurationResponse * SOAP_FMAC4 soap_get__trt__SetAudioSourceConfigurationResponse(struct soap*, struct _trt__SetAudioSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__SetAudioSourceConfigurationResponse
+#define soap_read__trt__SetAudioSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetAudioSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetAudioSourceConfiguration
+#define SOAP_TYPE__trt__SetAudioSourceConfiguration (1484)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetAudioSourceConfiguration(struct soap*, struct _trt__SetAudioSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetAudioSourceConfiguration(struct soap*, const struct _trt__SetAudioSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetAudioSourceConfiguration(struct soap*, const char*, int, const struct _trt__SetAudioSourceConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__SetAudioSourceConfiguration * SOAP_FMAC4 soap_in__trt__SetAudioSourceConfiguration(struct soap*, const char*, struct _trt__SetAudioSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetAudioSourceConfiguration(struct soap*, const struct _trt__SetAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__SetAudioSourceConfiguration
+#define soap_write__trt__SetAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__SetAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__SetAudioSourceConfiguration(soap, data, "trt:SetAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioSourceConfiguration * SOAP_FMAC4 soap_get__trt__SetAudioSourceConfiguration(struct soap*, struct _trt__SetAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__SetAudioSourceConfiguration
+#define soap_read__trt__SetAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetAudioEncoderConfigurationResponse
+#define SOAP_TYPE__trt__SetAudioEncoderConfigurationResponse (1483)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetAudioEncoderConfigurationResponse(struct soap*, struct _trt__SetAudioEncoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetAudioEncoderConfigurationResponse(struct soap*, const struct _trt__SetAudioEncoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetAudioEncoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__SetAudioEncoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__SetAudioEncoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__SetAudioEncoderConfigurationResponse(struct soap*, const char*, struct _trt__SetAudioEncoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetAudioEncoderConfigurationResponse(struct soap*, const struct _trt__SetAudioEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__SetAudioEncoderConfigurationResponse
+#define soap_write__trt__SetAudioEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__SetAudioEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__SetAudioEncoderConfigurationResponse(soap, data, "trt:SetAudioEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioEncoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__SetAudioEncoderConfigurationResponse(struct soap*, struct _trt__SetAudioEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__SetAudioEncoderConfigurationResponse
+#define soap_read__trt__SetAudioEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetAudioEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetAudioEncoderConfiguration
+#define SOAP_TYPE__trt__SetAudioEncoderConfiguration (1482)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetAudioEncoderConfiguration(struct soap*, struct _trt__SetAudioEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetAudioEncoderConfiguration(struct soap*, const struct _trt__SetAudioEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetAudioEncoderConfiguration(struct soap*, const char*, int, const struct _trt__SetAudioEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__SetAudioEncoderConfiguration * SOAP_FMAC4 soap_in__trt__SetAudioEncoderConfiguration(struct soap*, const char*, struct _trt__SetAudioEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetAudioEncoderConfiguration(struct soap*, const struct _trt__SetAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__SetAudioEncoderConfiguration
+#define soap_write__trt__SetAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__SetAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__SetAudioEncoderConfiguration(soap, data, "trt:SetAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioEncoderConfiguration * SOAP_FMAC4 soap_get__trt__SetAudioEncoderConfiguration(struct soap*, struct _trt__SetAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__SetAudioEncoderConfiguration
+#define soap_read__trt__SetAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetVideoSourceConfigurationResponse
+#define SOAP_TYPE__trt__SetVideoSourceConfigurationResponse (1481)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetVideoSourceConfigurationResponse(struct soap*, struct _trt__SetVideoSourceConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetVideoSourceConfigurationResponse(struct soap*, const struct _trt__SetVideoSourceConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetVideoSourceConfigurationResponse(struct soap*, const char*, int, const struct _trt__SetVideoSourceConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__SetVideoSourceConfigurationResponse * SOAP_FMAC4 soap_in__trt__SetVideoSourceConfigurationResponse(struct soap*, const char*, struct _trt__SetVideoSourceConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetVideoSourceConfigurationResponse(struct soap*, const struct _trt__SetVideoSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__SetVideoSourceConfigurationResponse
+#define soap_write__trt__SetVideoSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__SetVideoSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__SetVideoSourceConfigurationResponse(soap, data, "trt:SetVideoSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoSourceConfigurationResponse * SOAP_FMAC4 soap_get__trt__SetVideoSourceConfigurationResponse(struct soap*, struct _trt__SetVideoSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__SetVideoSourceConfigurationResponse
+#define soap_read__trt__SetVideoSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetVideoSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetVideoSourceConfiguration
+#define SOAP_TYPE__trt__SetVideoSourceConfiguration (1480)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetVideoSourceConfiguration(struct soap*, struct _trt__SetVideoSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetVideoSourceConfiguration(struct soap*, const struct _trt__SetVideoSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetVideoSourceConfiguration(struct soap*, const char*, int, const struct _trt__SetVideoSourceConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__SetVideoSourceConfiguration * SOAP_FMAC4 soap_in__trt__SetVideoSourceConfiguration(struct soap*, const char*, struct _trt__SetVideoSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetVideoSourceConfiguration(struct soap*, const struct _trt__SetVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__SetVideoSourceConfiguration
+#define soap_write__trt__SetVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__SetVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__SetVideoSourceConfiguration(soap, data, "trt:SetVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoSourceConfiguration * SOAP_FMAC4 soap_get__trt__SetVideoSourceConfiguration(struct soap*, struct _trt__SetVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__SetVideoSourceConfiguration
+#define soap_read__trt__SetVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetVideoEncoderConfigurationResponse
+#define SOAP_TYPE__trt__SetVideoEncoderConfigurationResponse (1479)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetVideoEncoderConfigurationResponse(struct soap*, struct _trt__SetVideoEncoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetVideoEncoderConfigurationResponse(struct soap*, const struct _trt__SetVideoEncoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetVideoEncoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__SetVideoEncoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__SetVideoEncoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__SetVideoEncoderConfigurationResponse(struct soap*, const char*, struct _trt__SetVideoEncoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetVideoEncoderConfigurationResponse(struct soap*, const struct _trt__SetVideoEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__SetVideoEncoderConfigurationResponse
+#define soap_write__trt__SetVideoEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__SetVideoEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__SetVideoEncoderConfigurationResponse(soap, data, "trt:SetVideoEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoEncoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__SetVideoEncoderConfigurationResponse(struct soap*, struct _trt__SetVideoEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__SetVideoEncoderConfigurationResponse
+#define soap_read__trt__SetVideoEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetVideoEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__SetVideoEncoderConfiguration
+#define SOAP_TYPE__trt__SetVideoEncoderConfiguration (1478)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__SetVideoEncoderConfiguration(struct soap*, struct _trt__SetVideoEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__SetVideoEncoderConfiguration(struct soap*, const struct _trt__SetVideoEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__SetVideoEncoderConfiguration(struct soap*, const char*, int, const struct _trt__SetVideoEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__SetVideoEncoderConfiguration * SOAP_FMAC4 soap_in__trt__SetVideoEncoderConfiguration(struct soap*, const char*, struct _trt__SetVideoEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__SetVideoEncoderConfiguration(struct soap*, const struct _trt__SetVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__SetVideoEncoderConfiguration
+#define soap_write__trt__SetVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__SetVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__SetVideoEncoderConfiguration(soap, data, "trt:SetVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoEncoderConfiguration * SOAP_FMAC4 soap_get__trt__SetVideoEncoderConfiguration(struct soap*, struct _trt__SetVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__SetVideoEncoderConfiguration
+#define soap_read__trt__SetVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__SetVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioDecoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleAudioDecoderConfigurationsResponse (1477)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioDecoderConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleAudioDecoderConfigurationsResponse
+#define soap_write__trt__GetCompatibleAudioDecoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleAudioDecoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleAudioDecoderConfigurationsResponse(soap, data, "trt:GetCompatibleAudioDecoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioDecoderConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleAudioDecoderConfigurationsResponse
+#define soap_read__trt__GetCompatibleAudioDecoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleAudioDecoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioDecoderConfigurations
+#define SOAP_TYPE__trt__GetCompatibleAudioDecoderConfigurations (1476)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleAudioDecoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleAudioDecoderConfigurations(struct soap*, const struct _trt__GetCompatibleAudioDecoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleAudioDecoderConfigurations(struct soap*, const char*, int, const struct _trt__GetCompatibleAudioDecoderConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioDecoderConfigurations * SOAP_FMAC4 soap_in__trt__GetCompatibleAudioDecoderConfigurations(struct soap*, const char*, struct _trt__GetCompatibleAudioDecoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleAudioDecoderConfigurations(struct soap*, const struct _trt__GetCompatibleAudioDecoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleAudioDecoderConfigurations
+#define soap_write__trt__GetCompatibleAudioDecoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleAudioDecoderConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleAudioDecoderConfigurations(soap, data, "trt:GetCompatibleAudioDecoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioDecoderConfigurations * SOAP_FMAC4 soap_get__trt__GetCompatibleAudioDecoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleAudioDecoderConfigurations
+#define soap_read__trt__GetCompatibleAudioDecoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleAudioDecoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioOutputConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleAudioOutputConfigurationsResponse (1475)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleAudioOutputConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetCompatibleAudioOutputConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioOutputConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleAudioOutputConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleAudioOutputConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleAudioOutputConfigurationsResponse
+#define soap_write__trt__GetCompatibleAudioOutputConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleAudioOutputConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleAudioOutputConfigurationsResponse(soap, data, "trt:GetCompatibleAudioOutputConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioOutputConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleAudioOutputConfigurationsResponse
+#define soap_read__trt__GetCompatibleAudioOutputConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleAudioOutputConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioOutputConfigurations
+#define SOAP_TYPE__trt__GetCompatibleAudioOutputConfigurations (1474)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleAudioOutputConfigurations(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleAudioOutputConfigurations(struct soap*, const struct _trt__GetCompatibleAudioOutputConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleAudioOutputConfigurations(struct soap*, const char*, int, const struct _trt__GetCompatibleAudioOutputConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioOutputConfigurations * SOAP_FMAC4 soap_in__trt__GetCompatibleAudioOutputConfigurations(struct soap*, const char*, struct _trt__GetCompatibleAudioOutputConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleAudioOutputConfigurations(struct soap*, const struct _trt__GetCompatibleAudioOutputConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleAudioOutputConfigurations
+#define soap_write__trt__GetCompatibleAudioOutputConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleAudioOutputConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleAudioOutputConfigurations(soap, data, "trt:GetCompatibleAudioOutputConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioOutputConfigurations * SOAP_FMAC4 soap_get__trt__GetCompatibleAudioOutputConfigurations(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleAudioOutputConfigurations
+#define soap_read__trt__GetCompatibleAudioOutputConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleAudioOutputConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleMetadataConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleMetadataConfigurationsResponse (1473)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, struct _trt__GetCompatibleMetadataConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleMetadataConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetCompatibleMetadataConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleMetadataConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleMetadataConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleMetadataConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleMetadataConfigurationsResponse
+#define soap_write__trt__GetCompatibleMetadataConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleMetadataConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleMetadataConfigurationsResponse(soap, data, "trt:GetCompatibleMetadataConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleMetadataConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, struct _trt__GetCompatibleMetadataConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleMetadataConfigurationsResponse
+#define soap_read__trt__GetCompatibleMetadataConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleMetadataConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleMetadataConfigurations
+#define SOAP_TYPE__trt__GetCompatibleMetadataConfigurations (1472)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleMetadataConfigurations(struct soap*, struct _trt__GetCompatibleMetadataConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleMetadataConfigurations(struct soap*, const struct _trt__GetCompatibleMetadataConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleMetadataConfigurations(struct soap*, const char*, int, const struct _trt__GetCompatibleMetadataConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleMetadataConfigurations * SOAP_FMAC4 soap_in__trt__GetCompatibleMetadataConfigurations(struct soap*, const char*, struct _trt__GetCompatibleMetadataConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleMetadataConfigurations(struct soap*, const struct _trt__GetCompatibleMetadataConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleMetadataConfigurations
+#define soap_write__trt__GetCompatibleMetadataConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleMetadataConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleMetadataConfigurations(soap, data, "trt:GetCompatibleMetadataConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleMetadataConfigurations * SOAP_FMAC4 soap_get__trt__GetCompatibleMetadataConfigurations(struct soap*, struct _trt__GetCompatibleMetadataConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleMetadataConfigurations
+#define soap_read__trt__GetCompatibleMetadataConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleMetadataConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoAnalyticsConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleVideoAnalyticsConfigurationsResponse (1471)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleVideoAnalyticsConfigurationsResponse
+#define soap_write__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(soap, data, "trt:GetCompatibleVideoAnalyticsConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleVideoAnalyticsConfigurationsResponse
+#define soap_read__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleVideoAnalyticsConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoAnalyticsConfigurations
+#define SOAP_TYPE__trt__GetCompatibleVideoAnalyticsConfigurations (1470)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, const struct _trt__GetCompatibleVideoAnalyticsConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, const char*, int, const struct _trt__GetCompatibleVideoAnalyticsConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoAnalyticsConfigurations * SOAP_FMAC4 soap_in__trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, const char*, struct _trt__GetCompatibleVideoAnalyticsConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, const struct _trt__GetCompatibleVideoAnalyticsConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleVideoAnalyticsConfigurations
+#define soap_write__trt__GetCompatibleVideoAnalyticsConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleVideoAnalyticsConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleVideoAnalyticsConfigurations(soap, data, "trt:GetCompatibleVideoAnalyticsConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoAnalyticsConfigurations * SOAP_FMAC4 soap_get__trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleVideoAnalyticsConfigurations
+#define soap_read__trt__GetCompatibleVideoAnalyticsConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleVideoAnalyticsConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioSourceConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleAudioSourceConfigurationsResponse (1469)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleAudioSourceConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetCompatibleAudioSourceConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioSourceConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleAudioSourceConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleAudioSourceConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleAudioSourceConfigurationsResponse
+#define soap_write__trt__GetCompatibleAudioSourceConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleAudioSourceConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleAudioSourceConfigurationsResponse(soap, data, "trt:GetCompatibleAudioSourceConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioSourceConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleAudioSourceConfigurationsResponse
+#define soap_read__trt__GetCompatibleAudioSourceConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleAudioSourceConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioSourceConfigurations
+#define SOAP_TYPE__trt__GetCompatibleAudioSourceConfigurations (1468)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleAudioSourceConfigurations(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleAudioSourceConfigurations(struct soap*, const struct _trt__GetCompatibleAudioSourceConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleAudioSourceConfigurations(struct soap*, const char*, int, const struct _trt__GetCompatibleAudioSourceConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioSourceConfigurations * SOAP_FMAC4 soap_in__trt__GetCompatibleAudioSourceConfigurations(struct soap*, const char*, struct _trt__GetCompatibleAudioSourceConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleAudioSourceConfigurations(struct soap*, const struct _trt__GetCompatibleAudioSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleAudioSourceConfigurations
+#define soap_write__trt__GetCompatibleAudioSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleAudioSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleAudioSourceConfigurations(soap, data, "trt:GetCompatibleAudioSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioSourceConfigurations * SOAP_FMAC4 soap_get__trt__GetCompatibleAudioSourceConfigurations(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleAudioSourceConfigurations
+#define soap_read__trt__GetCompatibleAudioSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleAudioSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioEncoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleAudioEncoderConfigurationsResponse (1467)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioEncoderConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleAudioEncoderConfigurationsResponse
+#define soap_write__trt__GetCompatibleAudioEncoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleAudioEncoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleAudioEncoderConfigurationsResponse(soap, data, "trt:GetCompatibleAudioEncoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioEncoderConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleAudioEncoderConfigurationsResponse
+#define soap_read__trt__GetCompatibleAudioEncoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleAudioEncoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleAudioEncoderConfigurations
+#define SOAP_TYPE__trt__GetCompatibleAudioEncoderConfigurations (1466)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleAudioEncoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleAudioEncoderConfigurations(struct soap*, const struct _trt__GetCompatibleAudioEncoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleAudioEncoderConfigurations(struct soap*, const char*, int, const struct _trt__GetCompatibleAudioEncoderConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioEncoderConfigurations * SOAP_FMAC4 soap_in__trt__GetCompatibleAudioEncoderConfigurations(struct soap*, const char*, struct _trt__GetCompatibleAudioEncoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleAudioEncoderConfigurations(struct soap*, const struct _trt__GetCompatibleAudioEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleAudioEncoderConfigurations
+#define soap_write__trt__GetCompatibleAudioEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleAudioEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleAudioEncoderConfigurations(soap, data, "trt:GetCompatibleAudioEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioEncoderConfigurations * SOAP_FMAC4 soap_get__trt__GetCompatibleAudioEncoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleAudioEncoderConfigurations
+#define soap_read__trt__GetCompatibleAudioEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleAudioEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoSourceConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleVideoSourceConfigurationsResponse (1465)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleVideoSourceConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetCompatibleVideoSourceConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoSourceConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleVideoSourceConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleVideoSourceConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleVideoSourceConfigurationsResponse
+#define soap_write__trt__GetCompatibleVideoSourceConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleVideoSourceConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleVideoSourceConfigurationsResponse(soap, data, "trt:GetCompatibleVideoSourceConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoSourceConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleVideoSourceConfigurationsResponse
+#define soap_read__trt__GetCompatibleVideoSourceConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleVideoSourceConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoSourceConfigurations
+#define SOAP_TYPE__trt__GetCompatibleVideoSourceConfigurations (1464)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleVideoSourceConfigurations(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleVideoSourceConfigurations(struct soap*, const struct _trt__GetCompatibleVideoSourceConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleVideoSourceConfigurations(struct soap*, const char*, int, const struct _trt__GetCompatibleVideoSourceConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoSourceConfigurations * SOAP_FMAC4 soap_in__trt__GetCompatibleVideoSourceConfigurations(struct soap*, const char*, struct _trt__GetCompatibleVideoSourceConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleVideoSourceConfigurations(struct soap*, const struct _trt__GetCompatibleVideoSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleVideoSourceConfigurations
+#define soap_write__trt__GetCompatibleVideoSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleVideoSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleVideoSourceConfigurations(soap, data, "trt:GetCompatibleVideoSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoSourceConfigurations * SOAP_FMAC4 soap_get__trt__GetCompatibleVideoSourceConfigurations(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleVideoSourceConfigurations
+#define soap_read__trt__GetCompatibleVideoSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleVideoSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoEncoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetCompatibleVideoEncoderConfigurationsResponse (1463)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoEncoderConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, const struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleVideoEncoderConfigurationsResponse
+#define soap_write__trt__GetCompatibleVideoEncoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleVideoEncoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleVideoEncoderConfigurationsResponse(soap, data, "trt:GetCompatibleVideoEncoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoEncoderConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleVideoEncoderConfigurationsResponse
+#define soap_read__trt__GetCompatibleVideoEncoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleVideoEncoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetCompatibleVideoEncoderConfigurations
+#define SOAP_TYPE__trt__GetCompatibleVideoEncoderConfigurations (1462)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetCompatibleVideoEncoderConfigurations(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetCompatibleVideoEncoderConfigurations(struct soap*, const struct _trt__GetCompatibleVideoEncoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetCompatibleVideoEncoderConfigurations(struct soap*, const char*, int, const struct _trt__GetCompatibleVideoEncoderConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoEncoderConfigurations * SOAP_FMAC4 soap_in__trt__GetCompatibleVideoEncoderConfigurations(struct soap*, const char*, struct _trt__GetCompatibleVideoEncoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetCompatibleVideoEncoderConfigurations(struct soap*, const struct _trt__GetCompatibleVideoEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetCompatibleVideoEncoderConfigurations
+#define soap_write__trt__GetCompatibleVideoEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetCompatibleVideoEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetCompatibleVideoEncoderConfigurations(soap, data, "trt:GetCompatibleVideoEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoEncoderConfigurations * SOAP_FMAC4 soap_get__trt__GetCompatibleVideoEncoderConfigurations(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetCompatibleVideoEncoderConfigurations
+#define soap_read__trt__GetCompatibleVideoEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetCompatibleVideoEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfigurationResponse
+#define SOAP_TYPE__trt__GetAudioDecoderConfigurationResponse (1461)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioDecoderConfigurationResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioDecoderConfigurationResponse(struct soap*, const struct _trt__GetAudioDecoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioDecoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__GetAudioDecoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__GetAudioDecoderConfigurationResponse(struct soap*, const char*, struct _trt__GetAudioDecoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioDecoderConfigurationResponse(struct soap*, const struct _trt__GetAudioDecoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioDecoderConfigurationResponse
+#define soap_write__trt__GetAudioDecoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioDecoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioDecoderConfigurationResponse(soap, data, "trt:GetAudioDecoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__GetAudioDecoderConfigurationResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioDecoderConfigurationResponse
+#define soap_read__trt__GetAudioDecoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioDecoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfiguration
+#define SOAP_TYPE__trt__GetAudioDecoderConfiguration (1460)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioDecoderConfiguration(struct soap*, struct _trt__GetAudioDecoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioDecoderConfiguration(struct soap*, const struct _trt__GetAudioDecoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioDecoderConfiguration(struct soap*, const char*, int, const struct _trt__GetAudioDecoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfiguration * SOAP_FMAC4 soap_in__trt__GetAudioDecoderConfiguration(struct soap*, const char*, struct _trt__GetAudioDecoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioDecoderConfiguration(struct soap*, const struct _trt__GetAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioDecoderConfiguration
+#define soap_write__trt__GetAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioDecoderConfiguration(soap, data, "trt:GetAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfiguration * SOAP_FMAC4 soap_get__trt__GetAudioDecoderConfiguration(struct soap*, struct _trt__GetAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioDecoderConfiguration
+#define soap_read__trt__GetAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfigurationResponse
+#define SOAP_TYPE__trt__GetAudioOutputConfigurationResponse (1459)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioOutputConfigurationResponse(struct soap*, struct _trt__GetAudioOutputConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioOutputConfigurationResponse(struct soap*, const struct _trt__GetAudioOutputConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioOutputConfigurationResponse(struct soap*, const char*, int, const struct _trt__GetAudioOutputConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationResponse * SOAP_FMAC4 soap_in__trt__GetAudioOutputConfigurationResponse(struct soap*, const char*, struct _trt__GetAudioOutputConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioOutputConfigurationResponse(struct soap*, const struct _trt__GetAudioOutputConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioOutputConfigurationResponse
+#define soap_write__trt__GetAudioOutputConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioOutputConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioOutputConfigurationResponse(soap, data, "trt:GetAudioOutputConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationResponse * SOAP_FMAC4 soap_get__trt__GetAudioOutputConfigurationResponse(struct soap*, struct _trt__GetAudioOutputConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioOutputConfigurationResponse
+#define soap_read__trt__GetAudioOutputConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioOutputConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfiguration
+#define SOAP_TYPE__trt__GetAudioOutputConfiguration (1458)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioOutputConfiguration(struct soap*, struct _trt__GetAudioOutputConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioOutputConfiguration(struct soap*, const struct _trt__GetAudioOutputConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioOutputConfiguration(struct soap*, const char*, int, const struct _trt__GetAudioOutputConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfiguration * SOAP_FMAC4 soap_in__trt__GetAudioOutputConfiguration(struct soap*, const char*, struct _trt__GetAudioOutputConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioOutputConfiguration(struct soap*, const struct _trt__GetAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioOutputConfiguration
+#define soap_write__trt__GetAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioOutputConfiguration(soap, data, "trt:GetAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfiguration * SOAP_FMAC4 soap_get__trt__GetAudioOutputConfiguration(struct soap*, struct _trt__GetAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioOutputConfiguration
+#define soap_read__trt__GetAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfigurationResponse
+#define SOAP_TYPE__trt__GetMetadataConfigurationResponse (1457)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetMetadataConfigurationResponse(struct soap*, struct _trt__GetMetadataConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetMetadataConfigurationResponse(struct soap*, const struct _trt__GetMetadataConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetMetadataConfigurationResponse(struct soap*, const char*, int, const struct _trt__GetMetadataConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationResponse * SOAP_FMAC4 soap_in__trt__GetMetadataConfigurationResponse(struct soap*, const char*, struct _trt__GetMetadataConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetMetadataConfigurationResponse(struct soap*, const struct _trt__GetMetadataConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetMetadataConfigurationResponse
+#define soap_write__trt__GetMetadataConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetMetadataConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetMetadataConfigurationResponse(soap, data, "trt:GetMetadataConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationResponse * SOAP_FMAC4 soap_get__trt__GetMetadataConfigurationResponse(struct soap*, struct _trt__GetMetadataConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetMetadataConfigurationResponse
+#define soap_read__trt__GetMetadataConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetMetadataConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfiguration
+#define SOAP_TYPE__trt__GetMetadataConfiguration (1456)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetMetadataConfiguration(struct soap*, struct _trt__GetMetadataConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetMetadataConfiguration(struct soap*, const struct _trt__GetMetadataConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetMetadataConfiguration(struct soap*, const char*, int, const struct _trt__GetMetadataConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__GetMetadataConfiguration * SOAP_FMAC4 soap_in__trt__GetMetadataConfiguration(struct soap*, const char*, struct _trt__GetMetadataConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetMetadataConfiguration(struct soap*, const struct _trt__GetMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__GetMetadataConfiguration
+#define soap_write__trt__GetMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__GetMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__GetMetadataConfiguration(soap, data, "trt:GetMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfiguration * SOAP_FMAC4 soap_get__trt__GetMetadataConfiguration(struct soap*, struct _trt__GetMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__GetMetadataConfiguration
+#define soap_read__trt__GetMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE__trt__GetVideoAnalyticsConfigurationResponse (1455)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__GetVideoAnalyticsConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoAnalyticsConfigurationResponse(struct soap*, const struct _trt__GetVideoAnalyticsConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoAnalyticsConfigurationResponse(struct soap*, const char*, int, const struct _trt__GetVideoAnalyticsConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurationResponse * SOAP_FMAC4 soap_in__trt__GetVideoAnalyticsConfigurationResponse(struct soap*, const char*, struct _trt__GetVideoAnalyticsConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoAnalyticsConfigurationResponse(struct soap*, const struct _trt__GetVideoAnalyticsConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoAnalyticsConfigurationResponse
+#define soap_write__trt__GetVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoAnalyticsConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoAnalyticsConfigurationResponse(soap, data, "trt:GetVideoAnalyticsConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurationResponse * SOAP_FMAC4 soap_get__trt__GetVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__GetVideoAnalyticsConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoAnalyticsConfigurationResponse
+#define soap_read__trt__GetVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoAnalyticsConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoAnalyticsConfiguration
+#define SOAP_TYPE__trt__GetVideoAnalyticsConfiguration (1454)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoAnalyticsConfiguration(struct soap*, struct _trt__GetVideoAnalyticsConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoAnalyticsConfiguration(struct soap*, const struct _trt__GetVideoAnalyticsConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoAnalyticsConfiguration(struct soap*, const char*, int, const struct _trt__GetVideoAnalyticsConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfiguration * SOAP_FMAC4 soap_in__trt__GetVideoAnalyticsConfiguration(struct soap*, const char*, struct _trt__GetVideoAnalyticsConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoAnalyticsConfiguration(struct soap*, const struct _trt__GetVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoAnalyticsConfiguration
+#define soap_write__trt__GetVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoAnalyticsConfiguration(soap, data, "trt:GetVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfiguration * SOAP_FMAC4 soap_get__trt__GetVideoAnalyticsConfiguration(struct soap*, struct _trt__GetVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoAnalyticsConfiguration
+#define soap_read__trt__GetVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfigurationResponse
+#define SOAP_TYPE__trt__GetAudioEncoderConfigurationResponse (1453)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioEncoderConfigurationResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioEncoderConfigurationResponse(struct soap*, const struct _trt__GetAudioEncoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioEncoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__GetAudioEncoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__GetAudioEncoderConfigurationResponse(struct soap*, const char*, struct _trt__GetAudioEncoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioEncoderConfigurationResponse(struct soap*, const struct _trt__GetAudioEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioEncoderConfigurationResponse
+#define soap_write__trt__GetAudioEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioEncoderConfigurationResponse(soap, data, "trt:GetAudioEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__GetAudioEncoderConfigurationResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioEncoderConfigurationResponse
+#define soap_read__trt__GetAudioEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfiguration
+#define SOAP_TYPE__trt__GetAudioEncoderConfiguration (1452)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioEncoderConfiguration(struct soap*, struct _trt__GetAudioEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioEncoderConfiguration(struct soap*, const struct _trt__GetAudioEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioEncoderConfiguration(struct soap*, const char*, int, const struct _trt__GetAudioEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfiguration * SOAP_FMAC4 soap_in__trt__GetAudioEncoderConfiguration(struct soap*, const char*, struct _trt__GetAudioEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioEncoderConfiguration(struct soap*, const struct _trt__GetAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioEncoderConfiguration
+#define soap_write__trt__GetAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioEncoderConfiguration(soap, data, "trt:GetAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfiguration * SOAP_FMAC4 soap_get__trt__GetAudioEncoderConfiguration(struct soap*, struct _trt__GetAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioEncoderConfiguration
+#define soap_read__trt__GetAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfigurationResponse
+#define SOAP_TYPE__trt__GetAudioSourceConfigurationResponse (1451)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioSourceConfigurationResponse(struct soap*, struct _trt__GetAudioSourceConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioSourceConfigurationResponse(struct soap*, const struct _trt__GetAudioSourceConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioSourceConfigurationResponse(struct soap*, const char*, int, const struct _trt__GetAudioSourceConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationResponse * SOAP_FMAC4 soap_in__trt__GetAudioSourceConfigurationResponse(struct soap*, const char*, struct _trt__GetAudioSourceConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioSourceConfigurationResponse(struct soap*, const struct _trt__GetAudioSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioSourceConfigurationResponse
+#define soap_write__trt__GetAudioSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioSourceConfigurationResponse(soap, data, "trt:GetAudioSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationResponse * SOAP_FMAC4 soap_get__trt__GetAudioSourceConfigurationResponse(struct soap*, struct _trt__GetAudioSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioSourceConfigurationResponse
+#define soap_read__trt__GetAudioSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfiguration
+#define SOAP_TYPE__trt__GetAudioSourceConfiguration (1450)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioSourceConfiguration(struct soap*, struct _trt__GetAudioSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioSourceConfiguration(struct soap*, const struct _trt__GetAudioSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioSourceConfiguration(struct soap*, const char*, int, const struct _trt__GetAudioSourceConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfiguration * SOAP_FMAC4 soap_in__trt__GetAudioSourceConfiguration(struct soap*, const char*, struct _trt__GetAudioSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioSourceConfiguration(struct soap*, const struct _trt__GetAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioSourceConfiguration
+#define soap_write__trt__GetAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioSourceConfiguration(soap, data, "trt:GetAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfiguration * SOAP_FMAC4 soap_get__trt__GetAudioSourceConfiguration(struct soap*, struct _trt__GetAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioSourceConfiguration
+#define soap_read__trt__GetAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfigurationResponse
+#define SOAP_TYPE__trt__GetVideoEncoderConfigurationResponse (1449)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoEncoderConfigurationResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoEncoderConfigurationResponse(struct soap*, const struct _trt__GetVideoEncoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoEncoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__GetVideoEncoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__GetVideoEncoderConfigurationResponse(struct soap*, const char*, struct _trt__GetVideoEncoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoEncoderConfigurationResponse(struct soap*, const struct _trt__GetVideoEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoEncoderConfigurationResponse
+#define soap_write__trt__GetVideoEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoEncoderConfigurationResponse(soap, data, "trt:GetVideoEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__GetVideoEncoderConfigurationResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoEncoderConfigurationResponse
+#define soap_read__trt__GetVideoEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfiguration
+#define SOAP_TYPE__trt__GetVideoEncoderConfiguration (1448)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoEncoderConfiguration(struct soap*, struct _trt__GetVideoEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoEncoderConfiguration(struct soap*, const struct _trt__GetVideoEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoEncoderConfiguration(struct soap*, const char*, int, const struct _trt__GetVideoEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfiguration * SOAP_FMAC4 soap_in__trt__GetVideoEncoderConfiguration(struct soap*, const char*, struct _trt__GetVideoEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoEncoderConfiguration(struct soap*, const struct _trt__GetVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoEncoderConfiguration
+#define soap_write__trt__GetVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoEncoderConfiguration(soap, data, "trt:GetVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfiguration * SOAP_FMAC4 soap_get__trt__GetVideoEncoderConfiguration(struct soap*, struct _trt__GetVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoEncoderConfiguration
+#define soap_read__trt__GetVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfigurationResponse
+#define SOAP_TYPE__trt__GetVideoSourceConfigurationResponse (1447)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoSourceConfigurationResponse(struct soap*, struct _trt__GetVideoSourceConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoSourceConfigurationResponse(struct soap*, const struct _trt__GetVideoSourceConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoSourceConfigurationResponse(struct soap*, const char*, int, const struct _trt__GetVideoSourceConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationResponse * SOAP_FMAC4 soap_in__trt__GetVideoSourceConfigurationResponse(struct soap*, const char*, struct _trt__GetVideoSourceConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoSourceConfigurationResponse(struct soap*, const struct _trt__GetVideoSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoSourceConfigurationResponse
+#define soap_write__trt__GetVideoSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoSourceConfigurationResponse(soap, data, "trt:GetVideoSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationResponse * SOAP_FMAC4 soap_get__trt__GetVideoSourceConfigurationResponse(struct soap*, struct _trt__GetVideoSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoSourceConfigurationResponse
+#define soap_read__trt__GetVideoSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfiguration
+#define SOAP_TYPE__trt__GetVideoSourceConfiguration (1446)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoSourceConfiguration(struct soap*, struct _trt__GetVideoSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoSourceConfiguration(struct soap*, const struct _trt__GetVideoSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoSourceConfiguration(struct soap*, const char*, int, const struct _trt__GetVideoSourceConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfiguration * SOAP_FMAC4 soap_in__trt__GetVideoSourceConfiguration(struct soap*, const char*, struct _trt__GetVideoSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoSourceConfiguration(struct soap*, const struct _trt__GetVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoSourceConfiguration
+#define soap_write__trt__GetVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoSourceConfiguration(soap, data, "trt:GetVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfiguration * SOAP_FMAC4 soap_get__trt__GetVideoSourceConfiguration(struct soap*, struct _trt__GetVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoSourceConfiguration
+#define soap_read__trt__GetVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetAudioDecoderConfigurationsResponse (1445)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioDecoderConfigurationsResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioDecoderConfigurationsResponse(struct soap*, const struct _trt__GetAudioDecoderConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioDecoderConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetAudioDecoderConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetAudioDecoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetAudioDecoderConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioDecoderConfigurationsResponse(struct soap*, const struct _trt__GetAudioDecoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioDecoderConfigurationsResponse
+#define soap_write__trt__GetAudioDecoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioDecoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioDecoderConfigurationsResponse(soap, data, "trt:GetAudioDecoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetAudioDecoderConfigurationsResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioDecoderConfigurationsResponse
+#define soap_read__trt__GetAudioDecoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioDecoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioDecoderConfigurations
+#define SOAP_TYPE__trt__GetAudioDecoderConfigurations (1444)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioDecoderConfigurations(struct soap*, struct _trt__GetAudioDecoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioDecoderConfigurations(struct soap*, const struct _trt__GetAudioDecoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioDecoderConfigurations(struct soap*, const char*, int, const struct _trt__GetAudioDecoderConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurations * SOAP_FMAC4 soap_in__trt__GetAudioDecoderConfigurations(struct soap*, const char*, struct _trt__GetAudioDecoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioDecoderConfigurations(struct soap*, const struct _trt__GetAudioDecoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioDecoderConfigurations
+#define soap_write__trt__GetAudioDecoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioDecoderConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioDecoderConfigurations(soap, data, "trt:GetAudioDecoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurations * SOAP_FMAC4 soap_get__trt__GetAudioDecoderConfigurations(struct soap*, struct _trt__GetAudioDecoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioDecoderConfigurations
+#define soap_read__trt__GetAudioDecoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioDecoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfigurationsResponse
+#define SOAP_TYPE__trt__GetAudioOutputConfigurationsResponse (1443)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioOutputConfigurationsResponse(struct soap*, struct _trt__GetAudioOutputConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioOutputConfigurationsResponse(struct soap*, const struct _trt__GetAudioOutputConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioOutputConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetAudioOutputConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetAudioOutputConfigurationsResponse(struct soap*, const char*, struct _trt__GetAudioOutputConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioOutputConfigurationsResponse(struct soap*, const struct _trt__GetAudioOutputConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioOutputConfigurationsResponse
+#define soap_write__trt__GetAudioOutputConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioOutputConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioOutputConfigurationsResponse(soap, data, "trt:GetAudioOutputConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetAudioOutputConfigurationsResponse(struct soap*, struct _trt__GetAudioOutputConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioOutputConfigurationsResponse
+#define soap_read__trt__GetAudioOutputConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioOutputConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputConfigurations
+#define SOAP_TYPE__trt__GetAudioOutputConfigurations (1442)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioOutputConfigurations(struct soap*, struct _trt__GetAudioOutputConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioOutputConfigurations(struct soap*, const struct _trt__GetAudioOutputConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioOutputConfigurations(struct soap*, const char*, int, const struct _trt__GetAudioOutputConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurations * SOAP_FMAC4 soap_in__trt__GetAudioOutputConfigurations(struct soap*, const char*, struct _trt__GetAudioOutputConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioOutputConfigurations(struct soap*, const struct _trt__GetAudioOutputConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioOutputConfigurations
+#define soap_write__trt__GetAudioOutputConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioOutputConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioOutputConfigurations(soap, data, "trt:GetAudioOutputConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurations * SOAP_FMAC4 soap_get__trt__GetAudioOutputConfigurations(struct soap*, struct _trt__GetAudioOutputConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioOutputConfigurations
+#define soap_read__trt__GetAudioOutputConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioOutputConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfigurationsResponse
+#define SOAP_TYPE__trt__GetMetadataConfigurationsResponse (1441)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetMetadataConfigurationsResponse(struct soap*, struct _trt__GetMetadataConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetMetadataConfigurationsResponse(struct soap*, const struct _trt__GetMetadataConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetMetadataConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetMetadataConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetMetadataConfigurationsResponse(struct soap*, const char*, struct _trt__GetMetadataConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetMetadataConfigurationsResponse(struct soap*, const struct _trt__GetMetadataConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetMetadataConfigurationsResponse
+#define soap_write__trt__GetMetadataConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetMetadataConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetMetadataConfigurationsResponse(soap, data, "trt:GetMetadataConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetMetadataConfigurationsResponse(struct soap*, struct _trt__GetMetadataConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetMetadataConfigurationsResponse
+#define soap_read__trt__GetMetadataConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetMetadataConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetMetadataConfigurations
+#define SOAP_TYPE__trt__GetMetadataConfigurations (1440)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetMetadataConfigurations(struct soap*, struct _trt__GetMetadataConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetMetadataConfigurations(struct soap*, const struct _trt__GetMetadataConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetMetadataConfigurations(struct soap*, const char*, int, const struct _trt__GetMetadataConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetMetadataConfigurations * SOAP_FMAC4 soap_in__trt__GetMetadataConfigurations(struct soap*, const char*, struct _trt__GetMetadataConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetMetadataConfigurations(struct soap*, const struct _trt__GetMetadataConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetMetadataConfigurations
+#define soap_write__trt__GetMetadataConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetMetadataConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetMetadataConfigurations(soap, data, "trt:GetMetadataConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfigurations * SOAP_FMAC4 soap_get__trt__GetMetadataConfigurations(struct soap*, struct _trt__GetMetadataConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetMetadataConfigurations
+#define soap_read__trt__GetMetadataConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetMetadataConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoAnalyticsConfigurationsResponse
+#define SOAP_TYPE__trt__GetVideoAnalyticsConfigurationsResponse (1439)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, struct _trt__GetVideoAnalyticsConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, const struct _trt__GetVideoAnalyticsConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetVideoAnalyticsConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, const char*, struct _trt__GetVideoAnalyticsConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, const struct _trt__GetVideoAnalyticsConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoAnalyticsConfigurationsResponse
+#define soap_write__trt__GetVideoAnalyticsConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoAnalyticsConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoAnalyticsConfigurationsResponse(soap, data, "trt:GetVideoAnalyticsConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, struct _trt__GetVideoAnalyticsConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoAnalyticsConfigurationsResponse
+#define soap_read__trt__GetVideoAnalyticsConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoAnalyticsConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoAnalyticsConfigurations
+#define SOAP_TYPE__trt__GetVideoAnalyticsConfigurations (1438)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoAnalyticsConfigurations(struct soap*, struct _trt__GetVideoAnalyticsConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoAnalyticsConfigurations(struct soap*, const struct _trt__GetVideoAnalyticsConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoAnalyticsConfigurations(struct soap*, const char*, int, const struct _trt__GetVideoAnalyticsConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurations * SOAP_FMAC4 soap_in__trt__GetVideoAnalyticsConfigurations(struct soap*, const char*, struct _trt__GetVideoAnalyticsConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoAnalyticsConfigurations(struct soap*, const struct _trt__GetVideoAnalyticsConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoAnalyticsConfigurations
+#define soap_write__trt__GetVideoAnalyticsConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoAnalyticsConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoAnalyticsConfigurations(soap, data, "trt:GetVideoAnalyticsConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurations * SOAP_FMAC4 soap_get__trt__GetVideoAnalyticsConfigurations(struct soap*, struct _trt__GetVideoAnalyticsConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoAnalyticsConfigurations
+#define soap_read__trt__GetVideoAnalyticsConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoAnalyticsConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfigurationsResponse
+#define SOAP_TYPE__trt__GetAudioSourceConfigurationsResponse (1437)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioSourceConfigurationsResponse(struct soap*, struct _trt__GetAudioSourceConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioSourceConfigurationsResponse(struct soap*, const struct _trt__GetAudioSourceConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioSourceConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetAudioSourceConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetAudioSourceConfigurationsResponse(struct soap*, const char*, struct _trt__GetAudioSourceConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioSourceConfigurationsResponse(struct soap*, const struct _trt__GetAudioSourceConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioSourceConfigurationsResponse
+#define soap_write__trt__GetAudioSourceConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioSourceConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioSourceConfigurationsResponse(soap, data, "trt:GetAudioSourceConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetAudioSourceConfigurationsResponse(struct soap*, struct _trt__GetAudioSourceConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioSourceConfigurationsResponse
+#define soap_read__trt__GetAudioSourceConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioSourceConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioSourceConfigurations
+#define SOAP_TYPE__trt__GetAudioSourceConfigurations (1436)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioSourceConfigurations(struct soap*, struct _trt__GetAudioSourceConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioSourceConfigurations(struct soap*, const struct _trt__GetAudioSourceConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioSourceConfigurations(struct soap*, const char*, int, const struct _trt__GetAudioSourceConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurations * SOAP_FMAC4 soap_in__trt__GetAudioSourceConfigurations(struct soap*, const char*, struct _trt__GetAudioSourceConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioSourceConfigurations(struct soap*, const struct _trt__GetAudioSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioSourceConfigurations
+#define soap_write__trt__GetAudioSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioSourceConfigurations(soap, data, "trt:GetAudioSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurations * SOAP_FMAC4 soap_get__trt__GetAudioSourceConfigurations(struct soap*, struct _trt__GetAudioSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioSourceConfigurations
+#define soap_read__trt__GetAudioSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetAudioEncoderConfigurationsResponse (1435)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioEncoderConfigurationsResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioEncoderConfigurationsResponse(struct soap*, const struct _trt__GetAudioEncoderConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioEncoderConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetAudioEncoderConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetAudioEncoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetAudioEncoderConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioEncoderConfigurationsResponse(struct soap*, const struct _trt__GetAudioEncoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioEncoderConfigurationsResponse
+#define soap_write__trt__GetAudioEncoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioEncoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioEncoderConfigurationsResponse(soap, data, "trt:GetAudioEncoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetAudioEncoderConfigurationsResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioEncoderConfigurationsResponse
+#define soap_read__trt__GetAudioEncoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioEncoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioEncoderConfigurations
+#define SOAP_TYPE__trt__GetAudioEncoderConfigurations (1434)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioEncoderConfigurations(struct soap*, struct _trt__GetAudioEncoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioEncoderConfigurations(struct soap*, const struct _trt__GetAudioEncoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioEncoderConfigurations(struct soap*, const char*, int, const struct _trt__GetAudioEncoderConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurations * SOAP_FMAC4 soap_in__trt__GetAudioEncoderConfigurations(struct soap*, const char*, struct _trt__GetAudioEncoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioEncoderConfigurations(struct soap*, const struct _trt__GetAudioEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioEncoderConfigurations
+#define soap_write__trt__GetAudioEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioEncoderConfigurations(soap, data, "trt:GetAudioEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurations * SOAP_FMAC4 soap_get__trt__GetAudioEncoderConfigurations(struct soap*, struct _trt__GetAudioEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioEncoderConfigurations
+#define soap_read__trt__GetAudioEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfigurationsResponse
+#define SOAP_TYPE__trt__GetVideoSourceConfigurationsResponse (1433)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoSourceConfigurationsResponse(struct soap*, struct _trt__GetVideoSourceConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoSourceConfigurationsResponse(struct soap*, const struct _trt__GetVideoSourceConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoSourceConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetVideoSourceConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetVideoSourceConfigurationsResponse(struct soap*, const char*, struct _trt__GetVideoSourceConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoSourceConfigurationsResponse(struct soap*, const struct _trt__GetVideoSourceConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoSourceConfigurationsResponse
+#define soap_write__trt__GetVideoSourceConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoSourceConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoSourceConfigurationsResponse(soap, data, "trt:GetVideoSourceConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetVideoSourceConfigurationsResponse(struct soap*, struct _trt__GetVideoSourceConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoSourceConfigurationsResponse
+#define soap_read__trt__GetVideoSourceConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoSourceConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoSourceConfigurations
+#define SOAP_TYPE__trt__GetVideoSourceConfigurations (1432)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoSourceConfigurations(struct soap*, struct _trt__GetVideoSourceConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoSourceConfigurations(struct soap*, const struct _trt__GetVideoSourceConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoSourceConfigurations(struct soap*, const char*, int, const struct _trt__GetVideoSourceConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurations * SOAP_FMAC4 soap_in__trt__GetVideoSourceConfigurations(struct soap*, const char*, struct _trt__GetVideoSourceConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoSourceConfigurations(struct soap*, const struct _trt__GetVideoSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoSourceConfigurations
+#define soap_write__trt__GetVideoSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoSourceConfigurations(soap, data, "trt:GetVideoSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurations * SOAP_FMAC4 soap_get__trt__GetVideoSourceConfigurations(struct soap*, struct _trt__GetVideoSourceConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoSourceConfigurations
+#define soap_read__trt__GetVideoSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfigurationsResponse
+#define SOAP_TYPE__trt__GetVideoEncoderConfigurationsResponse (1431)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoEncoderConfigurationsResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoEncoderConfigurationsResponse(struct soap*, const struct _trt__GetVideoEncoderConfigurationsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoEncoderConfigurationsResponse(struct soap*, const char*, int, const struct _trt__GetVideoEncoderConfigurationsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationsResponse * SOAP_FMAC4 soap_in__trt__GetVideoEncoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetVideoEncoderConfigurationsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoEncoderConfigurationsResponse(struct soap*, const struct _trt__GetVideoEncoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoEncoderConfigurationsResponse
+#define soap_write__trt__GetVideoEncoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoEncoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoEncoderConfigurationsResponse(soap, data, "trt:GetVideoEncoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationsResponse * SOAP_FMAC4 soap_get__trt__GetVideoEncoderConfigurationsResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoEncoderConfigurationsResponse
+#define soap_read__trt__GetVideoEncoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoEncoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoEncoderConfigurations
+#define SOAP_TYPE__trt__GetVideoEncoderConfigurations (1430)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoEncoderConfigurations(struct soap*, struct _trt__GetVideoEncoderConfigurations *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoEncoderConfigurations(struct soap*, const struct _trt__GetVideoEncoderConfigurations *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoEncoderConfigurations(struct soap*, const char*, int, const struct _trt__GetVideoEncoderConfigurations *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurations * SOAP_FMAC4 soap_in__trt__GetVideoEncoderConfigurations(struct soap*, const char*, struct _trt__GetVideoEncoderConfigurations *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoEncoderConfigurations(struct soap*, const struct _trt__GetVideoEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoEncoderConfigurations
+#define soap_write__trt__GetVideoEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoEncoderConfigurations(soap, data, "trt:GetVideoEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurations * SOAP_FMAC4 soap_get__trt__GetVideoEncoderConfigurations(struct soap*, struct _trt__GetVideoEncoderConfigurations *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoEncoderConfigurations
+#define soap_read__trt__GetVideoEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__DeleteProfileResponse
+#define SOAP_TYPE__trt__DeleteProfileResponse (1429)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__DeleteProfileResponse(struct soap*, struct _trt__DeleteProfileResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__DeleteProfileResponse(struct soap*, const struct _trt__DeleteProfileResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__DeleteProfileResponse(struct soap*, const char*, int, const struct _trt__DeleteProfileResponse *, const char*);
+SOAP_FMAC3 struct _trt__DeleteProfileResponse * SOAP_FMAC4 soap_in__trt__DeleteProfileResponse(struct soap*, const char*, struct _trt__DeleteProfileResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__DeleteProfileResponse(struct soap*, const struct _trt__DeleteProfileResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__DeleteProfileResponse
+#define soap_write__trt__DeleteProfileResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__DeleteProfileResponse(soap, data), soap_begin_send(soap) || soap_put__trt__DeleteProfileResponse(soap, data, "trt:DeleteProfileResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__DeleteProfileResponse * SOAP_FMAC4 soap_get__trt__DeleteProfileResponse(struct soap*, struct _trt__DeleteProfileResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__DeleteProfileResponse
+#define soap_read__trt__DeleteProfileResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__DeleteProfileResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__DeleteProfile
+#define SOAP_TYPE__trt__DeleteProfile (1428)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__DeleteProfile(struct soap*, struct _trt__DeleteProfile *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__DeleteProfile(struct soap*, const struct _trt__DeleteProfile *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__DeleteProfile(struct soap*, const char*, int, const struct _trt__DeleteProfile *, const char*);
+SOAP_FMAC3 struct _trt__DeleteProfile * SOAP_FMAC4 soap_in__trt__DeleteProfile(struct soap*, const char*, struct _trt__DeleteProfile *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__DeleteProfile(struct soap*, const struct _trt__DeleteProfile *, const char*, const char*);
+
+#ifndef soap_write__trt__DeleteProfile
+#define soap_write__trt__DeleteProfile(soap, data) ( soap_begin(soap), soap_serialize__trt__DeleteProfile(soap, data), soap_begin_send(soap) || soap_put__trt__DeleteProfile(soap, data, "trt:DeleteProfile", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__DeleteProfile * SOAP_FMAC4 soap_get__trt__DeleteProfile(struct soap*, struct _trt__DeleteProfile *, const char*, const char*);
+
+#ifndef soap_read__trt__DeleteProfile
+#define soap_read__trt__DeleteProfile(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__DeleteProfile(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveAudioDecoderConfigurationResponse
+#define SOAP_TYPE__trt__RemoveAudioDecoderConfigurationResponse (1427)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveAudioDecoderConfigurationResponse(struct soap*, struct _trt__RemoveAudioDecoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveAudioDecoderConfigurationResponse(struct soap*, const struct _trt__RemoveAudioDecoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveAudioDecoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__RemoveAudioDecoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__RemoveAudioDecoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__RemoveAudioDecoderConfigurationResponse(struct soap*, const char*, struct _trt__RemoveAudioDecoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveAudioDecoderConfigurationResponse(struct soap*, const struct _trt__RemoveAudioDecoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveAudioDecoderConfigurationResponse
+#define soap_write__trt__RemoveAudioDecoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveAudioDecoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveAudioDecoderConfigurationResponse(soap, data, "trt:RemoveAudioDecoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioDecoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__RemoveAudioDecoderConfigurationResponse(struct soap*, struct _trt__RemoveAudioDecoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveAudioDecoderConfigurationResponse
+#define soap_read__trt__RemoveAudioDecoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveAudioDecoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveAudioDecoderConfiguration
+#define SOAP_TYPE__trt__RemoveAudioDecoderConfiguration (1426)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveAudioDecoderConfiguration(struct soap*, struct _trt__RemoveAudioDecoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveAudioDecoderConfiguration(struct soap*, const struct _trt__RemoveAudioDecoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveAudioDecoderConfiguration(struct soap*, const char*, int, const struct _trt__RemoveAudioDecoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__RemoveAudioDecoderConfiguration * SOAP_FMAC4 soap_in__trt__RemoveAudioDecoderConfiguration(struct soap*, const char*, struct _trt__RemoveAudioDecoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveAudioDecoderConfiguration(struct soap*, const struct _trt__RemoveAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveAudioDecoderConfiguration
+#define soap_write__trt__RemoveAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveAudioDecoderConfiguration(soap, data, "trt:RemoveAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioDecoderConfiguration * SOAP_FMAC4 soap_get__trt__RemoveAudioDecoderConfiguration(struct soap*, struct _trt__RemoveAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveAudioDecoderConfiguration
+#define soap_read__trt__RemoveAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddAudioDecoderConfigurationResponse
+#define SOAP_TYPE__trt__AddAudioDecoderConfigurationResponse (1425)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddAudioDecoderConfigurationResponse(struct soap*, struct _trt__AddAudioDecoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddAudioDecoderConfigurationResponse(struct soap*, const struct _trt__AddAudioDecoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddAudioDecoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__AddAudioDecoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__AddAudioDecoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__AddAudioDecoderConfigurationResponse(struct soap*, const char*, struct _trt__AddAudioDecoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddAudioDecoderConfigurationResponse(struct soap*, const struct _trt__AddAudioDecoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__AddAudioDecoderConfigurationResponse
+#define soap_write__trt__AddAudioDecoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__AddAudioDecoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__AddAudioDecoderConfigurationResponse(soap, data, "trt:AddAudioDecoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioDecoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__AddAudioDecoderConfigurationResponse(struct soap*, struct _trt__AddAudioDecoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__AddAudioDecoderConfigurationResponse
+#define soap_read__trt__AddAudioDecoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddAudioDecoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddAudioDecoderConfiguration
+#define SOAP_TYPE__trt__AddAudioDecoderConfiguration (1424)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddAudioDecoderConfiguration(struct soap*, struct _trt__AddAudioDecoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddAudioDecoderConfiguration(struct soap*, const struct _trt__AddAudioDecoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddAudioDecoderConfiguration(struct soap*, const char*, int, const struct _trt__AddAudioDecoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__AddAudioDecoderConfiguration * SOAP_FMAC4 soap_in__trt__AddAudioDecoderConfiguration(struct soap*, const char*, struct _trt__AddAudioDecoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddAudioDecoderConfiguration(struct soap*, const struct _trt__AddAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__AddAudioDecoderConfiguration
+#define soap_write__trt__AddAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__AddAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__AddAudioDecoderConfiguration(soap, data, "trt:AddAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioDecoderConfiguration * SOAP_FMAC4 soap_get__trt__AddAudioDecoderConfiguration(struct soap*, struct _trt__AddAudioDecoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__AddAudioDecoderConfiguration
+#define soap_read__trt__AddAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveAudioOutputConfigurationResponse
+#define SOAP_TYPE__trt__RemoveAudioOutputConfigurationResponse (1423)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveAudioOutputConfigurationResponse(struct soap*, struct _trt__RemoveAudioOutputConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveAudioOutputConfigurationResponse(struct soap*, const struct _trt__RemoveAudioOutputConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveAudioOutputConfigurationResponse(struct soap*, const char*, int, const struct _trt__RemoveAudioOutputConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__RemoveAudioOutputConfigurationResponse * SOAP_FMAC4 soap_in__trt__RemoveAudioOutputConfigurationResponse(struct soap*, const char*, struct _trt__RemoveAudioOutputConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveAudioOutputConfigurationResponse(struct soap*, const struct _trt__RemoveAudioOutputConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveAudioOutputConfigurationResponse
+#define soap_write__trt__RemoveAudioOutputConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveAudioOutputConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveAudioOutputConfigurationResponse(soap, data, "trt:RemoveAudioOutputConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioOutputConfigurationResponse * SOAP_FMAC4 soap_get__trt__RemoveAudioOutputConfigurationResponse(struct soap*, struct _trt__RemoveAudioOutputConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveAudioOutputConfigurationResponse
+#define soap_read__trt__RemoveAudioOutputConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveAudioOutputConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveAudioOutputConfiguration
+#define SOAP_TYPE__trt__RemoveAudioOutputConfiguration (1422)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveAudioOutputConfiguration(struct soap*, struct _trt__RemoveAudioOutputConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveAudioOutputConfiguration(struct soap*, const struct _trt__RemoveAudioOutputConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveAudioOutputConfiguration(struct soap*, const char*, int, const struct _trt__RemoveAudioOutputConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__RemoveAudioOutputConfiguration * SOAP_FMAC4 soap_in__trt__RemoveAudioOutputConfiguration(struct soap*, const char*, struct _trt__RemoveAudioOutputConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveAudioOutputConfiguration(struct soap*, const struct _trt__RemoveAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveAudioOutputConfiguration
+#define soap_write__trt__RemoveAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveAudioOutputConfiguration(soap, data, "trt:RemoveAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioOutputConfiguration * SOAP_FMAC4 soap_get__trt__RemoveAudioOutputConfiguration(struct soap*, struct _trt__RemoveAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveAudioOutputConfiguration
+#define soap_read__trt__RemoveAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddAudioOutputConfigurationResponse
+#define SOAP_TYPE__trt__AddAudioOutputConfigurationResponse (1421)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddAudioOutputConfigurationResponse(struct soap*, struct _trt__AddAudioOutputConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddAudioOutputConfigurationResponse(struct soap*, const struct _trt__AddAudioOutputConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddAudioOutputConfigurationResponse(struct soap*, const char*, int, const struct _trt__AddAudioOutputConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__AddAudioOutputConfigurationResponse * SOAP_FMAC4 soap_in__trt__AddAudioOutputConfigurationResponse(struct soap*, const char*, struct _trt__AddAudioOutputConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddAudioOutputConfigurationResponse(struct soap*, const struct _trt__AddAudioOutputConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__AddAudioOutputConfigurationResponse
+#define soap_write__trt__AddAudioOutputConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__AddAudioOutputConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__AddAudioOutputConfigurationResponse(soap, data, "trt:AddAudioOutputConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioOutputConfigurationResponse * SOAP_FMAC4 soap_get__trt__AddAudioOutputConfigurationResponse(struct soap*, struct _trt__AddAudioOutputConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__AddAudioOutputConfigurationResponse
+#define soap_read__trt__AddAudioOutputConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddAudioOutputConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddAudioOutputConfiguration
+#define SOAP_TYPE__trt__AddAudioOutputConfiguration (1420)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddAudioOutputConfiguration(struct soap*, struct _trt__AddAudioOutputConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddAudioOutputConfiguration(struct soap*, const struct _trt__AddAudioOutputConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddAudioOutputConfiguration(struct soap*, const char*, int, const struct _trt__AddAudioOutputConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__AddAudioOutputConfiguration * SOAP_FMAC4 soap_in__trt__AddAudioOutputConfiguration(struct soap*, const char*, struct _trt__AddAudioOutputConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddAudioOutputConfiguration(struct soap*, const struct _trt__AddAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__AddAudioOutputConfiguration
+#define soap_write__trt__AddAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__AddAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__AddAudioOutputConfiguration(soap, data, "trt:AddAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioOutputConfiguration * SOAP_FMAC4 soap_get__trt__AddAudioOutputConfiguration(struct soap*, struct _trt__AddAudioOutputConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__AddAudioOutputConfiguration
+#define soap_read__trt__AddAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveMetadataConfigurationResponse
+#define SOAP_TYPE__trt__RemoveMetadataConfigurationResponse (1419)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveMetadataConfigurationResponse(struct soap*, struct _trt__RemoveMetadataConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveMetadataConfigurationResponse(struct soap*, const struct _trt__RemoveMetadataConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveMetadataConfigurationResponse(struct soap*, const char*, int, const struct _trt__RemoveMetadataConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__RemoveMetadataConfigurationResponse * SOAP_FMAC4 soap_in__trt__RemoveMetadataConfigurationResponse(struct soap*, const char*, struct _trt__RemoveMetadataConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveMetadataConfigurationResponse(struct soap*, const struct _trt__RemoveMetadataConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveMetadataConfigurationResponse
+#define soap_write__trt__RemoveMetadataConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveMetadataConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveMetadataConfigurationResponse(soap, data, "trt:RemoveMetadataConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveMetadataConfigurationResponse * SOAP_FMAC4 soap_get__trt__RemoveMetadataConfigurationResponse(struct soap*, struct _trt__RemoveMetadataConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveMetadataConfigurationResponse
+#define soap_read__trt__RemoveMetadataConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveMetadataConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveMetadataConfiguration
+#define SOAP_TYPE__trt__RemoveMetadataConfiguration (1418)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveMetadataConfiguration(struct soap*, struct _trt__RemoveMetadataConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveMetadataConfiguration(struct soap*, const struct _trt__RemoveMetadataConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveMetadataConfiguration(struct soap*, const char*, int, const struct _trt__RemoveMetadataConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__RemoveMetadataConfiguration * SOAP_FMAC4 soap_in__trt__RemoveMetadataConfiguration(struct soap*, const char*, struct _trt__RemoveMetadataConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveMetadataConfiguration(struct soap*, const struct _trt__RemoveMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveMetadataConfiguration
+#define soap_write__trt__RemoveMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveMetadataConfiguration(soap, data, "trt:RemoveMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveMetadataConfiguration * SOAP_FMAC4 soap_get__trt__RemoveMetadataConfiguration(struct soap*, struct _trt__RemoveMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveMetadataConfiguration
+#define soap_read__trt__RemoveMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddMetadataConfigurationResponse
+#define SOAP_TYPE__trt__AddMetadataConfigurationResponse (1417)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddMetadataConfigurationResponse(struct soap*, struct _trt__AddMetadataConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddMetadataConfigurationResponse(struct soap*, const struct _trt__AddMetadataConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddMetadataConfigurationResponse(struct soap*, const char*, int, const struct _trt__AddMetadataConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__AddMetadataConfigurationResponse * SOAP_FMAC4 soap_in__trt__AddMetadataConfigurationResponse(struct soap*, const char*, struct _trt__AddMetadataConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddMetadataConfigurationResponse(struct soap*, const struct _trt__AddMetadataConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__AddMetadataConfigurationResponse
+#define soap_write__trt__AddMetadataConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__AddMetadataConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__AddMetadataConfigurationResponse(soap, data, "trt:AddMetadataConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddMetadataConfigurationResponse * SOAP_FMAC4 soap_get__trt__AddMetadataConfigurationResponse(struct soap*, struct _trt__AddMetadataConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__AddMetadataConfigurationResponse
+#define soap_read__trt__AddMetadataConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddMetadataConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddMetadataConfiguration
+#define SOAP_TYPE__trt__AddMetadataConfiguration (1416)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddMetadataConfiguration(struct soap*, struct _trt__AddMetadataConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddMetadataConfiguration(struct soap*, const struct _trt__AddMetadataConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddMetadataConfiguration(struct soap*, const char*, int, const struct _trt__AddMetadataConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__AddMetadataConfiguration * SOAP_FMAC4 soap_in__trt__AddMetadataConfiguration(struct soap*, const char*, struct _trt__AddMetadataConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddMetadataConfiguration(struct soap*, const struct _trt__AddMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__AddMetadataConfiguration
+#define soap_write__trt__AddMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__AddMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__AddMetadataConfiguration(soap, data, "trt:AddMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddMetadataConfiguration * SOAP_FMAC4 soap_get__trt__AddMetadataConfiguration(struct soap*, struct _trt__AddMetadataConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__AddMetadataConfiguration
+#define soap_read__trt__AddMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE__trt__RemoveVideoAnalyticsConfigurationResponse (1415)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__RemoveVideoAnalyticsConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, const struct _trt__RemoveVideoAnalyticsConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, const char*, int, const struct _trt__RemoveVideoAnalyticsConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__RemoveVideoAnalyticsConfigurationResponse * SOAP_FMAC4 soap_in__trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, const char*, struct _trt__RemoveVideoAnalyticsConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, const struct _trt__RemoveVideoAnalyticsConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveVideoAnalyticsConfigurationResponse
+#define soap_write__trt__RemoveVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveVideoAnalyticsConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveVideoAnalyticsConfigurationResponse(soap, data, "trt:RemoveVideoAnalyticsConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoAnalyticsConfigurationResponse * SOAP_FMAC4 soap_get__trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__RemoveVideoAnalyticsConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveVideoAnalyticsConfigurationResponse
+#define soap_read__trt__RemoveVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveVideoAnalyticsConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveVideoAnalyticsConfiguration
+#define SOAP_TYPE__trt__RemoveVideoAnalyticsConfiguration (1414)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveVideoAnalyticsConfiguration(struct soap*, struct _trt__RemoveVideoAnalyticsConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveVideoAnalyticsConfiguration(struct soap*, const struct _trt__RemoveVideoAnalyticsConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveVideoAnalyticsConfiguration(struct soap*, const char*, int, const struct _trt__RemoveVideoAnalyticsConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__RemoveVideoAnalyticsConfiguration * SOAP_FMAC4 soap_in__trt__RemoveVideoAnalyticsConfiguration(struct soap*, const char*, struct _trt__RemoveVideoAnalyticsConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveVideoAnalyticsConfiguration(struct soap*, const struct _trt__RemoveVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveVideoAnalyticsConfiguration
+#define soap_write__trt__RemoveVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveVideoAnalyticsConfiguration(soap, data, "trt:RemoveVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoAnalyticsConfiguration * SOAP_FMAC4 soap_get__trt__RemoveVideoAnalyticsConfiguration(struct soap*, struct _trt__RemoveVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveVideoAnalyticsConfiguration
+#define soap_read__trt__RemoveVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE__trt__AddVideoAnalyticsConfigurationResponse (1413)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__AddVideoAnalyticsConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddVideoAnalyticsConfigurationResponse(struct soap*, const struct _trt__AddVideoAnalyticsConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddVideoAnalyticsConfigurationResponse(struct soap*, const char*, int, const struct _trt__AddVideoAnalyticsConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__AddVideoAnalyticsConfigurationResponse * SOAP_FMAC4 soap_in__trt__AddVideoAnalyticsConfigurationResponse(struct soap*, const char*, struct _trt__AddVideoAnalyticsConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddVideoAnalyticsConfigurationResponse(struct soap*, const struct _trt__AddVideoAnalyticsConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__AddVideoAnalyticsConfigurationResponse
+#define soap_write__trt__AddVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__AddVideoAnalyticsConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__AddVideoAnalyticsConfigurationResponse(soap, data, "trt:AddVideoAnalyticsConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoAnalyticsConfigurationResponse * SOAP_FMAC4 soap_get__trt__AddVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__AddVideoAnalyticsConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__AddVideoAnalyticsConfigurationResponse
+#define soap_read__trt__AddVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddVideoAnalyticsConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddVideoAnalyticsConfiguration
+#define SOAP_TYPE__trt__AddVideoAnalyticsConfiguration (1412)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddVideoAnalyticsConfiguration(struct soap*, struct _trt__AddVideoAnalyticsConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddVideoAnalyticsConfiguration(struct soap*, const struct _trt__AddVideoAnalyticsConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddVideoAnalyticsConfiguration(struct soap*, const char*, int, const struct _trt__AddVideoAnalyticsConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__AddVideoAnalyticsConfiguration * SOAP_FMAC4 soap_in__trt__AddVideoAnalyticsConfiguration(struct soap*, const char*, struct _trt__AddVideoAnalyticsConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddVideoAnalyticsConfiguration(struct soap*, const struct _trt__AddVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__AddVideoAnalyticsConfiguration
+#define soap_write__trt__AddVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__AddVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__AddVideoAnalyticsConfiguration(soap, data, "trt:AddVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoAnalyticsConfiguration * SOAP_FMAC4 soap_get__trt__AddVideoAnalyticsConfiguration(struct soap*, struct _trt__AddVideoAnalyticsConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__AddVideoAnalyticsConfiguration
+#define soap_read__trt__AddVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemovePTZConfigurationResponse
+#define SOAP_TYPE__trt__RemovePTZConfigurationResponse (1411)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemovePTZConfigurationResponse(struct soap*, struct _trt__RemovePTZConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemovePTZConfigurationResponse(struct soap*, const struct _trt__RemovePTZConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemovePTZConfigurationResponse(struct soap*, const char*, int, const struct _trt__RemovePTZConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__RemovePTZConfigurationResponse * SOAP_FMAC4 soap_in__trt__RemovePTZConfigurationResponse(struct soap*, const char*, struct _trt__RemovePTZConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemovePTZConfigurationResponse(struct soap*, const struct _trt__RemovePTZConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__RemovePTZConfigurationResponse
+#define soap_write__trt__RemovePTZConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__RemovePTZConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__RemovePTZConfigurationResponse(soap, data, "trt:RemovePTZConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemovePTZConfigurationResponse * SOAP_FMAC4 soap_get__trt__RemovePTZConfigurationResponse(struct soap*, struct _trt__RemovePTZConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__RemovePTZConfigurationResponse
+#define soap_read__trt__RemovePTZConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemovePTZConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemovePTZConfiguration
+#define SOAP_TYPE__trt__RemovePTZConfiguration (1410)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemovePTZConfiguration(struct soap*, struct _trt__RemovePTZConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemovePTZConfiguration(struct soap*, const struct _trt__RemovePTZConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemovePTZConfiguration(struct soap*, const char*, int, const struct _trt__RemovePTZConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__RemovePTZConfiguration * SOAP_FMAC4 soap_in__trt__RemovePTZConfiguration(struct soap*, const char*, struct _trt__RemovePTZConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemovePTZConfiguration(struct soap*, const struct _trt__RemovePTZConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__RemovePTZConfiguration
+#define soap_write__trt__RemovePTZConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__RemovePTZConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__RemovePTZConfiguration(soap, data, "trt:RemovePTZConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemovePTZConfiguration * SOAP_FMAC4 soap_get__trt__RemovePTZConfiguration(struct soap*, struct _trt__RemovePTZConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__RemovePTZConfiguration
+#define soap_read__trt__RemovePTZConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemovePTZConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddPTZConfigurationResponse
+#define SOAP_TYPE__trt__AddPTZConfigurationResponse (1409)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddPTZConfigurationResponse(struct soap*, struct _trt__AddPTZConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddPTZConfigurationResponse(struct soap*, const struct _trt__AddPTZConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddPTZConfigurationResponse(struct soap*, const char*, int, const struct _trt__AddPTZConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__AddPTZConfigurationResponse * SOAP_FMAC4 soap_in__trt__AddPTZConfigurationResponse(struct soap*, const char*, struct _trt__AddPTZConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddPTZConfigurationResponse(struct soap*, const struct _trt__AddPTZConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__AddPTZConfigurationResponse
+#define soap_write__trt__AddPTZConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__AddPTZConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__AddPTZConfigurationResponse(soap, data, "trt:AddPTZConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddPTZConfigurationResponse * SOAP_FMAC4 soap_get__trt__AddPTZConfigurationResponse(struct soap*, struct _trt__AddPTZConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__AddPTZConfigurationResponse
+#define soap_read__trt__AddPTZConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddPTZConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddPTZConfiguration
+#define SOAP_TYPE__trt__AddPTZConfiguration (1408)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddPTZConfiguration(struct soap*, struct _trt__AddPTZConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddPTZConfiguration(struct soap*, const struct _trt__AddPTZConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddPTZConfiguration(struct soap*, const char*, int, const struct _trt__AddPTZConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__AddPTZConfiguration * SOAP_FMAC4 soap_in__trt__AddPTZConfiguration(struct soap*, const char*, struct _trt__AddPTZConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddPTZConfiguration(struct soap*, const struct _trt__AddPTZConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__AddPTZConfiguration
+#define soap_write__trt__AddPTZConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__AddPTZConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__AddPTZConfiguration(soap, data, "trt:AddPTZConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddPTZConfiguration * SOAP_FMAC4 soap_get__trt__AddPTZConfiguration(struct soap*, struct _trt__AddPTZConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__AddPTZConfiguration
+#define soap_read__trt__AddPTZConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddPTZConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveAudioSourceConfigurationResponse
+#define SOAP_TYPE__trt__RemoveAudioSourceConfigurationResponse (1407)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveAudioSourceConfigurationResponse(struct soap*, struct _trt__RemoveAudioSourceConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveAudioSourceConfigurationResponse(struct soap*, const struct _trt__RemoveAudioSourceConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveAudioSourceConfigurationResponse(struct soap*, const char*, int, const struct _trt__RemoveAudioSourceConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__RemoveAudioSourceConfigurationResponse * SOAP_FMAC4 soap_in__trt__RemoveAudioSourceConfigurationResponse(struct soap*, const char*, struct _trt__RemoveAudioSourceConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveAudioSourceConfigurationResponse(struct soap*, const struct _trt__RemoveAudioSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveAudioSourceConfigurationResponse
+#define soap_write__trt__RemoveAudioSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveAudioSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveAudioSourceConfigurationResponse(soap, data, "trt:RemoveAudioSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioSourceConfigurationResponse * SOAP_FMAC4 soap_get__trt__RemoveAudioSourceConfigurationResponse(struct soap*, struct _trt__RemoveAudioSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveAudioSourceConfigurationResponse
+#define soap_read__trt__RemoveAudioSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveAudioSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveAudioSourceConfiguration
+#define SOAP_TYPE__trt__RemoveAudioSourceConfiguration (1406)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveAudioSourceConfiguration(struct soap*, struct _trt__RemoveAudioSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveAudioSourceConfiguration(struct soap*, const struct _trt__RemoveAudioSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveAudioSourceConfiguration(struct soap*, const char*, int, const struct _trt__RemoveAudioSourceConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__RemoveAudioSourceConfiguration * SOAP_FMAC4 soap_in__trt__RemoveAudioSourceConfiguration(struct soap*, const char*, struct _trt__RemoveAudioSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveAudioSourceConfiguration(struct soap*, const struct _trt__RemoveAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveAudioSourceConfiguration
+#define soap_write__trt__RemoveAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveAudioSourceConfiguration(soap, data, "trt:RemoveAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioSourceConfiguration * SOAP_FMAC4 soap_get__trt__RemoveAudioSourceConfiguration(struct soap*, struct _trt__RemoveAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveAudioSourceConfiguration
+#define soap_read__trt__RemoveAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddAudioSourceConfigurationResponse
+#define SOAP_TYPE__trt__AddAudioSourceConfigurationResponse (1405)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddAudioSourceConfigurationResponse(struct soap*, struct _trt__AddAudioSourceConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddAudioSourceConfigurationResponse(struct soap*, const struct _trt__AddAudioSourceConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddAudioSourceConfigurationResponse(struct soap*, const char*, int, const struct _trt__AddAudioSourceConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__AddAudioSourceConfigurationResponse * SOAP_FMAC4 soap_in__trt__AddAudioSourceConfigurationResponse(struct soap*, const char*, struct _trt__AddAudioSourceConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddAudioSourceConfigurationResponse(struct soap*, const struct _trt__AddAudioSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__AddAudioSourceConfigurationResponse
+#define soap_write__trt__AddAudioSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__AddAudioSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__AddAudioSourceConfigurationResponse(soap, data, "trt:AddAudioSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioSourceConfigurationResponse * SOAP_FMAC4 soap_get__trt__AddAudioSourceConfigurationResponse(struct soap*, struct _trt__AddAudioSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__AddAudioSourceConfigurationResponse
+#define soap_read__trt__AddAudioSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddAudioSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddAudioSourceConfiguration
+#define SOAP_TYPE__trt__AddAudioSourceConfiguration (1404)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddAudioSourceConfiguration(struct soap*, struct _trt__AddAudioSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddAudioSourceConfiguration(struct soap*, const struct _trt__AddAudioSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddAudioSourceConfiguration(struct soap*, const char*, int, const struct _trt__AddAudioSourceConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__AddAudioSourceConfiguration * SOAP_FMAC4 soap_in__trt__AddAudioSourceConfiguration(struct soap*, const char*, struct _trt__AddAudioSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddAudioSourceConfiguration(struct soap*, const struct _trt__AddAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__AddAudioSourceConfiguration
+#define soap_write__trt__AddAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__AddAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__AddAudioSourceConfiguration(soap, data, "trt:AddAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioSourceConfiguration * SOAP_FMAC4 soap_get__trt__AddAudioSourceConfiguration(struct soap*, struct _trt__AddAudioSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__AddAudioSourceConfiguration
+#define soap_read__trt__AddAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveAudioEncoderConfigurationResponse
+#define SOAP_TYPE__trt__RemoveAudioEncoderConfigurationResponse (1403)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveAudioEncoderConfigurationResponse(struct soap*, struct _trt__RemoveAudioEncoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveAudioEncoderConfigurationResponse(struct soap*, const struct _trt__RemoveAudioEncoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveAudioEncoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__RemoveAudioEncoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__RemoveAudioEncoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__RemoveAudioEncoderConfigurationResponse(struct soap*, const char*, struct _trt__RemoveAudioEncoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveAudioEncoderConfigurationResponse(struct soap*, const struct _trt__RemoveAudioEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveAudioEncoderConfigurationResponse
+#define soap_write__trt__RemoveAudioEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveAudioEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveAudioEncoderConfigurationResponse(soap, data, "trt:RemoveAudioEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioEncoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__RemoveAudioEncoderConfigurationResponse(struct soap*, struct _trt__RemoveAudioEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveAudioEncoderConfigurationResponse
+#define soap_read__trt__RemoveAudioEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveAudioEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveAudioEncoderConfiguration
+#define SOAP_TYPE__trt__RemoveAudioEncoderConfiguration (1402)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveAudioEncoderConfiguration(struct soap*, struct _trt__RemoveAudioEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveAudioEncoderConfiguration(struct soap*, const struct _trt__RemoveAudioEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveAudioEncoderConfiguration(struct soap*, const char*, int, const struct _trt__RemoveAudioEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__RemoveAudioEncoderConfiguration * SOAP_FMAC4 soap_in__trt__RemoveAudioEncoderConfiguration(struct soap*, const char*, struct _trt__RemoveAudioEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveAudioEncoderConfiguration(struct soap*, const struct _trt__RemoveAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveAudioEncoderConfiguration
+#define soap_write__trt__RemoveAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveAudioEncoderConfiguration(soap, data, "trt:RemoveAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioEncoderConfiguration * SOAP_FMAC4 soap_get__trt__RemoveAudioEncoderConfiguration(struct soap*, struct _trt__RemoveAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveAudioEncoderConfiguration
+#define soap_read__trt__RemoveAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddAudioEncoderConfigurationResponse
+#define SOAP_TYPE__trt__AddAudioEncoderConfigurationResponse (1401)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddAudioEncoderConfigurationResponse(struct soap*, struct _trt__AddAudioEncoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddAudioEncoderConfigurationResponse(struct soap*, const struct _trt__AddAudioEncoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddAudioEncoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__AddAudioEncoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__AddAudioEncoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__AddAudioEncoderConfigurationResponse(struct soap*, const char*, struct _trt__AddAudioEncoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddAudioEncoderConfigurationResponse(struct soap*, const struct _trt__AddAudioEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__AddAudioEncoderConfigurationResponse
+#define soap_write__trt__AddAudioEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__AddAudioEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__AddAudioEncoderConfigurationResponse(soap, data, "trt:AddAudioEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioEncoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__AddAudioEncoderConfigurationResponse(struct soap*, struct _trt__AddAudioEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__AddAudioEncoderConfigurationResponse
+#define soap_read__trt__AddAudioEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddAudioEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddAudioEncoderConfiguration
+#define SOAP_TYPE__trt__AddAudioEncoderConfiguration (1400)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddAudioEncoderConfiguration(struct soap*, struct _trt__AddAudioEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddAudioEncoderConfiguration(struct soap*, const struct _trt__AddAudioEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddAudioEncoderConfiguration(struct soap*, const char*, int, const struct _trt__AddAudioEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__AddAudioEncoderConfiguration * SOAP_FMAC4 soap_in__trt__AddAudioEncoderConfiguration(struct soap*, const char*, struct _trt__AddAudioEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddAudioEncoderConfiguration(struct soap*, const struct _trt__AddAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__AddAudioEncoderConfiguration
+#define soap_write__trt__AddAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__AddAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__AddAudioEncoderConfiguration(soap, data, "trt:AddAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioEncoderConfiguration * SOAP_FMAC4 soap_get__trt__AddAudioEncoderConfiguration(struct soap*, struct _trt__AddAudioEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__AddAudioEncoderConfiguration
+#define soap_read__trt__AddAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveVideoSourceConfigurationResponse
+#define SOAP_TYPE__trt__RemoveVideoSourceConfigurationResponse (1399)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveVideoSourceConfigurationResponse(struct soap*, struct _trt__RemoveVideoSourceConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveVideoSourceConfigurationResponse(struct soap*, const struct _trt__RemoveVideoSourceConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveVideoSourceConfigurationResponse(struct soap*, const char*, int, const struct _trt__RemoveVideoSourceConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__RemoveVideoSourceConfigurationResponse * SOAP_FMAC4 soap_in__trt__RemoveVideoSourceConfigurationResponse(struct soap*, const char*, struct _trt__RemoveVideoSourceConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveVideoSourceConfigurationResponse(struct soap*, const struct _trt__RemoveVideoSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveVideoSourceConfigurationResponse
+#define soap_write__trt__RemoveVideoSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveVideoSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveVideoSourceConfigurationResponse(soap, data, "trt:RemoveVideoSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoSourceConfigurationResponse * SOAP_FMAC4 soap_get__trt__RemoveVideoSourceConfigurationResponse(struct soap*, struct _trt__RemoveVideoSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveVideoSourceConfigurationResponse
+#define soap_read__trt__RemoveVideoSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveVideoSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveVideoSourceConfiguration
+#define SOAP_TYPE__trt__RemoveVideoSourceConfiguration (1398)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveVideoSourceConfiguration(struct soap*, struct _trt__RemoveVideoSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveVideoSourceConfiguration(struct soap*, const struct _trt__RemoveVideoSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveVideoSourceConfiguration(struct soap*, const char*, int, const struct _trt__RemoveVideoSourceConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__RemoveVideoSourceConfiguration * SOAP_FMAC4 soap_in__trt__RemoveVideoSourceConfiguration(struct soap*, const char*, struct _trt__RemoveVideoSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveVideoSourceConfiguration(struct soap*, const struct _trt__RemoveVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveVideoSourceConfiguration
+#define soap_write__trt__RemoveVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveVideoSourceConfiguration(soap, data, "trt:RemoveVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoSourceConfiguration * SOAP_FMAC4 soap_get__trt__RemoveVideoSourceConfiguration(struct soap*, struct _trt__RemoveVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveVideoSourceConfiguration
+#define soap_read__trt__RemoveVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddVideoSourceConfigurationResponse
+#define SOAP_TYPE__trt__AddVideoSourceConfigurationResponse (1397)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddVideoSourceConfigurationResponse(struct soap*, struct _trt__AddVideoSourceConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddVideoSourceConfigurationResponse(struct soap*, const struct _trt__AddVideoSourceConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddVideoSourceConfigurationResponse(struct soap*, const char*, int, const struct _trt__AddVideoSourceConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__AddVideoSourceConfigurationResponse * SOAP_FMAC4 soap_in__trt__AddVideoSourceConfigurationResponse(struct soap*, const char*, struct _trt__AddVideoSourceConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddVideoSourceConfigurationResponse(struct soap*, const struct _trt__AddVideoSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__AddVideoSourceConfigurationResponse
+#define soap_write__trt__AddVideoSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__AddVideoSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__AddVideoSourceConfigurationResponse(soap, data, "trt:AddVideoSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoSourceConfigurationResponse * SOAP_FMAC4 soap_get__trt__AddVideoSourceConfigurationResponse(struct soap*, struct _trt__AddVideoSourceConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__AddVideoSourceConfigurationResponse
+#define soap_read__trt__AddVideoSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddVideoSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddVideoSourceConfiguration
+#define SOAP_TYPE__trt__AddVideoSourceConfiguration (1396)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddVideoSourceConfiguration(struct soap*, struct _trt__AddVideoSourceConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddVideoSourceConfiguration(struct soap*, const struct _trt__AddVideoSourceConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddVideoSourceConfiguration(struct soap*, const char*, int, const struct _trt__AddVideoSourceConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__AddVideoSourceConfiguration * SOAP_FMAC4 soap_in__trt__AddVideoSourceConfiguration(struct soap*, const char*, struct _trt__AddVideoSourceConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddVideoSourceConfiguration(struct soap*, const struct _trt__AddVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__AddVideoSourceConfiguration
+#define soap_write__trt__AddVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__AddVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__AddVideoSourceConfiguration(soap, data, "trt:AddVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoSourceConfiguration * SOAP_FMAC4 soap_get__trt__AddVideoSourceConfiguration(struct soap*, struct _trt__AddVideoSourceConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__AddVideoSourceConfiguration
+#define soap_read__trt__AddVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveVideoEncoderConfigurationResponse
+#define SOAP_TYPE__trt__RemoveVideoEncoderConfigurationResponse (1395)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveVideoEncoderConfigurationResponse(struct soap*, struct _trt__RemoveVideoEncoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveVideoEncoderConfigurationResponse(struct soap*, const struct _trt__RemoveVideoEncoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveVideoEncoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__RemoveVideoEncoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__RemoveVideoEncoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__RemoveVideoEncoderConfigurationResponse(struct soap*, const char*, struct _trt__RemoveVideoEncoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveVideoEncoderConfigurationResponse(struct soap*, const struct _trt__RemoveVideoEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveVideoEncoderConfigurationResponse
+#define soap_write__trt__RemoveVideoEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveVideoEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveVideoEncoderConfigurationResponse(soap, data, "trt:RemoveVideoEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoEncoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__RemoveVideoEncoderConfigurationResponse(struct soap*, struct _trt__RemoveVideoEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveVideoEncoderConfigurationResponse
+#define soap_read__trt__RemoveVideoEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveVideoEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__RemoveVideoEncoderConfiguration
+#define SOAP_TYPE__trt__RemoveVideoEncoderConfiguration (1394)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__RemoveVideoEncoderConfiguration(struct soap*, struct _trt__RemoveVideoEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__RemoveVideoEncoderConfiguration(struct soap*, const struct _trt__RemoveVideoEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__RemoveVideoEncoderConfiguration(struct soap*, const char*, int, const struct _trt__RemoveVideoEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__RemoveVideoEncoderConfiguration * SOAP_FMAC4 soap_in__trt__RemoveVideoEncoderConfiguration(struct soap*, const char*, struct _trt__RemoveVideoEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__RemoveVideoEncoderConfiguration(struct soap*, const struct _trt__RemoveVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__RemoveVideoEncoderConfiguration
+#define soap_write__trt__RemoveVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__RemoveVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__RemoveVideoEncoderConfiguration(soap, data, "trt:RemoveVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoEncoderConfiguration * SOAP_FMAC4 soap_get__trt__RemoveVideoEncoderConfiguration(struct soap*, struct _trt__RemoveVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__RemoveVideoEncoderConfiguration
+#define soap_read__trt__RemoveVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__RemoveVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddVideoEncoderConfigurationResponse
+#define SOAP_TYPE__trt__AddVideoEncoderConfigurationResponse (1393)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddVideoEncoderConfigurationResponse(struct soap*, struct _trt__AddVideoEncoderConfigurationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddVideoEncoderConfigurationResponse(struct soap*, const struct _trt__AddVideoEncoderConfigurationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddVideoEncoderConfigurationResponse(struct soap*, const char*, int, const struct _trt__AddVideoEncoderConfigurationResponse *, const char*);
+SOAP_FMAC3 struct _trt__AddVideoEncoderConfigurationResponse * SOAP_FMAC4 soap_in__trt__AddVideoEncoderConfigurationResponse(struct soap*, const char*, struct _trt__AddVideoEncoderConfigurationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddVideoEncoderConfigurationResponse(struct soap*, const struct _trt__AddVideoEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__AddVideoEncoderConfigurationResponse
+#define soap_write__trt__AddVideoEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__AddVideoEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put__trt__AddVideoEncoderConfigurationResponse(soap, data, "trt:AddVideoEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoEncoderConfigurationResponse * SOAP_FMAC4 soap_get__trt__AddVideoEncoderConfigurationResponse(struct soap*, struct _trt__AddVideoEncoderConfigurationResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__AddVideoEncoderConfigurationResponse
+#define soap_read__trt__AddVideoEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddVideoEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__AddVideoEncoderConfiguration
+#define SOAP_TYPE__trt__AddVideoEncoderConfiguration (1392)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__AddVideoEncoderConfiguration(struct soap*, struct _trt__AddVideoEncoderConfiguration *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__AddVideoEncoderConfiguration(struct soap*, const struct _trt__AddVideoEncoderConfiguration *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__AddVideoEncoderConfiguration(struct soap*, const char*, int, const struct _trt__AddVideoEncoderConfiguration *, const char*);
+SOAP_FMAC3 struct _trt__AddVideoEncoderConfiguration * SOAP_FMAC4 soap_in__trt__AddVideoEncoderConfiguration(struct soap*, const char*, struct _trt__AddVideoEncoderConfiguration *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__AddVideoEncoderConfiguration(struct soap*, const struct _trt__AddVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_write__trt__AddVideoEncoderConfiguration
+#define soap_write__trt__AddVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize__trt__AddVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put__trt__AddVideoEncoderConfiguration(soap, data, "trt:AddVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoEncoderConfiguration * SOAP_FMAC4 soap_get__trt__AddVideoEncoderConfiguration(struct soap*, struct _trt__AddVideoEncoderConfiguration *, const char*, const char*);
+
+#ifndef soap_read__trt__AddVideoEncoderConfiguration
+#define soap_read__trt__AddVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__AddVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetProfilesResponse
+#define SOAP_TYPE__trt__GetProfilesResponse (1391)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetProfilesResponse(struct soap*, struct _trt__GetProfilesResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetProfilesResponse(struct soap*, const struct _trt__GetProfilesResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetProfilesResponse(struct soap*, const char*, int, const struct _trt__GetProfilesResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetProfilesResponse * SOAP_FMAC4 soap_in__trt__GetProfilesResponse(struct soap*, const char*, struct _trt__GetProfilesResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetProfilesResponse(struct soap*, const struct _trt__GetProfilesResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetProfilesResponse
+#define soap_write__trt__GetProfilesResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetProfilesResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetProfilesResponse(soap, data, "trt:GetProfilesResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetProfilesResponse * SOAP_FMAC4 soap_get__trt__GetProfilesResponse(struct soap*, struct _trt__GetProfilesResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetProfilesResponse
+#define soap_read__trt__GetProfilesResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetProfilesResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetProfiles
+#define SOAP_TYPE__trt__GetProfiles (1390)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetProfiles(struct soap*, struct _trt__GetProfiles *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetProfiles(struct soap*, const struct _trt__GetProfiles *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetProfiles(struct soap*, const char*, int, const struct _trt__GetProfiles *, const char*);
+SOAP_FMAC3 struct _trt__GetProfiles * SOAP_FMAC4 soap_in__trt__GetProfiles(struct soap*, const char*, struct _trt__GetProfiles *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetProfiles(struct soap*, const struct _trt__GetProfiles *, const char*, const char*);
+
+#ifndef soap_write__trt__GetProfiles
+#define soap_write__trt__GetProfiles(soap, data) ( soap_begin(soap), soap_serialize__trt__GetProfiles(soap, data), soap_begin_send(soap) || soap_put__trt__GetProfiles(soap, data, "trt:GetProfiles", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetProfiles * SOAP_FMAC4 soap_get__trt__GetProfiles(struct soap*, struct _trt__GetProfiles *, const char*, const char*);
+
+#ifndef soap_read__trt__GetProfiles
+#define soap_read__trt__GetProfiles(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetProfiles(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetProfileResponse
+#define SOAP_TYPE__trt__GetProfileResponse (1389)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetProfileResponse(struct soap*, struct _trt__GetProfileResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetProfileResponse(struct soap*, const struct _trt__GetProfileResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetProfileResponse(struct soap*, const char*, int, const struct _trt__GetProfileResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetProfileResponse * SOAP_FMAC4 soap_in__trt__GetProfileResponse(struct soap*, const char*, struct _trt__GetProfileResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetProfileResponse(struct soap*, const struct _trt__GetProfileResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetProfileResponse
+#define soap_write__trt__GetProfileResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetProfileResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetProfileResponse(soap, data, "trt:GetProfileResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetProfileResponse * SOAP_FMAC4 soap_get__trt__GetProfileResponse(struct soap*, struct _trt__GetProfileResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetProfileResponse
+#define soap_read__trt__GetProfileResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetProfileResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetProfile
+#define SOAP_TYPE__trt__GetProfile (1388)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetProfile(struct soap*, struct _trt__GetProfile *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetProfile(struct soap*, const struct _trt__GetProfile *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetProfile(struct soap*, const char*, int, const struct _trt__GetProfile *, const char*);
+SOAP_FMAC3 struct _trt__GetProfile * SOAP_FMAC4 soap_in__trt__GetProfile(struct soap*, const char*, struct _trt__GetProfile *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetProfile(struct soap*, const struct _trt__GetProfile *, const char*, const char*);
+
+#ifndef soap_write__trt__GetProfile
+#define soap_write__trt__GetProfile(soap, data) ( soap_begin(soap), soap_serialize__trt__GetProfile(soap, data), soap_begin_send(soap) || soap_put__trt__GetProfile(soap, data, "trt:GetProfile", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetProfile * SOAP_FMAC4 soap_get__trt__GetProfile(struct soap*, struct _trt__GetProfile *, const char*, const char*);
+
+#ifndef soap_read__trt__GetProfile
+#define soap_read__trt__GetProfile(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetProfile(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__CreateProfileResponse
+#define SOAP_TYPE__trt__CreateProfileResponse (1386)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__CreateProfileResponse(struct soap*, struct _trt__CreateProfileResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__CreateProfileResponse(struct soap*, const struct _trt__CreateProfileResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__CreateProfileResponse(struct soap*, const char*, int, const struct _trt__CreateProfileResponse *, const char*);
+SOAP_FMAC3 struct _trt__CreateProfileResponse * SOAP_FMAC4 soap_in__trt__CreateProfileResponse(struct soap*, const char*, struct _trt__CreateProfileResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__CreateProfileResponse(struct soap*, const struct _trt__CreateProfileResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__CreateProfileResponse
+#define soap_write__trt__CreateProfileResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__CreateProfileResponse(soap, data), soap_begin_send(soap) || soap_put__trt__CreateProfileResponse(soap, data, "trt:CreateProfileResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__CreateProfileResponse * SOAP_FMAC4 soap_get__trt__CreateProfileResponse(struct soap*, struct _trt__CreateProfileResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__CreateProfileResponse
+#define soap_read__trt__CreateProfileResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__CreateProfileResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__CreateProfile
+#define SOAP_TYPE__trt__CreateProfile (1385)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__CreateProfile(struct soap*, struct _trt__CreateProfile *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__CreateProfile(struct soap*, const struct _trt__CreateProfile *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__CreateProfile(struct soap*, const char*, int, const struct _trt__CreateProfile *, const char*);
+SOAP_FMAC3 struct _trt__CreateProfile * SOAP_FMAC4 soap_in__trt__CreateProfile(struct soap*, const char*, struct _trt__CreateProfile *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__CreateProfile(struct soap*, const struct _trt__CreateProfile *, const char*, const char*);
+
+#ifndef soap_write__trt__CreateProfile
+#define soap_write__trt__CreateProfile(soap, data) ( soap_begin(soap), soap_serialize__trt__CreateProfile(soap, data), soap_begin_send(soap) || soap_put__trt__CreateProfile(soap, data, "trt:CreateProfile", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__CreateProfile * SOAP_FMAC4 soap_get__trt__CreateProfile(struct soap*, struct _trt__CreateProfile *, const char*, const char*);
+
+#ifndef soap_read__trt__CreateProfile
+#define soap_read__trt__CreateProfile(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__CreateProfile(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_tt__AudioOutput
+#define SOAP_TYPE_tt__AudioOutput (1383)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__AudioOutput(struct soap*, struct tt__AudioOutput *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__AudioOutput(struct soap*, const struct tt__AudioOutput *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_tt__AudioOutput(struct soap*, const char*, int, const struct tt__AudioOutput *, const char*);
+SOAP_FMAC3 struct tt__AudioOutput * SOAP_FMAC4 soap_in_tt__AudioOutput(struct soap*, const char*, struct tt__AudioOutput *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_tt__AudioOutput(struct soap*, const struct tt__AudioOutput *, const char*, const char*);
+
+#ifndef soap_write_tt__AudioOutput
+#define soap_write_tt__AudioOutput(soap, data) ( soap_begin(soap), soap_serialize_tt__AudioOutput(soap, data), soap_begin_send(soap) || soap_put_tt__AudioOutput(soap, data, "tt:AudioOutput", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__AudioOutput * SOAP_FMAC4 soap_get_tt__AudioOutput(struct soap*, struct tt__AudioOutput *, const char*, const char*);
+
+#ifndef soap_read_tt__AudioOutput
+#define soap_read_tt__AudioOutput(soap, data) ( soap_begin_recv(soap) || !soap_get_tt__AudioOutput(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputsResponse
+#define SOAP_TYPE__trt__GetAudioOutputsResponse (1382)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioOutputsResponse(struct soap*, struct _trt__GetAudioOutputsResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioOutputsResponse(struct soap*, const struct _trt__GetAudioOutputsResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioOutputsResponse(struct soap*, const char*, int, const struct _trt__GetAudioOutputsResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioOutputsResponse * SOAP_FMAC4 soap_in__trt__GetAudioOutputsResponse(struct soap*, const char*, struct _trt__GetAudioOutputsResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioOutputsResponse(struct soap*, const struct _trt__GetAudioOutputsResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioOutputsResponse
+#define soap_write__trt__GetAudioOutputsResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioOutputsResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioOutputsResponse(soap, data, "trt:GetAudioOutputsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputsResponse * SOAP_FMAC4 soap_get__trt__GetAudioOutputsResponse(struct soap*, struct _trt__GetAudioOutputsResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioOutputsResponse
+#define soap_read__trt__GetAudioOutputsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioOutputsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioOutputs
+#define SOAP_TYPE__trt__GetAudioOutputs (1381)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioOutputs(struct soap*, struct _trt__GetAudioOutputs *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioOutputs(struct soap*, const struct _trt__GetAudioOutputs *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioOutputs(struct soap*, const char*, int, const struct _trt__GetAudioOutputs *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioOutputs * SOAP_FMAC4 soap_in__trt__GetAudioOutputs(struct soap*, const char*, struct _trt__GetAudioOutputs *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioOutputs(struct soap*, const struct _trt__GetAudioOutputs *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioOutputs
+#define soap_write__trt__GetAudioOutputs(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioOutputs(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioOutputs(soap, data, "trt:GetAudioOutputs", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputs * SOAP_FMAC4 soap_get__trt__GetAudioOutputs(struct soap*, struct _trt__GetAudioOutputs *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioOutputs
+#define soap_read__trt__GetAudioOutputs(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioOutputs(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
 #ifndef SOAP_TYPE_tt__AudioSource
-#define SOAP_TYPE_tt__AudioSource (1368)
+#define SOAP_TYPE_tt__AudioSource (1379)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__AudioSource(struct soap*, struct tt__AudioSource *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__AudioSource(struct soap*, const struct tt__AudioSource *);
@@ -5508,8 +9850,50 @@ SOAP_FMAC3 struct tt__AudioSource * SOAP_FMAC4 soap_get_tt__AudioSource(struct s
 #endif
 
 
+#ifndef SOAP_TYPE__trt__GetAudioSourcesResponse
+#define SOAP_TYPE__trt__GetAudioSourcesResponse (1378)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioSourcesResponse(struct soap*, struct _trt__GetAudioSourcesResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioSourcesResponse(struct soap*, const struct _trt__GetAudioSourcesResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioSourcesResponse(struct soap*, const char*, int, const struct _trt__GetAudioSourcesResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioSourcesResponse * SOAP_FMAC4 soap_in__trt__GetAudioSourcesResponse(struct soap*, const char*, struct _trt__GetAudioSourcesResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioSourcesResponse(struct soap*, const struct _trt__GetAudioSourcesResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioSourcesResponse
+#define soap_write__trt__GetAudioSourcesResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioSourcesResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioSourcesResponse(soap, data, "trt:GetAudioSourcesResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourcesResponse * SOAP_FMAC4 soap_get__trt__GetAudioSourcesResponse(struct soap*, struct _trt__GetAudioSourcesResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioSourcesResponse
+#define soap_read__trt__GetAudioSourcesResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioSourcesResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetAudioSources
+#define SOAP_TYPE__trt__GetAudioSources (1377)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetAudioSources(struct soap*, struct _trt__GetAudioSources *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetAudioSources(struct soap*, const struct _trt__GetAudioSources *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetAudioSources(struct soap*, const char*, int, const struct _trt__GetAudioSources *, const char*);
+SOAP_FMAC3 struct _trt__GetAudioSources * SOAP_FMAC4 soap_in__trt__GetAudioSources(struct soap*, const char*, struct _trt__GetAudioSources *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetAudioSources(struct soap*, const struct _trt__GetAudioSources *, const char*, const char*);
+
+#ifndef soap_write__trt__GetAudioSources
+#define soap_write__trt__GetAudioSources(soap, data) ( soap_begin(soap), soap_serialize__trt__GetAudioSources(soap, data), soap_begin_send(soap) || soap_put__trt__GetAudioSources(soap, data, "trt:GetAudioSources", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSources * SOAP_FMAC4 soap_get__trt__GetAudioSources(struct soap*, struct _trt__GetAudioSources *, const char*, const char*);
+
+#ifndef soap_read__trt__GetAudioSources
+#define soap_read__trt__GetAudioSources(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetAudioSources(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
 #ifndef SOAP_TYPE_tt__VideoSource
-#define SOAP_TYPE_tt__VideoSource (1365)
+#define SOAP_TYPE_tt__VideoSource (1375)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_tt__VideoSource(struct soap*, struct tt__VideoSource *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_tt__VideoSource(struct soap*, const struct tt__VideoSource *);
@@ -5526,6 +9910,153 @@ SOAP_FMAC3 struct tt__VideoSource * SOAP_FMAC4 soap_get_tt__VideoSource(struct s
 
 #ifndef soap_read_tt__VideoSource
 #define soap_read_tt__VideoSource(soap, data) ( soap_begin_recv(soap) || !soap_get_tt__VideoSource(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoSourcesResponse
+#define SOAP_TYPE__trt__GetVideoSourcesResponse (1374)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoSourcesResponse(struct soap*, struct _trt__GetVideoSourcesResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoSourcesResponse(struct soap*, const struct _trt__GetVideoSourcesResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoSourcesResponse(struct soap*, const char*, int, const struct _trt__GetVideoSourcesResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoSourcesResponse * SOAP_FMAC4 soap_in__trt__GetVideoSourcesResponse(struct soap*, const char*, struct _trt__GetVideoSourcesResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoSourcesResponse(struct soap*, const struct _trt__GetVideoSourcesResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoSourcesResponse
+#define soap_write__trt__GetVideoSourcesResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoSourcesResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoSourcesResponse(soap, data, "trt:GetVideoSourcesResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourcesResponse * SOAP_FMAC4 soap_get__trt__GetVideoSourcesResponse(struct soap*, struct _trt__GetVideoSourcesResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoSourcesResponse
+#define soap_read__trt__GetVideoSourcesResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoSourcesResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetVideoSources
+#define SOAP_TYPE__trt__GetVideoSources (1373)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetVideoSources(struct soap*, struct _trt__GetVideoSources *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetVideoSources(struct soap*, const struct _trt__GetVideoSources *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetVideoSources(struct soap*, const char*, int, const struct _trt__GetVideoSources *, const char*);
+SOAP_FMAC3 struct _trt__GetVideoSources * SOAP_FMAC4 soap_in__trt__GetVideoSources(struct soap*, const char*, struct _trt__GetVideoSources *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetVideoSources(struct soap*, const struct _trt__GetVideoSources *, const char*, const char*);
+
+#ifndef soap_write__trt__GetVideoSources
+#define soap_write__trt__GetVideoSources(soap, data) ( soap_begin(soap), soap_serialize__trt__GetVideoSources(soap, data), soap_begin_send(soap) || soap_put__trt__GetVideoSources(soap, data, "trt:GetVideoSources", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSources * SOAP_FMAC4 soap_get__trt__GetVideoSources(struct soap*, struct _trt__GetVideoSources *, const char*, const char*);
+
+#ifndef soap_read__trt__GetVideoSources
+#define soap_read__trt__GetVideoSources(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetVideoSources(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetServiceCapabilitiesResponse
+#define SOAP_TYPE__trt__GetServiceCapabilitiesResponse (1371)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetServiceCapabilitiesResponse(struct soap*, struct _trt__GetServiceCapabilitiesResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetServiceCapabilitiesResponse(struct soap*, const struct _trt__GetServiceCapabilitiesResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetServiceCapabilitiesResponse(struct soap*, const char*, int, const struct _trt__GetServiceCapabilitiesResponse *, const char*);
+SOAP_FMAC3 struct _trt__GetServiceCapabilitiesResponse * SOAP_FMAC4 soap_in__trt__GetServiceCapabilitiesResponse(struct soap*, const char*, struct _trt__GetServiceCapabilitiesResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetServiceCapabilitiesResponse(struct soap*, const struct _trt__GetServiceCapabilitiesResponse *, const char*, const char*);
+
+#ifndef soap_write__trt__GetServiceCapabilitiesResponse
+#define soap_write__trt__GetServiceCapabilitiesResponse(soap, data) ( soap_begin(soap), soap_serialize__trt__GetServiceCapabilitiesResponse(soap, data), soap_begin_send(soap) || soap_put__trt__GetServiceCapabilitiesResponse(soap, data, "trt:GetServiceCapabilitiesResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetServiceCapabilitiesResponse * SOAP_FMAC4 soap_get__trt__GetServiceCapabilitiesResponse(struct soap*, struct _trt__GetServiceCapabilitiesResponse *, const char*, const char*);
+
+#ifndef soap_read__trt__GetServiceCapabilitiesResponse
+#define soap_read__trt__GetServiceCapabilitiesResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetServiceCapabilitiesResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE__trt__GetServiceCapabilities
+#define SOAP_TYPE__trt__GetServiceCapabilities (1370)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default__trt__GetServiceCapabilities(struct soap*, struct _trt__GetServiceCapabilities *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__trt__GetServiceCapabilities(struct soap*, const struct _trt__GetServiceCapabilities *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__trt__GetServiceCapabilities(struct soap*, const char*, int, const struct _trt__GetServiceCapabilities *, const char*);
+SOAP_FMAC3 struct _trt__GetServiceCapabilities * SOAP_FMAC4 soap_in__trt__GetServiceCapabilities(struct soap*, const char*, struct _trt__GetServiceCapabilities *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__trt__GetServiceCapabilities(struct soap*, const struct _trt__GetServiceCapabilities *, const char*, const char*);
+
+#ifndef soap_write__trt__GetServiceCapabilities
+#define soap_write__trt__GetServiceCapabilities(soap, data) ( soap_begin(soap), soap_serialize__trt__GetServiceCapabilities(soap, data), soap_begin_send(soap) || soap_put__trt__GetServiceCapabilities(soap, data, "trt:GetServiceCapabilities", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetServiceCapabilities * SOAP_FMAC4 soap_get__trt__GetServiceCapabilities(struct soap*, struct _trt__GetServiceCapabilities *, const char*, const char*);
+
+#ifndef soap_read__trt__GetServiceCapabilities
+#define soap_read__trt__GetServiceCapabilities(soap, data) ( soap_begin_recv(soap) || !soap_get__trt__GetServiceCapabilities(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_trt__StreamingCapabilities
+#define SOAP_TYPE_trt__StreamingCapabilities (1368)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_trt__StreamingCapabilities(struct soap*, struct trt__StreamingCapabilities *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_trt__StreamingCapabilities(struct soap*, const struct trt__StreamingCapabilities *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_trt__StreamingCapabilities(struct soap*, const char*, int, const struct trt__StreamingCapabilities *, const char*);
+SOAP_FMAC3 struct trt__StreamingCapabilities * SOAP_FMAC4 soap_in_trt__StreamingCapabilities(struct soap*, const char*, struct trt__StreamingCapabilities *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_trt__StreamingCapabilities(struct soap*, const struct trt__StreamingCapabilities *, const char*, const char*);
+
+#ifndef soap_write_trt__StreamingCapabilities
+#define soap_write_trt__StreamingCapabilities(soap, data) ( soap_begin(soap), soap_serialize_trt__StreamingCapabilities(soap, data), soap_begin_send(soap) || soap_put_trt__StreamingCapabilities(soap, data, "trt:StreamingCapabilities", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct trt__StreamingCapabilities * SOAP_FMAC4 soap_get_trt__StreamingCapabilities(struct soap*, struct trt__StreamingCapabilities *, const char*, const char*);
+
+#ifndef soap_read_trt__StreamingCapabilities
+#define soap_read_trt__StreamingCapabilities(soap, data) ( soap_begin_recv(soap) || !soap_get_trt__StreamingCapabilities(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_trt__ProfileCapabilities
+#define SOAP_TYPE_trt__ProfileCapabilities (1366)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_trt__ProfileCapabilities(struct soap*, struct trt__ProfileCapabilities *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_trt__ProfileCapabilities(struct soap*, const struct trt__ProfileCapabilities *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_trt__ProfileCapabilities(struct soap*, const char*, int, const struct trt__ProfileCapabilities *, const char*);
+SOAP_FMAC3 struct trt__ProfileCapabilities * SOAP_FMAC4 soap_in_trt__ProfileCapabilities(struct soap*, const char*, struct trt__ProfileCapabilities *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_trt__ProfileCapabilities(struct soap*, const struct trt__ProfileCapabilities *, const char*, const char*);
+
+#ifndef soap_write_trt__ProfileCapabilities
+#define soap_write_trt__ProfileCapabilities(soap, data) ( soap_begin(soap), soap_serialize_trt__ProfileCapabilities(soap, data), soap_begin_send(soap) || soap_put_trt__ProfileCapabilities(soap, data, "trt:ProfileCapabilities", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct trt__ProfileCapabilities * SOAP_FMAC4 soap_get_trt__ProfileCapabilities(struct soap*, struct trt__ProfileCapabilities *, const char*, const char*);
+
+#ifndef soap_read_trt__ProfileCapabilities
+#define soap_read_trt__ProfileCapabilities(soap, data) ( soap_begin_recv(soap) || !soap_get_trt__ProfileCapabilities(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_trt__Capabilities
+#define SOAP_TYPE_trt__Capabilities (1365)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_trt__Capabilities(struct soap*, struct trt__Capabilities *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_trt__Capabilities(struct soap*, const struct trt__Capabilities *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_trt__Capabilities(struct soap*, const char*, int, const struct trt__Capabilities *, const char*);
+SOAP_FMAC3 struct trt__Capabilities * SOAP_FMAC4 soap_in_trt__Capabilities(struct soap*, const char*, struct trt__Capabilities *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_trt__Capabilities(struct soap*, const struct trt__Capabilities *, const char*, const char*);
+
+#ifndef soap_write_trt__Capabilities
+#define soap_write_trt__Capabilities(soap, data) ( soap_begin(soap), soap_serialize_trt__Capabilities(soap, data), soap_begin_send(soap) || soap_put_trt__Capabilities(soap, data, "trt:Capabilities", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct trt__Capabilities * SOAP_FMAC4 soap_get_trt__Capabilities(struct soap*, struct trt__Capabilities *, const char*, const char*);
+
+#ifndef soap_read_trt__Capabilities
+#define soap_read_trt__Capabilities(soap, data) ( soap_begin_recv(soap) || !soap_get_trt__Capabilities(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
 #endif
 
 
@@ -21183,8 +25714,2706 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__wsc__union_DerivedKeyTokenType(struct
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__wsc__union_DerivedKeyTokenType(struct soap*, int, const union _wsc__union_DerivedKeyTokenType *);
 SOAP_FMAC3 union _wsc__union_DerivedKeyTokenType * SOAP_FMAC4 soap_in__wsc__union_DerivedKeyTokenType(struct soap*, int*, union _wsc__union_DerivedKeyTokenType *);
 
+#ifndef SOAP_TYPE_PointerTo_trt__GetSnapshotUriResponse
+#define SOAP_TYPE_PointerTo_trt__GetSnapshotUriResponse (2325)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetSnapshotUriResponse(struct soap*, struct _trt__GetSnapshotUriResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetSnapshotUriResponse(struct soap*, const char *, int, struct _trt__GetSnapshotUriResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetSnapshotUriResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetSnapshotUriResponse(struct soap*, const char*, struct _trt__GetSnapshotUriResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetSnapshotUriResponse(struct soap*, struct _trt__GetSnapshotUriResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetSnapshotUriResponse
+#define soap_write_PointerTo_trt__GetSnapshotUriResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetSnapshotUriResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetSnapshotUriResponse(soap, data, "trt:GetSnapshotUriResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetSnapshotUriResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetSnapshotUriResponse(struct soap*, struct _trt__GetSnapshotUriResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetSnapshotUriResponse
+#define soap_read_PointerTo_trt__GetSnapshotUriResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetSnapshotUriResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetSnapshotUri
+#define SOAP_TYPE_PointerTo_trt__GetSnapshotUri (2324)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetSnapshotUri(struct soap*, struct _trt__GetSnapshotUri *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetSnapshotUri(struct soap*, const char *, int, struct _trt__GetSnapshotUri *const*, const char *);
+SOAP_FMAC3 struct _trt__GetSnapshotUri ** SOAP_FMAC4 soap_in_PointerTo_trt__GetSnapshotUri(struct soap*, const char*, struct _trt__GetSnapshotUri **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetSnapshotUri(struct soap*, struct _trt__GetSnapshotUri *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetSnapshotUri
+#define soap_write_PointerTo_trt__GetSnapshotUri(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetSnapshotUri(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetSnapshotUri(soap, data, "trt:GetSnapshotUri", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetSnapshotUri ** SOAP_FMAC4 soap_get_PointerTo_trt__GetSnapshotUri(struct soap*, struct _trt__GetSnapshotUri **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetSnapshotUri
+#define soap_read_PointerTo_trt__GetSnapshotUri(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetSnapshotUri(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetSynchronizationPointResponse
+#define SOAP_TYPE_PointerTo_trt__SetSynchronizationPointResponse (2321)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetSynchronizationPointResponse(struct soap*, struct _trt__SetSynchronizationPointResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetSynchronizationPointResponse(struct soap*, const char *, int, struct _trt__SetSynchronizationPointResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__SetSynchronizationPointResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__SetSynchronizationPointResponse(struct soap*, const char*, struct _trt__SetSynchronizationPointResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetSynchronizationPointResponse(struct soap*, struct _trt__SetSynchronizationPointResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetSynchronizationPointResponse
+#define soap_write_PointerTo_trt__SetSynchronizationPointResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetSynchronizationPointResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetSynchronizationPointResponse(soap, data, "trt:SetSynchronizationPointResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetSynchronizationPointResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__SetSynchronizationPointResponse(struct soap*, struct _trt__SetSynchronizationPointResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetSynchronizationPointResponse
+#define soap_read_PointerTo_trt__SetSynchronizationPointResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetSynchronizationPointResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetSynchronizationPoint
+#define SOAP_TYPE_PointerTo_trt__SetSynchronizationPoint (2320)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetSynchronizationPoint(struct soap*, struct _trt__SetSynchronizationPoint *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetSynchronizationPoint(struct soap*, const char *, int, struct _trt__SetSynchronizationPoint *const*, const char *);
+SOAP_FMAC3 struct _trt__SetSynchronizationPoint ** SOAP_FMAC4 soap_in_PointerTo_trt__SetSynchronizationPoint(struct soap*, const char*, struct _trt__SetSynchronizationPoint **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetSynchronizationPoint(struct soap*, struct _trt__SetSynchronizationPoint *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetSynchronizationPoint
+#define soap_write_PointerTo_trt__SetSynchronizationPoint(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetSynchronizationPoint(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetSynchronizationPoint(soap, data, "trt:SetSynchronizationPoint", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetSynchronizationPoint ** SOAP_FMAC4 soap_get_PointerTo_trt__SetSynchronizationPoint(struct soap*, struct _trt__SetSynchronizationPoint **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetSynchronizationPoint
+#define soap_read_PointerTo_trt__SetSynchronizationPoint(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetSynchronizationPoint(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__StopMulticastStreamingResponse
+#define SOAP_TYPE_PointerTo_trt__StopMulticastStreamingResponse (2317)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__StopMulticastStreamingResponse(struct soap*, struct _trt__StopMulticastStreamingResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__StopMulticastStreamingResponse(struct soap*, const char *, int, struct _trt__StopMulticastStreamingResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__StopMulticastStreamingResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__StopMulticastStreamingResponse(struct soap*, const char*, struct _trt__StopMulticastStreamingResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__StopMulticastStreamingResponse(struct soap*, struct _trt__StopMulticastStreamingResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__StopMulticastStreamingResponse
+#define soap_write_PointerTo_trt__StopMulticastStreamingResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__StopMulticastStreamingResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__StopMulticastStreamingResponse(soap, data, "trt:StopMulticastStreamingResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__StopMulticastStreamingResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__StopMulticastStreamingResponse(struct soap*, struct _trt__StopMulticastStreamingResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__StopMulticastStreamingResponse
+#define soap_read_PointerTo_trt__StopMulticastStreamingResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__StopMulticastStreamingResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__StopMulticastStreaming
+#define SOAP_TYPE_PointerTo_trt__StopMulticastStreaming (2316)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__StopMulticastStreaming(struct soap*, struct _trt__StopMulticastStreaming *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__StopMulticastStreaming(struct soap*, const char *, int, struct _trt__StopMulticastStreaming *const*, const char *);
+SOAP_FMAC3 struct _trt__StopMulticastStreaming ** SOAP_FMAC4 soap_in_PointerTo_trt__StopMulticastStreaming(struct soap*, const char*, struct _trt__StopMulticastStreaming **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__StopMulticastStreaming(struct soap*, struct _trt__StopMulticastStreaming *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__StopMulticastStreaming
+#define soap_write_PointerTo_trt__StopMulticastStreaming(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__StopMulticastStreaming(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__StopMulticastStreaming(soap, data, "trt:StopMulticastStreaming", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__StopMulticastStreaming ** SOAP_FMAC4 soap_get_PointerTo_trt__StopMulticastStreaming(struct soap*, struct _trt__StopMulticastStreaming **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__StopMulticastStreaming
+#define soap_read_PointerTo_trt__StopMulticastStreaming(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__StopMulticastStreaming(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__StartMulticastStreamingResponse
+#define SOAP_TYPE_PointerTo_trt__StartMulticastStreamingResponse (2313)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__StartMulticastStreamingResponse(struct soap*, struct _trt__StartMulticastStreamingResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__StartMulticastStreamingResponse(struct soap*, const char *, int, struct _trt__StartMulticastStreamingResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__StartMulticastStreamingResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__StartMulticastStreamingResponse(struct soap*, const char*, struct _trt__StartMulticastStreamingResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__StartMulticastStreamingResponse(struct soap*, struct _trt__StartMulticastStreamingResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__StartMulticastStreamingResponse
+#define soap_write_PointerTo_trt__StartMulticastStreamingResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__StartMulticastStreamingResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__StartMulticastStreamingResponse(soap, data, "trt:StartMulticastStreamingResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__StartMulticastStreamingResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__StartMulticastStreamingResponse(struct soap*, struct _trt__StartMulticastStreamingResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__StartMulticastStreamingResponse
+#define soap_read_PointerTo_trt__StartMulticastStreamingResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__StartMulticastStreamingResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__StartMulticastStreaming
+#define SOAP_TYPE_PointerTo_trt__StartMulticastStreaming (2312)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__StartMulticastStreaming(struct soap*, struct _trt__StartMulticastStreaming *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__StartMulticastStreaming(struct soap*, const char *, int, struct _trt__StartMulticastStreaming *const*, const char *);
+SOAP_FMAC3 struct _trt__StartMulticastStreaming ** SOAP_FMAC4 soap_in_PointerTo_trt__StartMulticastStreaming(struct soap*, const char*, struct _trt__StartMulticastStreaming **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__StartMulticastStreaming(struct soap*, struct _trt__StartMulticastStreaming *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__StartMulticastStreaming
+#define soap_write_PointerTo_trt__StartMulticastStreaming(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__StartMulticastStreaming(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__StartMulticastStreaming(soap, data, "trt:StartMulticastStreaming", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__StartMulticastStreaming ** SOAP_FMAC4 soap_get_PointerTo_trt__StartMulticastStreaming(struct soap*, struct _trt__StartMulticastStreaming **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__StartMulticastStreaming
+#define soap_read_PointerTo_trt__StartMulticastStreaming(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__StartMulticastStreaming(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetStreamUriResponse
+#define SOAP_TYPE_PointerTo_trt__GetStreamUriResponse (2309)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetStreamUriResponse(struct soap*, struct _trt__GetStreamUriResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetStreamUriResponse(struct soap*, const char *, int, struct _trt__GetStreamUriResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetStreamUriResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetStreamUriResponse(struct soap*, const char*, struct _trt__GetStreamUriResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetStreamUriResponse(struct soap*, struct _trt__GetStreamUriResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetStreamUriResponse
+#define soap_write_PointerTo_trt__GetStreamUriResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetStreamUriResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetStreamUriResponse(soap, data, "trt:GetStreamUriResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetStreamUriResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetStreamUriResponse(struct soap*, struct _trt__GetStreamUriResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetStreamUriResponse
+#define soap_read_PointerTo_trt__GetStreamUriResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetStreamUriResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetStreamUri
+#define SOAP_TYPE_PointerTo_trt__GetStreamUri (2308)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetStreamUri(struct soap*, struct _trt__GetStreamUri *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetStreamUri(struct soap*, const char *, int, struct _trt__GetStreamUri *const*, const char *);
+SOAP_FMAC3 struct _trt__GetStreamUri ** SOAP_FMAC4 soap_in_PointerTo_trt__GetStreamUri(struct soap*, const char*, struct _trt__GetStreamUri **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetStreamUri(struct soap*, struct _trt__GetStreamUri *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetStreamUri
+#define soap_write_PointerTo_trt__GetStreamUri(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetStreamUri(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetStreamUri(soap, data, "trt:GetStreamUri", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetStreamUri ** SOAP_FMAC4 soap_get_PointerTo_trt__GetStreamUri(struct soap*, struct _trt__GetStreamUri **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetStreamUri
+#define soap_read_PointerTo_trt__GetStreamUri(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetStreamUri(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse
+#define SOAP_TYPE_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse (2305)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, const char *, int, struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, const char*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse
+#define soap_write_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(soap, data, "trt:GetGuaranteedNumberOfVideoEncoderInstancesResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse
+#define soap_read_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define SOAP_TYPE_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances (2304)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, const char *, int, struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *const*, const char *);
+SOAP_FMAC3 struct _trt__GetGuaranteedNumberOfVideoEncoderInstances ** SOAP_FMAC4 soap_in_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, const char*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstances **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define soap_write_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data, "trt:GetGuaranteedNumberOfVideoEncoderInstances", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetGuaranteedNumberOfVideoEncoderInstances ** SOAP_FMAC4 soap_get_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances(struct soap*, struct _trt__GetGuaranteedNumberOfVideoEncoderInstances **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances
+#define soap_read_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetGuaranteedNumberOfVideoEncoderInstances(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse (2301)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationOptionsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, const char *, int, struct _trt__GetAudioDecoderConfigurationOptionsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationOptionsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetAudioDecoderConfigurationOptionsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationOptionsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse
+#define soap_write_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse(soap, data, "trt:GetAudioDecoderConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationOptionsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationOptionsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse
+#define soap_read_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioDecoderConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfigurationOptions
+#define SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfigurationOptions (2300)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioDecoderConfigurationOptions(struct soap*, struct _trt__GetAudioDecoderConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioDecoderConfigurationOptions(struct soap*, const char *, int, struct _trt__GetAudioDecoderConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioDecoderConfigurationOptions(struct soap*, const char*, struct _trt__GetAudioDecoderConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioDecoderConfigurationOptions(struct soap*, struct _trt__GetAudioDecoderConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioDecoderConfigurationOptions
+#define soap_write_PointerTo_trt__GetAudioDecoderConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioDecoderConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioDecoderConfigurationOptions(soap, data, "trt:GetAudioDecoderConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioDecoderConfigurationOptions(struct soap*, struct _trt__GetAudioDecoderConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioDecoderConfigurationOptions
+#define soap_read_PointerTo_trt__GetAudioDecoderConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioDecoderConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse (2297)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioOutputConfigurationOptionsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, const char *, int, struct _trt__GetAudioOutputConfigurationOptionsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationOptionsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetAudioOutputConfigurationOptionsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioOutputConfigurationOptionsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse
+#define soap_write_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse(soap, data, "trt:GetAudioOutputConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationOptionsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioOutputConfigurationOptionsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse
+#define soap_read_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioOutputConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioOutputConfigurationOptions
+#define SOAP_TYPE_PointerTo_trt__GetAudioOutputConfigurationOptions (2296)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioOutputConfigurationOptions(struct soap*, struct _trt__GetAudioOutputConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioOutputConfigurationOptions(struct soap*, const char *, int, struct _trt__GetAudioOutputConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioOutputConfigurationOptions(struct soap*, const char*, struct _trt__GetAudioOutputConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioOutputConfigurationOptions(struct soap*, struct _trt__GetAudioOutputConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioOutputConfigurationOptions
+#define soap_write_PointerTo_trt__GetAudioOutputConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioOutputConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioOutputConfigurationOptions(soap, data, "trt:GetAudioOutputConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioOutputConfigurationOptions(struct soap*, struct _trt__GetAudioOutputConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioOutputConfigurationOptions
+#define soap_read_PointerTo_trt__GetAudioOutputConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioOutputConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetMetadataConfigurationOptionsResponse
+#define SOAP_TYPE_PointerTo_trt__GetMetadataConfigurationOptionsResponse (2293)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetMetadataConfigurationOptionsResponse(struct soap*, struct _trt__GetMetadataConfigurationOptionsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetMetadataConfigurationOptionsResponse(struct soap*, const char *, int, struct _trt__GetMetadataConfigurationOptionsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationOptionsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetMetadataConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetMetadataConfigurationOptionsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetMetadataConfigurationOptionsResponse(struct soap*, struct _trt__GetMetadataConfigurationOptionsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetMetadataConfigurationOptionsResponse
+#define soap_write_PointerTo_trt__GetMetadataConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetMetadataConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetMetadataConfigurationOptionsResponse(soap, data, "trt:GetMetadataConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationOptionsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetMetadataConfigurationOptionsResponse(struct soap*, struct _trt__GetMetadataConfigurationOptionsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetMetadataConfigurationOptionsResponse
+#define soap_read_PointerTo_trt__GetMetadataConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetMetadataConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetMetadataConfigurationOptions
+#define SOAP_TYPE_PointerTo_trt__GetMetadataConfigurationOptions (2292)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetMetadataConfigurationOptions(struct soap*, struct _trt__GetMetadataConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetMetadataConfigurationOptions(struct soap*, const char *, int, struct _trt__GetMetadataConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTo_trt__GetMetadataConfigurationOptions(struct soap*, const char*, struct _trt__GetMetadataConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetMetadataConfigurationOptions(struct soap*, struct _trt__GetMetadataConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetMetadataConfigurationOptions
+#define soap_write_PointerTo_trt__GetMetadataConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetMetadataConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetMetadataConfigurationOptions(soap, data, "trt:GetMetadataConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTo_trt__GetMetadataConfigurationOptions(struct soap*, struct _trt__GetMetadataConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetMetadataConfigurationOptions
+#define soap_read_PointerTo_trt__GetMetadataConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetMetadataConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse (2289)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationOptionsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, const char *, int, struct _trt__GetAudioEncoderConfigurationOptionsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationOptionsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetAudioEncoderConfigurationOptionsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationOptionsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse
+#define soap_write_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse(soap, data, "trt:GetAudioEncoderConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationOptionsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationOptionsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse
+#define soap_read_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioEncoderConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfigurationOptions
+#define SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfigurationOptions (2288)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioEncoderConfigurationOptions(struct soap*, struct _trt__GetAudioEncoderConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioEncoderConfigurationOptions(struct soap*, const char *, int, struct _trt__GetAudioEncoderConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioEncoderConfigurationOptions(struct soap*, const char*, struct _trt__GetAudioEncoderConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioEncoderConfigurationOptions(struct soap*, struct _trt__GetAudioEncoderConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioEncoderConfigurationOptions
+#define soap_write_PointerTo_trt__GetAudioEncoderConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioEncoderConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioEncoderConfigurationOptions(soap, data, "trt:GetAudioEncoderConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioEncoderConfigurationOptions(struct soap*, struct _trt__GetAudioEncoderConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioEncoderConfigurationOptions
+#define soap_read_PointerTo_trt__GetAudioEncoderConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioEncoderConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse (2285)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioSourceConfigurationOptionsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, const char *, int, struct _trt__GetAudioSourceConfigurationOptionsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationOptionsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetAudioSourceConfigurationOptionsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioSourceConfigurationOptionsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse
+#define soap_write_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse(soap, data, "trt:GetAudioSourceConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationOptionsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse(struct soap*, struct _trt__GetAudioSourceConfigurationOptionsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse
+#define soap_read_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioSourceConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioSourceConfigurationOptions
+#define SOAP_TYPE_PointerTo_trt__GetAudioSourceConfigurationOptions (2284)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioSourceConfigurationOptions(struct soap*, struct _trt__GetAudioSourceConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioSourceConfigurationOptions(struct soap*, const char *, int, struct _trt__GetAudioSourceConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioSourceConfigurationOptions(struct soap*, const char*, struct _trt__GetAudioSourceConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioSourceConfigurationOptions(struct soap*, struct _trt__GetAudioSourceConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioSourceConfigurationOptions
+#define soap_write_PointerTo_trt__GetAudioSourceConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioSourceConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioSourceConfigurationOptions(soap, data, "trt:GetAudioSourceConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioSourceConfigurationOptions(struct soap*, struct _trt__GetAudioSourceConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioSourceConfigurationOptions
+#define soap_read_PointerTo_trt__GetAudioSourceConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioSourceConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse
+#define SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse (2281)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationOptionsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, const char *, int, struct _trt__GetVideoEncoderConfigurationOptionsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationOptionsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetVideoEncoderConfigurationOptionsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationOptionsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse
+#define soap_write_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse(soap, data, "trt:GetVideoEncoderConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationOptionsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationOptionsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse
+#define soap_read_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoEncoderConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfigurationOptions
+#define SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfigurationOptions (2280)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoEncoderConfigurationOptions(struct soap*, struct _trt__GetVideoEncoderConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoEncoderConfigurationOptions(struct soap*, const char *, int, struct _trt__GetVideoEncoderConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoEncoderConfigurationOptions(struct soap*, const char*, struct _trt__GetVideoEncoderConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoEncoderConfigurationOptions(struct soap*, struct _trt__GetVideoEncoderConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoEncoderConfigurationOptions
+#define soap_write_PointerTo_trt__GetVideoEncoderConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoEncoderConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoEncoderConfigurationOptions(soap, data, "trt:GetVideoEncoderConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoEncoderConfigurationOptions(struct soap*, struct _trt__GetVideoEncoderConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoEncoderConfigurationOptions
+#define soap_read_PointerTo_trt__GetVideoEncoderConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoEncoderConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse
+#define SOAP_TYPE_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse (2277)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, struct _trt__GetVideoSourceConfigurationOptionsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, const char *, int, struct _trt__GetVideoSourceConfigurationOptionsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationOptionsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, const char*, struct _trt__GetVideoSourceConfigurationOptionsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, struct _trt__GetVideoSourceConfigurationOptionsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse
+#define soap_write_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse(soap, data, "trt:GetVideoSourceConfigurationOptionsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationOptionsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse(struct soap*, struct _trt__GetVideoSourceConfigurationOptionsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse
+#define soap_read_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoSourceConfigurationOptionsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoSourceConfigurationOptions
+#define SOAP_TYPE_PointerTo_trt__GetVideoSourceConfigurationOptions (2276)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoSourceConfigurationOptions(struct soap*, struct _trt__GetVideoSourceConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoSourceConfigurationOptions(struct soap*, const char *, int, struct _trt__GetVideoSourceConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoSourceConfigurationOptions(struct soap*, const char*, struct _trt__GetVideoSourceConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoSourceConfigurationOptions(struct soap*, struct _trt__GetVideoSourceConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoSourceConfigurationOptions
+#define soap_write_PointerTo_trt__GetVideoSourceConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoSourceConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoSourceConfigurationOptions(soap, data, "trt:GetVideoSourceConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoSourceConfigurationOptions(struct soap*, struct _trt__GetVideoSourceConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoSourceConfigurationOptions
+#define soap_read_PointerTo_trt__GetVideoSourceConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoSourceConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetAudioDecoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__SetAudioDecoderConfigurationResponse (2273)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetAudioDecoderConfigurationResponse(struct soap*, struct _trt__SetAudioDecoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetAudioDecoderConfigurationResponse(struct soap*, const char *, int, struct _trt__SetAudioDecoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__SetAudioDecoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__SetAudioDecoderConfigurationResponse(struct soap*, const char*, struct _trt__SetAudioDecoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetAudioDecoderConfigurationResponse(struct soap*, struct _trt__SetAudioDecoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetAudioDecoderConfigurationResponse
+#define soap_write_PointerTo_trt__SetAudioDecoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetAudioDecoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetAudioDecoderConfigurationResponse(soap, data, "trt:SetAudioDecoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioDecoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__SetAudioDecoderConfigurationResponse(struct soap*, struct _trt__SetAudioDecoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetAudioDecoderConfigurationResponse
+#define soap_read_PointerTo_trt__SetAudioDecoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetAudioDecoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetAudioDecoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__SetAudioDecoderConfiguration (2272)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetAudioDecoderConfiguration(struct soap*, struct _trt__SetAudioDecoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetAudioDecoderConfiguration(struct soap*, const char *, int, struct _trt__SetAudioDecoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__SetAudioDecoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__SetAudioDecoderConfiguration(struct soap*, const char*, struct _trt__SetAudioDecoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetAudioDecoderConfiguration(struct soap*, struct _trt__SetAudioDecoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetAudioDecoderConfiguration
+#define soap_write_PointerTo_trt__SetAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetAudioDecoderConfiguration(soap, data, "trt:SetAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioDecoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__SetAudioDecoderConfiguration(struct soap*, struct _trt__SetAudioDecoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetAudioDecoderConfiguration
+#define soap_read_PointerTo_trt__SetAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetAudioOutputConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__SetAudioOutputConfigurationResponse (2269)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetAudioOutputConfigurationResponse(struct soap*, struct _trt__SetAudioOutputConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetAudioOutputConfigurationResponse(struct soap*, const char *, int, struct _trt__SetAudioOutputConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__SetAudioOutputConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__SetAudioOutputConfigurationResponse(struct soap*, const char*, struct _trt__SetAudioOutputConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetAudioOutputConfigurationResponse(struct soap*, struct _trt__SetAudioOutputConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetAudioOutputConfigurationResponse
+#define soap_write_PointerTo_trt__SetAudioOutputConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetAudioOutputConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetAudioOutputConfigurationResponse(soap, data, "trt:SetAudioOutputConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioOutputConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__SetAudioOutputConfigurationResponse(struct soap*, struct _trt__SetAudioOutputConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetAudioOutputConfigurationResponse
+#define soap_read_PointerTo_trt__SetAudioOutputConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetAudioOutputConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetAudioOutputConfiguration
+#define SOAP_TYPE_PointerTo_trt__SetAudioOutputConfiguration (2268)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetAudioOutputConfiguration(struct soap*, struct _trt__SetAudioOutputConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetAudioOutputConfiguration(struct soap*, const char *, int, struct _trt__SetAudioOutputConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__SetAudioOutputConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__SetAudioOutputConfiguration(struct soap*, const char*, struct _trt__SetAudioOutputConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetAudioOutputConfiguration(struct soap*, struct _trt__SetAudioOutputConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetAudioOutputConfiguration
+#define soap_write_PointerTo_trt__SetAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetAudioOutputConfiguration(soap, data, "trt:SetAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioOutputConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__SetAudioOutputConfiguration(struct soap*, struct _trt__SetAudioOutputConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetAudioOutputConfiguration
+#define soap_read_PointerTo_trt__SetAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetMetadataConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__SetMetadataConfigurationResponse (2265)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetMetadataConfigurationResponse(struct soap*, struct _trt__SetMetadataConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetMetadataConfigurationResponse(struct soap*, const char *, int, struct _trt__SetMetadataConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__SetMetadataConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__SetMetadataConfigurationResponse(struct soap*, const char*, struct _trt__SetMetadataConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetMetadataConfigurationResponse(struct soap*, struct _trt__SetMetadataConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetMetadataConfigurationResponse
+#define soap_write_PointerTo_trt__SetMetadataConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetMetadataConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetMetadataConfigurationResponse(soap, data, "trt:SetMetadataConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetMetadataConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__SetMetadataConfigurationResponse(struct soap*, struct _trt__SetMetadataConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetMetadataConfigurationResponse
+#define soap_read_PointerTo_trt__SetMetadataConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetMetadataConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetMetadataConfiguration
+#define SOAP_TYPE_PointerTo_trt__SetMetadataConfiguration (2264)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetMetadataConfiguration(struct soap*, struct _trt__SetMetadataConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetMetadataConfiguration(struct soap*, const char *, int, struct _trt__SetMetadataConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__SetMetadataConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__SetMetadataConfiguration(struct soap*, const char*, struct _trt__SetMetadataConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetMetadataConfiguration(struct soap*, struct _trt__SetMetadataConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetMetadataConfiguration
+#define soap_write_PointerTo_trt__SetMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetMetadataConfiguration(soap, data, "trt:SetMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetMetadataConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__SetMetadataConfiguration(struct soap*, struct _trt__SetMetadataConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetMetadataConfiguration
+#define soap_read_PointerTo_trt__SetMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__SetVideoAnalyticsConfigurationResponse (2261)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__SetVideoAnalyticsConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetVideoAnalyticsConfigurationResponse(struct soap*, const char *, int, struct _trt__SetVideoAnalyticsConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__SetVideoAnalyticsConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__SetVideoAnalyticsConfigurationResponse(struct soap*, const char*, struct _trt__SetVideoAnalyticsConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__SetVideoAnalyticsConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetVideoAnalyticsConfigurationResponse
+#define soap_write_PointerTo_trt__SetVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetVideoAnalyticsConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetVideoAnalyticsConfigurationResponse(soap, data, "trt:SetVideoAnalyticsConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoAnalyticsConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__SetVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__SetVideoAnalyticsConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetVideoAnalyticsConfigurationResponse
+#define soap_read_PointerTo_trt__SetVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetVideoAnalyticsConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetVideoAnalyticsConfiguration
+#define SOAP_TYPE_PointerTo_trt__SetVideoAnalyticsConfiguration (2260)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetVideoAnalyticsConfiguration(struct soap*, struct _trt__SetVideoAnalyticsConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetVideoAnalyticsConfiguration(struct soap*, const char *, int, struct _trt__SetVideoAnalyticsConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__SetVideoAnalyticsConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__SetVideoAnalyticsConfiguration(struct soap*, const char*, struct _trt__SetVideoAnalyticsConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetVideoAnalyticsConfiguration(struct soap*, struct _trt__SetVideoAnalyticsConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetVideoAnalyticsConfiguration
+#define soap_write_PointerTo_trt__SetVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetVideoAnalyticsConfiguration(soap, data, "trt:SetVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoAnalyticsConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__SetVideoAnalyticsConfiguration(struct soap*, struct _trt__SetVideoAnalyticsConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetVideoAnalyticsConfiguration
+#define soap_read_PointerTo_trt__SetVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetAudioEncoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__SetAudioEncoderConfigurationResponse (2257)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetAudioEncoderConfigurationResponse(struct soap*, struct _trt__SetAudioEncoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetAudioEncoderConfigurationResponse(struct soap*, const char *, int, struct _trt__SetAudioEncoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__SetAudioEncoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__SetAudioEncoderConfigurationResponse(struct soap*, const char*, struct _trt__SetAudioEncoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetAudioEncoderConfigurationResponse(struct soap*, struct _trt__SetAudioEncoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetAudioEncoderConfigurationResponse
+#define soap_write_PointerTo_trt__SetAudioEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetAudioEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetAudioEncoderConfigurationResponse(soap, data, "trt:SetAudioEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioEncoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__SetAudioEncoderConfigurationResponse(struct soap*, struct _trt__SetAudioEncoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetAudioEncoderConfigurationResponse
+#define soap_read_PointerTo_trt__SetAudioEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetAudioEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetAudioEncoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__SetAudioEncoderConfiguration (2256)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetAudioEncoderConfiguration(struct soap*, struct _trt__SetAudioEncoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetAudioEncoderConfiguration(struct soap*, const char *, int, struct _trt__SetAudioEncoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__SetAudioEncoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__SetAudioEncoderConfiguration(struct soap*, const char*, struct _trt__SetAudioEncoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetAudioEncoderConfiguration(struct soap*, struct _trt__SetAudioEncoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetAudioEncoderConfiguration
+#define soap_write_PointerTo_trt__SetAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetAudioEncoderConfiguration(soap, data, "trt:SetAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioEncoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__SetAudioEncoderConfiguration(struct soap*, struct _trt__SetAudioEncoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetAudioEncoderConfiguration
+#define soap_read_PointerTo_trt__SetAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetAudioSourceConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__SetAudioSourceConfigurationResponse (2253)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetAudioSourceConfigurationResponse(struct soap*, struct _trt__SetAudioSourceConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetAudioSourceConfigurationResponse(struct soap*, const char *, int, struct _trt__SetAudioSourceConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__SetAudioSourceConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__SetAudioSourceConfigurationResponse(struct soap*, const char*, struct _trt__SetAudioSourceConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetAudioSourceConfigurationResponse(struct soap*, struct _trt__SetAudioSourceConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetAudioSourceConfigurationResponse
+#define soap_write_PointerTo_trt__SetAudioSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetAudioSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetAudioSourceConfigurationResponse(soap, data, "trt:SetAudioSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioSourceConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__SetAudioSourceConfigurationResponse(struct soap*, struct _trt__SetAudioSourceConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetAudioSourceConfigurationResponse
+#define soap_read_PointerTo_trt__SetAudioSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetAudioSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetAudioSourceConfiguration
+#define SOAP_TYPE_PointerTo_trt__SetAudioSourceConfiguration (2252)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetAudioSourceConfiguration(struct soap*, struct _trt__SetAudioSourceConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetAudioSourceConfiguration(struct soap*, const char *, int, struct _trt__SetAudioSourceConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__SetAudioSourceConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__SetAudioSourceConfiguration(struct soap*, const char*, struct _trt__SetAudioSourceConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetAudioSourceConfiguration(struct soap*, struct _trt__SetAudioSourceConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetAudioSourceConfiguration
+#define soap_write_PointerTo_trt__SetAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetAudioSourceConfiguration(soap, data, "trt:SetAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetAudioSourceConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__SetAudioSourceConfiguration(struct soap*, struct _trt__SetAudioSourceConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetAudioSourceConfiguration
+#define soap_read_PointerTo_trt__SetAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetVideoEncoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__SetVideoEncoderConfigurationResponse (2249)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetVideoEncoderConfigurationResponse(struct soap*, struct _trt__SetVideoEncoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetVideoEncoderConfigurationResponse(struct soap*, const char *, int, struct _trt__SetVideoEncoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__SetVideoEncoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__SetVideoEncoderConfigurationResponse(struct soap*, const char*, struct _trt__SetVideoEncoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetVideoEncoderConfigurationResponse(struct soap*, struct _trt__SetVideoEncoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetVideoEncoderConfigurationResponse
+#define soap_write_PointerTo_trt__SetVideoEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetVideoEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetVideoEncoderConfigurationResponse(soap, data, "trt:SetVideoEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoEncoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__SetVideoEncoderConfigurationResponse(struct soap*, struct _trt__SetVideoEncoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetVideoEncoderConfigurationResponse
+#define soap_read_PointerTo_trt__SetVideoEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetVideoEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetVideoEncoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__SetVideoEncoderConfiguration (2248)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetVideoEncoderConfiguration(struct soap*, struct _trt__SetVideoEncoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetVideoEncoderConfiguration(struct soap*, const char *, int, struct _trt__SetVideoEncoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__SetVideoEncoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__SetVideoEncoderConfiguration(struct soap*, const char*, struct _trt__SetVideoEncoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetVideoEncoderConfiguration(struct soap*, struct _trt__SetVideoEncoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetVideoEncoderConfiguration
+#define soap_write_PointerTo_trt__SetVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetVideoEncoderConfiguration(soap, data, "trt:SetVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoEncoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__SetVideoEncoderConfiguration(struct soap*, struct _trt__SetVideoEncoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetVideoEncoderConfiguration
+#define soap_read_PointerTo_trt__SetVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetVideoSourceConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__SetVideoSourceConfigurationResponse (2245)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetVideoSourceConfigurationResponse(struct soap*, struct _trt__SetVideoSourceConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetVideoSourceConfigurationResponse(struct soap*, const char *, int, struct _trt__SetVideoSourceConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__SetVideoSourceConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__SetVideoSourceConfigurationResponse(struct soap*, const char*, struct _trt__SetVideoSourceConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetVideoSourceConfigurationResponse(struct soap*, struct _trt__SetVideoSourceConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetVideoSourceConfigurationResponse
+#define soap_write_PointerTo_trt__SetVideoSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetVideoSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetVideoSourceConfigurationResponse(soap, data, "trt:SetVideoSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoSourceConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__SetVideoSourceConfigurationResponse(struct soap*, struct _trt__SetVideoSourceConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetVideoSourceConfigurationResponse
+#define soap_read_PointerTo_trt__SetVideoSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetVideoSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__SetVideoSourceConfiguration
+#define SOAP_TYPE_PointerTo_trt__SetVideoSourceConfiguration (2244)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__SetVideoSourceConfiguration(struct soap*, struct _trt__SetVideoSourceConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__SetVideoSourceConfiguration(struct soap*, const char *, int, struct _trt__SetVideoSourceConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__SetVideoSourceConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__SetVideoSourceConfiguration(struct soap*, const char*, struct _trt__SetVideoSourceConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__SetVideoSourceConfiguration(struct soap*, struct _trt__SetVideoSourceConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__SetVideoSourceConfiguration
+#define soap_write_PointerTo_trt__SetVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__SetVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__SetVideoSourceConfiguration(soap, data, "trt:SetVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__SetVideoSourceConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__SetVideoSourceConfiguration(struct soap*, struct _trt__SetVideoSourceConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__SetVideoSourceConfiguration
+#define soap_read_PointerTo_trt__SetVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__SetVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse (2241)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioDecoderConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleAudioDecoderConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse
+#define soap_write_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse(soap, data, "trt:GetCompatibleAudioDecoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioDecoderConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse
+#define soap_read_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleAudioDecoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleAudioDecoderConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleAudioDecoderConfigurations (2240)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleAudioDecoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleAudioDecoderConfigurations(struct soap*, const char *, int, struct _trt__GetCompatibleAudioDecoderConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioDecoderConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleAudioDecoderConfigurations(struct soap*, const char*, struct _trt__GetCompatibleAudioDecoderConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleAudioDecoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleAudioDecoderConfigurations
+#define soap_write_PointerTo_trt__GetCompatibleAudioDecoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleAudioDecoderConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleAudioDecoderConfigurations(soap, data, "trt:GetCompatibleAudioDecoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioDecoderConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleAudioDecoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioDecoderConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleAudioDecoderConfigurations
+#define soap_read_PointerTo_trt__GetCompatibleAudioDecoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleAudioDecoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse (2237)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetCompatibleAudioOutputConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioOutputConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleAudioOutputConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse
+#define soap_write_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse(soap, data, "trt:GetCompatibleAudioOutputConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioOutputConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse
+#define soap_read_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleAudioOutputConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleAudioOutputConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleAudioOutputConfigurations (2236)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleAudioOutputConfigurations(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleAudioOutputConfigurations(struct soap*, const char *, int, struct _trt__GetCompatibleAudioOutputConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioOutputConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleAudioOutputConfigurations(struct soap*, const char*, struct _trt__GetCompatibleAudioOutputConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleAudioOutputConfigurations(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleAudioOutputConfigurations
+#define soap_write_PointerTo_trt__GetCompatibleAudioOutputConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleAudioOutputConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleAudioOutputConfigurations(soap, data, "trt:GetCompatibleAudioOutputConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioOutputConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleAudioOutputConfigurations(struct soap*, struct _trt__GetCompatibleAudioOutputConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleAudioOutputConfigurations
+#define soap_read_PointerTo_trt__GetCompatibleAudioOutputConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleAudioOutputConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse (2233)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, struct _trt__GetCompatibleMetadataConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetCompatibleMetadataConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleMetadataConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleMetadataConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, struct _trt__GetCompatibleMetadataConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse
+#define soap_write_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse(soap, data, "trt:GetCompatibleMetadataConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleMetadataConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse(struct soap*, struct _trt__GetCompatibleMetadataConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse
+#define soap_read_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleMetadataConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleMetadataConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleMetadataConfigurations (2232)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleMetadataConfigurations(struct soap*, struct _trt__GetCompatibleMetadataConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleMetadataConfigurations(struct soap*, const char *, int, struct _trt__GetCompatibleMetadataConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleMetadataConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleMetadataConfigurations(struct soap*, const char*, struct _trt__GetCompatibleMetadataConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleMetadataConfigurations(struct soap*, struct _trt__GetCompatibleMetadataConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleMetadataConfigurations
+#define soap_write_PointerTo_trt__GetCompatibleMetadataConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleMetadataConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleMetadataConfigurations(soap, data, "trt:GetCompatibleMetadataConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleMetadataConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleMetadataConfigurations(struct soap*, struct _trt__GetCompatibleMetadataConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleMetadataConfigurations
+#define soap_read_PointerTo_trt__GetCompatibleMetadataConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleMetadataConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse (2229)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse
+#define soap_write_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse(soap, data, "trt:GetCompatibleVideoAnalyticsConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse
+#define soap_read_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations (2228)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, const char *, int, struct _trt__GetCompatibleVideoAnalyticsConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoAnalyticsConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, const char*, struct _trt__GetCompatibleVideoAnalyticsConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations
+#define soap_write_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations(soap, data, "trt:GetCompatibleVideoAnalyticsConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoAnalyticsConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations(struct soap*, struct _trt__GetCompatibleVideoAnalyticsConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations
+#define soap_read_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleVideoAnalyticsConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse (2225)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetCompatibleAudioSourceConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioSourceConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleAudioSourceConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse
+#define soap_write_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse(soap, data, "trt:GetCompatibleAudioSourceConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioSourceConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse
+#define soap_read_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleAudioSourceConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleAudioSourceConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleAudioSourceConfigurations (2224)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleAudioSourceConfigurations(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleAudioSourceConfigurations(struct soap*, const char *, int, struct _trt__GetCompatibleAudioSourceConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioSourceConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleAudioSourceConfigurations(struct soap*, const char*, struct _trt__GetCompatibleAudioSourceConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleAudioSourceConfigurations(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleAudioSourceConfigurations
+#define soap_write_PointerTo_trt__GetCompatibleAudioSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleAudioSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleAudioSourceConfigurations(soap, data, "trt:GetCompatibleAudioSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioSourceConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleAudioSourceConfigurations(struct soap*, struct _trt__GetCompatibleAudioSourceConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleAudioSourceConfigurations
+#define soap_read_PointerTo_trt__GetCompatibleAudioSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleAudioSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse (2221)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioEncoderConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleAudioEncoderConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse
+#define soap_write_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse(soap, data, "trt:GetCompatibleAudioEncoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioEncoderConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse
+#define soap_read_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleAudioEncoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleAudioEncoderConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleAudioEncoderConfigurations (2220)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleAudioEncoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleAudioEncoderConfigurations(struct soap*, const char *, int, struct _trt__GetCompatibleAudioEncoderConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleAudioEncoderConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleAudioEncoderConfigurations(struct soap*, const char*, struct _trt__GetCompatibleAudioEncoderConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleAudioEncoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleAudioEncoderConfigurations
+#define soap_write_PointerTo_trt__GetCompatibleAudioEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleAudioEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleAudioEncoderConfigurations(soap, data, "trt:GetCompatibleAudioEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleAudioEncoderConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleAudioEncoderConfigurations(struct soap*, struct _trt__GetCompatibleAudioEncoderConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleAudioEncoderConfigurations
+#define soap_read_PointerTo_trt__GetCompatibleAudioEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleAudioEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse (2217)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetCompatibleVideoSourceConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoSourceConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleVideoSourceConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse
+#define soap_write_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse(soap, data, "trt:GetCompatibleVideoSourceConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoSourceConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse
+#define soap_read_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleVideoSourceConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleVideoSourceConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleVideoSourceConfigurations (2216)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleVideoSourceConfigurations(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleVideoSourceConfigurations(struct soap*, const char *, int, struct _trt__GetCompatibleVideoSourceConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoSourceConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleVideoSourceConfigurations(struct soap*, const char*, struct _trt__GetCompatibleVideoSourceConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleVideoSourceConfigurations(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleVideoSourceConfigurations
+#define soap_write_PointerTo_trt__GetCompatibleVideoSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleVideoSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleVideoSourceConfigurations(soap, data, "trt:GetCompatibleVideoSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoSourceConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleVideoSourceConfigurations(struct soap*, struct _trt__GetCompatibleVideoSourceConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleVideoSourceConfigurations
+#define soap_read_PointerTo_trt__GetCompatibleVideoSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleVideoSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse (2213)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoEncoderConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetCompatibleVideoEncoderConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse
+#define soap_write_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse(soap, data, "trt:GetCompatibleVideoEncoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoEncoderConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse
+#define soap_read_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleVideoEncoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetCompatibleVideoEncoderConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetCompatibleVideoEncoderConfigurations (2212)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetCompatibleVideoEncoderConfigurations(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetCompatibleVideoEncoderConfigurations(struct soap*, const char *, int, struct _trt__GetCompatibleVideoEncoderConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetCompatibleVideoEncoderConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetCompatibleVideoEncoderConfigurations(struct soap*, const char*, struct _trt__GetCompatibleVideoEncoderConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetCompatibleVideoEncoderConfigurations(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetCompatibleVideoEncoderConfigurations
+#define soap_write_PointerTo_trt__GetCompatibleVideoEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetCompatibleVideoEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetCompatibleVideoEncoderConfigurations(soap, data, "trt:GetCompatibleVideoEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetCompatibleVideoEncoderConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetCompatibleVideoEncoderConfigurations(struct soap*, struct _trt__GetCompatibleVideoEncoderConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetCompatibleVideoEncoderConfigurations
+#define soap_read_PointerTo_trt__GetCompatibleVideoEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetCompatibleVideoEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfigurationResponse (2209)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioDecoderConfigurationResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioDecoderConfigurationResponse(struct soap*, const char *, int, struct _trt__GetAudioDecoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioDecoderConfigurationResponse(struct soap*, const char*, struct _trt__GetAudioDecoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioDecoderConfigurationResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioDecoderConfigurationResponse
+#define soap_write_PointerTo_trt__GetAudioDecoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioDecoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioDecoderConfigurationResponse(soap, data, "trt:GetAudioDecoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioDecoderConfigurationResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioDecoderConfigurationResponse
+#define soap_read_PointerTo_trt__GetAudioDecoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioDecoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfiguration (2208)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioDecoderConfiguration(struct soap*, struct _trt__GetAudioDecoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioDecoderConfiguration(struct soap*, const char *, int, struct _trt__GetAudioDecoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioDecoderConfiguration(struct soap*, const char*, struct _trt__GetAudioDecoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioDecoderConfiguration(struct soap*, struct _trt__GetAudioDecoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioDecoderConfiguration
+#define soap_write_PointerTo_trt__GetAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioDecoderConfiguration(soap, data, "trt:GetAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioDecoderConfiguration(struct soap*, struct _trt__GetAudioDecoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioDecoderConfiguration
+#define soap_read_PointerTo_trt__GetAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioOutputConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioOutputConfigurationResponse (2205)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioOutputConfigurationResponse(struct soap*, struct _trt__GetAudioOutputConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioOutputConfigurationResponse(struct soap*, const char *, int, struct _trt__GetAudioOutputConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioOutputConfigurationResponse(struct soap*, const char*, struct _trt__GetAudioOutputConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioOutputConfigurationResponse(struct soap*, struct _trt__GetAudioOutputConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioOutputConfigurationResponse
+#define soap_write_PointerTo_trt__GetAudioOutputConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioOutputConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioOutputConfigurationResponse(soap, data, "trt:GetAudioOutputConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioOutputConfigurationResponse(struct soap*, struct _trt__GetAudioOutputConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioOutputConfigurationResponse
+#define soap_read_PointerTo_trt__GetAudioOutputConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioOutputConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioOutputConfiguration
+#define SOAP_TYPE_PointerTo_trt__GetAudioOutputConfiguration (2204)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioOutputConfiguration(struct soap*, struct _trt__GetAudioOutputConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioOutputConfiguration(struct soap*, const char *, int, struct _trt__GetAudioOutputConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioOutputConfiguration(struct soap*, const char*, struct _trt__GetAudioOutputConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioOutputConfiguration(struct soap*, struct _trt__GetAudioOutputConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioOutputConfiguration
+#define soap_write_PointerTo_trt__GetAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioOutputConfiguration(soap, data, "trt:GetAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioOutputConfiguration(struct soap*, struct _trt__GetAudioOutputConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioOutputConfiguration
+#define soap_read_PointerTo_trt__GetAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetMetadataConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__GetMetadataConfigurationResponse (2201)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetMetadataConfigurationResponse(struct soap*, struct _trt__GetMetadataConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetMetadataConfigurationResponse(struct soap*, const char *, int, struct _trt__GetMetadataConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetMetadataConfigurationResponse(struct soap*, const char*, struct _trt__GetMetadataConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetMetadataConfigurationResponse(struct soap*, struct _trt__GetMetadataConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetMetadataConfigurationResponse
+#define soap_write_PointerTo_trt__GetMetadataConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetMetadataConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetMetadataConfigurationResponse(soap, data, "trt:GetMetadataConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetMetadataConfigurationResponse(struct soap*, struct _trt__GetMetadataConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetMetadataConfigurationResponse
+#define soap_read_PointerTo_trt__GetMetadataConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetMetadataConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetMetadataConfiguration
+#define SOAP_TYPE_PointerTo_trt__GetMetadataConfiguration (2200)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetMetadataConfiguration(struct soap*, struct _trt__GetMetadataConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetMetadataConfiguration(struct soap*, const char *, int, struct _trt__GetMetadataConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__GetMetadataConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__GetMetadataConfiguration(struct soap*, const char*, struct _trt__GetMetadataConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetMetadataConfiguration(struct soap*, struct _trt__GetMetadataConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetMetadataConfiguration
+#define soap_write_PointerTo_trt__GetMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetMetadataConfiguration(soap, data, "trt:GetMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__GetMetadataConfiguration(struct soap*, struct _trt__GetMetadataConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetMetadataConfiguration
+#define soap_read_PointerTo_trt__GetMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__GetVideoAnalyticsConfigurationResponse (2197)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__GetVideoAnalyticsConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoAnalyticsConfigurationResponse(struct soap*, const char *, int, struct _trt__GetVideoAnalyticsConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoAnalyticsConfigurationResponse(struct soap*, const char*, struct _trt__GetVideoAnalyticsConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__GetVideoAnalyticsConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoAnalyticsConfigurationResponse
+#define soap_write_PointerTo_trt__GetVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoAnalyticsConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoAnalyticsConfigurationResponse(soap, data, "trt:GetVideoAnalyticsConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__GetVideoAnalyticsConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoAnalyticsConfigurationResponse
+#define soap_read_PointerTo_trt__GetVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoAnalyticsConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoAnalyticsConfiguration
+#define SOAP_TYPE_PointerTo_trt__GetVideoAnalyticsConfiguration (2196)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoAnalyticsConfiguration(struct soap*, struct _trt__GetVideoAnalyticsConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoAnalyticsConfiguration(struct soap*, const char *, int, struct _trt__GetVideoAnalyticsConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoAnalyticsConfiguration(struct soap*, const char*, struct _trt__GetVideoAnalyticsConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoAnalyticsConfiguration(struct soap*, struct _trt__GetVideoAnalyticsConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoAnalyticsConfiguration
+#define soap_write_PointerTo_trt__GetVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoAnalyticsConfiguration(soap, data, "trt:GetVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoAnalyticsConfiguration(struct soap*, struct _trt__GetVideoAnalyticsConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoAnalyticsConfiguration
+#define soap_read_PointerTo_trt__GetVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfigurationResponse (2193)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioEncoderConfigurationResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioEncoderConfigurationResponse(struct soap*, const char *, int, struct _trt__GetAudioEncoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioEncoderConfigurationResponse(struct soap*, const char*, struct _trt__GetAudioEncoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioEncoderConfigurationResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioEncoderConfigurationResponse
+#define soap_write_PointerTo_trt__GetAudioEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioEncoderConfigurationResponse(soap, data, "trt:GetAudioEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioEncoderConfigurationResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioEncoderConfigurationResponse
+#define soap_read_PointerTo_trt__GetAudioEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfiguration (2192)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioEncoderConfiguration(struct soap*, struct _trt__GetAudioEncoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioEncoderConfiguration(struct soap*, const char *, int, struct _trt__GetAudioEncoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioEncoderConfiguration(struct soap*, const char*, struct _trt__GetAudioEncoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioEncoderConfiguration(struct soap*, struct _trt__GetAudioEncoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioEncoderConfiguration
+#define soap_write_PointerTo_trt__GetAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioEncoderConfiguration(soap, data, "trt:GetAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioEncoderConfiguration(struct soap*, struct _trt__GetAudioEncoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioEncoderConfiguration
+#define soap_read_PointerTo_trt__GetAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioSourceConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioSourceConfigurationResponse (2189)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioSourceConfigurationResponse(struct soap*, struct _trt__GetAudioSourceConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioSourceConfigurationResponse(struct soap*, const char *, int, struct _trt__GetAudioSourceConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioSourceConfigurationResponse(struct soap*, const char*, struct _trt__GetAudioSourceConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioSourceConfigurationResponse(struct soap*, struct _trt__GetAudioSourceConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioSourceConfigurationResponse
+#define soap_write_PointerTo_trt__GetAudioSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioSourceConfigurationResponse(soap, data, "trt:GetAudioSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioSourceConfigurationResponse(struct soap*, struct _trt__GetAudioSourceConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioSourceConfigurationResponse
+#define soap_read_PointerTo_trt__GetAudioSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioSourceConfiguration
+#define SOAP_TYPE_PointerTo_trt__GetAudioSourceConfiguration (2188)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioSourceConfiguration(struct soap*, struct _trt__GetAudioSourceConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioSourceConfiguration(struct soap*, const char *, int, struct _trt__GetAudioSourceConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioSourceConfiguration(struct soap*, const char*, struct _trt__GetAudioSourceConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioSourceConfiguration(struct soap*, struct _trt__GetAudioSourceConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioSourceConfiguration
+#define soap_write_PointerTo_trt__GetAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioSourceConfiguration(soap, data, "trt:GetAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioSourceConfiguration(struct soap*, struct _trt__GetAudioSourceConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioSourceConfiguration
+#define soap_read_PointerTo_trt__GetAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfigurationResponse (2185)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoEncoderConfigurationResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoEncoderConfigurationResponse(struct soap*, const char *, int, struct _trt__GetVideoEncoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoEncoderConfigurationResponse(struct soap*, const char*, struct _trt__GetVideoEncoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoEncoderConfigurationResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoEncoderConfigurationResponse
+#define soap_write_PointerTo_trt__GetVideoEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoEncoderConfigurationResponse(soap, data, "trt:GetVideoEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoEncoderConfigurationResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoEncoderConfigurationResponse
+#define soap_read_PointerTo_trt__GetVideoEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfiguration (2184)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoEncoderConfiguration(struct soap*, struct _trt__GetVideoEncoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoEncoderConfiguration(struct soap*, const char *, int, struct _trt__GetVideoEncoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoEncoderConfiguration(struct soap*, const char*, struct _trt__GetVideoEncoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoEncoderConfiguration(struct soap*, struct _trt__GetVideoEncoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoEncoderConfiguration
+#define soap_write_PointerTo_trt__GetVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoEncoderConfiguration(soap, data, "trt:GetVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoEncoderConfiguration(struct soap*, struct _trt__GetVideoEncoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoEncoderConfiguration
+#define soap_read_PointerTo_trt__GetVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoSourceConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__GetVideoSourceConfigurationResponse (2181)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoSourceConfigurationResponse(struct soap*, struct _trt__GetVideoSourceConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoSourceConfigurationResponse(struct soap*, const char *, int, struct _trt__GetVideoSourceConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoSourceConfigurationResponse(struct soap*, const char*, struct _trt__GetVideoSourceConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoSourceConfigurationResponse(struct soap*, struct _trt__GetVideoSourceConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoSourceConfigurationResponse
+#define soap_write_PointerTo_trt__GetVideoSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoSourceConfigurationResponse(soap, data, "trt:GetVideoSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoSourceConfigurationResponse(struct soap*, struct _trt__GetVideoSourceConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoSourceConfigurationResponse
+#define soap_read_PointerTo_trt__GetVideoSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoSourceConfiguration
+#define SOAP_TYPE_PointerTo_trt__GetVideoSourceConfiguration (2180)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoSourceConfiguration(struct soap*, struct _trt__GetVideoSourceConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoSourceConfiguration(struct soap*, const char *, int, struct _trt__GetVideoSourceConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoSourceConfiguration(struct soap*, const char*, struct _trt__GetVideoSourceConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoSourceConfiguration(struct soap*, struct _trt__GetVideoSourceConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoSourceConfiguration
+#define soap_write_PointerTo_trt__GetVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoSourceConfiguration(soap, data, "trt:GetVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoSourceConfiguration(struct soap*, struct _trt__GetVideoSourceConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoSourceConfiguration
+#define soap_read_PointerTo_trt__GetVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfigurationsResponse (2177)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioDecoderConfigurationsResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioDecoderConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetAudioDecoderConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioDecoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetAudioDecoderConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioDecoderConfigurationsResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioDecoderConfigurationsResponse
+#define soap_write_PointerTo_trt__GetAudioDecoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioDecoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioDecoderConfigurationsResponse(soap, data, "trt:GetAudioDecoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioDecoderConfigurationsResponse(struct soap*, struct _trt__GetAudioDecoderConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioDecoderConfigurationsResponse
+#define soap_read_PointerTo_trt__GetAudioDecoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioDecoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetAudioDecoderConfigurations (2176)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioDecoderConfigurations(struct soap*, struct _trt__GetAudioDecoderConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioDecoderConfigurations(struct soap*, const char *, int, struct _trt__GetAudioDecoderConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioDecoderConfigurations(struct soap*, const char*, struct _trt__GetAudioDecoderConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioDecoderConfigurations(struct soap*, struct _trt__GetAudioDecoderConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioDecoderConfigurations
+#define soap_write_PointerTo_trt__GetAudioDecoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioDecoderConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioDecoderConfigurations(soap, data, "trt:GetAudioDecoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioDecoderConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioDecoderConfigurations(struct soap*, struct _trt__GetAudioDecoderConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioDecoderConfigurations
+#define soap_read_PointerTo_trt__GetAudioDecoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioDecoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioOutputConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioOutputConfigurationsResponse (2173)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioOutputConfigurationsResponse(struct soap*, struct _trt__GetAudioOutputConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioOutputConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetAudioOutputConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioOutputConfigurationsResponse(struct soap*, const char*, struct _trt__GetAudioOutputConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioOutputConfigurationsResponse(struct soap*, struct _trt__GetAudioOutputConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioOutputConfigurationsResponse
+#define soap_write_PointerTo_trt__GetAudioOutputConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioOutputConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioOutputConfigurationsResponse(soap, data, "trt:GetAudioOutputConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioOutputConfigurationsResponse(struct soap*, struct _trt__GetAudioOutputConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioOutputConfigurationsResponse
+#define soap_read_PointerTo_trt__GetAudioOutputConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioOutputConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioOutputConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetAudioOutputConfigurations (2172)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioOutputConfigurations(struct soap*, struct _trt__GetAudioOutputConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioOutputConfigurations(struct soap*, const char *, int, struct _trt__GetAudioOutputConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioOutputConfigurations(struct soap*, const char*, struct _trt__GetAudioOutputConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioOutputConfigurations(struct soap*, struct _trt__GetAudioOutputConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioOutputConfigurations
+#define soap_write_PointerTo_trt__GetAudioOutputConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioOutputConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioOutputConfigurations(soap, data, "trt:GetAudioOutputConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioOutputConfigurations(struct soap*, struct _trt__GetAudioOutputConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioOutputConfigurations
+#define soap_read_PointerTo_trt__GetAudioOutputConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioOutputConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetMetadataConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetMetadataConfigurationsResponse (2169)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetMetadataConfigurationsResponse(struct soap*, struct _trt__GetMetadataConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetMetadataConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetMetadataConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetMetadataConfigurationsResponse(struct soap*, const char*, struct _trt__GetMetadataConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetMetadataConfigurationsResponse(struct soap*, struct _trt__GetMetadataConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetMetadataConfigurationsResponse
+#define soap_write_PointerTo_trt__GetMetadataConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetMetadataConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetMetadataConfigurationsResponse(soap, data, "trt:GetMetadataConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetMetadataConfigurationsResponse(struct soap*, struct _trt__GetMetadataConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetMetadataConfigurationsResponse
+#define soap_read_PointerTo_trt__GetMetadataConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetMetadataConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetMetadataConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetMetadataConfigurations (2168)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetMetadataConfigurations(struct soap*, struct _trt__GetMetadataConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetMetadataConfigurations(struct soap*, const char *, int, struct _trt__GetMetadataConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetMetadataConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetMetadataConfigurations(struct soap*, const char*, struct _trt__GetMetadataConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetMetadataConfigurations(struct soap*, struct _trt__GetMetadataConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetMetadataConfigurations
+#define soap_write_PointerTo_trt__GetMetadataConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetMetadataConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetMetadataConfigurations(soap, data, "trt:GetMetadataConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetMetadataConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetMetadataConfigurations(struct soap*, struct _trt__GetMetadataConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetMetadataConfigurations
+#define soap_read_PointerTo_trt__GetMetadataConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetMetadataConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse (2165)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, struct _trt__GetVideoAnalyticsConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetVideoAnalyticsConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, const char*, struct _trt__GetVideoAnalyticsConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, struct _trt__GetVideoAnalyticsConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse
+#define soap_write_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse(soap, data, "trt:GetVideoAnalyticsConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse(struct soap*, struct _trt__GetVideoAnalyticsConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse
+#define soap_read_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoAnalyticsConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoAnalyticsConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetVideoAnalyticsConfigurations (2164)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoAnalyticsConfigurations(struct soap*, struct _trt__GetVideoAnalyticsConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoAnalyticsConfigurations(struct soap*, const char *, int, struct _trt__GetVideoAnalyticsConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoAnalyticsConfigurations(struct soap*, const char*, struct _trt__GetVideoAnalyticsConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoAnalyticsConfigurations(struct soap*, struct _trt__GetVideoAnalyticsConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoAnalyticsConfigurations
+#define soap_write_PointerTo_trt__GetVideoAnalyticsConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoAnalyticsConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoAnalyticsConfigurations(soap, data, "trt:GetVideoAnalyticsConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoAnalyticsConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoAnalyticsConfigurations(struct soap*, struct _trt__GetVideoAnalyticsConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoAnalyticsConfigurations
+#define soap_read_PointerTo_trt__GetVideoAnalyticsConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoAnalyticsConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfigurationsResponse (2161)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioEncoderConfigurationsResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioEncoderConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetAudioEncoderConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioEncoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetAudioEncoderConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioEncoderConfigurationsResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioEncoderConfigurationsResponse
+#define soap_write_PointerTo_trt__GetAudioEncoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioEncoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioEncoderConfigurationsResponse(soap, data, "trt:GetAudioEncoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioEncoderConfigurationsResponse(struct soap*, struct _trt__GetAudioEncoderConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioEncoderConfigurationsResponse
+#define soap_read_PointerTo_trt__GetAudioEncoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioEncoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetAudioEncoderConfigurations (2160)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioEncoderConfigurations(struct soap*, struct _trt__GetAudioEncoderConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioEncoderConfigurations(struct soap*, const char *, int, struct _trt__GetAudioEncoderConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioEncoderConfigurations(struct soap*, const char*, struct _trt__GetAudioEncoderConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioEncoderConfigurations(struct soap*, struct _trt__GetAudioEncoderConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioEncoderConfigurations
+#define soap_write_PointerTo_trt__GetAudioEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioEncoderConfigurations(soap, data, "trt:GetAudioEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioEncoderConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioEncoderConfigurations(struct soap*, struct _trt__GetAudioEncoderConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioEncoderConfigurations
+#define soap_read_PointerTo_trt__GetAudioEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioSourceConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioSourceConfigurationsResponse (2157)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioSourceConfigurationsResponse(struct soap*, struct _trt__GetAudioSourceConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioSourceConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetAudioSourceConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioSourceConfigurationsResponse(struct soap*, const char*, struct _trt__GetAudioSourceConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioSourceConfigurationsResponse(struct soap*, struct _trt__GetAudioSourceConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioSourceConfigurationsResponse
+#define soap_write_PointerTo_trt__GetAudioSourceConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioSourceConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioSourceConfigurationsResponse(soap, data, "trt:GetAudioSourceConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioSourceConfigurationsResponse(struct soap*, struct _trt__GetAudioSourceConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioSourceConfigurationsResponse
+#define soap_read_PointerTo_trt__GetAudioSourceConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioSourceConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioSourceConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetAudioSourceConfigurations (2156)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioSourceConfigurations(struct soap*, struct _trt__GetAudioSourceConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioSourceConfigurations(struct soap*, const char *, int, struct _trt__GetAudioSourceConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioSourceConfigurations(struct soap*, const char*, struct _trt__GetAudioSourceConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioSourceConfigurations(struct soap*, struct _trt__GetAudioSourceConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioSourceConfigurations
+#define soap_write_PointerTo_trt__GetAudioSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioSourceConfigurations(soap, data, "trt:GetAudioSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourceConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioSourceConfigurations(struct soap*, struct _trt__GetAudioSourceConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioSourceConfigurations
+#define soap_read_PointerTo_trt__GetAudioSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfigurationsResponse (2153)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoEncoderConfigurationsResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoEncoderConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetVideoEncoderConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoEncoderConfigurationsResponse(struct soap*, const char*, struct _trt__GetVideoEncoderConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoEncoderConfigurationsResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoEncoderConfigurationsResponse
+#define soap_write_PointerTo_trt__GetVideoEncoderConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoEncoderConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoEncoderConfigurationsResponse(soap, data, "trt:GetVideoEncoderConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoEncoderConfigurationsResponse(struct soap*, struct _trt__GetVideoEncoderConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoEncoderConfigurationsResponse
+#define soap_read_PointerTo_trt__GetVideoEncoderConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoEncoderConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetVideoEncoderConfigurations (2152)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoEncoderConfigurations(struct soap*, struct _trt__GetVideoEncoderConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoEncoderConfigurations(struct soap*, const char *, int, struct _trt__GetVideoEncoderConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoEncoderConfigurations(struct soap*, const char*, struct _trt__GetVideoEncoderConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoEncoderConfigurations(struct soap*, struct _trt__GetVideoEncoderConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoEncoderConfigurations
+#define soap_write_PointerTo_trt__GetVideoEncoderConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoEncoderConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoEncoderConfigurations(soap, data, "trt:GetVideoEncoderConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoEncoderConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoEncoderConfigurations(struct soap*, struct _trt__GetVideoEncoderConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoEncoderConfigurations
+#define soap_read_PointerTo_trt__GetVideoEncoderConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoEncoderConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoSourceConfigurationsResponse
+#define SOAP_TYPE_PointerTo_trt__GetVideoSourceConfigurationsResponse (2149)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoSourceConfigurationsResponse(struct soap*, struct _trt__GetVideoSourceConfigurationsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoSourceConfigurationsResponse(struct soap*, const char *, int, struct _trt__GetVideoSourceConfigurationsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoSourceConfigurationsResponse(struct soap*, const char*, struct _trt__GetVideoSourceConfigurationsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoSourceConfigurationsResponse(struct soap*, struct _trt__GetVideoSourceConfigurationsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoSourceConfigurationsResponse
+#define soap_write_PointerTo_trt__GetVideoSourceConfigurationsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoSourceConfigurationsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoSourceConfigurationsResponse(soap, data, "trt:GetVideoSourceConfigurationsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurationsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoSourceConfigurationsResponse(struct soap*, struct _trt__GetVideoSourceConfigurationsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoSourceConfigurationsResponse
+#define soap_read_PointerTo_trt__GetVideoSourceConfigurationsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoSourceConfigurationsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoSourceConfigurations
+#define SOAP_TYPE_PointerTo_trt__GetVideoSourceConfigurations (2148)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoSourceConfigurations(struct soap*, struct _trt__GetVideoSourceConfigurations *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoSourceConfigurations(struct soap*, const char *, int, struct _trt__GetVideoSourceConfigurations *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurations ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoSourceConfigurations(struct soap*, const char*, struct _trt__GetVideoSourceConfigurations **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoSourceConfigurations(struct soap*, struct _trt__GetVideoSourceConfigurations *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoSourceConfigurations
+#define soap_write_PointerTo_trt__GetVideoSourceConfigurations(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoSourceConfigurations(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoSourceConfigurations(soap, data, "trt:GetVideoSourceConfigurations", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourceConfigurations ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoSourceConfigurations(struct soap*, struct _trt__GetVideoSourceConfigurations **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoSourceConfigurations
+#define soap_read_PointerTo_trt__GetVideoSourceConfigurations(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoSourceConfigurations(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__DeleteProfileResponse
+#define SOAP_TYPE_PointerTo_trt__DeleteProfileResponse (2145)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__DeleteProfileResponse(struct soap*, struct _trt__DeleteProfileResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__DeleteProfileResponse(struct soap*, const char *, int, struct _trt__DeleteProfileResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__DeleteProfileResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__DeleteProfileResponse(struct soap*, const char*, struct _trt__DeleteProfileResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__DeleteProfileResponse(struct soap*, struct _trt__DeleteProfileResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__DeleteProfileResponse
+#define soap_write_PointerTo_trt__DeleteProfileResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__DeleteProfileResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__DeleteProfileResponse(soap, data, "trt:DeleteProfileResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__DeleteProfileResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__DeleteProfileResponse(struct soap*, struct _trt__DeleteProfileResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__DeleteProfileResponse
+#define soap_read_PointerTo_trt__DeleteProfileResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__DeleteProfileResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__DeleteProfile
+#define SOAP_TYPE_PointerTo_trt__DeleteProfile (2144)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__DeleteProfile(struct soap*, struct _trt__DeleteProfile *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__DeleteProfile(struct soap*, const char *, int, struct _trt__DeleteProfile *const*, const char *);
+SOAP_FMAC3 struct _trt__DeleteProfile ** SOAP_FMAC4 soap_in_PointerTo_trt__DeleteProfile(struct soap*, const char*, struct _trt__DeleteProfile **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__DeleteProfile(struct soap*, struct _trt__DeleteProfile *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__DeleteProfile
+#define soap_write_PointerTo_trt__DeleteProfile(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__DeleteProfile(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__DeleteProfile(soap, data, "trt:DeleteProfile", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__DeleteProfile ** SOAP_FMAC4 soap_get_PointerTo_trt__DeleteProfile(struct soap*, struct _trt__DeleteProfile **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__DeleteProfile
+#define soap_read_PointerTo_trt__DeleteProfile(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__DeleteProfile(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveAudioDecoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__RemoveAudioDecoderConfigurationResponse (2141)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveAudioDecoderConfigurationResponse(struct soap*, struct _trt__RemoveAudioDecoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveAudioDecoderConfigurationResponse(struct soap*, const char *, int, struct _trt__RemoveAudioDecoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveAudioDecoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveAudioDecoderConfigurationResponse(struct soap*, const char*, struct _trt__RemoveAudioDecoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveAudioDecoderConfigurationResponse(struct soap*, struct _trt__RemoveAudioDecoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveAudioDecoderConfigurationResponse
+#define soap_write_PointerTo_trt__RemoveAudioDecoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveAudioDecoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveAudioDecoderConfigurationResponse(soap, data, "trt:RemoveAudioDecoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioDecoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveAudioDecoderConfigurationResponse(struct soap*, struct _trt__RemoveAudioDecoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveAudioDecoderConfigurationResponse
+#define soap_read_PointerTo_trt__RemoveAudioDecoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveAudioDecoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveAudioDecoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__RemoveAudioDecoderConfiguration (2140)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveAudioDecoderConfiguration(struct soap*, struct _trt__RemoveAudioDecoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveAudioDecoderConfiguration(struct soap*, const char *, int, struct _trt__RemoveAudioDecoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveAudioDecoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveAudioDecoderConfiguration(struct soap*, const char*, struct _trt__RemoveAudioDecoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveAudioDecoderConfiguration(struct soap*, struct _trt__RemoveAudioDecoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveAudioDecoderConfiguration
+#define soap_write_PointerTo_trt__RemoveAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveAudioDecoderConfiguration(soap, data, "trt:RemoveAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioDecoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveAudioDecoderConfiguration(struct soap*, struct _trt__RemoveAudioDecoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveAudioDecoderConfiguration
+#define soap_read_PointerTo_trt__RemoveAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveAudioOutputConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__RemoveAudioOutputConfigurationResponse (2137)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveAudioOutputConfigurationResponse(struct soap*, struct _trt__RemoveAudioOutputConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveAudioOutputConfigurationResponse(struct soap*, const char *, int, struct _trt__RemoveAudioOutputConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveAudioOutputConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveAudioOutputConfigurationResponse(struct soap*, const char*, struct _trt__RemoveAudioOutputConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveAudioOutputConfigurationResponse(struct soap*, struct _trt__RemoveAudioOutputConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveAudioOutputConfigurationResponse
+#define soap_write_PointerTo_trt__RemoveAudioOutputConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveAudioOutputConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveAudioOutputConfigurationResponse(soap, data, "trt:RemoveAudioOutputConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioOutputConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveAudioOutputConfigurationResponse(struct soap*, struct _trt__RemoveAudioOutputConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveAudioOutputConfigurationResponse
+#define soap_read_PointerTo_trt__RemoveAudioOutputConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveAudioOutputConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveAudioOutputConfiguration
+#define SOAP_TYPE_PointerTo_trt__RemoveAudioOutputConfiguration (2136)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveAudioOutputConfiguration(struct soap*, struct _trt__RemoveAudioOutputConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveAudioOutputConfiguration(struct soap*, const char *, int, struct _trt__RemoveAudioOutputConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveAudioOutputConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveAudioOutputConfiguration(struct soap*, const char*, struct _trt__RemoveAudioOutputConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveAudioOutputConfiguration(struct soap*, struct _trt__RemoveAudioOutputConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveAudioOutputConfiguration
+#define soap_write_PointerTo_trt__RemoveAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveAudioOutputConfiguration(soap, data, "trt:RemoveAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioOutputConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveAudioOutputConfiguration(struct soap*, struct _trt__RemoveAudioOutputConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveAudioOutputConfiguration
+#define soap_read_PointerTo_trt__RemoveAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveMetadataConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__RemoveMetadataConfigurationResponse (2133)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveMetadataConfigurationResponse(struct soap*, struct _trt__RemoveMetadataConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveMetadataConfigurationResponse(struct soap*, const char *, int, struct _trt__RemoveMetadataConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveMetadataConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveMetadataConfigurationResponse(struct soap*, const char*, struct _trt__RemoveMetadataConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveMetadataConfigurationResponse(struct soap*, struct _trt__RemoveMetadataConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveMetadataConfigurationResponse
+#define soap_write_PointerTo_trt__RemoveMetadataConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveMetadataConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveMetadataConfigurationResponse(soap, data, "trt:RemoveMetadataConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveMetadataConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveMetadataConfigurationResponse(struct soap*, struct _trt__RemoveMetadataConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveMetadataConfigurationResponse
+#define soap_read_PointerTo_trt__RemoveMetadataConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveMetadataConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveMetadataConfiguration
+#define SOAP_TYPE_PointerTo_trt__RemoveMetadataConfiguration (2132)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveMetadataConfiguration(struct soap*, struct _trt__RemoveMetadataConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveMetadataConfiguration(struct soap*, const char *, int, struct _trt__RemoveMetadataConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveMetadataConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveMetadataConfiguration(struct soap*, const char*, struct _trt__RemoveMetadataConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveMetadataConfiguration(struct soap*, struct _trt__RemoveMetadataConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveMetadataConfiguration
+#define soap_write_PointerTo_trt__RemoveMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveMetadataConfiguration(soap, data, "trt:RemoveMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveMetadataConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveMetadataConfiguration(struct soap*, struct _trt__RemoveMetadataConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveMetadataConfiguration
+#define soap_read_PointerTo_trt__RemoveMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse (2129)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__RemoveVideoAnalyticsConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, const char *, int, struct _trt__RemoveVideoAnalyticsConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveVideoAnalyticsConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, const char*, struct _trt__RemoveVideoAnalyticsConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__RemoveVideoAnalyticsConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse
+#define soap_write_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse(soap, data, "trt:RemoveVideoAnalyticsConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoAnalyticsConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__RemoveVideoAnalyticsConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse
+#define soap_read_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveVideoAnalyticsConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveVideoAnalyticsConfiguration
+#define SOAP_TYPE_PointerTo_trt__RemoveVideoAnalyticsConfiguration (2128)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveVideoAnalyticsConfiguration(struct soap*, struct _trt__RemoveVideoAnalyticsConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveVideoAnalyticsConfiguration(struct soap*, const char *, int, struct _trt__RemoveVideoAnalyticsConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveVideoAnalyticsConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveVideoAnalyticsConfiguration(struct soap*, const char*, struct _trt__RemoveVideoAnalyticsConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveVideoAnalyticsConfiguration(struct soap*, struct _trt__RemoveVideoAnalyticsConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveVideoAnalyticsConfiguration
+#define soap_write_PointerTo_trt__RemoveVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveVideoAnalyticsConfiguration(soap, data, "trt:RemoveVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoAnalyticsConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveVideoAnalyticsConfiguration(struct soap*, struct _trt__RemoveVideoAnalyticsConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveVideoAnalyticsConfiguration
+#define soap_read_PointerTo_trt__RemoveVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemovePTZConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__RemovePTZConfigurationResponse (2125)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemovePTZConfigurationResponse(struct soap*, struct _trt__RemovePTZConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemovePTZConfigurationResponse(struct soap*, const char *, int, struct _trt__RemovePTZConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__RemovePTZConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__RemovePTZConfigurationResponse(struct soap*, const char*, struct _trt__RemovePTZConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemovePTZConfigurationResponse(struct soap*, struct _trt__RemovePTZConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemovePTZConfigurationResponse
+#define soap_write_PointerTo_trt__RemovePTZConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemovePTZConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemovePTZConfigurationResponse(soap, data, "trt:RemovePTZConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemovePTZConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__RemovePTZConfigurationResponse(struct soap*, struct _trt__RemovePTZConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemovePTZConfigurationResponse
+#define soap_read_PointerTo_trt__RemovePTZConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemovePTZConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemovePTZConfiguration
+#define SOAP_TYPE_PointerTo_trt__RemovePTZConfiguration (2124)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemovePTZConfiguration(struct soap*, struct _trt__RemovePTZConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemovePTZConfiguration(struct soap*, const char *, int, struct _trt__RemovePTZConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__RemovePTZConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__RemovePTZConfiguration(struct soap*, const char*, struct _trt__RemovePTZConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemovePTZConfiguration(struct soap*, struct _trt__RemovePTZConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemovePTZConfiguration
+#define soap_write_PointerTo_trt__RemovePTZConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemovePTZConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemovePTZConfiguration(soap, data, "trt:RemovePTZConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemovePTZConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__RemovePTZConfiguration(struct soap*, struct _trt__RemovePTZConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemovePTZConfiguration
+#define soap_read_PointerTo_trt__RemovePTZConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemovePTZConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveAudioSourceConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__RemoveAudioSourceConfigurationResponse (2121)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveAudioSourceConfigurationResponse(struct soap*, struct _trt__RemoveAudioSourceConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveAudioSourceConfigurationResponse(struct soap*, const char *, int, struct _trt__RemoveAudioSourceConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveAudioSourceConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveAudioSourceConfigurationResponse(struct soap*, const char*, struct _trt__RemoveAudioSourceConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveAudioSourceConfigurationResponse(struct soap*, struct _trt__RemoveAudioSourceConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveAudioSourceConfigurationResponse
+#define soap_write_PointerTo_trt__RemoveAudioSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveAudioSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveAudioSourceConfigurationResponse(soap, data, "trt:RemoveAudioSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioSourceConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveAudioSourceConfigurationResponse(struct soap*, struct _trt__RemoveAudioSourceConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveAudioSourceConfigurationResponse
+#define soap_read_PointerTo_trt__RemoveAudioSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveAudioSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveAudioSourceConfiguration
+#define SOAP_TYPE_PointerTo_trt__RemoveAudioSourceConfiguration (2120)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveAudioSourceConfiguration(struct soap*, struct _trt__RemoveAudioSourceConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveAudioSourceConfiguration(struct soap*, const char *, int, struct _trt__RemoveAudioSourceConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveAudioSourceConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveAudioSourceConfiguration(struct soap*, const char*, struct _trt__RemoveAudioSourceConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveAudioSourceConfiguration(struct soap*, struct _trt__RemoveAudioSourceConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveAudioSourceConfiguration
+#define soap_write_PointerTo_trt__RemoveAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveAudioSourceConfiguration(soap, data, "trt:RemoveAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioSourceConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveAudioSourceConfiguration(struct soap*, struct _trt__RemoveAudioSourceConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveAudioSourceConfiguration
+#define soap_read_PointerTo_trt__RemoveAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveAudioEncoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__RemoveAudioEncoderConfigurationResponse (2117)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveAudioEncoderConfigurationResponse(struct soap*, struct _trt__RemoveAudioEncoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveAudioEncoderConfigurationResponse(struct soap*, const char *, int, struct _trt__RemoveAudioEncoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveAudioEncoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveAudioEncoderConfigurationResponse(struct soap*, const char*, struct _trt__RemoveAudioEncoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveAudioEncoderConfigurationResponse(struct soap*, struct _trt__RemoveAudioEncoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveAudioEncoderConfigurationResponse
+#define soap_write_PointerTo_trt__RemoveAudioEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveAudioEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveAudioEncoderConfigurationResponse(soap, data, "trt:RemoveAudioEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioEncoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveAudioEncoderConfigurationResponse(struct soap*, struct _trt__RemoveAudioEncoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveAudioEncoderConfigurationResponse
+#define soap_read_PointerTo_trt__RemoveAudioEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveAudioEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveAudioEncoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__RemoveAudioEncoderConfiguration (2116)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveAudioEncoderConfiguration(struct soap*, struct _trt__RemoveAudioEncoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveAudioEncoderConfiguration(struct soap*, const char *, int, struct _trt__RemoveAudioEncoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveAudioEncoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveAudioEncoderConfiguration(struct soap*, const char*, struct _trt__RemoveAudioEncoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveAudioEncoderConfiguration(struct soap*, struct _trt__RemoveAudioEncoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveAudioEncoderConfiguration
+#define soap_write_PointerTo_trt__RemoveAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveAudioEncoderConfiguration(soap, data, "trt:RemoveAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveAudioEncoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveAudioEncoderConfiguration(struct soap*, struct _trt__RemoveAudioEncoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveAudioEncoderConfiguration
+#define soap_read_PointerTo_trt__RemoveAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveVideoSourceConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__RemoveVideoSourceConfigurationResponse (2113)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveVideoSourceConfigurationResponse(struct soap*, struct _trt__RemoveVideoSourceConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveVideoSourceConfigurationResponse(struct soap*, const char *, int, struct _trt__RemoveVideoSourceConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveVideoSourceConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveVideoSourceConfigurationResponse(struct soap*, const char*, struct _trt__RemoveVideoSourceConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveVideoSourceConfigurationResponse(struct soap*, struct _trt__RemoveVideoSourceConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveVideoSourceConfigurationResponse
+#define soap_write_PointerTo_trt__RemoveVideoSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveVideoSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveVideoSourceConfigurationResponse(soap, data, "trt:RemoveVideoSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoSourceConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveVideoSourceConfigurationResponse(struct soap*, struct _trt__RemoveVideoSourceConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveVideoSourceConfigurationResponse
+#define soap_read_PointerTo_trt__RemoveVideoSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveVideoSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveVideoSourceConfiguration
+#define SOAP_TYPE_PointerTo_trt__RemoveVideoSourceConfiguration (2112)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveVideoSourceConfiguration(struct soap*, struct _trt__RemoveVideoSourceConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveVideoSourceConfiguration(struct soap*, const char *, int, struct _trt__RemoveVideoSourceConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveVideoSourceConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveVideoSourceConfiguration(struct soap*, const char*, struct _trt__RemoveVideoSourceConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveVideoSourceConfiguration(struct soap*, struct _trt__RemoveVideoSourceConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveVideoSourceConfiguration
+#define soap_write_PointerTo_trt__RemoveVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveVideoSourceConfiguration(soap, data, "trt:RemoveVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoSourceConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveVideoSourceConfiguration(struct soap*, struct _trt__RemoveVideoSourceConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveVideoSourceConfiguration
+#define soap_read_PointerTo_trt__RemoveVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveVideoEncoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__RemoveVideoEncoderConfigurationResponse (2109)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveVideoEncoderConfigurationResponse(struct soap*, struct _trt__RemoveVideoEncoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveVideoEncoderConfigurationResponse(struct soap*, const char *, int, struct _trt__RemoveVideoEncoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveVideoEncoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveVideoEncoderConfigurationResponse(struct soap*, const char*, struct _trt__RemoveVideoEncoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveVideoEncoderConfigurationResponse(struct soap*, struct _trt__RemoveVideoEncoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveVideoEncoderConfigurationResponse
+#define soap_write_PointerTo_trt__RemoveVideoEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveVideoEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveVideoEncoderConfigurationResponse(soap, data, "trt:RemoveVideoEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoEncoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveVideoEncoderConfigurationResponse(struct soap*, struct _trt__RemoveVideoEncoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveVideoEncoderConfigurationResponse
+#define soap_read_PointerTo_trt__RemoveVideoEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveVideoEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__RemoveVideoEncoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__RemoveVideoEncoderConfiguration (2108)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__RemoveVideoEncoderConfiguration(struct soap*, struct _trt__RemoveVideoEncoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__RemoveVideoEncoderConfiguration(struct soap*, const char *, int, struct _trt__RemoveVideoEncoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__RemoveVideoEncoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__RemoveVideoEncoderConfiguration(struct soap*, const char*, struct _trt__RemoveVideoEncoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__RemoveVideoEncoderConfiguration(struct soap*, struct _trt__RemoveVideoEncoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__RemoveVideoEncoderConfiguration
+#define soap_write_PointerTo_trt__RemoveVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__RemoveVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__RemoveVideoEncoderConfiguration(soap, data, "trt:RemoveVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__RemoveVideoEncoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__RemoveVideoEncoderConfiguration(struct soap*, struct _trt__RemoveVideoEncoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__RemoveVideoEncoderConfiguration
+#define soap_read_PointerTo_trt__RemoveVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__RemoveVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddAudioDecoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__AddAudioDecoderConfigurationResponse (2105)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddAudioDecoderConfigurationResponse(struct soap*, struct _trt__AddAudioDecoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddAudioDecoderConfigurationResponse(struct soap*, const char *, int, struct _trt__AddAudioDecoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__AddAudioDecoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__AddAudioDecoderConfigurationResponse(struct soap*, const char*, struct _trt__AddAudioDecoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddAudioDecoderConfigurationResponse(struct soap*, struct _trt__AddAudioDecoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddAudioDecoderConfigurationResponse
+#define soap_write_PointerTo_trt__AddAudioDecoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddAudioDecoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddAudioDecoderConfigurationResponse(soap, data, "trt:AddAudioDecoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioDecoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__AddAudioDecoderConfigurationResponse(struct soap*, struct _trt__AddAudioDecoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddAudioDecoderConfigurationResponse
+#define soap_read_PointerTo_trt__AddAudioDecoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddAudioDecoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddAudioDecoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__AddAudioDecoderConfiguration (2104)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddAudioDecoderConfiguration(struct soap*, struct _trt__AddAudioDecoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddAudioDecoderConfiguration(struct soap*, const char *, int, struct _trt__AddAudioDecoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__AddAudioDecoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__AddAudioDecoderConfiguration(struct soap*, const char*, struct _trt__AddAudioDecoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddAudioDecoderConfiguration(struct soap*, struct _trt__AddAudioDecoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddAudioDecoderConfiguration
+#define soap_write_PointerTo_trt__AddAudioDecoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddAudioDecoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddAudioDecoderConfiguration(soap, data, "trt:AddAudioDecoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioDecoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__AddAudioDecoderConfiguration(struct soap*, struct _trt__AddAudioDecoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddAudioDecoderConfiguration
+#define soap_read_PointerTo_trt__AddAudioDecoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddAudioDecoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddAudioOutputConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__AddAudioOutputConfigurationResponse (2101)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddAudioOutputConfigurationResponse(struct soap*, struct _trt__AddAudioOutputConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddAudioOutputConfigurationResponse(struct soap*, const char *, int, struct _trt__AddAudioOutputConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__AddAudioOutputConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__AddAudioOutputConfigurationResponse(struct soap*, const char*, struct _trt__AddAudioOutputConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddAudioOutputConfigurationResponse(struct soap*, struct _trt__AddAudioOutputConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddAudioOutputConfigurationResponse
+#define soap_write_PointerTo_trt__AddAudioOutputConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddAudioOutputConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddAudioOutputConfigurationResponse(soap, data, "trt:AddAudioOutputConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioOutputConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__AddAudioOutputConfigurationResponse(struct soap*, struct _trt__AddAudioOutputConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddAudioOutputConfigurationResponse
+#define soap_read_PointerTo_trt__AddAudioOutputConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddAudioOutputConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddAudioOutputConfiguration
+#define SOAP_TYPE_PointerTo_trt__AddAudioOutputConfiguration (2100)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddAudioOutputConfiguration(struct soap*, struct _trt__AddAudioOutputConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddAudioOutputConfiguration(struct soap*, const char *, int, struct _trt__AddAudioOutputConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__AddAudioOutputConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__AddAudioOutputConfiguration(struct soap*, const char*, struct _trt__AddAudioOutputConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddAudioOutputConfiguration(struct soap*, struct _trt__AddAudioOutputConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddAudioOutputConfiguration
+#define soap_write_PointerTo_trt__AddAudioOutputConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddAudioOutputConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddAudioOutputConfiguration(soap, data, "trt:AddAudioOutputConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioOutputConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__AddAudioOutputConfiguration(struct soap*, struct _trt__AddAudioOutputConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddAudioOutputConfiguration
+#define soap_read_PointerTo_trt__AddAudioOutputConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddAudioOutputConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddMetadataConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__AddMetadataConfigurationResponse (2097)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddMetadataConfigurationResponse(struct soap*, struct _trt__AddMetadataConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddMetadataConfigurationResponse(struct soap*, const char *, int, struct _trt__AddMetadataConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__AddMetadataConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__AddMetadataConfigurationResponse(struct soap*, const char*, struct _trt__AddMetadataConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddMetadataConfigurationResponse(struct soap*, struct _trt__AddMetadataConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddMetadataConfigurationResponse
+#define soap_write_PointerTo_trt__AddMetadataConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddMetadataConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddMetadataConfigurationResponse(soap, data, "trt:AddMetadataConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddMetadataConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__AddMetadataConfigurationResponse(struct soap*, struct _trt__AddMetadataConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddMetadataConfigurationResponse
+#define soap_read_PointerTo_trt__AddMetadataConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddMetadataConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddMetadataConfiguration
+#define SOAP_TYPE_PointerTo_trt__AddMetadataConfiguration (2096)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddMetadataConfiguration(struct soap*, struct _trt__AddMetadataConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddMetadataConfiguration(struct soap*, const char *, int, struct _trt__AddMetadataConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__AddMetadataConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__AddMetadataConfiguration(struct soap*, const char*, struct _trt__AddMetadataConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddMetadataConfiguration(struct soap*, struct _trt__AddMetadataConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddMetadataConfiguration
+#define soap_write_PointerTo_trt__AddMetadataConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddMetadataConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddMetadataConfiguration(soap, data, "trt:AddMetadataConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddMetadataConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__AddMetadataConfiguration(struct soap*, struct _trt__AddMetadataConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddMetadataConfiguration
+#define soap_read_PointerTo_trt__AddMetadataConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddMetadataConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddVideoAnalyticsConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__AddVideoAnalyticsConfigurationResponse (2093)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__AddVideoAnalyticsConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddVideoAnalyticsConfigurationResponse(struct soap*, const char *, int, struct _trt__AddVideoAnalyticsConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__AddVideoAnalyticsConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__AddVideoAnalyticsConfigurationResponse(struct soap*, const char*, struct _trt__AddVideoAnalyticsConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__AddVideoAnalyticsConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddVideoAnalyticsConfigurationResponse
+#define soap_write_PointerTo_trt__AddVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddVideoAnalyticsConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddVideoAnalyticsConfigurationResponse(soap, data, "trt:AddVideoAnalyticsConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoAnalyticsConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__AddVideoAnalyticsConfigurationResponse(struct soap*, struct _trt__AddVideoAnalyticsConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddVideoAnalyticsConfigurationResponse
+#define soap_read_PointerTo_trt__AddVideoAnalyticsConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddVideoAnalyticsConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddVideoAnalyticsConfiguration
+#define SOAP_TYPE_PointerTo_trt__AddVideoAnalyticsConfiguration (2092)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddVideoAnalyticsConfiguration(struct soap*, struct _trt__AddVideoAnalyticsConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddVideoAnalyticsConfiguration(struct soap*, const char *, int, struct _trt__AddVideoAnalyticsConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__AddVideoAnalyticsConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__AddVideoAnalyticsConfiguration(struct soap*, const char*, struct _trt__AddVideoAnalyticsConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddVideoAnalyticsConfiguration(struct soap*, struct _trt__AddVideoAnalyticsConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddVideoAnalyticsConfiguration
+#define soap_write_PointerTo_trt__AddVideoAnalyticsConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddVideoAnalyticsConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddVideoAnalyticsConfiguration(soap, data, "trt:AddVideoAnalyticsConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoAnalyticsConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__AddVideoAnalyticsConfiguration(struct soap*, struct _trt__AddVideoAnalyticsConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddVideoAnalyticsConfiguration
+#define soap_read_PointerTo_trt__AddVideoAnalyticsConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddVideoAnalyticsConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddPTZConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__AddPTZConfigurationResponse (2089)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddPTZConfigurationResponse(struct soap*, struct _trt__AddPTZConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddPTZConfigurationResponse(struct soap*, const char *, int, struct _trt__AddPTZConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__AddPTZConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__AddPTZConfigurationResponse(struct soap*, const char*, struct _trt__AddPTZConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddPTZConfigurationResponse(struct soap*, struct _trt__AddPTZConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddPTZConfigurationResponse
+#define soap_write_PointerTo_trt__AddPTZConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddPTZConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddPTZConfigurationResponse(soap, data, "trt:AddPTZConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddPTZConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__AddPTZConfigurationResponse(struct soap*, struct _trt__AddPTZConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddPTZConfigurationResponse
+#define soap_read_PointerTo_trt__AddPTZConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddPTZConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddPTZConfiguration
+#define SOAP_TYPE_PointerTo_trt__AddPTZConfiguration (2088)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddPTZConfiguration(struct soap*, struct _trt__AddPTZConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddPTZConfiguration(struct soap*, const char *, int, struct _trt__AddPTZConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__AddPTZConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__AddPTZConfiguration(struct soap*, const char*, struct _trt__AddPTZConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddPTZConfiguration(struct soap*, struct _trt__AddPTZConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddPTZConfiguration
+#define soap_write_PointerTo_trt__AddPTZConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddPTZConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddPTZConfiguration(soap, data, "trt:AddPTZConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddPTZConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__AddPTZConfiguration(struct soap*, struct _trt__AddPTZConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddPTZConfiguration
+#define soap_read_PointerTo_trt__AddPTZConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddPTZConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddAudioSourceConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__AddAudioSourceConfigurationResponse (2085)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddAudioSourceConfigurationResponse(struct soap*, struct _trt__AddAudioSourceConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddAudioSourceConfigurationResponse(struct soap*, const char *, int, struct _trt__AddAudioSourceConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__AddAudioSourceConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__AddAudioSourceConfigurationResponse(struct soap*, const char*, struct _trt__AddAudioSourceConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddAudioSourceConfigurationResponse(struct soap*, struct _trt__AddAudioSourceConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddAudioSourceConfigurationResponse
+#define soap_write_PointerTo_trt__AddAudioSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddAudioSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddAudioSourceConfigurationResponse(soap, data, "trt:AddAudioSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioSourceConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__AddAudioSourceConfigurationResponse(struct soap*, struct _trt__AddAudioSourceConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddAudioSourceConfigurationResponse
+#define soap_read_PointerTo_trt__AddAudioSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddAudioSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddAudioSourceConfiguration
+#define SOAP_TYPE_PointerTo_trt__AddAudioSourceConfiguration (2084)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddAudioSourceConfiguration(struct soap*, struct _trt__AddAudioSourceConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddAudioSourceConfiguration(struct soap*, const char *, int, struct _trt__AddAudioSourceConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__AddAudioSourceConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__AddAudioSourceConfiguration(struct soap*, const char*, struct _trt__AddAudioSourceConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddAudioSourceConfiguration(struct soap*, struct _trt__AddAudioSourceConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddAudioSourceConfiguration
+#define soap_write_PointerTo_trt__AddAudioSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddAudioSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddAudioSourceConfiguration(soap, data, "trt:AddAudioSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioSourceConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__AddAudioSourceConfiguration(struct soap*, struct _trt__AddAudioSourceConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddAudioSourceConfiguration
+#define soap_read_PointerTo_trt__AddAudioSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddAudioSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddAudioEncoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__AddAudioEncoderConfigurationResponse (2081)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddAudioEncoderConfigurationResponse(struct soap*, struct _trt__AddAudioEncoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddAudioEncoderConfigurationResponse(struct soap*, const char *, int, struct _trt__AddAudioEncoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__AddAudioEncoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__AddAudioEncoderConfigurationResponse(struct soap*, const char*, struct _trt__AddAudioEncoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddAudioEncoderConfigurationResponse(struct soap*, struct _trt__AddAudioEncoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddAudioEncoderConfigurationResponse
+#define soap_write_PointerTo_trt__AddAudioEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddAudioEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddAudioEncoderConfigurationResponse(soap, data, "trt:AddAudioEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioEncoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__AddAudioEncoderConfigurationResponse(struct soap*, struct _trt__AddAudioEncoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddAudioEncoderConfigurationResponse
+#define soap_read_PointerTo_trt__AddAudioEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddAudioEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddAudioEncoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__AddAudioEncoderConfiguration (2080)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddAudioEncoderConfiguration(struct soap*, struct _trt__AddAudioEncoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddAudioEncoderConfiguration(struct soap*, const char *, int, struct _trt__AddAudioEncoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__AddAudioEncoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__AddAudioEncoderConfiguration(struct soap*, const char*, struct _trt__AddAudioEncoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddAudioEncoderConfiguration(struct soap*, struct _trt__AddAudioEncoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddAudioEncoderConfiguration
+#define soap_write_PointerTo_trt__AddAudioEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddAudioEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddAudioEncoderConfiguration(soap, data, "trt:AddAudioEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddAudioEncoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__AddAudioEncoderConfiguration(struct soap*, struct _trt__AddAudioEncoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddAudioEncoderConfiguration
+#define soap_read_PointerTo_trt__AddAudioEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddAudioEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddVideoSourceConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__AddVideoSourceConfigurationResponse (2077)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddVideoSourceConfigurationResponse(struct soap*, struct _trt__AddVideoSourceConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddVideoSourceConfigurationResponse(struct soap*, const char *, int, struct _trt__AddVideoSourceConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__AddVideoSourceConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__AddVideoSourceConfigurationResponse(struct soap*, const char*, struct _trt__AddVideoSourceConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddVideoSourceConfigurationResponse(struct soap*, struct _trt__AddVideoSourceConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddVideoSourceConfigurationResponse
+#define soap_write_PointerTo_trt__AddVideoSourceConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddVideoSourceConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddVideoSourceConfigurationResponse(soap, data, "trt:AddVideoSourceConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoSourceConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__AddVideoSourceConfigurationResponse(struct soap*, struct _trt__AddVideoSourceConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddVideoSourceConfigurationResponse
+#define soap_read_PointerTo_trt__AddVideoSourceConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddVideoSourceConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddVideoSourceConfiguration
+#define SOAP_TYPE_PointerTo_trt__AddVideoSourceConfiguration (2076)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddVideoSourceConfiguration(struct soap*, struct _trt__AddVideoSourceConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddVideoSourceConfiguration(struct soap*, const char *, int, struct _trt__AddVideoSourceConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__AddVideoSourceConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__AddVideoSourceConfiguration(struct soap*, const char*, struct _trt__AddVideoSourceConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddVideoSourceConfiguration(struct soap*, struct _trt__AddVideoSourceConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddVideoSourceConfiguration
+#define soap_write_PointerTo_trt__AddVideoSourceConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddVideoSourceConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddVideoSourceConfiguration(soap, data, "trt:AddVideoSourceConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoSourceConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__AddVideoSourceConfiguration(struct soap*, struct _trt__AddVideoSourceConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddVideoSourceConfiguration
+#define soap_read_PointerTo_trt__AddVideoSourceConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddVideoSourceConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddVideoEncoderConfigurationResponse
+#define SOAP_TYPE_PointerTo_trt__AddVideoEncoderConfigurationResponse (2073)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddVideoEncoderConfigurationResponse(struct soap*, struct _trt__AddVideoEncoderConfigurationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddVideoEncoderConfigurationResponse(struct soap*, const char *, int, struct _trt__AddVideoEncoderConfigurationResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__AddVideoEncoderConfigurationResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__AddVideoEncoderConfigurationResponse(struct soap*, const char*, struct _trt__AddVideoEncoderConfigurationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddVideoEncoderConfigurationResponse(struct soap*, struct _trt__AddVideoEncoderConfigurationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddVideoEncoderConfigurationResponse
+#define soap_write_PointerTo_trt__AddVideoEncoderConfigurationResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddVideoEncoderConfigurationResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddVideoEncoderConfigurationResponse(soap, data, "trt:AddVideoEncoderConfigurationResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoEncoderConfigurationResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__AddVideoEncoderConfigurationResponse(struct soap*, struct _trt__AddVideoEncoderConfigurationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddVideoEncoderConfigurationResponse
+#define soap_read_PointerTo_trt__AddVideoEncoderConfigurationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddVideoEncoderConfigurationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__AddVideoEncoderConfiguration
+#define SOAP_TYPE_PointerTo_trt__AddVideoEncoderConfiguration (2072)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__AddVideoEncoderConfiguration(struct soap*, struct _trt__AddVideoEncoderConfiguration *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__AddVideoEncoderConfiguration(struct soap*, const char *, int, struct _trt__AddVideoEncoderConfiguration *const*, const char *);
+SOAP_FMAC3 struct _trt__AddVideoEncoderConfiguration ** SOAP_FMAC4 soap_in_PointerTo_trt__AddVideoEncoderConfiguration(struct soap*, const char*, struct _trt__AddVideoEncoderConfiguration **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__AddVideoEncoderConfiguration(struct soap*, struct _trt__AddVideoEncoderConfiguration *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__AddVideoEncoderConfiguration
+#define soap_write_PointerTo_trt__AddVideoEncoderConfiguration(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__AddVideoEncoderConfiguration(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__AddVideoEncoderConfiguration(soap, data, "trt:AddVideoEncoderConfiguration", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__AddVideoEncoderConfiguration ** SOAP_FMAC4 soap_get_PointerTo_trt__AddVideoEncoderConfiguration(struct soap*, struct _trt__AddVideoEncoderConfiguration **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__AddVideoEncoderConfiguration
+#define soap_read_PointerTo_trt__AddVideoEncoderConfiguration(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__AddVideoEncoderConfiguration(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetProfilesResponse
+#define SOAP_TYPE_PointerTo_trt__GetProfilesResponse (2069)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetProfilesResponse(struct soap*, struct _trt__GetProfilesResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetProfilesResponse(struct soap*, const char *, int, struct _trt__GetProfilesResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetProfilesResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetProfilesResponse(struct soap*, const char*, struct _trt__GetProfilesResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetProfilesResponse(struct soap*, struct _trt__GetProfilesResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetProfilesResponse
+#define soap_write_PointerTo_trt__GetProfilesResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetProfilesResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetProfilesResponse(soap, data, "trt:GetProfilesResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetProfilesResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetProfilesResponse(struct soap*, struct _trt__GetProfilesResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetProfilesResponse
+#define soap_read_PointerTo_trt__GetProfilesResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetProfilesResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetProfiles
+#define SOAP_TYPE_PointerTo_trt__GetProfiles (2068)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetProfiles(struct soap*, struct _trt__GetProfiles *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetProfiles(struct soap*, const char *, int, struct _trt__GetProfiles *const*, const char *);
+SOAP_FMAC3 struct _trt__GetProfiles ** SOAP_FMAC4 soap_in_PointerTo_trt__GetProfiles(struct soap*, const char*, struct _trt__GetProfiles **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetProfiles(struct soap*, struct _trt__GetProfiles *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetProfiles
+#define soap_write_PointerTo_trt__GetProfiles(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetProfiles(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetProfiles(soap, data, "trt:GetProfiles", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetProfiles ** SOAP_FMAC4 soap_get_PointerTo_trt__GetProfiles(struct soap*, struct _trt__GetProfiles **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetProfiles
+#define soap_read_PointerTo_trt__GetProfiles(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetProfiles(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetProfileResponse
+#define SOAP_TYPE_PointerTo_trt__GetProfileResponse (2065)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetProfileResponse(struct soap*, struct _trt__GetProfileResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetProfileResponse(struct soap*, const char *, int, struct _trt__GetProfileResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetProfileResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetProfileResponse(struct soap*, const char*, struct _trt__GetProfileResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetProfileResponse(struct soap*, struct _trt__GetProfileResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetProfileResponse
+#define soap_write_PointerTo_trt__GetProfileResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetProfileResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetProfileResponse(soap, data, "trt:GetProfileResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetProfileResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetProfileResponse(struct soap*, struct _trt__GetProfileResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetProfileResponse
+#define soap_read_PointerTo_trt__GetProfileResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetProfileResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetProfile
+#define SOAP_TYPE_PointerTo_trt__GetProfile (2064)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetProfile(struct soap*, struct _trt__GetProfile *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetProfile(struct soap*, const char *, int, struct _trt__GetProfile *const*, const char *);
+SOAP_FMAC3 struct _trt__GetProfile ** SOAP_FMAC4 soap_in_PointerTo_trt__GetProfile(struct soap*, const char*, struct _trt__GetProfile **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetProfile(struct soap*, struct _trt__GetProfile *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetProfile
+#define soap_write_PointerTo_trt__GetProfile(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetProfile(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetProfile(soap, data, "trt:GetProfile", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetProfile ** SOAP_FMAC4 soap_get_PointerTo_trt__GetProfile(struct soap*, struct _trt__GetProfile **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetProfile
+#define soap_read_PointerTo_trt__GetProfile(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetProfile(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__CreateProfileResponse
+#define SOAP_TYPE_PointerTo_trt__CreateProfileResponse (2061)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__CreateProfileResponse(struct soap*, struct _trt__CreateProfileResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__CreateProfileResponse(struct soap*, const char *, int, struct _trt__CreateProfileResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__CreateProfileResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__CreateProfileResponse(struct soap*, const char*, struct _trt__CreateProfileResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__CreateProfileResponse(struct soap*, struct _trt__CreateProfileResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__CreateProfileResponse
+#define soap_write_PointerTo_trt__CreateProfileResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__CreateProfileResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__CreateProfileResponse(soap, data, "trt:CreateProfileResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__CreateProfileResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__CreateProfileResponse(struct soap*, struct _trt__CreateProfileResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__CreateProfileResponse
+#define soap_read_PointerTo_trt__CreateProfileResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__CreateProfileResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__CreateProfile
+#define SOAP_TYPE_PointerTo_trt__CreateProfile (2060)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__CreateProfile(struct soap*, struct _trt__CreateProfile *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__CreateProfile(struct soap*, const char *, int, struct _trt__CreateProfile *const*, const char *);
+SOAP_FMAC3 struct _trt__CreateProfile ** SOAP_FMAC4 soap_in_PointerTo_trt__CreateProfile(struct soap*, const char*, struct _trt__CreateProfile **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__CreateProfile(struct soap*, struct _trt__CreateProfile *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__CreateProfile
+#define soap_write_PointerTo_trt__CreateProfile(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__CreateProfile(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__CreateProfile(soap, data, "trt:CreateProfile", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__CreateProfile ** SOAP_FMAC4 soap_get_PointerTo_trt__CreateProfile(struct soap*, struct _trt__CreateProfile **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__CreateProfile
+#define soap_read_PointerTo_trt__CreateProfile(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__CreateProfile(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioOutputsResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioOutputsResponse (2057)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioOutputsResponse(struct soap*, struct _trt__GetAudioOutputsResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioOutputsResponse(struct soap*, const char *, int, struct _trt__GetAudioOutputsResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioOutputsResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioOutputsResponse(struct soap*, const char*, struct _trt__GetAudioOutputsResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioOutputsResponse(struct soap*, struct _trt__GetAudioOutputsResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioOutputsResponse
+#define soap_write_PointerTo_trt__GetAudioOutputsResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioOutputsResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioOutputsResponse(soap, data, "trt:GetAudioOutputsResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputsResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioOutputsResponse(struct soap*, struct _trt__GetAudioOutputsResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioOutputsResponse
+#define soap_read_PointerTo_trt__GetAudioOutputsResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioOutputsResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioOutputs
+#define SOAP_TYPE_PointerTo_trt__GetAudioOutputs (2056)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioOutputs(struct soap*, struct _trt__GetAudioOutputs *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioOutputs(struct soap*, const char *, int, struct _trt__GetAudioOutputs *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioOutputs ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioOutputs(struct soap*, const char*, struct _trt__GetAudioOutputs **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioOutputs(struct soap*, struct _trt__GetAudioOutputs *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioOutputs
+#define soap_write_PointerTo_trt__GetAudioOutputs(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioOutputs(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioOutputs(soap, data, "trt:GetAudioOutputs", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioOutputs ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioOutputs(struct soap*, struct _trt__GetAudioOutputs **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioOutputs
+#define soap_read_PointerTo_trt__GetAudioOutputs(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioOutputs(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioSourcesResponse
+#define SOAP_TYPE_PointerTo_trt__GetAudioSourcesResponse (2053)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioSourcesResponse(struct soap*, struct _trt__GetAudioSourcesResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioSourcesResponse(struct soap*, const char *, int, struct _trt__GetAudioSourcesResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioSourcesResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioSourcesResponse(struct soap*, const char*, struct _trt__GetAudioSourcesResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioSourcesResponse(struct soap*, struct _trt__GetAudioSourcesResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioSourcesResponse
+#define soap_write_PointerTo_trt__GetAudioSourcesResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioSourcesResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioSourcesResponse(soap, data, "trt:GetAudioSourcesResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSourcesResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioSourcesResponse(struct soap*, struct _trt__GetAudioSourcesResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioSourcesResponse
+#define soap_read_PointerTo_trt__GetAudioSourcesResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioSourcesResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetAudioSources
+#define SOAP_TYPE_PointerTo_trt__GetAudioSources (2052)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetAudioSources(struct soap*, struct _trt__GetAudioSources *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetAudioSources(struct soap*, const char *, int, struct _trt__GetAudioSources *const*, const char *);
+SOAP_FMAC3 struct _trt__GetAudioSources ** SOAP_FMAC4 soap_in_PointerTo_trt__GetAudioSources(struct soap*, const char*, struct _trt__GetAudioSources **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetAudioSources(struct soap*, struct _trt__GetAudioSources *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetAudioSources
+#define soap_write_PointerTo_trt__GetAudioSources(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetAudioSources(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetAudioSources(soap, data, "trt:GetAudioSources", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetAudioSources ** SOAP_FMAC4 soap_get_PointerTo_trt__GetAudioSources(struct soap*, struct _trt__GetAudioSources **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetAudioSources
+#define soap_read_PointerTo_trt__GetAudioSources(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetAudioSources(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoSourcesResponse
+#define SOAP_TYPE_PointerTo_trt__GetVideoSourcesResponse (2049)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoSourcesResponse(struct soap*, struct _trt__GetVideoSourcesResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoSourcesResponse(struct soap*, const char *, int, struct _trt__GetVideoSourcesResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoSourcesResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoSourcesResponse(struct soap*, const char*, struct _trt__GetVideoSourcesResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoSourcesResponse(struct soap*, struct _trt__GetVideoSourcesResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoSourcesResponse
+#define soap_write_PointerTo_trt__GetVideoSourcesResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoSourcesResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoSourcesResponse(soap, data, "trt:GetVideoSourcesResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSourcesResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoSourcesResponse(struct soap*, struct _trt__GetVideoSourcesResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoSourcesResponse
+#define soap_read_PointerTo_trt__GetVideoSourcesResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoSourcesResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetVideoSources
+#define SOAP_TYPE_PointerTo_trt__GetVideoSources (2048)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetVideoSources(struct soap*, struct _trt__GetVideoSources *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetVideoSources(struct soap*, const char *, int, struct _trt__GetVideoSources *const*, const char *);
+SOAP_FMAC3 struct _trt__GetVideoSources ** SOAP_FMAC4 soap_in_PointerTo_trt__GetVideoSources(struct soap*, const char*, struct _trt__GetVideoSources **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetVideoSources(struct soap*, struct _trt__GetVideoSources *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetVideoSources
+#define soap_write_PointerTo_trt__GetVideoSources(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetVideoSources(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetVideoSources(soap, data, "trt:GetVideoSources", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetVideoSources ** SOAP_FMAC4 soap_get_PointerTo_trt__GetVideoSources(struct soap*, struct _trt__GetVideoSources **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetVideoSources
+#define soap_read_PointerTo_trt__GetVideoSources(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetVideoSources(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetServiceCapabilitiesResponse
+#define SOAP_TYPE_PointerTo_trt__GetServiceCapabilitiesResponse (2045)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetServiceCapabilitiesResponse(struct soap*, struct _trt__GetServiceCapabilitiesResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetServiceCapabilitiesResponse(struct soap*, const char *, int, struct _trt__GetServiceCapabilitiesResponse *const*, const char *);
+SOAP_FMAC3 struct _trt__GetServiceCapabilitiesResponse ** SOAP_FMAC4 soap_in_PointerTo_trt__GetServiceCapabilitiesResponse(struct soap*, const char*, struct _trt__GetServiceCapabilitiesResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetServiceCapabilitiesResponse(struct soap*, struct _trt__GetServiceCapabilitiesResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetServiceCapabilitiesResponse
+#define soap_write_PointerTo_trt__GetServiceCapabilitiesResponse(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetServiceCapabilitiesResponse(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetServiceCapabilitiesResponse(soap, data, "trt:GetServiceCapabilitiesResponse", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetServiceCapabilitiesResponse ** SOAP_FMAC4 soap_get_PointerTo_trt__GetServiceCapabilitiesResponse(struct soap*, struct _trt__GetServiceCapabilitiesResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetServiceCapabilitiesResponse
+#define soap_read_PointerTo_trt__GetServiceCapabilitiesResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetServiceCapabilitiesResponse(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTo_trt__GetServiceCapabilities
+#define SOAP_TYPE_PointerTo_trt__GetServiceCapabilities (2044)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_trt__GetServiceCapabilities(struct soap*, struct _trt__GetServiceCapabilities *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_trt__GetServiceCapabilities(struct soap*, const char *, int, struct _trt__GetServiceCapabilities *const*, const char *);
+SOAP_FMAC3 struct _trt__GetServiceCapabilities ** SOAP_FMAC4 soap_in_PointerTo_trt__GetServiceCapabilities(struct soap*, const char*, struct _trt__GetServiceCapabilities **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_trt__GetServiceCapabilities(struct soap*, struct _trt__GetServiceCapabilities *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_trt__GetServiceCapabilities
+#define soap_write_PointerTo_trt__GetServiceCapabilities(soap, data) ( soap_begin(soap), soap_serialize_PointerTo_trt__GetServiceCapabilities(soap, data), soap_begin_send(soap) || soap_put_PointerTo_trt__GetServiceCapabilities(soap, data, "trt:GetServiceCapabilities", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct _trt__GetServiceCapabilities ** SOAP_FMAC4 soap_get_PointerTo_trt__GetServiceCapabilities(struct soap*, struct _trt__GetServiceCapabilities **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_trt__GetServiceCapabilities
+#define soap_read_PointerTo_trt__GetServiceCapabilities(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_trt__GetServiceCapabilities(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
 #ifndef SOAP_TYPE_PointerTo_tds__StartSystemRestoreResponse
-#define SOAP_TYPE_PointerTo_tds__StartSystemRestoreResponse (1883)
+#define SOAP_TYPE_PointerTo_tds__StartSystemRestoreResponse (2041)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__StartSystemRestoreResponse(struct soap*, struct _tds__StartSystemRestoreResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__StartSystemRestoreResponse(struct soap*, const char *, int, struct _tds__StartSystemRestoreResponse *const*, const char *);
@@ -21203,7 +28432,7 @@ SOAP_FMAC3 struct _tds__StartSystemRestoreResponse ** SOAP_FMAC4 soap_get_Pointe
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__StartSystemRestore
-#define SOAP_TYPE_PointerTo_tds__StartSystemRestore (1882)
+#define SOAP_TYPE_PointerTo_tds__StartSystemRestore (2040)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__StartSystemRestore(struct soap*, struct _tds__StartSystemRestore *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__StartSystemRestore(struct soap*, const char *, int, struct _tds__StartSystemRestore *const*, const char *);
@@ -21222,7 +28451,7 @@ SOAP_FMAC3 struct _tds__StartSystemRestore ** SOAP_FMAC4 soap_get_PointerTo_tds_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__StartFirmwareUpgradeResponse
-#define SOAP_TYPE_PointerTo_tds__StartFirmwareUpgradeResponse (1879)
+#define SOAP_TYPE_PointerTo_tds__StartFirmwareUpgradeResponse (2037)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__StartFirmwareUpgradeResponse(struct soap*, struct _tds__StartFirmwareUpgradeResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__StartFirmwareUpgradeResponse(struct soap*, const char *, int, struct _tds__StartFirmwareUpgradeResponse *const*, const char *);
@@ -21241,7 +28470,7 @@ SOAP_FMAC3 struct _tds__StartFirmwareUpgradeResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__StartFirmwareUpgrade
-#define SOAP_TYPE_PointerTo_tds__StartFirmwareUpgrade (1878)
+#define SOAP_TYPE_PointerTo_tds__StartFirmwareUpgrade (2036)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__StartFirmwareUpgrade(struct soap*, struct _tds__StartFirmwareUpgrade *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__StartFirmwareUpgrade(struct soap*, const char *, int, struct _tds__StartFirmwareUpgrade *const*, const char *);
@@ -21260,7 +28489,7 @@ SOAP_FMAC3 struct _tds__StartFirmwareUpgrade ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetSystemUrisResponse
-#define SOAP_TYPE_PointerTo_tds__GetSystemUrisResponse (1875)
+#define SOAP_TYPE_PointerTo_tds__GetSystemUrisResponse (2033)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetSystemUrisResponse(struct soap*, struct _tds__GetSystemUrisResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetSystemUrisResponse(struct soap*, const char *, int, struct _tds__GetSystemUrisResponse *const*, const char *);
@@ -21279,7 +28508,7 @@ SOAP_FMAC3 struct _tds__GetSystemUrisResponse ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetSystemUris
-#define SOAP_TYPE_PointerTo_tds__GetSystemUris (1874)
+#define SOAP_TYPE_PointerTo_tds__GetSystemUris (2032)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetSystemUris(struct soap*, struct _tds__GetSystemUris *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetSystemUris(struct soap*, const char *, int, struct _tds__GetSystemUris *const*, const char *);
@@ -21298,7 +28527,7 @@ SOAP_FMAC3 struct _tds__GetSystemUris ** SOAP_FMAC4 soap_get_PointerTo_tds__GetS
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__ScanAvailableDot11NetworksResponse
-#define SOAP_TYPE_PointerTo_tds__ScanAvailableDot11NetworksResponse (1871)
+#define SOAP_TYPE_PointerTo_tds__ScanAvailableDot11NetworksResponse (2029)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__ScanAvailableDot11NetworksResponse(struct soap*, struct _tds__ScanAvailableDot11NetworksResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__ScanAvailableDot11NetworksResponse(struct soap*, const char *, int, struct _tds__ScanAvailableDot11NetworksResponse *const*, const char *);
@@ -21317,7 +28546,7 @@ SOAP_FMAC3 struct _tds__ScanAvailableDot11NetworksResponse ** SOAP_FMAC4 soap_ge
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__ScanAvailableDot11Networks
-#define SOAP_TYPE_PointerTo_tds__ScanAvailableDot11Networks (1870)
+#define SOAP_TYPE_PointerTo_tds__ScanAvailableDot11Networks (2028)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__ScanAvailableDot11Networks(struct soap*, struct _tds__ScanAvailableDot11Networks *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__ScanAvailableDot11Networks(struct soap*, const char *, int, struct _tds__ScanAvailableDot11Networks *const*, const char *);
@@ -21336,7 +28565,7 @@ SOAP_FMAC3 struct _tds__ScanAvailableDot11Networks ** SOAP_FMAC4 soap_get_Pointe
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDot11StatusResponse
-#define SOAP_TYPE_PointerTo_tds__GetDot11StatusResponse (1867)
+#define SOAP_TYPE_PointerTo_tds__GetDot11StatusResponse (2025)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDot11StatusResponse(struct soap*, struct _tds__GetDot11StatusResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDot11StatusResponse(struct soap*, const char *, int, struct _tds__GetDot11StatusResponse *const*, const char *);
@@ -21355,7 +28584,7 @@ SOAP_FMAC3 struct _tds__GetDot11StatusResponse ** SOAP_FMAC4 soap_get_PointerTo_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDot11Status
-#define SOAP_TYPE_PointerTo_tds__GetDot11Status (1866)
+#define SOAP_TYPE_PointerTo_tds__GetDot11Status (2024)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDot11Status(struct soap*, struct _tds__GetDot11Status *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDot11Status(struct soap*, const char *, int, struct _tds__GetDot11Status *const*, const char *);
@@ -21374,7 +28603,7 @@ SOAP_FMAC3 struct _tds__GetDot11Status ** SOAP_FMAC4 soap_get_PointerTo_tds__Get
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDot11CapabilitiesResponse
-#define SOAP_TYPE_PointerTo_tds__GetDot11CapabilitiesResponse (1863)
+#define SOAP_TYPE_PointerTo_tds__GetDot11CapabilitiesResponse (2021)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDot11CapabilitiesResponse(struct soap*, struct _tds__GetDot11CapabilitiesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDot11CapabilitiesResponse(struct soap*, const char *, int, struct _tds__GetDot11CapabilitiesResponse *const*, const char *);
@@ -21393,7 +28622,7 @@ SOAP_FMAC3 struct _tds__GetDot11CapabilitiesResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDot11Capabilities
-#define SOAP_TYPE_PointerTo_tds__GetDot11Capabilities (1862)
+#define SOAP_TYPE_PointerTo_tds__GetDot11Capabilities (2020)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDot11Capabilities(struct soap*, struct _tds__GetDot11Capabilities *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDot11Capabilities(struct soap*, const char *, int, struct _tds__GetDot11Capabilities *const*, const char *);
@@ -21412,7 +28641,7 @@ SOAP_FMAC3 struct _tds__GetDot11Capabilities ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__DeleteDot1XConfigurationResponse
-#define SOAP_TYPE_PointerTo_tds__DeleteDot1XConfigurationResponse (1859)
+#define SOAP_TYPE_PointerTo_tds__DeleteDot1XConfigurationResponse (2017)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__DeleteDot1XConfigurationResponse(struct soap*, struct _tds__DeleteDot1XConfigurationResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__DeleteDot1XConfigurationResponse(struct soap*, const char *, int, struct _tds__DeleteDot1XConfigurationResponse *const*, const char *);
@@ -21431,7 +28660,7 @@ SOAP_FMAC3 struct _tds__DeleteDot1XConfigurationResponse ** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__DeleteDot1XConfiguration
-#define SOAP_TYPE_PointerTo_tds__DeleteDot1XConfiguration (1858)
+#define SOAP_TYPE_PointerTo_tds__DeleteDot1XConfiguration (2016)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__DeleteDot1XConfiguration(struct soap*, struct _tds__DeleteDot1XConfiguration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__DeleteDot1XConfiguration(struct soap*, const char *, int, struct _tds__DeleteDot1XConfiguration *const*, const char *);
@@ -21450,7 +28679,7 @@ SOAP_FMAC3 struct _tds__DeleteDot1XConfiguration ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDot1XConfigurationsResponse
-#define SOAP_TYPE_PointerTo_tds__GetDot1XConfigurationsResponse (1855)
+#define SOAP_TYPE_PointerTo_tds__GetDot1XConfigurationsResponse (2013)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDot1XConfigurationsResponse(struct soap*, struct _tds__GetDot1XConfigurationsResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDot1XConfigurationsResponse(struct soap*, const char *, int, struct _tds__GetDot1XConfigurationsResponse *const*, const char *);
@@ -21469,7 +28698,7 @@ SOAP_FMAC3 struct _tds__GetDot1XConfigurationsResponse ** SOAP_FMAC4 soap_get_Po
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDot1XConfigurations
-#define SOAP_TYPE_PointerTo_tds__GetDot1XConfigurations (1854)
+#define SOAP_TYPE_PointerTo_tds__GetDot1XConfigurations (2012)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDot1XConfigurations(struct soap*, struct _tds__GetDot1XConfigurations *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDot1XConfigurations(struct soap*, const char *, int, struct _tds__GetDot1XConfigurations *const*, const char *);
@@ -21488,7 +28717,7 @@ SOAP_FMAC3 struct _tds__GetDot1XConfigurations ** SOAP_FMAC4 soap_get_PointerTo_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDot1XConfigurationResponse
-#define SOAP_TYPE_PointerTo_tds__GetDot1XConfigurationResponse (1851)
+#define SOAP_TYPE_PointerTo_tds__GetDot1XConfigurationResponse (2009)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDot1XConfigurationResponse(struct soap*, struct _tds__GetDot1XConfigurationResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDot1XConfigurationResponse(struct soap*, const char *, int, struct _tds__GetDot1XConfigurationResponse *const*, const char *);
@@ -21507,7 +28736,7 @@ SOAP_FMAC3 struct _tds__GetDot1XConfigurationResponse ** SOAP_FMAC4 soap_get_Poi
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDot1XConfiguration
-#define SOAP_TYPE_PointerTo_tds__GetDot1XConfiguration (1850)
+#define SOAP_TYPE_PointerTo_tds__GetDot1XConfiguration (2008)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDot1XConfiguration(struct soap*, struct _tds__GetDot1XConfiguration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDot1XConfiguration(struct soap*, const char *, int, struct _tds__GetDot1XConfiguration *const*, const char *);
@@ -21526,7 +28755,7 @@ SOAP_FMAC3 struct _tds__GetDot1XConfiguration ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetDot1XConfigurationResponse
-#define SOAP_TYPE_PointerTo_tds__SetDot1XConfigurationResponse (1847)
+#define SOAP_TYPE_PointerTo_tds__SetDot1XConfigurationResponse (2005)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetDot1XConfigurationResponse(struct soap*, struct _tds__SetDot1XConfigurationResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetDot1XConfigurationResponse(struct soap*, const char *, int, struct _tds__SetDot1XConfigurationResponse *const*, const char *);
@@ -21545,7 +28774,7 @@ SOAP_FMAC3 struct _tds__SetDot1XConfigurationResponse ** SOAP_FMAC4 soap_get_Poi
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetDot1XConfiguration
-#define SOAP_TYPE_PointerTo_tds__SetDot1XConfiguration (1846)
+#define SOAP_TYPE_PointerTo_tds__SetDot1XConfiguration (2004)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetDot1XConfiguration(struct soap*, struct _tds__SetDot1XConfiguration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetDot1XConfiguration(struct soap*, const char *, int, struct _tds__SetDot1XConfiguration *const*, const char *);
@@ -21564,7 +28793,7 @@ SOAP_FMAC3 struct _tds__SetDot1XConfiguration ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__CreateDot1XConfigurationResponse
-#define SOAP_TYPE_PointerTo_tds__CreateDot1XConfigurationResponse (1843)
+#define SOAP_TYPE_PointerTo_tds__CreateDot1XConfigurationResponse (2001)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__CreateDot1XConfigurationResponse(struct soap*, struct _tds__CreateDot1XConfigurationResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__CreateDot1XConfigurationResponse(struct soap*, const char *, int, struct _tds__CreateDot1XConfigurationResponse *const*, const char *);
@@ -21583,7 +28812,7 @@ SOAP_FMAC3 struct _tds__CreateDot1XConfigurationResponse ** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__CreateDot1XConfiguration
-#define SOAP_TYPE_PointerTo_tds__CreateDot1XConfiguration (1842)
+#define SOAP_TYPE_PointerTo_tds__CreateDot1XConfiguration (2000)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__CreateDot1XConfiguration(struct soap*, struct _tds__CreateDot1XConfiguration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__CreateDot1XConfiguration(struct soap*, const char *, int, struct _tds__CreateDot1XConfiguration *const*, const char *);
@@ -21602,7 +28831,7 @@ SOAP_FMAC3 struct _tds__CreateDot1XConfiguration ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__LoadCACertificatesResponse
-#define SOAP_TYPE_PointerTo_tds__LoadCACertificatesResponse (1839)
+#define SOAP_TYPE_PointerTo_tds__LoadCACertificatesResponse (1997)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__LoadCACertificatesResponse(struct soap*, struct _tds__LoadCACertificatesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__LoadCACertificatesResponse(struct soap*, const char *, int, struct _tds__LoadCACertificatesResponse *const*, const char *);
@@ -21621,7 +28850,7 @@ SOAP_FMAC3 struct _tds__LoadCACertificatesResponse ** SOAP_FMAC4 soap_get_Pointe
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__LoadCACertificates
-#define SOAP_TYPE_PointerTo_tds__LoadCACertificates (1838)
+#define SOAP_TYPE_PointerTo_tds__LoadCACertificates (1996)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__LoadCACertificates(struct soap*, struct _tds__LoadCACertificates *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__LoadCACertificates(struct soap*, const char *, int, struct _tds__LoadCACertificates *const*, const char *);
@@ -21640,7 +28869,7 @@ SOAP_FMAC3 struct _tds__LoadCACertificates ** SOAP_FMAC4 soap_get_PointerTo_tds_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetCertificateInformationResponse
-#define SOAP_TYPE_PointerTo_tds__GetCertificateInformationResponse (1835)
+#define SOAP_TYPE_PointerTo_tds__GetCertificateInformationResponse (1993)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetCertificateInformationResponse(struct soap*, struct _tds__GetCertificateInformationResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetCertificateInformationResponse(struct soap*, const char *, int, struct _tds__GetCertificateInformationResponse *const*, const char *);
@@ -21659,7 +28888,7 @@ SOAP_FMAC3 struct _tds__GetCertificateInformationResponse ** SOAP_FMAC4 soap_get
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetCertificateInformation
-#define SOAP_TYPE_PointerTo_tds__GetCertificateInformation (1834)
+#define SOAP_TYPE_PointerTo_tds__GetCertificateInformation (1992)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetCertificateInformation(struct soap*, struct _tds__GetCertificateInformation *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetCertificateInformation(struct soap*, const char *, int, struct _tds__GetCertificateInformation *const*, const char *);
@@ -21678,7 +28907,7 @@ SOAP_FMAC3 struct _tds__GetCertificateInformation ** SOAP_FMAC4 soap_get_Pointer
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__LoadCertificateWithPrivateKeyResponse
-#define SOAP_TYPE_PointerTo_tds__LoadCertificateWithPrivateKeyResponse (1831)
+#define SOAP_TYPE_PointerTo_tds__LoadCertificateWithPrivateKeyResponse (1989)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__LoadCertificateWithPrivateKeyResponse(struct soap*, struct _tds__LoadCertificateWithPrivateKeyResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__LoadCertificateWithPrivateKeyResponse(struct soap*, const char *, int, struct _tds__LoadCertificateWithPrivateKeyResponse *const*, const char *);
@@ -21697,7 +28926,7 @@ SOAP_FMAC3 struct _tds__LoadCertificateWithPrivateKeyResponse ** SOAP_FMAC4 soap
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__LoadCertificateWithPrivateKey
-#define SOAP_TYPE_PointerTo_tds__LoadCertificateWithPrivateKey (1830)
+#define SOAP_TYPE_PointerTo_tds__LoadCertificateWithPrivateKey (1988)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__LoadCertificateWithPrivateKey(struct soap*, struct _tds__LoadCertificateWithPrivateKey *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__LoadCertificateWithPrivateKey(struct soap*, const char *, int, struct _tds__LoadCertificateWithPrivateKey *const*, const char *);
@@ -21716,7 +28945,7 @@ SOAP_FMAC3 struct _tds__LoadCertificateWithPrivateKey ** SOAP_FMAC4 soap_get_Poi
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetCACertificatesResponse
-#define SOAP_TYPE_PointerTo_tds__GetCACertificatesResponse (1827)
+#define SOAP_TYPE_PointerTo_tds__GetCACertificatesResponse (1985)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetCACertificatesResponse(struct soap*, struct _tds__GetCACertificatesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetCACertificatesResponse(struct soap*, const char *, int, struct _tds__GetCACertificatesResponse *const*, const char *);
@@ -21735,7 +28964,7 @@ SOAP_FMAC3 struct _tds__GetCACertificatesResponse ** SOAP_FMAC4 soap_get_Pointer
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetCACertificates
-#define SOAP_TYPE_PointerTo_tds__GetCACertificates (1826)
+#define SOAP_TYPE_PointerTo_tds__GetCACertificates (1984)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetCACertificates(struct soap*, struct _tds__GetCACertificates *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetCACertificates(struct soap*, const char *, int, struct _tds__GetCACertificates *const*, const char *);
@@ -21754,7 +28983,7 @@ SOAP_FMAC3 struct _tds__GetCACertificates ** SOAP_FMAC4 soap_get_PointerTo_tds__
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SendAuxiliaryCommandResponse
-#define SOAP_TYPE_PointerTo_tds__SendAuxiliaryCommandResponse (1823)
+#define SOAP_TYPE_PointerTo_tds__SendAuxiliaryCommandResponse (1981)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SendAuxiliaryCommandResponse(struct soap*, struct _tds__SendAuxiliaryCommandResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SendAuxiliaryCommandResponse(struct soap*, const char *, int, struct _tds__SendAuxiliaryCommandResponse *const*, const char *);
@@ -21773,7 +29002,7 @@ SOAP_FMAC3 struct _tds__SendAuxiliaryCommandResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SendAuxiliaryCommand
-#define SOAP_TYPE_PointerTo_tds__SendAuxiliaryCommand (1822)
+#define SOAP_TYPE_PointerTo_tds__SendAuxiliaryCommand (1980)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SendAuxiliaryCommand(struct soap*, struct _tds__SendAuxiliaryCommand *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SendAuxiliaryCommand(struct soap*, const char *, int, struct _tds__SendAuxiliaryCommand *const*, const char *);
@@ -21792,7 +29021,7 @@ SOAP_FMAC3 struct _tds__SendAuxiliaryCommand ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetRelayOutputStateResponse
-#define SOAP_TYPE_PointerTo_tds__SetRelayOutputStateResponse (1819)
+#define SOAP_TYPE_PointerTo_tds__SetRelayOutputStateResponse (1977)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetRelayOutputStateResponse(struct soap*, struct _tds__SetRelayOutputStateResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetRelayOutputStateResponse(struct soap*, const char *, int, struct _tds__SetRelayOutputStateResponse *const*, const char *);
@@ -21811,7 +29040,7 @@ SOAP_FMAC3 struct _tds__SetRelayOutputStateResponse ** SOAP_FMAC4 soap_get_Point
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetRelayOutputState
-#define SOAP_TYPE_PointerTo_tds__SetRelayOutputState (1818)
+#define SOAP_TYPE_PointerTo_tds__SetRelayOutputState (1976)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetRelayOutputState(struct soap*, struct _tds__SetRelayOutputState *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetRelayOutputState(struct soap*, const char *, int, struct _tds__SetRelayOutputState *const*, const char *);
@@ -21830,7 +29059,7 @@ SOAP_FMAC3 struct _tds__SetRelayOutputState ** SOAP_FMAC4 soap_get_PointerTo_tds
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetRelayOutputSettingsResponse
-#define SOAP_TYPE_PointerTo_tds__SetRelayOutputSettingsResponse (1815)
+#define SOAP_TYPE_PointerTo_tds__SetRelayOutputSettingsResponse (1973)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetRelayOutputSettingsResponse(struct soap*, struct _tds__SetRelayOutputSettingsResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetRelayOutputSettingsResponse(struct soap*, const char *, int, struct _tds__SetRelayOutputSettingsResponse *const*, const char *);
@@ -21849,7 +29078,7 @@ SOAP_FMAC3 struct _tds__SetRelayOutputSettingsResponse ** SOAP_FMAC4 soap_get_Po
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetRelayOutputSettings
-#define SOAP_TYPE_PointerTo_tds__SetRelayOutputSettings (1814)
+#define SOAP_TYPE_PointerTo_tds__SetRelayOutputSettings (1972)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetRelayOutputSettings(struct soap*, struct _tds__SetRelayOutputSettings *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetRelayOutputSettings(struct soap*, const char *, int, struct _tds__SetRelayOutputSettings *const*, const char *);
@@ -21868,7 +29097,7 @@ SOAP_FMAC3 struct _tds__SetRelayOutputSettings ** SOAP_FMAC4 soap_get_PointerTo_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetRelayOutputsResponse
-#define SOAP_TYPE_PointerTo_tds__GetRelayOutputsResponse (1811)
+#define SOAP_TYPE_PointerTo_tds__GetRelayOutputsResponse (1969)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetRelayOutputsResponse(struct soap*, struct _tds__GetRelayOutputsResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetRelayOutputsResponse(struct soap*, const char *, int, struct _tds__GetRelayOutputsResponse *const*, const char *);
@@ -21887,7 +29116,7 @@ SOAP_FMAC3 struct _tds__GetRelayOutputsResponse ** SOAP_FMAC4 soap_get_PointerTo
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetRelayOutputs
-#define SOAP_TYPE_PointerTo_tds__GetRelayOutputs (1810)
+#define SOAP_TYPE_PointerTo_tds__GetRelayOutputs (1968)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetRelayOutputs(struct soap*, struct _tds__GetRelayOutputs *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetRelayOutputs(struct soap*, const char *, int, struct _tds__GetRelayOutputs *const*, const char *);
@@ -21906,7 +29135,7 @@ SOAP_FMAC3 struct _tds__GetRelayOutputs ** SOAP_FMAC4 soap_get_PointerTo_tds__Ge
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetClientCertificateModeResponse
-#define SOAP_TYPE_PointerTo_tds__SetClientCertificateModeResponse (1807)
+#define SOAP_TYPE_PointerTo_tds__SetClientCertificateModeResponse (1965)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetClientCertificateModeResponse(struct soap*, struct _tds__SetClientCertificateModeResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetClientCertificateModeResponse(struct soap*, const char *, int, struct _tds__SetClientCertificateModeResponse *const*, const char *);
@@ -21925,7 +29154,7 @@ SOAP_FMAC3 struct _tds__SetClientCertificateModeResponse ** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetClientCertificateMode
-#define SOAP_TYPE_PointerTo_tds__SetClientCertificateMode (1806)
+#define SOAP_TYPE_PointerTo_tds__SetClientCertificateMode (1964)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetClientCertificateMode(struct soap*, struct _tds__SetClientCertificateMode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetClientCertificateMode(struct soap*, const char *, int, struct _tds__SetClientCertificateMode *const*, const char *);
@@ -21944,7 +29173,7 @@ SOAP_FMAC3 struct _tds__SetClientCertificateMode ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetClientCertificateModeResponse
-#define SOAP_TYPE_PointerTo_tds__GetClientCertificateModeResponse (1803)
+#define SOAP_TYPE_PointerTo_tds__GetClientCertificateModeResponse (1961)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetClientCertificateModeResponse(struct soap*, struct _tds__GetClientCertificateModeResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetClientCertificateModeResponse(struct soap*, const char *, int, struct _tds__GetClientCertificateModeResponse *const*, const char *);
@@ -21963,7 +29192,7 @@ SOAP_FMAC3 struct _tds__GetClientCertificateModeResponse ** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetClientCertificateMode
-#define SOAP_TYPE_PointerTo_tds__GetClientCertificateMode (1802)
+#define SOAP_TYPE_PointerTo_tds__GetClientCertificateMode (1960)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetClientCertificateMode(struct soap*, struct _tds__GetClientCertificateMode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetClientCertificateMode(struct soap*, const char *, int, struct _tds__GetClientCertificateMode *const*, const char *);
@@ -21982,7 +29211,7 @@ SOAP_FMAC3 struct _tds__GetClientCertificateMode ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__LoadCertificatesResponse
-#define SOAP_TYPE_PointerTo_tds__LoadCertificatesResponse (1799)
+#define SOAP_TYPE_PointerTo_tds__LoadCertificatesResponse (1957)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__LoadCertificatesResponse(struct soap*, struct _tds__LoadCertificatesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__LoadCertificatesResponse(struct soap*, const char *, int, struct _tds__LoadCertificatesResponse *const*, const char *);
@@ -22001,7 +29230,7 @@ SOAP_FMAC3 struct _tds__LoadCertificatesResponse ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__LoadCertificates
-#define SOAP_TYPE_PointerTo_tds__LoadCertificates (1798)
+#define SOAP_TYPE_PointerTo_tds__LoadCertificates (1956)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__LoadCertificates(struct soap*, struct _tds__LoadCertificates *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__LoadCertificates(struct soap*, const char *, int, struct _tds__LoadCertificates *const*, const char *);
@@ -22020,7 +29249,7 @@ SOAP_FMAC3 struct _tds__LoadCertificates ** SOAP_FMAC4 soap_get_PointerTo_tds__L
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetPkcs10RequestResponse
-#define SOAP_TYPE_PointerTo_tds__GetPkcs10RequestResponse (1795)
+#define SOAP_TYPE_PointerTo_tds__GetPkcs10RequestResponse (1953)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetPkcs10RequestResponse(struct soap*, struct _tds__GetPkcs10RequestResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetPkcs10RequestResponse(struct soap*, const char *, int, struct _tds__GetPkcs10RequestResponse *const*, const char *);
@@ -22039,7 +29268,7 @@ SOAP_FMAC3 struct _tds__GetPkcs10RequestResponse ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetPkcs10Request
-#define SOAP_TYPE_PointerTo_tds__GetPkcs10Request (1794)
+#define SOAP_TYPE_PointerTo_tds__GetPkcs10Request (1952)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetPkcs10Request(struct soap*, struct _tds__GetPkcs10Request *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetPkcs10Request(struct soap*, const char *, int, struct _tds__GetPkcs10Request *const*, const char *);
@@ -22058,7 +29287,7 @@ SOAP_FMAC3 struct _tds__GetPkcs10Request ** SOAP_FMAC4 soap_get_PointerTo_tds__G
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__DeleteCertificatesResponse
-#define SOAP_TYPE_PointerTo_tds__DeleteCertificatesResponse (1791)
+#define SOAP_TYPE_PointerTo_tds__DeleteCertificatesResponse (1949)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__DeleteCertificatesResponse(struct soap*, struct _tds__DeleteCertificatesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__DeleteCertificatesResponse(struct soap*, const char *, int, struct _tds__DeleteCertificatesResponse *const*, const char *);
@@ -22077,7 +29306,7 @@ SOAP_FMAC3 struct _tds__DeleteCertificatesResponse ** SOAP_FMAC4 soap_get_Pointe
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__DeleteCertificates
-#define SOAP_TYPE_PointerTo_tds__DeleteCertificates (1790)
+#define SOAP_TYPE_PointerTo_tds__DeleteCertificates (1948)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__DeleteCertificates(struct soap*, struct _tds__DeleteCertificates *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__DeleteCertificates(struct soap*, const char *, int, struct _tds__DeleteCertificates *const*, const char *);
@@ -22096,7 +29325,7 @@ SOAP_FMAC3 struct _tds__DeleteCertificates ** SOAP_FMAC4 soap_get_PointerTo_tds_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetCertificatesStatusResponse
-#define SOAP_TYPE_PointerTo_tds__SetCertificatesStatusResponse (1787)
+#define SOAP_TYPE_PointerTo_tds__SetCertificatesStatusResponse (1945)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetCertificatesStatusResponse(struct soap*, struct _tds__SetCertificatesStatusResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetCertificatesStatusResponse(struct soap*, const char *, int, struct _tds__SetCertificatesStatusResponse *const*, const char *);
@@ -22115,7 +29344,7 @@ SOAP_FMAC3 struct _tds__SetCertificatesStatusResponse ** SOAP_FMAC4 soap_get_Poi
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetCertificatesStatus
-#define SOAP_TYPE_PointerTo_tds__SetCertificatesStatus (1786)
+#define SOAP_TYPE_PointerTo_tds__SetCertificatesStatus (1944)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetCertificatesStatus(struct soap*, struct _tds__SetCertificatesStatus *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetCertificatesStatus(struct soap*, const char *, int, struct _tds__SetCertificatesStatus *const*, const char *);
@@ -22134,7 +29363,7 @@ SOAP_FMAC3 struct _tds__SetCertificatesStatus ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetCertificatesStatusResponse
-#define SOAP_TYPE_PointerTo_tds__GetCertificatesStatusResponse (1783)
+#define SOAP_TYPE_PointerTo_tds__GetCertificatesStatusResponse (1941)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetCertificatesStatusResponse(struct soap*, struct _tds__GetCertificatesStatusResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetCertificatesStatusResponse(struct soap*, const char *, int, struct _tds__GetCertificatesStatusResponse *const*, const char *);
@@ -22153,7 +29382,7 @@ SOAP_FMAC3 struct _tds__GetCertificatesStatusResponse ** SOAP_FMAC4 soap_get_Poi
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetCertificatesStatus
-#define SOAP_TYPE_PointerTo_tds__GetCertificatesStatus (1782)
+#define SOAP_TYPE_PointerTo_tds__GetCertificatesStatus (1940)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetCertificatesStatus(struct soap*, struct _tds__GetCertificatesStatus *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetCertificatesStatus(struct soap*, const char *, int, struct _tds__GetCertificatesStatus *const*, const char *);
@@ -22172,7 +29401,7 @@ SOAP_FMAC3 struct _tds__GetCertificatesStatus ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetCertificatesResponse
-#define SOAP_TYPE_PointerTo_tds__GetCertificatesResponse (1779)
+#define SOAP_TYPE_PointerTo_tds__GetCertificatesResponse (1937)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetCertificatesResponse(struct soap*, struct _tds__GetCertificatesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetCertificatesResponse(struct soap*, const char *, int, struct _tds__GetCertificatesResponse *const*, const char *);
@@ -22191,7 +29420,7 @@ SOAP_FMAC3 struct _tds__GetCertificatesResponse ** SOAP_FMAC4 soap_get_PointerTo
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetCertificates
-#define SOAP_TYPE_PointerTo_tds__GetCertificates (1778)
+#define SOAP_TYPE_PointerTo_tds__GetCertificates (1936)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetCertificates(struct soap*, struct _tds__GetCertificates *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetCertificates(struct soap*, const char *, int, struct _tds__GetCertificates *const*, const char *);
@@ -22210,7 +29439,7 @@ SOAP_FMAC3 struct _tds__GetCertificates ** SOAP_FMAC4 soap_get_PointerTo_tds__Ge
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__CreateCertificateResponse
-#define SOAP_TYPE_PointerTo_tds__CreateCertificateResponse (1775)
+#define SOAP_TYPE_PointerTo_tds__CreateCertificateResponse (1933)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__CreateCertificateResponse(struct soap*, struct _tds__CreateCertificateResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__CreateCertificateResponse(struct soap*, const char *, int, struct _tds__CreateCertificateResponse *const*, const char *);
@@ -22229,7 +29458,7 @@ SOAP_FMAC3 struct _tds__CreateCertificateResponse ** SOAP_FMAC4 soap_get_Pointer
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__CreateCertificate
-#define SOAP_TYPE_PointerTo_tds__CreateCertificate (1774)
+#define SOAP_TYPE_PointerTo_tds__CreateCertificate (1932)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__CreateCertificate(struct soap*, struct _tds__CreateCertificate *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__CreateCertificate(struct soap*, const char *, int, struct _tds__CreateCertificate *const*, const char *);
@@ -22248,7 +29477,7 @@ SOAP_FMAC3 struct _tds__CreateCertificate ** SOAP_FMAC4 soap_get_PointerTo_tds__
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetAccessPolicyResponse
-#define SOAP_TYPE_PointerTo_tds__SetAccessPolicyResponse (1771)
+#define SOAP_TYPE_PointerTo_tds__SetAccessPolicyResponse (1929)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetAccessPolicyResponse(struct soap*, struct _tds__SetAccessPolicyResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetAccessPolicyResponse(struct soap*, const char *, int, struct _tds__SetAccessPolicyResponse *const*, const char *);
@@ -22267,7 +29496,7 @@ SOAP_FMAC3 struct _tds__SetAccessPolicyResponse ** SOAP_FMAC4 soap_get_PointerTo
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetAccessPolicy
-#define SOAP_TYPE_PointerTo_tds__SetAccessPolicy (1770)
+#define SOAP_TYPE_PointerTo_tds__SetAccessPolicy (1928)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetAccessPolicy(struct soap*, struct _tds__SetAccessPolicy *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetAccessPolicy(struct soap*, const char *, int, struct _tds__SetAccessPolicy *const*, const char *);
@@ -22286,7 +29515,7 @@ SOAP_FMAC3 struct _tds__SetAccessPolicy ** SOAP_FMAC4 soap_get_PointerTo_tds__Se
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetAccessPolicyResponse
-#define SOAP_TYPE_PointerTo_tds__GetAccessPolicyResponse (1767)
+#define SOAP_TYPE_PointerTo_tds__GetAccessPolicyResponse (1925)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetAccessPolicyResponse(struct soap*, struct _tds__GetAccessPolicyResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetAccessPolicyResponse(struct soap*, const char *, int, struct _tds__GetAccessPolicyResponse *const*, const char *);
@@ -22305,7 +29534,7 @@ SOAP_FMAC3 struct _tds__GetAccessPolicyResponse ** SOAP_FMAC4 soap_get_PointerTo
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetAccessPolicy
-#define SOAP_TYPE_PointerTo_tds__GetAccessPolicy (1766)
+#define SOAP_TYPE_PointerTo_tds__GetAccessPolicy (1924)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetAccessPolicy(struct soap*, struct _tds__GetAccessPolicy *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetAccessPolicy(struct soap*, const char *, int, struct _tds__GetAccessPolicy *const*, const char *);
@@ -22324,7 +29553,7 @@ SOAP_FMAC3 struct _tds__GetAccessPolicy ** SOAP_FMAC4 soap_get_PointerTo_tds__Ge
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__RemoveIPAddressFilterResponse
-#define SOAP_TYPE_PointerTo_tds__RemoveIPAddressFilterResponse (1763)
+#define SOAP_TYPE_PointerTo_tds__RemoveIPAddressFilterResponse (1921)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__RemoveIPAddressFilterResponse(struct soap*, struct _tds__RemoveIPAddressFilterResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__RemoveIPAddressFilterResponse(struct soap*, const char *, int, struct _tds__RemoveIPAddressFilterResponse *const*, const char *);
@@ -22343,7 +29572,7 @@ SOAP_FMAC3 struct _tds__RemoveIPAddressFilterResponse ** SOAP_FMAC4 soap_get_Poi
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__RemoveIPAddressFilter
-#define SOAP_TYPE_PointerTo_tds__RemoveIPAddressFilter (1762)
+#define SOAP_TYPE_PointerTo_tds__RemoveIPAddressFilter (1920)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__RemoveIPAddressFilter(struct soap*, struct _tds__RemoveIPAddressFilter *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__RemoveIPAddressFilter(struct soap*, const char *, int, struct _tds__RemoveIPAddressFilter *const*, const char *);
@@ -22362,7 +29591,7 @@ SOAP_FMAC3 struct _tds__RemoveIPAddressFilter ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__AddIPAddressFilterResponse
-#define SOAP_TYPE_PointerTo_tds__AddIPAddressFilterResponse (1759)
+#define SOAP_TYPE_PointerTo_tds__AddIPAddressFilterResponse (1917)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__AddIPAddressFilterResponse(struct soap*, struct _tds__AddIPAddressFilterResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__AddIPAddressFilterResponse(struct soap*, const char *, int, struct _tds__AddIPAddressFilterResponse *const*, const char *);
@@ -22381,7 +29610,7 @@ SOAP_FMAC3 struct _tds__AddIPAddressFilterResponse ** SOAP_FMAC4 soap_get_Pointe
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__AddIPAddressFilter
-#define SOAP_TYPE_PointerTo_tds__AddIPAddressFilter (1758)
+#define SOAP_TYPE_PointerTo_tds__AddIPAddressFilter (1916)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__AddIPAddressFilter(struct soap*, struct _tds__AddIPAddressFilter *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__AddIPAddressFilter(struct soap*, const char *, int, struct _tds__AddIPAddressFilter *const*, const char *);
@@ -22400,7 +29629,7 @@ SOAP_FMAC3 struct _tds__AddIPAddressFilter ** SOAP_FMAC4 soap_get_PointerTo_tds_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetIPAddressFilterResponse
-#define SOAP_TYPE_PointerTo_tds__SetIPAddressFilterResponse (1755)
+#define SOAP_TYPE_PointerTo_tds__SetIPAddressFilterResponse (1913)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetIPAddressFilterResponse(struct soap*, struct _tds__SetIPAddressFilterResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetIPAddressFilterResponse(struct soap*, const char *, int, struct _tds__SetIPAddressFilterResponse *const*, const char *);
@@ -22419,7 +29648,7 @@ SOAP_FMAC3 struct _tds__SetIPAddressFilterResponse ** SOAP_FMAC4 soap_get_Pointe
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetIPAddressFilter
-#define SOAP_TYPE_PointerTo_tds__SetIPAddressFilter (1754)
+#define SOAP_TYPE_PointerTo_tds__SetIPAddressFilter (1912)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetIPAddressFilter(struct soap*, struct _tds__SetIPAddressFilter *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetIPAddressFilter(struct soap*, const char *, int, struct _tds__SetIPAddressFilter *const*, const char *);
@@ -22438,7 +29667,7 @@ SOAP_FMAC3 struct _tds__SetIPAddressFilter ** SOAP_FMAC4 soap_get_PointerTo_tds_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetIPAddressFilterResponse
-#define SOAP_TYPE_PointerTo_tds__GetIPAddressFilterResponse (1751)
+#define SOAP_TYPE_PointerTo_tds__GetIPAddressFilterResponse (1909)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetIPAddressFilterResponse(struct soap*, struct _tds__GetIPAddressFilterResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetIPAddressFilterResponse(struct soap*, const char *, int, struct _tds__GetIPAddressFilterResponse *const*, const char *);
@@ -22457,7 +29686,7 @@ SOAP_FMAC3 struct _tds__GetIPAddressFilterResponse ** SOAP_FMAC4 soap_get_Pointe
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetIPAddressFilter
-#define SOAP_TYPE_PointerTo_tds__GetIPAddressFilter (1750)
+#define SOAP_TYPE_PointerTo_tds__GetIPAddressFilter (1908)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetIPAddressFilter(struct soap*, struct _tds__GetIPAddressFilter *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetIPAddressFilter(struct soap*, const char *, int, struct _tds__GetIPAddressFilter *const*, const char *);
@@ -22476,7 +29705,7 @@ SOAP_FMAC3 struct _tds__GetIPAddressFilter ** SOAP_FMAC4 soap_get_PointerTo_tds_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetZeroConfigurationResponse
-#define SOAP_TYPE_PointerTo_tds__SetZeroConfigurationResponse (1747)
+#define SOAP_TYPE_PointerTo_tds__SetZeroConfigurationResponse (1905)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetZeroConfigurationResponse(struct soap*, struct _tds__SetZeroConfigurationResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetZeroConfigurationResponse(struct soap*, const char *, int, struct _tds__SetZeroConfigurationResponse *const*, const char *);
@@ -22495,7 +29724,7 @@ SOAP_FMAC3 struct _tds__SetZeroConfigurationResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetZeroConfiguration
-#define SOAP_TYPE_PointerTo_tds__SetZeroConfiguration (1746)
+#define SOAP_TYPE_PointerTo_tds__SetZeroConfiguration (1904)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetZeroConfiguration(struct soap*, struct _tds__SetZeroConfiguration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetZeroConfiguration(struct soap*, const char *, int, struct _tds__SetZeroConfiguration *const*, const char *);
@@ -22514,7 +29743,7 @@ SOAP_FMAC3 struct _tds__SetZeroConfiguration ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetZeroConfigurationResponse
-#define SOAP_TYPE_PointerTo_tds__GetZeroConfigurationResponse (1743)
+#define SOAP_TYPE_PointerTo_tds__GetZeroConfigurationResponse (1901)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetZeroConfigurationResponse(struct soap*, struct _tds__GetZeroConfigurationResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetZeroConfigurationResponse(struct soap*, const char *, int, struct _tds__GetZeroConfigurationResponse *const*, const char *);
@@ -22533,7 +29762,7 @@ SOAP_FMAC3 struct _tds__GetZeroConfigurationResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetZeroConfiguration
-#define SOAP_TYPE_PointerTo_tds__GetZeroConfiguration (1742)
+#define SOAP_TYPE_PointerTo_tds__GetZeroConfiguration (1900)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetZeroConfiguration(struct soap*, struct _tds__GetZeroConfiguration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetZeroConfiguration(struct soap*, const char *, int, struct _tds__GetZeroConfiguration *const*, const char *);
@@ -22552,7 +29781,7 @@ SOAP_FMAC3 struct _tds__GetZeroConfiguration ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetNetworkDefaultGatewayResponse
-#define SOAP_TYPE_PointerTo_tds__SetNetworkDefaultGatewayResponse (1739)
+#define SOAP_TYPE_PointerTo_tds__SetNetworkDefaultGatewayResponse (1897)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetNetworkDefaultGatewayResponse(struct soap*, struct _tds__SetNetworkDefaultGatewayResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetNetworkDefaultGatewayResponse(struct soap*, const char *, int, struct _tds__SetNetworkDefaultGatewayResponse *const*, const char *);
@@ -22571,7 +29800,7 @@ SOAP_FMAC3 struct _tds__SetNetworkDefaultGatewayResponse ** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetNetworkDefaultGateway
-#define SOAP_TYPE_PointerTo_tds__SetNetworkDefaultGateway (1738)
+#define SOAP_TYPE_PointerTo_tds__SetNetworkDefaultGateway (1896)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetNetworkDefaultGateway(struct soap*, struct _tds__SetNetworkDefaultGateway *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetNetworkDefaultGateway(struct soap*, const char *, int, struct _tds__SetNetworkDefaultGateway *const*, const char *);
@@ -22590,7 +29819,7 @@ SOAP_FMAC3 struct _tds__SetNetworkDefaultGateway ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetNetworkDefaultGatewayResponse
-#define SOAP_TYPE_PointerTo_tds__GetNetworkDefaultGatewayResponse (1735)
+#define SOAP_TYPE_PointerTo_tds__GetNetworkDefaultGatewayResponse (1893)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetNetworkDefaultGatewayResponse(struct soap*, struct _tds__GetNetworkDefaultGatewayResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetNetworkDefaultGatewayResponse(struct soap*, const char *, int, struct _tds__GetNetworkDefaultGatewayResponse *const*, const char *);
@@ -22609,7 +29838,7 @@ SOAP_FMAC3 struct _tds__GetNetworkDefaultGatewayResponse ** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetNetworkDefaultGateway
-#define SOAP_TYPE_PointerTo_tds__GetNetworkDefaultGateway (1734)
+#define SOAP_TYPE_PointerTo_tds__GetNetworkDefaultGateway (1892)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetNetworkDefaultGateway(struct soap*, struct _tds__GetNetworkDefaultGateway *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetNetworkDefaultGateway(struct soap*, const char *, int, struct _tds__GetNetworkDefaultGateway *const*, const char *);
@@ -22628,7 +29857,7 @@ SOAP_FMAC3 struct _tds__GetNetworkDefaultGateway ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetNetworkProtocolsResponse
-#define SOAP_TYPE_PointerTo_tds__SetNetworkProtocolsResponse (1731)
+#define SOAP_TYPE_PointerTo_tds__SetNetworkProtocolsResponse (1889)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetNetworkProtocolsResponse(struct soap*, struct _tds__SetNetworkProtocolsResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetNetworkProtocolsResponse(struct soap*, const char *, int, struct _tds__SetNetworkProtocolsResponse *const*, const char *);
@@ -22647,7 +29876,7 @@ SOAP_FMAC3 struct _tds__SetNetworkProtocolsResponse ** SOAP_FMAC4 soap_get_Point
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetNetworkProtocols
-#define SOAP_TYPE_PointerTo_tds__SetNetworkProtocols (1730)
+#define SOAP_TYPE_PointerTo_tds__SetNetworkProtocols (1888)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetNetworkProtocols(struct soap*, struct _tds__SetNetworkProtocols *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetNetworkProtocols(struct soap*, const char *, int, struct _tds__SetNetworkProtocols *const*, const char *);
@@ -22666,7 +29895,7 @@ SOAP_FMAC3 struct _tds__SetNetworkProtocols ** SOAP_FMAC4 soap_get_PointerTo_tds
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetNetworkProtocolsResponse
-#define SOAP_TYPE_PointerTo_tds__GetNetworkProtocolsResponse (1727)
+#define SOAP_TYPE_PointerTo_tds__GetNetworkProtocolsResponse (1885)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetNetworkProtocolsResponse(struct soap*, struct _tds__GetNetworkProtocolsResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetNetworkProtocolsResponse(struct soap*, const char *, int, struct _tds__GetNetworkProtocolsResponse *const*, const char *);
@@ -22685,7 +29914,7 @@ SOAP_FMAC3 struct _tds__GetNetworkProtocolsResponse ** SOAP_FMAC4 soap_get_Point
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetNetworkProtocols
-#define SOAP_TYPE_PointerTo_tds__GetNetworkProtocols (1726)
+#define SOAP_TYPE_PointerTo_tds__GetNetworkProtocols (1884)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetNetworkProtocols(struct soap*, struct _tds__GetNetworkProtocols *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetNetworkProtocols(struct soap*, const char *, int, struct _tds__GetNetworkProtocols *const*, const char *);
@@ -22704,7 +29933,7 @@ SOAP_FMAC3 struct _tds__GetNetworkProtocols ** SOAP_FMAC4 soap_get_PointerTo_tds
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetNetworkInterfacesResponse
-#define SOAP_TYPE_PointerTo_tds__SetNetworkInterfacesResponse (1723)
+#define SOAP_TYPE_PointerTo_tds__SetNetworkInterfacesResponse (1881)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetNetworkInterfacesResponse(struct soap*, struct _tds__SetNetworkInterfacesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetNetworkInterfacesResponse(struct soap*, const char *, int, struct _tds__SetNetworkInterfacesResponse *const*, const char *);
@@ -22723,7 +29952,7 @@ SOAP_FMAC3 struct _tds__SetNetworkInterfacesResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetNetworkInterfaces
-#define SOAP_TYPE_PointerTo_tds__SetNetworkInterfaces (1722)
+#define SOAP_TYPE_PointerTo_tds__SetNetworkInterfaces (1880)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetNetworkInterfaces(struct soap*, struct _tds__SetNetworkInterfaces *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetNetworkInterfaces(struct soap*, const char *, int, struct _tds__SetNetworkInterfaces *const*, const char *);
@@ -22742,7 +29971,7 @@ SOAP_FMAC3 struct _tds__SetNetworkInterfaces ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetNetworkInterfacesResponse
-#define SOAP_TYPE_PointerTo_tds__GetNetworkInterfacesResponse (1719)
+#define SOAP_TYPE_PointerTo_tds__GetNetworkInterfacesResponse (1877)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetNetworkInterfacesResponse(struct soap*, struct _tds__GetNetworkInterfacesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetNetworkInterfacesResponse(struct soap*, const char *, int, struct _tds__GetNetworkInterfacesResponse *const*, const char *);
@@ -22761,7 +29990,7 @@ SOAP_FMAC3 struct _tds__GetNetworkInterfacesResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetNetworkInterfaces
-#define SOAP_TYPE_PointerTo_tds__GetNetworkInterfaces (1718)
+#define SOAP_TYPE_PointerTo_tds__GetNetworkInterfaces (1876)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetNetworkInterfaces(struct soap*, struct _tds__GetNetworkInterfaces *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetNetworkInterfaces(struct soap*, const char *, int, struct _tds__GetNetworkInterfaces *const*, const char *);
@@ -22780,7 +30009,7 @@ SOAP_FMAC3 struct _tds__GetNetworkInterfaces ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetDynamicDNSResponse
-#define SOAP_TYPE_PointerTo_tds__SetDynamicDNSResponse (1715)
+#define SOAP_TYPE_PointerTo_tds__SetDynamicDNSResponse (1873)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetDynamicDNSResponse(struct soap*, struct _tds__SetDynamicDNSResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetDynamicDNSResponse(struct soap*, const char *, int, struct _tds__SetDynamicDNSResponse *const*, const char *);
@@ -22799,7 +30028,7 @@ SOAP_FMAC3 struct _tds__SetDynamicDNSResponse ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetDynamicDNS
-#define SOAP_TYPE_PointerTo_tds__SetDynamicDNS (1714)
+#define SOAP_TYPE_PointerTo_tds__SetDynamicDNS (1872)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetDynamicDNS(struct soap*, struct _tds__SetDynamicDNS *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetDynamicDNS(struct soap*, const char *, int, struct _tds__SetDynamicDNS *const*, const char *);
@@ -22818,7 +30047,7 @@ SOAP_FMAC3 struct _tds__SetDynamicDNS ** SOAP_FMAC4 soap_get_PointerTo_tds__SetD
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDynamicDNSResponse
-#define SOAP_TYPE_PointerTo_tds__GetDynamicDNSResponse (1711)
+#define SOAP_TYPE_PointerTo_tds__GetDynamicDNSResponse (1869)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDynamicDNSResponse(struct soap*, struct _tds__GetDynamicDNSResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDynamicDNSResponse(struct soap*, const char *, int, struct _tds__GetDynamicDNSResponse *const*, const char *);
@@ -22837,7 +30066,7 @@ SOAP_FMAC3 struct _tds__GetDynamicDNSResponse ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDynamicDNS
-#define SOAP_TYPE_PointerTo_tds__GetDynamicDNS (1710)
+#define SOAP_TYPE_PointerTo_tds__GetDynamicDNS (1868)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDynamicDNS(struct soap*, struct _tds__GetDynamicDNS *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDynamicDNS(struct soap*, const char *, int, struct _tds__GetDynamicDNS *const*, const char *);
@@ -22856,7 +30085,7 @@ SOAP_FMAC3 struct _tds__GetDynamicDNS ** SOAP_FMAC4 soap_get_PointerTo_tds__GetD
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetNTPResponse
-#define SOAP_TYPE_PointerTo_tds__SetNTPResponse (1707)
+#define SOAP_TYPE_PointerTo_tds__SetNTPResponse (1865)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetNTPResponse(struct soap*, struct _tds__SetNTPResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetNTPResponse(struct soap*, const char *, int, struct _tds__SetNTPResponse *const*, const char *);
@@ -22875,7 +30104,7 @@ SOAP_FMAC3 struct _tds__SetNTPResponse ** SOAP_FMAC4 soap_get_PointerTo_tds__Set
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetNTP
-#define SOAP_TYPE_PointerTo_tds__SetNTP (1706)
+#define SOAP_TYPE_PointerTo_tds__SetNTP (1864)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetNTP(struct soap*, struct _tds__SetNTP *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetNTP(struct soap*, const char *, int, struct _tds__SetNTP *const*, const char *);
@@ -22894,7 +30123,7 @@ SOAP_FMAC3 struct _tds__SetNTP ** SOAP_FMAC4 soap_get_PointerTo_tds__SetNTP(stru
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetNTPResponse
-#define SOAP_TYPE_PointerTo_tds__GetNTPResponse (1703)
+#define SOAP_TYPE_PointerTo_tds__GetNTPResponse (1861)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetNTPResponse(struct soap*, struct _tds__GetNTPResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetNTPResponse(struct soap*, const char *, int, struct _tds__GetNTPResponse *const*, const char *);
@@ -22913,7 +30142,7 @@ SOAP_FMAC3 struct _tds__GetNTPResponse ** SOAP_FMAC4 soap_get_PointerTo_tds__Get
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetNTP
-#define SOAP_TYPE_PointerTo_tds__GetNTP (1702)
+#define SOAP_TYPE_PointerTo_tds__GetNTP (1860)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetNTP(struct soap*, struct _tds__GetNTP *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetNTP(struct soap*, const char *, int, struct _tds__GetNTP *const*, const char *);
@@ -22932,7 +30161,7 @@ SOAP_FMAC3 struct _tds__GetNTP ** SOAP_FMAC4 soap_get_PointerTo_tds__GetNTP(stru
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetDNSResponse
-#define SOAP_TYPE_PointerTo_tds__SetDNSResponse (1699)
+#define SOAP_TYPE_PointerTo_tds__SetDNSResponse (1857)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetDNSResponse(struct soap*, struct _tds__SetDNSResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetDNSResponse(struct soap*, const char *, int, struct _tds__SetDNSResponse *const*, const char *);
@@ -22951,7 +30180,7 @@ SOAP_FMAC3 struct _tds__SetDNSResponse ** SOAP_FMAC4 soap_get_PointerTo_tds__Set
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetDNS
-#define SOAP_TYPE_PointerTo_tds__SetDNS (1698)
+#define SOAP_TYPE_PointerTo_tds__SetDNS (1856)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetDNS(struct soap*, struct _tds__SetDNS *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetDNS(struct soap*, const char *, int, struct _tds__SetDNS *const*, const char *);
@@ -22970,7 +30199,7 @@ SOAP_FMAC3 struct _tds__SetDNS ** SOAP_FMAC4 soap_get_PointerTo_tds__SetDNS(stru
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDNSResponse
-#define SOAP_TYPE_PointerTo_tds__GetDNSResponse (1695)
+#define SOAP_TYPE_PointerTo_tds__GetDNSResponse (1853)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDNSResponse(struct soap*, struct _tds__GetDNSResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDNSResponse(struct soap*, const char *, int, struct _tds__GetDNSResponse *const*, const char *);
@@ -22989,7 +30218,7 @@ SOAP_FMAC3 struct _tds__GetDNSResponse ** SOAP_FMAC4 soap_get_PointerTo_tds__Get
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDNS
-#define SOAP_TYPE_PointerTo_tds__GetDNS (1694)
+#define SOAP_TYPE_PointerTo_tds__GetDNS (1852)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDNS(struct soap*, struct _tds__GetDNS *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDNS(struct soap*, const char *, int, struct _tds__GetDNS *const*, const char *);
@@ -23008,7 +30237,7 @@ SOAP_FMAC3 struct _tds__GetDNS ** SOAP_FMAC4 soap_get_PointerTo_tds__GetDNS(stru
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetHostnameFromDHCPResponse
-#define SOAP_TYPE_PointerTo_tds__SetHostnameFromDHCPResponse (1691)
+#define SOAP_TYPE_PointerTo_tds__SetHostnameFromDHCPResponse (1849)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetHostnameFromDHCPResponse(struct soap*, struct _tds__SetHostnameFromDHCPResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetHostnameFromDHCPResponse(struct soap*, const char *, int, struct _tds__SetHostnameFromDHCPResponse *const*, const char *);
@@ -23027,7 +30256,7 @@ SOAP_FMAC3 struct _tds__SetHostnameFromDHCPResponse ** SOAP_FMAC4 soap_get_Point
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetHostnameFromDHCP
-#define SOAP_TYPE_PointerTo_tds__SetHostnameFromDHCP (1690)
+#define SOAP_TYPE_PointerTo_tds__SetHostnameFromDHCP (1848)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetHostnameFromDHCP(struct soap*, struct _tds__SetHostnameFromDHCP *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetHostnameFromDHCP(struct soap*, const char *, int, struct _tds__SetHostnameFromDHCP *const*, const char *);
@@ -23046,7 +30275,7 @@ SOAP_FMAC3 struct _tds__SetHostnameFromDHCP ** SOAP_FMAC4 soap_get_PointerTo_tds
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetHostnameResponse
-#define SOAP_TYPE_PointerTo_tds__SetHostnameResponse (1687)
+#define SOAP_TYPE_PointerTo_tds__SetHostnameResponse (1845)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetHostnameResponse(struct soap*, struct _tds__SetHostnameResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetHostnameResponse(struct soap*, const char *, int, struct _tds__SetHostnameResponse *const*, const char *);
@@ -23065,7 +30294,7 @@ SOAP_FMAC3 struct _tds__SetHostnameResponse ** SOAP_FMAC4 soap_get_PointerTo_tds
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetHostname
-#define SOAP_TYPE_PointerTo_tds__SetHostname (1686)
+#define SOAP_TYPE_PointerTo_tds__SetHostname (1844)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetHostname(struct soap*, struct _tds__SetHostname *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetHostname(struct soap*, const char *, int, struct _tds__SetHostname *const*, const char *);
@@ -23084,7 +30313,7 @@ SOAP_FMAC3 struct _tds__SetHostname ** SOAP_FMAC4 soap_get_PointerTo_tds__SetHos
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetHostnameResponse
-#define SOAP_TYPE_PointerTo_tds__GetHostnameResponse (1683)
+#define SOAP_TYPE_PointerTo_tds__GetHostnameResponse (1841)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetHostnameResponse(struct soap*, struct _tds__GetHostnameResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetHostnameResponse(struct soap*, const char *, int, struct _tds__GetHostnameResponse *const*, const char *);
@@ -23103,7 +30332,7 @@ SOAP_FMAC3 struct _tds__GetHostnameResponse ** SOAP_FMAC4 soap_get_PointerTo_tds
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetHostname
-#define SOAP_TYPE_PointerTo_tds__GetHostname (1682)
+#define SOAP_TYPE_PointerTo_tds__GetHostname (1840)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetHostname(struct soap*, struct _tds__GetHostname *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetHostname(struct soap*, const char *, int, struct _tds__GetHostname *const*, const char *);
@@ -23122,7 +30351,7 @@ SOAP_FMAC3 struct _tds__GetHostname ** SOAP_FMAC4 soap_get_PointerTo_tds__GetHos
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetDPAddressesResponse
-#define SOAP_TYPE_PointerTo_tds__SetDPAddressesResponse (1679)
+#define SOAP_TYPE_PointerTo_tds__SetDPAddressesResponse (1837)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetDPAddressesResponse(struct soap*, struct _tds__SetDPAddressesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetDPAddressesResponse(struct soap*, const char *, int, struct _tds__SetDPAddressesResponse *const*, const char *);
@@ -23141,7 +30370,7 @@ SOAP_FMAC3 struct _tds__SetDPAddressesResponse ** SOAP_FMAC4 soap_get_PointerTo_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetDPAddresses
-#define SOAP_TYPE_PointerTo_tds__SetDPAddresses (1678)
+#define SOAP_TYPE_PointerTo_tds__SetDPAddresses (1836)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetDPAddresses(struct soap*, struct _tds__SetDPAddresses *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetDPAddresses(struct soap*, const char *, int, struct _tds__SetDPAddresses *const*, const char *);
@@ -23160,7 +30389,7 @@ SOAP_FMAC3 struct _tds__SetDPAddresses ** SOAP_FMAC4 soap_get_PointerTo_tds__Set
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetCapabilitiesResponse
-#define SOAP_TYPE_PointerTo_tds__GetCapabilitiesResponse (1675)
+#define SOAP_TYPE_PointerTo_tds__GetCapabilitiesResponse (1833)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetCapabilitiesResponse(struct soap*, struct _tds__GetCapabilitiesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetCapabilitiesResponse(struct soap*, const char *, int, struct _tds__GetCapabilitiesResponse *const*, const char *);
@@ -23179,7 +30408,7 @@ SOAP_FMAC3 struct _tds__GetCapabilitiesResponse ** SOAP_FMAC4 soap_get_PointerTo
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetCapabilities
-#define SOAP_TYPE_PointerTo_tds__GetCapabilities (1674)
+#define SOAP_TYPE_PointerTo_tds__GetCapabilities (1832)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetCapabilities(struct soap*, struct _tds__GetCapabilities *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetCapabilities(struct soap*, const char *, int, struct _tds__GetCapabilities *const*, const char *);
@@ -23198,7 +30427,7 @@ SOAP_FMAC3 struct _tds__GetCapabilities ** SOAP_FMAC4 soap_get_PointerTo_tds__Ge
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetWsdlUrlResponse
-#define SOAP_TYPE_PointerTo_tds__GetWsdlUrlResponse (1671)
+#define SOAP_TYPE_PointerTo_tds__GetWsdlUrlResponse (1829)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetWsdlUrlResponse(struct soap*, struct _tds__GetWsdlUrlResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetWsdlUrlResponse(struct soap*, const char *, int, struct _tds__GetWsdlUrlResponse *const*, const char *);
@@ -23217,7 +30446,7 @@ SOAP_FMAC3 struct _tds__GetWsdlUrlResponse ** SOAP_FMAC4 soap_get_PointerTo_tds_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetWsdlUrl
-#define SOAP_TYPE_PointerTo_tds__GetWsdlUrl (1670)
+#define SOAP_TYPE_PointerTo_tds__GetWsdlUrl (1828)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetWsdlUrl(struct soap*, struct _tds__GetWsdlUrl *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetWsdlUrl(struct soap*, const char *, int, struct _tds__GetWsdlUrl *const*, const char *);
@@ -23236,7 +30465,7 @@ SOAP_FMAC3 struct _tds__GetWsdlUrl ** SOAP_FMAC4 soap_get_PointerTo_tds__GetWsdl
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetUserResponse
-#define SOAP_TYPE_PointerTo_tds__SetUserResponse (1667)
+#define SOAP_TYPE_PointerTo_tds__SetUserResponse (1825)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetUserResponse(struct soap*, struct _tds__SetUserResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetUserResponse(struct soap*, const char *, int, struct _tds__SetUserResponse *const*, const char *);
@@ -23255,7 +30484,7 @@ SOAP_FMAC3 struct _tds__SetUserResponse ** SOAP_FMAC4 soap_get_PointerTo_tds__Se
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetUser
-#define SOAP_TYPE_PointerTo_tds__SetUser (1666)
+#define SOAP_TYPE_PointerTo_tds__SetUser (1824)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetUser(struct soap*, struct _tds__SetUser *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetUser(struct soap*, const char *, int, struct _tds__SetUser *const*, const char *);
@@ -23274,7 +30503,7 @@ SOAP_FMAC3 struct _tds__SetUser ** SOAP_FMAC4 soap_get_PointerTo_tds__SetUser(st
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__DeleteUsersResponse
-#define SOAP_TYPE_PointerTo_tds__DeleteUsersResponse (1663)
+#define SOAP_TYPE_PointerTo_tds__DeleteUsersResponse (1821)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__DeleteUsersResponse(struct soap*, struct _tds__DeleteUsersResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__DeleteUsersResponse(struct soap*, const char *, int, struct _tds__DeleteUsersResponse *const*, const char *);
@@ -23293,7 +30522,7 @@ SOAP_FMAC3 struct _tds__DeleteUsersResponse ** SOAP_FMAC4 soap_get_PointerTo_tds
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__DeleteUsers
-#define SOAP_TYPE_PointerTo_tds__DeleteUsers (1662)
+#define SOAP_TYPE_PointerTo_tds__DeleteUsers (1820)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__DeleteUsers(struct soap*, struct _tds__DeleteUsers *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__DeleteUsers(struct soap*, const char *, int, struct _tds__DeleteUsers *const*, const char *);
@@ -23312,7 +30541,7 @@ SOAP_FMAC3 struct _tds__DeleteUsers ** SOAP_FMAC4 soap_get_PointerTo_tds__Delete
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__CreateUsersResponse
-#define SOAP_TYPE_PointerTo_tds__CreateUsersResponse (1659)
+#define SOAP_TYPE_PointerTo_tds__CreateUsersResponse (1817)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__CreateUsersResponse(struct soap*, struct _tds__CreateUsersResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__CreateUsersResponse(struct soap*, const char *, int, struct _tds__CreateUsersResponse *const*, const char *);
@@ -23331,7 +30560,7 @@ SOAP_FMAC3 struct _tds__CreateUsersResponse ** SOAP_FMAC4 soap_get_PointerTo_tds
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__CreateUsers
-#define SOAP_TYPE_PointerTo_tds__CreateUsers (1658)
+#define SOAP_TYPE_PointerTo_tds__CreateUsers (1816)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__CreateUsers(struct soap*, struct _tds__CreateUsers *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__CreateUsers(struct soap*, const char *, int, struct _tds__CreateUsers *const*, const char *);
@@ -23350,7 +30579,7 @@ SOAP_FMAC3 struct _tds__CreateUsers ** SOAP_FMAC4 soap_get_PointerTo_tds__Create
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetUsersResponse
-#define SOAP_TYPE_PointerTo_tds__GetUsersResponse (1655)
+#define SOAP_TYPE_PointerTo_tds__GetUsersResponse (1813)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetUsersResponse(struct soap*, struct _tds__GetUsersResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetUsersResponse(struct soap*, const char *, int, struct _tds__GetUsersResponse *const*, const char *);
@@ -23369,7 +30598,7 @@ SOAP_FMAC3 struct _tds__GetUsersResponse ** SOAP_FMAC4 soap_get_PointerTo_tds__G
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetUsers
-#define SOAP_TYPE_PointerTo_tds__GetUsers (1654)
+#define SOAP_TYPE_PointerTo_tds__GetUsers (1812)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetUsers(struct soap*, struct _tds__GetUsers *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetUsers(struct soap*, const char *, int, struct _tds__GetUsers *const*, const char *);
@@ -23388,7 +30617,7 @@ SOAP_FMAC3 struct _tds__GetUsers ** SOAP_FMAC4 soap_get_PointerTo_tds__GetUsers(
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetRemoteUserResponse
-#define SOAP_TYPE_PointerTo_tds__SetRemoteUserResponse (1651)
+#define SOAP_TYPE_PointerTo_tds__SetRemoteUserResponse (1809)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetRemoteUserResponse(struct soap*, struct _tds__SetRemoteUserResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetRemoteUserResponse(struct soap*, const char *, int, struct _tds__SetRemoteUserResponse *const*, const char *);
@@ -23407,7 +30636,7 @@ SOAP_FMAC3 struct _tds__SetRemoteUserResponse ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetRemoteUser
-#define SOAP_TYPE_PointerTo_tds__SetRemoteUser (1650)
+#define SOAP_TYPE_PointerTo_tds__SetRemoteUser (1808)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetRemoteUser(struct soap*, struct _tds__SetRemoteUser *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetRemoteUser(struct soap*, const char *, int, struct _tds__SetRemoteUser *const*, const char *);
@@ -23426,7 +30655,7 @@ SOAP_FMAC3 struct _tds__SetRemoteUser ** SOAP_FMAC4 soap_get_PointerTo_tds__SetR
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetRemoteUserResponse
-#define SOAP_TYPE_PointerTo_tds__GetRemoteUserResponse (1647)
+#define SOAP_TYPE_PointerTo_tds__GetRemoteUserResponse (1805)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetRemoteUserResponse(struct soap*, struct _tds__GetRemoteUserResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetRemoteUserResponse(struct soap*, const char *, int, struct _tds__GetRemoteUserResponse *const*, const char *);
@@ -23445,7 +30674,7 @@ SOAP_FMAC3 struct _tds__GetRemoteUserResponse ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetRemoteUser
-#define SOAP_TYPE_PointerTo_tds__GetRemoteUser (1646)
+#define SOAP_TYPE_PointerTo_tds__GetRemoteUser (1804)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetRemoteUser(struct soap*, struct _tds__GetRemoteUser *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetRemoteUser(struct soap*, const char *, int, struct _tds__GetRemoteUser *const*, const char *);
@@ -23464,7 +30693,7 @@ SOAP_FMAC3 struct _tds__GetRemoteUser ** SOAP_FMAC4 soap_get_PointerTo_tds__GetR
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetEndpointReferenceResponse
-#define SOAP_TYPE_PointerTo_tds__GetEndpointReferenceResponse (1643)
+#define SOAP_TYPE_PointerTo_tds__GetEndpointReferenceResponse (1801)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetEndpointReferenceResponse(struct soap*, struct _tds__GetEndpointReferenceResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetEndpointReferenceResponse(struct soap*, const char *, int, struct _tds__GetEndpointReferenceResponse *const*, const char *);
@@ -23483,7 +30712,7 @@ SOAP_FMAC3 struct _tds__GetEndpointReferenceResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetEndpointReference
-#define SOAP_TYPE_PointerTo_tds__GetEndpointReference (1642)
+#define SOAP_TYPE_PointerTo_tds__GetEndpointReference (1800)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetEndpointReference(struct soap*, struct _tds__GetEndpointReference *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetEndpointReference(struct soap*, const char *, int, struct _tds__GetEndpointReference *const*, const char *);
@@ -23502,7 +30731,7 @@ SOAP_FMAC3 struct _tds__GetEndpointReference ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDPAddressesResponse
-#define SOAP_TYPE_PointerTo_tds__GetDPAddressesResponse (1639)
+#define SOAP_TYPE_PointerTo_tds__GetDPAddressesResponse (1797)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDPAddressesResponse(struct soap*, struct _tds__GetDPAddressesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDPAddressesResponse(struct soap*, const char *, int, struct _tds__GetDPAddressesResponse *const*, const char *);
@@ -23521,7 +30750,7 @@ SOAP_FMAC3 struct _tds__GetDPAddressesResponse ** SOAP_FMAC4 soap_get_PointerTo_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDPAddresses
-#define SOAP_TYPE_PointerTo_tds__GetDPAddresses (1638)
+#define SOAP_TYPE_PointerTo_tds__GetDPAddresses (1796)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDPAddresses(struct soap*, struct _tds__GetDPAddresses *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDPAddresses(struct soap*, const char *, int, struct _tds__GetDPAddresses *const*, const char *);
@@ -23540,7 +30769,7 @@ SOAP_FMAC3 struct _tds__GetDPAddresses ** SOAP_FMAC4 soap_get_PointerTo_tds__Get
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetRemoteDiscoveryModeResponse
-#define SOAP_TYPE_PointerTo_tds__SetRemoteDiscoveryModeResponse (1635)
+#define SOAP_TYPE_PointerTo_tds__SetRemoteDiscoveryModeResponse (1793)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetRemoteDiscoveryModeResponse(struct soap*, struct _tds__SetRemoteDiscoveryModeResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetRemoteDiscoveryModeResponse(struct soap*, const char *, int, struct _tds__SetRemoteDiscoveryModeResponse *const*, const char *);
@@ -23559,7 +30788,7 @@ SOAP_FMAC3 struct _tds__SetRemoteDiscoveryModeResponse ** SOAP_FMAC4 soap_get_Po
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetRemoteDiscoveryMode
-#define SOAP_TYPE_PointerTo_tds__SetRemoteDiscoveryMode (1634)
+#define SOAP_TYPE_PointerTo_tds__SetRemoteDiscoveryMode (1792)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetRemoteDiscoveryMode(struct soap*, struct _tds__SetRemoteDiscoveryMode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetRemoteDiscoveryMode(struct soap*, const char *, int, struct _tds__SetRemoteDiscoveryMode *const*, const char *);
@@ -23578,7 +30807,7 @@ SOAP_FMAC3 struct _tds__SetRemoteDiscoveryMode ** SOAP_FMAC4 soap_get_PointerTo_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetRemoteDiscoveryModeResponse
-#define SOAP_TYPE_PointerTo_tds__GetRemoteDiscoveryModeResponse (1631)
+#define SOAP_TYPE_PointerTo_tds__GetRemoteDiscoveryModeResponse (1789)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetRemoteDiscoveryModeResponse(struct soap*, struct _tds__GetRemoteDiscoveryModeResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetRemoteDiscoveryModeResponse(struct soap*, const char *, int, struct _tds__GetRemoteDiscoveryModeResponse *const*, const char *);
@@ -23597,7 +30826,7 @@ SOAP_FMAC3 struct _tds__GetRemoteDiscoveryModeResponse ** SOAP_FMAC4 soap_get_Po
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetRemoteDiscoveryMode
-#define SOAP_TYPE_PointerTo_tds__GetRemoteDiscoveryMode (1630)
+#define SOAP_TYPE_PointerTo_tds__GetRemoteDiscoveryMode (1788)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetRemoteDiscoveryMode(struct soap*, struct _tds__GetRemoteDiscoveryMode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetRemoteDiscoveryMode(struct soap*, const char *, int, struct _tds__GetRemoteDiscoveryMode *const*, const char *);
@@ -23616,7 +30845,7 @@ SOAP_FMAC3 struct _tds__GetRemoteDiscoveryMode ** SOAP_FMAC4 soap_get_PointerTo_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetDiscoveryModeResponse
-#define SOAP_TYPE_PointerTo_tds__SetDiscoveryModeResponse (1627)
+#define SOAP_TYPE_PointerTo_tds__SetDiscoveryModeResponse (1785)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetDiscoveryModeResponse(struct soap*, struct _tds__SetDiscoveryModeResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetDiscoveryModeResponse(struct soap*, const char *, int, struct _tds__SetDiscoveryModeResponse *const*, const char *);
@@ -23635,7 +30864,7 @@ SOAP_FMAC3 struct _tds__SetDiscoveryModeResponse ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetDiscoveryMode
-#define SOAP_TYPE_PointerTo_tds__SetDiscoveryMode (1626)
+#define SOAP_TYPE_PointerTo_tds__SetDiscoveryMode (1784)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetDiscoveryMode(struct soap*, struct _tds__SetDiscoveryMode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetDiscoveryMode(struct soap*, const char *, int, struct _tds__SetDiscoveryMode *const*, const char *);
@@ -23654,7 +30883,7 @@ SOAP_FMAC3 struct _tds__SetDiscoveryMode ** SOAP_FMAC4 soap_get_PointerTo_tds__S
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDiscoveryModeResponse
-#define SOAP_TYPE_PointerTo_tds__GetDiscoveryModeResponse (1623)
+#define SOAP_TYPE_PointerTo_tds__GetDiscoveryModeResponse (1781)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDiscoveryModeResponse(struct soap*, struct _tds__GetDiscoveryModeResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDiscoveryModeResponse(struct soap*, const char *, int, struct _tds__GetDiscoveryModeResponse *const*, const char *);
@@ -23673,7 +30902,7 @@ SOAP_FMAC3 struct _tds__GetDiscoveryModeResponse ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDiscoveryMode
-#define SOAP_TYPE_PointerTo_tds__GetDiscoveryMode (1622)
+#define SOAP_TYPE_PointerTo_tds__GetDiscoveryMode (1780)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDiscoveryMode(struct soap*, struct _tds__GetDiscoveryMode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDiscoveryMode(struct soap*, const char *, int, struct _tds__GetDiscoveryMode *const*, const char *);
@@ -23692,7 +30921,7 @@ SOAP_FMAC3 struct _tds__GetDiscoveryMode ** SOAP_FMAC4 soap_get_PointerTo_tds__G
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__RemoveScopesResponse
-#define SOAP_TYPE_PointerTo_tds__RemoveScopesResponse (1619)
+#define SOAP_TYPE_PointerTo_tds__RemoveScopesResponse (1777)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__RemoveScopesResponse(struct soap*, struct _tds__RemoveScopesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__RemoveScopesResponse(struct soap*, const char *, int, struct _tds__RemoveScopesResponse *const*, const char *);
@@ -23711,7 +30940,7 @@ SOAP_FMAC3 struct _tds__RemoveScopesResponse ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__RemoveScopes
-#define SOAP_TYPE_PointerTo_tds__RemoveScopes (1618)
+#define SOAP_TYPE_PointerTo_tds__RemoveScopes (1776)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__RemoveScopes(struct soap*, struct _tds__RemoveScopes *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__RemoveScopes(struct soap*, const char *, int, struct _tds__RemoveScopes *const*, const char *);
@@ -23730,7 +30959,7 @@ SOAP_FMAC3 struct _tds__RemoveScopes ** SOAP_FMAC4 soap_get_PointerTo_tds__Remov
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__AddScopesResponse
-#define SOAP_TYPE_PointerTo_tds__AddScopesResponse (1615)
+#define SOAP_TYPE_PointerTo_tds__AddScopesResponse (1773)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__AddScopesResponse(struct soap*, struct _tds__AddScopesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__AddScopesResponse(struct soap*, const char *, int, struct _tds__AddScopesResponse *const*, const char *);
@@ -23749,7 +30978,7 @@ SOAP_FMAC3 struct _tds__AddScopesResponse ** SOAP_FMAC4 soap_get_PointerTo_tds__
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__AddScopes
-#define SOAP_TYPE_PointerTo_tds__AddScopes (1614)
+#define SOAP_TYPE_PointerTo_tds__AddScopes (1772)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__AddScopes(struct soap*, struct _tds__AddScopes *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__AddScopes(struct soap*, const char *, int, struct _tds__AddScopes *const*, const char *);
@@ -23768,7 +30997,7 @@ SOAP_FMAC3 struct _tds__AddScopes ** SOAP_FMAC4 soap_get_PointerTo_tds__AddScope
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetScopesResponse
-#define SOAP_TYPE_PointerTo_tds__SetScopesResponse (1611)
+#define SOAP_TYPE_PointerTo_tds__SetScopesResponse (1769)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetScopesResponse(struct soap*, struct _tds__SetScopesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetScopesResponse(struct soap*, const char *, int, struct _tds__SetScopesResponse *const*, const char *);
@@ -23787,7 +31016,7 @@ SOAP_FMAC3 struct _tds__SetScopesResponse ** SOAP_FMAC4 soap_get_PointerTo_tds__
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetScopes
-#define SOAP_TYPE_PointerTo_tds__SetScopes (1610)
+#define SOAP_TYPE_PointerTo_tds__SetScopes (1768)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetScopes(struct soap*, struct _tds__SetScopes *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetScopes(struct soap*, const char *, int, struct _tds__SetScopes *const*, const char *);
@@ -23806,7 +31035,7 @@ SOAP_FMAC3 struct _tds__SetScopes ** SOAP_FMAC4 soap_get_PointerTo_tds__SetScope
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetScopesResponse
-#define SOAP_TYPE_PointerTo_tds__GetScopesResponse (1607)
+#define SOAP_TYPE_PointerTo_tds__GetScopesResponse (1765)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetScopesResponse(struct soap*, struct _tds__GetScopesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetScopesResponse(struct soap*, const char *, int, struct _tds__GetScopesResponse *const*, const char *);
@@ -23825,7 +31054,7 @@ SOAP_FMAC3 struct _tds__GetScopesResponse ** SOAP_FMAC4 soap_get_PointerTo_tds__
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetScopes
-#define SOAP_TYPE_PointerTo_tds__GetScopes (1606)
+#define SOAP_TYPE_PointerTo_tds__GetScopes (1764)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetScopes(struct soap*, struct _tds__GetScopes *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetScopes(struct soap*, const char *, int, struct _tds__GetScopes *const*, const char *);
@@ -23844,7 +31073,7 @@ SOAP_FMAC3 struct _tds__GetScopes ** SOAP_FMAC4 soap_get_PointerTo_tds__GetScope
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetSystemSupportInformationResponse
-#define SOAP_TYPE_PointerTo_tds__GetSystemSupportInformationResponse (1603)
+#define SOAP_TYPE_PointerTo_tds__GetSystemSupportInformationResponse (1761)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetSystemSupportInformationResponse(struct soap*, struct _tds__GetSystemSupportInformationResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetSystemSupportInformationResponse(struct soap*, const char *, int, struct _tds__GetSystemSupportInformationResponse *const*, const char *);
@@ -23863,7 +31092,7 @@ SOAP_FMAC3 struct _tds__GetSystemSupportInformationResponse ** SOAP_FMAC4 soap_g
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetSystemSupportInformation
-#define SOAP_TYPE_PointerTo_tds__GetSystemSupportInformation (1602)
+#define SOAP_TYPE_PointerTo_tds__GetSystemSupportInformation (1760)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetSystemSupportInformation(struct soap*, struct _tds__GetSystemSupportInformation *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetSystemSupportInformation(struct soap*, const char *, int, struct _tds__GetSystemSupportInformation *const*, const char *);
@@ -23882,7 +31111,7 @@ SOAP_FMAC3 struct _tds__GetSystemSupportInformation ** SOAP_FMAC4 soap_get_Point
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetSystemLogResponse
-#define SOAP_TYPE_PointerTo_tds__GetSystemLogResponse (1599)
+#define SOAP_TYPE_PointerTo_tds__GetSystemLogResponse (1757)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetSystemLogResponse(struct soap*, struct _tds__GetSystemLogResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetSystemLogResponse(struct soap*, const char *, int, struct _tds__GetSystemLogResponse *const*, const char *);
@@ -23901,7 +31130,7 @@ SOAP_FMAC3 struct _tds__GetSystemLogResponse ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetSystemLog
-#define SOAP_TYPE_PointerTo_tds__GetSystemLog (1598)
+#define SOAP_TYPE_PointerTo_tds__GetSystemLog (1756)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetSystemLog(struct soap*, struct _tds__GetSystemLog *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetSystemLog(struct soap*, const char *, int, struct _tds__GetSystemLog *const*, const char *);
@@ -23920,7 +31149,7 @@ SOAP_FMAC3 struct _tds__GetSystemLog ** SOAP_FMAC4 soap_get_PointerTo_tds__GetSy
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetSystemBackupResponse
-#define SOAP_TYPE_PointerTo_tds__GetSystemBackupResponse (1595)
+#define SOAP_TYPE_PointerTo_tds__GetSystemBackupResponse (1753)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetSystemBackupResponse(struct soap*, struct _tds__GetSystemBackupResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetSystemBackupResponse(struct soap*, const char *, int, struct _tds__GetSystemBackupResponse *const*, const char *);
@@ -23939,7 +31168,7 @@ SOAP_FMAC3 struct _tds__GetSystemBackupResponse ** SOAP_FMAC4 soap_get_PointerTo
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetSystemBackup
-#define SOAP_TYPE_PointerTo_tds__GetSystemBackup (1594)
+#define SOAP_TYPE_PointerTo_tds__GetSystemBackup (1752)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetSystemBackup(struct soap*, struct _tds__GetSystemBackup *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetSystemBackup(struct soap*, const char *, int, struct _tds__GetSystemBackup *const*, const char *);
@@ -23958,7 +31187,7 @@ SOAP_FMAC3 struct _tds__GetSystemBackup ** SOAP_FMAC4 soap_get_PointerTo_tds__Ge
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__RestoreSystemResponse
-#define SOAP_TYPE_PointerTo_tds__RestoreSystemResponse (1591)
+#define SOAP_TYPE_PointerTo_tds__RestoreSystemResponse (1749)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__RestoreSystemResponse(struct soap*, struct _tds__RestoreSystemResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__RestoreSystemResponse(struct soap*, const char *, int, struct _tds__RestoreSystemResponse *const*, const char *);
@@ -23977,7 +31206,7 @@ SOAP_FMAC3 struct _tds__RestoreSystemResponse ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__RestoreSystem
-#define SOAP_TYPE_PointerTo_tds__RestoreSystem (1590)
+#define SOAP_TYPE_PointerTo_tds__RestoreSystem (1748)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__RestoreSystem(struct soap*, struct _tds__RestoreSystem *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__RestoreSystem(struct soap*, const char *, int, struct _tds__RestoreSystem *const*, const char *);
@@ -23996,7 +31225,7 @@ SOAP_FMAC3 struct _tds__RestoreSystem ** SOAP_FMAC4 soap_get_PointerTo_tds__Rest
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SystemRebootResponse
-#define SOAP_TYPE_PointerTo_tds__SystemRebootResponse (1587)
+#define SOAP_TYPE_PointerTo_tds__SystemRebootResponse (1745)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SystemRebootResponse(struct soap*, struct _tds__SystemRebootResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SystemRebootResponse(struct soap*, const char *, int, struct _tds__SystemRebootResponse *const*, const char *);
@@ -24015,7 +31244,7 @@ SOAP_FMAC3 struct _tds__SystemRebootResponse ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SystemReboot
-#define SOAP_TYPE_PointerTo_tds__SystemReboot (1586)
+#define SOAP_TYPE_PointerTo_tds__SystemReboot (1744)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SystemReboot(struct soap*, struct _tds__SystemReboot *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SystemReboot(struct soap*, const char *, int, struct _tds__SystemReboot *const*, const char *);
@@ -24034,7 +31263,7 @@ SOAP_FMAC3 struct _tds__SystemReboot ** SOAP_FMAC4 soap_get_PointerTo_tds__Syste
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__UpgradeSystemFirmwareResponse
-#define SOAP_TYPE_PointerTo_tds__UpgradeSystemFirmwareResponse (1583)
+#define SOAP_TYPE_PointerTo_tds__UpgradeSystemFirmwareResponse (1741)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__UpgradeSystemFirmwareResponse(struct soap*, struct _tds__UpgradeSystemFirmwareResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__UpgradeSystemFirmwareResponse(struct soap*, const char *, int, struct _tds__UpgradeSystemFirmwareResponse *const*, const char *);
@@ -24053,7 +31282,7 @@ SOAP_FMAC3 struct _tds__UpgradeSystemFirmwareResponse ** SOAP_FMAC4 soap_get_Poi
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__UpgradeSystemFirmware
-#define SOAP_TYPE_PointerTo_tds__UpgradeSystemFirmware (1582)
+#define SOAP_TYPE_PointerTo_tds__UpgradeSystemFirmware (1740)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__UpgradeSystemFirmware(struct soap*, struct _tds__UpgradeSystemFirmware *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__UpgradeSystemFirmware(struct soap*, const char *, int, struct _tds__UpgradeSystemFirmware *const*, const char *);
@@ -24072,7 +31301,7 @@ SOAP_FMAC3 struct _tds__UpgradeSystemFirmware ** SOAP_FMAC4 soap_get_PointerTo_t
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetSystemFactoryDefaultResponse
-#define SOAP_TYPE_PointerTo_tds__SetSystemFactoryDefaultResponse (1579)
+#define SOAP_TYPE_PointerTo_tds__SetSystemFactoryDefaultResponse (1737)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetSystemFactoryDefaultResponse(struct soap*, struct _tds__SetSystemFactoryDefaultResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetSystemFactoryDefaultResponse(struct soap*, const char *, int, struct _tds__SetSystemFactoryDefaultResponse *const*, const char *);
@@ -24091,7 +31320,7 @@ SOAP_FMAC3 struct _tds__SetSystemFactoryDefaultResponse ** SOAP_FMAC4 soap_get_P
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetSystemFactoryDefault
-#define SOAP_TYPE_PointerTo_tds__SetSystemFactoryDefault (1578)
+#define SOAP_TYPE_PointerTo_tds__SetSystemFactoryDefault (1736)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetSystemFactoryDefault(struct soap*, struct _tds__SetSystemFactoryDefault *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetSystemFactoryDefault(struct soap*, const char *, int, struct _tds__SetSystemFactoryDefault *const*, const char *);
@@ -24110,7 +31339,7 @@ SOAP_FMAC3 struct _tds__SetSystemFactoryDefault ** SOAP_FMAC4 soap_get_PointerTo
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetSystemDateAndTimeResponse
-#define SOAP_TYPE_PointerTo_tds__GetSystemDateAndTimeResponse (1575)
+#define SOAP_TYPE_PointerTo_tds__GetSystemDateAndTimeResponse (1733)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetSystemDateAndTimeResponse(struct soap*, struct _tds__GetSystemDateAndTimeResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetSystemDateAndTimeResponse(struct soap*, const char *, int, struct _tds__GetSystemDateAndTimeResponse *const*, const char *);
@@ -24129,7 +31358,7 @@ SOAP_FMAC3 struct _tds__GetSystemDateAndTimeResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetSystemDateAndTime
-#define SOAP_TYPE_PointerTo_tds__GetSystemDateAndTime (1574)
+#define SOAP_TYPE_PointerTo_tds__GetSystemDateAndTime (1732)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetSystemDateAndTime(struct soap*, struct _tds__GetSystemDateAndTime *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetSystemDateAndTime(struct soap*, const char *, int, struct _tds__GetSystemDateAndTime *const*, const char *);
@@ -24148,7 +31377,7 @@ SOAP_FMAC3 struct _tds__GetSystemDateAndTime ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetSystemDateAndTimeResponse
-#define SOAP_TYPE_PointerTo_tds__SetSystemDateAndTimeResponse (1571)
+#define SOAP_TYPE_PointerTo_tds__SetSystemDateAndTimeResponse (1729)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetSystemDateAndTimeResponse(struct soap*, struct _tds__SetSystemDateAndTimeResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetSystemDateAndTimeResponse(struct soap*, const char *, int, struct _tds__SetSystemDateAndTimeResponse *const*, const char *);
@@ -24167,7 +31396,7 @@ SOAP_FMAC3 struct _tds__SetSystemDateAndTimeResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__SetSystemDateAndTime
-#define SOAP_TYPE_PointerTo_tds__SetSystemDateAndTime (1570)
+#define SOAP_TYPE_PointerTo_tds__SetSystemDateAndTime (1728)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetSystemDateAndTime(struct soap*, struct _tds__SetSystemDateAndTime *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__SetSystemDateAndTime(struct soap*, const char *, int, struct _tds__SetSystemDateAndTime *const*, const char *);
@@ -24186,7 +31415,7 @@ SOAP_FMAC3 struct _tds__SetSystemDateAndTime ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDeviceInformationResponse
-#define SOAP_TYPE_PointerTo_tds__GetDeviceInformationResponse (1567)
+#define SOAP_TYPE_PointerTo_tds__GetDeviceInformationResponse (1725)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDeviceInformationResponse(struct soap*, struct _tds__GetDeviceInformationResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDeviceInformationResponse(struct soap*, const char *, int, struct _tds__GetDeviceInformationResponse *const*, const char *);
@@ -24205,7 +31434,7 @@ SOAP_FMAC3 struct _tds__GetDeviceInformationResponse ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetDeviceInformation
-#define SOAP_TYPE_PointerTo_tds__GetDeviceInformation (1566)
+#define SOAP_TYPE_PointerTo_tds__GetDeviceInformation (1724)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetDeviceInformation(struct soap*, struct _tds__GetDeviceInformation *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetDeviceInformation(struct soap*, const char *, int, struct _tds__GetDeviceInformation *const*, const char *);
@@ -24224,7 +31453,7 @@ SOAP_FMAC3 struct _tds__GetDeviceInformation ** SOAP_FMAC4 soap_get_PointerTo_td
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetServiceCapabilitiesResponse
-#define SOAP_TYPE_PointerTo_tds__GetServiceCapabilitiesResponse (1563)
+#define SOAP_TYPE_PointerTo_tds__GetServiceCapabilitiesResponse (1721)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetServiceCapabilitiesResponse(struct soap*, struct _tds__GetServiceCapabilitiesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetServiceCapabilitiesResponse(struct soap*, const char *, int, struct _tds__GetServiceCapabilitiesResponse *const*, const char *);
@@ -24243,7 +31472,7 @@ SOAP_FMAC3 struct _tds__GetServiceCapabilitiesResponse ** SOAP_FMAC4 soap_get_Po
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetServiceCapabilities
-#define SOAP_TYPE_PointerTo_tds__GetServiceCapabilities (1562)
+#define SOAP_TYPE_PointerTo_tds__GetServiceCapabilities (1720)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetServiceCapabilities(struct soap*, struct _tds__GetServiceCapabilities *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetServiceCapabilities(struct soap*, const char *, int, struct _tds__GetServiceCapabilities *const*, const char *);
@@ -24262,7 +31491,7 @@ SOAP_FMAC3 struct _tds__GetServiceCapabilities ** SOAP_FMAC4 soap_get_PointerTo_
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetServicesResponse
-#define SOAP_TYPE_PointerTo_tds__GetServicesResponse (1559)
+#define SOAP_TYPE_PointerTo_tds__GetServicesResponse (1717)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetServicesResponse(struct soap*, struct _tds__GetServicesResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetServicesResponse(struct soap*, const char *, int, struct _tds__GetServicesResponse *const*, const char *);
@@ -24281,7 +31510,7 @@ SOAP_FMAC3 struct _tds__GetServicesResponse ** SOAP_FMAC4 soap_get_PointerTo_tds
 
 
 #ifndef SOAP_TYPE_PointerTo_tds__GetServices
-#define SOAP_TYPE_PointerTo_tds__GetServices (1558)
+#define SOAP_TYPE_PointerTo_tds__GetServices (1716)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__GetServices(struct soap*, struct _tds__GetServices *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_tds__GetServices(struct soap*, const char *, int, struct _tds__GetServices *const*, const char *);
@@ -24300,7 +31529,7 @@ SOAP_FMAC3 struct _tds__GetServices ** SOAP_FMAC4 soap_get_PointerTo_tds__GetSer
 
 
 #ifndef SOAP_TYPE_PointerTo_wstop__TopicNamespaceType_Topic
-#define SOAP_TYPE_PointerTo_wstop__TopicNamespaceType_Topic (1551)
+#define SOAP_TYPE_PointerTo_wstop__TopicNamespaceType_Topic (1709)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wstop__TopicNamespaceType_Topic(struct soap*, struct _wstop__TopicNamespaceType_Topic *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wstop__TopicNamespaceType_Topic(struct soap*, const char *, int, struct _wstop__TopicNamespaceType_Topic *const*, const char *);
@@ -24319,7 +31548,7 @@ SOAP_FMAC3 struct _wstop__TopicNamespaceType_Topic ** SOAP_FMAC4 soap_get_Pointe
 
 
 #ifndef SOAP_TYPE_PointerTowstop__TopicType
-#define SOAP_TYPE_PointerTowstop__TopicType (1550)
+#define SOAP_TYPE_PointerTowstop__TopicType (1708)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTowstop__TopicType(struct soap*, struct wstop__TopicType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTowstop__TopicType(struct soap*, const char *, int, struct wstop__TopicType *const*, const char *);
@@ -24338,7 +31567,7 @@ SOAP_FMAC3 struct wstop__TopicType ** SOAP_FMAC4 soap_get_PointerTowstop__TopicT
 
 
 #ifndef SOAP_TYPE_PointerTowstop__QueryExpressionType
-#define SOAP_TYPE_PointerTowstop__QueryExpressionType (1548)
+#define SOAP_TYPE_PointerTowstop__QueryExpressionType (1706)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTowstop__QueryExpressionType(struct soap*, struct wstop__QueryExpressionType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTowstop__QueryExpressionType(struct soap*, const char *, int, struct wstop__QueryExpressionType *const*, const char *);
@@ -24357,7 +31586,7 @@ SOAP_FMAC3 struct wstop__QueryExpressionType ** SOAP_FMAC4 soap_get_PointerTowst
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__ResumeFailedFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__ResumeFailedFaultType_FaultCause (1545)
+#define SOAP_TYPE_PointerTo_wsnt__ResumeFailedFaultType_FaultCause (1703)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__ResumeFailedFaultType_FaultCause(struct soap*, struct _wsnt__ResumeFailedFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__ResumeFailedFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__ResumeFailedFaultType_FaultCause *const*, const char *);
@@ -24376,7 +31605,7 @@ SOAP_FMAC3 struct _wsnt__ResumeFailedFaultType_FaultCause ** SOAP_FMAC4 soap_get
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__ResumeFailedFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__ResumeFailedFaultType_Description (1543)
+#define SOAP_TYPE_PointerTo_wsnt__ResumeFailedFaultType_Description (1701)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__ResumeFailedFaultType_Description(struct soap*, struct _wsnt__ResumeFailedFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__ResumeFailedFaultType_Description(struct soap*, const char *, int, struct _wsnt__ResumeFailedFaultType_Description *const*, const char *);
@@ -24395,7 +31624,7 @@ SOAP_FMAC3 struct _wsnt__ResumeFailedFaultType_Description ** SOAP_FMAC4 soap_ge
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__ResumeFailedFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__ResumeFailedFaultType_ErrorCode (1541)
+#define SOAP_TYPE_PointerTo_wsnt__ResumeFailedFaultType_ErrorCode (1699)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__ResumeFailedFaultType_ErrorCode(struct soap*, struct _wsnt__ResumeFailedFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__ResumeFailedFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__ResumeFailedFaultType_ErrorCode *const*, const char *);
@@ -24414,7 +31643,7 @@ SOAP_FMAC3 struct _wsnt__ResumeFailedFaultType_ErrorCode ** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__PauseFailedFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__PauseFailedFaultType_FaultCause (1538)
+#define SOAP_TYPE_PointerTo_wsnt__PauseFailedFaultType_FaultCause (1696)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__PauseFailedFaultType_FaultCause(struct soap*, struct _wsnt__PauseFailedFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__PauseFailedFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__PauseFailedFaultType_FaultCause *const*, const char *);
@@ -24433,7 +31662,7 @@ SOAP_FMAC3 struct _wsnt__PauseFailedFaultType_FaultCause ** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__PauseFailedFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__PauseFailedFaultType_Description (1536)
+#define SOAP_TYPE_PointerTo_wsnt__PauseFailedFaultType_Description (1694)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__PauseFailedFaultType_Description(struct soap*, struct _wsnt__PauseFailedFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__PauseFailedFaultType_Description(struct soap*, const char *, int, struct _wsnt__PauseFailedFaultType_Description *const*, const char *);
@@ -24452,7 +31681,7 @@ SOAP_FMAC3 struct _wsnt__PauseFailedFaultType_Description ** SOAP_FMAC4 soap_get
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__PauseFailedFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__PauseFailedFaultType_ErrorCode (1534)
+#define SOAP_TYPE_PointerTo_wsnt__PauseFailedFaultType_ErrorCode (1692)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__PauseFailedFaultType_ErrorCode(struct soap*, struct _wsnt__PauseFailedFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__PauseFailedFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__PauseFailedFaultType_ErrorCode *const*, const char *);
@@ -24471,7 +31700,7 @@ SOAP_FMAC3 struct _wsnt__PauseFailedFaultType_ErrorCode ** SOAP_FMAC4 soap_get_P
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_FaultCause (1531)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_FaultCause (1689)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_FaultCause(struct soap*, struct _wsnt__UnableToDestroySubscriptionFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__UnableToDestroySubscriptionFaultType_FaultCause *const*, const char *);
@@ -24490,7 +31719,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroySubscriptionFaultType_FaultCause ** SOAP
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_Description (1529)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_Description (1687)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_Description(struct soap*, struct _wsnt__UnableToDestroySubscriptionFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_Description(struct soap*, const char *, int, struct _wsnt__UnableToDestroySubscriptionFaultType_Description *const*, const char *);
@@ -24509,7 +31738,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroySubscriptionFaultType_Description ** SOA
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_ErrorCode (1527)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_ErrorCode (1685)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_ErrorCode(struct soap*, struct _wsnt__UnableToDestroySubscriptionFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToDestroySubscriptionFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__UnableToDestroySubscriptionFaultType_ErrorCode *const*, const char *);
@@ -24528,7 +31757,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroySubscriptionFaultType_ErrorCode ** SOAP_
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_FaultCause (1524)
+#define SOAP_TYPE_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_FaultCause (1682)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_FaultCause(struct soap*, struct _wsnt__UnacceptableTerminationTimeFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__UnacceptableTerminationTimeFaultType_FaultCause *const*, const char *);
@@ -24547,7 +31776,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableTerminationTimeFaultType_FaultCause ** SOAP
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_Description (1522)
+#define SOAP_TYPE_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_Description (1680)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_Description(struct soap*, struct _wsnt__UnacceptableTerminationTimeFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_Description(struct soap*, const char *, int, struct _wsnt__UnacceptableTerminationTimeFaultType_Description *const*, const char *);
@@ -24566,7 +31795,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableTerminationTimeFaultType_Description ** SOA
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_ErrorCode (1520)
+#define SOAP_TYPE_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_ErrorCode (1678)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_ErrorCode(struct soap*, struct _wsnt__UnacceptableTerminationTimeFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnacceptableTerminationTimeFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__UnacceptableTerminationTimeFaultType_ErrorCode *const*, const char *);
@@ -24585,7 +31814,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableTerminationTimeFaultType_ErrorCode ** SOAP_
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToCreatePullPointFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__UnableToCreatePullPointFaultType_FaultCause (1517)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToCreatePullPointFaultType_FaultCause (1675)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToCreatePullPointFaultType_FaultCause(struct soap*, struct _wsnt__UnableToCreatePullPointFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToCreatePullPointFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__UnableToCreatePullPointFaultType_FaultCause *const*, const char *);
@@ -24604,7 +31833,7 @@ SOAP_FMAC3 struct _wsnt__UnableToCreatePullPointFaultType_FaultCause ** SOAP_FMA
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToCreatePullPointFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__UnableToCreatePullPointFaultType_Description (1515)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToCreatePullPointFaultType_Description (1673)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToCreatePullPointFaultType_Description(struct soap*, struct _wsnt__UnableToCreatePullPointFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToCreatePullPointFaultType_Description(struct soap*, const char *, int, struct _wsnt__UnableToCreatePullPointFaultType_Description *const*, const char *);
@@ -24623,7 +31852,7 @@ SOAP_FMAC3 struct _wsnt__UnableToCreatePullPointFaultType_Description ** SOAP_FM
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToCreatePullPointFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__UnableToCreatePullPointFaultType_ErrorCode (1513)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToCreatePullPointFaultType_ErrorCode (1671)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToCreatePullPointFaultType_ErrorCode(struct soap*, struct _wsnt__UnableToCreatePullPointFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToCreatePullPointFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__UnableToCreatePullPointFaultType_ErrorCode *const*, const char *);
@@ -24642,7 +31871,7 @@ SOAP_FMAC3 struct _wsnt__UnableToCreatePullPointFaultType_ErrorCode ** SOAP_FMAC
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToDestroyPullPointFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroyPullPointFaultType_FaultCause (1510)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroyPullPointFaultType_FaultCause (1668)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToDestroyPullPointFaultType_FaultCause(struct soap*, struct _wsnt__UnableToDestroyPullPointFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToDestroyPullPointFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__UnableToDestroyPullPointFaultType_FaultCause *const*, const char *);
@@ -24661,7 +31890,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroyPullPointFaultType_FaultCause ** SOAP_FM
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToDestroyPullPointFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroyPullPointFaultType_Description (1508)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroyPullPointFaultType_Description (1666)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToDestroyPullPointFaultType_Description(struct soap*, struct _wsnt__UnableToDestroyPullPointFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToDestroyPullPointFaultType_Description(struct soap*, const char *, int, struct _wsnt__UnableToDestroyPullPointFaultType_Description *const*, const char *);
@@ -24680,7 +31909,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroyPullPointFaultType_Description ** SOAP_F
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToDestroyPullPointFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroyPullPointFaultType_ErrorCode (1506)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToDestroyPullPointFaultType_ErrorCode (1664)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToDestroyPullPointFaultType_ErrorCode(struct soap*, struct _wsnt__UnableToDestroyPullPointFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToDestroyPullPointFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__UnableToDestroyPullPointFaultType_ErrorCode *const*, const char *);
@@ -24699,7 +31928,7 @@ SOAP_FMAC3 struct _wsnt__UnableToDestroyPullPointFaultType_ErrorCode ** SOAP_FMA
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToGetMessagesFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__UnableToGetMessagesFaultType_FaultCause (1503)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToGetMessagesFaultType_FaultCause (1661)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToGetMessagesFaultType_FaultCause(struct soap*, struct _wsnt__UnableToGetMessagesFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToGetMessagesFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__UnableToGetMessagesFaultType_FaultCause *const*, const char *);
@@ -24718,7 +31947,7 @@ SOAP_FMAC3 struct _wsnt__UnableToGetMessagesFaultType_FaultCause ** SOAP_FMAC4 s
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToGetMessagesFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__UnableToGetMessagesFaultType_Description (1501)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToGetMessagesFaultType_Description (1659)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToGetMessagesFaultType_Description(struct soap*, struct _wsnt__UnableToGetMessagesFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToGetMessagesFaultType_Description(struct soap*, const char *, int, struct _wsnt__UnableToGetMessagesFaultType_Description *const*, const char *);
@@ -24737,7 +31966,7 @@ SOAP_FMAC3 struct _wsnt__UnableToGetMessagesFaultType_Description ** SOAP_FMAC4 
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnableToGetMessagesFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__UnableToGetMessagesFaultType_ErrorCode (1499)
+#define SOAP_TYPE_PointerTo_wsnt__UnableToGetMessagesFaultType_ErrorCode (1657)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnableToGetMessagesFaultType_ErrorCode(struct soap*, struct _wsnt__UnableToGetMessagesFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnableToGetMessagesFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__UnableToGetMessagesFaultType_ErrorCode *const*, const char *);
@@ -24756,7 +31985,7 @@ SOAP_FMAC3 struct _wsnt__UnableToGetMessagesFaultType_ErrorCode ** SOAP_FMAC4 so
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_FaultCause (1496)
+#define SOAP_TYPE_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_FaultCause (1654)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_FaultCause(struct soap*, struct _wsnt__NoCurrentMessageOnTopicFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__NoCurrentMessageOnTopicFaultType_FaultCause *const*, const char *);
@@ -24775,7 +32004,7 @@ SOAP_FMAC3 struct _wsnt__NoCurrentMessageOnTopicFaultType_FaultCause ** SOAP_FMA
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_Description (1494)
+#define SOAP_TYPE_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_Description (1652)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_Description(struct soap*, struct _wsnt__NoCurrentMessageOnTopicFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_Description(struct soap*, const char *, int, struct _wsnt__NoCurrentMessageOnTopicFaultType_Description *const*, const char *);
@@ -24794,7 +32023,7 @@ SOAP_FMAC3 struct _wsnt__NoCurrentMessageOnTopicFaultType_Description ** SOAP_FM
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode (1492)
+#define SOAP_TYPE_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode (1650)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode(struct soap*, struct _wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode *const*, const char *);
@@ -24813,7 +32042,7 @@ SOAP_FMAC3 struct _wsnt__NoCurrentMessageOnTopicFaultType_ErrorCode ** SOAP_FMAC
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause (1489)
+#define SOAP_TYPE_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause (1647)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause(struct soap*, struct _wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause *const*, const char *);
@@ -24832,7 +32061,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableInitialTerminationTimeFaultType_FaultCause 
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_Description (1487)
+#define SOAP_TYPE_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_Description (1645)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_Description(struct soap*, struct _wsnt__UnacceptableInitialTerminationTimeFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_Description(struct soap*, const char *, int, struct _wsnt__UnacceptableInitialTerminationTimeFaultType_Description *const*, const char *);
@@ -24851,7 +32080,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableInitialTerminationTimeFaultType_Description
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode (1485)
+#define SOAP_TYPE_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode (1643)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode(struct soap*, struct _wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode *const*, const char *);
@@ -24870,7 +32099,7 @@ SOAP_FMAC3 struct _wsnt__UnacceptableInitialTerminationTimeFaultType_ErrorCode *
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_FaultCause (1482)
+#define SOAP_TYPE_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_FaultCause (1640)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_FaultCause(struct soap*, struct _wsnt__NotifyMessageNotSupportedFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__NotifyMessageNotSupportedFaultType_FaultCause *const*, const char *);
@@ -24889,7 +32118,7 @@ SOAP_FMAC3 struct _wsnt__NotifyMessageNotSupportedFaultType_FaultCause ** SOAP_F
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_Description (1480)
+#define SOAP_TYPE_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_Description (1638)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_Description(struct soap*, struct _wsnt__NotifyMessageNotSupportedFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_Description(struct soap*, const char *, int, struct _wsnt__NotifyMessageNotSupportedFaultType_Description *const*, const char *);
@@ -24908,7 +32137,7 @@ SOAP_FMAC3 struct _wsnt__NotifyMessageNotSupportedFaultType_Description ** SOAP_
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_ErrorCode (1478)
+#define SOAP_TYPE_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_ErrorCode (1636)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_ErrorCode(struct soap*, struct _wsnt__NotifyMessageNotSupportedFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__NotifyMessageNotSupportedFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__NotifyMessageNotSupportedFaultType_ErrorCode *const*, const char *);
@@ -24927,7 +32156,7 @@ SOAP_FMAC3 struct _wsnt__NotifyMessageNotSupportedFaultType_ErrorCode ** SOAP_FM
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_FaultCause (1475)
+#define SOAP_TYPE_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_FaultCause (1633)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_FaultCause(struct soap*, struct _wsnt__UnsupportedPolicyRequestFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__UnsupportedPolicyRequestFaultType_FaultCause *const*, const char *);
@@ -24946,7 +32175,7 @@ SOAP_FMAC3 struct _wsnt__UnsupportedPolicyRequestFaultType_FaultCause ** SOAP_FM
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_Description (1473)
+#define SOAP_TYPE_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_Description (1631)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_Description(struct soap*, struct _wsnt__UnsupportedPolicyRequestFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_Description(struct soap*, const char *, int, struct _wsnt__UnsupportedPolicyRequestFaultType_Description *const*, const char *);
@@ -24965,7 +32194,7 @@ SOAP_FMAC3 struct _wsnt__UnsupportedPolicyRequestFaultType_Description ** SOAP_F
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_ErrorCode (1471)
+#define SOAP_TYPE_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_ErrorCode (1629)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_ErrorCode(struct soap*, struct _wsnt__UnsupportedPolicyRequestFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnsupportedPolicyRequestFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__UnsupportedPolicyRequestFaultType_ErrorCode *const*, const char *);
@@ -24984,7 +32213,7 @@ SOAP_FMAC3 struct _wsnt__UnsupportedPolicyRequestFaultType_ErrorCode ** SOAP_FMA
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_FaultCause (1468)
+#define SOAP_TYPE_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_FaultCause (1626)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_FaultCause(struct soap*, struct _wsnt__UnrecognizedPolicyRequestFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__UnrecognizedPolicyRequestFaultType_FaultCause *const*, const char *);
@@ -25003,7 +32232,7 @@ SOAP_FMAC3 struct _wsnt__UnrecognizedPolicyRequestFaultType_FaultCause ** SOAP_F
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_Description (1466)
+#define SOAP_TYPE_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_Description (1624)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_Description(struct soap*, struct _wsnt__UnrecognizedPolicyRequestFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_Description(struct soap*, const char *, int, struct _wsnt__UnrecognizedPolicyRequestFaultType_Description *const*, const char *);
@@ -25022,7 +32251,7 @@ SOAP_FMAC3 struct _wsnt__UnrecognizedPolicyRequestFaultType_Description ** SOAP_
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode (1464)
+#define SOAP_TYPE_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode (1622)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode(struct soap*, struct _wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode *const*, const char *);
@@ -25041,7 +32270,7 @@ SOAP_FMAC3 struct _wsnt__UnrecognizedPolicyRequestFaultType_ErrorCode ** SOAP_FM
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_FaultCause (1461)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_FaultCause (1619)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_FaultCause(struct soap*, struct _wsnt__InvalidMessageContentExpressionFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__InvalidMessageContentExpressionFaultType_FaultCause *const*, const char *);
@@ -25060,7 +32289,7 @@ SOAP_FMAC3 struct _wsnt__InvalidMessageContentExpressionFaultType_FaultCause ** 
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_Description (1459)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_Description (1617)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_Description(struct soap*, struct _wsnt__InvalidMessageContentExpressionFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_Description(struct soap*, const char *, int, struct _wsnt__InvalidMessageContentExpressionFaultType_Description *const*, const char *);
@@ -25079,7 +32308,7 @@ SOAP_FMAC3 struct _wsnt__InvalidMessageContentExpressionFaultType_Description **
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_ErrorCode (1457)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_ErrorCode (1615)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_ErrorCode(struct soap*, struct _wsnt__InvalidMessageContentExpressionFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidMessageContentExpressionFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__InvalidMessageContentExpressionFaultType_ErrorCode *const*, const char *);
@@ -25098,7 +32327,7 @@ SOAP_FMAC3 struct _wsnt__InvalidMessageContentExpressionFaultType_ErrorCode ** S
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause (1454)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause (1612)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause(struct soap*, struct _wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause *const*, const char *);
@@ -25117,7 +32346,7 @@ SOAP_FMAC3 struct _wsnt__InvalidProducerPropertiesExpressionFaultType_FaultCause
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_Description (1452)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_Description (1610)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_Description(struct soap*, struct _wsnt__InvalidProducerPropertiesExpressionFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_Description(struct soap*, const char *, int, struct _wsnt__InvalidProducerPropertiesExpressionFaultType_Description *const*, const char *);
@@ -25136,7 +32365,7 @@ SOAP_FMAC3 struct _wsnt__InvalidProducerPropertiesExpressionFaultType_Descriptio
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode (1450)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode (1608)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode(struct soap*, struct _wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode *const*, const char *);
@@ -25155,7 +32384,7 @@ SOAP_FMAC3 struct _wsnt__InvalidProducerPropertiesExpressionFaultType_ErrorCode 
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_FaultCause (1447)
+#define SOAP_TYPE_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_FaultCause (1605)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_FaultCause(struct soap*, struct _wsnt__MultipleTopicsSpecifiedFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__MultipleTopicsSpecifiedFaultType_FaultCause *const*, const char *);
@@ -25174,7 +32403,7 @@ SOAP_FMAC3 struct _wsnt__MultipleTopicsSpecifiedFaultType_FaultCause ** SOAP_FMA
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_Description (1445)
+#define SOAP_TYPE_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_Description (1603)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_Description(struct soap*, struct _wsnt__MultipleTopicsSpecifiedFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_Description(struct soap*, const char *, int, struct _wsnt__MultipleTopicsSpecifiedFaultType_Description *const*, const char *);
@@ -25193,7 +32422,7 @@ SOAP_FMAC3 struct _wsnt__MultipleTopicsSpecifiedFaultType_Description ** SOAP_FM
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode (1443)
+#define SOAP_TYPE_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode (1601)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode(struct soap*, struct _wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode *const*, const char *);
@@ -25212,7 +32441,7 @@ SOAP_FMAC3 struct _wsnt__MultipleTopicsSpecifiedFaultType_ErrorCode ** SOAP_FMAC
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__TopicNotSupportedFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__TopicNotSupportedFaultType_FaultCause (1440)
+#define SOAP_TYPE_PointerTo_wsnt__TopicNotSupportedFaultType_FaultCause (1598)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__TopicNotSupportedFaultType_FaultCause(struct soap*, struct _wsnt__TopicNotSupportedFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__TopicNotSupportedFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__TopicNotSupportedFaultType_FaultCause *const*, const char *);
@@ -25231,7 +32460,7 @@ SOAP_FMAC3 struct _wsnt__TopicNotSupportedFaultType_FaultCause ** SOAP_FMAC4 soa
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__TopicNotSupportedFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__TopicNotSupportedFaultType_Description (1438)
+#define SOAP_TYPE_PointerTo_wsnt__TopicNotSupportedFaultType_Description (1596)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__TopicNotSupportedFaultType_Description(struct soap*, struct _wsnt__TopicNotSupportedFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__TopicNotSupportedFaultType_Description(struct soap*, const char *, int, struct _wsnt__TopicNotSupportedFaultType_Description *const*, const char *);
@@ -25250,7 +32479,7 @@ SOAP_FMAC3 struct _wsnt__TopicNotSupportedFaultType_Description ** SOAP_FMAC4 so
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__TopicNotSupportedFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__TopicNotSupportedFaultType_ErrorCode (1436)
+#define SOAP_TYPE_PointerTo_wsnt__TopicNotSupportedFaultType_ErrorCode (1594)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__TopicNotSupportedFaultType_ErrorCode(struct soap*, struct _wsnt__TopicNotSupportedFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__TopicNotSupportedFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__TopicNotSupportedFaultType_ErrorCode *const*, const char *);
@@ -25269,7 +32498,7 @@ SOAP_FMAC3 struct _wsnt__TopicNotSupportedFaultType_ErrorCode ** SOAP_FMAC4 soap
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidTopicExpressionFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__InvalidTopicExpressionFaultType_FaultCause (1433)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidTopicExpressionFaultType_FaultCause (1591)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidTopicExpressionFaultType_FaultCause(struct soap*, struct _wsnt__InvalidTopicExpressionFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidTopicExpressionFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__InvalidTopicExpressionFaultType_FaultCause *const*, const char *);
@@ -25288,7 +32517,7 @@ SOAP_FMAC3 struct _wsnt__InvalidTopicExpressionFaultType_FaultCause ** SOAP_FMAC
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidTopicExpressionFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__InvalidTopicExpressionFaultType_Description (1431)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidTopicExpressionFaultType_Description (1589)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidTopicExpressionFaultType_Description(struct soap*, struct _wsnt__InvalidTopicExpressionFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidTopicExpressionFaultType_Description(struct soap*, const char *, int, struct _wsnt__InvalidTopicExpressionFaultType_Description *const*, const char *);
@@ -25307,7 +32536,7 @@ SOAP_FMAC3 struct _wsnt__InvalidTopicExpressionFaultType_Description ** SOAP_FMA
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidTopicExpressionFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__InvalidTopicExpressionFaultType_ErrorCode (1429)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidTopicExpressionFaultType_ErrorCode (1587)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidTopicExpressionFaultType_ErrorCode(struct soap*, struct _wsnt__InvalidTopicExpressionFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidTopicExpressionFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__InvalidTopicExpressionFaultType_ErrorCode *const*, const char *);
@@ -25326,7 +32555,7 @@ SOAP_FMAC3 struct _wsnt__InvalidTopicExpressionFaultType_ErrorCode ** SOAP_FMAC4
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_FaultCause (1426)
+#define SOAP_TYPE_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_FaultCause (1584)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_FaultCause(struct soap*, struct _wsnt__TopicExpressionDialectUnknownFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__TopicExpressionDialectUnknownFaultType_FaultCause *const*, const char *);
@@ -25345,7 +32574,7 @@ SOAP_FMAC3 struct _wsnt__TopicExpressionDialectUnknownFaultType_FaultCause ** SO
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_Description (1424)
+#define SOAP_TYPE_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_Description (1582)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_Description(struct soap*, struct _wsnt__TopicExpressionDialectUnknownFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_Description(struct soap*, const char *, int, struct _wsnt__TopicExpressionDialectUnknownFaultType_Description *const*, const char *);
@@ -25364,7 +32593,7 @@ SOAP_FMAC3 struct _wsnt__TopicExpressionDialectUnknownFaultType_Description ** S
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode (1422)
+#define SOAP_TYPE_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode (1580)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode(struct soap*, struct _wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode *const*, const char *);
@@ -25383,7 +32612,7 @@ SOAP_FMAC3 struct _wsnt__TopicExpressionDialectUnknownFaultType_ErrorCode ** SOA
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidFilterFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__InvalidFilterFaultType_FaultCause (1419)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidFilterFaultType_FaultCause (1577)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidFilterFaultType_FaultCause(struct soap*, struct _wsnt__InvalidFilterFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidFilterFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__InvalidFilterFaultType_FaultCause *const*, const char *);
@@ -25402,7 +32631,7 @@ SOAP_FMAC3 struct _wsnt__InvalidFilterFaultType_FaultCause ** SOAP_FMAC4 soap_ge
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidFilterFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__InvalidFilterFaultType_Description (1417)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidFilterFaultType_Description (1575)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidFilterFaultType_Description(struct soap*, struct _wsnt__InvalidFilterFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidFilterFaultType_Description(struct soap*, const char *, int, struct _wsnt__InvalidFilterFaultType_Description *const*, const char *);
@@ -25421,7 +32650,7 @@ SOAP_FMAC3 struct _wsnt__InvalidFilterFaultType_Description ** SOAP_FMAC4 soap_g
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__InvalidFilterFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__InvalidFilterFaultType_ErrorCode (1415)
+#define SOAP_TYPE_PointerTo_wsnt__InvalidFilterFaultType_ErrorCode (1573)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__InvalidFilterFaultType_ErrorCode(struct soap*, struct _wsnt__InvalidFilterFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__InvalidFilterFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__InvalidFilterFaultType_ErrorCode *const*, const char *);
@@ -25440,7 +32669,7 @@ SOAP_FMAC3 struct _wsnt__InvalidFilterFaultType_ErrorCode ** SOAP_FMAC4 soap_get
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__SubscribeCreationFailedFaultType_FaultCause
-#define SOAP_TYPE_PointerTo_wsnt__SubscribeCreationFailedFaultType_FaultCause (1412)
+#define SOAP_TYPE_PointerTo_wsnt__SubscribeCreationFailedFaultType_FaultCause (1570)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__SubscribeCreationFailedFaultType_FaultCause(struct soap*, struct _wsnt__SubscribeCreationFailedFaultType_FaultCause *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__SubscribeCreationFailedFaultType_FaultCause(struct soap*, const char *, int, struct _wsnt__SubscribeCreationFailedFaultType_FaultCause *const*, const char *);
@@ -25459,7 +32688,7 @@ SOAP_FMAC3 struct _wsnt__SubscribeCreationFailedFaultType_FaultCause ** SOAP_FMA
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__SubscribeCreationFailedFaultType_Description
-#define SOAP_TYPE_PointerTo_wsnt__SubscribeCreationFailedFaultType_Description (1410)
+#define SOAP_TYPE_PointerTo_wsnt__SubscribeCreationFailedFaultType_Description (1568)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__SubscribeCreationFailedFaultType_Description(struct soap*, struct _wsnt__SubscribeCreationFailedFaultType_Description *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__SubscribeCreationFailedFaultType_Description(struct soap*, const char *, int, struct _wsnt__SubscribeCreationFailedFaultType_Description *const*, const char *);
@@ -25478,7 +32707,7 @@ SOAP_FMAC3 struct _wsnt__SubscribeCreationFailedFaultType_Description ** SOAP_FM
 
 
 #ifndef SOAP_TYPE_PointerTo_wsnt__SubscribeCreationFailedFaultType_ErrorCode
-#define SOAP_TYPE_PointerTo_wsnt__SubscribeCreationFailedFaultType_ErrorCode (1408)
+#define SOAP_TYPE_PointerTo_wsnt__SubscribeCreationFailedFaultType_ErrorCode (1566)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_wsnt__SubscribeCreationFailedFaultType_ErrorCode(struct soap*, struct _wsnt__SubscribeCreationFailedFaultType_ErrorCode *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_wsnt__SubscribeCreationFailedFaultType_ErrorCode(struct soap*, const char *, int, struct _wsnt__SubscribeCreationFailedFaultType_ErrorCode *const*, const char *);
@@ -25497,7 +32726,7 @@ SOAP_FMAC3 struct _wsnt__SubscribeCreationFailedFaultType_ErrorCode ** SOAP_FMAC
 
 
 #ifndef SOAP_TYPE_PointerTott__MetadataInput
-#define SOAP_TYPE_PointerTott__MetadataInput (1404)
+#define SOAP_TYPE_PointerTott__MetadataInput (1562)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__MetadataInput(struct soap*, struct tt__MetadataInput *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__MetadataInput(struct soap*, const char *, int, struct tt__MetadataInput *const*, const char *);
@@ -25516,7 +32745,7 @@ SOAP_FMAC3 struct tt__MetadataInput ** SOAP_FMAC4 soap_get_PointerTott__Metadata
 
 
 #ifndef SOAP_TYPE_PointerTott__SourceIdentification
-#define SOAP_TYPE_PointerTott__SourceIdentification (1403)
+#define SOAP_TYPE_PointerTott__SourceIdentification (1561)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__SourceIdentification(struct soap*, struct tt__SourceIdentification *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__SourceIdentification(struct soap*, const char *, int, struct tt__SourceIdentification *const*, const char *);
@@ -25535,7 +32764,7 @@ SOAP_FMAC3 struct tt__SourceIdentification ** SOAP_FMAC4 soap_get_PointerTott__S
 
 
 #ifndef SOAP_TYPE_PointerTott__AnalyticsDeviceEngineConfiguration
-#define SOAP_TYPE_PointerTott__AnalyticsDeviceEngineConfiguration (1401)
+#define SOAP_TYPE_PointerTott__AnalyticsDeviceEngineConfiguration (1559)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__AnalyticsDeviceEngineConfiguration(struct soap*, struct tt__AnalyticsDeviceEngineConfiguration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__AnalyticsDeviceEngineConfiguration(struct soap*, const char *, int, struct tt__AnalyticsDeviceEngineConfiguration *const*, const char *);
@@ -25554,7 +32783,7 @@ SOAP_FMAC3 struct tt__AnalyticsDeviceEngineConfiguration ** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTott__ObjectExtension
-#define SOAP_TYPE_PointerTott__ObjectExtension (1398)
+#define SOAP_TYPE_PointerTott__ObjectExtension (1556)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__ObjectExtension(struct soap*, struct tt__ObjectExtension *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__ObjectExtension(struct soap*, const char *, int, struct tt__ObjectExtension *const*, const char *);
@@ -25573,7 +32802,7 @@ SOAP_FMAC3 struct tt__ObjectExtension ** SOAP_FMAC4 soap_get_PointerTott__Object
 
 
 #ifndef SOAP_TYPE_PointerTott__Behaviour
-#define SOAP_TYPE_PointerTott__Behaviour (1397)
+#define SOAP_TYPE_PointerTott__Behaviour (1555)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__Behaviour(struct soap*, struct tt__Behaviour *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__Behaviour(struct soap*, const char *, int, struct tt__Behaviour *const*, const char *);
@@ -25592,7 +32821,7 @@ SOAP_FMAC3 struct tt__Behaviour ** SOAP_FMAC4 soap_get_PointerTott__Behaviour(st
 
 
 #ifndef SOAP_TYPE_PointerTott__Appearance
-#define SOAP_TYPE_PointerTott__Appearance (1396)
+#define SOAP_TYPE_PointerTott__Appearance (1554)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__Appearance(struct soap*, struct tt__Appearance *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__Appearance(struct soap*, const char *, int, struct tt__Appearance *const*, const char *);
@@ -25611,7 +32840,7 @@ SOAP_FMAC3 struct tt__Appearance ** SOAP_FMAC4 soap_get_PointerTott__Appearance(
 
 
 #ifndef SOAP_TYPE_PointerTott__PTZConfigurationExtension
-#define SOAP_TYPE_PointerTott__PTZConfigurationExtension (1395)
+#define SOAP_TYPE_PointerTott__PTZConfigurationExtension (1553)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__PTZConfigurationExtension(struct soap*, struct tt__PTZConfigurationExtension *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__PTZConfigurationExtension(struct soap*, const char *, int, struct tt__PTZConfigurationExtension *const*, const char *);
@@ -25630,7 +32859,7 @@ SOAP_FMAC3 struct tt__PTZConfigurationExtension ** SOAP_FMAC4 soap_get_PointerTo
 
 
 #ifndef SOAP_TYPE_PointerTott__ZoomLimits
-#define SOAP_TYPE_PointerTott__ZoomLimits (1394)
+#define SOAP_TYPE_PointerTott__ZoomLimits (1552)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__ZoomLimits(struct soap*, struct tt__ZoomLimits *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__ZoomLimits(struct soap*, const char *, int, struct tt__ZoomLimits *const*, const char *);
@@ -25649,7 +32878,7 @@ SOAP_FMAC3 struct tt__ZoomLimits ** SOAP_FMAC4 soap_get_PointerTott__ZoomLimits(
 
 
 #ifndef SOAP_TYPE_PointerTott__PanTiltLimits
-#define SOAP_TYPE_PointerTott__PanTiltLimits (1393)
+#define SOAP_TYPE_PointerTott__PanTiltLimits (1551)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__PanTiltLimits(struct soap*, struct tt__PanTiltLimits *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__PanTiltLimits(struct soap*, const char *, int, struct tt__PanTiltLimits *const*, const char *);
@@ -25668,7 +32897,7 @@ SOAP_FMAC3 struct tt__PanTiltLimits ** SOAP_FMAC4 soap_get_PointerTott__PanTiltL
 
 
 #ifndef SOAP_TYPE_PointerTott__PTZNodeExtension
-#define SOAP_TYPE_PointerTott__PTZNodeExtension (1392)
+#define SOAP_TYPE_PointerTott__PTZNodeExtension (1550)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__PTZNodeExtension(struct soap*, struct tt__PTZNodeExtension *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__PTZNodeExtension(struct soap*, const char *, int, struct tt__PTZNodeExtension *const*, const char *);
@@ -25687,7 +32916,7 @@ SOAP_FMAC3 struct tt__PTZNodeExtension ** SOAP_FMAC4 soap_get_PointerTott__PTZNo
 
 
 #ifndef SOAP_TYPE_PointerTott__NetworkInterfaceExtension
-#define SOAP_TYPE_PointerTott__NetworkInterfaceExtension (1389)
+#define SOAP_TYPE_PointerTott__NetworkInterfaceExtension (1547)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__NetworkInterfaceExtension(struct soap*, struct tt__NetworkInterfaceExtension *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__NetworkInterfaceExtension(struct soap*, const char *, int, struct tt__NetworkInterfaceExtension *const*, const char *);
@@ -25706,7 +32935,7 @@ SOAP_FMAC3 struct tt__NetworkInterfaceExtension ** SOAP_FMAC4 soap_get_PointerTo
 
 
 #ifndef SOAP_TYPE_PointerTott__IPv6NetworkInterface
-#define SOAP_TYPE_PointerTott__IPv6NetworkInterface (1388)
+#define SOAP_TYPE_PointerTott__IPv6NetworkInterface (1546)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__IPv6NetworkInterface(struct soap*, struct tt__IPv6NetworkInterface *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__IPv6NetworkInterface(struct soap*, const char *, int, struct tt__IPv6NetworkInterface *const*, const char *);
@@ -25725,7 +32954,7 @@ SOAP_FMAC3 struct tt__IPv6NetworkInterface ** SOAP_FMAC4 soap_get_PointerTott__I
 
 
 #ifndef SOAP_TYPE_PointerTott__IPv4NetworkInterface
-#define SOAP_TYPE_PointerTott__IPv4NetworkInterface (1387)
+#define SOAP_TYPE_PointerTott__IPv4NetworkInterface (1545)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__IPv4NetworkInterface(struct soap*, struct tt__IPv4NetworkInterface *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__IPv4NetworkInterface(struct soap*, const char *, int, struct tt__IPv4NetworkInterface *const*, const char *);
@@ -25744,7 +32973,7 @@ SOAP_FMAC3 struct tt__IPv4NetworkInterface ** SOAP_FMAC4 soap_get_PointerTott__I
 
 
 #ifndef SOAP_TYPE_PointerTott__NetworkInterfaceLink
-#define SOAP_TYPE_PointerTott__NetworkInterfaceLink (1386)
+#define SOAP_TYPE_PointerTott__NetworkInterfaceLink (1544)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__NetworkInterfaceLink(struct soap*, struct tt__NetworkInterfaceLink *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__NetworkInterfaceLink(struct soap*, const char *, int, struct tt__NetworkInterfaceLink *const*, const char *);
@@ -25763,7 +32992,7 @@ SOAP_FMAC3 struct tt__NetworkInterfaceLink ** SOAP_FMAC4 soap_get_PointerTott__N
 
 
 #ifndef SOAP_TYPE_PointerTott__NetworkInterfaceInfo
-#define SOAP_TYPE_PointerTott__NetworkInterfaceInfo (1385)
+#define SOAP_TYPE_PointerTott__NetworkInterfaceInfo (1543)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__NetworkInterfaceInfo(struct soap*, struct tt__NetworkInterfaceInfo *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__NetworkInterfaceInfo(struct soap*, const char *, int, struct tt__NetworkInterfaceInfo *const*, const char *);
@@ -25782,7 +33011,7 @@ SOAP_FMAC3 struct tt__NetworkInterfaceInfo ** SOAP_FMAC4 soap_get_PointerTott__N
 
 
 #ifndef SOAP_TYPE_PointerTott__VideoOutputExtension
-#define SOAP_TYPE_PointerTott__VideoOutputExtension (1382)
+#define SOAP_TYPE_PointerTott__VideoOutputExtension (1541)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__VideoOutputExtension(struct soap*, struct tt__VideoOutputExtension *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__VideoOutputExtension(struct soap*, const char *, int, struct tt__VideoOutputExtension *const*, const char *);
@@ -25801,7 +33030,7 @@ SOAP_FMAC3 struct tt__VideoOutputExtension ** SOAP_FMAC4 soap_get_PointerTott__V
 
 
 #ifndef SOAP_TYPE_PointerTott__Layout
-#define SOAP_TYPE_PointerTott__Layout (1381)
+#define SOAP_TYPE_PointerTott__Layout (1540)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__Layout(struct soap*, struct tt__Layout *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__Layout(struct soap*, const char *, int, struct tt__Layout *const*, const char *);
@@ -25820,7 +33049,7 @@ SOAP_FMAC3 struct tt__Layout ** SOAP_FMAC4 soap_get_PointerTott__Layout(struct s
 
 
 #ifndef SOAP_TYPE_PointerTott__MetadataConfigurationExtension
-#define SOAP_TYPE_PointerTott__MetadataConfigurationExtension (1379)
+#define SOAP_TYPE_PointerTott__MetadataConfigurationExtension (1538)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__MetadataConfigurationExtension(struct soap*, struct tt__MetadataConfigurationExtension *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__MetadataConfigurationExtension(struct soap*, const char *, int, struct tt__MetadataConfigurationExtension *const*, const char *);
@@ -25839,7 +33068,7 @@ SOAP_FMAC3 struct tt__MetadataConfigurationExtension ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTott__EventSubscription
-#define SOAP_TYPE_PointerTott__EventSubscription (1378)
+#define SOAP_TYPE_PointerTott__EventSubscription (1537)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__EventSubscription(struct soap*, struct tt__EventSubscription *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__EventSubscription(struct soap*, const char *, int, struct tt__EventSubscription *const*, const char *);
@@ -25858,7 +33087,7 @@ SOAP_FMAC3 struct tt__EventSubscription ** SOAP_FMAC4 soap_get_PointerTott__Even
 
 
 #ifndef SOAP_TYPE_PointerTott__PTZFilter
-#define SOAP_TYPE_PointerTott__PTZFilter (1377)
+#define SOAP_TYPE_PointerTott__PTZFilter (1536)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__PTZFilter(struct soap*, struct tt__PTZFilter *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__PTZFilter(struct soap*, const char *, int, struct tt__PTZFilter *const*, const char *);
@@ -25877,7 +33106,7 @@ SOAP_FMAC3 struct tt__PTZFilter ** SOAP_FMAC4 soap_get_PointerTott__PTZFilter(st
 
 
 #ifndef SOAP_TYPE_PointerTott__RuleEngineConfiguration
-#define SOAP_TYPE_PointerTott__RuleEngineConfiguration (1376)
+#define SOAP_TYPE_PointerTott__RuleEngineConfiguration (1535)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__RuleEngineConfiguration(struct soap*, struct tt__RuleEngineConfiguration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__RuleEngineConfiguration(struct soap*, const char *, int, struct tt__RuleEngineConfiguration *const*, const char *);
@@ -25896,7 +33125,7 @@ SOAP_FMAC3 struct tt__RuleEngineConfiguration ** SOAP_FMAC4 soap_get_PointerTott
 
 
 #ifndef SOAP_TYPE_PointerTott__AnalyticsEngineConfiguration
-#define SOAP_TYPE_PointerTott__AnalyticsEngineConfiguration (1375)
+#define SOAP_TYPE_PointerTott__AnalyticsEngineConfiguration (1534)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__AnalyticsEngineConfiguration(struct soap*, struct tt__AnalyticsEngineConfiguration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__AnalyticsEngineConfiguration(struct soap*, const char *, int, struct tt__AnalyticsEngineConfiguration *const*, const char *);
@@ -25915,7 +33144,7 @@ SOAP_FMAC3 struct tt__AnalyticsEngineConfiguration ** SOAP_FMAC4 soap_get_Pointe
 
 
 #ifndef SOAP_TYPE_PointerTott__MulticastConfiguration
-#define SOAP_TYPE_PointerTott__MulticastConfiguration (1374)
+#define SOAP_TYPE_PointerTott__MulticastConfiguration (1533)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__MulticastConfiguration(struct soap*, struct tt__MulticastConfiguration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__MulticastConfiguration(struct soap*, const char *, int, struct tt__MulticastConfiguration *const*, const char *);
@@ -25934,7 +33163,7 @@ SOAP_FMAC3 struct tt__MulticastConfiguration ** SOAP_FMAC4 soap_get_PointerTott_
 
 
 #ifndef SOAP_TYPE_PointerTott__H264Configuration
-#define SOAP_TYPE_PointerTott__H264Configuration (1373)
+#define SOAP_TYPE_PointerTott__H264Configuration (1532)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__H264Configuration(struct soap*, struct tt__H264Configuration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__H264Configuration(struct soap*, const char *, int, struct tt__H264Configuration *const*, const char *);
@@ -25953,7 +33182,7 @@ SOAP_FMAC3 struct tt__H264Configuration ** SOAP_FMAC4 soap_get_PointerTott__H264
 
 
 #ifndef SOAP_TYPE_PointerTott__Mpeg4Configuration
-#define SOAP_TYPE_PointerTott__Mpeg4Configuration (1372)
+#define SOAP_TYPE_PointerTott__Mpeg4Configuration (1531)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__Mpeg4Configuration(struct soap*, struct tt__Mpeg4Configuration *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__Mpeg4Configuration(struct soap*, const char *, int, struct tt__Mpeg4Configuration *const*, const char *);
@@ -25972,7 +33201,7 @@ SOAP_FMAC3 struct tt__Mpeg4Configuration ** SOAP_FMAC4 soap_get_PointerTott__Mpe
 
 
 #ifndef SOAP_TYPE_PointerTott__VideoRateControl
-#define SOAP_TYPE_PointerTott__VideoRateControl (1371)
+#define SOAP_TYPE_PointerTott__VideoRateControl (1530)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__VideoRateControl(struct soap*, struct tt__VideoRateControl *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__VideoRateControl(struct soap*, const char *, int, struct tt__VideoRateControl *const*, const char *);
@@ -25991,7 +33220,7 @@ SOAP_FMAC3 struct tt__VideoRateControl ** SOAP_FMAC4 soap_get_PointerTott__Video
 
 
 #ifndef SOAP_TYPE_PointerTott__VideoSourceConfigurationExtension
-#define SOAP_TYPE_PointerTott__VideoSourceConfigurationExtension (1370)
+#define SOAP_TYPE_PointerTott__VideoSourceConfigurationExtension (1529)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__VideoSourceConfigurationExtension(struct soap*, struct tt__VideoSourceConfigurationExtension *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__VideoSourceConfigurationExtension(struct soap*, const char *, int, struct tt__VideoSourceConfigurationExtension *const*, const char *);
@@ -26010,7 +33239,7 @@ SOAP_FMAC3 struct tt__VideoSourceConfigurationExtension ** SOAP_FMAC4 soap_get_P
 
 
 #ifndef SOAP_TYPE_PointerTott__IntRectangle
-#define SOAP_TYPE_PointerTott__IntRectangle (1369)
+#define SOAP_TYPE_PointerTott__IntRectangle (1528)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__IntRectangle(struct soap*, struct tt__IntRectangle *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__IntRectangle(struct soap*, const char *, int, struct tt__IntRectangle *const*, const char *);
@@ -26029,7 +33258,7 @@ SOAP_FMAC3 struct tt__IntRectangle ** SOAP_FMAC4 soap_get_PointerTott__IntRectan
 
 
 #ifndef SOAP_TYPE_PointerTott__VideoSourceExtension
-#define SOAP_TYPE_PointerTott__VideoSourceExtension (1367)
+#define SOAP_TYPE_PointerTott__VideoSourceExtension (1527)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__VideoSourceExtension(struct soap*, struct tt__VideoSourceExtension *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__VideoSourceExtension(struct soap*, const char *, int, struct tt__VideoSourceExtension *const*, const char *);
@@ -26048,7 +33277,7 @@ SOAP_FMAC3 struct tt__VideoSourceExtension ** SOAP_FMAC4 soap_get_PointerTott__V
 
 
 #ifndef SOAP_TYPE_PointerTott__ImagingSettings
-#define SOAP_TYPE_PointerTott__ImagingSettings (1366)
+#define SOAP_TYPE_PointerTott__ImagingSettings (1526)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__ImagingSettings(struct soap*, struct tt__ImagingSettings *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__ImagingSettings(struct soap*, const char *, int, struct tt__ImagingSettings *const*, const char *);
@@ -26063,6 +33292,253 @@ SOAP_FMAC3 struct tt__ImagingSettings ** SOAP_FMAC4 soap_get_PointerTott__Imagin
 
 #ifndef soap_read_PointerTott__ImagingSettings
 #define soap_read_PointerTott__ImagingSettings(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__ImagingSettings(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTott__MediaUri
+#define SOAP_TYPE_PointerTott__MediaUri (1517)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__MediaUri(struct soap*, struct tt__MediaUri *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__MediaUri(struct soap*, const char *, int, struct tt__MediaUri *const*, const char *);
+SOAP_FMAC3 struct tt__MediaUri ** SOAP_FMAC4 soap_in_PointerTott__MediaUri(struct soap*, const char*, struct tt__MediaUri **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTott__MediaUri(struct soap*, struct tt__MediaUri *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTott__MediaUri
+#define soap_write_PointerTott__MediaUri(soap, data) ( soap_begin(soap), soap_serialize_PointerTott__MediaUri(soap, data), soap_begin_send(soap) || soap_put_PointerTott__MediaUri(soap, data, "tt:MediaUri", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__MediaUri ** SOAP_FMAC4 soap_get_PointerTott__MediaUri(struct soap*, struct tt__MediaUri **, const char*, const char*);
+
+#ifndef soap_read_PointerTott__MediaUri
+#define soap_read_PointerTott__MediaUri(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__MediaUri(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTott__AudioOutputConfigurationOptions
+#define SOAP_TYPE_PointerTott__AudioOutputConfigurationOptions (1510)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__AudioOutputConfigurationOptions(struct soap*, struct tt__AudioOutputConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__AudioOutputConfigurationOptions(struct soap*, const char *, int, struct tt__AudioOutputConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct tt__AudioOutputConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTott__AudioOutputConfigurationOptions(struct soap*, const char*, struct tt__AudioOutputConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTott__AudioOutputConfigurationOptions(struct soap*, struct tt__AudioOutputConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTott__AudioOutputConfigurationOptions
+#define soap_write_PointerTott__AudioOutputConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTott__AudioOutputConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTott__AudioOutputConfigurationOptions(soap, data, "tt:AudioOutputConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__AudioOutputConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTott__AudioOutputConfigurationOptions(struct soap*, struct tt__AudioOutputConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTott__AudioOutputConfigurationOptions
+#define soap_read_PointerTott__AudioOutputConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__AudioOutputConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTott__MetadataConfigurationOptions
+#define SOAP_TYPE_PointerTott__MetadataConfigurationOptions (1507)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__MetadataConfigurationOptions(struct soap*, struct tt__MetadataConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__MetadataConfigurationOptions(struct soap*, const char *, int, struct tt__MetadataConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct tt__MetadataConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTott__MetadataConfigurationOptions(struct soap*, const char*, struct tt__MetadataConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTott__MetadataConfigurationOptions(struct soap*, struct tt__MetadataConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTott__MetadataConfigurationOptions
+#define soap_write_PointerTott__MetadataConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTott__MetadataConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTott__MetadataConfigurationOptions(soap, data, "tt:MetadataConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__MetadataConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTott__MetadataConfigurationOptions(struct soap*, struct tt__MetadataConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTott__MetadataConfigurationOptions
+#define soap_read_PointerTott__MetadataConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__MetadataConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTott__AudioSourceConfigurationOptions
+#define SOAP_TYPE_PointerTott__AudioSourceConfigurationOptions (1502)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__AudioSourceConfigurationOptions(struct soap*, struct tt__AudioSourceConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__AudioSourceConfigurationOptions(struct soap*, const char *, int, struct tt__AudioSourceConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct tt__AudioSourceConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTott__AudioSourceConfigurationOptions(struct soap*, const char*, struct tt__AudioSourceConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTott__AudioSourceConfigurationOptions(struct soap*, struct tt__AudioSourceConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTott__AudioSourceConfigurationOptions
+#define soap_write_PointerTott__AudioSourceConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTott__AudioSourceConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTott__AudioSourceConfigurationOptions(soap, data, "tt:AudioSourceConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__AudioSourceConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTott__AudioSourceConfigurationOptions(struct soap*, struct tt__AudioSourceConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTott__AudioSourceConfigurationOptions
+#define soap_read_PointerTott__AudioSourceConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__AudioSourceConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTott__VideoEncoderConfigurationOptions
+#define SOAP_TYPE_PointerTott__VideoEncoderConfigurationOptions (1499)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__VideoEncoderConfigurationOptions(struct soap*, struct tt__VideoEncoderConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__VideoEncoderConfigurationOptions(struct soap*, const char *, int, struct tt__VideoEncoderConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct tt__VideoEncoderConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTott__VideoEncoderConfigurationOptions(struct soap*, const char*, struct tt__VideoEncoderConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTott__VideoEncoderConfigurationOptions(struct soap*, struct tt__VideoEncoderConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTott__VideoEncoderConfigurationOptions
+#define soap_write_PointerTott__VideoEncoderConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTott__VideoEncoderConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTott__VideoEncoderConfigurationOptions(soap, data, "tt:VideoEncoderConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__VideoEncoderConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTott__VideoEncoderConfigurationOptions(struct soap*, struct tt__VideoEncoderConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTott__VideoEncoderConfigurationOptions
+#define soap_read_PointerTott__VideoEncoderConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__VideoEncoderConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTott__VideoSourceConfigurationOptions
+#define SOAP_TYPE_PointerTott__VideoSourceConfigurationOptions (1496)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__VideoSourceConfigurationOptions(struct soap*, struct tt__VideoSourceConfigurationOptions *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__VideoSourceConfigurationOptions(struct soap*, const char *, int, struct tt__VideoSourceConfigurationOptions *const*, const char *);
+SOAP_FMAC3 struct tt__VideoSourceConfigurationOptions ** SOAP_FMAC4 soap_in_PointerTott__VideoSourceConfigurationOptions(struct soap*, const char*, struct tt__VideoSourceConfigurationOptions **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTott__VideoSourceConfigurationOptions(struct soap*, struct tt__VideoSourceConfigurationOptions *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTott__VideoSourceConfigurationOptions
+#define soap_write_PointerTott__VideoSourceConfigurationOptions(soap, data) ( soap_begin(soap), soap_serialize_PointerTott__VideoSourceConfigurationOptions(soap, data), soap_begin_send(soap) || soap_put_PointerTott__VideoSourceConfigurationOptions(soap, data, "tt:VideoSourceConfigurationOptions", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__VideoSourceConfigurationOptions ** SOAP_FMAC4 soap_get_PointerTott__VideoSourceConfigurationOptions(struct soap*, struct tt__VideoSourceConfigurationOptions **, const char*, const char*);
+
+#ifndef soap_read_PointerTott__VideoSourceConfigurationOptions
+#define soap_read_PointerTott__VideoSourceConfigurationOptions(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__VideoSourceConfigurationOptions(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTott__Profile
+#define SOAP_TYPE_PointerTott__Profile (1387)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__Profile(struct soap*, struct tt__Profile *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__Profile(struct soap*, const char *, int, struct tt__Profile *const*, const char *);
+SOAP_FMAC3 struct tt__Profile ** SOAP_FMAC4 soap_in_PointerTott__Profile(struct soap*, const char*, struct tt__Profile **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTott__Profile(struct soap*, struct tt__Profile *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTott__Profile
+#define soap_write_PointerTott__Profile(soap, data) ( soap_begin(soap), soap_serialize_PointerTott__Profile(soap, data), soap_begin_send(soap) || soap_put_PointerTott__Profile(soap, data, "tt:Profile", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__Profile ** SOAP_FMAC4 soap_get_PointerTott__Profile(struct soap*, struct tt__Profile **, const char*, const char*);
+
+#ifndef soap_read_PointerTott__Profile
+#define soap_read_PointerTott__Profile(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__Profile(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTott__AudioOutput
+#define SOAP_TYPE_PointerTott__AudioOutput (1384)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__AudioOutput(struct soap*, struct tt__AudioOutput *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__AudioOutput(struct soap*, const char *, int, struct tt__AudioOutput *const*, const char *);
+SOAP_FMAC3 struct tt__AudioOutput ** SOAP_FMAC4 soap_in_PointerTott__AudioOutput(struct soap*, const char*, struct tt__AudioOutput **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTott__AudioOutput(struct soap*, struct tt__AudioOutput *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTott__AudioOutput
+#define soap_write_PointerTott__AudioOutput(soap, data) ( soap_begin(soap), soap_serialize_PointerTott__AudioOutput(soap, data), soap_begin_send(soap) || soap_put_PointerTott__AudioOutput(soap, data, "tt:AudioOutput", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__AudioOutput ** SOAP_FMAC4 soap_get_PointerTott__AudioOutput(struct soap*, struct tt__AudioOutput **, const char*, const char*);
+
+#ifndef soap_read_PointerTott__AudioOutput
+#define soap_read_PointerTott__AudioOutput(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__AudioOutput(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTott__AudioSource
+#define SOAP_TYPE_PointerTott__AudioSource (1380)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__AudioSource(struct soap*, struct tt__AudioSource *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__AudioSource(struct soap*, const char *, int, struct tt__AudioSource *const*, const char *);
+SOAP_FMAC3 struct tt__AudioSource ** SOAP_FMAC4 soap_in_PointerTott__AudioSource(struct soap*, const char*, struct tt__AudioSource **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTott__AudioSource(struct soap*, struct tt__AudioSource *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTott__AudioSource
+#define soap_write_PointerTott__AudioSource(soap, data) ( soap_begin(soap), soap_serialize_PointerTott__AudioSource(soap, data), soap_begin_send(soap) || soap_put_PointerTott__AudioSource(soap, data, "tt:AudioSource", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__AudioSource ** SOAP_FMAC4 soap_get_PointerTott__AudioSource(struct soap*, struct tt__AudioSource **, const char*, const char*);
+
+#ifndef soap_read_PointerTott__AudioSource
+#define soap_read_PointerTott__AudioSource(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__AudioSource(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTott__VideoSource
+#define SOAP_TYPE_PointerTott__VideoSource (1376)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTott__VideoSource(struct soap*, struct tt__VideoSource *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTott__VideoSource(struct soap*, const char *, int, struct tt__VideoSource *const*, const char *);
+SOAP_FMAC3 struct tt__VideoSource ** SOAP_FMAC4 soap_in_PointerTott__VideoSource(struct soap*, const char*, struct tt__VideoSource **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTott__VideoSource(struct soap*, struct tt__VideoSource *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTott__VideoSource
+#define soap_write_PointerTott__VideoSource(soap, data) ( soap_begin(soap), soap_serialize_PointerTott__VideoSource(soap, data), soap_begin_send(soap) || soap_put_PointerTott__VideoSource(soap, data, "tt:VideoSource", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct tt__VideoSource ** SOAP_FMAC4 soap_get_PointerTott__VideoSource(struct soap*, struct tt__VideoSource **, const char*, const char*);
+
+#ifndef soap_read_PointerTott__VideoSource
+#define soap_read_PointerTott__VideoSource(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTott__VideoSource(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTotrt__Capabilities
+#define SOAP_TYPE_PointerTotrt__Capabilities (1372)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTotrt__Capabilities(struct soap*, struct trt__Capabilities *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTotrt__Capabilities(struct soap*, const char *, int, struct trt__Capabilities *const*, const char *);
+SOAP_FMAC3 struct trt__Capabilities ** SOAP_FMAC4 soap_in_PointerTotrt__Capabilities(struct soap*, const char*, struct trt__Capabilities **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTotrt__Capabilities(struct soap*, struct trt__Capabilities *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTotrt__Capabilities
+#define soap_write_PointerTotrt__Capabilities(soap, data) ( soap_begin(soap), soap_serialize_PointerTotrt__Capabilities(soap, data), soap_begin_send(soap) || soap_put_PointerTotrt__Capabilities(soap, data, "trt:Capabilities", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct trt__Capabilities ** SOAP_FMAC4 soap_get_PointerTotrt__Capabilities(struct soap*, struct trt__Capabilities **, const char*, const char*);
+
+#ifndef soap_read_PointerTotrt__Capabilities
+#define soap_read_PointerTotrt__Capabilities(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTotrt__Capabilities(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTotrt__StreamingCapabilities
+#define SOAP_TYPE_PointerTotrt__StreamingCapabilities (1369)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTotrt__StreamingCapabilities(struct soap*, struct trt__StreamingCapabilities *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTotrt__StreamingCapabilities(struct soap*, const char *, int, struct trt__StreamingCapabilities *const*, const char *);
+SOAP_FMAC3 struct trt__StreamingCapabilities ** SOAP_FMAC4 soap_in_PointerTotrt__StreamingCapabilities(struct soap*, const char*, struct trt__StreamingCapabilities **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTotrt__StreamingCapabilities(struct soap*, struct trt__StreamingCapabilities *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTotrt__StreamingCapabilities
+#define soap_write_PointerTotrt__StreamingCapabilities(soap, data) ( soap_begin(soap), soap_serialize_PointerTotrt__StreamingCapabilities(soap, data), soap_begin_send(soap) || soap_put_PointerTotrt__StreamingCapabilities(soap, data, "trt:StreamingCapabilities", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct trt__StreamingCapabilities ** SOAP_FMAC4 soap_get_PointerTotrt__StreamingCapabilities(struct soap*, struct trt__StreamingCapabilities **, const char*, const char*);
+
+#ifndef soap_read_PointerTotrt__StreamingCapabilities
+#define soap_read_PointerTotrt__StreamingCapabilities(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTotrt__StreamingCapabilities(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTotrt__ProfileCapabilities
+#define SOAP_TYPE_PointerTotrt__ProfileCapabilities (1367)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTotrt__ProfileCapabilities(struct soap*, struct trt__ProfileCapabilities *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTotrt__ProfileCapabilities(struct soap*, const char *, int, struct trt__ProfileCapabilities *const*, const char *);
+SOAP_FMAC3 struct trt__ProfileCapabilities ** SOAP_FMAC4 soap_in_PointerTotrt__ProfileCapabilities(struct soap*, const char*, struct trt__ProfileCapabilities **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTotrt__ProfileCapabilities(struct soap*, struct trt__ProfileCapabilities *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTotrt__ProfileCapabilities
+#define soap_write_PointerTotrt__ProfileCapabilities(soap, data) ( soap_begin(soap), soap_serialize_PointerTotrt__ProfileCapabilities(soap, data), soap_begin_send(soap) || soap_put_PointerTotrt__ProfileCapabilities(soap, data, "trt:ProfileCapabilities", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct trt__ProfileCapabilities ** SOAP_FMAC4 soap_get_PointerTotrt__ProfileCapabilities(struct soap*, struct trt__ProfileCapabilities **, const char*, const char*);
+
+#ifndef soap_read_PointerTotrt__ProfileCapabilities
+#define soap_read_PointerTotrt__ProfileCapabilities(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTotrt__ProfileCapabilities(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
 #endif
 
 
