@@ -10,6 +10,9 @@ OBJECTFILES= soapC.o \
 	appTools.o	\
 	runApp.o	\
 	onvifHandle.o \
+	onvifHandleProbe.o	\
+	onvifHandleDeviceManagement.o	\
+	onvifHandleMedia.o	\
 	nvtonvifserverc.o
 LIBS=-lpthread #-lssl -lcrypto
 all: onvifserver
