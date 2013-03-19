@@ -1,5 +1,5 @@
 GSOAP_ROOT = /home/pc01/Source/c++/gsoap-2.8/gsoap
-CFLAGS = -Wall -g -O2
+CFLAGS = -Wall -g -O2 -DDEBUG
 CC = gcc
 INCLUDE = -I$(GSOAP_ROOT)
 CND_BUILDDIR=build
@@ -13,6 +13,8 @@ OBJECTFILES= soapC.o \
 	onvifHandleProbe.o	\
 	onvifHandleDeviceManagement.o	\
 	onvifHandleMedia.o	\
+	runProbeServer.o	\
+	runDeviceService.o	\
 	nvtonvifserverc.o
 LIBS=-lpthread #-lssl -lcrypto
 all: onvifserver
@@ -24,4 +26,4 @@ onvifserver: $(OBJECTFILES)
 	$(CC) $(CFLAGS) -c $^ $(INCLUDE)
   
 clean:
-	rm -f nvtOnvifServer *.o *.a *.bak > /dev/null
+	rm -f onvifserver *.o *.a *.bak > /dev/null

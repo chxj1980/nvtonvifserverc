@@ -1,5 +1,7 @@
 #ifndef APPCOMMON_H
 #define	APPCOMMON_H
+#include <pthread.h>
+#include "stdsoap2.h"
 
 #define RET_CODE_SUCCESS 0
 
@@ -21,5 +23,19 @@
 
 #define TRUE 1
 #define FALSE 0
+
+#define true 1
+#define false 0
+
+typedef int bool;
+
+struct RunServiceInfo {
+	bool m_Active;
+	bool m_Terminate;
+	struct soap m_Soap;
+	pthread_t m_RunThread;
+};
+
+typedef struct RunServiceInfo RunServiceInfo;
 
 #endif

@@ -76,3 +76,8 @@ int getLocalIp(char* pIp) {
 	return RET_CODE_SUCCESS;
 }
 
+void stopSoap(struct soap* soap) {
+    soap_destroy(soap);
+    soap_end(soap);
+
+}

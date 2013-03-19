@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 
+
 #define __DEBUG
 #ifdef __DEBUG
 #define DBG(fmt,args...) fprintf(stdout,  fmt,  ##args)
@@ -19,6 +20,8 @@
 
 	int getLocalIp(char* pIp);
 	int getNetCardMac(unsigned char *pMac);
+	void stopSoap(struct soap* soap);
+
 #ifdef __cplusplus
 	}
 #endif
