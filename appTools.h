@@ -15,15 +15,16 @@
 #define LOG(fmt,args...) fprintf(stdout,  fmt,  ##args)
 
 #ifdef __cplusplus
-	extern "C" {
+extern "C" {
 #endif
 
-	int getLocalIp(char* pIp);
-	int getNetCardMac(unsigned char *pMac);
-	void stopSoap(struct soap* soap1);
+int getLocalIp(char* pIp);
+int getNetCardMac(unsigned char *pMac);
+void stopSoap(struct soap* soap1);
+int getServiceURL(char* value);
 
 #ifdef __cplusplus
-	}
+}
 #endif
 
 #endif /* APPTOOLS_H_ */

@@ -3,8 +3,10 @@
 #include "onvifHandle.h"
 
 #define ONVIF_SERVER_CALL()    printf("onvifs: call %s, path=%s\r\n", __FUNCTION__, soap->path)
-soap_True = 1;
+
 soap_False = 0;
+soap_True = 1;
+
 #define ONVIF_RETURN_OK(soap, namespaces)   \
 	ONVIF_SERVER_CALL();    \
 	if(namespaces!=NULL) soap_set_namespaces(soap, namespaces);  \

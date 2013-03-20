@@ -2,20 +2,42 @@
 #include "soapStub.h"
 #include "onvifHandle.h"
 #include "appCommon.h"
-
-
+#include "appTools.h"
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 		struct _tds__GetServices *tds__GetServices,
 		struct _tds__GetServicesResponse *tds__GetServicesResponse) {
-	return GSOAP_RET_CODE_NOT_IMPLEMENT;
+	DBG("__tds__GetServices\n");
+	char _xmAddr[INFO_LENGTH] = {0};
+	if (RET_CODE_SUCCESS != getServiceURL(_xmAddr))
+		return GSOAP_RET_CODE_NOT_IMPLEMENT;
+	tds__GetServicesResponse->__sizeService = 1;
+
+	tds__GetServicesResponse->Service = (struct tds__Service *)soap_malloc(soap, sizeof(struct tds__Service));
+	tds__GetServicesResponse->Service[0].XAddr = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+	tds__GetServicesResponse->Service[0].Namespace = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+	strcpy(tds__GetServicesResponse->Service[0].Namespace, "http://www.onvif.org/ver10/events/wsdl");
+	strcpy(tds__GetServicesResponse[0].Service->XAddr, _xmAddr);
+	tds__GetServicesResponse->Service[0].Capabilities = NULL;
+	tds__GetServicesResponse->Service[0].Version = (struct tt__OnvifVersion *)soap_malloc(soap, sizeof(struct tt__OnvifVersion));
+	tds__GetServicesResponse->Service[0].Version->Major = 0;
+	tds__GetServicesResponse->Service[0].Version->Minor = 3;
+	tds__GetServicesResponse->Service[0].__any = (char **)soap_malloc(soap, sizeof(char *));
+	tds__GetServicesResponse->Service[0].__any[0] = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+	strcpy(tds__GetServicesResponse->Service[0].__any[0],"why1");
+	tds__GetServicesResponse->Service[0].__any[1] = (char *)soap_malloc(soap,sizeof(char) * INFO_LENGTH);
+	strcpy(tds__GetServicesResponse->Service[0].__any[1],"why2");
+	tds__GetServicesResponse->Service[0].__size = NULL;
+	tds__GetServicesResponse->Service[0].__anyAttribute = NULL;
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServiceCapabilities(
 		struct soap* soap,
 		struct _tds__GetServiceCapabilities *tds__GetServiceCapabilities,
 		struct _tds__GetServiceCapabilitiesResponse *tds__GetServiceCapabilitiesResponse) {
-	return GSOAP_RET_CODE_NOT_IMPLEMENT;
+	DBG("__tds__GetServiceCapabilities\n");
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDeviceInformation(
@@ -25,7 +47,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDeviceInformation(
 
 	tds__GetDeviceInformationResponse->HardwareId = (char *) soap_malloc(soap,
 			100);
-	strcpy(tds__GetDeviceInformationResponse->HardwareId, "xchd01");
+	strcpy(tds__GetDeviceInformationResponse->HardwareId, HARDWARE_ID);
 	tds__GetDeviceInformationResponse->FirmwareVersion = (char *) soap_malloc(
 			soap, 100);
 	strcpy(tds__GetDeviceInformationResponse->FirmwareVersion, "v1.0");
@@ -102,7 +124,15 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemSupportInformation(
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetScopes(struct soap* soap,
 		struct _tds__GetScopes *tds__GetScopes,
 		struct _tds__GetScopesResponse *tds__GetScopesResponse) {
-	return GSOAP_RET_CODE_NOT_IMPLEMENT;
+	DBG("__tds__GetScopes\n");
+	int size = 1;
+	tds__GetScopesResponse->__sizeScopes = size;
+	tds__GetScopesResponse->Scopes = (struct tt__Scope*) soap_malloc(soap,
+			size * sizeof(struct tt__Scope));
+	tds__GetScopesResponse->Scopes->ScopeItem = (char*) soap_malloc(soap, 100);
+	tds__GetScopesResponse->Scopes->ScopeDef = 0;
+	strcpy(tds__GetScopesResponse->Scopes->ScopeItem, ONVIF_SCOPE_NAME);
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetScopes(struct soap* soap,
@@ -207,59 +237,151 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetWsdlUrl(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,
 		struct _tds__GetCapabilities *tds__GetCapabilities,
 		struct _tds__GetCapabilitiesResponse *tds__GetCapabilitiesResponse) {
-	char ip_list[512] = { 0 };
-	getLocalIp(ip_list);
-	tds__GetCapabilitiesResponse->Capabilities->Media =
-			(struct tt__MediaCapabilities*) soap_malloc(soap,
-					sizeof(struct tt__MediaCapabilities));
-	tds__GetCapabilitiesResponse->Capabilities->Media->XAddr =
-			(char *) soap_malloc(soap, sizeof(char) * LARGE_INFO_LENGTH);
-	strcpy(tds__GetCapabilitiesResponse->Capabilities->Media->XAddr, ip_list);
-	tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities =
-			(struct tt__RealTimeStreamingCapabilities*) soap_malloc(soap,
-					sizeof(struct tt__RealTimeStreamingCapabilities));
-	tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTPMulticast =
-			(int *) soap_malloc(soap, sizeof(int));
-	*tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTPMulticast =
-			soap_False;
-	tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTP_USCORETCP =
-			(int *) soap_malloc(soap, sizeof(int));
-	*tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTP_USCORETCP =
-			soap_True;
-	tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTP_USCORERTSP_USCORETCP =
-			(int *) soap_malloc(soap, sizeof(int));
-	*tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTP_USCORERTSP_USCORETCP =
-			soap_True;
-	tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->Extension =
-			NULL;
-	tds__GetCapabilitiesResponse->Capabilities->Media->Extension = NULL;
-	tds__GetCapabilitiesResponse->Capabilities->Media->__size = 0;
-	tds__GetCapabilitiesResponse->Capabilities->Media->__any = 0;
+	DBG("__tds__GetCapabilities\n");
+	int _Category;
+	char _IPv4Address[LARGE_INFO_LENGTH];
+	if(RET_CODE_SUCCESS != getServiceURL(_IPv4Address))
+		return GSOAP_RET_CODE_NOT_IMPLEMENT;
 
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->VideoSources =
-			TRUE;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->VideoOutputs =
-			FALSE;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->AudioSources =
-			FALSE;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->AudioOutputs =
-			FALSE;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->RelayOutputs =
-			FALSE;
+	if(tds__GetCapabilities->Category == NULL)
+	{
+		tds__GetCapabilities->Category=(int *)soap_malloc(soap, sizeof(int));
+		*tds__GetCapabilities->Category = ALL;
+		_Category = ALL;
+	}
+	else
+	{
+		_Category = *tds__GetCapabilities->Category;
+	}
+
+	tds__GetCapabilitiesResponse->Capabilities = (struct tt__Capabilities*)soap_malloc(soap, sizeof(struct tt__Capabilities));
+	tds__GetCapabilitiesResponse->Capabilities->Analytics = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Device = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Events = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Imaging = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Media = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->PTZ = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Extension = (struct tt__CapabilitiesExtension*)soap_malloc(soap, sizeof(struct tt__CapabilitiesExtension));
+	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO = (struct tt__DeviceIOCapabilities*)soap_malloc(soap, sizeof(struct tt__DeviceIOCapabilities));
+	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->XAddr = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+	strcpy(tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->XAddr,_IPv4Address);
+
+	//下面的重要，这里只实现视频流，需要设置VideoSources
+	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->VideoSources = TRUE;
+	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->VideoOutputs = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->AudioSources = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->AudioOutputs = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->RelayOutputs = FALSE;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->__size = 0;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->__any =
-			NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->__any = NULL;
 
 	tds__GetCapabilitiesResponse->Capabilities->Extension->Display = NULL;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->Recording = NULL;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->Search = NULL;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->Replay = NULL;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->Receiver = NULL;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->AnalyticsDevice =
-			NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Extension->AnalyticsDevice = NULL;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->Extensions = NULL;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->__size = 0;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->__any = NULL;
+
+	/*基础设置，很必须*/
+	tds__GetCapabilitiesResponse->Capabilities->Device = (struct tt__DeviceCapabilities*)soap_malloc(soap, sizeof(struct tt__DeviceCapabilities));
+	tds__GetCapabilitiesResponse->Capabilities->Device->XAddr = (char *) soap_malloc(soap, sizeof(char) * LARGE_INFO_LENGTH);
+	strcpy(tds__GetCapabilitiesResponse->Capabilities->Device->XAddr, _IPv4Address);
+	tds__GetCapabilitiesResponse->Capabilities->Device->Extension = NULL;
+
+	/*必要部分*/
+	tds__GetCapabilitiesResponse->Capabilities->Device->Network = (struct tt__NetworkCapabilities*)soap_malloc(soap, sizeof(struct tt__NetworkCapabilities));
+	tds__GetCapabilitiesResponse->Capabilities->Device->Network->IPFilter = (int *)soap_malloc(soap, sizeof(int));
+	tds__GetCapabilitiesResponse->Capabilities->Device->Network->ZeroConfiguration = (int *)soap_malloc(soap, sizeof(int));
+	tds__GetCapabilitiesResponse->Capabilities->Device->Network->IPVersion6 = (int *)soap_malloc(soap, sizeof(int));
+	tds__GetCapabilitiesResponse->Capabilities->Device->Network->DynDNS = (int *)soap_malloc(soap, sizeof(int));
+
+	*tds__GetCapabilitiesResponse->Capabilities->Device->Network->IPFilter = soap_False;
+	*tds__GetCapabilitiesResponse->Capabilities->Device->Network->ZeroConfiguration = soap_False;
+	*tds__GetCapabilitiesResponse->Capabilities->Device->Network->IPVersion6 = soap_False;
+	*tds__GetCapabilitiesResponse->Capabilities->Device->Network->DynDNS = soap_False;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Network->Extension = (struct tt__NetworkCapabilitiesExtension*)soap_malloc(soap, sizeof(struct tt__NetworkCapabilitiesExtension));
+	tds__GetCapabilitiesResponse->Capabilities->Device->Network->Extension->Dot11Configuration = (int *)soap_malloc(soap, sizeof(int));
+	*tds__GetCapabilitiesResponse->Capabilities->Device->Network->Extension->Dot11Configuration = soap_False;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Network->Extension->Extension = NULL;
+	/*ghostyu  MUST BE*/
+	tds__GetCapabilitiesResponse->Capabilities->Device->Network->Extension->__size= 0;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Network->Extension->__any = NULL;
+
+	tds__GetCapabilitiesResponse->Capabilities->Device->System = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security = NULL;
+#if 0
+	tds__GetCapabilitiesResponse->Capabilities->Device->System = (struct tt__SystemCapabilities*)soap_malloc(soap, sizeof(struct tt__SystemCapabilities));
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->DiscoveryResolve = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->DiscoveryBye = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->RemoteDiscovery = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->SystemBackup = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->SystemLogging = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->FirmwareUpgrade = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->__sizeSupportedVersions = TRUE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->SupportedVersions = (struct tt__OnvifVersion*)soap_malloc(soap, sizeof(struct tt__OnvifVersion));
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->SupportedVersions->Major = MAJOR;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->SupportedVersions->Minor = MINOR;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension = (struct tt__SystemCapabilitiesExtension*)soap_malloc(soap, sizeof(struct tt__SystemCapabilitiesExtension));
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->HttpSystemBackup = (int *)soap_malloc(soap, sizeof(int));
+	*tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->HttpSystemBackup = soap_False;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->HttpFirmwareUpgrade = (int *)soap_malloc(soap, sizeof(int));
+	*tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->HttpFirmwareUpgrade = soap_True;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->HttpSystemLogging = (int *)soap_malloc(soap, sizeof(int));
+	*tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->HttpSystemLogging = soap_True;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->HttpSupportInformation = (int *)soap_malloc(soap, sizeof(int));
+	*tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->HttpSupportInformation = soap_True;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->Extension = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->__size = 0;
+	tds__GetCapabilitiesResponse->Capabilities->Device->System->Extension->__any = NULL;
+
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO = (struct tt__IOCapabilities*)soap_malloc(soap, sizeof(struct tt__IOCapabilities));
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO->InputConnectors = &soap_False;
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO->RelayOutputs = &soap_False;
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO->Extension = (struct tt__IOCapabilitiesExtension *)soap_malloc(soap, sizeof(struct tt__IOCapabilitiesExtension));
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO->Extension->__size =0;
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO->Extension->__any = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO->Extension->Auxiliary = &soap_False;
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO->Extension->__anyAttribute = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO->Extension->__sizeAuxiliaryCommands = 0;
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO->Extension->AuxiliaryCommands= NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Device->IO->Extension->Extension = NULL;
+#endif
+#if 0
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security = (struct tt__SecurityCapabilities*)soap_malloc(soap, sizeof(struct tt__SecurityCapabilities));
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->TLS1_x002e1 = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->TLS1_x002e2 = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->OnboardKeyGeneration = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->AccessPolicyConfig = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->X_x002e509Token = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->SAMLToken = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->KerberosToken = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->RELToken = FALSE;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->Extension = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->__size = 0;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->__any = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Security->__anyAttribute = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Device->Extension = NULL;
+#endif
+
+	//想要对接RTSP视频，必须设置Media
+	tds__GetCapabilitiesResponse->Capabilities->Media = (struct tt__MediaCapabilities*)soap_malloc(soap, sizeof(struct tt__MediaCapabilities));
+	tds__GetCapabilitiesResponse->Capabilities->Media->XAddr = (char *) soap_malloc(soap, sizeof(char) * LARGE_INFO_LENGTH);
+	strcpy(tds__GetCapabilitiesResponse->Capabilities->Media->XAddr, _IPv4Address);
+	tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities = (struct tt__RealTimeStreamingCapabilities*)soap_malloc(soap, sizeof(struct tt__RealTimeStreamingCapabilities));
+	tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTPMulticast = (int *)soap_malloc(soap, sizeof(int));
+	*tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTPMulticast = soap_False;
+	tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTP_USCORETCP = (int *)soap_malloc(soap, sizeof(int));
+	*tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTP_USCORETCP = soap_True;
+	tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTP_USCORERTSP_USCORETCP = (int *)soap_malloc(soap, sizeof(int));
+	*tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->RTP_USCORERTSP_USCORETCP = soap_True;
+	tds__GetCapabilitiesResponse->Capabilities->Media->StreamingCapabilities->Extension = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Media->Extension = NULL;
+	tds__GetCapabilitiesResponse->Capabilities->Media->__size = 0;
+	tds__GetCapabilitiesResponse->Capabilities->Media->__any = 0;
 	return SOAP_OK;
 }
 
@@ -272,7 +394,16 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDPAddresses(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetHostname(struct soap* soap,
 		struct _tds__GetHostname *tds__GetHostname,
 		struct _tds__GetHostnameResponse *tds__GetHostnameResponse) {
-	return GSOAP_RET_CODE_NOT_IMPLEMENT;
+	DBG("__tds__GetHostname\n");
+	tds__GetHostnameResponse->HostnameInformation = (struct tt__HostnameInformation*)soap_malloc(soap,sizeof(struct tt__HostnameInformation));
+	tds__GetHostnameResponse->HostnameInformation->Name = (char*)soap_malloc(soap,100);
+	tds__GetHostnameResponse->HostnameInformation->Extension = (struct tt__HostnameInformationExtension*)soap_malloc(soap,sizeof(struct tt__HostnameInformationExtension ));
+
+	tds__GetHostnameResponse->HostnameInformation->Extension->__size = 0;
+	tds__GetHostnameResponse->HostnameInformation->Extension->__any= NULL;
+	tds__GetHostnameResponse->HostnameInformation->FromDHCP = 0; //not from DHCP
+	strcpy(tds__GetHostnameResponse->HostnameInformation->Name, HOST_NAME);
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetHostname(struct soap* soap,
