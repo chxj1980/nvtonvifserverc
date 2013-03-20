@@ -2,7 +2,7 @@
 #define APPTOOLS_H_
 
 #include <stdio.h>
-
+#include "appCommon.h"
 
 #define __DEBUG
 #ifdef __DEBUG
@@ -20,7 +20,7 @@
 
 	int getLocalIp(char* pIp);
 	int getNetCardMac(unsigned char *pMac);
-	void stopSoap(struct soap* soap);
+	void stopSoap(struct soap* soap1);
 
 #ifdef __cplusplus
 	}

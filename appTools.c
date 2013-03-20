@@ -12,7 +12,7 @@
 #include <net/route.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include "appCommon.h"
+
 
 int getNetCardMac(unsigned char *pMac) {
 	if (NULL == pMac)
@@ -76,8 +76,8 @@ int getLocalIp(char* pIp) {
 	return RET_CODE_SUCCESS;
 }
 
-void stopSoap(struct soap* soap) {
-    soap_destroy(soap);
-    soap_end(soap);
+void stopSoap(struct soap* soap1) {
+    soap_destroy(soap1);
+    soap_end(soap1);
 
 }
