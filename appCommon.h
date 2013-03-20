@@ -32,8 +32,8 @@ typedef int bool;
 struct RunServiceInfo {
 	bool m_Active;
 	bool m_Terminate;
-	struct soap m_Soap;
 	pthread_t m_RunThread;
+	struct soap m_Soap;
 };
 
 typedef struct RunServiceInfo RunServiceInfo;
