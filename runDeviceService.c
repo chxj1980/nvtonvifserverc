@@ -25,6 +25,7 @@ void * runDeviceServiceThreadMethod() {
 
 int startDeviceService() {
 	stopDeviceService();
+	soap_init(&deviceServiceServiceInfo.m_Soap);
 	LOG("startDeviceService bind");
 	if (!soap_valid_socket(soap_bind(&deviceServiceServiceInfo.m_Soap, NULL, DEVICE_WEBSERVICE_PORT, 100)))
 		return RET_CODE_ERROR_SOAP_BIND;
