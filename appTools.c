@@ -13,7 +13,6 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-
 int getNetCardMac(unsigned char *pMac) {
 	if (NULL == pMac)
 		return RET_CODE_ERROR_NULLVALUE;
@@ -80,4 +79,13 @@ void stopSoap(struct soap* soap1) {
     soap_destroy(soap1);
     soap_end(soap1);
 
+}
+
+int getServiceURL(char* value) {
+	char ip_list[21] = { 0 };
+	int result = getLocalIp(ip_list);
+	if (RET_CODE_SUCCESS != result)
+		return result;
+	sprintf(value, "http://%s:%d/",	ip_list, DEVICE_WEBSERVICE_PORT);
+	return RET_CODE_SUCCESS;
 }

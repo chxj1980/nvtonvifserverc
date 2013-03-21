@@ -51,13 +51,11 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__ProbeMatches(struct soap *soap,
 
 SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 		struct wsdd__ProbeType *wsdd__Probe) {
-	char _HwId[64] = "urn:uuid:D149F919-4013-437E-B480-3707D96D27A4";
-
+	char _HwId[64] = URN_HARDWARE_ID;
+	char _xmaddr[256] = {0};
+	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr))
+		return GSOAP_RET_CODE_NOT_IMPLEMENT;
 	int interface_num = 1;
-	char ip_list[512] = { 0 };
-	int result = getLocalIp(ip_list);
-	if (RET_CODE_SUCCESS != result)
-		return result;
 	wsdd__ProbeMatchesType ProbeMatches;
 	ProbeMatches.__sizeProbeMatch = interface_num;
 	ProbeMatches.ProbeMatch = (struct wsdd__ProbeMatchType *) soap_malloc(soap,
@@ -68,12 +66,11 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 		// should be onvif device mgmt address
 		ProbeMatches.ProbeMatch->XAddrs = (char *) soap_malloc(soap,
 				sizeof(char) * INFO_LENGTH);
-		sprintf(ProbeMatches.ProbeMatch->XAddrs, "http://%s:%d/",
-				ip_list + i * 20, DEVICE_WEBSERVICE_PORT);
+		sprintf(ProbeMatches.ProbeMatch->XAddrs, "%s", _xmaddr);
 		// probe type
 		ProbeMatches.ProbeMatch->Types = (char *) soap_malloc(soap,
 				sizeof(char) * INFO_LENGTH);
-		strcpy(ProbeMatches.ProbeMatch->Types, "tdn:NetworkVideoTransmitter");
+		strcpy(ProbeMatches.ProbeMatch->Types, DEVICE_TYPE);
 		// Scope
 		ProbeMatches.ProbeMatch->Scopes =
 				(struct wsdd__ScopesType*) soap_malloc(soap,
@@ -82,8 +79,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 				1024);
 		memset(ProbeMatches.ProbeMatch->Scopes->__item, 0,
 				sizeof(ProbeMatches.ProbeMatch->Scopes->__item));
-		strcat(ProbeMatches.ProbeMatch->Scopes->__item,
-				"onvif://www.onvif.org/type/NetworkVideoTransmitter");
+		strcat(ProbeMatches.ProbeMatch->Scopes->__item, ONVIF_SCOPE_NAME);
 		ProbeMatches.ProbeMatch->Scopes->MatchBy = NULL;
 
 		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , ReferenceProperties
@@ -182,6 +178,41 @@ SOAP_FMAC5 int SOAP_FMAC6 __tdn__Probe(struct soap* soap,
 		struct wsdd__ProbeType tdn__Probe,
 		struct wsdd__ProbeMatchesType* tdn__ProbeResponse) {
 	return GSOAP_RET_CODE_NOT_IMPLEMENT;
+}
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__Hello(struct soap *soap,
+		const char *soap_endpoint, const char *soap_action,
+		struct wsdd__HelloType *wsdd__Hello) {
+	struct __wsdd__Hello soap_tmp___wsdd__Hello;
+	if (!soap_action)
+		soap_action =
+				"http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/Hello";
+	soap->encodingStyle = NULL;
+	soap_tmp___wsdd__Hello.wsdd__Hello = wsdd__Hello;
+	soap_begin(soap);
+	soap_serializeheader(soap);
+	soap_serialize___wsdd__Hello(soap, &soap_tmp___wsdd__Hello);
+	if (soap_begin_count(soap))
+		return soap->error;
+	if (soap->mode & SOAP_IO_LENGTH)
+	{
+		if (soap_envelope_begin_out(soap) || soap_putheader(soap)
+				|| soap_body_begin_out(soap)
+				|| soap_put___wsdd__Hello(soap, &soap_tmp___wsdd__Hello,
+						"-wsdd:Hello", NULL) || soap_body_end_out(soap)
+				|| soap_envelope_end_out(soap))
+			return soap->error;
+	}
+	if (soap_end_count(soap))
+		return soap->error;
+	if (soap_connect(soap, soap_endpoint, soap_action)
+			|| soap_envelope_begin_out(soap) || soap_putheader(soap)
+			|| soap_body_begin_out(soap)
+			|| soap_put___wsdd__Hello(soap, &soap_tmp___wsdd__Hello,
+					"-wsdd:Hello", NULL) || soap_body_end_out(soap)
+			|| soap_envelope_end_out(soap) || soap_end_send(soap))
+		return soap_closesock(soap);
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Hello(struct soap* soap,

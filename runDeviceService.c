@@ -26,10 +26,11 @@ void * runDeviceServiceThreadMethod() {
 int startDeviceService() {
 	stopDeviceService();
 	soap_init(&deviceServiceServiceInfo.m_Soap);
-	LOG("startDeviceService bind");
+	soap_set_namespaces(&deviceServiceServiceInfo.m_Soap, namespaces);
+	DBG("startDeviceService bind\n");
 	if (!soap_valid_socket(soap_bind(&deviceServiceServiceInfo.m_Soap, NULL, DEVICE_WEBSERVICE_PORT, 100)))
 		return RET_CODE_ERROR_SOAP_BIND;
-	LOG("startDeviceService thread");
+	DBG("startDeviceService thread\n");
 	deviceServiceServiceInfo.m_Terminate = false;
 	int err = pthread_create(&deviceServiceServiceInfo.m_RunThread, NULL,
 			runDeviceServiceThreadMethod, NULL);
@@ -37,19 +38,18 @@ int startDeviceService() {
 		stopSoap(&deviceServiceServiceInfo.m_Soap);
 		return RET_CODE_ERROR_CREATETHREAD;
 	}
-	LOG("startDeviceService sfs");
+	DBG("startDeviceService sfs\n");
 	deviceServiceServiceInfo.m_Active = true;
 	return RET_CODE_SUCCESS;
 }
 
 void stopDeviceService() {
-	LOG("stopDeviceService 1");
+	DBG("stopDeviceService 1\n");
 	if (!deviceServiceServiceInfo.m_Active)
 		return;
-	LOG("stopDeviceService 2");
+	DBG("stopDeviceService 2\n");
 	deviceServiceServiceInfo.m_Terminate = true;
 	void* status;
 	pthread_join(deviceServiceServiceInfo.m_RunThread, &status);
 	deviceServiceServiceInfo.m_Active = false;
 }
-
