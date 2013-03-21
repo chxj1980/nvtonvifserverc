@@ -22,7 +22,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 	tds__GetServicesResponse->Service[0].Version = (struct tt__OnvifVersion *)soap_malloc(soap, sizeof(struct tt__OnvifVersion));
 	tds__GetServicesResponse->Service[0].Version->Major = 0;
 	tds__GetServicesResponse->Service[0].Version->Minor = 3;
-	tds__GetServicesResponse->Service[0].__any = (char **)soap_malloc(soap, sizeof(char *));
+	tds__GetServicesResponse->Service[0].__any = (char **)soap_malloc(soap, sizeof(char *) * 2);
 	tds__GetServicesResponse->Service[0].__any[0] = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
 	strcpy(tds__GetServicesResponse->Service[0].__any[0],"why1");
 	tds__GetServicesResponse->Service[0].__any[1] = (char *)soap_malloc(soap,sizeof(char) * INFO_LENGTH);
