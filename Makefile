@@ -7,6 +7,7 @@ OBJECTDIR=${CND_BUILDDIR}
 OBJECTFILES= soapC.o \
 	soapServer.o \
 	stdsoap2.o	\
+	threads.o	\
 	appTools.o	\
 	runApp.o	\
 	onvifHandle.o \

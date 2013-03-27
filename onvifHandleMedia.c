@@ -365,7 +365,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfiles(struct soap* soap,
 			"VS_Token");
 	strcpy(
 			trt__GetProfilesResponse->Profiles[i].VideoSourceConfiguration->SourceToken,
-			"GhostyuSource_token"); /*必须与__tmd__GetVideoSources中的token相同*/
+			VIDEO_SOURCE_TOKEN); /*必须与__tmd__GetVideoSources中的token相同*/
 	trt__GetProfilesResponse->Profiles[i].VideoSourceConfiguration->UseCount =
 			1;
 	trt__GetProfilesResponse->Profiles[i].VideoSourceConfiguration->Bounds->x =

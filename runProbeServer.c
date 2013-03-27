@@ -9,8 +9,6 @@
 RunServiceInfo probeServerServiceInfo;
 
 void initProbeServer() {
-	soap_True = 1;
-	soap_False = 0;
 	probeServerServiceInfo.m_Active = false;
 }
 
