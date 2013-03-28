@@ -9,26 +9,46 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 		struct _tds__GetServicesResponse *tds__GetServicesResponse) {
 	DBG("__tds__GetServices\n");
 	char _xmAddr[INFO_LENGTH] = {0};
-	if (RET_CODE_SUCCESS != getServiceURL(_xmAddr))
+	if (RET_CODE_SUCCESS != getServiceURL(_xmAddr)) {
 		return GSOAP_RET_CODE_NOT_IMPLEMENT;
+	}
 	tds__GetServicesResponse->__sizeService = 1;
+	if(!tds__GetServices->IncludeCapability)
+	{
+		tds__GetServicesResponse->Service = (struct tds__Service *)soap_malloc(soap, sizeof(struct tds__Service));
+		tds__GetServicesResponse->Service[0].XAddr = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+		tds__GetServicesResponse->Service[0].Namespace = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+		strcpy(tds__GetServicesResponse->Service[0].Namespace, "http://www.onvif.org/ver10/events/wsdl");
+		strcpy(tds__GetServicesResponse[0].Service->XAddr, _xmAddr);
+		tds__GetServicesResponse->Service[0].Capabilities = NULL;
+		tds__GetServicesResponse->Service[0].Version = (struct tt__OnvifVersion *)soap_malloc(soap, sizeof(struct tt__OnvifVersion));
+		tds__GetServicesResponse->Service[0].Version->Major = 0;
+		tds__GetServicesResponse->Service[0].Version->Minor = 3;
+		tds__GetServicesResponse->Service[0].__any = (char **)soap_malloc(soap, sizeof(char *));
+		tds__GetServicesResponse->Service[0].__any[0] = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+		strcpy(tds__GetServicesResponse->Service[0].__any[0],"Any1");
+		tds__GetServicesResponse->Service[0].__any[1] = (char *)soap_malloc(soap,sizeof(char) * INFO_LENGTH);
+		strcpy(tds__GetServicesResponse->Service[0].__any[1],"Any2");
+		tds__GetServicesResponse->Service[0].__size = NULL;
+		tds__GetServicesResponse->Service[0].__anyAttribute = NULL;
+		return SOAP_OK;
+	}
+	else
+	{
+		tds__GetServicesResponse->Service = (struct tds__Service *)soap_malloc(soap, sizeof(struct tds__Service));
+		tds__GetServicesResponse->Service->XAddr = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+		tds__GetServicesResponse->__sizeService = 3;
+		tds__GetServicesResponse->Service->Namespace = NULL;
+		strcpy(tds__GetServicesResponse->Service->XAddr, _xmAddr);
+		tds__GetServicesResponse->Service->Capabilities = NULL;
+		tds__GetServicesResponse->Service->Version = (struct tt__OnvifVersion *)soap_malloc(soap, sizeof(struct tt__OnvifVersion));
+		tds__GetServicesResponse->Service->Version->Major = 0;
+		tds__GetServicesResponse->Service->Version->Minor = 3;
+		tds__GetServicesResponse->Service->__size = 0;
+		tds__GetServicesResponse->Service->__any = NULL;
+		tds__GetServicesResponse->Service->__anyAttribute = NULL;
 
-	tds__GetServicesResponse->Service = (struct tds__Service *)soap_malloc(soap, sizeof(struct tds__Service));
-	tds__GetServicesResponse->Service[0].XAddr = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-	tds__GetServicesResponse->Service[0].Namespace = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-	strcpy(tds__GetServicesResponse->Service[0].Namespace, "http://www.onvif.org/ver10/events/wsdl");
-	strcpy(tds__GetServicesResponse[0].Service->XAddr, _xmAddr);
-	tds__GetServicesResponse->Service[0].Capabilities = NULL;
-	tds__GetServicesResponse->Service[0].Version = (struct tt__OnvifVersion *)soap_malloc(soap, sizeof(struct tt__OnvifVersion));
-	tds__GetServicesResponse->Service[0].Version->Major = 0;
-	tds__GetServicesResponse->Service[0].Version->Minor = 3;
-	tds__GetServicesResponse->Service[0].__any = (char **)soap_malloc(soap, sizeof(char *) * 1);
-	tds__GetServicesResponse->Service[0].__any[0] = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-	strcpy(tds__GetServicesResponse->Service[0].__any[0],"why1");
-//	tds__GetServicesResponse->Service[0].__any[1] = (char *)soap_malloc(soap,sizeof(char) * INFO_LENGTH);
-//	strcpy(tds__GetServicesResponse->Service[0].__any[1],"why2");
-	tds__GetServicesResponse->Service[0].__size = NULL;
-	tds__GetServicesResponse->Service[0].__anyAttribute = NULL;
+	}
 	return SOAP_OK;
 }
 
@@ -36,7 +56,55 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServiceCapabilities(
 		struct soap* soap,
 		struct _tds__GetServiceCapabilities *tds__GetServiceCapabilities,
 		struct _tds__GetServiceCapabilitiesResponse *tds__GetServiceCapabilitiesResponse) {
-	DBG("__tds__GetServiceCapabilities\n");
+	tds__GetServiceCapabilitiesResponse->Capabilities = (struct tds__DeviceServiceCapabilities *)soap_malloc(soap, sizeof(struct tds__DeviceServiceCapabilities));
+	/* NETWORK */
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network = (struct tds__NetworkCapabilities *)soap_malloc(soap, sizeof(struct tds__NetworkCapabilities));
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPFilter = (int *)soap_malloc(soap, sizeof(int));
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->ZeroConfiguration = (int *)soap_malloc(soap, sizeof(int));
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPVersion6 = (int *)soap_malloc(soap, sizeof(int));
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->DynDNS = (int *)soap_malloc(soap, sizeof(int));
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->Dot11Configuration = (int *)soap_malloc(soap, sizeof(int));
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->HostnameFromDHCP= (int *)soap_malloc(soap, sizeof(int));
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPFilter = &soap_False;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->ZeroConfiguration = &soap_False;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPVersion6 = &soap_False;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->DynDNS = &soap_False;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->Dot11Configuration = &soap_False;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Network->HostnameFromDHCP= &soap_False;
+	*tds__GetServiceCapabilitiesResponse->Capabilities->Network->NTP= 3;
+
+
+	/* SYSTEM */
+	tds__GetServiceCapabilitiesResponse->Capabilities->System = (struct tds__SystemCapabilities *)soap_malloc(soap, sizeof(struct tds__SystemCapabilities));
+	tds__GetServiceCapabilitiesResponse->Capabilities->System->DiscoveryResolve = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->System->DiscoveryBye = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->System->RemoteDiscovery = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->System->SystemBackup = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->System->FirmwareUpgrade = &soap_True;
+	tds__GetServiceCapabilitiesResponse->Capabilities->System->SystemLogging = &soap_True;
+	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSystemBackup = &soap_False;
+	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpFirmwareUpgrade = &soap_True;
+	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSystemLogging = &soap_True;
+	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSupportInformation = &soap_True;
+
+
+	/* SECURITY */
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security = (struct tds__SecurityCapabilities *)soap_malloc(soap, sizeof(struct tds__SecurityCapabilities));
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->TLS1_x002e0 = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->TLS1_x002e1 = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->TLS1_x002e2 = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->OnboardKeyGeneration = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->AccessPolicyConfig = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->Dot1X = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->RemoteUserHandling = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->X_x002e509Token = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->SAMLToken = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->KerberosToken = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->UsernameToken = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->HttpDigest = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->RELToken = FALSE;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->SupportedEAPMethods = NULL;
+	tds__GetServiceCapabilitiesResponse->Capabilities->Security->__anyAttribute = NULL;
 	return SOAP_OK;
 }
 

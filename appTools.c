@@ -13,6 +13,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+
 int getNetCardMac(unsigned char *pMac) {
 	if (NULL == pMac)
 		return RET_CODE_ERROR_NULLVALUE;
@@ -28,13 +29,12 @@ int getNetCardMac(unsigned char *pMac) {
 	strcpy(ifreq.ifr_name, NET_CARD_NAME);
 
 	if (ioctl(sockfd, SIOCGIFHWADDR, &ifreq) < 0) {
-		/*获取mac地址*/
 		ERRLOG( "netGetMac ioctl");
 		close(sockfd);
 		return RET_CODE_ERROR_SOCKETIOCTL;
 	}
 
-	memcpy(mac, ifreq.ifr_hwaddr.sa_data, 6); /*复制mac地址到mac*/
+	memcpy(mac, ifreq.ifr_hwaddr.sa_data, 6);
 	LOG( "MAC:%02x:%02x:%02x:%02x:%02x:%02x\n",
 			mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
@@ -78,7 +78,6 @@ int getLocalIp(char* pIp) {
 void stopSoap(struct soap* soap1) {
     soap_destroy(soap1);
     soap_end(soap1);
-
 }
 
 int getServiceURL(char* value) {

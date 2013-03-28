@@ -1,7 +1,8 @@
 GSOAP_ROOT = /home/pc01/Source/c++/gsoap-2.8/gsoap
 CFLAGS = -Wall -g -O2 -DDEBUG
 CC = gcc
-INCLUDE = -I$(GSOAP_ROOT)
+INCLUDE = -I .
+LIBDIR = -L .
 CND_BUILDDIR=build
 OBJECTDIR=${CND_BUILDDIR}
 OBJECTFILES= soapC.o \
@@ -21,9 +22,9 @@ LIBS=-lpthread #-lssl -lcrypto
 all: onvifserver
 
 onvifserver: $(OBJECTFILES)  
-	$(CC) $^ -o $@ $(LIBS)
+	$(CC) $^ -o $@ $(LIBDIR) $(LIBS)
 	
-%*.o : %*.c
+%.o: %.c
 	$(CC) $(CFLAGS) -c $^ $(INCLUDE)
   
 clean:
