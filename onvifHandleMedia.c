@@ -222,7 +222,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfiles(struct soap* soap,
 	DBG("__trt__GetProfiles\n");
 	int i;
 	char _IPAddr[LARGE_INFO_LENGTH];
-	if (RET_CODE_SUCCESS != getLocalIp(_IPAddr))
+	if (!isRetCodeSuccess(getLocalIp(_IPAddr)))
 		return GSOAP_RET_CODE_NOT_IMPLEMENT;
 
 	int size = 1;
@@ -809,7 +809,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetStreamUri(struct soap* soap,
 	DBG("__trt__GetStreamUri\n");
 	char _IPAddr[INFO_LENGTH];
 	char _IPAddr1[INFO_LENGTH] = { 0 };
-	if (RET_CODE_SUCCESS != getLocalIp(_IPAddr1))
+	if (!isRetCodeSuccess(getLocalIp(_IPAddr1)))
 		return GSOAP_RET_CODE_NOT_IMPLEMENT;
 	sprintf(_IPAddr, "rtsp://%s:8554/day.264", _IPAddr1);
 	/* Response */

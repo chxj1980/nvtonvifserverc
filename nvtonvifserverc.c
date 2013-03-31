@@ -1,4 +1,5 @@
 #include "runApp.h"
-int main(void) {
-	return runApp();
+
+int main(int argc, char **argv) {
+	return runApp(argc, argv);
 }

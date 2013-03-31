@@ -1,24 +1,27 @@
 #include "runApp.h"
-#include "appCommon.h"
-#include "runProbeServer.h"
-#include "runDeviceService.h"
 #include "appTools.h"
+#include "parseCmdParam.h"
+#include "onvifHandle.h"
+#include "parseUserInputCmd.h"
 
-int runApp() {
-	initProbeServer();
-	initDeviceService();
-	int result = startProbeServer();
-	if (RET_CODE_SUCCESS  != result)
-		return result;
-	LOG("runApp Device Service");
-	result = startDeviceService();
+CmdParam cmdParam = {false, false, DEVICE_WEBSERVICE_PORT};
+bool runAppTerminate;
+
+int runApp(int argc, char **argv) {
+	runAppTerminate = FALSE;
+	int result = parseCmd(argc, argv);
 	if (RET_CODE_SUCCESS != result) {
-		stopProbeServer();
 		return result;
 	}
-	while(1) {
-
+	result = startOnvifApp();
+	if (!isRetCodeSuccess(result)) {
+		return result;
 	}
+	while(!runAppTerminate) {
+		parseUserInputCmd();
+	}
+	LOG("Quit program...\n");
+	stopOnvifApp();
 	return RET_CODE_SUCCESS;
 }
 

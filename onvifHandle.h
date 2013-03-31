@@ -1,7 +1,9 @@
 #ifndef ONVIFHANDLE_H_
 #define ONVIFHANDLE_H_
 
-#define INFO_LENGTH 100
+#include "appCommon.h"
+
+
 #define SMALL_INFO_LENGTH 20
 
 #define LARGE_INFO_LENGTH 200
@@ -22,6 +24,16 @@
 
 extern int soap_False;
 extern int soap_True;
+
+typedef struct St_OnvifRunParam{
+	bool runFlag;  // 启动onvif标志
+	int servicePort;  // 对应onvif服务端口
+}OnvifRunParam;
+
+extern OnvifRunParam onvifRunParam;
+
+int startOnvifApp();
+void stopOnvifApp();
 
 #ifdef __cplusplus
 	}

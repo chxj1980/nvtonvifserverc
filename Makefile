@@ -1,15 +1,18 @@
 GSOAP_ROOT = /home/pc01/Source/c++/gsoap-2.8/gsoap
 CFLAGS = -Wall -g -O2 -DDEBUG
 CC = gcc
-INCLUDE = -I .
-LIBDIR = -L .
+INCLUDE = -I ../libipnc/inc
+LIBDIR = -L ../libipnc/src
 CND_BUILDDIR=build
 OBJECTDIR=${CND_BUILDDIR}
 OBJECTFILES= soapC.o \
 	soapServer.o \
 	stdsoap2.o	\
 	threads.o	\
+	commIPC.o	\
 	appTools.o	\
+	parseCmdParam.o	\
+	parseUserInputCmd.o	\
 	runApp.o	\
 	onvifHandle.o \
 	onvifHandleProbe.o	\
@@ -18,7 +21,7 @@ OBJECTFILES= soapC.o \
 	runProbeServer.o	\
 	runDeviceService.o	\
 	nvtonvifserverc.o
-LIBS=-lpthread #-lssl -lcrypto
+LIBS=-lpthread -lipc #-lssl -lcrypto
 all: onvifserver
 
 onvifserver: $(OBJECTFILES)  

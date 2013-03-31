@@ -13,6 +13,15 @@ environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.relea
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.release.292166694/C_INCLUDE_PATH/value=d\:/MinGW/include
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.release.292166694/append=true
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.release.292166694/appendContributed=true
+environment/buildEnvironmentInclude/cdt.managedbuild.toolchain.gnu.base.645771120/CPATH/delimiter=;
+environment/buildEnvironmentInclude/cdt.managedbuild.toolchain.gnu.base.645771120/CPATH/operation=remove
+environment/buildEnvironmentInclude/cdt.managedbuild.toolchain.gnu.base.645771120/CPLUS_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/cdt.managedbuild.toolchain.gnu.base.645771120/CPLUS_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/cdt.managedbuild.toolchain.gnu.base.645771120/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/cdt.managedbuild.toolchain.gnu.base.645771120/C_INCLUDE_PATH/operation=replace
+environment/buildEnvironmentInclude/cdt.managedbuild.toolchain.gnu.base.645771120/C_INCLUDE_PATH/value=d\:/MinGW/include
+environment/buildEnvironmentInclude/cdt.managedbuild.toolchain.gnu.base.645771120/append=true
+environment/buildEnvironmentInclude/cdt.managedbuild.toolchain.gnu.base.645771120/appendContributed=true
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.debug.222684363/LIBRARY_PATH/delimiter=;
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.debug.222684363/LIBRARY_PATH/operation=replace
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.debug.222684363/LIBRARY_PATH/value=d\:/MinGW/lib
@@ -23,3 +32,8 @@ environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.relea
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.release.292166694/LIBRARY_PATH/value=d\:/MinGW/lib
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.release.292166694/append=true
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.release.292166694/appendContributed=true
+environment/buildEnvironmentLibrary/cdt.managedbuild.toolchain.gnu.base.645771120/LIBRARY_PATH/delimiter=;
+environment/buildEnvironmentLibrary/cdt.managedbuild.toolchain.gnu.base.645771120/LIBRARY_PATH/operation=replace
+environment/buildEnvironmentLibrary/cdt.managedbuild.toolchain.gnu.base.645771120/LIBRARY_PATH/value=d\:/MinGW/lib
+environment/buildEnvironmentLibrary/cdt.managedbuild.toolchain.gnu.base.645771120/append=true
+environment/buildEnvironmentLibrary/cdt.managedbuild.toolchain.gnu.base.645771120/appendContributed=true

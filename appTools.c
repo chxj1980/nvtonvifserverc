@@ -9,7 +9,6 @@
 #include <fcntl.h>
 #include <sys/socket.h>
 #include <net/if.h>
-#include <net/route.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
@@ -83,8 +82,16 @@ void stopSoap(struct soap* soap1) {
 int getServiceURL(char* value) {
 	char ip_list[21] = { 0 };
 	int result = getLocalIp(ip_list);
-	if (RET_CODE_SUCCESS != result)
+	if (!isRetCodeSuccess(result))
 		return result;
 	sprintf(value, "http://%s:%d/",	ip_list, DEVICE_WEBSERVICE_PORT);
 	return RET_CODE_SUCCESS;
+}
+
+bool isValidHandle(int handle) {
+	return (INVALID_HANDLE != handle);
+}
+
+bool isRetCodeSuccess(int retCode) {
+	return RET_CODE_SUCCESS == retCode;
 }

@@ -6,11 +6,7 @@
 #include "appTools.h"
 #include "onvifHandle.h"
 
-RunServiceInfo probeServerServiceInfo;
-
-void initProbeServer() {
-	probeServerServiceInfo.m_Active = false;
-}
+RunServiceInfo probeServerServiceInfo = {.m_Active = FALSE};
 
 void * runProbeServerThreadMethod() {
     int count = 0;
@@ -21,7 +17,6 @@ void * runProbeServerThreadMethod() {
 
         stopSoap(&probeServerServiceInfo.m_Soap);
 
-        //�ͻ��˵�IP��ַ
         LOG("Accepted count %d, connection from IP = %lu.%lu.%lu.%lu socket = %d \r\n",
                 count, ((probeServerServiceInfo.m_Soap.ip) >> 24)&0xFF, ((probeServerServiceInfo.m_Soap.ip) >> 16)&0xFF, ((probeServerServiceInfo.m_Soap.ip) >> 8)&0xFF, (probeServerServiceInfo.m_Soap.ip)&0xFF, (probeServerServiceInfo.m_Soap.socket));
         count++;

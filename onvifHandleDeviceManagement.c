@@ -19,35 +19,41 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 		tds__GetServicesResponse->Service[0].XAddr = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
 		tds__GetServicesResponse->Service[0].Namespace = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
 		strcpy(tds__GetServicesResponse->Service[0].Namespace, "http://www.onvif.org/ver10/events/wsdl");
-		strcpy(tds__GetServicesResponse[0].Service->XAddr, _xmAddr);
+		strcpy(tds__GetServicesResponse->Service[0].XAddr, _xmAddr);
 		tds__GetServicesResponse->Service[0].Capabilities = NULL;
 		tds__GetServicesResponse->Service[0].Version = (struct tt__OnvifVersion *)soap_malloc(soap, sizeof(struct tt__OnvifVersion));
 		tds__GetServicesResponse->Service[0].Version->Major = 0;
 		tds__GetServicesResponse->Service[0].Version->Minor = 3;
-		tds__GetServicesResponse->Service[0].__any = (char **)soap_malloc(soap, sizeof(char *));
-		tds__GetServicesResponse->Service[0].__any[0] = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-		strcpy(tds__GetServicesResponse->Service[0].__any[0],"Any1");
-		tds__GetServicesResponse->Service[0].__any[1] = (char *)soap_malloc(soap,sizeof(char) * INFO_LENGTH);
-		strcpy(tds__GetServicesResponse->Service[0].__any[1],"Any2");
+//		tds__GetServicesResponse->Service[0].__any = (char **)soap_malloc(soap, sizeof(char *));
+//		tds__GetServicesResponse->Service[0].__any[0] = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+//		strcpy(tds__GetServicesResponse->Service[0].__any[0],"Any1");
+//		tds__GetServicesResponse->Service[0].__any[1] = (char *)soap_malloc(soap,sizeof(char) * INFO_LENGTH);
+//		strcpy(tds__GetServicesResponse->Service[0].__any[1],"Any2");
 		tds__GetServicesResponse->Service[0].__size = NULL;
 		tds__GetServicesResponse->Service[0].__anyAttribute = NULL;
+		tds__GetServicesResponse->Service[0].__any = NULL;
 		return SOAP_OK;
 	}
 	else
 	{
 		tds__GetServicesResponse->Service = (struct tds__Service *)soap_malloc(soap, sizeof(struct tds__Service));
 		tds__GetServicesResponse->Service->XAddr = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-		tds__GetServicesResponse->__sizeService = 3;
+		tds__GetServicesResponse->__sizeService = 1;
 		tds__GetServicesResponse->Service->Namespace = NULL;
 		strcpy(tds__GetServicesResponse->Service->XAddr, _xmAddr);
 		tds__GetServicesResponse->Service->Capabilities = NULL;
 		tds__GetServicesResponse->Service->Version = (struct tt__OnvifVersion *)soap_malloc(soap, sizeof(struct tt__OnvifVersion));
-		tds__GetServicesResponse->Service->Version->Major = 0;
-		tds__GetServicesResponse->Service->Version->Minor = 3;
-		tds__GetServicesResponse->Service->__size = 0;
-		tds__GetServicesResponse->Service->__any = NULL;
-		tds__GetServicesResponse->Service->__anyAttribute = NULL;
+		tds__GetServicesResponse->Service->Version->Major = 1;
+		tds__GetServicesResponse->Service->Version->Minor = 0;
+		tds__GetServicesResponse->Service->__size = 2;
+		char** pot = (char **)soap_malloc(soap, sizeof(char *) * tds__GetServicesResponse->Service->__size);
 
+		pot[0] = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+		strcpy(pot[0], "Any1");
+		pot[1] = (char *)soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+		strcpy(pot[1],"Any2");
+		tds__GetServicesResponse->Service->__any = pot;
+		tds__GetServicesResponse->Service->__anyAttribute = NULL;
 	}
 	return SOAP_OK;
 }
@@ -56,6 +62,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServiceCapabilities(
 		struct soap* soap,
 		struct _tds__GetServiceCapabilities *tds__GetServiceCapabilities,
 		struct _tds__GetServiceCapabilitiesResponse *tds__GetServiceCapabilitiesResponse) {
+	DBG("__tds__GetServiceCapabilities\n");
 	tds__GetServiceCapabilitiesResponse->Capabilities = (struct tds__DeviceServiceCapabilities *)soap_malloc(soap, sizeof(struct tds__DeviceServiceCapabilities));
 	/* NETWORK */
 	tds__GetServiceCapabilitiesResponse->Capabilities->Network = (struct tds__NetworkCapabilities *)soap_malloc(soap, sizeof(struct tds__NetworkCapabilities));

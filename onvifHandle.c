@@ -1,11 +1,16 @@
+#include "onvifHandle.h"
 #include "soapH.h"
 #include "soapStub.h"
-#include "onvifHandle.h"
+#include "runProbeServer.h"
+#include "runDeviceService.h"
+#include "appCommon.h"
+#include "commIPC.h"
 
 #define ONVIF_SERVER_CALL()    printf("onvifs: call %s, path=%s\r\n", __FUNCTION__, soap->path)
 
 int soap_False = 0;
 int soap_True = 1;
+OnvifRunParam onvifRunParam;
 
 #define ONVIF_RETURN_OK(soap, namespaces)   \
 	ONVIF_SERVER_CALL();    \
@@ -18,5 +23,23 @@ static inline int onvif_receiver_fault_subcode_oom(struct soap *soap) {
 			"ter:OutofMemory",
 			"Out of Memory",
 			"The device does not have sufficient memory to complete the action.");
+}
+
+int startOnvifApp() {
+	int result = startProbeServer();
+	if (RET_CODE_SUCCESS  != result)
+		return result;
+	LOG("runApp Device Service\n");
+	result = startDeviceService();
+	if (RET_CODE_SUCCESS != result) {
+		stopProbeServer();
+		return result;
+	}
+	return result;
+}
+
+void stopOnvifApp() {
+	stopDeviceService();
+	stopProbeServer();
 }
 
