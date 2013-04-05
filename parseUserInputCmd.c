@@ -13,7 +13,7 @@ int getUserInput(char* cmd, int* len) {
 			pos++;
 		} else {
 			if (pos >= len) {
-				result = RET_CODE_ERROR_INVALIDVALUE;
+				result = RET_CODE_ERROR_INVALID_VALUE;
 			}
 			else {
 				len = pos - 1;

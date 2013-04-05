@@ -1,0 +1,27 @@
+params                          cmd                   value type
+
+hardwareId                  e_sys_hardwareId            char[]
+firmwareVersion             e_sys_swversion             char[]
+Manufacturer                e_sys_manufacturer          char[]
+Model                       e_sys_Model                 char[]
+SerialNumber                e_sys_serialNumber          char[]
+
+net card name               e_net_cardname              char[]
+net card mac addr           e_net_macaddr               char[]
+net card ip                 e_net_ip                    char[]
+NetworkProtocols            e_net_protocols             int
+NetworkDefaultGateway       e_net_gateway               char[]
+
+SystemDateAndTime           e_time_systime              char[]
+ntp address                 e_time_ntpserver            char[]
+
+SystemReboot                e_reboot                    int
+SetSystemFactoryDefault     e_reset                     int
+
+dynamicdns                  e_ddns_domain               char[]
+
+Height                      e_height                    int
+Width                       e_width                     int
+video type                  e_enc_type                  int 0:ENC_TYPE_H264, 1:ENC_TYPE_MPEG, 2:ENC_TYPE_MJPEG
+FrameRate                   e_frame_rate                int
+BitrateLimit                e_bit_rate                  int

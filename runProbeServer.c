@@ -17,7 +17,7 @@ void * runProbeServerThreadMethod() {
 
         stopSoap(&probeServerServiceInfo.m_Soap);
 
-        LOG("Accepted count %d, connection from IP = %lu.%lu.%lu.%lu socket = %d \r\n",
+        logInfo("Accepted count %d, connection from IP = %lu.%lu.%lu.%lu socket = %d \r",
                 count, ((probeServerServiceInfo.m_Soap.ip) >> 24)&0xFF, ((probeServerServiceInfo.m_Soap.ip) >> 16)&0xFF, ((probeServerServiceInfo.m_Soap.ip) >> 8)&0xFF, (probeServerServiceInfo.m_Soap.ip)&0xFF, (probeServerServiceInfo.m_Soap.socket));
         count++;
     }
@@ -41,14 +41,14 @@ int startProbeServer() {
 
 	if (setsockopt(probeServerServiceInfo.m_Soap.master, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char*) &mcast,
 			sizeof(mcast)) < 0) {
-		LOG("setsockopt error! error code = %d,err string = %s\n",
+		logInfo("setsockopt error! error code = %d,err string = %s",
 				errno, strerror(errno));
 		return RET_CODE_ERROR_SETSOCKOPT;
 	}
 	int err = pthread_create(&probeServerServiceInfo.m_RunThread, NULL, runProbeServerThreadMethod, NULL);
 	if (0 != err) {
 		stopSoap(&probeServerServiceInfo.m_Soap);
-		return RET_CODE_ERROR_CREATETHREAD;
+		return RET_CODE_ERROR_CREATE_THREAD;
 	}
 	probeServerServiceInfo.m_Active = true;
 	return RET_CODE_SUCCESS;

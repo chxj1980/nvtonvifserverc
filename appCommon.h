@@ -4,30 +4,30 @@
 #include "stdsoap2.h"
 
 #define __DEBUG
-#ifdef __DEBUG
-#define DBG(fmt,args...) fprintf(stdout,  fmt,  ##args)
-#else
-#define DBG(fmt,args...)
-#endif
-#define ERRLOG(fmt,args...) fprintf(stderr,  fmt,  ##args)
-
-#define LOG(fmt,args...) fprintf(stdout,  fmt,  ##args)
+//#ifdef __DEBUG
+//#define DBG(fmt,args...) fprintf(stdout,  fmt,  ##args)
+//#else
+//#define DBG(fmt,args...)
+//#endif
+//#define ERRLOG(fmt,args...) fprintf(stderr,  fmt,  ##args)
+//
+//#define LOG(fmt,args...) fprintf(stdout,  fmt,  ##args)
 #define RET_CODE_SUCCESS 0
 #define RET_CODE_ERROR_UNKNOWN -100
-#define RET_CODE_ERROR_NULLVALUE -1
+#define RET_CODE_ERROR_NULL_VALUE -1
 #define RET_CODE_ERROR_SETSOCKOPT -2
 #define RET_CODE_ERROR_SOAP_BIND -3
-#define RET_CODE_ERROR_CREATETHREAD -4
+#define RET_CODE_ERROR_CREATE_THREAD -4
 #define RET_CODE_ERROR_SOAP_ACCEPT -5
-#define RET_CODE_ERROR_CREATESOCKET -6
+#define RET_CODE_ERROR_CREATE_SOCKET -6
 #define RET_CODE_ERROR_SOCKETIOCTL -7
-#define RET_CODE_ERROR_NULLOBJECT -8
+#define RET_CODE_ERROR_NULL_OBJECT -8
 #define RET_CODE_ERROR_CONNECT -9
 #define RET_CODE_ERROR_NOT_RUN -10
 #define RET_CODE_ERROR_SEND -11
 #define RET_CODE_ERROR_RECV -12
-#define RET_SOAP_ERROR_NOT_SUPPORT -13
-#define RET_CODE_ERROR_INVALIDVALUE -14
+#define RET_CODE_ERROR_NOT_SUPPORT -13
+#define RET_CODE_ERROR_INVALID_VALUE -14
 
 #define MULTI_CAST_IP "239.255.255.250"
 #define MULTI_CAST_PORT 3702

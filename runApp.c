@@ -3,6 +3,7 @@
 #include "parseCmdParam.h"
 #include "onvifHandle.h"
 #include "parseUserInputCmd.h"
+#include "logInfo.h"
 
 CmdParam cmdParam = {false, false, DEVICE_WEBSERVICE_PORT};
 bool runAppTerminate;
@@ -20,7 +21,7 @@ int runApp(int argc, char **argv) {
 	while(!runAppTerminate) {
 		parseUserInputCmd();
 	}
-	LOG("Quit program...\n");
+	logInfo("Quit Program...");
 	stopOnvifApp();
 	return RET_CODE_SUCCESS;
 }

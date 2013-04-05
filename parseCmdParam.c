@@ -11,11 +11,11 @@ int parseCmd(int argc, char **argv) {
 		case 'h':
 			cmdParam.help = true;
 			if (cmdParam.help) {
-				LOG("Usage: onvifserver [options]\n");
-				LOG("Options\n");
-				LOG("-d\t Display debug information\n");
-				LOG("-p <port>\t Onvif service port");
-				LOG("-h\t Display this informateion");
+				logInfo("Usage: onvifserver [options]");
+				logInfo("Options");
+				logInfo("-d\t Display debug information");
+				logInfo("-p <port>\t Onvif service port");
+				logInfo("-h\t Display this informateion");
 			}
 			result = RET_CODE_ERROR_UNKNOWN;
 			break;
@@ -25,8 +25,8 @@ int parseCmd(int argc, char **argv) {
 		case 'p':
 			port = atoi(optarg);
 			if (port < 1024) {
-				LOG("Please input port exceed 1024\n");
-				result = RET_CODE_ERROR_INVALIDVALUE;
+				logInfo("Please input port exceed 1024");
+				result = RET_CODE_ERROR_INVALID_VALUE;
 			} else {
 				cmdParam.port = port;
 			}

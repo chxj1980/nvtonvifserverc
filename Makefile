@@ -9,8 +9,10 @@ OBJECTFILES= soapC.o \
 	soapServer.o \
 	stdsoap2.o	\
 	threads.o	\
+	hashMap.o	\
 	commIPC.o	\
 	appTools.o	\
+	logInfo.o	\
 	parseCmdParam.o	\
 	parseUserInputCmd.o	\
 	runApp.o	\

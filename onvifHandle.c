@@ -6,7 +6,7 @@
 #include "appCommon.h"
 #include "commIPC.h"
 
-#define ONVIF_SERVER_CALL()    printf("onvifs: call %s, path=%s\r\n", __FUNCTION__, soap->path)
+#define ONVIF_SERVER_CALL()    printf("onvifs: call %s, path=%s\r", __FUNCTION__, soap->path)
 
 int soap_False = 0;
 int soap_True = 1;
@@ -26,12 +26,20 @@ static inline int onvif_receiver_fault_subcode_oom(struct soap *soap) {
 }
 
 int startOnvifApp() {
-	int result = startProbeServer();
-	if (RET_CODE_SUCCESS  != result)
+	int result = startIPCComm();
+	if (!isRetCodeSuccess(result)) {
+		logInfo("Connect IPC Error");
 		return result;
-	LOG("runApp Device Service\n");
+	}
+	result = startProbeServer();
+	if (!isRetCodeSuccess(result)) {
+		logInfo("Start Onvif Probe Server Error");
+		return result;
+	}
+
 	result = startDeviceService();
-	if (RET_CODE_SUCCESS != result) {
+	if (!isRetCodeSuccess(result)) {
+		logInfo("Start Onvif Device Service Error");
 		stopProbeServer();
 		return result;
 	}
@@ -41,5 +49,13 @@ int startOnvifApp() {
 void stopOnvifApp() {
 	stopDeviceService();
 	stopProbeServer();
+	stopIPCComm();
+}
+
+int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo, const char* faultDetail) {
+	return soap_receiver_fault_subcode(soap, "ter:ActionNotSupported", faultInfo, faultDetail);
+}
+int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo, const char* faultDetail) {
+	return soap_receiver_fault_subcode(soap, "ter:Action", faultInfo, faultDetail);
 }
 

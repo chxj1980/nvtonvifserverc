@@ -308,7 +308,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_error(struct soap *soap, SOAP_WSA(FaultSubcod
 #endif
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_check(struct soap *soap) {
-	DBGFUN("soap_wsa_check");
+	debugInfo("soap_wsa_check");
 	if (!soap->header || !soap->header->SOAP_WSA(Action)
 	)
 #if defined(SOAP_WSA_2005)
@@ -323,7 +323,8 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_check(struct soap *soap) {
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_request(struct soap *soap, const char *id,
 		const char *to, const char *action) {
-	DBGFUN3("soap_wsa_request", "id=%s", id?id:"(null)", "to=%s", to?to:"(null)", "action=%s", action?action:"(null)");
+	DBGFUN3("soap_wsa_request", "id=%s", id ? id : "(null)", "to=%s",
+			to ? to : "(null)", "action=%s", action ? action : "(null)");
 	if (soap_wsa_alloc_header(soap))
 		return soap->error;
 	soap->header->SOAP_WSA(MessageID) = soap_strdup(soap, id);
@@ -351,7 +352,8 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_response(struct soap *soap, int status,
 		size_t count) {
 	struct soap_wsa_data *data = (struct soap_wsa_data*) soap_lookup_plugin(
 			soap, soap_wsa_id);
-	DBGFUN2("soap_wsa_response", "status=%d", status, "count=%lu", (unsigned long)count);
+	DBGFUN2("soap_wsa_response", "status=%d", status, "count=%lu",
+			(unsigned long) count);
 	if (!data)
 		return SOAP_PLUGIN_ERROR;
 	soap->fresponse = data->fresponse; /* reset (HTTP response) */
@@ -415,7 +417,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_reply(struct soap *soap, const char *id,
 	struct soap_wsa_data *data = (struct soap_wsa_data*) soap_lookup_plugin(
 			soap, soap_wsa_id);
 	struct SOAP_ENV__Header *oldheader, *newheader;
-	DBGFUN1("soap_wsa_reply", "action=%s", action?action:"(null)");
+	DBGFUN1("soap_wsa_reply", "action=%s", action ? action : "(null)");
 	if (!data)
 		return soap->error = SOAP_PLUGIN_ERROR;
 	oldheader = soap->header;
@@ -525,7 +527,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_reply(struct soap *soap, const char *id,
 			}
 		}
 	} else if (oldheader && oldheader->SOAP_WSA(From)
-		)
+	)
 		newheader->SOAP_WSA(To) = oldheader->SOAP_WSA(From)->Address;
 	else
 		newheader->SOAP_WSA(To) = (char*) soap_wsa_anonymousURI;
@@ -539,7 +541,9 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_fault_subcode_action(struct soap *soap,
 	struct soap_wsa_data *data = (struct soap_wsa_data*) soap_lookup_plugin(
 			soap, soap_wsa_id);
 	struct SOAP_ENV__Header *oldheader, *newheader;
-	DBGFUN2("soap_wsa_fault_subcode", "faultsubcode=%s", faultsubcode?faultsubcode:"(null)", "faultstring=%s", faultstring?faultstring:"(null)");
+	DBGFUN2("soap_wsa_fault_subcode", "faultsubcode=%s",
+			faultsubcode ? faultsubcode : "(null)", "faultstring=%s",
+			faultstring ? faultstring : "(null)");
 	if (!data)
 		return soap->error = SOAP_PLUGIN_ERROR;
 	oldheader = soap->header;
@@ -669,7 +673,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__ProbeMatches(struct soap *soap,
 SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 		struct wsdd__ProbeType *wsdd__Probe) {
 	char _xmaddr[256] = { 0 };
-	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr))
+	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr, onvifRunParam.servicePort))
 		return GSOAP_RET_CODE_NOT_IMPLEMENT;
 	int interface_num = 1;
 	wsdd__ProbeMatchesType ProbeMatches;
@@ -698,7 +702,6 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 		strcat(ProbeMatches.ProbeMatch->Scopes->__item, ONVIF_SCOPE_NAME);
 		ProbeMatches.ProbeMatch->Scopes->MatchBy = NULL;
 
-		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , ReferenceProperties
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceProperties =
 				(struct wsa__ReferencePropertiesType*) soap_malloc(soap,
 						sizeof(struct wsa__ReferencePropertiesType));
@@ -706,7 +709,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 				0;
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceProperties->__any =
 				NULL;
-		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , ReferenceParameters
+
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceParameters =
 				(struct wsa__ReferenceParametersType*) soap_malloc(soap,
 						sizeof(struct wsa__ReferenceParametersType));
@@ -714,14 +717,14 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 				0;
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceParameters->__any =
 				NULL;
-		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , PortType
+
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.PortType =
 				(char **) soap_malloc(soap, sizeof(char*) * SMALL_INFO_LENGTH);
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.PortType[0] =
 				(char *) soap_malloc(soap, sizeof(char) * SMALL_INFO_LENGTH);
 		strcpy(ProbeMatches.ProbeMatch->wsa__EndpointReference.PortType[0],
 				"ttl");
-		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , ServiceName
+
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ServiceName =
 				(struct wsa__ServiceNameType*) soap_malloc(soap,
 						sizeof(struct wsa__ServiceNameType));
@@ -905,7 +908,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Hello(struct soap* soap,
 	const char *SequenceId = NULL;
 	unsigned int MessageNumber = 0;
 
-	LOG("__wsdd__Hello");
+	debugInfo("__wsdd__Hello");
 
 	/* check for WSA */
 	if (soap_wsa_check(soap))
@@ -1061,7 +1064,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Bye(struct soap* soap,
 	const char *SequenceId = NULL;
 	unsigned int MessageNumber = 0;
 
-	DBG("__wsdd__Bye");
+	debugInfo("__wsdd__Bye");
 
 	/* check for WSA */
 	if (soap_wsa_check(soap))
@@ -1132,7 +1135,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__ProbeMatches(struct soap* soap,
 	const char *SequenceId = NULL;
 	unsigned int MessageNumber = 0;
 
-	DBG("__wsdd__ProbeMatches");
+	debugInfo("__wsdd__ProbeMatches");
 
 	/* check for WSA */
 	if (soap_wsa_check(soap))
@@ -1251,7 +1254,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Resolve(struct soap* soap,
 	struct wsdd__ResolveMatchType match;
 	soap_wsdd_mode mode;
 
-	DBGFUN("__wsdd__Resolve");
+	debugInfo("__wsdd__Resolve");
 
 	/* check for WSA */
 	if (soap_wsa_check(soap))
@@ -1329,7 +1332,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__ResolveMatches(struct soap* soap,
 	const char *SequenceId = NULL;
 	unsigned int MessageNumber = 0;
 
-	DBG("__wsdd__ResolveMatches");
+	debugInfo("__wsdd__ResolveMatches");
 
 	/* check for WSA */
 	if (soap_wsa_check(soap))
