@@ -38,8 +38,14 @@ typedef struct St_OnvifDeviceInfo {
 } OnvifDeviceInfo;
 
 typedef struct St_OnvifNTPInfo {
+	int enable;
 	char address[INFO_LENGTH];
 } OnvifNTPInfo;
+
+typedef struct St_OnvifNetCardInfo {
+	int size;
+	NetCardInfo netCardInfos[5];
+} OnvifNetCardInfo;
 
 extern OnvifRunParam onvifRunParam;
 
@@ -55,6 +61,7 @@ int setNTPInfo(OnvifNTPInfo* info);
 int getNTPInfo(OnvifNTPInfo* info);
 
 int getDeviceInfo(OnvifDeviceInfo* info);
+int getNetCardInfo(OnvifNetCardInfo* info);
 
 #ifdef __cplusplus
 }

@@ -5,6 +5,7 @@
 #include "appCommon.h"
 #include "appTools.h"
 #include "onvifHandle.h"
+#include "logInfo.h"
 
 RunServiceInfo probeServerServiceInfo = {.m_Active = FALSE};
 
@@ -21,7 +22,6 @@ void * runProbeServerThreadMethod() {
                 count, ((probeServerServiceInfo.m_Soap.ip) >> 24)&0xFF, ((probeServerServiceInfo.m_Soap.ip) >> 16)&0xFF, ((probeServerServiceInfo.m_Soap.ip) >> 8)&0xFF, (probeServerServiceInfo.m_Soap.ip)&0xFF, (probeServerServiceInfo.m_Soap.socket));
         count++;
     }
-    soap_done(&probeServerServiceInfo.m_Soap);
     return (void*)RET_CODE_SUCCESS;
 }
 
@@ -61,5 +61,6 @@ void stopProbeServer() {
 	probeServerServiceInfo.m_Terminate =true;
     void* status;
     pthread_join(probeServerServiceInfo.m_RunThread, &status);
+	soap_done(&probeServerServiceInfo.m_Soap);
     probeServerServiceInfo.m_Active = false;
 }

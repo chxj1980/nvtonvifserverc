@@ -1,10 +1,9 @@
 #include "commIPC.h"
 #include <interface.h>
-#include <cmd_type.h>
 #include <cmdpares.h>
+#include <cmd_type.h>
 
 #include "appTools.h"
-#include "hashMap.h"
 #include "onvifHandle.h"
 
 IPCRunInfo ipcRunInfo;
@@ -20,7 +19,7 @@ int startIPCComm() {
 	return RET_CODE_SUCCESS;
 }
 
-int sendIPCCmd(void* cmd, int len) {
+int sendIPCCmd(const void_ptr cmd, const int len) {
 	if (!isValidHandle(ipcRunInfo.ipcConnectHandle)) {
 		return RET_CODE_ERROR_NOT_RUN;
 	}
@@ -31,12 +30,14 @@ int sendIPCCmd(void* cmd, int len) {
 	return RET_CODE_SUCCESS;
 }
 
-int sendAndRecvIPCCmd(void* incmd, int inlen, void* outInfo, int* outlen) {
+int sendAndRecvIPCCmd(const void_ptr incmd, const int inlen, void_ptr outInfo,
+		int* outlen) {
 	int result = sendIPCCmd(incmd, inlen);
 	if (!isRetCodeSuccess(result)) {
 		return result;
 	}
-	int size = recv_local(ipcRunInfo.ipcConnectHandle, (char*) outInfo, outlen);
+	int size = recv_local(ipcRunInfo.ipcConnectHandle, (char*) outInfo,
+			*outlen);
 	if (-1 == size) {
 		return RET_CODE_ERROR_RECV;
 	}
@@ -67,108 +68,84 @@ int freeListIterate(void_ptr data, void_ptr arg) {
 	return HMAP_S_OK;
 }
 
-void putStrValueInList(const hmap_t* inList, const int key, char* value) {
+void putStrValueInList(const hmap_t inList, const int key, const char* value) {
 	IPCCmdInfo* cmdInfo = (IPCCmdInfo*) malloc(sizeof(IPCCmdInfo));
 	cmdInfo->key = key;
 	if (NULL != value)
 		sprintf(cmdInfo->value, "%s", value);
 	else
-		sprintf(cmdInfo->value, "");
+		strcpy(cmdInfo->value, "");
 	char* skey = malloc(20);
-	sprintf(skey, key);
+	sprintf(skey, "%d", key);
 	hashmap_put(inList, skey, cmdInfo);
 }
 
-void putIntValueInList(const hmap_t* inList, const int key, const int value) {
+void putIntValueInList(const hmap_t inList, const int key, const int value) {
 	char cValue[20];
 	sprintf(cValue, "%d", value);
 	putStrValueInList(inList, key, cValue);
 }
 
-void putNullValueInList(const hmap_t* inList, const int key) {
+void putNullValueInList(const hmap_t inList, const int key) {
 	putStrValueInList(inList, key, NULL);
 }
 
-void getSendListCmd(char* invalue, const int type, const hmap_t* inList) {
+void getStrValueFromList(const hmap_t outList, const int key, char* value) {
+	char cKey[20];
+	sprintf(cKey, "%d", key);
+	void_ptr* v1 = NULL;
+	if (HMAP_S_OK == hashmap_get(outList, cKey, v1)) {
+		strcpy(value, (char*) *v1);
+	}
+}
+
+void getIntValueFromList(const hmap_t outList, const int key, int* value) {
+	char cKey[20];
+	sprintf(cKey, "%d", key);
+	char cValue[520] = { 0 };
+	getStrValueFromList(outList, key, cValue);
+	if (strlen(cValue) > 0)
+		*value = atoi(cValue);
+}
+
+void getSendListCmd(char* invalue, const int type, const hmap_t inList) {
 	sprintf(invalue, "$%d=%d", e_TYPE, type);
 	hashmap_iterate(inList, getSendListIterate, invalue);
 	strcat(invalue, "#");
 }
 
-void parseRecvListCmd(char* outValue, const hmap_t* outList) {
-	char* pInput = outValue;
-	char* pkey, pvalue;
+void parseRecvListCmd(const char* outValue, const hmap_t outList) {
+	char* pInput = (char*)outValue;
+	char* pkey;
+	char* pvalue;
 	int parseIndex;
-	int ikey;
 	do {
 		pkey = ParseVars(pInput, &parseIndex);
 		pvalue = ParseVars(pInput, &parseIndex);
-		if (pkey == NULL || pvalue == NULL)
+		if (pkey == NULL || pvalue == NULL) {
 			break;
+		}
 		putStrValueInList(outList, atoi(pkey), pvalue);
 	} while (parseIndex != -1);
 }
 
-int sendAndRetList(const int type, const hmap_t* inList, hmap_t* outList) {
+int sendAndRetList(const int type, const hmap_t inList, hmap_t outList) {
 	char invalue[1000] = { 0 };
 	char outvalue[1000] = { 0 };
 	int outlen = 1000;
 	getSendListCmd(invalue, type, inList);
-	int result = sendAndRecvIPCCmd(invalue, strlen(invalue), outvalue, outlen);
+	int result = sendAndRecvIPCCmd(invalue, strlen(invalue), outvalue, &outlen);
 	if (RET_CODE_SUCCESS != result)
 		return result;
 	parseRecvListCmd(outvalue, outList);
 	return result;
 }
 
-void destroyList(hmap_t* list) {
+void destroyHashMapList(hmap_t list) {
 	hashmap_destroy(list, freeListIterate, 0);
 }
 
-int setNTPInfo(OnvifNTPInfo* info) {
-	if (NULL == info) {
-		return RET_CODE_ERROR_NULL_OBJECT;
-	}
-
-	char* address = info->address;
-	if (NULL == address) {
-		return RET_CODE_ERROR_NULL_OBJECT;
-	}
-	hmap_t* inList = hashmap_create();
-
-	if (strlen(address) > 0) {
-		putIntValueInList(inList, e_time_ntpenable, ENABLE_YES);
-		putStrValueInList(inList, e_time_ntpserver, address);
-	} else
-		putIntValueInList(inList, e_time_ntpenable, ENABLE_NO);
-	hmap_t* outList = hashmap_create();
-	int result = sendAndRetList(T_Set, inList, outList);
-	if (RET_CODE_SUCCESS == result) {
-
-	}
-	destroyList(inList);
-	destroyList(outList);
-	return result;
+hmap_t createHashMapList() {
+	return hashmap_create();
 }
 
-int getNTPInfo(OnvifNTPInfo* info) {
-	if (NULL == info) {
-			return RET_CODE_ERROR_NULL_OBJECT;
-		}
-
-		char* address = info->address;
-		if (NULL == address) {
-			return RET_CODE_ERROR_NULL_OBJECT;
-		}
-		hmap_t* inList = hashmap_create();
-		putNullValueInList(inList, e_time_ntpenable);
-		putNullValueInList(inList, e_time_ntpserver);
-		hmap_t* outList = hashmap_create();
-		int result = sendAndRetList(T_Set, inList, outList);
-		if (RET_CODE_SUCCESS == result) {
-
-		}
-		destroyList(inList);
-		destroyList(outList);
-		return result;
-}

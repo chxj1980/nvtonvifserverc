@@ -4,6 +4,7 @@
 #include "appCommon.h"
 #include "appTools.h"
 #include "onvifHandle.h"
+#include "logInfo.h"
 
 RunServiceInfo deviceServiceServiceInfo = { .m_Active = FALSE };
 
@@ -18,7 +19,6 @@ void * runDeviceServiceThreadMethod() {
 		}
 		stopSoap(&deviceServiceServiceInfo.m_Soap);
 	}
-	soap_done(&deviceServiceServiceInfo.m_Soap);
 	return (void*) RET_CODE_SUCCESS;
 }
 
@@ -50,7 +50,10 @@ void stopDeviceService() {
 		return;
 	debugInfo("stopDeviceService 2");
 	deviceServiceServiceInfo.m_Terminate = true;
+
 	void* status;
 	pthread_join(deviceServiceServiceInfo.m_RunThread, &status);
+	debugInfo("stopDeviceService 3");
+	soap_done(&deviceServiceServiceInfo.m_Soap);
 	deviceServiceServiceInfo.m_Active = false;
 }

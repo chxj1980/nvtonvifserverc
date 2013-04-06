@@ -28,6 +28,7 @@
 #define RET_CODE_ERROR_RECV -12
 #define RET_CODE_ERROR_NOT_SUPPORT -13
 #define RET_CODE_ERROR_INVALID_VALUE -14
+#define RET_CODE_ERROR_INVALID_IP -15
 
 #define MULTI_CAST_IP "239.255.255.250"
 #define MULTI_CAST_PORT 3702
@@ -66,6 +67,14 @@ typedef struct St_CmdParam {
 	bool debug;
 	int port;
 }CmdParam;
+
+typedef struct St_NetCardInfo {
+	char ip[20];
+	char mac[50];
+	char name[50];
+	char mask[20];
+	char gateway[20];
+}NetCardInfo;
 
 extern CmdParam cmdParam;
 

@@ -5,12 +5,14 @@ INCLUDE = -I ../libipnc/inc
 LIBDIR = -L ../libipnc/src
 CND_BUILDDIR=build
 OBJECTDIR=${CND_BUILDDIR}
+
 OBJECTFILES= soapC.o \
 	soapServer.o \
 	stdsoap2.o	\
 	threads.o	\
 	hashMap.o	\
 	commIPC.o	\
+	commIPCHandle.o	\
 	appTools.o	\
 	logInfo.o	\
 	parseCmdParam.o	\
@@ -24,6 +26,17 @@ OBJECTFILES= soapC.o \
 	runDeviceService.o	\
 	nvtonvifserverc.o
 LIBS=-lpthread -lipc #-lssl -lcrypto
+
+CMOCK_DIR = ../cmock
+CMOCK_SRC = $(CMOCK_DIR)/src
+MOCK_DIR = ./mock
+
+UNITY_DIR = ../Unity
+UNITY_SRC = $(UNITY_DIR)/src
+UNITYSYMBOLS = -DTEST -DUNITY_SUPPORT_64
+
+TESTINCLUDE = -I$(CMOCK_SRC) -I$(UNITY_SRC) -I$(MOCKS_DIR) -I../libipnc/inc -I.
+
 all: onvifserver
 
 onvifserver: $(OBJECTFILES)  
@@ -31,6 +44,9 @@ onvifserver: $(OBJECTFILES)
 	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ $(INCLUDE)
-  
+
+test:
+	
+	  
 clean:
 	rm -f onvifserver *.o *.a *.bak > /dev/null

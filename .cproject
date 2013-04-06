@@ -36,6 +36,7 @@
 									<listOptionValue builtIn="false" value="../d"/>
 									<listOptionValue builtIn="false" value="D:/cygwin/MinGW/include"/>
 									<listOptionValue builtIn="false" value="&quot;D:\cygwin\usr\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;E:\Source\c++\Unity\src&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.607713331" superClass="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin"/>
 							</tool>

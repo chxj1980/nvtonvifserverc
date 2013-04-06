@@ -9,6 +9,7 @@
 #define COMMIPC_H_
 
 #include "appCommon.h"
+#include "hashMap.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -23,24 +24,21 @@ typedef struct ST_IPCCmdInfo{
 	char value[100];
 }IPCCmdInfo;
 
-typedef struct ST_IPCCmdInfoList {
-	IPCCmdInfo* data;
-	struct ST_IPCCmdInfoList* nextNode;
-}IPCCmdInfoList;
-
-IPCCmdInfoList* createCmdInfoList();
-void destroyCmdInfoList(IPCCmdInfoList* list);
-int getCmdInfoListStr(const IPCCmdInfoList* list);
-int parseCmdInfoListStr(char* info, const IPCCmdInfoList* list);
-
-
 extern IPCRunInfo ipcRunInfo;
 
 int startIPCComm();
 void stopIPCComm();
-int getDeviceInformation();
+void putStrValueInList(const hmap_t inList, const int key, const char* value);
+void putIntValueInList(const hmap_t inList, const int key, const int value);
+void putNullValueInList(const hmap_t inList, const int key);
+void getStrValueFromList(const hmap_t outList, const int key, char* value);
+void getIntValueFromList(const hmap_t outList, const int key, int* value);
+hmap_t createHashMapList();
+void destroyHashMapList(hmap_t list);
+int sendAndRetList(const int type, const hmap_t inList, hmap_t outList);
 
 #ifdef __cplusplus
 }
 #endif
+
 #endif /* COMMIPC_H_ */

@@ -29,7 +29,7 @@ int startOnvifApp() {
 	int result = startIPCComm();
 	if (!isRetCodeSuccess(result)) {
 		logInfo("Connect IPC Error");
-		return result;
+		// return result;
 	}
 	result = startProbeServer();
 	if (!isRetCodeSuccess(result)) {
