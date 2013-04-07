@@ -6,6 +6,7 @@
 #include "appCommon.h"
 #include "commIPC.h"
 #include "appTools.h"
+#include "logInfo.h"
 
 #define ONVIF_SERVER_CALL()    printf("onvifs: call %s, path=%s\r", __FUNCTION__, soap->path)
 

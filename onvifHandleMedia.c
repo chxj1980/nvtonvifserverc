@@ -57,7 +57,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSources(struct soap* soap,
 			(float*) soap_malloc(soap, sizeof(float));
 	trt__GetVideoSourcesResponse->VideoSources[0].Imaging->Contrast[0] = 128;
 	trt__GetVideoSourcesResponse->VideoSources[0].Imaging->IrCutFilter =
-			(int *) soap_malloc(soap, sizeof(int));
+			(enum tt__IrCutFilterMode *) soap_malloc(soap, sizeof(enum tt__IrCutFilterMode));
 	*trt__GetVideoSourcesResponse->VideoSources[0].Imaging->IrCutFilter = 0;
 	trt__GetVideoSourcesResponse->VideoSources[0].Imaging->Sharpness =
 			(float*) soap_malloc(soap, sizeof(float));
