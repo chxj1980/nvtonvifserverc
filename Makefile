@@ -32,12 +32,12 @@ OBJECTFILES= soapC.o \
 	runDeviceService.o	
 	
 RUNAPPFILES = $(OBJECTFILES) nvtonvifserverc.o
-
+TARGET = onvifserver
 LIBS=-lpthread -lipc #-lssl -lcrypto
 
 TESTTARGETBASE = test
 TESTTARGET = $(TESTTARGETBASE)$(TARGET_EXTENSION)
-
+TESTSRC_DIR = ./$(TESTTARGETBASE)
 CMOCK_DIR = ../cmock
 CMOCK_SRC = $(CMOCK_DIR)/src
 MOCK_DIR = ./mock
@@ -47,19 +47,28 @@ UNITY_SRC = $(UNITY_DIR)/src
 UNITYSYMBOLS = -DTEST -DUNITY_SUPPORT_64
 
 TESTINCLUDE = $(INCLUDE) -I$(CMOCK_SRC) -I$(UNITY_SRC)  -I.
-TESTOBJECTFILES = $(OBJECTFILES) ./$(TESTTARGETBASE)/onvifHandleTest.o
+TESTRUNNERFILE = test_Runner
+TESTOBJECTFILES = $(OBJECTFILES) $(TESTSRC_DIR)/onvifHandleTest.o $(TESTSRC_DIR)/$(TESTRUNNERFILE).o 
 
-all: onvifserver
+all: $(TARGET)
 
-onvifserver: $(RUNAPPFILES)  
+$(TARGET): $(RUNAPPFILES)  
 	$(CC) $^ -o $@ $(LIBDIR) $(LIBS)
 	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ $(TESTINCLUDE)
 
-$(TESTTARGET): $(TESTOBJECTFILES)
-	$(CC) $^ -o $@ $(LIBDIR) $(LIBS)
-	  
+$(TESTTARGET): testrunner $(OBJECTFILES)
+	$(CC) $^ -o $@ $(LIBDIR) $(LIBS) 
+
+testrunner: 
+	ruby $(UNITY_DIR)/auto/generate_test_runner.rb $(TESTSRC_DIR)/*.c $(TESTSRC_DIR)/$(TESTRUNNERFILE).c
+		  
 clean:
-	rm -f onvifserver $(TESTTARGET) *.o *.a *.bak > /dev/null
+	rm -f $(TARGET) $(TESTTARGET) *.o *.a *.bak > /dev/null
 	rm -rf $(MOCK_DIR)
+	rm -f $(TESTSRC_DIR)/*.o $(TESTSRC_DIR)/*.a $(TESTSRC_DIR)/$(TESTRUNNERFILE).c > /dev/null
+	
+help:
+	@echo "makefile help:"
+	@echo "make [all clean $(TARGET) $(TESTTARGET)]"
