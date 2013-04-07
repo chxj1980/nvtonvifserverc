@@ -3,6 +3,7 @@
 #include "appCommon.h"
 #include "onvifHandle.h"
 #include "threads.h"
+#include "logInfo.h"
 
 #define METADATA_VERSION    1
 #define SOAP_WSA_ID "SOAP-WSA-1.3"
@@ -124,11 +125,9 @@ char* soap_wsa_rand_uuid(struct soap *soap) {
 #endif
 	r3 = soap_random;
 	r4 = soap_random;
-	sprintf(
-			uuid,
-			"urn:uuid:%8.8x-%4.4hx-4%3.3hx-%4.4hx-%4.4hx%8.8x",
-			r1,
-			(short) (r2 >> 16), ((short)r2 >> 4) & 0x0FFF, ((short)(r3 >> 16) & 0x3FFF) | 0x8000, (short)r3, r4);
+	sprintf(uuid, "urn:uuid:%8.8x-%4.4hx-4%3.3hx-%4.4hx-%4.4hx%8.8x", r1,
+			(short) (r2 >> 16), ((short) r2 >> 4) & 0x0FFF,
+			((short) (r3 >> 16) & 0x3FFF) | 0x8000, (short) r3, r4);
 	DBGFUN1("soap_wsa_rand_uuid", "%s", uuid);
 	return uuid;
 }
@@ -172,9 +171,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_error(struct soap *soap,
 					SOAP_WSA_(SOAP_TYPE_,ProblemHeaderQName);
 			soap->fault->SOAP_ENV__Detail->fault = (void*) info;
 		}
-		soap_wsa_sender_fault_subcode(
-				soap,
-				code,
+		soap_wsa_sender_fault_subcode(soap, code,
 				"A header representing a Message Addressing Property is not valid and the message cannot be processed.",
 				NULL);
 		break;
@@ -192,9 +189,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_error(struct soap *soap,
 		soap_wsa_sender_fault_subcode(soap, code, "Missing EPR address.", NULL);
 		break;
 	case SOAP_WSA(DuplicateMessageID):
-		soap_wsa_sender_fault_subcode(
-				soap,
-				code,
+		soap_wsa_sender_fault_subcode(soap, code,
 				"Message contains the message ID of a message already received.",
 				NULL);
 		break;
@@ -213,9 +208,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_error(struct soap *soap,
 					SOAP_WSA_(SOAP_TYPE_,ProblemHeaderQName);
 			soap->fault->SOAP_ENV__Detail->fault = (void*) info;
 		}
-		soap_wsa_sender_fault_subcode(
-				soap,
-				code,
+		soap_wsa_sender_fault_subcode(soap, code,
 				"A required header representing a Message Addressing Property is not present.",
 				NULL);
 		break;
@@ -309,8 +302,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_error(struct soap *soap, SOAP_WSA(FaultSubcod
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_check(struct soap *soap) {
 	debugInfo("soap_wsa_check");
-	if (!soap->header || !soap->header->SOAP_WSA(Action)
-	)
+	if (!soap->header || !soap->header->SOAP_WSA(Action))
 #if defined(SOAP_WSA_2005)
 		return soap_wsa_error(soap, wsa5__MessageAddressingHeaderRequired, NULL);
 #elif defined(SOAP_WSA_2003)
@@ -442,8 +434,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_reply(struct soap *soap, const char *id,
 	newheader->SOAP_WSA(ReplyTo) = NULL;
 	newheader->SOAP_WSA(FaultTo) = NULL;
 	/* check current header content */
-	if (oldheader && oldheader->SOAP_WSA(MessageID))
-	{
+	if (oldheader && oldheader->SOAP_WSA(MessageID)) {
 		newheader->SOAP_WSA(RelatesTo) = (SOAP_WSA_(,RelatesTo)*) soap_malloc(
 				soap, sizeof(SOAP_WSA_(,RelatesTo)));
 		SOAP_WSA_(soap_default_, RelatesTo)
@@ -526,8 +517,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_reply(struct soap *soap, const char *id,
 				soap->fresponse = soap_wsa_response; /* response will be a POST */
 			}
 		}
-	} else if (oldheader && oldheader->SOAP_WSA(From)
-	)
+	} else if (oldheader && oldheader->SOAP_WSA(From))
 		newheader->SOAP_WSA(To) = oldheader->SOAP_WSA(From)->Address;
 	else
 		newheader->SOAP_WSA(To) = (char*) soap_wsa_anonymousURI;
@@ -561,8 +551,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_fault_subcode_action(struct soap *soap,
 		oldheader->SOAP_WSA(FaultTo)->Address =
 				oldheader->SOAP_WSA(ReplyTo)->Address;
 	}
-	if (oldheader && oldheader->SOAP_WSA(FaultTo))
-	{
+	if (oldheader && oldheader->SOAP_WSA(FaultTo)) {
 		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "WSA FaultTo='%s'\n", oldheader->SOAP_WSA(FaultTo)->Address));
 	}
 	if (oldheader && oldheader->SOAP_WSA(FaultTo)
@@ -575,8 +564,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_fault_subcode_action(struct soap *soap,
 	newheader = soap->header;
 	soap_default_SOAP_ENV__Header(soap, newheader); /* remove/clear SOAP Header */
 	/* check header */
-	if (oldheader && oldheader->SOAP_WSA(MessageID))
-	{
+	if (oldheader && oldheader->SOAP_WSA(MessageID)) {
 		newheader->SOAP_WSA(RelatesTo) = (SOAP_WSA_(,RelatesTo)*) soap_malloc(
 				soap, sizeof(SOAP_WSA_(,RelatesTo)));
 		SOAP_WSA_(soap_default_, RelatesTo)
@@ -607,8 +595,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_fault_subcode_action(struct soap *soap,
 			data->fresponse = soap->fresponse;
 			soap->fresponse = soap_wsa_response; /* response will be a POST */
 		}
-	} else if (oldheader && oldheader->SOAP_WSA(From)
-	)
+	} else if (oldheader && oldheader->SOAP_WSA(From))
 		newheader->SOAP_WSA(To) = oldheader->SOAP_WSA(From)->Address;
 	else
 		newheader->SOAP_WSA(To) = (char*) soap_wsa_anonymousURI;
@@ -814,8 +801,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__Hello(struct soap *soap,
 	soap_serialize___wsdd__Hello(soap, &soap_tmp___wsdd__Hello);
 	if (soap_begin_count(soap))
 		return soap->error;
-	if (soap->mode & SOAP_IO_LENGTH)
-	{
+	if (soap->mode & SOAP_IO_LENGTH) {
 		if (soap_envelope_begin_out(soap) || soap_putheader(soap)
 				|| soap_body_begin_out(soap)
 				|| soap_put___wsdd__Hello(soap, &soap_tmp___wsdd__Hello,
@@ -939,20 +925,14 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Hello(struct soap* soap,
 	}
 
 	/* pass on to user-defined event handler */
-	wsdd_event_Hello(
-			soap,
-			InstanceId,
-			SequenceId,
-			MessageNumber,
+	wsdd_event_Hello(soap, InstanceId, SequenceId, MessageNumber,
 			soap->header->SOAP_WSA(MessageID),
 			soap->header->SOAP_WSA(RelatesTo) ?
 					soap->header->SOAP_WSA(RelatesTo)->__item : NULL,
-			wsdd__Hello->wsa__EndpointReference.Address,
-			wsdd__Hello->Types,
+			wsdd__Hello->wsa__EndpointReference.Address, wsdd__Hello->Types,
 			wsdd__Hello->Scopes ? wsdd__Hello->Scopes->__item : NULL,
 			wsdd__Hello->Scopes ? wsdd__Hello->Scopes->MatchBy : NULL,
-			wsdd__Hello->XAddrs,
-			wsdd__Hello->MetadataVersion);
+			wsdd__Hello->XAddrs, wsdd__Hello->MetadataVersion);
 
 	/* one-way HTTP(S) POST message requires an HTTP OK response message */
 	if (!strncmp(soap->endpoint, "http", 4))
@@ -970,8 +950,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__Bye(struct soap *soap,
 		const char *soap_endpoint, const char *soap_action,
 		struct wsdd__ByeType *wsdd__Bye) {
 	struct __wsdd__Bye soap_tmp___wsdd__Bye;
-	if (soap_action == NULL
-	)
+	if (soap_action == NULL)
 		soap_action =
 				"http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/Bye";
 	soap->encodingStyle = NULL;
@@ -981,8 +960,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__Bye(struct soap *soap,
 	soap_serialize___wsdd__Bye(soap, &soap_tmp___wsdd__Bye);
 	if (soap_begin_count(soap))
 		return soap->error;
-	if (soap->mode & SOAP_IO_LENGTH)
-	{
+	if (soap->mode & SOAP_IO_LENGTH) {
 		if (soap_envelope_begin_out(soap) || soap_putheader(soap)
 				|| soap_body_begin_out(soap)
 				|| soap_put___wsdd__Bye(soap, &soap_tmp___wsdd__Bye,
@@ -1095,20 +1073,14 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Bye(struct soap* soap,
 	}
 
 	/* pass on to user-defined event handler */
-	wsdd_event_Bye(
-			soap,
-			InstanceId,
-			SequenceId,
-			MessageNumber,
+	wsdd_event_Bye(soap, InstanceId, SequenceId, MessageNumber,
 			soap->header->SOAP_WSA(MessageID),
 			soap->header->SOAP_WSA(RelatesTo) ?
 					soap->header->SOAP_WSA(RelatesTo)->__item : NULL,
-			wsdd__Bye->wsa__EndpointReference.Address,
-			wsdd__Bye->Types,
+			wsdd__Bye->wsa__EndpointReference.Address, wsdd__Bye->Types,
 			wsdd__Bye->Scopes ? wsdd__Bye->Scopes->__item : NULL,
 			wsdd__Bye->Scopes ? wsdd__Bye->Scopes->MatchBy : NULL,
-			wsdd__Bye->XAddrs,
-			wsdd__Bye->MetadataVersion);
+			wsdd__Bye->XAddrs, wsdd__Bye->MetadataVersion);
 
 	/* one-way HTTP(S) POST message requires an HTTP OK response message */
 	if (!strncmp(soap->endpoint, "http", 4))
@@ -1154,11 +1126,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__ProbeMatches(struct soap* soap,
 	}
 
 	/* pass probe matches on to user-defined event handler */
-	wsdd_event_ProbeMatches(
-			soap,
-			InstanceId,
-			SequenceId,
-			MessageNumber,
+	wsdd_event_ProbeMatches(soap, InstanceId, SequenceId, MessageNumber,
 			soap->header->SOAP_WSA(MessageID),
 			soap->header->SOAP_WSA(RelatesTo) ?
 					soap->header->SOAP_WSA(RelatesTo)->__item : NULL,
@@ -1174,8 +1142,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__ResolveMatches(struct soap *soap,
 		const char *soap_endpoint, const char *soap_action,
 		struct wsdd__ResolveMatchesType *wsdd__ResolveMatches) {
 	struct __wsdd__ResolveMatches soap_tmp___wsdd__ResolveMatches;
-	if (soap_action == NULL
-	)
+	if (soap_action == NULL)
 		soap_action =
 				"http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/ResolveMatches";
 	soap->encodingStyle = NULL;
@@ -1186,8 +1153,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__ResolveMatches(struct soap *soap,
 			&soap_tmp___wsdd__ResolveMatches);
 	if (soap_begin_count(soap))
 		return soap->error;
-	if (soap->mode & SOAP_IO_LENGTH)
-	{
+	if (soap->mode & SOAP_IO_LENGTH) {
 		if (soap_envelope_begin_out(soap) || soap_putheader(soap)
 				|| soap_body_begin_out(soap)
 				|| soap_put___wsdd__ResolveMatches(soap,
@@ -1276,14 +1242,12 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Resolve(struct soap* soap,
 
 	/* pass resolve request on to user-defined event handler */
 	mode =
-			wsdd_event_Resolve(
-					soap,
+			wsdd_event_Resolve(soap,
 #ifdef SOAP_WSA_2005
 					soap->header->wsa5__MessageID,
 					soap->header->wsa5__ReplyTo ?
 							soap->header->wsa5__ReplyTo->Address : NULL
-							,
-					wsdd__Resolve->wsa__EndpointReference.Address,
+							, wsdd__Resolve->wsa__EndpointReference.Address,
 #else
 					soap->header->wsa__MessageID,
 					soap->header->wsa__ReplyTo ? soap->header->wsa__ReplyTo->Address : NULL,
@@ -1351,11 +1315,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__ResolveMatches(struct soap* soap,
 	}
 
 	/* pass resolve matches on to user-defined event handler */
-	wsdd_event_ResolveMatches(
-			soap,
-			InstanceId,
-			SequenceId,
-			MessageNumber,
+	wsdd_event_ResolveMatches(soap, InstanceId, SequenceId, MessageNumber,
 			soap->header->SOAP_WSA(MessageID),
 			soap->header->SOAP_WSA(RelatesTo) ?
 					soap->header->SOAP_WSA(RelatesTo)->__item : NULL,

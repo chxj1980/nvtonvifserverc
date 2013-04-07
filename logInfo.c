@@ -3,29 +3,37 @@
 #include <stdarg.h>
 #include "appTools.h"
 
-
 void logIntoFile(FILE* file, char* level, const char* fmt, ...) {
-	char value[500] = {0};
+	char value[500] = { 0 };
 	char dt[30];
 	getCurrentDateTimeStr(dt, 30);
 	va_list argptr;
-	int cnt;
 	va_start(argptr, fmt);
-	cnt = vsnprintf(value, 500,fmt, argptr);
+	vsnprintf(value, 500, fmt, argptr);
 	va_end(argptr);
 	fprintf(file, "%s %s: %s\n", dt, level, value);
 }
 
-void logInfo(const char* fmt, ...) {
-#ifdef __DEBUG
-	va_list argptr;
-	va_start(argptr, fmt);
-	logIntoFile(stdout, "NORMAL", fmt, argptr);
-	va_end(argptr);
-#endif
+void debugInfo(const char* fmt, ...) {
+	if (cmdParam.debug) {
+
+		va_list argptr;
+		va_start(argptr, fmt);
+		logIntoFile(stdout, "NORMAL", fmt, argptr);
+		va_end(argptr);
+	}
 }
 
-void debugInfo(const char* fmt, ...) {
+void logRawLineInfo(const char* fmt, ...) {
+	char value[500] = { 0 };
+	va_list argptr;
+	va_start(argptr, fmt);
+	vsnprintf(value, 500, fmt, argptr);
+	va_end(argptr);
+	fprintf(stdout, "%s \n", value);
+}
+
+void logInfo(const char* fmt, ...) {
 	va_list argptr;
 	va_start(argptr, fmt);
 	logIntoFile(stdout, "DEBUG", fmt, argptr);

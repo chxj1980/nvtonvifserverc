@@ -5,6 +5,7 @@
 #include "runDeviceService.h"
 #include "appCommon.h"
 #include "commIPC.h"
+#include "appTools.h"
 
 #define ONVIF_SERVER_CALL()    printf("onvifs: call %s, path=%s\r", __FUNCTION__, soap->path)
 
@@ -52,10 +53,10 @@ void stopOnvifApp() {
 	stopIPCComm();
 }
 
-int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo, const char* faultDetail) {
+int getOnvifSoapActionNotSupportCode(const struct soap *soap, const char *faultInfo, const char* faultDetail) {
 	return soap_receiver_fault_subcode(soap, "ter:ActionNotSupported", faultInfo, faultDetail);
 }
-int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo, const char* faultDetail) {
+int getOnvifSoapActionFailedCode(const struct soap *soap, const char *faultInfo, const char* faultDetail) {
 	return soap_receiver_fault_subcode(soap, "ter:Action", faultInfo, faultDetail);
 }
 

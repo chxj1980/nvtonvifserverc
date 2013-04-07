@@ -23,8 +23,10 @@ OBJECTFILES= soapC.o \
 	onvifHandleDeviceManagement.o	\
 	onvifHandleMedia.o	\
 	runProbeServer.o	\
-	runDeviceService.o	\
-	nvtonvifserverc.o
+	runDeviceService.o	
+	
+RUNAPPFILES = $(OBJECTFILES) nvtonvifserverc.o
+
 LIBS=-lpthread -lipc #-lssl -lcrypto
 
 CMOCK_DIR = ../cmock
@@ -39,7 +41,7 @@ TESTINCLUDE = -I$(CMOCK_SRC) -I$(UNITY_SRC) -I$(MOCKS_DIR) -I../libipnc/inc -I.
 
 all: onvifserver
 
-onvifserver: $(OBJECTFILES)  
+onvifserver: $(RUNAPPFILES)  
 	$(CC) $^ -o $@ $(LIBDIR) $(LIBS)
 	
 %.o: %.c

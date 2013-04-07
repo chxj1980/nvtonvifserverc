@@ -1,5 +1,6 @@
 #include "parseCmdParam.h"
 #include "onvifHandle.h"
+#include "logInfo.h"
 
 int parseCmd(int argc, char **argv) {
 	int result = RET_CODE_SUCCESS;
@@ -11,11 +12,11 @@ int parseCmd(int argc, char **argv) {
 		case 'h':
 			cmdParam.help = true;
 			if (cmdParam.help) {
-				logInfo("Usage: onvifserver [options]");
-				logInfo("Options");
-				logInfo("-d\t Display debug information");
-				logInfo("-p <port>\t Onvif service port");
-				logInfo("-h\t Display this informateion");
+				logRawLineInfo("Usage: onvifserver [options]");
+				logRawLineInfo("Options");
+				logRawLineInfo("-d\t Display debug information");
+				logRawLineInfo("-p <port>\t Onvif service port");
+				logRawLineInfo("-h\t Display this informateion");
 			}
 			result = RET_CODE_ERROR_UNKNOWN;
 			break;

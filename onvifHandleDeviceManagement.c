@@ -4,6 +4,7 @@
 #include "onvifHandle.h"
 #include "appCommon.h"
 #include "appTools.h"
+#include "logInfo.h"
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 		struct _tds__GetServices *tds__GetServices,

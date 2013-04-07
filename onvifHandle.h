@@ -52,9 +52,9 @@ extern OnvifRunParam onvifRunParam;
 int startOnvifApp();
 void stopOnvifApp();
 
-int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo,
+int getOnvifSoapActionNotSupportCode(const struct soap *soap, const char *faultInfo,
 		const char* faultDetail);
-int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo,
+int getOnvifSoapActionFailedCode(const struct soap *soap, const char *faultInfo,
 		const char* faultDetail);
 
 int setNTPInfo(OnvifNTPInfo* info);

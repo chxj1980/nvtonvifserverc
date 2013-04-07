@@ -15,6 +15,7 @@ extern "C" {
 void logInfo(const char*, ...);
 void debugInfo(const char*, ...);
 void errorInfo(const char*, ...);
+void logRawLineInfo(const char*, ...);
 
 #ifdef __cplusplus
 }

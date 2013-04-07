@@ -12,6 +12,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+#include "logInfo.h"
+
 int getNetCardMac(unsigned char *pMac) {
 	if (NULL == pMac)
 		return RET_CODE_ERROR_NULL_VALUE;

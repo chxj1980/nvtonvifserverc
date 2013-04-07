@@ -106,7 +106,7 @@ static unsigned long crc32(const unsigned char *s, unsigned int len) {
  * Hashing function for a string
  */
 static unsigned int _find_hash_index(hashmap_map_t * m, const char* keystring) {
-	unsigned long key = crc32(keystring, strlen(keystring));
+	unsigned long key = crc32((unsigned char*)keystring, strlen(keystring));
 
 	/* Robert Jenkins' 32 bit Mix Function */
 	key += (key << 12);

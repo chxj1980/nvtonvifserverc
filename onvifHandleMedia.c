@@ -2,6 +2,7 @@
 #include "soapStub.h"
 #include "onvifHandle.h"
 #include "appTools.h"
+#include "logInfo.h"
 
 #define MAX_PROF_TOKEN 20
 
