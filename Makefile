@@ -31,13 +31,10 @@ OBJECTFILES= soapC.o \
 	runProbeServer.o	\
 	runDeviceService.o	
 	
-RUNAPPFILES = $(OBJECTFILES) nvtonvifserverc.o
-TARGET = onvifserver
+RUNAPPFILES = nvtonvifserverc.o
+TARGET = onvifserver$(TARGET_EXTENSION)
 LIBS=-lpthread -lipc #-lssl -lcrypto
 
-TESTTARGETBASE = test
-TESTTARGET = $(TESTTARGETBASE)$(TARGET_EXTENSION)
-TESTSRC_DIR = ./$(TESTTARGETBASE)
 CMOCK_DIR = ../cmock
 CMOCK_SRC = $(CMOCK_DIR)/src
 MOCK_DIR = ./mock
@@ -45,30 +42,59 @@ MOCK_DIR = ./mock
 UNITY_DIR = ../Unity
 UNITY_SRC = $(UNITY_DIR)/src
 UNITYSYMBOLS = -DTEST -DUNITY_SUPPORT_64
+UNITYFILES = $(UNITY_SRC)/unity.o
+UNITYFILES1 = unity.o
 
+TESTTARGETBASE = test
+TESTTARGET = $(TESTTARGETBASE)$(TARGET_EXTENSION)
+TESTSRC_DIR = ./$(TESTTARGETBASE)
 TESTINCLUDE = $(INCLUDE) -I$(CMOCK_SRC) -I$(UNITY_SRC)  -I.
 TESTRUNNERFILE = test_Runner
-TESTOBJECTFILES = $(OBJECTFILES) $(TESTSRC_DIR)/onvifHandleTest.o $(TESTSRC_DIR)/$(TESTRUNNERFILE).o 
+TESTOBJECTFILES = $(TESTSRC_DIR)/onvifHandleTest.o $(TESTSRC_DIR)/$(TESTRUNNERFILE).o 
+TESTOBJECTFILES1 = onvifHandleTest.o $(TESTRUNNERFILE).o
 
 all: $(TARGET)
 
-$(TARGET): $(RUNAPPFILES)  
+$(TARGET): $(OBJECTFILES) $(RUNAPPFILES)  
 	$(CC) $^ -o $@ $(LIBDIR) $(LIBS)
-	
-%.o: %.c
+
+$(OBJECTFILES): %.o: %.c
+	$(CC) $(CFLAGS) -c $^ $(INCLUDE)	
+
+$(RUNAPPFILES): %.o: %.c
+	$(CC) $(CFLAGS) -c $^ $(INCLUDE)
+
+$(TESTOBJECTFILES): %.o: %.c
 	$(CC) $(CFLAGS) -c $^ $(TESTINCLUDE)
-
-$(TESTTARGET): testrunner $(OBJECTFILES)
-	$(CC) $^ -o $@ $(LIBDIR) $(LIBS) 
-
+	
+$(UNITYFILES): %.o: %.c
+	$(CC) $(CFLAGS) $(UNITYSYMBOLS) -c $^ 
+	 	
+$(TESTTARGET): testrunner  $(OBJECTFILES) $(UNITYFILES) $(TESTOBJECTFILES)
+	$(CC) $(OBJECTFILES) $(UNITYFILES1) $(TESTOBJECTFILES1) -o $@ $(LIBDIR) $(LIBS) 
+	
 testrunner: 
 	ruby $(UNITY_DIR)/auto/generate_test_runner.rb $(TESTSRC_DIR)/*.c $(TESTSRC_DIR)/$(TESTRUNNERFILE).c
-		  
-clean:
-	rm -f $(TARGET) $(TESTTARGET) *.o *.a *.bak > /dev/null
-	rm -rf $(MOCK_DIR)
-	rm -f $(TESTSRC_DIR)/*.o $(TESTSRC_DIR)/*.a $(TESTSRC_DIR)/$(TESTRUNNERFILE).c > /dev/null
+
+testrun: cleantestdir $(TESTTARGET)
+	./$(TESTTARGET)
+	
+.PHONY: cleantestdir clean testrun testrunner
+
+cleantestdir:
+	-rm -f $(TESTRUNNERFILE).o $(UNITYFILES) $(TESTSRC_DIR)/*.o $(TESTSRC_DIR)/*.a $(TESTSRC_DIR)/$(TESTRUNNERFILE).c > /dev/null		  
+
+clean: cleantestdir
+	-rm -f $(TARGET) $(TESTTARGET) *.o *.$(TARGET_EXTENSION) *.a *.bak > /dev/null
+	-rm -rf $(MOCK_DIR)
+	
 	
 help:
 	@echo "makefile help:"
-	@echo "make [all clean $(TARGET) $(TESTTARGET)]"
+	@echo "make [all clean $(TARGET) $(TESTTARGET) testrun help]"
+	@echo "\tall  \t\t Make Deault Action"
+	@echo "\tclean  \t\t Clean All Temp Files"
+	@echo "\t$(TARGET)  Create App File"
+	@echo "\t$(TESTTARGET)  \t Create Test App File"
+	@echo "\ttestrun  \t Run Test App"	
+	@echo "\thelp  \t\t Display Help Message"
