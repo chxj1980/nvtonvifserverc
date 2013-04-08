@@ -6,7 +6,7 @@
 #include "appTools.h"
 #include "onvifHandle.h"
 
-IPCRunInfo ipcRunInfo;
+IPCRunInfo ipcRunInfo = {.ipcConnectHandle = INVALID_HANDLE};
 
 int startIPCComm() {
 	if (isValidHandle(ipcRunInfo.ipcConnectHandle))
