@@ -266,10 +266,8 @@ int hashmap_get(hmap_t in, const char* key, void_ptr *value) {
 	hashmap_elem_t *elem;
 
 	m = (hashmap_map_t *) in;
-
 	/* Find element location */
 	curr = _find_hash_index(m, key);
-
 	/* Linear probing, if necessary */
 	for (i = 0; i < HMAP_CHAIN_LENGTH; i++) {
 		elem = m->elems + curr;
@@ -281,7 +279,6 @@ int hashmap_get(hmap_t in, const char* key, void_ptr *value) {
 		}
 		curr = (curr + 1) % m->table_size;
 	}
-
 	*value = NULL;
 	return HMAP_E_NOTFOUND;
 }

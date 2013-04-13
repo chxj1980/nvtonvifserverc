@@ -3,20 +3,16 @@
 #include <stdarg.h>
 #include "appTools.h"
 
-void logIntoFile(FILE* file, char* level, const char* fmt, ...) {
+void logIntoFile(FILE* file, char* level, const char* fmt, va_list argptr) {
 	char value[500] = { 0 };
 	char dt[30];
 	getCurrentDateTimeStr(dt, 30);
-	va_list argptr;
-	va_start(argptr, fmt);
 	vsnprintf(value, 500, fmt, argptr);
-	va_end(argptr);
 	fprintf(file, "%s %s: %s\n", dt, level, value);
 }
 
 void debugInfo(const char* fmt, ...) {
 	if (cmdParam.debug) {
-
 		va_list argptr;
 		va_start(argptr, fmt);
 		logIntoFile(stdout, "NORMAL", fmt, argptr);
@@ -25,7 +21,7 @@ void debugInfo(const char* fmt, ...) {
 }
 
 void logRawLineInfo(const char* fmt, ...) {
-	char value[500] = { 0 };
+	char value[500] = {0};
 	va_list argptr;
 	va_start(argptr, fmt);
 	vsnprintf(value, 500, fmt, argptr);
@@ -36,9 +32,8 @@ void logRawLineInfo(const char* fmt, ...) {
 void logInfo(const char* fmt, ...) {
 	va_list argptr;
 	va_start(argptr, fmt);
-	logIntoFile(stdout, "DEBUG", fmt, argptr);
+	logIntoFile(stdout, "NORMAL", fmt, argptr);
 	va_end(argptr);
-
 }
 
 void errorInfo(const char* fmt, ...) {

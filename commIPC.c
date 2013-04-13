@@ -13,6 +13,7 @@ int startIPCComm() {
 		stopIPCComm();
 	int cHandle = connect_local("/tmp/avserver.domain");
 	if (!isValidHandle(cHandle)) {
+		logInfo("connect ipc failed");
 		return RET_CODE_ERROR_CONNECT;
 	}
 	ipcRunInfo.ipcConnectHandle = cHandle;
@@ -37,8 +38,9 @@ int sendAndRecvIPCCmd(const void_ptr incmd, const int inlen, void_ptr outInfo,
 		return result;
 	}
 	int size = recv_local(ipcRunInfo.ipcConnectHandle, (char*) outInfo,
-			*outlen);
-	if (-1 == size) {
+			outlen);
+	logInfo("sendAndRecvIPCCmd recv_local %d", size);
+	if (size < 0) {
 		return RET_CODE_ERROR_RECV;
 	}
 	*outlen = size;
@@ -54,7 +56,7 @@ void stopIPCComm() {
 }
 
 int getSendListIterate(void_ptr data, void_ptr arg) {
-	char* v = arg;
+	char* v = (char*)arg;
 	IPCCmdInfo* cmdInfo = data;
 	char invalue[120] = { 0 };
 	sprintf(invalue, "&%d=%s", cmdInfo->key, cmdInfo->value);
@@ -90,22 +92,33 @@ void putNullValueInList(const hmap_t inList, const int key) {
 	putStrValueInList(inList, key, NULL);
 }
 
-void getStrValueFromList(const hmap_t outList, const int key, char* value) {
+int getStrValueFromList(const hmap_t list, const int key, char* value) {
+	int result = RET_CODE_ERROR_NULL_VALUE;
 	char cKey[20];
 	sprintf(cKey, "%d", key);
 	void_ptr* v1 = NULL;
-	if (HMAP_S_OK == hashmap_get(outList, cKey, v1)) {
-		strcpy(value, (char*) *v1);
+	if (HMAP_S_OK == hashmap_get(list, cKey, &v1)) {
+		if (NULL != v1) {
+			strcpy(value, (char*) v1);
+		}
+		result = RET_CODE_SUCCESS;
 	}
+	return result;
 }
 
-void getIntValueFromList(const hmap_t outList, const int key, int* value) {
+int getIntValueFromList(const hmap_t outList, const int key, int* value) {
 	char cKey[20];
 	sprintf(cKey, "%d", key);
 	char cValue[520] = { 0 };
-	getStrValueFromList(outList, key, cValue);
-	if (strlen(cValue) > 0)
-		*value = atoi(cValue);
+	int result = getStrValueFromList(outList, key, cValue);
+	if (isRetCodeSuccess(result)) {
+		if (strlen(cValue) > 0) {
+			*value = atoi(cValue);
+		}
+		else
+			result = RET_CODE_ERROR_NULL_VALUE;
+	}
+	return result;
 }
 
 void getSendListCmd(char* invalue, const int type, const hmap_t inList) {
@@ -133,11 +146,14 @@ int sendAndRetList(const int type, const hmap_t inList, hmap_t outList) {
 	char invalue[1000] = { 0 };
 	char outvalue[1000] = { 0 };
 	int outlen = 1000;
+	memset(outvalue, 0, 1000);
 	getSendListCmd(invalue, type, inList);
 	int result = sendAndRecvIPCCmd(invalue, strlen(invalue), outvalue, &outlen);
 	if (RET_CODE_SUCCESS != result)
 		return result;
-	parseRecvListCmd(outvalue, outList);
+	if (outlen > 0) {
+		parseRecvListCmd(outvalue, outList);
+	}
 	return result;
 }
 
