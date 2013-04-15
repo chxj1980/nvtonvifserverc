@@ -37,7 +37,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 //		strcpy(tds__GetServicesResponse->Service[0].__any[0],"Any1");
 //		tds__GetServicesResponse->Service[0].__any[1] = (char *)soap_malloc(soap,sizeof(char) * INFO_LENGTH);
 //		strcpy(tds__GetServicesResponse->Service[0].__any[1],"Any2");
-		tds__GetServicesResponse->Service[0].__size = NULL;
+		tds__GetServicesResponse->Service[0].__size = 0;
 		tds__GetServicesResponse->Service[0].__anyAttribute = NULL;
 		tds__GetServicesResponse->Service[0].__any = NULL;
 		return SOAP_OK;
@@ -82,17 +82,17 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServiceCapabilities(
 			(struct tds__NetworkCapabilities *) soap_malloc(soap,
 					sizeof(struct tds__NetworkCapabilities));
 	tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPFilter =
-			(int *) soap_malloc(soap, sizeof(int));
+			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	tds__GetServiceCapabilitiesResponse->Capabilities->Network->ZeroConfiguration =
-			(int *) soap_malloc(soap, sizeof(int));
+			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPVersion6 =
-			(int *) soap_malloc(soap, sizeof(int));
+			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	tds__GetServiceCapabilitiesResponse->Capabilities->Network->DynDNS =
-			(int *) soap_malloc(soap, sizeof(int));
+			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	tds__GetServiceCapabilitiesResponse->Capabilities->Network->Dot11Configuration =
-			(int *) soap_malloc(soap, sizeof(int));
+			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	tds__GetServiceCapabilitiesResponse->Capabilities->Network->HostnameFromDHCP =
-			(int *) soap_malloc(soap, sizeof(int));
+			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPFilter =
 			&soap_False;
 	tds__GetServiceCapabilitiesResponse->Capabilities->Network->ZeroConfiguration =

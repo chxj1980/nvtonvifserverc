@@ -10,8 +10,8 @@
 
 #define ONVIF_SERVER_CALL()    printf("onvifs: call %s, path=%s\r", __FUNCTION__, soap->path)
 
-int soap_False = 0;
-int soap_True = 1;
+int soap_False = xsd__boolean__false_;
+int soap_True = xsd__boolean__true_;
 OnvifRunParam onvifRunParam;
 
 #define ONVIF_RETURN_OK(soap, namespaces)   \
@@ -31,7 +31,7 @@ int startOnvifApp() {
 	int result = startIPCComm();
 	if (!isRetCodeSuccess(result)) {
 		logInfo("Connect IPC Error");
-		// return result;
+		return result;
 	}
 	result = startProbeServer();
 	if (!isRetCodeSuccess(result)) {

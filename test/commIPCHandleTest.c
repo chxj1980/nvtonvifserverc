@@ -29,3 +29,4 @@ void test_GetNetCardInfo() {
 	OnvifNetCardInfo onvifNetCardInfo;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getNetCardInfo(&onvifNetCardInfo));
 }
+

@@ -45,13 +45,15 @@ UNITYSYMBOLS = -DTEST -DUNITY_SUPPORT_64
 UNITYFILES = unity.o
 
 TESTTARGETBASE = test
-TESTTARGET = $(TESTTARGETBASE)$(TARGET_EXTENSION)
+
 TESTSRC_DIR = $(TESTTARGETBASE)
 TESTINCLUDE = $(INCLUDE) -I$(CMOCK_SRC) -I$(UNITY_SRC)  -I.
-TESTOBJECTFILES = onvifHandleTest.o
+TESTFILES = commIPCHandleTest
+TESTOBJECTFILES = $(foreach n, $(TESTFILES), $(n).o)
 
 TESTRUNNERFILE = test_Runner
-TESTRUNNERFILES = $(TESTRUNNERFILE).o 
+TESTRUNNERFILES = $(foreach n, $(TESTFILES), $(TESTRUNNERFILE)$(n).o)
+TESTTARGETS = $(foreach n, $(TESTFILES), $(TESTRUNNERFILE)$(n)$(TARGET_EXTENSION))
 
 all: $(TARGET)
 
@@ -72,22 +74,30 @@ $(UNITYFILES): %.o: $(UNITY_SRC)/%.c
 
 $(TESTRUNNERFILES): %.o: $(TESTSRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(UNITYSYMBOLS) -c $^ $(TESTINCLUDE)
+	-rm -f $^
+
+$(TESTTARGETS): %$(TARGET_EXTENSION): %.o
+	$(CC) $(OBJECTFILES) $(UNITYFILES) $^ $(subst $(TESTRUNNERFILE), ,$^) -o $@ $(LIBDIR) $(LIBS)
 	 	
-$(TESTTARGET): testrunner  $(OBJECTFILES) $(UNITYFILES) $(TESTOBJECTFILES) $(TESTRUNNERFILES)
-	$(CC) $(OBJECTFILES) $(UNITYFILES) $(TESTOBJECTFILES) $(TESTRUNNERFILES) -o $@ $(LIBDIR) $(LIBS) 
-	
 testrunner:  
-	ruby $(UNITY_DIR)/auto/generate_test_runner.rb $(TESTSRC_DIR)/*.c $(TESTSRC_DIR)/$(TESTRUNNERFILE).c
-
-testrun: cleantestdir $(TESTTARGET)
-	./$(TESTTARGET)
+	@for testrun1 in $(TESTFILES); do \
+		ruby $(UNITY_DIR)/auto/generate_test_runner.rb $(TESTSRC_DIR)/$$testrun1.c $(TESTSRC_DIR)/$(TESTRUNNERFILE)$$testrun1.c ; \
+	done
 	
-.PHONY: cleantestdir clean testrun testrunner
+buildtest: $(OBJECTFILES) $(UNITYFILES) $(TESTOBJECTFILES) testrunner $(TESTRUNNERFILES) $(TESTTARGETS)
 
-cleantestdir:
-	-rm -f $(TESTRUNNERFILE).o $(UNITYFILES) $(TESTSRC_DIR)/*.o $(TESTSRC_DIR)/*.a $(TESTSRC_DIR)/$(TESTRUNNERFILE).c > /dev/null		  
+testrun: cleantest buildtest
+	@for testrun1 in $(TESTTARGETS); do \
+		./$$testrun1 ; \
+	done
+	
+.PHONY: cleantest clean testrun testrunner buildtesttarget
 
-clean: cleantestdir
+cleantest:
+	-rm -f $(UNITYFILES) $(TESTSRC_DIR)/*.o $(TESTSRC_DIR)/*.out $(TESTSRC_DIR)/*.a $(TESTSRC_DIR)/$(TESTRUNNERFILE).c > /dev/null
+	-rm -f $(TESTTARGETS)		  
+
+clean: cleantest
 	-rm -f $(TARGET) $(TESTTARGET) *.o *.$(TARGET_EXTENSION) *.a *.bak > /dev/null
 	-rm -rf $(MOCK_DIR)
 	
@@ -95,9 +105,10 @@ clean: cleantestdir
 help:
 	@echo "makefile help:"
 	@echo "make [all clean $(TARGET) $(TESTTARGET) testrun help]"
-	@echo "\tall  \t\t Make Deault Action"
-	@echo "\tclean  \t\t Clean All Temp Files"
-	@echo "\t$(TARGET)  Create App File"
-	@echo "\t$(TESTTARGET)  \t Create Test App File"
-	@echo "\ttestrun  \t Run Test App"	
-	@echo "\thelp  \t\t Display Help Message"
+	@echo "  all                    Make Deault Action"
+	@echo "  clean                  Clean All Temp Files"
+	@echo "  cleantest              Clean All Test Files"            
+	@echo "  $(TARGET)        Create App File"
+	@echo "  buildtest              Create Test App File"
+	@echo "  testrun                Run Test App"	
+	@echo "  help                   Display Help Message"
