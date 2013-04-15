@@ -48,7 +48,7 @@ TESTTARGETBASE = test
 
 TESTSRC_DIR = $(TESTTARGETBASE)
 TESTINCLUDE = $(INCLUDE) -I$(CMOCK_SRC) -I$(UNITY_SRC)  -I.
-TESTFILES = commIPCHandleTest
+TESTFILES = commIPCHandleTest onvifHandleTest
 TESTOBJECTFILES = $(foreach n, $(TESTFILES), $(n).o)
 
 TESTRUNNERFILE = test_Runner
@@ -90,8 +90,11 @@ testrun: cleantest buildtest
 	@for testrun1 in $(TESTTARGETS); do \
 		./$$testrun1 ; \
 	done
-	
-.PHONY: cleantest clean testrun testrunner buildtesttarget
+
+runapp: $(TARGET)
+		./$(TARGET)
+		
+.PHONY: cleantest clean testrun testrunner buildtesttarget runapp
 
 cleantest:
 	-rm -f $(UNITYFILES) $(TESTSRC_DIR)/*.o $(TESTSRC_DIR)/*.out $(TESTSRC_DIR)/*.a $(TESTSRC_DIR)/$(TESTRUNNERFILE).c > /dev/null
@@ -105,10 +108,11 @@ clean: cleantest
 help:
 	@echo "makefile help:"
 	@echo "make [all clean $(TARGET) $(TESTTARGET) testrun help]"
-	@echo "  all                    Make Deault Action"
+	@echo "  all                    Make Deault Action $(TARGET)"
 	@echo "  clean                  Clean All Temp Files"
 	@echo "  cleantest              Clean All Test Files"            
 	@echo "  $(TARGET)        Create App File"
 	@echo "  buildtest              Create Test App File"
+	@echo "  runapp                 Run App"
 	@echo "  testrun                Run Test App"	
 	@echo "  help                   Display Help Message"

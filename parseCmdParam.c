@@ -33,6 +33,7 @@ int parseCmd(int argc, char **argv) {
 			}
 			onvifRunParam.runFlag = true;
 			onvifRunParam.servicePort = cmdParam.port;
+			strcpy(onvifRunParam.ip, "");
 			break;
 		default:
 			break;

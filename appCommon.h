@@ -37,7 +37,7 @@
 #define INVALID_HANDLE -1
 #define INFO_LENGTH 100
 #define NET_CARD_NAME "eth0"
-
+#define IPV4_LEN 20
 #define TRUE 1
 #define FALSE 0
 
@@ -69,11 +69,11 @@ typedef struct St_CmdParam {
 }CmdParam;
 
 typedef struct St_NetCardInfo {
-	char ip[20];
-	char mac[50];
+	char ip[IPV4_LEN];
+	char mac[IPV4_LEN];
 	char name[50];
-	char mask[20];
-	char gateway[20];
+	char mask[IPV4_LEN];
+	char gateway[IPV4_LEN];
 }NetCardInfo;
 
 extern CmdParam cmdParam;

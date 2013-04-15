@@ -80,12 +80,10 @@ void stopSoap(struct soap* soap1) {
 	soap_end(soap1);
 }
 
-int getServiceURL(char* value, const int port) {
-	char ip_list[21] = { 0 };
-	int result = getLocalIp(ip_list);
-	if (!isRetCodeSuccess(result))
-		return result;
-	sprintf(value, "http://%s:%d/", ip_list, port);
+int getServiceURL(char* value, const char* ip, const int port) {
+	if (strlen(ip) < 1)
+		return RET_CODE_ERROR_INVALID_IP;
+	sprintf(value, "http://%s:%d/", ip, port);
 	return RET_CODE_SUCCESS;
 }
 

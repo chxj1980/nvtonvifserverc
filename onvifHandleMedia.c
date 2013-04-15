@@ -228,9 +228,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfiles(struct soap* soap,
 	debugInfo("__trt__GetProfiles");
 	int i;
 	char _IPAddr[LARGE_INFO_LENGTH];
-	if (!isRetCodeSuccess(getLocalIp(_IPAddr)))
-		debugInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	strcpy(_IPAddr, onvifRunParam.ip);
 
 	int size = 1;
 	trt__GetProfilesResponse->Profiles = (struct tt__Profile *) soap_malloc(
@@ -870,10 +868,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetStreamUri(struct soap* soap,
 		struct _trt__GetStreamUriResponse *trt__GetStreamUriResponse) {
 	debugInfo("__trt__GetStreamUri");
 	char _IPAddr[INFO_LENGTH];
+	strcpy(_IPAddr, onvifRunParam.ip);
 	char _IPAddr1[INFO_LENGTH] = { 0 };
-	if (!isRetCodeSuccess(getLocalIp(_IPAddr1)))
-		debugInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
 	sprintf(_IPAddr, "rtsp://%s:8554/day.264", _IPAddr1);
 	/* Response */
 	trt__GetStreamUriResponse->MediaUri = (struct tt__MediaUri *) soap_malloc(

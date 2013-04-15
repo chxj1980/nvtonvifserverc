@@ -11,7 +11,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 		struct _tds__GetServicesResponse *tds__GetServicesResponse) {
 	debugInfo("__tds__GetServices");
 	char _xmAddr[INFO_LENGTH] = { 0 };
-	if (RET_CODE_SUCCESS != getServiceURL(_xmAddr, onvifRunParam.servicePort)) {
+	if (RET_CODE_SUCCESS != getServiceURL(_xmAddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
 		return getOnvifSoapActionFailedCode(soap, "GetServices",
 				"not get service url");
 	}
@@ -172,21 +172,25 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDeviceInformation(
 		struct soap* soap,
 		struct _tds__GetDeviceInformation *tds__GetDeviceInformation,
 		struct _tds__GetDeviceInformationResponse *tds__GetDeviceInformationResponse) {
-
+	OnvifDeviceInfo info;
+	if (!isRetCodeSuccess(getDeviceInfo(&info))) {
+		return getOnvifSoapActionFailedCode(soap, "GetDeviceInformation",
+						"not get deviceinfo");
+	}
 	tds__GetDeviceInformationResponse->HardwareId = (char *) soap_malloc(soap,
-			100);
+			INFO_LENGTH);
 	strcpy(tds__GetDeviceInformationResponse->HardwareId, HARDWARE_ID);
 	tds__GetDeviceInformationResponse->FirmwareVersion = (char *) soap_malloc(
-			soap, 100);
-	strcpy(tds__GetDeviceInformationResponse->FirmwareVersion, "v1.0");
+			soap, INFO_LENGTH);
+	strcpy(tds__GetDeviceInformationResponse->FirmwareVersion, info.firmwareVersion);
 	tds__GetDeviceInformationResponse->Manufacturer = (char *) soap_malloc(soap,
-			100);
-	strcpy(tds__GetDeviceInformationResponse->Manufacturer, "caoyonghua");
-	tds__GetDeviceInformationResponse->Model = (char *) soap_malloc(soap, 100);
-	strcpy(tds__GetDeviceInformationResponse->Model, "ipc01");
+			INFO_LENGTH);
+	strcpy(tds__GetDeviceInformationResponse->Manufacturer, info.manufacturer);
+	tds__GetDeviceInformationResponse->Model = (char *) soap_malloc(soap, INFO_LENGTH);
+	strcpy(tds__GetDeviceInformationResponse->Model, info.model);
 	tds__GetDeviceInformationResponse->SerialNumber = (char *) soap_malloc(soap,
-			100);
-	strcpy(tds__GetDeviceInformationResponse->SerialNumber, "132423423");
+			INFO_LENGTH);
+	strcpy(tds__GetDeviceInformationResponse->SerialNumber, info.serialNumber);
 	return SOAP_OK;
 }
 
@@ -376,13 +380,12 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,
 		struct _tds__GetCapabilities *tds__GetCapabilities,
 		struct _tds__GetCapabilitiesResponse *tds__GetCapabilitiesResponse) {
 	debugInfo("__tds__GetCapabilities");
-	int _Category;
 	char _IPv4Address[LARGE_INFO_LENGTH];
 	if (RET_CODE_SUCCESS
-			!= getServiceURL(_IPv4Address, onvifRunParam.servicePort))
+			!= getServiceURL(_IPv4Address, onvifRunParam.ip, onvifRunParam.servicePort))
 		return getOnvifSoapActionFailedCode(soap, "GetCapabilities",
 				"not get service url");;
-
+	int _Category = 0;
 	if (tds__GetCapabilities->Category == NULL)
 	{
 		tds__GetCapabilities->Category = (int *) soap_malloc(soap, sizeof(int));

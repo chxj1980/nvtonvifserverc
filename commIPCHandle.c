@@ -29,7 +29,7 @@ int sendCommIPCFunc(const int type, const void_ptr info,
 		return result;
 	}
 	if (NULL != parseFunc) {
-		result = parseFunc(info, outList);
+		result = parseFunc(outList, info);
 	}
 	destroyHashMapList(inList);
 	destroyHashMapList(outList);
@@ -85,7 +85,17 @@ int getNetCardInfo_PushCmd(const hmap_t inList, const void_ptr info1) {
 
 int getNetCardInfo_ParseCmd(const hmap_t outList, const void_ptr info1) {
 	OnvifNetCardInfo* info = (OnvifNetCardInfo*) info1;
-	int result = RET_CODE_ERROR_UNKNOWN;
+	char macaddr[INFO_LENGTH] = {0};
+	int result = getStrValueFromList(outList, e_net_macaddr, macaddr);
+	if (strlen(macaddr) < 1) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	info->size = 1;
+	strcpy(info->netCardInfos[0].mac, macaddr);
+	getStrValueFromList(outList, e_net_cardname, info->netCardInfos[0].name);
+	getStrValueFromList(outList, e_net_ip, info->netCardInfos[0].ip);
+	getStrValueFromList(outList, e_net_netmask, info->netCardInfos[0].mask);
+	getStrValueFromList(outList, e_net_gateway, info->netCardInfos[0].gateway);
 	return result;
 }
 
@@ -93,3 +103,25 @@ int getNetCardInfo(OnvifNetCardInfo* info) {
 	return sendCommIPCFunc(T_Get, info, getNetCardInfo_PushCmd, getNetCardInfo_ParseCmd);
 }
 
+int getDeviceInfo_PushCmd(const hmap_t inList, const void_ptr info1) {
+	OnvifDeviceInfo* info = (OnvifDeviceInfo*) info1;
+	putNullValueInList(inList, e_sys_hardwareId);
+	putNullValueInList(inList, e_sys_manufacturer);
+	putNullValueInList(inList, e_sys_Model);
+	putNullValueInList(inList, e_sys_serialNumber);
+	putNullValueInList(inList, e_sys_hdversion);
+	return RET_CODE_SUCCESS;
+}
+
+int getDeviceInfo_ParseCmd(const hmap_t outList, const void_ptr info1) {
+	OnvifDeviceInfo* info = (OnvifDeviceInfo*) info1;
+	int result = getStrValueFromList(outList, e_sys_hardwareId, info->hardwareId);
+	getStrValueFromList(outList, e_sys_manufacturer, info->manufacturer);
+	getStrValueFromList(outList, e_sys_Model, info->model);
+	getStrValueFromList(outList, e_sys_hdversion, info->firmwareVersion);
+	return RET_CODE_SUCCESS;
+}
+
+int getDeviceInfo(OnvifDeviceInfo* info) {
+	return sendCommIPCFunc(T_Get, info, getDeviceInfo_PushCmd, getDeviceInfo_ParseCmd);
+}

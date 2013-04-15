@@ -30,3 +30,7 @@ void test_GetNetCardInfo() {
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getNetCardInfo(&onvifNetCardInfo));
 }
 
+void test_GetDeviceInfo() {
+	OnvifDeviceInfo onvifDeviceInfo;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getDeviceInfo(&onvifDeviceInfo));
+}

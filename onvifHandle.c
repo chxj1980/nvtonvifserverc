@@ -12,7 +12,7 @@
 
 int soap_False = xsd__boolean__false_;
 int soap_True = xsd__boolean__true_;
-OnvifRunParam onvifRunParam;
+OnvifRunParam onvifRunParam = {.ip = {0}, .servicePort = DEVICE_WEBSERVICE_PORT};
 
 #define ONVIF_RETURN_OK(soap, namespaces)   \
 	ONVIF_SERVER_CALL();    \
@@ -27,10 +27,37 @@ static inline int onvif_receiver_fault_subcode_oom(struct soap *soap) {
 			"The device does not have sufficient memory to complete the action.");
 }
 
+int getLocalIPInfo() {
+	OnvifNetCardInfo onvifNetCardInfo;
+	int result = getNetCardInfo(&onvifNetCardInfo);
+	if (!isRetCodeSuccess(result)) {
+		logInfo("Get Net Card Info Error");
+		return result;
+	}
+	if (onvifNetCardInfo.size < 1) {
+		result = RET_CODE_ERROR_NULL_VALUE;
+		logInfo("Get Net Card Info Error");
+		return result;
+	}
+	strcpy(onvifRunParam.ip, onvifNetCardInfo.netCardInfos[0].ip);
+	if (strlen(onvifRunParam.ip) < 1) {
+		getLocalIp(onvifRunParam.ip);
+		if (strlen(onvifRunParam.ip) < 1) {
+			result = RET_CODE_ERROR_INVALID_IP;
+			logInfo("Get Local IP Error");
+			return result;
+		}
+	}
+	return RET_CODE_SUCCESS;
+}
+
 int startOnvifApp() {
 	int result = startIPCComm();
 	if (!isRetCodeSuccess(result)) {
 		logInfo("Connect IPC Error");
+		return result;
+	}
+	if (!isRetCodeSuccess(getLocalIPInfo())) {
 		return result;
 	}
 	result = startProbeServer();
@@ -38,7 +65,6 @@ int startOnvifApp() {
 		logInfo("Start Onvif Probe Server Error");
 		return result;
 	}
-
 	result = startDeviceService();
 	if (!isRetCodeSuccess(result)) {
 		logInfo("Start Onvif Device Service Error");

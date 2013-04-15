@@ -659,8 +659,9 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__ProbeMatches(struct soap *soap,
 
 SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 		struct wsdd__ProbeType *wsdd__Probe) {
+	logInfo("__wsdd__Probe %s", onvifRunParam.ip);
 	char _xmaddr[256] = { 0 };
-	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr, onvifRunParam.servicePort))
+	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort))
 		return GSOAP_RET_CODE_NOT_IMPLEMENT;
 	int interface_num = 1;
 	wsdd__ProbeMatchesType ProbeMatches;
@@ -778,6 +779,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 
 	/* send over current socket as HTTP OK response: */
 	soap_send___wsdd__ProbeMatches(soap, "http://", NULL, &ProbeMatches);
+	logInfo("__wsdd__Probe end");
 	return SOAP_OK;
 }
 

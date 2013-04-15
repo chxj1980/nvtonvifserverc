@@ -27,14 +27,15 @@ extern int soap_True;
 typedef struct St_OnvifRunParam {
 	bool runFlag; // 启动onvif标志
 	int servicePort; // 对应onvif服务端口
+	char ip[IPV4_LEN];
 } OnvifRunParam;
 
 typedef struct St_OnvifDeviceInfo {
 	char hardwareId[SMALL_INFO_LENGTH];
 	char firmwareVersion[SMALL_INFO_LENGTH];
-	char Manufacturer[SMALL_INFO_LENGTH];
-	char Model[SMALL_INFO_LENGTH];
-	char SerialNumber[INFO_LENGTH];
+	char manufacturer[SMALL_INFO_LENGTH];
+	char model[SMALL_INFO_LENGTH];
+	char serialNumber[INFO_LENGTH];
 } OnvifDeviceInfo;
 
 typedef struct St_OnvifNTPInfo {

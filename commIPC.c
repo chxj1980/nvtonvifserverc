@@ -39,7 +39,6 @@ int sendAndRecvIPCCmd(const void_ptr incmd, const int inlen, void_ptr outInfo,
 	}
 	int size = recv_local(ipcRunInfo.ipcConnectHandle, (char*) outInfo,
 			*outlen);
-	logInfo("sendAndRecvIPCCmd recv_local %d", size);
 	if (size < 0) {
 		return RET_CODE_ERROR_RECV;
 	}
@@ -134,9 +133,7 @@ void parseRecvListCmd(const char* outValue, const hmap_t outList) {
 	int parseIndex = 0;
 	do {
 		pkey = ParseVars(pInput, &parseIndex);
-		logInfo("parseRecvListCmd parsekey %s", pkey);
 		pvalue = ParseVars(pInput, &parseIndex);
-		logInfo("parseRecvListCmd parse value %s", pvalue);
 		if (pkey == NULL || pvalue == NULL) {
 			break;
 		}
@@ -154,7 +151,6 @@ int sendAndRetList(const int type, const hmap_t inList, hmap_t outList) {
 	if (!isRetCodeSuccess(result))
 		return result;
 	if (outlen > 0) {
-		logInfo("sendAndRetList %s", outvalue);
 		parseRecvListCmd(outvalue, outList);
 	}
 	return result;
