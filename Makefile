@@ -73,11 +73,14 @@ $(UNITYFILES): %.o: $(UNITY_SRC)/%.c
 	$(CC) $(CFLAGS) $(UNITYSYMBOLS) -c $^ 
 
 $(TESTRUNNERFILES): %.o: $(TESTSRC_DIR)/%.c
-	$(CC) $(CFLAGS) $(UNITYSYMBOLS) -c $^ $(TESTINCLUDE)
+	$(CC) $(CFLAGS) $(UNITYSYMBOLS) -c $^ $(TESTINCLUDE) -o $(TESTSRC_DIR)/$@
+	@echo "Clean TestRunner Temp Src Files"
 	-rm -f $^
 
 $(TESTTARGETS): %$(TARGET_EXTENSION): %.o
-	$(CC) $(OBJECTFILES) $(UNITYFILES) $^ $(subst $(TESTRUNNERFILE), ,$^) -o $@ $(LIBDIR) $(LIBS)
+	$(CC) $(OBJECTFILES) $(UNITYFILES) $(TESTSRC_DIR)/$^ $(subst $(TESTRUNNERFILE), ,$^) -o $(TESTSRC_DIR)/$@ $(LIBDIR) $(LIBS)
+	@echo "Clean TestRunner Object Files"
+	-rm -f $(TESTSRC_DIR)/$^
 	 	
 testrunner:  
 	@for testrun1 in $(TESTFILES); do \
@@ -88,7 +91,7 @@ buildtest: $(OBJECTFILES) $(UNITYFILES) $(TESTOBJECTFILES) testrunner $(TESTRUNN
 
 testrun: cleantest buildtest
 	@for testrun1 in $(TESTTARGETS); do \
-		./$$testrun1 ; \
+		./$(TESTSRC_DIR)/$$testrun1 ; \
 	done
 
 runapp: $(TARGET)
