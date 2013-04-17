@@ -8,15 +8,15 @@ int getUserInput(char* cmd, int* len) {
 	int result = RET_CODE_SUCCESS;
 	while (true) {
 		c = getchar();
-		if ((pos < len) && (c != '\n')) {
+		if ((pos < *len) && (c != '\n')) {
 			cmd[pos] = c;
 			pos++;
 		} else {
-			if (pos >= len) {
+			if (pos >= *len) {
 				result = RET_CODE_ERROR_INVALID_VALUE;
 			}
 			else {
-				len = pos - 1;
+				*len = pos - 1;
 				cmd[pos] = '\0';
 			}
 			break;

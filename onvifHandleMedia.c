@@ -130,7 +130,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfile(struct soap* soap,
 			sizeof(char) * 20);
 	strcpy(trt__GetProfileResponse->Profile->Name, "my_profile");
 	strcpy(trt__GetProfileResponse->Profile->token, "token_profile");
-	trt__GetProfileResponse->Profile->fixed = &soap_False;
+	trt__GetProfileResponse->Profile->fixed = (enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
+	*trt__GetProfileResponse->Profile->fixed = xsd__boolean__false_;
 	trt__GetProfileResponse->Profile->__anyAttribute = NULL;
 
 	trt__GetProfileResponse->Profile->VideoSourceConfiguration = NULL;
@@ -242,7 +243,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfiles(struct soap* soap,
 	trt__GetProfilesResponse->Profiles[i].token = (char *) soap_malloc(soap,
 			sizeof(char) * MAX_PROF_TOKEN);
 	strcpy(trt__GetProfilesResponse->Profiles[i].token, "token_profile");
-	trt__GetProfilesResponse->Profiles[i].fixed = soap_False;
+	trt__GetProfilesResponse->Profiles[i].fixed = (enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
+	*trt__GetProfilesResponse->Profiles[i].fixed = xsd__boolean__false_;
 	trt__GetProfilesResponse->Profiles[i].__anyAttribute = NULL;
 	trt__GetProfilesResponse->Profiles[i].VideoAnalyticsConfiguration = NULL;
 

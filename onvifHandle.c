@@ -10,9 +10,7 @@
 
 #define ONVIF_SERVER_CALL()    printf("onvifs: call %s, path=%s\r", __FUNCTION__, soap->path)
 
-int soap_False = xsd__boolean__false_;
-int soap_True = xsd__boolean__true_;
-OnvifRunParam onvifRunParam = {.ip = {0}, .servicePort = DEVICE_WEBSERVICE_PORT};
+OnvifRunParam onvifRunParam = {.ip = {0}, .servicePort = DEVICE_WEBSERVICE_PORT, .hardwareId = DEFAULT_HARDWARE_ID, .urnHardwareId = {0}};
 
 #define ONVIF_RETURN_OK(soap, namespaces)   \
 	ONVIF_SERVER_CALL();    \
@@ -39,14 +37,21 @@ int getLocalIPInfo() {
 		logInfo("Get Net Card Info Error");
 		return result;
 	}
-	strcpy(onvifRunParam.ip, onvifNetCardInfo.netCardInfos[0].ip);
 	if (strlen(onvifRunParam.ip) < 1) {
-		getLocalIp(onvifRunParam.ip);
-		if (strlen(onvifRunParam.ip) < 1) {
-			result = RET_CODE_ERROR_INVALID_IP;
-			logInfo("Get Local IP Error");
-			return result;
-		}
+		result = RET_CODE_ERROR_INVALID_IP;
+		logInfo("Get Local IP Error");
+		return result;
+	}
+	return RET_CODE_SUCCESS;
+}
+
+int getHardwareIdInfo() {
+	sprintf(onvifRunParam.urnHardwareId, "%s%s", DEFAULT_URN_HARDWARE_ID_PREFIX, onvifRunParam.hardwareId);
+	OnvifDeviceInfo onvifDeviceInfo;
+	int result = getDeviceInfo(&onvifDeviceInfo);
+	if (!isRetCodeSuccess(result)) {
+		logInfo("Get Device Info Error");
+		return result;
 	}
 	return RET_CODE_SUCCESS;
 }
@@ -58,6 +63,9 @@ int startOnvifApp() {
 		return result;
 	}
 	if (!isRetCodeSuccess(getLocalIPInfo())) {
+		return result;
+	}
+	if (!isRetCodeSuccess(getHardwareIdInfo())) {
 		return result;
 	}
 	result = startProbeServer();
@@ -80,10 +88,10 @@ void stopOnvifApp() {
 	stopIPCComm();
 }
 
-int getOnvifSoapActionNotSupportCode(const struct soap *soap, const char *faultInfo, const char* faultDetail) {
+int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo, const char* faultDetail) {
 	return soap_receiver_fault_subcode(soap, "ter:ActionNotSupported", faultInfo, faultDetail);
 }
-int getOnvifSoapActionFailedCode(const struct soap *soap, const char *faultInfo, const char* faultDetail) {
+int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo, const char* faultDetail) {
 	return soap_receiver_fault_subcode(soap, "ter:Action", faultInfo, faultDetail);
 }
 

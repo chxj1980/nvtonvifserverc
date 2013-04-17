@@ -85,6 +85,7 @@ int getNetCardInfo_PushCmd(const hmap_t inList, const void_ptr info1) {
 
 int getNetCardInfo_ParseCmd(const hmap_t outList, const void_ptr info1) {
 	OnvifNetCardInfo* info = (OnvifNetCardInfo*) info1;
+	memset(info, 0, sizeof(OnvifNetCardInfo));
 	char macaddr[INFO_LENGTH] = {0};
 	int result = getStrValueFromList(outList, e_net_macaddr, macaddr);
 	if (strlen(macaddr) < 1) {
@@ -94,6 +95,10 @@ int getNetCardInfo_ParseCmd(const hmap_t outList, const void_ptr info1) {
 	strcpy(info->netCardInfos[0].mac, macaddr);
 	getStrValueFromList(outList, e_net_cardname, info->netCardInfos[0].name);
 	getStrValueFromList(outList, e_net_ip, info->netCardInfos[0].ip);
+	strcpy(onvifRunParam.ip, info->netCardInfos[0].ip);
+	if (strlen(onvifRunParam.ip) < 1) {
+		getLocalIp(onvifRunParam.ip);
+	}
 	getStrValueFromList(outList, e_net_netmask, info->netCardInfos[0].mask);
 	getStrValueFromList(outList, e_net_gateway, info->netCardInfos[0].gateway);
 	return result;
@@ -115,7 +120,13 @@ int getDeviceInfo_PushCmd(const hmap_t inList, const void_ptr info1) {
 
 int getDeviceInfo_ParseCmd(const hmap_t outList, const void_ptr info1) {
 	OnvifDeviceInfo* info = (OnvifDeviceInfo*) info1;
-	int result = getStrValueFromList(outList, e_sys_hardwareId, info->hardwareId);
+	memset(info, 0, sizeof(OnvifDeviceInfo));
+	getStrValueFromList(outList, e_sys_hardwareId, info->hardwareId);
+	if (strlen(info->hardwareId) > 0) {
+		strcpy(onvifRunParam.hardwareId,  info->hardwareId);
+		sprintf(onvifRunParam.urnHardwareId, "%s%s", DEFAULT_URN_HARDWARE_ID_PREFIX, onvifRunParam.urnHardwareId);
+	}
+
 	getStrValueFromList(outList, e_sys_manufacturer, info->manufacturer);
 	getStrValueFromList(outList, e_sys_Model, info->model);
 	getStrValueFromList(outList, e_sys_hdversion, info->firmwareVersion);

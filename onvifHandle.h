@@ -10,8 +10,8 @@
 #define GSOAP_RET_CODE_NOT_IMPLEMENT -1
 
 #define ONVIF_SCOPE_NAME "onvif://www.onvif.org/type/NetworkVideoTransmitter"
-#define URN_HARDWARE_ID "urn:uuid:D149F919-4013-437E-B480-3707D96D27A4"
-#define HARDWARE_ID "3707D96D27A4"
+#define DEFAULT_HARDWARE_ID "3707D96D27A4"
+#define DEFAULT_URN_HARDWARE_ID_PREFIX "urn:uuid:D149F919-4013-437E-B480-"
 #define DEVICE_TYPE "tdn:NetworkVideoTransmitter"
 #define VIDEO_SOURCE_TOKEN "CaoYonghuaSource_token"
 #define ALL 1
@@ -21,13 +21,12 @@
 extern "C" {
 #endif
 
-extern int soap_False;
-extern int soap_True;
-
 typedef struct St_OnvifRunParam {
 	bool runFlag; // 启动onvif标志
 	int servicePort; // 对应onvif服务端口
 	char ip[IPV4_LEN];
+	char hardwareId[SMALL_INFO_LENGTH];
+	char urnHardwareId[INFO_LENGTH];
 } OnvifRunParam;
 
 typedef struct St_OnvifDeviceInfo {
@@ -53,9 +52,9 @@ extern OnvifRunParam onvifRunParam;
 int startOnvifApp();
 void stopOnvifApp();
 
-int getOnvifSoapActionNotSupportCode(const struct soap *soap, const char *faultInfo,
+int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo,
 		const char* faultDetail);
-int getOnvifSoapActionFailedCode(const struct soap *soap, const char *faultInfo,
+int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo,
 		const char* faultDetail);
 
 int setNTPInfo(OnvifNTPInfo* info);
