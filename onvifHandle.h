@@ -62,6 +62,8 @@ int getNTPInfo(OnvifNTPInfo* info);
 
 int getDeviceInfo(OnvifDeviceInfo* info);
 int getNetCardInfo(OnvifNetCardInfo* info);
+int deviceReboot();
+int restoreSystem();
 
 #ifdef __cplusplus
 }

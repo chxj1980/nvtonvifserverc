@@ -34,3 +34,11 @@ void test_GetDeviceInfo() {
 	OnvifDeviceInfo onvifDeviceInfo;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getDeviceInfo(&onvifDeviceInfo));
 }
+
+void test_DeviceReboot() {
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, deviceReboot());
+}
+
+void test_RestoreSystem() {
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, restoreSystem());
+}

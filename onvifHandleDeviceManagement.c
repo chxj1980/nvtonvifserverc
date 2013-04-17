@@ -291,13 +291,24 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SystemReboot(struct soap* soap,
 		struct _tds__SystemReboot *tds__SystemReboot,
 		struct _tds__SystemRebootResponse *tds__SystemRebootResponse) {
 	debugInfo("__tds__SystemReboot");
-	return getOnvifSoapActionNotSupportCode(soap, "SystemReboot", NULL);
+	if (!isRetCodeSuccess(deviceReboot())) {
+		return getOnvifSoapActionFailedCode(soap, "SystemReboot",
+						"reboot failed");
+	}
+	tds__SystemRebootResponse->Message = (char*) soap_malloc(soap, INFO_LENGTH);
+	strcpy(tds__SystemRebootResponse->Message, "Rebooting in 5 seconds.");
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__RestoreSystem(struct soap* soap,
 		struct _tds__RestoreSystem *tds__RestoreSystem,
 		struct _tds__RestoreSystemResponse *tds__RestoreSystemResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	debugInfo("__tds__RestoreSystem");
+	if (!isRetCodeSuccess(restoreSystem())) {
+		return getOnvifSoapActionFailedCode(soap, "RestoreSystem",
+						"restore failed");
+	}
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemBackup(struct soap* soap,

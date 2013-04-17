@@ -136,3 +136,22 @@ int getDeviceInfo_ParseCmd(const hmap_t outList, const void_ptr info1) {
 int getDeviceInfo(OnvifDeviceInfo* info) {
 	return sendCommIPCFunc(T_Get, info, getDeviceInfo_PushCmd, getDeviceInfo_ParseCmd);
 }
+
+int deviceReboot_PushCmd(const hmap_t inList, const void_ptr info1) {
+	putIntValueInList(inList, e_reboot, ENABLE_YES);
+	return RET_CODE_SUCCESS;
+}
+
+int deviceReboot() {
+	return sendCommIPCFunc(T_Set, NULL, deviceReboot_PushCmd, NULL);
+}
+
+int restoreSystem_PushCmd(const hmap_t inList, const void_ptr info1) {
+	putIntValueInList(inList, e_reset, ENABLE_YES);
+	return RET_CODE_SUCCESS;
+}
+
+int restoreSystem() {
+	return sendCommIPCFunc(T_Set, NULL, restoreSystem_PushCmd, NULL);
+}
+
