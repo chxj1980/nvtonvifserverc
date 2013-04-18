@@ -39,6 +39,6 @@ void test_DeviceReboot() {
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, deviceReboot());
 }
 
-void test_RestoreSystem() {
-	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, restoreSystem());
+void test_SetSystemFactoryDefault() {
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setSystemFactoryDefault());
 }

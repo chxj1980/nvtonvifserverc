@@ -125,11 +125,11 @@ void getServiceCapabilitiesSystemSettings(struct soap* soap, struct _tds__GetSer
 	tds__GetServiceCapabilitiesResponse->Capabilities->System->FirmwareUpgrade =
 			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	*tds__GetServiceCapabilitiesResponse->Capabilities->System->FirmwareUpgrade =
-			xsd__boolean__true_;
+			xsd__boolean__false_;
 	tds__GetServiceCapabilitiesResponse->Capabilities->System->SystemLogging =
 			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	*tds__GetServiceCapabilitiesResponse->Capabilities->System->SystemLogging =
-			xsd__boolean__true_;
+			xsd__boolean__false_;
 	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSystemBackup =
 			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	*tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSystemBackup =
@@ -137,15 +137,15 @@ void getServiceCapabilitiesSystemSettings(struct soap* soap, struct _tds__GetSer
 	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpFirmwareUpgrade =
 			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	*tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpFirmwareUpgrade =
-			xsd__boolean__true_;
+			xsd__boolean__false_;
 	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSystemLogging =
 			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	*tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSystemLogging =
-			xsd__boolean__true_;
+			xsd__boolean__false_;
 	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSupportInformation =
 			(enum xsd__boolean *) soap_malloc(soap, sizeof(enum xsd__boolean));
 	*tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSupportInformation =
-			xsd__boolean__true_;
+			xsd__boolean__false_;
 }
 
 void getServiceCapabilitiesSecuritySettings(struct soap* soap, struct _tds__GetServiceCapabilitiesResponse *tds__GetServiceCapabilitiesResponse) {
@@ -274,8 +274,11 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemFactoryDefault(
 		struct _tds__SetSystemFactoryDefault *tds__SetSystemFactoryDefault,
 		struct _tds__SetSystemFactoryDefaultResponse *tds__SetSystemFactoryDefaultResponse) {
 	debugInfo("__tds__SetSystemFactoryDefault");
-	return getOnvifSoapActionNotSupportCode(soap, "SetSystemFactoryDefault",
-			NULL);
+	if (!isRetCodeSuccess(setSystemFactoryDefault())) {
+		return getOnvifSoapActionFailedCode(soap, "RestoreSystem",
+						"restore failed");
+	}
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__UpgradeSystemFirmware(
@@ -304,18 +307,14 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__RestoreSystem(struct soap* soap,
 		struct _tds__RestoreSystem *tds__RestoreSystem,
 		struct _tds__RestoreSystemResponse *tds__RestoreSystemResponse) {
 	debugInfo("__tds__RestoreSystem");
-	if (!isRetCodeSuccess(restoreSystem())) {
-		return getOnvifSoapActionFailedCode(soap, "RestoreSystem",
-						"restore failed");
-	}
-	return SOAP_OK;
+	return getOnvifSoapActionNotSupportCode(soap, "GetSystemBackup", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemBackup(struct soap* soap,
 		struct _tds__GetSystemBackup *tds__GetSystemBackup,
 		struct _tds__GetSystemBackupResponse *tds__GetSystemBackupResponse) {
 	debugInfo("__tds__GetSystemBackup");
-	return getOnvifSoapActionNotSupportCode(soap, "GetSystemBackup", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "RestoreSystem", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemLog(struct soap* soap,

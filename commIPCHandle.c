@@ -146,12 +146,51 @@ int deviceReboot() {
 	return sendCommIPCFunc(T_Set, NULL, deviceReboot_PushCmd, NULL);
 }
 
-int restoreSystem_PushCmd(const hmap_t inList, const void_ptr info1) {
+int setSystemFactoryDefault_PushCmd(const hmap_t inList, const void_ptr info1) {
 	putIntValueInList(inList, e_reset, ENABLE_YES);
 	return RET_CODE_SUCCESS;
 }
 
-int restoreSystem() {
-	return sendCommIPCFunc(T_Set, NULL, restoreSystem_PushCmd, NULL);
+int setSystemFactoryDefault() {
+	return sendCommIPCFunc(T_Set, NULL, setSystemFactoryDefault_PushCmd, NULL);
+}
+
+
+int getVideoCount_PushCmd(const hmap_t inList, const void_ptr info1) {
+	putNullValueInList(inList, e_video_chn_num);
+	return RET_CODE_SUCCESS;
+}
+
+int getVideoCount_ParseCmd(const hmap_t outList, const void_ptr info1) {
+	return getIntValueFromList(outList, e_video_chn_num, (int*) info1);
+}
+
+int getVideoCount(int* count) {
+	return sendCommIPCFunc(T_Get, count, getVideoCount_PushCmd, getVideoCount_ParseCmd);
+}
+
+int getDeviceTime_PushCmd(const hmap_t inList, const void_ptr info1) {
+	putNullValueInList(inList, e_time_ntpenable);
+	putNullValueInList(inList, e_time_systime);
+	putNullValueInList(inList, e_time_Zone);
+	return RET_CODE_SUCCESS;
+}
+
+int getDeviceTime_ParseCmd(const hmap_t outList, const void_ptr info1) {
+	OnvifSystemDateTime* info = (OnvifSystemDateTime*)info1;
+	int ntp;
+	int result = getIntValueFromList(outList, e_time_ntpenable, &ntp);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->ntpSet = ntp;
+	char localTime1[INFO_LENGTH]= {0};
+	result = getStrValueFromList(outList, e_time_systime, localTime1);
+	if (!isRetCodeSuccess(result))
+		return result;
+	return result;
+}
+
+int getDeviceTime(OnvifSystemDateTime* info) {
+	return sendCommIPCFunc(T_Get, info, getDeviceTime_PushCmd, getDeviceTime_ParseCmd);
 }
 

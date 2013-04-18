@@ -11,6 +11,7 @@
 #include <net/if.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <sys/time.h>
 
 #include "logInfo.h"
 
@@ -22,21 +23,21 @@ int getNetCardMac(unsigned char *pMac) {
 	unsigned char mac[6] = { 0 };
 
 	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-		errorInfo( "netGetMac socket");
+		errorInfo("netGetMac socket");
 		return RET_CODE_ERROR_CREATE_SOCKET;
 	}
 
 	strcpy(ifreq.ifr_name, NET_CARD_NAME);
 
 	if (ioctl(sockfd, SIOCGIFHWADDR, &ifreq) < 0) {
-		errorInfo( "netGetMac ioctl");
+		errorInfo("netGetMac ioctl");
 		close(sockfd);
 		return RET_CODE_ERROR_SOCKETIOCTL;
 	}
 
 	memcpy(mac, ifreq.ifr_hwaddr.sa_data, 6);
-	logInfo( "MAC:%02x:%02x:%02x:%02x:%02x:%02x",
-			mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+	logInfo("MAC:%02x:%02x:%02x:%02x:%02x:%02x", mac[0], mac[1], mac[2], mac[3],
+			mac[4], mac[5]);
 
 	if (pMac != NULL) {
 		memcpy(pMac, mac, 6);
@@ -102,4 +103,49 @@ void getCurrentDateTimeStr(char* info, const int len) {
 void getDateTimeStr(char* info, const int len, const time_t dtValue) {
 	struct tm* today = localtime(&dtValue);
 	strftime(info, len, "%Y-%m-%d %H:%M:%S ", today);
+}
+
+int parseTimeZoneTimeStr(const char* info, const short timeZoneHour,
+		time_t* value) {
+	if (NULL == value) {
+		return RET_CODE_ERROR_NULL_VALUE;
+	}
+	if (NULL == info) {
+		return RET_CODE_ERROR_NULL_VALUE;
+	}
+	if (strlen(info) < 19) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	struct timeb timeb1;
+	ftime(&timeb1);
+	logInfo("%d", timeb1.timezone);
+	int oldTimeZoneHour = -timeb1.timezone / 60;
+
+	char pt[5];
+	struct tm tm1;
+	strncpy(pt, info, 4);
+	tm1.tm_year = atoi(pt) - 1900;
+	logInfo("%d", tm1.tm_year);
+	strncpy(pt, info + 5, 2);
+	tm1.tm_mon = atoi(pt) - 1;
+	logInfo("%s", info + 8);
+	strncpy(pt, info + 8, 2);
+	tm1.tm_mday = atoi(pt);
+	strncpy(pt, info + 11, 2);
+	tm1.tm_hour = atoi(pt) + oldTimeZoneHour - timeZoneHour;
+	if (tm1.tm_hour > 23) {
+		tm1.tm_hour -= 24;
+		tm1.tm_mday += 1;
+		if (tm1.)
+	}
+	strncpy(pt, info + 14, 2);
+	tm1.tm_min = atoi(pt);
+	strncpy(pt, info + 14, 2);
+	tm1.tm_sec = atoi(pt);
+	*value = mktime(&tm1);
+	char dd[200];
+	getDateTimeStr(dd, 200, *value);
+	logInfo("%s", dd);
+	return RET_CODE_SUCCESS;
+
 }
