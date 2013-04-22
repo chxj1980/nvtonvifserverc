@@ -17,7 +17,8 @@
 	bool isRetCodeSuccess(int retCode);
 	void getDateTimeStr(char* info, const int len, const time_t dtValue);
 	void getCurrentDateTimeStr(char* info, const int len);
-	int parseTimeZoneTimeStr(const char* info, const short timeZoneHour, time_t* value);
+	int parseTimeZoneTimeStr(const char* timeInfo, const short srcTimeZone, const short destTimeZone,
+			time_t* value);
 #ifdef __cplusplus
 	}
 #endif

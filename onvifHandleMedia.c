@@ -10,22 +10,16 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetServiceCapabilities(
 		struct soap* soap,
 		struct _trt__GetServiceCapabilities *trt__GetServiceCapabilities,
 		struct _trt__GetServiceCapabilitiesResponse *trt__GetServiceCapabilitiesResponse) {
-	debugInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	debugInfo("__trt__GetServiceCapabilities");
+	return getOnvifSoapActionNotSupportCode(soap, "GetServiceCapabilities", NULL);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 __tds__StartSystemRestore(
-		struct soap* soap,
-		struct _tds__StartSystemRestore *tds__StartSystemRestore,
-		struct _tds__StartSystemRestoreResponse *tds__StartSystemRestoreResponse) {
-	debugInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
-}
+
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSources(struct soap* soap,
 		struct _trt__GetVideoSources *trt__GetVideoSources,
 		struct _trt__GetVideoSourcesResponse *trt__GetVideoSourcesResponse) {
-	debugInfo("__tmd__GetVideoSources");
+	debugInfo("__trt__GetVideoSources");
 
 	int size1 = 1;
 	trt__GetVideoSourcesResponse->__sizeVideoSources = size1;
@@ -889,24 +883,24 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__StartMulticastStreaming(
 		struct soap* soap,
 		struct _trt__StartMulticastStreaming *trt__StartMulticastStreaming,
 		struct _trt__StartMulticastStreamingResponse *trt__StartMulticastStreamingResponse) {
-	debugInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	debugInfo("__trt__StartMulticastStreaming");
+	return getOnvifSoapActionNotSupportCode(soap, "StartMulticastStreaming", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__StopMulticastStreaming(
 		struct soap* soap,
 		struct _trt__StopMulticastStreaming *trt__StopMulticastStreaming,
 		struct _trt__StopMulticastStreamingResponse *trt__StopMulticastStreamingResponse) {
-	debugInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	debugInfo("__trt__StopMulticastStreaming");
+	return getOnvifSoapActionNotSupportCode(soap, "StopMulticastStreaming", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__SetSynchronizationPoint(
 		struct soap* soap,
 		struct _trt__SetSynchronizationPoint *trt__SetSynchronizationPoint,
 		struct _trt__SetSynchronizationPointResponse *trt__SetSynchronizationPointResponse) {
-	debugInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	debugInfo("__trt__SetSynchronizationPoint");
+	return getOnvifSoapActionNotSupportCode(soap, "SetSynchronizationPoint", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetSnapshotUri(struct soap* soap,

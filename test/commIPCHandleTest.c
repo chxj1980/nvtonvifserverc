@@ -42,3 +42,8 @@ void test_DeviceReboot() {
 void test_SetSystemFactoryDefault() {
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setSystemFactoryDefault());
 }
+
+void test_GetVideoCount() {
+	int videoCount;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getVideoCount(&videoCount));
+}

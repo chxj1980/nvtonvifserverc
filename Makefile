@@ -94,10 +94,10 @@ testrun: cleantest buildtest
 		./$(TESTSRC_DIR)/$$testrun1 ; \
 	done
 
+.PHONY: cleantest clean testrun testrunner buildtesttarget runapp
+
 runapp: $(TARGET)
 		./$(TARGET)
-		
-.PHONY: cleantest clean testrun testrunner buildtesttarget runapp
 
 cleantest:
 	-rm -f $(UNITYFILES) $(TESTSRC_DIR)/*.o $(TESTSRC_DIR)/*.out $(TESTSRC_DIR)/*.a $(TESTSRC_DIR)/$(TESTRUNNERFILE).c > /dev/null

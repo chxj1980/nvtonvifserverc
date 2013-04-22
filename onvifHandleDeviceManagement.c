@@ -307,7 +307,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__RestoreSystem(struct soap* soap,
 		struct _tds__RestoreSystem *tds__RestoreSystem,
 		struct _tds__RestoreSystemResponse *tds__RestoreSystemResponse) {
 	debugInfo("__tds__RestoreSystem");
-	return getOnvifSoapActionNotSupportCode(soap, "GetSystemBackup", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "RestoreSystem", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemBackup(struct soap* soap,
@@ -328,7 +328,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemSupportInformation(
 		struct soap* soap,
 		struct _tds__GetSystemSupportInformation *tds__GetSystemSupportInformation,
 		struct _tds__GetSystemSupportInformationResponse *tds__GetSystemSupportInformationResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	debugInfo("__tds__GetSystemSupportInformation");
+	return getOnvifSoapActionNotSupportCode(soap, "GetSystemSupportInformation", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetScopes(struct soap* soap,
@@ -348,100 +349,100 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetScopes(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetScopes(struct soap* soap,
 		struct _tds__SetScopes *tds__SetScopes,
 		struct _tds__SetScopesResponse *tds__SetScopesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "SetScopes", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__AddScopes(struct soap* soap,
 		struct _tds__AddScopes *tds__AddScopes,
 		struct _tds__AddScopesResponse *tds__AddScopesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "AddScopes", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__RemoveScopes(struct soap* soap,
 		struct _tds__RemoveScopes *tds__RemoveScopes,
 		struct _tds__RemoveScopesResponse *tds__RemoveScopesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "RemoveScopes", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDiscoveryMode(struct soap* soap,
 		struct _tds__GetDiscoveryMode *tds__GetDiscoveryMode,
 		struct _tds__GetDiscoveryModeResponse *tds__GetDiscoveryModeResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "GetDiscoveryMode", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDiscoveryMode(struct soap* soap,
 		struct _tds__SetDiscoveryMode *tds__SetDiscoveryMode,
 		struct _tds__SetDiscoveryModeResponse *tds__SetDiscoveryModeResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "SetDiscoveryMode", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetRemoteDiscoveryMode(
 		struct soap* soap,
 		struct _tds__GetRemoteDiscoveryMode *tds__GetRemoteDiscoveryMode,
 		struct _tds__GetRemoteDiscoveryModeResponse *tds__GetRemoteDiscoveryModeResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "GetRemoteDiscoveryMode", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetRemoteDiscoveryMode(
 		struct soap* soap,
 		struct _tds__SetRemoteDiscoveryMode *tds__SetRemoteDiscoveryMode,
 		struct _tds__SetRemoteDiscoveryModeResponse *tds__SetRemoteDiscoveryModeResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "SetRemoteDiscoveryMode", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDPAddresses(struct soap* soap,
 		struct _tds__GetDPAddresses *tds__GetDPAddresses,
 		struct _tds__GetDPAddressesResponse *tds__GetDPAddressesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "GetDPAddresses", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetEndpointReference(
 		struct soap* soap,
 		struct _tds__GetEndpointReference *tds__GetEndpointReference,
 		struct _tds__GetEndpointReferenceResponse *tds__GetEndpointReferenceResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "GetEndpointReference", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetRemoteUser(struct soap* soap,
 		struct _tds__GetRemoteUser *tds__GetRemoteUser,
 		struct _tds__GetRemoteUserResponse *tds__GetRemoteUserResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "GetRemoteUser", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetRemoteUser(struct soap* soap,
 		struct _tds__SetRemoteUser *tds__SetRemoteUser,
 		struct _tds__SetRemoteUserResponse *tds__SetRemoteUserResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "SetRemoteUser", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetUsers(struct soap* soap,
 		struct _tds__GetUsers *tds__GetUsers,
 		struct _tds__GetUsersResponse *tds__GetUsersResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "GetUsers", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__CreateUsers(struct soap* soap,
 		struct _tds__CreateUsers *tds__CreateUsers,
 		struct _tds__CreateUsersResponse *tds__CreateUsersResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "CreateUsers", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__DeleteUsers(struct soap* soap,
 		struct _tds__DeleteUsers *tds__DeleteUsers,
 		struct _tds__DeleteUsersResponse *tds__DeleteUsersResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "DeleteUsers", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetUser(struct soap* soap,
 		struct _tds__SetUser *tds__SetUser,
 		struct _tds__SetUserResponse *tds__SetUserResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "SetUser", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetWsdlUrl(struct soap* soap,
 		struct _tds__GetWsdlUrl *tds__GetWsdlUrl,
 		struct _tds__GetWsdlUrlResponse *tds__GetWsdlUrlResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "GetWsdlUrl", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,
@@ -674,7 +675,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDPAddresses(struct soap* soap,
 		struct _tds__SetDPAddresses *tds__SetDPAddresses,
 		struct _tds__SetDPAddressesResponse *tds__SetDPAddressesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "SetDPAddresses", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetHostname(struct soap* soap,
@@ -692,7 +693,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetHostname(struct soap* soap,
 
 	tds__GetHostnameResponse->HostnameInformation->Extension->__size = 0;
 	tds__GetHostnameResponse->HostnameInformation->Extension->__any = NULL;
-	tds__GetHostnameResponse->HostnameInformation->FromDHCP = 0; //not from DHCP
+	tds__GetHostnameResponse->HostnameInformation->FromDHCP = xsd__boolean__false_; //not from DHCP
 	strcpy(tds__GetHostnameResponse->HostnameInformation->Name, HOST_NAME);
 	return SOAP_OK;
 }
@@ -707,19 +708,19 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetHostnameFromDHCP(
 		struct soap* soap,
 		struct _tds__SetHostnameFromDHCP *tds__SetHostnameFromDHCP,
 		struct _tds__SetHostnameFromDHCPResponse *tds__SetHostnameFromDHCPResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "SetHostnameFromDHCP", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDNS(struct soap* soap,
 		struct _tds__GetDNS *tds__GetDNS,
 		struct _tds__GetDNSResponse *tds__GetDNSResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "GetDNS", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDNS(struct soap* soap,
 		struct _tds__SetDNS *tds__SetDNS,
 		struct _tds__SetDNSResponse *tds__SetDNSResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "SetDNS", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetNTP(struct soap* soap,
@@ -791,8 +792,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDynamicDNS(struct soap* soap,
 		struct _tds__GetDynamicDNS *tds__GetDynamicDNS,
 		struct _tds__GetDynamicDNSResponse *tds__GetDynamicDNSResponse) {
 	debugInfo("__tds__GetDynamicDNS");
-	return soap_receiver_fault_subcode(soap, "ActionNotSupported",
-			"GetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "GetDynamicDNS", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDynamicDNS(struct soap* soap,
@@ -1056,7 +1056,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDot11Capabilities(
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDot11Status(struct soap* soap,
 		struct _tds__GetDot11Status *tds__GetDot11Status,
 		struct _tds__GetDot11StatusResponse *tds__GetDot11StatusResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "GetDot11Status", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__ScanAvailableDot11Networks(
@@ -1080,5 +1080,13 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__StartFirmwareUpgrade(
 		struct _tds__StartFirmwareUpgradeResponse *tds__StartFirmwareUpgradeResponse) {
 	debugInfo("__tds__StartFirmwareUpgrade");
 	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+}
+
+SOAP_FMAC5 int SOAP_FMAC6 __tds__StartSystemRestore(
+		struct soap* soap,
+		struct _tds__StartSystemRestore *tds__StartSystemRestore,
+		struct _tds__StartSystemRestoreResponse *tds__StartSystemRestoreResponse) {
+	debugInfo("__tds__StartSystemRestore");
+	return getOnvifSoapActionNotSupportCode(soap, "StartSystemRestore", NULL);
 }
 

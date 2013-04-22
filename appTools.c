@@ -1,5 +1,5 @@
 #include "appTools.h"
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
@@ -105,47 +105,42 @@ void getDateTimeStr(char* info, const int len, const time_t dtValue) {
 	strftime(info, len, "%Y-%m-%d %H:%M:%S ", today);
 }
 
-int parseTimeZoneTimeStr(const char* info, const short timeZoneHour,
+int parseTimeZoneTimeStr(const char* timeinfo, const short srcTimeZone, const short destTimeZone,
 		time_t* value) {
 	if (NULL == value) {
 		return RET_CODE_ERROR_NULL_VALUE;
 	}
-	if (NULL == info) {
+	if (NULL == timeinfo) {
 		return RET_CODE_ERROR_NULL_VALUE;
 	}
-	if (strlen(info) < 19) {
+	if (strlen(timeinfo) < 19) {
 		return RET_CODE_ERROR_INVALID_VALUE;
 	}
 	struct timeb timeb1;
 	ftime(&timeb1);
-	logInfo("%d", timeb1.timezone);
-	int oldTimeZoneHour = -timeb1.timezone / 60;
-
+	int localZone = -timeb1.timezone / 60;
 	char pt[5];
+	memset(pt, 0, 5);
 	struct tm tm1;
-	strncpy(pt, info, 4);
+	strncpy(pt, timeinfo, 4);
 	tm1.tm_year = atoi(pt) - 1900;
-	logInfo("%d", tm1.tm_year);
-	strncpy(pt, info + 5, 2);
+	memset(pt, 0, 5);
+	strncpy(pt, timeinfo + 5, 2);
 	tm1.tm_mon = atoi(pt) - 1;
-	logInfo("%s", info + 8);
-	strncpy(pt, info + 8, 2);
+	strncpy(pt, timeinfo + 8, 2);
 	tm1.tm_mday = atoi(pt);
-	strncpy(pt, info + 11, 2);
-	tm1.tm_hour = atoi(pt) + oldTimeZoneHour - timeZoneHour;
-	if (tm1.tm_hour > 23) {
-		tm1.tm_hour -= 24;
-		tm1.tm_mday += 1;
-		if (tm1.)
-	}
-	strncpy(pt, info + 14, 2);
+	strncpy(pt, timeinfo + 11, 2);
+	tm1.tm_hour = atoi(pt);
+	strncpy(pt, timeinfo + 14, 2);
 	tm1.tm_min = atoi(pt);
-	strncpy(pt, info + 14, 2);
+	strncpy(pt, timeinfo + 17, 2);
 	tm1.tm_sec = atoi(pt);
-	*value = mktime(&tm1);
+	tm1.tm_isdst=0;
+	time_t ltx = mktime(&tm1);
 	char dd[200];
+	time_t srctx = (localZone - srcTimeZone) * 60 * 60 + ltx;
+	getDateTimeStr(dd, 200, srctx);
+	*value = (destTimeZone - localZone) * 60 * 60 + srctx;
 	getDateTimeStr(dd, 200, *value);
-	logInfo("%s", dd);
 	return RET_CODE_SUCCESS;
-
 }
