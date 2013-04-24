@@ -220,7 +220,7 @@ int getVideoChannelInfo_PushCmd(const Map inList, const void* info1) {
 	if (NULL == info) {
 		return RET_CODE_ERROR_NULL_OBJECT;
 	}
-	if (info->channelNo < 1) {
+	if (info->channelNo < 0) {
 		return RET_CODE_ERROR_INVALID_VALUE;
 	}
 	putIntValueInList(inList, e_Chn, info->channelNo);
@@ -231,6 +231,7 @@ int getVideoChannelInfo_PushCmd(const Map inList, const void* info1) {
 	putNullValueInList(inList, e_bit_rate);
 	putNullValueInList(inList, e_width);
 	putNullValueInList(inList, e_height);
+	putNullValueInList(inList, e_video_addr);
 	return RET_CODE_SUCCESS;
 }
 
@@ -261,6 +262,10 @@ int getVideoChannelInfo_ParseCmd(const Map outList, const void* info1) {
 	if (!isRetCodeSuccess(result))
 		return result;
 	info->height = value;
+	result = getStrValueFromList(outList, e_video_addr, info->videoAddr);
+	if (!isRetCodeSuccess(result))
+		return result;
+
 	return result;
 }
 

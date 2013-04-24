@@ -4,9 +4,6 @@
 #include "appCommon.h"
 #include "stdsoap2.h"
 
-#define SMALL_INFO_LENGTH 20
-
-#define LARGE_INFO_LENGTH 200
 #define GSOAP_RET_CODE_NOT_IMPLEMENT -1
 
 #define ONVIF_SCOPE_NAME "onvif://www.onvif.org/type/NetworkVideoTransmitter"
@@ -54,13 +51,14 @@ typedef struct St_OnvifSystemDateTime {
 } OnvifSystemDateTime;
 
 typedef struct St_OnvifVideoChannelInfo {
-	int channelNo;  // channel No, start from 1
+	int channelNo;  // channel No, start from 0
 	int stream_enable;  ///< 0:disable, 1:enable
 	int enc_type; ///< 0:ENC_TYPE_H264, 1:ENC_TYPE_MPEG, 2:ENC_TYPE_MJPEG
 	int frame_rate; ///< frame rate per second
 	int bit_rate; ///< Bitrate per second
 	int width; ///< width
 	int height; ///< hieght
+	char videoAddr[LARGE_INFO_LENGTH];
 } OnvifVideoChannelInfo;
 
 extern OnvifRunParam onvifRunParam;

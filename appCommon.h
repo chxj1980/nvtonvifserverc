@@ -35,7 +35,9 @@
 #define DEVICE_WEBSERVICE_PORT 9650
 
 #define INVALID_HANDLE -1
+#define SMALL_INFO_LENGTH 20
 #define INFO_LENGTH 100
+#define LARGE_INFO_LENGTH 200
 #define NET_CARD_NAME "eth0"
 #define IPV4_LEN 20
 #define TRUE 1
