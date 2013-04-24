@@ -9,9 +9,6 @@ typedef int (*Parse_CommIPC_Command_Func)(const hmap_t, const void_ptr);
 int sendCommIPCFunc(const int type, const void_ptr info,
 		const Push_CommIPC_Command_Func pushFunc,
 		const Parse_CommIPC_Command_Func parseFunc) {
-	if (NULL == info) {
-		return RET_CODE_ERROR_NULL_OBJECT;
-	}
 	if (NULL == pushFunc) {
 		return RET_CODE_ERROR_NULL_OBJECT;
 	}
@@ -183,10 +180,25 @@ int getDeviceTime_ParseCmd(const hmap_t outList, const void_ptr info1) {
 	if (!isRetCodeSuccess(result))
 		return result;
 	info->ntpSet = ntp;
+	int zone = 0;
+	result = getIntValueFromList(outList, e_time_ntpenable, &zone);
+	if (!isRetCodeSuccess(result))
+		return result;
+	if (zone > 24) {
+		zone = zone / 60;
+	}
+	info->timeZone = zone;
 	char localTime1[INFO_LENGTH]= {0};
 	result = getStrValueFromList(outList, e_time_systime, localTime1);
 	if (!isRetCodeSuccess(result))
 		return result;
+	if (strlen(localTime1) < 1)
+		return RET_CODE_ERROR_NULL_VALUE;
+	time_t tim;
+	result = parseTimeZoneTimeStr(localTime1, zone, zone, &tim);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->localTime = tim;
 	return result;
 }
 
@@ -194,3 +206,55 @@ int getDeviceTime(OnvifSystemDateTime* info) {
 	return sendCommIPCFunc(T_Get, info, getDeviceTime_PushCmd, getDeviceTime_ParseCmd);
 }
 
+int getVideoChannelInfo_PushCmd(const hmap_t inList, const void_ptr info1) {
+	OnvifVideoChannelInfo* info = (OnvifVideoChannelInfo*)info1;
+	if (NULL == info) {
+		return RET_CODE_ERROR_NULL_OBJECT;
+	}
+	if (info->channelNo < 1) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	putIntValueInList(inList, e_Chn, info->channelNo);
+	putIntValueInList(inList, e_Sub_Chn, 0);
+	putNullValueInList(inList, e_Stream_enable);
+	putNullValueInList(inList, e_enc_type);
+	putNullValueInList(inList, e_frame_rate);
+	putNullValueInList(inList, e_bit_rate);
+	putNullValueInList(inList, e_width);
+	putNullValueInList(inList, e_height);
+	return RET_CODE_SUCCESS;
+}
+
+int getVideoChannelInfo_ParseCmd(const hmap_t outList, const void_ptr info1) {
+	OnvifVideoChannelInfo* info = (OnvifVideoChannelInfo*)info1;
+	int value;
+	int result = getIntValueFromList(outList, e_Stream_enable, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->stream_enable = value;
+	result = getIntValueFromList(outList, e_enc_type, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->enc_type = value;
+	result = getIntValueFromList(outList, e_frame_rate, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->frame_rate = value;
+	result = getIntValueFromList(outList, e_bit_rate, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->bit_rate = value;
+	result = getIntValueFromList(outList, e_width, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->width = value;
+	result = getIntValueFromList(outList, e_height, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->height = value;
+	return result;
+}
+
+int getVideoChannelInfo(OnvifVideoChannelInfo* info) {
+	return sendCommIPCFunc(T_Get, info, getVideoChannelInfo_PushCmd, getVideoChannelInfo_ParseCmd);
+}

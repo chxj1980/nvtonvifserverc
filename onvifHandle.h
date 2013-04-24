@@ -49,9 +49,19 @@ typedef struct St_OnvifNetCardInfo {
 
 typedef struct St_OnvifSystemDateTime {
 	bool ntpSet;
-	int localTime;
+	time_t localTime;
 	int timeZone;
 } OnvifSystemDateTime;
+
+typedef struct St_OnvifVideoChannelInfo {
+	int channelNo;  // channel No, start from 1
+	int stream_enable;  ///< 0:disable, 1:enable
+	int enc_type; ///< 0:ENC_TYPE_H264, 1:ENC_TYPE_MPEG, 2:ENC_TYPE_MJPEG
+	int frame_rate; ///< frame rate per second
+	int bit_rate; ///< Bitrate per second
+	int width; ///< width
+	int height; ///< hieght
+} OnvifVideoChannelInfo;
 
 extern OnvifRunParam onvifRunParam;
 
@@ -73,6 +83,8 @@ int setSystemFactoryDefault();
 int getVideoCount(int* count);
 int getDeviceTime(OnvifSystemDateTime* info);
 int setDeviceTime(OnvifSystemDateTime* info);
+int getVideoChannelInfo(OnvifVideoChannelInfo* info);
+
 #ifdef __cplusplus
 }
 #endif

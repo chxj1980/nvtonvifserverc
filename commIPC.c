@@ -59,6 +59,7 @@ int getSendListIterate(void_ptr data, void_ptr arg) {
 	IPCCmdInfo* cmdInfo = data;
 	char invalue[120] = { 0 };
 	sprintf(invalue, "&%d=%s", cmdInfo->key, cmdInfo->value);
+	logInfo("invalue %s", invalue);
 	strcat(v, invalue);
 	return HMAP_S_OK;
 }
@@ -76,7 +77,7 @@ void putStrValueInList(const hmap_t inList, const int key, const char* value) {
 		sprintf(cmdInfo->value, "%s", value);
 	else
 		strcpy(cmdInfo->value, "");
-	char* skey = malloc(20);
+	char* skey = malloc(SMALL_INFO_LENGTH);
 	sprintf(skey, "%d", key);
 	hashmap_put(inList, skey, cmdInfo);
 }
