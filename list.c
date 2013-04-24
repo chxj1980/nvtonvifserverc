@@ -5,10 +5,10 @@
 #define NULL 0
 
 //添加一个元素到列表
-void _add(List this, Element e) {
+void list_add(List this, ListElement e) {
 	if (NULL == this)
 		return;
-	Node node = NULL;
+	ListNode node = NULL;
 	node = malloc(sizeof(*node));
 	if (NULL == node)
 		return;
@@ -18,11 +18,11 @@ void _add(List this, Element e) {
 }
 
 //添加一个元素到列表尾
-void _addLast(List this, Element e) {
+void list_addLast(List this, ListElement e) {
 	if (NULL == this)
 		return;
-	Node node;
-	Node p = this->dataNodes;
+	ListNode node;
+	ListNode p = this->dataNodes;
 	node = malloc(sizeof(*node));
 	if (NULL == node)
 		exit(1);
@@ -38,8 +38,8 @@ void _addLast(List this, Element e) {
 }
 
 //删除列表头部元素
-void _remove(List this) {
-	Node node;
+void list_removefirst(List this) {
+	ListNode node;
 	if (NULL == this)
 		return;
 	if (NULL != this->dataNodes) {
@@ -50,8 +50,8 @@ void _remove(List this) {
 }
 
 //删除列表尾部元素
-void _removeLast(List this) {
-	Node node, p;
+void list_removeLast(List this) {
+	ListNode node, p;
 	if (NULL == this)
 		exit(1);
 	p = this->dataNodes;
@@ -68,18 +68,18 @@ void _removeLast(List this) {
 }
 
 //获取列表第一个节点
-Node _first(List this) {
+ListNode list_first(List this) {
 	if (NULL == this)
 		return NULL;
 	return this->dataNodes;
 }
 
 //获取列表最后一个节点
-Node _last(List this) {
+ListNode list_last(List this) {
 	if (NULL == this)
 		return NULL;
-	Node node;
-	Node result = this->dataNodes;
+	ListNode node;
+	ListNode result = this->dataNodes;
 	for (node = this->dataNodes; NULL != node; node = node->nextNode) {
 		result = node;
 	}
@@ -87,10 +87,10 @@ Node _last(List this) {
 }
 
 //获取列表最后一个节点
-int _size(List this) {
+int list_size(List this) {
 	if (NULL == this)
 		return 0;
-	Node node;
+	ListNode node;
 	int result = 0;
 	for (node = this->dataNodes; NULL != node; node = node->nextNode) {
 		result++;
@@ -99,24 +99,24 @@ int _size(List this) {
 }
 
 //遍历节点
-void _forEach(List this, void (*backfunc)(Node)) {
+void list_forEach(List this, void (*backfunc)(ListNode)) {
 	if (NULL == this)
 		return;
-	Node node = this->dataNodes;
+	ListNode node = this->dataNodes;
 	while (NULL != node) {
 		backfunc(node);
 		node = node->nextNode;
 	}
 }
 
-Node _get(List this, int index) {
+ListNode list_get(List this, int index) {
 	if (NULL == this)
 		return NULL;
 	if (index < 0)
 		return NULL;
-	Node result = NULL;
+	ListNode result = NULL;
 	int pos = 0;
-	Node node = this->dataNodes;
+	ListNode node = this->dataNodes;
 	while (NULL != node) {
 		if (pos == index) {
 			result = node;
@@ -128,7 +128,7 @@ Node _get(List this, int index) {
 	return result;
 }
 
-void _deleteIndex(List this, int index) {
+void list_deleteIndex(List this, int index) {
 	if (NULL == this)
 		return;
 	if (index < 0)
@@ -137,10 +137,10 @@ void _deleteIndex(List this, int index) {
 		remove(this);
 		return;
 	}
-	Node result = NULL;
+	ListNode result = NULL;
 	int pos = 0;
-	Node node = this->dataNodes;
-	Node pNode = this->dataNodes;
+	ListNode node = this->dataNodes;
+	ListNode pNode = this->dataNodes;
 	while (NULL != node) {
 		if (pos == index) {
 			pNode->nextNode = node->nextNode;
@@ -154,23 +154,23 @@ void _deleteIndex(List this, int index) {
 }
 
 //new一个List对象
-List newList(void (*_removeNode)(Node node)) {
+List newList(void (*_removeNode)(ListNode node)) {
 	List L;
 	L = malloc(sizeof(*L));
 	if (NULL == L)
 		return NULL;
 	L->dataNodes = NULL;
-	L->addFirst = _add;
-	L->addLast = _addLast;
-	L->removeFirst = _remove;
-	L->removeLast = _removeLast;
-	L->last = _last;
-	L->first = _first;
+	L->addFirst = list_add;
+	L->addLast = list_addLast;
+	L->removeFirst = list_removefirst;
+	L->removeLast = list_removeLast;
+	L->last = list_last;
+	L->first = list_first;
 	L->removeNode = _removeNode;
-	L->forEach = _forEach;
-	L->size = _size;
-	L->get = _get;
-	L->deleteIndex = _deleteIndex;
+	L->forEach = list_forEach;
+	L->size = list_size;
+	L->get = list_get;
+	L->deleteIndex = list_deleteIndex;
 	return L;
 }
 
@@ -178,8 +178,8 @@ List newList(void (*_removeNode)(Node node)) {
 void deList(List this) {
 	if (NULL == this)
 		return;
-	Node node;
-	Node p = this->dataNodes;
+	ListNode node;
+	ListNode p = this->dataNodes;
 	while (p != NULL) {
 		node = p->nextNode;
 		this->removeNode(p);
