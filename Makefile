@@ -16,7 +16,8 @@ OBJECTFILES= soapC.o \
 	soapServer.o \
 	stdsoap2.o	\
 	threads.o	\
-	cList.o		\
+	list.o		\
+	map.o		\
 	hashMap.o	\
 	commIPC.o	\
 	commIPCHandle.o	\
@@ -49,7 +50,7 @@ TESTTARGETBASE = test
 
 TESTSRC_DIR = $(TESTTARGETBASE)
 TESTINCLUDE = $(INCLUDE) -I$(CMOCK_SRC) -I$(UNITY_SRC)  -I.
-TESTFILES = appToolsTest commIPCHandleTest cListTest #onvifHandleTest
+TESTFILES = appToolsTest commIPCHandleTest listTest mapTest #onvifHandleTest
 TESTOBJECTFILES = $(foreach n, $(TESTFILES), $(n).o)
 
 TESTRUNNERFILE = test_Runner
