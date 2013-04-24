@@ -26,9 +26,10 @@ typedef struct mapnode{
 struct map{
     List dataList;
     void (*put)(Map this, const char*, MapElement);
-    MapElement (*get)(Map this, const char*);
+    MapNode (*get)(Map this, const char*);
     void (*forEach)(Map this,void(*)(MapNode));          //遍历节点
     int (*size)(Map this);
+    void (*removeNode)(MapNode);            //节点资源释放函数
 };
 
 Map newMap(void (*removeNode)(MapNode));      //new一个列表对象
