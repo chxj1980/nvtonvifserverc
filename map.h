@@ -28,7 +28,7 @@ struct map{
     List dataList;
     void (*put)(Map this, const char*, MapElement);
     MapNode (*get)(Map this, const char*);
-    void (*forEach)(Map this,void(*)(MapNode));          //遍历节点
+    void (*forEach)(Map this,void(*)(MapNode, void*), void*);          //遍历节点
     int (*size)(Map this);
     void (*clearElement)(MapElement);            //节点资源释放函数
 };

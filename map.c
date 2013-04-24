@@ -9,7 +9,7 @@ MapNode map_get(Map this, const char* key) {
 	MapNode result = NULL;
 	ListNode node = this->dataList->dataNodes;
 	while(NULL != node) {
-		MapNode mapNode = node->element;
+		MapNode mapNode = (MapNode)node->element;
 		node = node->nextNode;
 		if (NULL == mapNode) {
 			continue;
@@ -48,14 +48,14 @@ void map_put(Map this, const char* key, MapElement element) {
 	}
 }
 
-void map_forEach(Map this,void (*eachFunc)(MapNode)) {
+void map_forEach(Map this, void (*eachFunc)(MapNode, void*), void* arg) {
 	if (NULL == this)
 		return;
 	ListNode node = this->dataList->dataNodes;
 	while(NULL != node) {
 		MapNode mapNode = node->element;
 		if (NULL != mapNode) {
-			eachFunc(mapNode);
+			eachFunc(mapNode, arg);
 		}
 		node = node->nextNode;
 	}

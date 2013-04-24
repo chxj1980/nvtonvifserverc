@@ -5,6 +5,7 @@
 
 #include "appTools.h"
 #include "onvifHandle.h"
+#include "logInfo.h"
 
 IPCRunInfo ipcRunInfo = {.ipcConnectHandle = INVALID_HANDLE};
 
@@ -20,7 +21,7 @@ int startIPCComm() {
 	return RET_CODE_SUCCESS;
 }
 
-int sendIPCCmd(const void_ptr cmd, const int len) {
+int sendIPCCmd(const void* cmd, const int len) {
 	if (!isValidHandle(ipcRunInfo.ipcConnectHandle)) {
 		return RET_CODE_ERROR_NOT_RUN;
 	}
@@ -31,7 +32,7 @@ int sendIPCCmd(const void_ptr cmd, const int len) {
 	return RET_CODE_SUCCESS;
 }
 
-int sendAndRecvIPCCmd(const void_ptr incmd, const int inlen, void_ptr outInfo,
+int sendAndRecvIPCCmd(const void* incmd, const int inlen, void* outInfo,
 		int* outlen) {
 	int result = sendIPCCmd(incmd, inlen);
 	if (!isRetCodeSuccess(result)) {
@@ -54,60 +55,45 @@ void stopIPCComm() {
 	ipcRunInfo.ipcConnectHandle = INVALID_HANDLE;
 }
 
-int getSendListIterate(void_ptr data, void_ptr arg) {
-	char* v = (char*)arg;
-	IPCCmdInfo* cmdInfo = data;
-	char invalue[120] = { 0 };
-	sprintf(invalue, "&%d=%s", cmdInfo->key, cmdInfo->value);
-	logInfo("invalue %s", invalue);
-	strcat(v, invalue);
-	return HMAP_S_OK;
-}
-
-int freeListIterate(void_ptr data, void_ptr arg) {
-	IPCCmdInfo* cmdInfo = data;
-	free(cmdInfo);
-	return HMAP_S_OK;
-}
-
-void putStrValueInList(const hmap_t inList, const int key, const char* value) {
+void putStrValueInList(const Map inList, const int key, const char* value) {
 	IPCCmdInfo* cmdInfo = (IPCCmdInfo*) malloc(sizeof(IPCCmdInfo));
 	cmdInfo->key = key;
 	if (NULL != value)
 		sprintf(cmdInfo->value, "%s", value);
 	else
 		strcpy(cmdInfo->value, "");
-	char* skey = malloc(SMALL_INFO_LENGTH);
+	char skey[SMALL_INFO_LENGTH];
 	sprintf(skey, "%d", key);
-	hashmap_put(inList, skey, cmdInfo);
+	inList->put(inList, skey, (MapElement)cmdInfo);
 }
 
-void putIntValueInList(const hmap_t inList, const int key, const int value) {
+void putIntValueInList(const Map inList, const int key, const int value) {
 	char cValue[20];
 	sprintf(cValue, "%d", value);
 	putStrValueInList(inList, key, cValue);
 }
 
-void putNullValueInList(const hmap_t inList, const int key) {
+void putNullValueInList(const Map inList, const int key) {
 	putStrValueInList(inList, key, NULL);
 }
 
-int getStrValueFromList(const hmap_t list, const int key, char* value) {
+int getStrValueFromList(const Map list, const int key, char* value) {
 	int result = RET_CODE_ERROR_NULL_VALUE;
-	char cKey[20];
+	char cKey[SMALL_INFO_LENGTH];
 	sprintf(cKey, "%d", key);
-	void_ptr* v1 = NULL;
-	if (HMAP_S_OK == hashmap_get(list, cKey, &v1)) {
-		if (NULL != v1) {
-			strcpy(value, (char*) v1);
-		}
-		result = RET_CODE_SUCCESS;
+	MapNode mapNode = list->get(list, cKey);
+	if(NULL == mapNode) {
+		return result;
 	}
+	if (NULL == mapNode->element)
+		return result;
+	strcpy(value, mapNode->element);
+	result = RET_CODE_SUCCESS;
 	return result;
 }
 
-int getIntValueFromList(const hmap_t outList, const int key, int* value) {
-	char cKey[20];
+int getIntValueFromList(const Map outList, const int key, int* value) {
+	char cKey[SMALL_INFO_LENGTH];
 	sprintf(cKey, "%d", key);
 	char cValue[520] = { 0 };
 	int result = getStrValueFromList(outList, key, cValue);
@@ -121,13 +107,26 @@ int getIntValueFromList(const hmap_t outList, const int key, int* value) {
 	return result;
 }
 
-void getSendListCmd(char* invalue, const int type, const hmap_t inList) {
+void getSendListForEach(MapNode node, void* arg) {
+	char* v = (char*)arg;
+	if (NULL == node)
+		return;
+	if (NULL == node->element) {
+		return;
+	}
+	IPCCmdInfo* cmdInfo = (IPCCmdInfo*)node->element;
+	char invalue[120] = { 0 };
+	sprintf(invalue, "&%d=%s", cmdInfo->key, cmdInfo->value);
+	strcat(v, invalue);
+}
+
+void getSendListCmd(char* invalue, const int type, const Map inList) {
 	sprintf(invalue, "$%d=%d", e_TYPE, type);
-	hashmap_iterate(inList, getSendListIterate, invalue);
+	inList->forEach(inList, getSendListForEach, invalue);
 	strcat(invalue, "#");
 }
 
-void parseRecvListCmd(const char* outValue, const hmap_t outList) {
+void parseRecvListCmd(const char* outValue, const Map outList) {
 	char* pInput = outValue;
 	char* pkey;
 	char* pvalue;
@@ -135,14 +134,14 @@ void parseRecvListCmd(const char* outValue, const hmap_t outList) {
 	do {
 		pkey = ParseVars(pInput, &parseIndex);
 		pvalue = ParseVars(pInput, &parseIndex);
-		if (pkey == NULL || pvalue == NULL) {
+		if (NULL == pkey || NULL == pvalue) {
 			break;
 		}
 		putStrValueInList(outList, atoi(pkey), pvalue);
 	} while (parseIndex != -1);
 }
 
-int sendAndRetList(const int type, const hmap_t inList, hmap_t outList) {
+int sendAndRetList(const int type, const Map inList, Map outList) {
 	char invalue[1000] = { 0 };
 	char outvalue[1000] = { 0 };
 	int outlen = 1000;
@@ -157,11 +156,16 @@ int sendAndRetList(const int type, const hmap_t inList, hmap_t outList) {
 	return result;
 }
 
-void destroyHashMapList(hmap_t list) {
-	hashmap_destroy(list, freeListIterate, 0);
+void destroyIPCCmdInfoMapList(Map list) {
+	delMap(list);
 }
 
-hmap_t createHashMapList() {
-	return hashmap_create();
+void freeIPCCmdInfo(MapElement data) {
+	IPCCmdInfo* cmdInfo = data;
+	free(cmdInfo);
+}
+
+Map createIPCCmdInfoMapList() {
+	return newMap(freeIPCCmdInfo);
 }
 

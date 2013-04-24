@@ -62,13 +62,13 @@ void test_PutGet() {
 	putAndTest("1", 30);
 }
 
-void map_for_eachp(MapNode mapNode) {
+void map_for_eachp(MapNode mapNode, void* arg) {
 	TEST_ASSERT_NOT_EQUAL(NULL, mapNode->element);
 }
 
 void test_ForEach() {
 	createTestObj("2", 100);
 	createTestObj("3", 100);
-	map1->forEach(map1, map_for_eachp);
+	map1->forEach(map1, map_for_eachp, NULL);
 }
 

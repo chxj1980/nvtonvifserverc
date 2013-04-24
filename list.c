@@ -97,12 +97,12 @@ int list_Size(List this) {
 }
 
 //±éÀú½Úµã
-void list_forEach(List this, void (*backfunc)(ListNode)) {
+void list_forEach(List this, void (*backfunc)(ListNode node, void* arg), void* arg) {
 	if (NULL == this)
 		return;
 	ListNode node = this->dataNodes;
 	while (NULL != node) {
-		backfunc(node);
+		backfunc(node, arg);
 		node = node->nextNode;
 	}
 }

@@ -9,7 +9,7 @@
 #define COMMIPC_H_
 
 #include "appCommon.h"
-#include "hashMap.h"
+#include "map.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,14 +28,14 @@ extern IPCRunInfo ipcRunInfo;
 
 int startIPCComm();
 void stopIPCComm();
-void putStrValueInList(const hmap_t inList, const int key, const char* value);
-void putIntValueInList(const hmap_t inList, const int key, const int value);
-void putNullValueInList(const hmap_t inList, const int key);
-int getStrValueFromList(const hmap_t outList, const int key, char* value);
-int getIntValueFromList(const hmap_t outList, const int key, int* value);
-hmap_t createHashMapList();
-void destroyHashMapList(hmap_t list);
-int sendAndRetList(const int type, const hmap_t inList, hmap_t outList);
+void putStrValueInList(const Map inList, const int key, const char* value);
+void putIntValueInList(const Map inList, const int key, const int value);
+void putNullValueInList(const Map inList, const int key);
+int getStrValueFromList(const Map outList, const int key, char* value);
+int getIntValueFromList(const Map outList, const int key, int* value);
+Map createIPCCmdInfoMapList();
+void destroyIPCCmdInfoMapList(Map list);
+int sendAndRetList(const int type, const Map inList, Map outList);
 
 #ifdef __cplusplus
 }

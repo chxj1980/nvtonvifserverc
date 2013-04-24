@@ -25,7 +25,7 @@ struct list{
     int (*size)(List this);
     void (*clearNode)(List this, ListNode);            //节点释放函数
     void (*clearElement)(ListElement);            //节点资源释放函数
-    void (*forEach)(List this,void(*)(ListNode));          //遍历节点
+    void (*forEach)(List this, void(*)(ListNode, void*), void*);          //遍历节点
     ListNode (*get)(List this, int index);  // 得到指定位置的节点
     void (*deleteIndex)(List this, int index);  // 得到指定位置的节点
 };
