@@ -2,7 +2,7 @@
 
 #include "../list.h"
 
-List map1 = NULL;
+List list1 = NULL;
 
 void removeListElement(ListElement element) {
 	int* data = element;
@@ -10,12 +10,12 @@ void removeListElement(ListElement element) {
 }
 
 void setUp(void) {
-	map1 = newList(removeListElement);
+	list1 = newList(removeListElement);
 }
 
 void tearDown(void) {
-	if (NULL != map1)
-		delList(map1);
+	if (NULL != list1)
+		delList(list1);
 }
 
 void* createTestObj(int value) {
@@ -25,26 +25,26 @@ void* createTestObj(int value) {
 }
 
 void test_NewList() {
-	TEST_ASSERT_NOT_EQUAL(NULL, map1);
+	TEST_ASSERT_NOT_EQUAL(NULL, list1);
 }
 
 void test_Size() {
-	TEST_ASSERT_EQUAL(0, map1->size(map1));
-	map1->addFirst(map1, createTestObj(1));
-	TEST_ASSERT_EQUAL(1, map1->size(map1));
+	TEST_ASSERT_EQUAL(0, list1->size(list1));
+	list1->addFirst(list1, createTestObj(1));
+	TEST_ASSERT_EQUAL(1, list1->size(list1));
 	int i;
 	for (i = 1; i < 10; i++) {
-		map1->addFirst(map1, createTestObj(i));
+		list1->addFirst(list1, createTestObj(i));
 	}
-	TEST_ASSERT_EQUAL(10, map1->size(map1));
+	TEST_ASSERT_EQUAL(10, list1->size(list1));
 }
 
 void test_AddFirst() {
 	int i;
 	for (i = 0; i < 10; i++) {
-		map1->addFirst(map1, createTestObj(i * 1));
+		list1->addFirst(list1, createTestObj(i * 1));
 	}
-	ListNode node = map1->get(map1, 9);
+	ListNode node = list1->get(list1, 9);
 	TEST_ASSERT_NOT_EQUAL(NULL, node);
 	TEST_ASSERT_EQUAL(0, *((int*)(node->element)));
 }
@@ -52,41 +52,41 @@ void test_AddFirst() {
 void test_Get() {
 	int i;
 	for (i = 0; i < 10; i++) {
-		map1->addLast(map1, createTestObj(i * 10));
+		list1->addLast(list1, createTestObj(i * 10));
 	}
-	ListNode node = map1->get(map1, 1);
+	ListNode node = list1->get(list1, 1);
 	TEST_ASSERT_NOT_EQUAL(NULL, node);
 	TEST_ASSERT_EQUAL(10, *((int*)(node->element)));
 }
 
-void for_each_p(ListNode node) {
+void for_each_p(ListNode node, void* arg) {
 	TEST_ASSERT_NOT_EQUAL(NULL, node->element);
 }
 
 void test_ForEach() {
 	int i;
 	for (i = 0; i < 10; i++) {
-		map1->addLast(map1, createTestObj(i * 10));
+		list1->addLast(list1, createTestObj(i * 10));
 	}
-	map1->forEach(map1, for_each_p);
+	list1->forEach(list1, for_each_p, NULL);
 }
 
 void test_RemoveFirst() {
 	int i;
 	for (i = 0; i < 10; i++) {
-		map1->addLast(map1, createTestObj(i * 10));
+		list1->addLast(list1, createTestObj(i * 10));
 	}
-	map1->removeFirst(map1);
-	ListNode node = map1->get(map1, 0);
+	list1->removeFirst(list1);
+	ListNode node = list1->get(list1, 0);
 	TEST_ASSERT_EQUAL(10, *((int*)(node->element)));
 }
 
 void test_First() {
 	int i;
 	for (i = 0; i < 10; i++) {
-		map1->addLast(map1, createTestObj(i * 10));
+		list1->addLast(list1, createTestObj(i * 10));
 	}
-	ListNode node = map1->first(map1);
+	ListNode node = list1->first(list1);
 	TEST_ASSERT_NOT_EQUAL(NULL, node);
 	TEST_ASSERT_EQUAL(0, *((int*)(node->element)));
 }
@@ -94,9 +94,9 @@ void test_First() {
 void test_Last() {
 	int i;
 	for (i = 0; i < 10; i++) {
-		map1->addLast(map1, createTestObj(i * 10));
+		list1->addLast(list1, createTestObj(i * 10));
 	}
-	ListNode node = map1->last(map1);
+	ListNode node = list1->last(list1);
 	TEST_ASSERT_NOT_EQUAL(NULL, node);
 	TEST_ASSERT_EQUAL(90, *((int*)(node->element)));
 }
@@ -104,23 +104,23 @@ void test_Last() {
 void test_RemoveLast() {
 	int i;
 	for (i = 0; i < 10; i++) {
-		map1->addLast(map1, createTestObj(i * 10));
+		list1->addLast(list1, createTestObj(i * 10));
 	}
-	ListNode node = map1->last(map1);
+	ListNode node = list1->last(list1);
 	TEST_ASSERT_EQUAL(90, *((int*)(node->element)));
-	map1->removeLast(map1);
-	node = map1->last(map1);
+	list1->removeLast(list1);
+	node = list1->last(list1);
 	TEST_ASSERT_EQUAL(80, *((int*)(node->element)));
 }
 
 void test_DeleteIndex() {
 	int i;
 	for (i = 0; i < 10; i++) {
-		map1->addLast(map1, createTestObj(i * 10));
+		list1->addLast(list1, createTestObj(i * 10));
 	}
-	ListNode node = map1->get(map1, 2);
+	ListNode node = list1->get(list1, 2);
 	TEST_ASSERT_EQUAL(20, *((int*)(node->element)));
-	map1->deleteIndex(map1, 2);
-	node = map1->get(map1, 2);
+	list1->deleteIndex(list1, 2);
+	node = list1->get(list1, 2);
 	TEST_ASSERT_EQUAL(30, *((int*)(node->element)));
 }

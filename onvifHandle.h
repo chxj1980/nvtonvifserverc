@@ -58,6 +58,7 @@ typedef struct St_OnvifVideoChannelInfo {
 	int bit_rate; ///< Bitrate per second
 	int width; ///< width
 	int height; ///< hieght
+	int encodingInterval;
 	char videoAddr[LARGE_INFO_LENGTH];
 } OnvifVideoChannelInfo;
 

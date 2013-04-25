@@ -2,7 +2,7 @@
 
 #include "../map.h"
 
-Map map1 = NULL;
+Map list1 = NULL;
 
 void clearMapElement(MapElement element) {
 	int* data = element;
@@ -10,42 +10,42 @@ void clearMapElement(MapElement element) {
 }
 
 void setUp(void) {
-	map1 = newMap(clearMapElement);
+	list1 = newMap(clearMapElement);
 }
 
 void tearDown(void) {
-	if (NULL != map1)
-		delMap(map1);
+	if (NULL != list1)
+		delMap(list1);
 }
 
 void createTestObj(const char* key, int value) {
 	int* t = malloc(sizeof(int));
 	*t = value;
-	map1->put(map1, key, t);
+	list1->put(list1, key, t);
 }
 
 void test_NewMap() {
-	TEST_ASSERT_NOT_EQUAL(NULL, map1);
+	TEST_ASSERT_NOT_EQUAL(NULL, list1);
 }
 
 void test_Size() {
-	TEST_ASSERT_EQUAL(0, map1->size(map1));
+	TEST_ASSERT_EQUAL(0, list1->size(list1));
 	createTestObj("0", 0);
-	TEST_ASSERT_EQUAL(1, map1->size(map1));
+	TEST_ASSERT_EQUAL(1, list1->size(list1));
 	char key[3];
 	int i;
 	for (i = 1; i < 10; i++) {
 		sprintf(key, "%d", i);
 		createTestObj(key, i);
 	}
-	TEST_ASSERT_EQUAL(10, map1->size(map1));
+	TEST_ASSERT_EQUAL(10, list1->size(list1));
 	createTestObj("2", 100);
-	TEST_ASSERT_EQUAL(10, map1->size(map1));
+	TEST_ASSERT_EQUAL(10, list1->size(list1));
 }
 
 void putAndTest(char* key, int value) {
 	createTestObj(key, value);
-	MapNode mapNode = map1->get(map1, key);
+	MapNode mapNode = list1->get(list1, key);
 	TEST_ASSERT_NOT_EQUAL(NULL, mapNode);
 	int* value1;
 	if (NULL != mapNode) {
@@ -69,6 +69,6 @@ void map_for_eachp(MapNode mapNode, void* arg) {
 void test_ForEach() {
 	createTestObj("2", 100);
 	createTestObj("3", 100);
-	map1->forEach(map1, map_for_eachp, NULL);
+	list1->forEach(list1, map_for_eachp, NULL);
 }
 

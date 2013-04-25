@@ -231,6 +231,7 @@ int getVideoChannelInfo_PushCmd(const Map inList, const void* info1) {
 	putNullValueInList(inList, e_bit_rate);
 	putNullValueInList(inList, e_width);
 	putNullValueInList(inList, e_height);
+	putNullValueInList(inList, e_ip_interval);
 	putNullValueInList(inList, e_video_addr);
 	return RET_CODE_SUCCESS;
 }
@@ -262,6 +263,10 @@ int getVideoChannelInfo_ParseCmd(const Map outList, const void* info1) {
 	if (!isRetCodeSuccess(result))
 		return result;
 	info->height = value;
+	result = getIntValueFromList(outList, e_ip_interval, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->encodingInterval = value;
 	result = getStrValueFromList(outList, e_video_addr, info->videoAddr);
 	if (!isRetCodeSuccess(result))
 		return result;
