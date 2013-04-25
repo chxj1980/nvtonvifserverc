@@ -61,7 +61,6 @@ int setNTPInfo(OnvifNTPInfo* info) {
 }
 
 int getNTPInfo_PushCmd(const Map inList, const void* info1) {
-	OnvifNTPInfo* info = (OnvifNTPInfo*) info1;
 	putNullValueInList(inList, e_time_ntpenable);
 	putNullValueInList(inList, e_time_ntpserver);
 	return RET_CODE_SUCCESS;
@@ -80,7 +79,6 @@ int getNTPInfo(OnvifNTPInfo* info) {
 }
 
 int getNetCardInfo_PushCmd(const Map inList, const void* info1) {
-	OnvifNetCardInfo* info = (OnvifNetCardInfo*) info1;
 	putNullValueInList(inList, e_net_cardname);
 	putNullValueInList(inList, e_net_macaddr);
 	putNullValueInList(inList, e_net_ip);
@@ -115,7 +113,6 @@ int getNetCardInfo(OnvifNetCardInfo* info) {
 }
 
 int getDeviceInfo_PushCmd(const Map inList, const void* info1) {
-	OnvifDeviceInfo* info = (OnvifDeviceInfo*) info1;
 	putNullValueInList(inList, e_sys_hardwareId);
 	putNullValueInList(inList, e_sys_manufacturer);
 	putNullValueInList(inList, e_sys_Model);
@@ -231,13 +228,27 @@ int getVideoChannelInfo_PushCmd(const Map inList, const void* info1) {
 	putNullValueInList(inList, e_bit_rate);
 	putNullValueInList(inList, e_width);
 	putNullValueInList(inList, e_height);
+	putNullValueInList(inList, e_brightness);
+	putNullValueInList(inList, e_saturation);
+	putNullValueInList(inList, e_contrast);
+	putNullValueInList(inList, e_sharpness);
+	putNullValueInList(inList, e_wb_mode);
+	putNullValueInList(inList, e_wb_cbgain);
+	putNullValueInList(inList, e_wb_crgain);
+	putNullValueInList(inList, e_backlightcomp_mode);
+	putNullValueInList(inList, e_backlightcomp_level);
+	putNullValueInList(inList, e_wdrange_mode);
+	putNullValueInList(inList, e_wdrange_level);
 	putNullValueInList(inList, e_ip_interval);
+	putNullValueInList(inList, e_encode_profile);
+	putNullValueInList(inList, e_init_quant);
 	putNullValueInList(inList, e_video_addr);
 	return RET_CODE_SUCCESS;
 }
 
 int getVideoChannelInfo_ParseCmd(const Map outList, const void* info1) {
 	OnvifVideoChannelInfo* info = (OnvifVideoChannelInfo*)info1;
+	memset(info, 0, sizeof(OnvifVideoChannelInfo));
 	int value;
 	int result = getIntValueFromList(outList, e_Stream_enable, &value);
 	if (!isRetCodeSuccess(result))
@@ -263,10 +274,62 @@ int getVideoChannelInfo_ParseCmd(const Map outList, const void* info1) {
 	if (!isRetCodeSuccess(result))
 		return result;
 	info->height = value;
+	result = getIntValueFromList(outList, e_brightness, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->bright = value;
+	result = getIntValueFromList(outList, e_saturation, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->saturation = value;
+	result = getIntValueFromList(outList, e_contrast, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->contrast = value;
+	result = getIntValueFromList(outList, e_sharpness, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->sharpness = value;
+	result = getIntValueFromList(outList, e_wb_mode, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->wbMode = value;
+	result = getIntValueFromList(outList, e_wb_cbgain, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->wbCbGain = value;
+	result = getIntValueFromList(outList, e_wb_crgain, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->wbCrGain = value;
+	result = getIntValueFromList(outList, e_backlightcomp_mode, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->backLightCompMode = value;
+	result = getIntValueFromList(outList, e_backlightcomp_level, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->backLightCompLevel = value;
+	result = getIntValueFromList(outList, e_wdrange_mode, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->wideDynamicMode = value;
+	result = getIntValueFromList(outList, e_wdrange_level, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->wideDynamicLevel = value;
 	result = getIntValueFromList(outList, e_ip_interval, &value);
 	if (!isRetCodeSuccess(result))
 		return result;
-	info->encodingInterval = value;
+	info->govLength = value;
+	result = getIntValueFromList(outList, e_encode_profile, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->videoEncodeProfile = value;
+	result = getIntValueFromList(outList, e_init_quant, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->quality = value;
 	result = getStrValueFromList(outList, e_video_addr, info->videoAddr);
 	if (!isRetCodeSuccess(result))
 		return result;

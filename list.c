@@ -132,10 +132,9 @@ void list_deleteIndex(List this, int index) {
 	if (index < 0)
 		return;
 	if (0 == index) {
-		remove(this);
+		list_removefirst(this);
 		return;
 	}
-	ListNode result = NULL;
 	int pos = 0;
 	ListNode node = this->dataNodes;
 	ListNode pNode = this->dataNodes;

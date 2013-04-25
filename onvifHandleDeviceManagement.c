@@ -9,7 +9,7 @@
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 		struct _tds__GetServices *tds__GetServices,
 		struct _tds__GetServicesResponse *tds__GetServicesResponse) {
-	debugInfo("__tds__GetServices");
+	logInfo("__tds__GetServices");
 	char _xmAddr[INFO_LENGTH] = { 0 };
 	if (RET_CODE_SUCCESS != getServiceURL(_xmAddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
 		return getOnvifSoapActionFailedCode(soap, "GetServices",
@@ -214,7 +214,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServiceCapabilities(
 		struct soap* soap,
 		struct _tds__GetServiceCapabilities *tds__GetServiceCapabilities,
 		struct _tds__GetServiceCapabilitiesResponse *tds__GetServiceCapabilitiesResponse) {
-	debugInfo("__tds__GetServiceCapabilities");
+	logInfo("__tds__GetServiceCapabilities");
 	tds__GetServiceCapabilitiesResponse->Capabilities =
 			(struct tds__DeviceServiceCapabilities *) soap_malloc(soap,
 					sizeof(struct tds__DeviceServiceCapabilities));
@@ -256,7 +256,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemDateAndTime(
 		struct soap* soap,
 		struct _tds__SetSystemDateAndTime *tds__SetSystemDateAndTime,
 		struct _tds__SetSystemDateAndTimeResponse *tds__SetSystemDateAndTimeResponse) {
-	debugInfo("__tds__SetSystemDateAndTime");
+	logInfo("__tds__SetSystemDateAndTime");
 	return getOnvifSoapActionNotSupportCode(soap, "SetSystemDateAndTime", NULL);
 
 }
@@ -265,7 +265,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemDateAndTime(
 		struct soap* soap,
 		struct _tds__GetSystemDateAndTime *tds__GetSystemDateAndTime,
 		struct _tds__GetSystemDateAndTimeResponse *tds__GetSystemDateAndTimeResponse) {
-	debugInfo("__tds__GetSystemDateAndTime");
+	logInfo("__tds__GetSystemDateAndTime");
 	return getOnvifSoapActionNotSupportCode(soap, "GetSystemDateAndTime", NULL);
 }
 
@@ -273,7 +273,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemFactoryDefault(
 		struct soap* soap,
 		struct _tds__SetSystemFactoryDefault *tds__SetSystemFactoryDefault,
 		struct _tds__SetSystemFactoryDefaultResponse *tds__SetSystemFactoryDefaultResponse) {
-	debugInfo("__tds__SetSystemFactoryDefault");
+	logInfo("__tds__SetSystemFactoryDefault");
 	if (!isRetCodeSuccess(setSystemFactoryDefault())) {
 		return getOnvifSoapActionFailedCode(soap, "RestoreSystem",
 						"restore failed");
@@ -285,7 +285,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__UpgradeSystemFirmware(
 		struct soap* soap,
 		struct _tds__UpgradeSystemFirmware *tds__UpgradeSystemFirmware,
 		struct _tds__UpgradeSystemFirmwareResponse *tds__UpgradeSystemFirmwareResponse) {
-	debugInfo("__tds__UpgradeSystemFirmware");
+	logInfo("__tds__UpgradeSystemFirmware");
 	return getOnvifSoapActionNotSupportCode(soap, "UpgradeSystemFirmware", NULL);
 
 }
@@ -293,7 +293,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__UpgradeSystemFirmware(
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SystemReboot(struct soap* soap,
 		struct _tds__SystemReboot *tds__SystemReboot,
 		struct _tds__SystemRebootResponse *tds__SystemRebootResponse) {
-	debugInfo("__tds__SystemReboot");
+	logInfo("__tds__SystemReboot");
 	if (!isRetCodeSuccess(deviceReboot())) {
 		return getOnvifSoapActionFailedCode(soap, "SystemReboot",
 						"reboot failed");
@@ -306,21 +306,21 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SystemReboot(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__RestoreSystem(struct soap* soap,
 		struct _tds__RestoreSystem *tds__RestoreSystem,
 		struct _tds__RestoreSystemResponse *tds__RestoreSystemResponse) {
-	debugInfo("__tds__RestoreSystem");
+	logInfo("__tds__RestoreSystem");
 	return getOnvifSoapActionNotSupportCode(soap, "RestoreSystem", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemBackup(struct soap* soap,
 		struct _tds__GetSystemBackup *tds__GetSystemBackup,
 		struct _tds__GetSystemBackupResponse *tds__GetSystemBackupResponse) {
-	debugInfo("__tds__GetSystemBackup");
+	logInfo("__tds__GetSystemBackup");
 	return getOnvifSoapActionNotSupportCode(soap, "RestoreSystem", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemLog(struct soap* soap,
 		struct _tds__GetSystemLog *tds__GetSystemLog,
 		struct _tds__GetSystemLogResponse *tds__GetSystemLogResponse) {
-	debugInfo("__tds__GetSystemLog");
+	logInfo("__tds__GetSystemLog");
 	return getOnvifSoapActionNotSupportCode(soap, "GetSystemLog", NULL);
 }
 
@@ -328,14 +328,14 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemSupportInformation(
 		struct soap* soap,
 		struct _tds__GetSystemSupportInformation *tds__GetSystemSupportInformation,
 		struct _tds__GetSystemSupportInformationResponse *tds__GetSystemSupportInformationResponse) {
-	debugInfo("__tds__GetSystemSupportInformation");
+	logInfo("__tds__GetSystemSupportInformation");
 	return getOnvifSoapActionNotSupportCode(soap, "GetSystemSupportInformation", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetScopes(struct soap* soap,
 		struct _tds__GetScopes *tds__GetScopes,
 		struct _tds__GetScopesResponse *tds__GetScopesResponse) {
-	debugInfo("__tds__GetScopes");
+	logInfo("__tds__GetScopes");
 	int size = 1;
 	tds__GetScopesResponse->__sizeScopes = size;
 	tds__GetScopesResponse->Scopes = (struct tt__Scope*) soap_malloc(soap,
@@ -448,20 +448,16 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetWsdlUrl(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,
 		struct _tds__GetCapabilities *tds__GetCapabilities,
 		struct _tds__GetCapabilitiesResponse *tds__GetCapabilitiesResponse) {
-	debugInfo("__tds__GetCapabilities");
+	logInfo("__tds__GetCapabilities");
 	char _IPv4Address[LARGE_INFO_LENGTH];
 	if (RET_CODE_SUCCESS
 			!= getServiceURL(_IPv4Address, onvifRunParam.ip, onvifRunParam.servicePort))
 		return getOnvifSoapActionFailedCode(soap, "GetCapabilities",
 				"not get service url");;
-	int _Category = 0;
 	if (tds__GetCapabilities->Category == NULL)
 	{
-		tds__GetCapabilities->Category = (int *) soap_malloc(soap, sizeof(int));
+		tds__GetCapabilities->Category = (enum tt__CapabilityCategory *) soap_malloc(soap, sizeof(enum tt__CapabilityCategory));
 		*tds__GetCapabilities->Category = ALL;
-		_Category = ALL;
-	} else {
-		_Category = *tds__GetCapabilities->Category;
 	}
 
 	tds__GetCapabilitiesResponse->Capabilities =
@@ -484,18 +480,23 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,
 	strcpy(
 			tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->XAddr,
 			_IPv4Address);
-
+	int vSource = 0;
+	int ret = getVideoCount(&vSource);
+	if (!isRetCodeSuccess(ret)) {
+		return getOnvifSoapActionFailedCode(soap, "GetCapabilities",
+				"getVideCount failed");
+	}
 	//下面的重要，这里只实现视频流，需要设置VideoSources
 	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->VideoSources =
-			TRUE;
+			vSource;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->VideoOutputs =
-			FALSE;
+			0;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->AudioSources =
-			FALSE;
+			0;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->AudioOutputs =
-			FALSE;
+			0;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->RelayOutputs =
-			FALSE;
+			0;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->__size = 0;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->__any =
 			NULL;
@@ -681,7 +682,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDPAddresses(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetHostname(struct soap* soap,
 		struct _tds__GetHostname *tds__GetHostname,
 		struct _tds__GetHostnameResponse *tds__GetHostnameResponse) {
-	debugInfo("__tds__GetHostname");
+	logInfo("__tds__GetHostname");
 	tds__GetHostnameResponse->HostnameInformation =
 			(struct tt__HostnameInformation*) soap_malloc(soap,
 					sizeof(struct tt__HostnameInformation));
@@ -726,7 +727,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDNS(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetNTP(struct soap* soap,
 		struct _tds__GetNTP *tds__GetNTP,
 		struct _tds__GetNTPResponse *tds__GetNTPResponse) {
-	debugInfo("__tds__GetNTP");
+	logInfo("__tds__GetNTP");
 	OnvifNTPInfo info;
 	if (RET_CODE_SUCCESS != getNTPInfo(&info)) {
 		return getOnvifSoapActionNotSupportCode(soap, "GetNTP",
@@ -758,7 +759,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetNTP(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetNTP(struct soap* soap,
 		struct _tds__SetNTP *tds__SetNTP,
 		struct _tds__SetNTPResponse *tds__SetNTPResponse) {
-	debugInfo("__tds__SetNTP");
+	logInfo("__tds__SetNTP");
 	if (xsd__boolean__true_ == tds__SetNTP->FromDHCP) {
 		return getOnvifSoapActionNotSupportCode(soap, "SetNTP",
 				"DHCPNotSupported");
@@ -791,14 +792,14 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetNTP(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDynamicDNS(struct soap* soap,
 		struct _tds__GetDynamicDNS *tds__GetDynamicDNS,
 		struct _tds__GetDynamicDNSResponse *tds__GetDynamicDNSResponse) {
-	debugInfo("__tds__GetDynamicDNS");
+	logInfo("__tds__GetDynamicDNS");
 	return getOnvifSoapActionNotSupportCode(soap, "GetDynamicDNS", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDynamicDNS(struct soap* soap,
 		struct _tds__SetDynamicDNS *tds__SetDynamicDNS,
 		struct _tds__SetDynamicDNSResponse *tds__SetDynamicDNSResponse) {
-	debugInfo("__tds__SetDynamicDNS");
+	logInfo("__tds__SetDynamicDNS");
 	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
 }
 
@@ -1063,14 +1064,14 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__ScanAvailableDot11Networks(
 		struct soap* soap,
 		struct _tds__ScanAvailableDot11Networks *tds__ScanAvailableDot11Networks,
 		struct _tds__ScanAvailableDot11NetworksResponse *tds__ScanAvailableDot11NetworksResponse) {
-	debugInfo("__tds__ScanAvailableDot11Networks");
+	logInfo("__tds__ScanAvailableDot11Networks");
 	return getOnvifSoapActionNotSupportCode(soap, "ScanAvailableDot11Networks", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemUris(struct soap* soap,
 		struct _tds__GetSystemUris *tds__GetSystemUris,
 		struct _tds__GetSystemUrisResponse *tds__GetSystemUrisResponse) {
-	debugInfo("__tds__GetSystemUris");
+	logInfo("__tds__GetSystemUris");
 	return getOnvifSoapActionNotSupportCode(soap, "GetSystemUris", NULL);
 }
 
@@ -1078,7 +1079,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__StartFirmwareUpgrade(
 		struct soap* soap,
 		struct _tds__StartFirmwareUpgrade *tds__StartFirmwareUpgrade,
 		struct _tds__StartFirmwareUpgradeResponse *tds__StartFirmwareUpgradeResponse) {
-	debugInfo("__tds__StartFirmwareUpgrade");
+	logInfo("__tds__StartFirmwareUpgrade");
 	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
 }
 
@@ -1086,7 +1087,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__StartSystemRestore(
 		struct soap* soap,
 		struct _tds__StartSystemRestore *tds__StartSystemRestore,
 		struct _tds__StartSystemRestoreResponse *tds__StartSystemRestoreResponse) {
-	debugInfo("__tds__StartSystemRestore");
+	logInfo("__tds__StartSystemRestore");
 	return getOnvifSoapActionNotSupportCode(soap, "StartSystemRestore", NULL);
 }
 

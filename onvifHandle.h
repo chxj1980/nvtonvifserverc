@@ -58,7 +58,20 @@ typedef struct St_OnvifVideoChannelInfo {
 	int bit_rate; ///< Bitrate per second
 	int width; ///< width
 	int height; ///< hieght
-	int encodingInterval;
+	int bright;
+	int saturation;
+	int contrast;
+	int sharpness;
+	int wbMode;  // whitebalance mode 0 is auto, other
+	int wbCrGain;
+	int wbCbGain;
+	int backLightCompMode; // BacklightCompensation mode
+	int backLightCompLevel; // BacklightCompensation level
+	int wideDynamicMode;  // wide Dynamic range Mode
+	int wideDynamicLevel;  // wide Dynamic range Mode
+	int govLength; //
+	int videoEncodeProfile;
+	int quality;
 	char videoAddr[LARGE_INFO_LENGTH];
 } OnvifVideoChannelInfo;
 

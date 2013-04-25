@@ -87,7 +87,8 @@ int getStrValueFromList(const Map list, const int key, char* value) {
 	}
 	if (NULL == mapNode->element)
 		return result;
-	strcpy(value, mapNode->element);
+	IPCCmdInfo* info1 = (IPCCmdInfo*)mapNode->element;
+	strcpy(value, info1->value);
 	result = RET_CODE_SUCCESS;
 	return result;
 }
@@ -127,7 +128,7 @@ void getSendListCmd(char* invalue, const int type, const Map inList) {
 }
 
 void parseRecvListCmd(const char* outValue, const Map outList) {
-	char* pInput = outValue;
+	char* pInput = (char*)outValue;
 	char* pkey;
 	char* pvalue;
 	int parseIndex = 0;

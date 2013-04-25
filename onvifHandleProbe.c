@@ -667,6 +667,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 	char _xmaddr[256] = { 0 };
 	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort))
 		return GSOAP_RET_CODE_NOT_IMPLEMENT;
+	logInfo("service url %s", _xmaddr);
 	int interface_num = 1;
 	wsdd__ProbeMatchesType ProbeMatches;
 	ProbeMatches.__sizeProbeMatch = interface_num;

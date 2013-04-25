@@ -72,8 +72,8 @@ typedef struct St_CmdParam {
 
 typedef struct St_NetCardInfo {
 	char ip[IPV4_LEN];
-	char mac[IPV4_LEN];
-	char name[50];
+	char mac[INFO_LENGTH];
+	char name[INFO_LENGTH];
 	char mask[IPV4_LEN];
 	char gateway[IPV4_LEN];
 }NetCardInfo;

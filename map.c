@@ -61,7 +61,8 @@ void map_forEach(Map this, void (*eachFunc)(MapNode, void*), void* arg) {
 	}
 }
 
-void map_removeNode(MapNode mapNode) {
+void map_removeNode(void* node) {
+	MapNode mapNode = (MapNode) node;
 	if (NULL == mapNode) {
 		return;
 	}
