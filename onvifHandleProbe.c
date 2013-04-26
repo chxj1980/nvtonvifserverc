@@ -411,7 +411,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_error(struct soap *soap, SOAP_WSA(FaultSubcod
 #endif
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_check(struct soap *soap) {
-	debugInfo("soap_wsa_check");
+	logInfo("soap_wsa_check");
 	if (!soap->header || !soap->header->SOAP_WSA(Action))
 #if defined(SOAP_WSA_2005)
 		return soap_wsa_error(soap, wsa5__MessageAddressingHeaderRequired, NULL);
@@ -901,7 +901,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Hello(struct soap* soap,
 	const char *SequenceId = NULL;
 	unsigned int MessageNumber = 0;
 
-	debugInfo("__wsdd__Hello");
+	logInfo("__wsdd__Hello");
 
 	/* check for WSA */
 	if (soap_wsa_check(soap))
@@ -1049,7 +1049,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Bye(struct soap* soap,
 	const char *SequenceId = NULL;
 	unsigned int MessageNumber = 0;
 
-	debugInfo("__wsdd__Bye");
+	logInfo("__wsdd__Bye");
 
 	/* check for WSA */
 	if (soap_wsa_check(soap))
@@ -1114,7 +1114,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__ProbeMatches(struct soap* soap,
 	const char *SequenceId = NULL;
 	unsigned int MessageNumber = 0;
 
-	debugInfo("__wsdd__ProbeMatches");
+	logInfo("__wsdd__ProbeMatches");
 
 	/* check for WSA */
 	if (soap_wsa_check(soap))
@@ -1227,7 +1227,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Resolve(struct soap* soap,
 	struct wsdd__ResolveMatchType match;
 	soap_wsdd_mode mode;
 
-	debugInfo("__wsdd__Resolve");
+	logInfo("__wsdd__Resolve");
 
 	/* check for WSA */
 	if (soap_wsa_check(soap))
@@ -1303,7 +1303,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__ResolveMatches(struct soap* soap,
 	const char *SequenceId = NULL;
 	unsigned int MessageNumber = 0;
 
-	debugInfo("__wsdd__ResolveMatches");
+	logInfo("__wsdd__ResolveMatches");
 
 	/* check for WSA */
 	if (soap_wsa_check(soap))

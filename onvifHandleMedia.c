@@ -49,15 +49,18 @@ void getResponseProfileToken(char* dest, int index) {
 }
 
 enum tt__BacklightCompensationMode getOnvifBacklightCompensationMode(int mode) {
-	return  (0 == mode) ? tt__BacklightCompensationMode__OFF: tt__BacklightCompensationMode__ON;
+	return (0 == mode) ?
+			tt__BacklightCompensationMode__OFF :
+			tt__BacklightCompensationMode__ON;
 }
 
 enum tt__WhiteBalanceMode getOnvifWhiteBalanceMode(int mode) {
-	return  (0 == mode) ? tt__WhiteBalanceMode__AUTO: tt__WhiteBalanceMode__MANUAL;
+	return (0 == mode) ?
+			tt__WhiteBalanceMode__AUTO : tt__WhiteBalanceMode__MANUAL;
 }
 
 enum tt__WideDynamicMode getOnvifWideDynamicMode(int mode) {
-	return (0 == mode) ? tt__WideDynamicMode__OFF: tt__WideDynamicMode__ON;
+	return (0 == mode) ? tt__WideDynamicMode__OFF : tt__WideDynamicMode__ON;
 }
 
 void getVideoSourcesResponseVideoSource(struct soap* soap,
@@ -91,20 +94,28 @@ void getVideoSourcesResponseVideoSource(struct soap* soap,
 	videoSource->Imaging->BacklightCompensation =
 			(struct tt__BacklightCompensation*) soap_malloc(soap,
 					sizeof(struct tt__BacklightCompensation));
-	videoSource->Imaging->BacklightCompensation->Mode = getOnvifBacklightCompensationMode(onvifVideoChannelInfo->backLightCompMode);
-	videoSource->Imaging->BacklightCompensation->Level = onvifVideoChannelInfo->backLightCompLevel;
+	videoSource->Imaging->BacklightCompensation->Mode =
+			getOnvifBacklightCompensationMode(
+					onvifVideoChannelInfo->backLightCompMode);
+	videoSource->Imaging->BacklightCompensation->Level =
+			onvifVideoChannelInfo->backLightCompLevel;
 	videoSource->Imaging->Exposure = NULL;
 	videoSource->Imaging->Focus = NULL;
 	videoSource->Imaging->WideDynamicRange =
 			(struct tt__WideDynamicRange*) soap_malloc(soap,
 					sizeof(struct tt__WideDynamicRange));
-	videoSource->Imaging->WideDynamicRange->Mode = getOnvifWideDynamicMode(onvifVideoChannelInfo->wideDynamicMode);
-	videoSource->Imaging->WideDynamicRange->Level = onvifVideoChannelInfo->wideDynamicLevel;
+	videoSource->Imaging->WideDynamicRange->Mode = getOnvifWideDynamicMode(
+			onvifVideoChannelInfo->wideDynamicMode);
+	videoSource->Imaging->WideDynamicRange->Level =
+			onvifVideoChannelInfo->wideDynamicLevel;
 	videoSource->Imaging->WhiteBalance = (struct tt__WhiteBalance*) soap_malloc(
 			soap, sizeof(struct tt__WhiteBalance));
-	videoSource->Imaging->WhiteBalance->Mode = getOnvifWhiteBalanceMode(onvifVideoChannelInfo->wbMode);
-	videoSource->Imaging->WhiteBalance->CrGain = onvifVideoChannelInfo->wbCrGain;
-	videoSource->Imaging->WhiteBalance->CbGain = onvifVideoChannelInfo->wbCbGain;
+	videoSource->Imaging->WhiteBalance->Mode = getOnvifWhiteBalanceMode(
+			onvifVideoChannelInfo->wbMode);
+	videoSource->Imaging->WhiteBalance->CrGain =
+			onvifVideoChannelInfo->wbCrGain;
+	videoSource->Imaging->WhiteBalance->CbGain =
+			onvifVideoChannelInfo->wbCbGain;
 	videoSource->Imaging->Extension = NULL;
 	videoSource->Extension = NULL;
 }
@@ -142,22 +153,22 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSources(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioSources(struct soap* soap,
 		struct _trt__GetAudioSources *trt__GetAudioSources,
 		struct _trt__GetAudioSourcesResponse *trt__GetAudioSourcesResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioSources");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioSources", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioOutputs(struct soap* soap,
 		struct _trt__GetAudioOutputs *trt__GetAudioOutputs,
 		struct _trt__GetAudioOutputsResponse *trt__GetAudioOutputsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioOutputs");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioOutputs", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__CreateProfile(struct soap* soap,
 		struct _trt__CreateProfile *trt__CreateProfile,
 		struct _trt__CreateProfileResponse *trt__CreateProfileResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__CreateProfile");
+	return getOnvifSoapActionNotSupportCode(soap, "CreateProfile", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfile(struct soap* soap,
@@ -271,6 +282,105 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfile(struct soap* soap,
 	return SOAP_OK;
 }
 
+void getProfilesResponseProfileVideoEncoderConfiguration(struct soap* soap,
+		struct tt__VideoEncoderConfiguration * videoEncoderConfiguration,
+		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
+	videoEncoderConfiguration->Name = (char *) soap_malloc(soap,
+			sizeof(char) * MAX_PROF_TOKEN);
+	videoEncoderConfiguration->token = (char *) soap_malloc(soap,
+			sizeof(char) * MAX_PROF_TOKEN);
+	getVEName(videoEncoderConfiguration->Name, index);
+	getVEToken(videoEncoderConfiguration->token, index);
+	videoEncoderConfiguration->UseCount = 1;
+	videoEncoderConfiguration->Quality = onvifVideoChannelInfo->quality;
+	videoEncoderConfiguration->Encoding = getVideoEncodeType(
+			onvifVideoChannelInfo->enc_type);
+	videoEncoderConfiguration->Resolution =
+			(struct tt__VideoResolution *) soap_malloc(soap,
+					sizeof(struct tt__VideoResolution));
+	videoEncoderConfiguration->Resolution->Height =
+			onvifVideoChannelInfo->height;
+	videoEncoderConfiguration->Resolution->Width = onvifVideoChannelInfo->width;
+	videoEncoderConfiguration->RateControl =
+			(struct tt__VideoRateControl *) soap_malloc(soap,
+					sizeof(struct tt__VideoRateControl));
+	videoEncoderConfiguration->RateControl->FrameRateLimit =
+			onvifVideoChannelInfo->frame_rate;
+	videoEncoderConfiguration->RateControl->EncodingInterval = 1;
+	videoEncoderConfiguration->RateControl->BitrateLimit =
+			onvifVideoChannelInfo->bit_rate;
+	videoEncoderConfiguration->MPEG4 = NULL;
+	videoEncoderConfiguration->H264 = NULL;
+#if 1
+	/*可选项，可以不配置*/
+	if (tt__VideoEncoding__MPEG4 == videoEncoderConfiguration->Encoding) {
+		logInfo("mpeg4 setup");
+		videoEncoderConfiguration->MPEG4 =
+				(struct tt__Mpeg4Configuration *) soap_malloc(soap,
+						sizeof(struct tt__Mpeg4Configuration));
+		videoEncoderConfiguration->MPEG4->GovLength =
+				onvifVideoChannelInfo->govLength;
+		videoEncoderConfiguration->MPEG4->Mpeg4Profile =
+				onvifVideoChannelInfo->videoEncodeProfile;
+	} else if (tt__VideoEncoding__H264 == videoEncoderConfiguration->Encoding) {
+		logInfo("h264 setup");
+		videoEncoderConfiguration->H264 =
+				(struct tt__H264Configuration *) soap_malloc(soap,
+						sizeof(struct tt__H264Configuration));
+		videoEncoderConfiguration->H264->GovLength =
+				onvifVideoChannelInfo->govLength;
+		videoEncoderConfiguration->H264->H264Profile =
+				onvifVideoChannelInfo->videoEncodeProfile;
+	}
+	videoEncoderConfiguration->Multicast =
+			(struct tt__MulticastConfiguration *) soap_malloc(soap,
+					sizeof(struct tt__MulticastConfiguration));
+	videoEncoderConfiguration->Multicast->Address =
+			(struct tt__IPAddress *) soap_malloc(soap,
+					sizeof(struct tt__IPAddress));
+	videoEncoderConfiguration->Multicast->Address->IPv4Address =
+			(char *) soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+	videoEncoderConfiguration->Multicast->Address->IPv6Address = NULL;
+	videoEncoderConfiguration->Multicast->Address->Type = tt__IPType__IPv4;
+	videoEncoderConfiguration->Multicast->Port = 554;
+	videoEncoderConfiguration->Multicast->TTL = 60;
+	videoEncoderConfiguration->Multicast->AutoStart = xsd__boolean__true_;
+	videoEncoderConfiguration->Multicast->__size = 0;
+	videoEncoderConfiguration->Multicast->__any = NULL;
+	videoEncoderConfiguration->Multicast->__anyAttribute = NULL;
+	videoEncoderConfiguration->SessionTimeout = 720000;
+	videoEncoderConfiguration->__size = 0;
+	videoEncoderConfiguration->__any = NULL;
+	videoEncoderConfiguration->__anyAttribute = NULL;
+#endif
+}
+
+void getProfilesResponseProfileVideoSourceConfiguration(struct soap* soap,
+		struct tt__VideoSourceConfiguration * videoSourceConfiguration,
+		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
+	videoSourceConfiguration->Name = (char *) soap_malloc(soap,
+			sizeof(char) * MAX_PROF_TOKEN);
+	videoSourceConfiguration->token = (char *) soap_malloc(soap,
+			sizeof(char) * MAX_PROF_TOKEN);
+	videoSourceConfiguration->SourceToken = (char *) soap_malloc(soap,
+			sizeof(char) * MAX_PROF_TOKEN);
+	/*注意SourceToken*/
+	getVEName(videoSourceConfiguration->Name, index);
+	getVEToken(videoSourceConfiguration->token, index);
+	getVideoSourceToken(videoSourceConfiguration->SourceToken, index); /*必须与__tmd__GetVideoSources中的token相同*/
+	videoSourceConfiguration->Extension = NULL;
+	videoSourceConfiguration->__any = NULL;
+	videoSourceConfiguration->__anyAttribute = NULL;
+	videoSourceConfiguration->__size = 0;
+	videoSourceConfiguration->Bounds = (struct tt__IntRectangle *) soap_malloc(
+			soap, sizeof(struct tt__IntRectangle));
+	videoSourceConfiguration->UseCount = 1;
+	videoSourceConfiguration->Bounds->x = 1;
+	videoSourceConfiguration->Bounds->y = 1;
+	videoSourceConfiguration->Bounds->height = onvifVideoChannelInfo->height;
+	videoSourceConfiguration->Bounds->width = onvifVideoChannelInfo->width;
+}
+
 void getProfilesResponseProfile(struct soap* soap,
 		struct tt__Profile* getProfilesResponseProfile,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
@@ -294,91 +404,9 @@ void getProfilesResponseProfile(struct soap* soap,
 	getProfilesResponseProfile->VideoEncoderConfiguration =
 			(struct tt__VideoEncoderConfiguration *) soap_malloc(soap,
 					sizeof(struct tt__VideoEncoderConfiguration));
-	getProfilesResponseProfile->VideoEncoderConfiguration->Name =
-			(char *) soap_malloc(soap, sizeof(char) * MAX_PROF_TOKEN);
-	getProfilesResponseProfile->VideoEncoderConfiguration->token =
-			(char *) soap_malloc(soap, sizeof(char) * MAX_PROF_TOKEN);
-	getVEName(getProfilesResponseProfile->VideoEncoderConfiguration->Name,
-			index);
-	getVEToken(getProfilesResponseProfile->VideoEncoderConfiguration->token,
-			index);
-	getProfilesResponseProfile->VideoEncoderConfiguration->UseCount = 1;
-	getProfilesResponseProfile->VideoEncoderConfiguration->Quality =
-			onvifVideoChannelInfo->quality;
-	getProfilesResponseProfile->VideoEncoderConfiguration->Encoding =
-			getVideoEncodeType(onvifVideoChannelInfo->enc_type);
-	getProfilesResponseProfile->VideoEncoderConfiguration->Resolution =
-			(struct tt__VideoResolution *) soap_malloc(soap,
-					sizeof(struct tt__VideoResolution));
-	getProfilesResponseProfile->VideoEncoderConfiguration->Resolution->Height =
-			onvifVideoChannelInfo->height;
-	getProfilesResponseProfile->VideoEncoderConfiguration->Resolution->Width =
-			onvifVideoChannelInfo->width;
-	getProfilesResponseProfile->VideoEncoderConfiguration->RateControl =
-			(struct tt__VideoRateControl *) soap_malloc(soap,
-					sizeof(struct tt__VideoRateControl));
-	getProfilesResponseProfile->VideoEncoderConfiguration->RateControl->FrameRateLimit =
-			onvifVideoChannelInfo->frame_rate;
-	getProfilesResponseProfile->VideoEncoderConfiguration->RateControl->EncodingInterval =
-			1;
-	getProfilesResponseProfile->VideoEncoderConfiguration->RateControl->BitrateLimit =
-			onvifVideoChannelInfo->bit_rate;
-
-	getProfilesResponseProfile->VideoEncoderConfiguration->MPEG4 = NULL;
-	getProfilesResponseProfile->VideoEncoderConfiguration->H264 = NULL;
-#if 1
-	/*可选项，可以不配置*/
-	if (tt__VideoEncoding__MPEG4
-			== getProfilesResponseProfile->VideoEncoderConfiguration->Encoding) {
-		getProfilesResponseProfile->VideoEncoderConfiguration->MPEG4 =
-				(struct tt__Mpeg4Configuration *) soap_malloc(soap,
-						sizeof(struct tt__Mpeg4Configuration));
-		getProfilesResponseProfile->VideoEncoderConfiguration->MPEG4->GovLength =
-				onvifVideoChannelInfo->govLength;
-		getProfilesResponseProfile->VideoEncoderConfiguration->MPEG4->Mpeg4Profile =
-				onvifVideoChannelInfo->videoEncodeProfile;
-	} else if (tt__VideoEncoding__H264
-			== getProfilesResponseProfile->VideoEncoderConfiguration->Encoding) {
-		getProfilesResponseProfile->VideoEncoderConfiguration->H264 =
-				(struct tt__H264Configuration *) soap_malloc(soap,
-						sizeof(struct tt__H264Configuration));
-		getProfilesResponseProfile->VideoEncoderConfiguration->H264->GovLength =
-				onvifVideoChannelInfo->govLength;
-		getProfilesResponseProfile->VideoEncoderConfiguration->H264->H264Profile =
-				onvifVideoChannelInfo->videoEncodeProfile;
-	}
-#endif
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast =
-			(struct tt__MulticastConfiguration *) soap_malloc(soap,
-					sizeof(struct tt__MulticastConfiguration));
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->Address =
-			(struct tt__IPAddress *) soap_malloc(soap,
-					sizeof(struct tt__IPAddress));
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->Address->IPv4Address =
-			(char **) soap_malloc(soap, sizeof(char *));
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->Address->IPv4Address[0] =
-			(char *) soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->Address->IPv6Address =
-			NULL;
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->Address->Type =
-			tt__IPType__IPv4;
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->Port =
-			554;
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->TTL = 60;
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->AutoStart =
-			xsd__boolean__true_;
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->__size =
-			0;
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->__any =
-			NULL;
-	getProfilesResponseProfile->VideoEncoderConfiguration->Multicast->__anyAttribute =
-			NULL;
-	getProfilesResponseProfile->VideoEncoderConfiguration->SessionTimeout =
-			720000;
-	getProfilesResponseProfile->VideoEncoderConfiguration->__size = 0;
-	getProfilesResponseProfile->VideoEncoderConfiguration->__any = NULL;
-	getProfilesResponseProfile->VideoEncoderConfiguration->__anyAttribute =
-			NULL;
+	getProfilesResponseProfileVideoEncoderConfiguration(soap,
+			getProfilesResponseProfile->VideoEncoderConfiguration,
+			onvifVideoChannelInfo, index);
 #endif
 
 	/* VideoSourceConfiguration */
@@ -386,29 +414,9 @@ void getProfilesResponseProfile(struct soap* soap,
 	getProfilesResponseProfile->VideoSourceConfiguration =
 			(struct tt__VideoSourceConfiguration *) soap_malloc(soap,
 					sizeof(struct tt__VideoSourceConfiguration));
-	getProfilesResponseProfile->VideoSourceConfiguration->Name =
-			(char *) soap_malloc(soap, sizeof(char) * MAX_PROF_TOKEN);
-	getProfilesResponseProfile->VideoSourceConfiguration->token =
-			(char *) soap_malloc(soap, sizeof(char) * MAX_PROF_TOKEN);
-	getProfilesResponseProfile->VideoSourceConfiguration->SourceToken =
-			(char *) soap_malloc(soap, sizeof(char) * MAX_PROF_TOKEN);
-	getProfilesResponseProfile->VideoSourceConfiguration->Bounds =
-			(struct tt__IntRectangle *) soap_malloc(soap,
-					sizeof(struct tt__IntRectangle));
-	getProfilesResponseProfile->VideoSourceConfiguration->Extension = NULL;
-	getProfilesResponseProfile->VideoSourceConfiguration->__any = NULL;
-	getProfilesResponseProfile->VideoSourceConfiguration->__anyAttribute = NULL;
-	getProfilesResponseProfile->VideoSourceConfiguration->__size = 0;
-	/*注意SourceToken*/
-	getVEName(getProfilesResponseProfile->VideoSourceConfiguration->Name,  index);
-	getVEToken(getProfilesResponseProfile->VideoSourceConfiguration->token, index);
-	strcpy(getProfilesResponseProfile->VideoSourceConfiguration->SourceToken,
-			VIDEO_SOURCE_TOKEN); /*必须与__tmd__GetVideoSources中的token相同*/
-	getProfilesResponseProfile->VideoSourceConfiguration->UseCount = 1;
-	getProfilesResponseProfile->VideoSourceConfiguration->Bounds->x = 1;
-	getProfilesResponseProfile->VideoSourceConfiguration->Bounds->y = 1;
-	getProfilesResponseProfile->VideoSourceConfiguration->Bounds->height = onvifVideoChannelInfo->height;
-	getProfilesResponseProfile->VideoSourceConfiguration->Bounds->width = onvifVideoChannelInfo->width;
+	getProfilesResponseProfileVideoSourceConfiguration(soap,
+			getProfilesResponseProfile->VideoSourceConfiguration,
+			onvifVideoChannelInfo, index);
 
 	getProfilesResponseProfile->AudioEncoderConfiguration = NULL;
 	getProfilesResponseProfile->AudioSourceConfiguration = NULL;
@@ -451,151 +459,151 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__AddVideoEncoderConfiguration(
 		struct soap* soap,
 		struct _trt__AddVideoEncoderConfiguration *trt__AddVideoEncoderConfiguration,
 		struct _trt__AddVideoEncoderConfigurationResponse *trt__AddVideoEncoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__AddVideoEncoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "AddVideoEncoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__AddVideoSourceConfiguration(
 		struct soap* soap,
 		struct _trt__AddVideoSourceConfiguration *trt__AddVideoSourceConfiguration,
 		struct _trt__AddVideoSourceConfigurationResponse *trt__AddVideoSourceConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__AddVideoSourceConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "AddVideoSourceConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__AddAudioEncoderConfiguration(
 		struct soap* soap,
 		struct _trt__AddAudioEncoderConfiguration *trt__AddAudioEncoderConfiguration,
 		struct _trt__AddAudioEncoderConfigurationResponse *trt__AddAudioEncoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__AddAudioEncoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "AddAudioEncoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__AddAudioSourceConfiguration(
 		struct soap* soap,
 		struct _trt__AddAudioSourceConfiguration *trt__AddAudioSourceConfiguration,
 		struct _trt__AddAudioSourceConfigurationResponse *trt__AddAudioSourceConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__AddAudioSourceConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "AddAudioSourceConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__AddPTZConfiguration(
 		struct soap* soap,
 		struct _trt__AddPTZConfiguration *trt__AddPTZConfiguration,
 		struct _trt__AddPTZConfigurationResponse *trt__AddPTZConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__AddPTZConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "AddPTZConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__AddVideoAnalyticsConfiguration(
 		struct soap* soap,
 		struct _trt__AddVideoAnalyticsConfiguration *trt__AddVideoAnalyticsConfiguration,
 		struct _trt__AddVideoAnalyticsConfigurationResponse *trt__AddVideoAnalyticsConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__AddVideoAnalyticsConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "AddVideoAnalyticsConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__AddMetadataConfiguration(
 		struct soap* soap,
 		struct _trt__AddMetadataConfiguration *trt__AddMetadataConfiguration,
 		struct _trt__AddMetadataConfigurationResponse *trt__AddMetadataConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__AddMetadataConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "AddMetadataConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__AddAudioOutputConfiguration(
 		struct soap* soap,
 		struct _trt__AddAudioOutputConfiguration *trt__AddAudioOutputConfiguration,
 		struct _trt__AddAudioOutputConfigurationResponse *trt__AddAudioOutputConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__AddAudioOutputConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "AddAudioOutputConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__AddAudioDecoderConfiguration(
 		struct soap* soap,
 		struct _trt__AddAudioDecoderConfiguration *trt__AddAudioDecoderConfiguration,
 		struct _trt__AddAudioDecoderConfigurationResponse *trt__AddAudioDecoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__AddAudioDecoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "AddAudioDecoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveVideoEncoderConfiguration(
 		struct soap* soap,
 		struct _trt__RemoveVideoEncoderConfiguration *trt__RemoveVideoEncoderConfiguration,
 		struct _trt__RemoveVideoEncoderConfigurationResponse *trt__RemoveVideoEncoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__RemoveVideoEncoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "RemoveVideoEncoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveVideoSourceConfiguration(
 		struct soap* soap,
 		struct _trt__RemoveVideoSourceConfiguration *trt__RemoveVideoSourceConfiguration,
 		struct _trt__RemoveVideoSourceConfigurationResponse *trt__RemoveVideoSourceConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__RemoveVideoSourceConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "RemoveVideoSourceConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveAudioEncoderConfiguration(
 		struct soap* soap,
 		struct _trt__RemoveAudioEncoderConfiguration *trt__RemoveAudioEncoderConfiguration,
 		struct _trt__RemoveAudioEncoderConfigurationResponse *trt__RemoveAudioEncoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__RemoveAudioEncoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "RemoveAudioEncoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveAudioSourceConfiguration(
 		struct soap* soap,
 		struct _trt__RemoveAudioSourceConfiguration *trt__RemoveAudioSourceConfiguration,
 		struct _trt__RemoveAudioSourceConfigurationResponse *trt__RemoveAudioSourceConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__RemoveAudioSourceConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "RemoveAudioSourceConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__RemovePTZConfiguration(
 		struct soap* soap,
 		struct _trt__RemovePTZConfiguration *trt__RemovePTZConfiguration,
 		struct _trt__RemovePTZConfigurationResponse *trt__RemovePTZConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__RemovePTZConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "RemovePTZConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveVideoAnalyticsConfiguration(
 		struct soap* soap,
 		struct _trt__RemoveVideoAnalyticsConfiguration *trt__RemoveVideoAnalyticsConfiguration,
 		struct _trt__RemoveVideoAnalyticsConfigurationResponse *trt__RemoveVideoAnalyticsConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__RemoveVideoAnalyticsConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "RemoveVideoAnalyticsConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveMetadataConfiguration(
 		struct soap* soap,
 		struct _trt__RemoveMetadataConfiguration *trt__RemoveMetadataConfiguration,
 		struct _trt__RemoveMetadataConfigurationResponse *trt__RemoveMetadataConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__RemoveMetadataConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "RemoveMetadataConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveAudioOutputConfiguration(
 		struct soap* soap,
 		struct _trt__RemoveAudioOutputConfiguration *trt__RemoveAudioOutputConfiguration,
 		struct _trt__RemoveAudioOutputConfigurationResponse *trt__RemoveAudioOutputConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__RemoveAudioOutputConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "RemoveAudioOutputConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveAudioDecoderConfiguration(
 		struct soap* soap,
 		struct _trt__RemoveAudioDecoderConfiguration *trt__RemoveAudioDecoderConfiguration,
 		struct _trt__RemoveAudioDecoderConfigurationResponse *trt__RemoveAudioDecoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__RemoveAudioDecoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "RemoveAudioDecoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__DeleteProfile(struct soap* soap,
 		struct _trt__DeleteProfile *trt__DeleteProfile,
 		struct _trt__DeleteProfileResponse *trt__DeleteProfileResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__DeleteProfile");
+	return getOnvifSoapActionNotSupportCode(soap, "DeleteProfile", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSourceConfigurations(
@@ -618,55 +626,55 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioSourceConfigurations(
 		struct soap* soap,
 		struct _trt__GetAudioSourceConfigurations *trt__GetAudioSourceConfigurations,
 		struct _trt__GetAudioSourceConfigurationsResponse *trt__GetAudioSourceConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioSourceConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioSourceConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioEncoderConfigurations(
 		struct soap* soap,
 		struct _trt__GetAudioEncoderConfigurations *trt__GetAudioEncoderConfigurations,
 		struct _trt__GetAudioEncoderConfigurationsResponse *trt__GetAudioEncoderConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioEncoderConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioEncoderConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoAnalyticsConfigurations(
 		struct soap* soap,
 		struct _trt__GetVideoAnalyticsConfigurations *trt__GetVideoAnalyticsConfigurations,
 		struct _trt__GetVideoAnalyticsConfigurationsResponse *trt__GetVideoAnalyticsConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetVideoAnalyticsConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetVideoAnalyticsConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetMetadataConfigurations(
 		struct soap* soap,
 		struct _trt__GetMetadataConfigurations *trt__GetMetadataConfigurations,
 		struct _trt__GetMetadataConfigurationsResponse *trt__GetMetadataConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetMetadataConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetMetadataConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioOutputConfigurations(
 		struct soap* soap,
 		struct _trt__GetAudioOutputConfigurations *trt__GetAudioOutputConfigurations,
 		struct _trt__GetAudioOutputConfigurationsResponse *trt__GetAudioOutputConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioOutputConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioOutputConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioDecoderConfigurations(
 		struct soap* soap,
 		struct _trt__GetAudioDecoderConfigurations *trt__GetAudioDecoderConfigurations,
 		struct _trt__GetAudioDecoderConfigurationsResponse *trt__GetAudioDecoderConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioDecoderConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioDecoderConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSourceConfiguration(
 		struct soap* soap,
 		struct _trt__GetVideoSourceConfiguration *trt__GetVideoSourceConfiguration,
 		struct _trt__GetVideoSourceConfigurationResponse *trt__GetVideoSourceConfigurationResponse) {
-	logInfo("__tmd__GetVideoSourceConfiguration");
+	logInfo("__trt__GetVideoSourceConfiguration");
 	return SOAP_OK;
 }
 
@@ -682,184 +690,184 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioSourceConfiguration(
 		struct soap* soap,
 		struct _trt__GetAudioSourceConfiguration *trt__GetAudioSourceConfiguration,
 		struct _trt__GetAudioSourceConfigurationResponse *trt__GetAudioSourceConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioSourceConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioSourceConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioEncoderConfiguration(
 		struct soap* soap,
 		struct _trt__GetAudioEncoderConfiguration *trt__GetAudioEncoderConfiguration,
 		struct _trt__GetAudioEncoderConfigurationResponse *trt__GetAudioEncoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioEncoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioEncoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoAnalyticsConfiguration(
 		struct soap* soap,
 		struct _trt__GetVideoAnalyticsConfiguration *trt__GetVideoAnalyticsConfiguration,
 		struct _trt__GetVideoAnalyticsConfigurationResponse *trt__GetVideoAnalyticsConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetVideoAnalyticsConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "GetVideoAnalyticsConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetMetadataConfiguration(
 		struct soap* soap,
 		struct _trt__GetMetadataConfiguration *trt__GetMetadataConfiguration,
 		struct _trt__GetMetadataConfigurationResponse *trt__GetMetadataConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetMetadataConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "GetMetadataConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioOutputConfiguration(
 		struct soap* soap,
 		struct _trt__GetAudioOutputConfiguration *trt__GetAudioOutputConfiguration,
 		struct _trt__GetAudioOutputConfigurationResponse *trt__GetAudioOutputConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioOutputConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioOutputConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioDecoderConfiguration(
 		struct soap* soap,
 		struct _trt__GetAudioDecoderConfiguration *trt__GetAudioDecoderConfiguration,
 		struct _trt__GetAudioDecoderConfigurationResponse *trt__GetAudioDecoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioDecoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioDecoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleVideoEncoderConfigurations(
 		struct soap* soap,
 		struct _trt__GetCompatibleVideoEncoderConfigurations *trt__GetCompatibleVideoEncoderConfigurations,
 		struct _trt__GetCompatibleVideoEncoderConfigurationsResponse *trt__GetCompatibleVideoEncoderConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetCompatibleVideoEncoderConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetCompatibleVideoEncoderConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleVideoSourceConfigurations(
 		struct soap* soap,
 		struct _trt__GetCompatibleVideoSourceConfigurations *trt__GetCompatibleVideoSourceConfigurations,
 		struct _trt__GetCompatibleVideoSourceConfigurationsResponse *trt__GetCompatibleVideoSourceConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetCompatibleVideoSourceConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetCompatibleVideoSourceConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleAudioEncoderConfigurations(
 		struct soap* soap,
 		struct _trt__GetCompatibleAudioEncoderConfigurations *trt__GetCompatibleAudioEncoderConfigurations,
 		struct _trt__GetCompatibleAudioEncoderConfigurationsResponse *trt__GetCompatibleAudioEncoderConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetCompatibleAudioEncoderConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetCompatibleAudioEncoderConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleAudioSourceConfigurations(
 		struct soap* soap,
 		struct _trt__GetCompatibleAudioSourceConfigurations *trt__GetCompatibleAudioSourceConfigurations,
 		struct _trt__GetCompatibleAudioSourceConfigurationsResponse *trt__GetCompatibleAudioSourceConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetCompatibleAudioSourceConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetCompatibleAudioSourceConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleVideoAnalyticsConfigurations(
 		struct soap* soap,
 		struct _trt__GetCompatibleVideoAnalyticsConfigurations *trt__GetCompatibleVideoAnalyticsConfigurations,
 		struct _trt__GetCompatibleVideoAnalyticsConfigurationsResponse *trt__GetCompatibleVideoAnalyticsConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetCompatibleVideoAnalyticsConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetCompatibleVideoAnalyticsConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleMetadataConfigurations(
 		struct soap* soap,
 		struct _trt__GetCompatibleMetadataConfigurations *trt__GetCompatibleMetadataConfigurations,
 		struct _trt__GetCompatibleMetadataConfigurationsResponse *trt__GetCompatibleMetadataConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetCompatibleMetadataConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetCompatibleMetadataConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleAudioOutputConfigurations(
 		struct soap* soap,
 		struct _trt__GetCompatibleAudioOutputConfigurations *trt__GetCompatibleAudioOutputConfigurations,
 		struct _trt__GetCompatibleAudioOutputConfigurationsResponse *trt__GetCompatibleAudioOutputConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetCompatibleAudioOutputConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetCompatibleAudioOutputConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetCompatibleAudioDecoderConfigurations(
 		struct soap* soap,
 		struct _trt__GetCompatibleAudioDecoderConfigurations *trt__GetCompatibleAudioDecoderConfigurations,
 		struct _trt__GetCompatibleAudioDecoderConfigurationsResponse *trt__GetCompatibleAudioDecoderConfigurationsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetCompatibleAudioDecoderConfigurations");
+	return getOnvifSoapActionNotSupportCode(soap, "GetCompatibleAudioDecoderConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__SetVideoSourceConfiguration(
 		struct soap* soap,
 		struct _trt__SetVideoSourceConfiguration *trt__SetVideoSourceConfiguration,
 		struct _trt__SetVideoSourceConfigurationResponse *trt__SetVideoSourceConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__SetVideoSourceConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "SetVideoSourceConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__SetVideoEncoderConfiguration(
 		struct soap* soap,
 		struct _trt__SetVideoEncoderConfiguration *trt__SetVideoEncoderConfiguration,
 		struct _trt__SetVideoEncoderConfigurationResponse *trt__SetVideoEncoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__SetVideoEncoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "SetVideoEncoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__SetAudioSourceConfiguration(
 		struct soap* soap,
 		struct _trt__SetAudioSourceConfiguration *trt__SetAudioSourceConfiguration,
 		struct _trt__SetAudioSourceConfigurationResponse *trt__SetAudioSourceConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__SetAudioSourceConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "SetAudioSourceConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__SetAudioEncoderConfiguration(
 		struct soap* soap,
 		struct _trt__SetAudioEncoderConfiguration *trt__SetAudioEncoderConfiguration,
 		struct _trt__SetAudioEncoderConfigurationResponse *trt__SetAudioEncoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__SetAudioEncoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "SetAudioEncoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__SetVideoAnalyticsConfiguration(
 		struct soap* soap,
 		struct _trt__SetVideoAnalyticsConfiguration *trt__SetVideoAnalyticsConfiguration,
 		struct _trt__SetVideoAnalyticsConfigurationResponse *trt__SetVideoAnalyticsConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__SetVideoAnalyticsConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "SetVideoAnalyticsConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__SetMetadataConfiguration(
 		struct soap* soap,
 		struct _trt__SetMetadataConfiguration *trt__SetMetadataConfiguration,
 		struct _trt__SetMetadataConfigurationResponse *trt__SetMetadataConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__SetMetadataConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "SetMetadataConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__SetAudioOutputConfiguration(
 		struct soap* soap,
 		struct _trt__SetAudioOutputConfiguration *trt__SetAudioOutputConfiguration,
 		struct _trt__SetAudioOutputConfigurationResponse *trt__SetAudioOutputConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__SetAudioOutputConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "SetAudioOutputConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__SetAudioDecoderConfiguration(
 		struct soap* soap,
 		struct _trt__SetAudioDecoderConfiguration *trt__SetAudioDecoderConfiguration,
 		struct _trt__SetAudioDecoderConfigurationResponse *trt__SetAudioDecoderConfigurationResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__SetAudioDecoderConfiguration");
+	return getOnvifSoapActionNotSupportCode(soap, "SetAudioDecoderConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSourceConfigurationOptions(
 		struct soap* soap,
 		struct _trt__GetVideoSourceConfigurationOptions *trt__GetVideoSourceConfigurationOptions,
 		struct _trt__GetVideoSourceConfigurationOptionsResponse *trt__GetVideoSourceConfigurationOptionsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetVideoSourceConfigurationOptions");
+	return getOnvifSoapActionNotSupportCode(soap, "GetVideoSourceConfigurationOptions", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoEncoderConfigurationOptions(
@@ -875,48 +883,48 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioSourceConfigurationOptions(
 		struct soap* soap,
 		struct _trt__GetAudioSourceConfigurationOptions *trt__GetAudioSourceConfigurationOptions,
 		struct _trt__GetAudioSourceConfigurationOptionsResponse *trt__GetAudioSourceConfigurationOptionsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioSourceConfigurationOptions");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioSourceConfigurationOptions", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioEncoderConfigurationOptions(
 		struct soap* soap,
 		struct _trt__GetAudioEncoderConfigurationOptions *trt__GetAudioEncoderConfigurationOptions,
 		struct _trt__GetAudioEncoderConfigurationOptionsResponse *trt__GetAudioEncoderConfigurationOptionsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioEncoderConfigurationOptions");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioEncoderConfigurationOptions", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetMetadataConfigurationOptions(
 		struct soap* soap,
 		struct _trt__GetMetadataConfigurationOptions *trt__GetMetadataConfigurationOptions,
 		struct _trt__GetMetadataConfigurationOptionsResponse *trt__GetMetadataConfigurationOptionsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetMetadataConfigurationOptions");
+	return getOnvifSoapActionNotSupportCode(soap, "GetMetadataConfigurationOptions", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioOutputConfigurationOptions(
 		struct soap* soap,
 		struct _trt__GetAudioOutputConfigurationOptions *trt__GetAudioOutputConfigurationOptions,
 		struct _trt__GetAudioOutputConfigurationOptionsResponse *trt__GetAudioOutputConfigurationOptionsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioOutputConfigurationOptions");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioOutputConfigurationOptions", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioDecoderConfigurationOptions(
 		struct soap* soap,
 		struct _trt__GetAudioDecoderConfigurationOptions *trt__GetAudioDecoderConfigurationOptions,
 		struct _trt__GetAudioDecoderConfigurationOptionsResponse *trt__GetAudioDecoderConfigurationOptionsResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetAudioDecoderConfigurationOptions");
+	return getOnvifSoapActionNotSupportCode(soap, "GetAudioDecoderConfigurationOptions", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetGuaranteedNumberOfVideoEncoderInstances(
 		struct soap* soap,
 		struct _trt__GetGuaranteedNumberOfVideoEncoderInstances *trt__GetGuaranteedNumberOfVideoEncoderInstances,
 		struct _trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse *trt__GetGuaranteedNumberOfVideoEncoderInstancesResponse) {
-	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	logInfo("__trt__GetGuaranteedNumberOfVideoEncoderInstances");
+	return getOnvifSoapActionNotSupportCode(soap, "GetGuaranteedNumberOfVideoEncoderInstances", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetStreamUri(struct soap* soap,

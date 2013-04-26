@@ -230,6 +230,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDeviceInformation(
 		struct soap* soap,
 		struct _tds__GetDeviceInformation *tds__GetDeviceInformation,
 		struct _tds__GetDeviceInformationResponse *tds__GetDeviceInformationResponse) {
+	logInfo("__tds__GetDeviceInformation");
 	OnvifDeviceInfo info;
 	if (!isRetCodeSuccess(getDeviceInfo(&info))) {
 		return getOnvifSoapActionFailedCode(soap, "GetDeviceInformation",
