@@ -51,8 +51,8 @@ typedef struct St_OnvifSystemDateTime {
 } OnvifSystemDateTime;
 
 typedef struct St_OnvifVideoChannelInfo {
-	int channelNo;  // channel No, start from 0
-	int stream_enable;  ///< 0:disable, 1:enable
+	int channelNo; // channel No, start from 0
+	int stream_enable; ///< 0:disable, 1:enable
 	int enc_type; ///< 0:ENC_TYPE_H264, 1:ENC_TYPE_MPEG, 2:ENC_TYPE_MJPEG
 	int frame_rate; ///< frame rate per second
 	int bit_rate; ///< Bitrate per second
@@ -62,16 +62,17 @@ typedef struct St_OnvifVideoChannelInfo {
 	int saturation;
 	int contrast;
 	int sharpness;
-	int wbMode;  // whitebalance mode 0 is auto, other
+	int wbMode; // whitebalance mode 0 is auto, other
 	int wbCrGain;
 	int wbCbGain;
 	int backLightCompMode; // BacklightCompensation mode
 	int backLightCompLevel; // BacklightCompensation level
-	int wideDynamicMode;  // wide Dynamic range Mode
-	int wideDynamicLevel;  // wide Dynamic range Mode
+	int wideDynamicMode; // wide Dynamic range Mode
+	int wideDynamicLevel; // wide Dynamic range Mode
 	int govLength; //
 	int videoEncodeProfile;
 	int quality;
+	int rtspPort;
 	char videoAddr[LARGE_INFO_LENGTH];
 } OnvifVideoChannelInfo;
 
@@ -84,7 +85,8 @@ int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo,
 		const char* faultDetail);
 int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo,
 		const char* faultDetail);
-
+int getOnvifSoapSendInvalidArgFailedCode(struct soap *soap,
+		const char *faultInfo, const char* faultDetail);
 int setNTPInfo(OnvifNTPInfo* info);
 int getNTPInfo(OnvifNTPInfo* info);
 
@@ -96,6 +98,7 @@ int getVideoCount(int* count);
 int getDeviceTime(OnvifSystemDateTime* info);
 int setDeviceTime(OnvifSystemDateTime* info);
 int getVideoChannelInfo(OnvifVideoChannelInfo* info);
+int getVideoChannelStreamInfo(OnvifVideoChannelInfo* info);
 
 #ifdef __cplusplus
 }

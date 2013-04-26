@@ -10,7 +10,9 @@
 
 #define ONVIF_SERVER_CALL()    printf("onvifs: call %s, path=%s\r", __FUNCTION__, soap->path)
 
-OnvifRunParam onvifRunParam = {.ip = {0}, .servicePort = DEVICE_WEBSERVICE_PORT, .hardwareId = DEFAULT_HARDWARE_ID, .urnHardwareId = {0}};
+OnvifRunParam onvifRunParam = { .ip = { 0 }, .servicePort =
+		DEVICE_WEBSERVICE_PORT, .hardwareId = DEFAULT_HARDWARE_ID,
+		.urnHardwareId = { 0 } };
 
 #define ONVIF_RETURN_OK(soap, namespaces)   \
 	ONVIF_SERVER_CALL();    \
@@ -46,7 +48,8 @@ int getLocalIPInfo() {
 }
 
 int getHardwareIdInfo() {
-	sprintf(onvifRunParam.urnHardwareId, "%s%s", DEFAULT_URN_HARDWARE_ID_PREFIX, onvifRunParam.hardwareId);
+	sprintf(onvifRunParam.urnHardwareId, "%s%s", DEFAULT_URN_HARDWARE_ID_PREFIX,
+			onvifRunParam.hardwareId);
 	OnvifDeviceInfo onvifDeviceInfo;
 	int result = getDeviceInfo(&onvifDeviceInfo);
 	if (!isRetCodeSuccess(result)) {
@@ -88,10 +91,20 @@ void stopOnvifApp() {
 	stopIPCComm();
 }
 
-int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo, const char* faultDetail) {
-	return soap_receiver_fault_subcode(soap, "ter:ActionNotSupported", faultInfo, faultDetail);
-}
-int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo, const char* faultDetail) {
-	return soap_receiver_fault_subcode(soap, "ter:Action", faultInfo, faultDetail);
+int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo,
+		const char* faultDetail) {
+	return soap_receiver_fault_subcode(soap, "ter:ActionNotSupported",
+			faultInfo, faultDetail);
 }
 
+int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo,
+		const char* faultDetail) {
+	return soap_receiver_fault_subcode(soap, "ter:Action", faultInfo,
+			faultDetail);
+}
+
+int getOnvifSoapSendInvalidArgFailedCode(struct soap *soap,
+		const char *faultInfo, const char* faultDetail) {
+	return soap_sender_fault_subcode(soap, "ter:InvalidArgs", faultInfo,
+			faultDetail);
+}

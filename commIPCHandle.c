@@ -8,7 +8,8 @@ typedef int (*Push_CommIPC_Command_Func)(const Map, const void*);
 typedef int (*Parse_CommIPC_Command_Func)(const Map, const void*);
 
 void printIPCCmdInfoEach(MapNode node, void* arg) {
-	logInfo("key %s value %s", node->key, ((IPCCmdInfo*)(node->element))->value);
+	logInfo("key %s value %s", node->key,
+			((IPCCmdInfo*) (node->element))->value);
 }
 
 void logIPCCmdInfoList(Map map) {
@@ -73,7 +74,6 @@ int getNTPInfo_ParseCmd(const Map outList, const void* info1) {
 	return result;
 }
 
-
 int getNTPInfo(OnvifNTPInfo* info) {
 	return sendCommIPCFunc(T_Get, info, getNTPInfo_PushCmd, getNTPInfo_ParseCmd);
 }
@@ -90,7 +90,7 @@ int getNetCardInfo_PushCmd(const Map inList, const void* info1) {
 int getNetCardInfo_ParseCmd(const Map outList, const void* info1) {
 	OnvifNetCardInfo* info = (OnvifNetCardInfo*) info1;
 	memset(info, 0, sizeof(OnvifNetCardInfo));
-	char macaddr[INFO_LENGTH] = {0};
+	char macaddr[INFO_LENGTH] = { 0 };
 	int result = getStrValueFromList(outList, e_net_macaddr, macaddr);
 	if (strlen(macaddr) < 1) {
 		return RET_CODE_ERROR_INVALID_VALUE;
@@ -109,7 +109,8 @@ int getNetCardInfo_ParseCmd(const Map outList, const void* info1) {
 }
 
 int getNetCardInfo(OnvifNetCardInfo* info) {
-	return sendCommIPCFunc(T_Get, info, getNetCardInfo_PushCmd, getNetCardInfo_ParseCmd);
+	return sendCommIPCFunc(T_Get, info, getNetCardInfo_PushCmd,
+			getNetCardInfo_ParseCmd);
 }
 
 int getDeviceInfo_PushCmd(const Map inList, const void* info1) {
@@ -126,8 +127,9 @@ int getDeviceInfo_ParseCmd(const Map outList, const void* info1) {
 	memset(info, 0, sizeof(OnvifDeviceInfo));
 	getStrValueFromList(outList, e_sys_hardwareId, info->hardwareId);
 	if (strlen(info->hardwareId) > 0) {
-		strcpy(onvifRunParam.hardwareId,  info->hardwareId);
-		sprintf(onvifRunParam.urnHardwareId, "%s%s", DEFAULT_URN_HARDWARE_ID_PREFIX, onvifRunParam.urnHardwareId);
+		strcpy(onvifRunParam.hardwareId, info->hardwareId);
+		sprintf(onvifRunParam.urnHardwareId, "%s%s",
+				DEFAULT_URN_HARDWARE_ID_PREFIX, onvifRunParam.urnHardwareId);
 	}
 
 	getStrValueFromList(outList, e_sys_manufacturer, info->manufacturer);
@@ -137,7 +139,8 @@ int getDeviceInfo_ParseCmd(const Map outList, const void* info1) {
 }
 
 int getDeviceInfo(OnvifDeviceInfo* info) {
-	return sendCommIPCFunc(T_Get, info, getDeviceInfo_PushCmd, getDeviceInfo_ParseCmd);
+	return sendCommIPCFunc(T_Get, info, getDeviceInfo_PushCmd,
+			getDeviceInfo_ParseCmd);
 }
 
 int deviceReboot_PushCmd(const Map inList, const void* info1) {
@@ -158,7 +161,6 @@ int setSystemFactoryDefault() {
 	return sendCommIPCFunc(T_Set, NULL, setSystemFactoryDefault_PushCmd, NULL);
 }
 
-
 int getVideoCount_PushCmd(const Map inList, const void* info1) {
 	putNullValueInList(inList, e_video_chn_num);
 	return RET_CODE_SUCCESS;
@@ -169,7 +171,8 @@ int getVideoCount_ParseCmd(const Map outList, const void* info1) {
 }
 
 int getVideoCount(int* count) {
-	return sendCommIPCFunc(T_Get, count, getVideoCount_PushCmd, getVideoCount_ParseCmd);
+	return sendCommIPCFunc(T_Get, count, getVideoCount_PushCmd,
+			getVideoCount_ParseCmd);
 }
 
 int getDeviceTime_PushCmd(const Map inList, const void* info1) {
@@ -180,7 +183,7 @@ int getDeviceTime_PushCmd(const Map inList, const void* info1) {
 }
 
 int getDeviceTime_ParseCmd(const Map outList, const void* info1) {
-	OnvifSystemDateTime* info = (OnvifSystemDateTime*)info1;
+	OnvifSystemDateTime* info = (OnvifSystemDateTime*) info1;
 	int ntp;
 	int result = getIntValueFromList(outList, e_time_ntpenable, &ntp);
 	if (!isRetCodeSuccess(result))
@@ -194,7 +197,7 @@ int getDeviceTime_ParseCmd(const Map outList, const void* info1) {
 		zone = zone / 60;
 	}
 	info->timeZone = zone;
-	char localTime1[INFO_LENGTH]= {0};
+	char localTime1[INFO_LENGTH] = { 0 };
 	result = getStrValueFromList(outList, e_time_systime, localTime1);
 	if (!isRetCodeSuccess(result))
 		return result;
@@ -209,11 +212,12 @@ int getDeviceTime_ParseCmd(const Map outList, const void* info1) {
 }
 
 int getDeviceTime(OnvifSystemDateTime* info) {
-	return sendCommIPCFunc(T_Get, info, getDeviceTime_PushCmd, getDeviceTime_ParseCmd);
+	return sendCommIPCFunc(T_Get, info, getDeviceTime_PushCmd,
+			getDeviceTime_ParseCmd);
 }
 
 int getVideoChannelInfo_PushCmd(const Map inList, const void* info1) {
-	OnvifVideoChannelInfo* info = (OnvifVideoChannelInfo*)info1;
+	OnvifVideoChannelInfo* info = (OnvifVideoChannelInfo*) info1;
 	if (NULL == info) {
 		return RET_CODE_ERROR_NULL_OBJECT;
 	}
@@ -242,15 +246,19 @@ int getVideoChannelInfo_PushCmd(const Map inList, const void* info1) {
 	putNullValueInList(inList, e_ip_interval);
 	putNullValueInList(inList, e_encode_profile);
 	putNullValueInList(inList, e_init_quant);
-	putNullValueInList(inList, e_video_addr);
+	putNullValueInList(inList, e_port_rtspport);
 	return RET_CODE_SUCCESS;
 }
 
 int getVideoChannelInfo_ParseCmd(const Map outList, const void* info1) {
-	OnvifVideoChannelInfo* info = (OnvifVideoChannelInfo*)info1;
+	OnvifVideoChannelInfo* info = (OnvifVideoChannelInfo*) info1;
 	memset(info, 0, sizeof(OnvifVideoChannelInfo));
 	int value;
-	int result = getIntValueFromList(outList, e_Stream_enable, &value);
+	int result = getIntValueFromList(outList, e_Chn, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->channelNo = value;
+	result = getIntValueFromList(outList, e_Stream_enable, &value);
 	if (!isRetCodeSuccess(result))
 		return result;
 	info->stream_enable = value;
@@ -330,15 +338,48 @@ int getVideoChannelInfo_ParseCmd(const Map outList, const void* info1) {
 	if (!isRetCodeSuccess(result))
 		return result;
 	info->quality = value;
-	result = getStrValueFromList(outList, e_video_addr, info->videoAddr);
+	result = getIntValueFromList(outList, e_port_rtspport, &value);
 	if (!isRetCodeSuccess(result))
 		return result;
-
+	info->rtspPort = value;
 	return result;
 }
 
 int getVideoChannelInfo(OnvifVideoChannelInfo* info) {
-	return sendCommIPCFunc(T_Get, info, getVideoChannelInfo_PushCmd, getVideoChannelInfo_ParseCmd);
+	return sendCommIPCFunc(T_Get, info, getVideoChannelInfo_PushCmd,
+			getVideoChannelInfo_ParseCmd);
 }
 
+int getVideoChannelStreamInfo_PushCmd(const Map inList, const void* info1) {
+	OnvifVideoChannelInfo* info = (OnvifVideoChannelInfo*) info1;
+	if (NULL == info) {
+		return RET_CODE_ERROR_NULL_OBJECT;
+	}
+	if (info->channelNo < 0) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	putIntValueInList(inList, e_Chn, info->channelNo);
+	putIntValueInList(inList, e_Sub_Chn, 0);
+	putNullValueInList(inList, e_video_addr);
+	return RET_CODE_SUCCESS;
+}
+
+int getVideoChannelStreamInfo_ParseCmd(const Map outList, const void* info1) {
+	OnvifVideoChannelInfo* info = (OnvifVideoChannelInfo*) info1;
+	memset(info, 0, sizeof(OnvifVideoChannelInfo));
+	int value;
+	int result = getIntValueFromList(outList, e_Chn, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->channelNo = value;
+	result = getStrValueFromList(outList, e_video_addr, info->videoAddr);
+	if (!isRetCodeSuccess(result))
+		return result;
+	return result;
+}
+
+int getVideoChannelStreamInfo(OnvifVideoChannelInfo* info) {
+	return sendCommIPCFunc(T_Get, info, getVideoChannelStreamInfo_PushCmd,
+			getVideoChannelStreamInfo_ParseCmd);
+}
 

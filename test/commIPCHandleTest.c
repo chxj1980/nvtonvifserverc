@@ -53,3 +53,10 @@ void test_GetVideoChannelInfo() {
 	onvifVideoChannelInfo.channelNo = 1;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getVideoChannelInfo(&onvifVideoChannelInfo));
 }
+
+void test_GetVideoChannelStreamInfo() {
+	OnvifVideoChannelInfo onvifVideoChannelInfo;
+	onvifVideoChannelInfo.channelNo = 1;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getVideoChannelStreamInfo(&onvifVideoChannelInfo));
+
+}
