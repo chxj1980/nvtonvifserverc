@@ -4,7 +4,7 @@
 #include "appTools.h"
 #include "logInfo.h"
 
-#define MAX_PROF_TOKEN SMALL_INFO_LENGTH
+#define DEFAULT_SESSION_TIME_OUT 720000
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetServiceCapabilities(
 		struct soap* soap,
@@ -201,9 +201,9 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfile(struct soap* soap,
 			(struct tt__VideoEncoderConfiguration *) soap_malloc(soap,
 					sizeof(struct tt__VideoEncoderConfiguration));
 	trt__GetProfileResponse->Profile->VideoEncoderConfiguration->Name =
-			(char *) soap_malloc(soap, sizeof(char) * MAX_PROF_TOKEN);
+			(char *) soap_malloc(soap, sizeof(char) * SMALL_INFO_LENGTH);
 	trt__GetProfileResponse->Profile->VideoEncoderConfiguration->token =
-			(char *) soap_malloc(soap, sizeof(char) * MAX_PROF_TOKEN);
+			(char *) soap_malloc(soap, sizeof(char) * SMALL_INFO_LENGTH);
 	strcpy(trt__GetProfileResponse->Profile->VideoEncoderConfiguration->Name,
 			"VE_Name");
 	strcpy(trt__GetProfileResponse->Profile->VideoEncoderConfiguration->token,
@@ -267,7 +267,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfile(struct soap* soap,
 	trt__GetProfileResponse->Profile->VideoEncoderConfiguration->Multicast->__anyAttribute =
 			NULL;
 	trt__GetProfileResponse->Profile->VideoEncoderConfiguration->SessionTimeout =
-			720000;
+			DEFAULT_SESSION_TIME_OUT;
 	trt__GetProfileResponse->Profile->VideoEncoderConfiguration->__size = 0;
 	trt__GetProfileResponse->Profile->VideoEncoderConfiguration->__any = NULL;
 	trt__GetProfileResponse->Profile->VideoEncoderConfiguration->__anyAttribute =
@@ -286,9 +286,9 @@ void getProfilesResponseProfileVideoEncoderConfiguration(struct soap* soap,
 		struct tt__VideoEncoderConfiguration * videoEncoderConfiguration,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
 	videoEncoderConfiguration->Name = (char *) soap_malloc(soap,
-			sizeof(char) * MAX_PROF_TOKEN);
+			sizeof(char) * SMALL_INFO_LENGTH);
 	videoEncoderConfiguration->token = (char *) soap_malloc(soap,
-			sizeof(char) * MAX_PROF_TOKEN);
+			sizeof(char) * SMALL_INFO_LENGTH);
 	getVEName(videoEncoderConfiguration->Name, index);
 	getVEToken(videoEncoderConfiguration->token, index);
 	videoEncoderConfiguration->UseCount = 1;
@@ -348,7 +348,7 @@ void getProfilesResponseProfileVideoEncoderConfiguration(struct soap* soap,
 	videoEncoderConfiguration->Multicast->__size = 0;
 	videoEncoderConfiguration->Multicast->__any = NULL;
 	videoEncoderConfiguration->Multicast->__anyAttribute = NULL;
-	videoEncoderConfiguration->SessionTimeout = 720000;
+	videoEncoderConfiguration->SessionTimeout = DEFAULT_SESSION_TIME_OUT;
 	videoEncoderConfiguration->__size = 0;
 	videoEncoderConfiguration->__any = NULL;
 	videoEncoderConfiguration->__anyAttribute = NULL;
@@ -359,11 +359,11 @@ void getProfilesResponseProfileVideoSourceConfiguration(struct soap* soap,
 		struct tt__VideoSourceConfiguration * videoSourceConfiguration,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
 	videoSourceConfiguration->Name = (char *) soap_malloc(soap,
-			sizeof(char) * MAX_PROF_TOKEN);
+			sizeof(char) * SMALL_INFO_LENGTH);
 	videoSourceConfiguration->token = (char *) soap_malloc(soap,
-			sizeof(char) * MAX_PROF_TOKEN);
+			sizeof(char) * SMALL_INFO_LENGTH);
 	videoSourceConfiguration->SourceToken = (char *) soap_malloc(soap,
-			sizeof(char) * MAX_PROF_TOKEN);
+			sizeof(char) * SMALL_INFO_LENGTH);
 	/*×¢ÒâSourceToken*/
 	getVEName(videoSourceConfiguration->Name, index);
 	getVEToken(videoSourceConfiguration->token, index);
@@ -385,10 +385,10 @@ void getProfilesResponseProfile(struct soap* soap,
 		struct tt__Profile* getProfilesResponseProfile,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
 	getProfilesResponseProfile->Name = (char *) soap_malloc(soap,
-			sizeof(char) * MAX_PROF_TOKEN);
+			sizeof(char) * SMALL_INFO_LENGTH);
 	getResponseProfileName(getProfilesResponseProfile->Name, index);
 	getProfilesResponseProfile->token = (char *) soap_malloc(soap,
-			sizeof(char) * MAX_PROF_TOKEN);
+			sizeof(char) * SMALL_INFO_LENGTH);
 	getResponseProfileToken(getProfilesResponseProfile->token, index);
 	getProfilesResponseProfile->fixed = (enum xsd__boolean *) soap_malloc(soap,
 			sizeof(enum xsd__boolean));
@@ -433,10 +433,9 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfiles(struct soap* soap,
 	int size = 0;
 	int ret = getVideoCount(&size);
 	if (!isRetCodeSuccess(ret)) {
-		return getOnvifSoapActionFailedCode(soap, "GetVideoSources",
+		return getOnvifSoapActionFailedCode(soap, "GetProfiles",
 				"getVideCount failed");
 	}
-
 	trt__GetProfilesResponse->Profiles = (struct tt__Profile *) soap_malloc(
 			soap, sizeof(struct tt__Profile) * size);
 	trt__GetProfilesResponse->__sizeProfiles = size;
