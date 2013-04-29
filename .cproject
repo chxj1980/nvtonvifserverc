@@ -21,7 +21,9 @@
 							<builder buildPath="${workspace_loc:/nvtonvifserverc/Default}" id="cdt.managedbuild.target.gnu.builder.cygwin.base.909492100" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.cygwin.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.cygwin.base.1187067268" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.cygwin.base">
 								<option id="gnu.both.asm.option.include.paths.1062395871" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="D:/cygwin/MinGW/include"/>
 									<listOptionValue builtIn="false" value="d:/MinGW/include"/>
+									<listOptionValue builtIn="false" value="../d"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1151310523" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -31,12 +33,12 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1834991951" name="Cygwin C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin.base">
 								<option id="gnu.c.compiler.option.include.paths.627104436" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="d:/MinGW/include"/>
 									<listOptionValue builtIn="false" value="E:/Source/c++/libipnc/inc"/>
-									<listOptionValue builtIn="false" value="../d"/>
-									<listOptionValue builtIn="false" value="D:/cygwin/MinGW/include"/>
 									<listOptionValue builtIn="false" value="&quot;D:\cygwin\usr\include&quot;"/>
+									<listOptionValue builtIn="false" value="D:/cygwin/MinGW/include"/>
 									<listOptionValue builtIn="false" value="&quot;E:\Source\c++\Unity\src&quot;"/>
+									<listOptionValue builtIn="false" value="d:/MinGW/include"/>
+									<listOptionValue builtIn="false" value="../d"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.607713331" superClass="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin"/>
 							</tool>

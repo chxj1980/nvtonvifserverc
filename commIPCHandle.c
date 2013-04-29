@@ -128,12 +128,13 @@ int getDeviceInfo_ParseCmd(const Map outList, const void* info1) {
 	getStrValueFromList(outList, e_sys_hardwareId, info->hardwareId);
 	if (strlen(info->hardwareId) > 0) {
 		strcpy(onvifRunParam.hardwareId, info->hardwareId);
+		memset(onvifRunParam.urnHardwareId, 0, INFO_LENGTH);
 		sprintf(onvifRunParam.urnHardwareId, "%s%s",
-				DEFAULT_URN_HARDWARE_ID_PREFIX, onvifRunParam.urnHardwareId);
+				DEFAULT_URN_HARDWARE_ID_PREFIX, onvifRunParam.hardwareId);
 	}
-
 	getStrValueFromList(outList, e_sys_manufacturer, info->manufacturer);
 	getStrValueFromList(outList, e_sys_Model, info->model);
+	getStrValueFromList(outList, e_sys_serialNumber, info->serialNumber);
 	getStrValueFromList(outList, e_sys_hdversion, info->firmwareVersion);
 	return RET_CODE_SUCCESS;
 }
