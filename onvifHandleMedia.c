@@ -6,14 +6,6 @@
 
 #define DEFAULT_SESSION_TIME_OUT 720000
 #define TOKEN_NAME_PREFIX "token_profile"
-SOAP_FMAC5 int SOAP_FMAC6 __trt__GetServiceCapabilities(
-		struct soap* soap,
-		struct _trt__GetServiceCapabilities *trt__GetServiceCapabilities,
-		struct _trt__GetServiceCapabilitiesResponse *trt__GetServiceCapabilitiesResponse) {
-	logInfo("__trt__GetServiceCapabilities");
-	return getOnvifSoapActionNotSupportCode(soap, "GetServiceCapabilities",
-			NULL);
-}
 
 void getVideoSourceToken(char* dest, int index) {
 	sprintf(dest, "%s%d", VIDEO_SOURCE_TOKEN, index);
@@ -128,6 +120,15 @@ void getVideoSourcesResponseVideoSource(struct soap* soap,
 			onvifVideoChannelInfo->wbCbGain;
 	videoSource->Imaging->Extension = NULL;
 	videoSource->Extension = NULL;
+}
+
+SOAP_FMAC5 int SOAP_FMAC6 __trt__GetServiceCapabilities(
+		struct soap* soap,
+		struct _trt__GetServiceCapabilities *trt__GetServiceCapabilities,
+		struct _trt__GetServiceCapabilitiesResponse *trt__GetServiceCapabilitiesResponse) {
+	logInfo("__trt__GetServiceCapabilities");
+	return getOnvifSoapActionNotSupportCode(soap, "GetServiceCapabilities",
+			NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSources(struct soap* soap,

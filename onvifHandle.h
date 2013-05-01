@@ -13,6 +13,8 @@
 #define VIDEO_SOURCE_TOKEN "CaoYonghuaSource_token"
 #define ALL 1
 #define HOST_NAME "NVTCYH"
+#define ONVIF_VERSION_MAJOR 2
+#define ONVIF_VERSION_MINOR 20
 
 #ifdef __cplusplus
 extern "C" {
