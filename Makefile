@@ -30,6 +30,7 @@ OBJECTFILES= soapC.o \
 	onvifHandleProbe.o	\
 	onvifHandleDeviceManagement.o	\
 	onvifHandleMedia.o	\
+	onvifHandlePTZ.o	\
 	runProbeServer.o	\
 	runDeviceService.o	
 	
