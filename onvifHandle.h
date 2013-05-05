@@ -79,7 +79,7 @@ typedef struct St_OnvifVideoChannelInfo {
 } OnvifVideoChannelInfo;
 
 extern OnvifRunParam onvifRunParam;
-
+void* my_soap_malloc(struct soap* soap, size_t n);
 int startOnvifApp();
 void stopOnvifApp();
 

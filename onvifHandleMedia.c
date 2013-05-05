@@ -43,7 +43,7 @@ int getIndexFromProfileToken(char* token) {
 		return RET_CODE_ERROR_INVALID_VALUE;
 	if (NULL == strstr(token, TOKEN_NAME_PREFIX))
 		return RET_CODE_ERROR_INVALID_VALUE;
-	return atoi((char*)(token + strlen(TOKEN_NAME_PREFIX)));
+	return atoi((char*) (token + strlen(TOKEN_NAME_PREFIX)));
 }
 
 void getResponseProfileToken(char* dest, int index) {
@@ -74,6 +74,7 @@ void getVideoSourcesResponseVideoSource(struct soap* soap,
 	videoSource->Resolution->Height = onvifVideoChannelInfo->height;
 	videoSource->Resolution->Width = onvifVideoChannelInfo->width;
 	videoSource->token = (char *) soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+	memset(videoSource->token, 0, sizeof(char) * INFO_LENGTH);
 	getVideoSourceToken(videoSource->token, index); //注意这里需要和GetProfile中的sourcetoken相同
 
 	videoSource->Imaging = (struct tt__ImagingSettings*) soap_malloc(soap,
@@ -120,6 +121,170 @@ void getVideoSourcesResponseVideoSource(struct soap* soap,
 			onvifVideoChannelInfo->wbCbGain;
 	videoSource->Imaging->Extension = NULL;
 	videoSource->Extension = NULL;
+}
+
+void getResponseProfileInfoVideoEncoderConfiguration(struct soap* soap,
+		struct tt__VideoEncoderConfiguration * videoEncoderConfiguration,
+		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
+	memset(videoEncoderConfiguration, 0,
+			sizeof(struct tt__VideoEncoderConfiguration));
+	videoEncoderConfiguration->Name = (char *) soap_malloc(soap,
+			sizeof(char) * SMALL_INFO_LENGTH);
+	memset(videoEncoderConfiguration->Name, 0,
+			sizeof(char) * SMALL_INFO_LENGTH);
+	videoEncoderConfiguration->token = (char *) soap_malloc(soap,
+			sizeof(char) * SMALL_INFO_LENGTH);
+	memset(videoEncoderConfiguration->token, 0,
+			sizeof(char) * SMALL_INFO_LENGTH);
+	getVEName(videoEncoderConfiguration->Name, index);
+	getVEToken(videoEncoderConfiguration->token, index);
+	videoEncoderConfiguration->UseCount = 1;
+	videoEncoderConfiguration->Quality = onvifVideoChannelInfo->quality;
+	videoEncoderConfiguration->Encoding = getVideoEncodeType(
+			onvifVideoChannelInfo->enc_type);
+	videoEncoderConfiguration->Resolution =
+			(struct tt__VideoResolution *) soap_malloc(soap,
+					sizeof(struct tt__VideoResolution));
+	memset(videoEncoderConfiguration->Resolution, 0,
+			sizeof(struct tt__VideoResolution));
+	videoEncoderConfiguration->Resolution->Height =
+			onvifVideoChannelInfo->height;
+	videoEncoderConfiguration->Resolution->Width = onvifVideoChannelInfo->width;
+	videoEncoderConfiguration->RateControl =
+			(struct tt__VideoRateControl *) soap_malloc(soap,
+					sizeof(struct tt__VideoRateControl));
+	memset(videoEncoderConfiguration->RateControl, 0,
+			sizeof(struct tt__VideoRateControl));
+	videoEncoderConfiguration->RateControl->FrameRateLimit =
+			onvifVideoChannelInfo->frame_rate;
+	videoEncoderConfiguration->RateControl->EncodingInterval = 1;
+	videoEncoderConfiguration->RateControl->BitrateLimit =
+			onvifVideoChannelInfo->bit_rate;
+	videoEncoderConfiguration->MPEG4 = NULL;
+	videoEncoderConfiguration->H264 = NULL;
+#if 1
+	/*可选项，可以不配置*/
+	if (tt__VideoEncoding__MPEG4 == videoEncoderConfiguration->Encoding) {
+		videoEncoderConfiguration->MPEG4 =
+				(struct tt__Mpeg4Configuration *) soap_malloc(soap,
+						sizeof(struct tt__Mpeg4Configuration));
+		memset(videoEncoderConfiguration->MPEG4, 0,
+				sizeof(struct tt__Mpeg4Configuration));
+		videoEncoderConfiguration->MPEG4->GovLength =
+				onvifVideoChannelInfo->govLength;
+		videoEncoderConfiguration->MPEG4->Mpeg4Profile =
+				onvifVideoChannelInfo->videoEncodeProfile;
+	} else if (tt__VideoEncoding__H264 == videoEncoderConfiguration->Encoding) {
+		videoEncoderConfiguration->H264 =
+				(struct tt__H264Configuration *) soap_malloc(soap,
+						sizeof(struct tt__H264Configuration));
+		memset(videoEncoderConfiguration->H264, 0,
+				sizeof(struct tt__H264Configuration));
+		videoEncoderConfiguration->H264->GovLength =
+				onvifVideoChannelInfo->govLength;
+		videoEncoderConfiguration->H264->H264Profile =
+				onvifVideoChannelInfo->videoEncodeProfile;
+	}
+
+	videoEncoderConfiguration->Multicast =
+			(struct tt__MulticastConfiguration *) soap_malloc(soap,
+					sizeof(struct tt__MulticastConfiguration));
+	memset(videoEncoderConfiguration->Multicast, 0,
+			sizeof(struct tt__MulticastConfiguration));
+	videoEncoderConfiguration->Multicast->Address =
+			(struct tt__IPAddress *) soap_malloc(soap,
+					sizeof(struct tt__IPAddress));
+	videoEncoderConfiguration->Multicast->Address->IPv4Address =
+			(char *) soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+	videoEncoderConfiguration->Multicast->Address->IPv6Address = NULL;
+	videoEncoderConfiguration->Multicast->Address->Type = tt__IPType__IPv4;
+	videoEncoderConfiguration->Multicast->Port =
+			onvifVideoChannelInfo->rtspPort;
+	videoEncoderConfiguration->Multicast->TTL = 60;
+	videoEncoderConfiguration->Multicast->AutoStart = xsd__boolean__true_;
+	videoEncoderConfiguration->Multicast->__size = 0;
+	videoEncoderConfiguration->Multicast->__any = NULL;
+	videoEncoderConfiguration->Multicast->__anyAttribute = NULL;
+
+	videoEncoderConfiguration->SessionTimeout = DEFAULT_SESSION_TIME_OUT;
+	videoEncoderConfiguration->__size = 0;
+	videoEncoderConfiguration->__any = NULL;
+	videoEncoderConfiguration->__anyAttribute = NULL;
+#endif
+}
+
+void getResponseProfileInfoVideoSourceConfiguration(struct soap* soap,
+		struct tt__VideoSourceConfiguration * videoSourceConfiguration,
+		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
+	memset(videoSourceConfiguration, 0,
+			sizeof(struct tt__VideoSourceConfiguration));
+	videoSourceConfiguration->Name = (char *) soap_malloc(soap,
+			sizeof(char) * SMALL_INFO_LENGTH);
+	videoSourceConfiguration->token = (char *) soap_malloc(soap,
+			sizeof(char) * SMALL_INFO_LENGTH);
+	videoSourceConfiguration->SourceToken = (char *) soap_malloc(soap,
+			sizeof(char) * INFO_LENGTH);
+	/*注意SourceToken*/
+	getVEName(videoSourceConfiguration->Name, index);
+	getVEToken(videoSourceConfiguration->token, index);
+	getVideoSourceToken(videoSourceConfiguration->SourceToken, index); /*必须与__tmd__GetVideoSources中的token相同*/
+	videoSourceConfiguration->Extension = NULL;
+	videoSourceConfiguration->__any = NULL;
+	videoSourceConfiguration->__anyAttribute = NULL;
+	videoSourceConfiguration->__size = 0;
+	videoSourceConfiguration->Bounds = (struct tt__IntRectangle *) soap_malloc(
+			soap, sizeof(struct tt__IntRectangle));
+	videoSourceConfiguration->UseCount = 1;
+	videoSourceConfiguration->Bounds->x = 1;
+	videoSourceConfiguration->Bounds->y = 1;
+	videoSourceConfiguration->Bounds->height = onvifVideoChannelInfo->height;
+	videoSourceConfiguration->Bounds->width = onvifVideoChannelInfo->width;
+}
+
+void getResponseProfileInfo(struct soap* soap, struct tt__Profile* destProfile,
+		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
+	memset(destProfile, 0, sizeof(struct tt__Profile));
+	destProfile->Name = (char *) soap_malloc(soap,
+			sizeof(char) * SMALL_INFO_LENGTH);
+	memset(destProfile->Name, 0, sizeof(char) * SMALL_INFO_LENGTH);
+	getResponseProfileName(destProfile->Name, index);
+	destProfile->token = (char *) soap_malloc(soap,
+			sizeof(char) * SMALL_INFO_LENGTH);
+	memset(destProfile->token, 0, sizeof(char) * SMALL_INFO_LENGTH);
+	getResponseProfileToken(destProfile->token, index);
+	destProfile->fixed = (enum xsd__boolean *) soap_malloc(soap,
+			sizeof(enum xsd__boolean));
+	*destProfile->fixed = xsd__boolean__false_;
+	destProfile->__anyAttribute = NULL;
+	destProfile->VideoAnalyticsConfiguration = NULL;
+
+	/*必须包含VideoEncoderConfiguration的配置
+	 不然不会出现live video 和 video streaming*/
+	/*VideoEncoderConfiguration*/
+	destProfile->VideoEncoderConfiguration = NULL;
+#if 1
+	destProfile->VideoEncoderConfiguration =
+			(struct tt__VideoEncoderConfiguration *) soap_malloc(soap,
+					sizeof(struct tt__VideoEncoderConfiguration));
+	getResponseProfileInfoVideoEncoderConfiguration(soap,
+			destProfile->VideoEncoderConfiguration, onvifVideoChannelInfo,
+			index);
+#endif
+
+	/* VideoSourceConfiguration */
+	//getResponseProfileInfo->VideoSourceConfiguration = NULL;
+	destProfile->VideoSourceConfiguration =
+			(struct tt__VideoSourceConfiguration *) my_soap_malloc(soap,
+					sizeof(struct tt__VideoSourceConfiguration));
+	getResponseProfileInfoVideoSourceConfiguration(soap,
+			destProfile->VideoSourceConfiguration, onvifVideoChannelInfo,
+			index);
+
+	destProfile->AudioEncoderConfiguration = NULL;
+	destProfile->AudioSourceConfiguration = NULL;
+	destProfile->PTZConfiguration = NULL;
+	destProfile->MetadataConfiguration = NULL;
+	destProfile->Extension = NULL;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetServiceCapabilities(
@@ -191,169 +356,23 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfile(struct soap* soap,
 	logInfo("__trt__GetProfile");
 	int index = getIndexFromProfileToken(trt__GetProfile->ProfileToken);
 	if (index < 0) {
-		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetProfile", "profile token is invalid");
+		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetProfile",
+				"profile token is invalid");
 	}
 	OnvifVideoChannelInfo onvifVideoChannelInfo;
 	onvifVideoChannelInfo.channelNo = index;
 	if (!isRetCodeSuccess(getVideoChannelInfo(&onvifVideoChannelInfo))) {
 		return getOnvifSoapActionFailedCode(soap, "GetProfile",
-							"getVideoChannelInfo failed");
+				"getVideoChannelInfo failed");
 	}
 
 	/*这里的ProfileToken是选定的，得到特定的profile描述*/
 	//但odm单击一个profile时，需要获取，不然不会出现live video和video streaming
-	trt__GetProfileResponse->Profile = (struct tt__Profile *) soap_malloc(soap,
+	trt__GetProfileResponse->Profile = (struct tt__Profile *) my_soap_malloc(soap,
 			sizeof(struct tt__Profile));
-	getResponseProfileInfo(soap, trt__GetProfileResponse->Profile, &onvifVideoChannelInfo, index);
+	getResponseProfileInfo(soap, trt__GetProfileResponse->Profile,
+			&onvifVideoChannelInfo, index);
 	return SOAP_OK;
-}
-
-void getResponseProfileInfoVideoEncoderConfiguration(struct soap* soap,
-		struct tt__VideoEncoderConfiguration * videoEncoderConfiguration,
-		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
-	memset(videoEncoderConfiguration, 0,
-			sizeof(struct tt__VideoEncoderConfiguration));
-	videoEncoderConfiguration->Name = (char *) soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	videoEncoderConfiguration->token = (char *) soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	getVEName(videoEncoderConfiguration->Name, index);
-	getVEToken(videoEncoderConfiguration->token, index);
-	videoEncoderConfiguration->UseCount = 1;
-	videoEncoderConfiguration->Quality = onvifVideoChannelInfo->quality;
-	videoEncoderConfiguration->Encoding = getVideoEncodeType(
-			onvifVideoChannelInfo->enc_type);
-	videoEncoderConfiguration->Resolution =
-			(struct tt__VideoResolution *) soap_malloc(soap,
-					sizeof(struct tt__VideoResolution));
-	videoEncoderConfiguration->Resolution->Height =
-			onvifVideoChannelInfo->height;
-	videoEncoderConfiguration->Resolution->Width = onvifVideoChannelInfo->width;
-	videoEncoderConfiguration->RateControl =
-			(struct tt__VideoRateControl *) soap_malloc(soap,
-					sizeof(struct tt__VideoRateControl));
-	videoEncoderConfiguration->RateControl->FrameRateLimit =
-			onvifVideoChannelInfo->frame_rate;
-	videoEncoderConfiguration->RateControl->EncodingInterval = 1;
-	videoEncoderConfiguration->RateControl->BitrateLimit =
-			onvifVideoChannelInfo->bit_rate;
-	videoEncoderConfiguration->MPEG4 = NULL;
-	videoEncoderConfiguration->H264 = NULL;
-#if 1
-	/*可选项，可以不配置*/
-	if (tt__VideoEncoding__MPEG4 == videoEncoderConfiguration->Encoding) {
-		videoEncoderConfiguration->MPEG4 =
-				(struct tt__Mpeg4Configuration *) soap_malloc(soap,
-						sizeof(struct tt__Mpeg4Configuration));
-		videoEncoderConfiguration->MPEG4->GovLength =
-				onvifVideoChannelInfo->govLength;
-		videoEncoderConfiguration->MPEG4->Mpeg4Profile =
-				onvifVideoChannelInfo->videoEncodeProfile;
-	} else if (tt__VideoEncoding__H264 == videoEncoderConfiguration->Encoding) {
-		videoEncoderConfiguration->H264 =
-				(struct tt__H264Configuration *) soap_malloc(soap,
-						sizeof(struct tt__H264Configuration));
-		videoEncoderConfiguration->H264->GovLength =
-				onvifVideoChannelInfo->govLength;
-		videoEncoderConfiguration->H264->H264Profile =
-				onvifVideoChannelInfo->videoEncodeProfile;
-	}
-
-	videoEncoderConfiguration->Multicast =
-			(struct tt__MulticastConfiguration *) soap_malloc(soap,
-					sizeof(struct tt__MulticastConfiguration));
-	videoEncoderConfiguration->Multicast->Address =
-			(struct tt__IPAddress *) soap_malloc(soap,
-					sizeof(struct tt__IPAddress));
-	videoEncoderConfiguration->Multicast->Address->IPv4Address =
-			(char *) soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-	videoEncoderConfiguration->Multicast->Address->IPv6Address = NULL;
-	videoEncoderConfiguration->Multicast->Address->Type = tt__IPType__IPv4;
-	videoEncoderConfiguration->Multicast->Port = onvifVideoChannelInfo->rtspPort;
-	videoEncoderConfiguration->Multicast->TTL = 60;
-	videoEncoderConfiguration->Multicast->AutoStart = xsd__boolean__true_;
-	videoEncoderConfiguration->Multicast->__size = 0;
-	videoEncoderConfiguration->Multicast->__any = NULL;
-	videoEncoderConfiguration->Multicast->__anyAttribute = NULL;
-
-	videoEncoderConfiguration->SessionTimeout = DEFAULT_SESSION_TIME_OUT;
-	videoEncoderConfiguration->__size = 0;
-	videoEncoderConfiguration->__any = NULL;
-	videoEncoderConfiguration->__anyAttribute = NULL;
-#endif
-}
-
-void getResponseProfileInfoVideoSourceConfiguration(struct soap* soap,
-		struct tt__VideoSourceConfiguration * videoSourceConfiguration,
-		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
-	memset(videoSourceConfiguration, 0,
-			sizeof(struct tt__VideoSourceConfiguration));
-	videoSourceConfiguration->Name = (char *) soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	videoSourceConfiguration->token = (char *) soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	videoSourceConfiguration->SourceToken = (char *) soap_malloc(soap,
-			sizeof(char) * INFO_LENGTH);
-	/*注意SourceToken*/
-	getVEName(videoSourceConfiguration->Name, index);
-	getVEToken(videoSourceConfiguration->token, index);
-	getVideoSourceToken(videoSourceConfiguration->SourceToken, index); /*必须与__tmd__GetVideoSources中的token相同*/
-	videoSourceConfiguration->Extension = NULL;
-	videoSourceConfiguration->__any = NULL;
-	videoSourceConfiguration->__anyAttribute = NULL;
-	videoSourceConfiguration->__size = 0;
-	videoSourceConfiguration->Bounds = (struct tt__IntRectangle *) soap_malloc(
-			soap, sizeof(struct tt__IntRectangle));
-	videoSourceConfiguration->UseCount = 1;
-	videoSourceConfiguration->Bounds->x = 1;
-	videoSourceConfiguration->Bounds->y = 1;
-	videoSourceConfiguration->Bounds->height = onvifVideoChannelInfo->height;
-	videoSourceConfiguration->Bounds->width = onvifVideoChannelInfo->width;
-}
-
-void getResponseProfileInfo(struct soap* soap,
-		struct tt__Profile* destProfile,
-		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
-	memset(destProfile, 0, sizeof(struct tt__Profile));
-	destProfile->Name = (char *) soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	getResponseProfileName(destProfile->Name, index);
-	destProfile->token = (char *) soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	getResponseProfileToken(destProfile->token, index);
-	destProfile->fixed = (enum xsd__boolean *) soap_malloc(soap,
-			sizeof(enum xsd__boolean));
-	*destProfile->fixed = xsd__boolean__false_;
-	destProfile->__anyAttribute = NULL;
-	destProfile->VideoAnalyticsConfiguration = NULL;
-
-	/*必须包含VideoEncoderConfiguration的配置
-	 不然不会出现live video 和 video streaming*/
-	/*VideoEncoderConfiguration*/
-	destProfile->VideoEncoderConfiguration = NULL;
-#if 1
-	destProfile->VideoEncoderConfiguration =
-			(struct tt__VideoEncoderConfiguration *) soap_malloc(soap,
-					sizeof(struct tt__VideoEncoderConfiguration));
-	getResponseProfileInfoVideoEncoderConfiguration(soap,
-			destProfile->VideoEncoderConfiguration,
-			onvifVideoChannelInfo, index);
-#endif
-
-	/* VideoSourceConfiguration */
-	//getResponseProfileInfo->VideoSourceConfiguration = NULL;
-	destProfile->VideoSourceConfiguration =
-			(struct tt__VideoSourceConfiguration *) soap_malloc(soap,
-					sizeof(struct tt__VideoSourceConfiguration));
-	getResponseProfileInfoVideoSourceConfiguration(soap,
-			destProfile->VideoSourceConfiguration,
-			onvifVideoChannelInfo, index);
-
-	destProfile->AudioEncoderConfiguration = NULL;
-	destProfile->AudioSourceConfiguration = NULL;
-	destProfile->PTZConfiguration = NULL;
-	destProfile->MetadataConfiguration = NULL;
-	destProfile->Extension = NULL;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfiles(struct soap* soap,
@@ -378,8 +397,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfiles(struct soap* soap,
 			return getOnvifSoapActionFailedCode(soap, "GetVideoSources",
 					"getVideoChannelInfo failed");
 		}
-		getResponseProfileInfo(soap,
-				&(trt__GetProfilesResponse->Profiles[i]),
+		getResponseProfileInfo(soap, &(trt__GetProfilesResponse->Profiles[i]),
 				&onvifVideoChannelInfo, i);
 	}
 	return SOAP_OK;
@@ -914,24 +932,27 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetStreamUri(struct soap* soap,
 		struct _trt__GetStreamUriResponse *trt__GetStreamUriResponse) {
 	logInfo("__trt__GetStreamUri");
 	if (NULL == trt__GetStreamUri->ProfileToken) {
-		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetStreamUri", "profile token is null");
+		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetStreamUri",
+				"profile token is null");
 	}
 	int index = getIndexFromProfileToken(trt__GetStreamUri->ProfileToken);
 	if (index < 0) {
-		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetStreamUri", "profile token is invalid");
+		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetStreamUri",
+				"profile token is invalid");
 	}
 	OnvifVideoChannelInfo onvifVideoChannelInfo;
 	onvifVideoChannelInfo.channelNo = index;
 	if (!isRetCodeSuccess(getVideoChannelStreamInfo(&onvifVideoChannelInfo))) {
 		return getOnvifSoapActionFailedCode(soap, "GetStreamUri",
-							"getVideoChannelStreamInfo failed");
+				"getVideoChannelStreamInfo failed");
 	}
 	/* Response */
 	trt__GetStreamUriResponse->MediaUri = (struct tt__MediaUri *) soap_malloc(
 			soap, sizeof(struct tt__MediaUri));
 	trt__GetStreamUriResponse->MediaUri->Uri = (char *) soap_malloc(soap,
 			sizeof(char) * LARGE_INFO_LENGTH);
-	strcpy(trt__GetStreamUriResponse->MediaUri->Uri, onvifVideoChannelInfo.videoAddr);
+	strcpy(trt__GetStreamUriResponse->MediaUri->Uri,
+			onvifVideoChannelInfo.videoAddr);
 	trt__GetStreamUriResponse->MediaUri->InvalidAfterConnect = 0;
 	trt__GetStreamUriResponse->MediaUri->InvalidAfterReboot = 0;
 	trt__GetStreamUriResponse->MediaUri->Timeout = 200;

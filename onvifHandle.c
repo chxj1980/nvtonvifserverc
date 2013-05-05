@@ -59,6 +59,12 @@ int getHardwareIdInfo() {
 	return RET_CODE_SUCCESS;
 }
 
+void* my_soap_malloc(struct soap* soap, size_t n) {
+	void* result = (void*) soap_malloc(soap, n);
+	memset(result, 0, n);
+	return result;
+}
+
 int startOnvifApp() {
 	int result = startIPCComm();
 	if (!isRetCodeSuccess(result)) {
