@@ -122,7 +122,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_fault_subcode_action(struct soap *soap,
 					|| soap_tagsearch(soap_wsa_allAnonymousURI,
 							oldheader->SOAP_WSA(FaultTo)->Address))) {
 		if (!oldheader->SOAP_WSA(FaultTo)) {
-			oldheader->SOAP_WSA(FaultTo) = (SOAP_WSA_(,FaultTo)*) soap_malloc(
+			oldheader->SOAP_WSA(FaultTo) = (SOAP_WSA_(,FaultTo)*) my_soap_malloc(
 					soap, sizeof(SOAP_WSA_(,FaultTo)));
 			SOAP_WSA_(soap_default,EndpointReferenceType)(soap,
 					soap->header->SOAP_WSA(FaultTo));
@@ -144,7 +144,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_fault_subcode_action(struct soap *soap,
 	soap_default_SOAP_ENV__Header(soap, newheader); /* remove/clear SOAP Header */
 	/* check header */
 	if (oldheader && oldheader->SOAP_WSA(MessageID)) {
-		newheader->SOAP_WSA(RelatesTo) = (SOAP_WSA_(,RelatesTo)*) soap_malloc(
+		newheader->SOAP_WSA(RelatesTo) = (SOAP_WSA_(,RelatesTo)*) my_soap_malloc(
 				soap, sizeof(SOAP_WSA_(,RelatesTo)));
 		SOAP_WSA_(soap_default_, RelatesTo)
 		(soap, newheader->SOAP_WSA(RelatesTo));
@@ -210,7 +210,7 @@ char* getUUId() {
 }
 
 char* soap_wsa_rand_uuid(struct soap *soap) {
-	char *uuid = (char*) soap_malloc(soap, 48);
+	char *uuid = (char*) my_soap_malloc(soap, 48);
 	int r1, r2, r3, r4;
 #ifdef WITH_OPENSSL
 	r1 = soap_random;
@@ -339,7 +339,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_error(struct soap *soap,
 		soap_faultdetail(soap);
 		if (soap->version == 1) {
 			soap->fault->detail->__type = SOAP_WSA_(SOAP_TYPE_,ProblemAction);
-			soap->fault->detail->fault = (void*) soap_malloc(soap,
+			soap->fault->detail->fault = (void*) my_soap_malloc(soap,
 					sizeof(SOAP_WSA_(,ProblemAction)));
 			SOAP_WSA_(soap_default_, ProblemAction)
 			(soap, (SOAP_WSA_(,ProblemAction)*)soap->fault->detail->fault);
@@ -348,7 +348,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_error(struct soap *soap,
 		} else {
 			soap->fault->SOAP_ENV__Detail->__type =
 					SOAP_WSA_(SOAP_TYPE_,ProblemAction);
-			soap->fault->SOAP_ENV__Detail->fault = (void*) soap_malloc(soap,
+			soap->fault->SOAP_ENV__Detail->fault = (void*) my_soap_malloc(soap,
 					sizeof(SOAP_WSA_(,ProblemAction)));
 			SOAP_WSA_(soap_default_, ProblemAction)
 			(soap, (SOAP_WSA_(,ProblemAction)*)soap->fault->SOAP_ENV__Detail->fault);
@@ -432,7 +432,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_add_ReplyTo(struct soap *soap,
 	replyTo = soap_wsa_anonymousURI;
 #endif
 	if (replyTo) {
-		soap->header->SOAP_WSA(ReplyTo) = (SOAP_WSA_(,ReplyTo)*) soap_malloc(
+		soap->header->SOAP_WSA(ReplyTo) = (SOAP_WSA_(,ReplyTo)*) my_soap_malloc(
 				soap, sizeof(SOAP_WSA_(,ReplyTo)));
 		SOAP_WSA_(soap_default,EndpointReferenceType)(soap,
 				soap->header->SOAP_WSA(ReplyTo));
@@ -470,7 +470,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_add_RelatesTo(struct soap *soap,
 		return SOAP_ERR;
 	if (relatesTo) {
 		soap->header->SOAP_WSA(RelatesTo) =
-				(SOAP_WSA_(,RelatesTo)*) soap_malloc(soap,
+				(SOAP_WSA_(,RelatesTo)*) my_soap_malloc(soap,
 						sizeof(SOAP_WSA_(,RelatesTo)));
 		SOAP_WSA_(soap_default_, RelatesTo)
 		(soap, soap->header->SOAP_WSA(RelatesTo));
@@ -483,7 +483,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_add_RelatesTo(struct soap *soap,
 SOAP_FMAC5 void SOAP_FMAC6 soap_wsdd_set_AppSequence(struct soap *soap) {
 	soap_header(soap);
 	if (!soap->header->wsdd__AppSequence) {
-		soap->header->wsdd__AppSequence = (wsdd__AppSequenceType*) soap_malloc(
+		soap->header->wsdd__AppSequence = (wsdd__AppSequenceType*) my_soap_malloc(
 				soap, sizeof(wsdd__AppSequenceType));
 		soap_default_wsdd__AppSequenceType(soap,
 				soap->header->wsdd__AppSequence);
@@ -527,7 +527,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_reply(struct soap *soap, const char *id,
 	newheader->SOAP_WSA(FaultTo) = NULL;
 	/* check current header content */
 	if (oldheader && oldheader->SOAP_WSA(MessageID)) {
-		newheader->SOAP_WSA(RelatesTo) = (SOAP_WSA_(,RelatesTo)*) soap_malloc(
+		newheader->SOAP_WSA(RelatesTo) = (SOAP_WSA_(,RelatesTo)*) my_soap_malloc(
 				soap, sizeof(SOAP_WSA_(,RelatesTo)));
 		SOAP_WSA_(soap_default_, RelatesTo)
 		(soap, newheader->SOAP_WSA(RelatesTo));
@@ -549,7 +549,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_wsa_reply(struct soap *soap, const char *id,
 		if (newheader) {
 			if (!newheader->chan__ChannelInstance) {
 				newheader->chan__ChannelInstance =
-						(struct chan__ChannelInstanceType*) soap_malloc(soap,
+						(struct chan__ChannelInstanceType*) my_soap_malloc(soap,
 								sizeof(struct chan__ChannelInstanceType));
 				if (newheader->chan__ChannelInstance) {
 					soap_default_chan__ChannelInstanceType(soap,
@@ -671,32 +671,30 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 	int interface_num = 1;
 	wsdd__ProbeMatchesType ProbeMatches;
 	ProbeMatches.__sizeProbeMatch = interface_num;
-	ProbeMatches.ProbeMatch = (struct wsdd__ProbeMatchType *) soap_malloc(soap,
+	ProbeMatches.ProbeMatch = (struct wsdd__ProbeMatchType *) my_soap_malloc(soap,
 			sizeof(struct wsdd__ProbeMatchType) * interface_num);
 	int i = 0;
 	for (i = 0; i < interface_num; i++) {
 		ProbeMatches.ProbeMatch->MetadataVersion = METADATA_VERSION;
 		// should be onvif device mgmt address
-		ProbeMatches.ProbeMatch->XAddrs = (char *) soap_malloc(soap,
+		ProbeMatches.ProbeMatch->XAddrs = (char *) my_soap_malloc(soap,
 				sizeof(char) * INFO_LENGTH);
 		sprintf(ProbeMatches.ProbeMatch->XAddrs, "%s", _xmaddr);
 		// probe type
-		ProbeMatches.ProbeMatch->Types = (char *) soap_malloc(soap,
+		ProbeMatches.ProbeMatch->Types = (char *) my_soap_malloc(soap,
 				sizeof(char) * INFO_LENGTH);
 		strcpy(ProbeMatches.ProbeMatch->Types, DEVICE_TYPE);
 		// Scope
 		ProbeMatches.ProbeMatch->Scopes =
-				(struct wsdd__ScopesType*) soap_malloc(soap,
+				(struct wsdd__ScopesType*) my_soap_malloc(soap,
 						sizeof(struct wsdd__ScopesType));
-		ProbeMatches.ProbeMatch->Scopes->__item = (char *) soap_malloc(soap,
+		ProbeMatches.ProbeMatch->Scopes->__item = (char *) my_soap_malloc(soap,
 				1024);
-		memset(ProbeMatches.ProbeMatch->Scopes->__item, 0,
-				sizeof(ProbeMatches.ProbeMatch->Scopes->__item));
 		strcat(ProbeMatches.ProbeMatch->Scopes->__item, ONVIF_SCOPE_NAME);
 		ProbeMatches.ProbeMatch->Scopes->MatchBy = NULL;
 
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceProperties =
-				(struct wsa__ReferencePropertiesType*) soap_malloc(soap,
+				(struct wsa__ReferencePropertiesType*) my_soap_malloc(soap,
 						sizeof(struct wsa__ReferencePropertiesType));
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceProperties->__size =
 				0;
@@ -704,7 +702,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 				NULL;
 
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceParameters =
-				(struct wsa__ReferenceParametersType*) soap_malloc(soap,
+				(struct wsa__ReferenceParametersType*) my_soap_malloc(soap,
 						sizeof(struct wsa__ReferenceParametersType));
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceParameters->__size =
 				0;
@@ -712,14 +710,14 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 				NULL;
 
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.PortType =
-				(char **) soap_malloc(soap, sizeof(char*) * SMALL_INFO_LENGTH);
+				(char **) my_soap_malloc(soap, sizeof(char*) * SMALL_INFO_LENGTH);
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.PortType[0] =
-				(char *) soap_malloc(soap, sizeof(char) * SMALL_INFO_LENGTH);
+				(char *) my_soap_malloc(soap, sizeof(char) * SMALL_INFO_LENGTH);
 		strcpy(ProbeMatches.ProbeMatch->wsa__EndpointReference.PortType[0],
 				"ttl");
 
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ServiceName =
-				(struct wsa__ServiceNameType*) soap_malloc(soap,
+				(struct wsa__ServiceNameType*) my_soap_malloc(soap,
 						sizeof(struct wsa__ServiceNameType));
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.ServiceName->__item =
 				NULL;
@@ -729,44 +727,44 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 				NULL;
 		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , __any
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.__any =
-				(char **) soap_malloc(soap, sizeof(char*) * SMALL_INFO_LENGTH);
+				(char **) my_soap_malloc(soap, sizeof(char*) * SMALL_INFO_LENGTH);
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.__any[0] =
-				(char *) soap_malloc(soap, sizeof(char) * SMALL_INFO_LENGTH);
+				(char *) my_soap_malloc(soap, sizeof(char) * SMALL_INFO_LENGTH);
 		strcpy(ProbeMatches.ProbeMatch->wsa__EndpointReference.__any[0], "Any");
 		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , __anyAttribute
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.__anyAttribute =
-				(char *) soap_malloc(soap, sizeof(char) * SMALL_INFO_LENGTH);
+				(char *) my_soap_malloc(soap, sizeof(char) * SMALL_INFO_LENGTH);
 		strcpy(ProbeMatches.ProbeMatch->wsa__EndpointReference.__anyAttribute,
 				"Attribute");
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.__size = 0;
 		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , Address
 		ProbeMatches.ProbeMatch->wsa__EndpointReference.Address =
-				(char *) soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+				(char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
 		strcpy(ProbeMatches.ProbeMatch->wsa__EndpointReference.Address,
 				onvifRunParam.urnHardwareId);
 	}
 
 	if (soap->header == NULL) {
-		soap->header = (struct SOAP_ENV__Header*) soap_malloc(soap,
+		soap->header = (struct SOAP_ENV__Header*) my_soap_malloc(soap,
 				sizeof(struct SOAP_ENV__Header));
-		soap->header->wsa__RelatesTo = (struct wsa__Relationship*) soap_malloc(
+		soap->header->wsa__RelatesTo = (struct wsa__Relationship*) my_soap_malloc(
 				soap, sizeof(struct wsa__Relationship));
 		//it's here
-		soap->header->wsa__MessageID = (char *) soap_malloc(soap,
+		soap->header->wsa__MessageID = (char *) my_soap_malloc(soap,
 				sizeof(char) * INFO_LENGTH);
 		strcpy(soap->header->wsa__MessageID, getUUId());
 		soap->header->wsa__RelatesTo->__item = soap->header->wsa__MessageID;
 		soap->header->wsa__RelatesTo->RelationshipType = NULL;
 		soap->header->wsa__RelatesTo->__anyAttribute = NULL;
 	} else {
-		soap->header->wsa__RelatesTo = (struct wsa__Relationship*) soap_malloc(
+		soap->header->wsa__RelatesTo = (struct wsa__Relationship*) my_soap_malloc(
 				soap, sizeof(struct wsa__Relationship));
 		//it's here
 		soap->header->wsa__RelatesTo->__item = soap->header->wsa__MessageID;
 		soap->header->wsa__RelatesTo->RelationshipType = NULL;
 		soap->header->wsa__RelatesTo->__anyAttribute = NULL;
 
-		soap->header->wsa__MessageID = (char *) soap_malloc(soap,
+		soap->header->wsa__MessageID = (char *) my_soap_malloc(soap,
 				sizeof(char) * INFO_LENGTH);
 		strcpy(soap->header->wsa__MessageID, getUUId());
 	}
@@ -775,10 +773,10 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 	soap->header->wsa__ReplyTo = 0;
 	soap->header->wsa__FaultTo = 0;
 	soap->header->wsdd__AppSequence = 0;
-	soap->header->wsa__To = (char*) soap_malloc(soap, 128);
+	soap->header->wsa__To = (char*) my_soap_malloc(soap, 128);
 	strcpy(soap->header->wsa__To,
 			"http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous");
-	soap->header->wsa__Action = (char*) soap_malloc(soap, 128);
+	soap->header->wsa__Action = (char*) my_soap_malloc(soap, 128);
 	strcpy(soap->header->wsa__Action,
 			"http://schemas.xmlsoap.org/ws/2005/04/discovery/ProbeMatches");
 
@@ -1186,36 +1184,36 @@ soap_wsdd_mode wsdd_event_Resolve(struct soap *soap, const char *MessageID,
 		const char *ReplyTo, const char *EndpointReference,
 		struct wsdd__ResolveMatchType *match) {
 	match->wsa__EndpointReference.ReferenceProperties =
-			(struct wsa__ReferencePropertiesType*) soap_malloc(soap,
+			(struct wsa__ReferencePropertiesType*) my_soap_malloc(soap,
 					sizeof(struct wsa__ReferencePropertiesType));
 	match->wsa__EndpointReference.ReferenceProperties->__size = 0;
 	match->wsa__EndpointReference.ReferenceProperties->__any = NULL;
 	match->wsa__EndpointReference.ReferenceParameters =
-			(struct wsa__ReferenceParametersType*) soap_malloc(soap,
+			(struct wsa__ReferenceParametersType*) my_soap_malloc(soap,
 					sizeof(struct wsa__ReferenceParametersType));
 	match->wsa__EndpointReference.ReferenceParameters->__size = 0;
 	match->wsa__EndpointReference.ReferenceParameters->__any = NULL;
-	match->wsa__EndpointReference.PortType = (char **) soap_malloc(soap,
+	match->wsa__EndpointReference.PortType = (char **) my_soap_malloc(soap,
 			sizeof(char*) * SMALL_INFO_LENGTH);
-	match->wsa__EndpointReference.PortType[0] = (char *) soap_malloc(soap,
+	match->wsa__EndpointReference.PortType[0] = (char *) my_soap_malloc(soap,
 			sizeof(char) * SMALL_INFO_LENGTH);
 	strcpy(match->wsa__EndpointReference.PortType[0], "ttl");
 	match->wsa__EndpointReference.ServiceName =
-			(struct wsa__ServiceNameType*) soap_malloc(soap,
+			(struct wsa__ServiceNameType*) my_soap_malloc(soap,
 					sizeof(struct wsa__ServiceNameType));
 	match->wsa__EndpointReference.ServiceName->__item = NULL;
 	match->wsa__EndpointReference.ServiceName->PortName = NULL;
 	match->wsa__EndpointReference.ServiceName->__anyAttribute = NULL;
-	match->wsa__EndpointReference.__any = (char **) soap_malloc(soap,
+	match->wsa__EndpointReference.__any = (char **) my_soap_malloc(soap,
 			sizeof(char*) * SMALL_INFO_LENGTH);
-	match->wsa__EndpointReference.__any[0] = (char *) soap_malloc(soap,
+	match->wsa__EndpointReference.__any[0] = (char *) my_soap_malloc(soap,
 			sizeof(char) * SMALL_INFO_LENGTH);
 	strcpy(match->wsa__EndpointReference.__any[0], "Any");
-	match->wsa__EndpointReference.__anyAttribute = (char *) soap_malloc(soap,
+	match->wsa__EndpointReference.__anyAttribute = (char *) my_soap_malloc(soap,
 			sizeof(char) * SMALL_INFO_LENGTH);
 	strcpy(match->wsa__EndpointReference.__anyAttribute, "Attribute");
 	match->wsa__EndpointReference.__size = 0;
-	match->wsa__EndpointReference.Address = (char *) soap_malloc(soap,
+	match->wsa__EndpointReference.Address = (char *) my_soap_malloc(soap,
 			sizeof(char) * INFO_LENGTH);
 	strcpy(match->wsa__EndpointReference.Address, onvifRunParam.urnHardwareId);
 	return SOAP_WSDD_MANAGED;
