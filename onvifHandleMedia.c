@@ -151,6 +151,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSources(struct soap* soap,
 	int i = 0;
 	for (i = 0; i < size1; i++) {
 		OnvifVideoChannelInfo onvifVideoChannelInfo;
+		onvifVideoChannelInfo.channelNo = i;
 		ret = getVideoChannelInfo(&onvifVideoChannelInfo);
 		if (!isRetCodeSuccess(ret)) {
 			return getOnvifSoapActionFailedCode(soap, "GetVideoSources",
@@ -371,6 +372,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfiles(struct soap* soap,
 	int i;
 	for (i = 0; i < size; i++) {
 		OnvifVideoChannelInfo onvifVideoChannelInfo;
+		onvifVideoChannelInfo.channelNo = i;
 		ret = getVideoChannelInfo(&onvifVideoChannelInfo);
 		if (!isRetCodeSuccess(ret)) {
 			return getOnvifSoapActionFailedCode(soap, "GetVideoSources",
