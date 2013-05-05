@@ -69,33 +69,32 @@ void getVideoSourcesResponseVideoSource(struct soap* soap,
 		struct tt__VideoSource* videoSource,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
 	videoSource->Framerate = onvifVideoChannelInfo->frame_rate;
-	videoSource->Resolution = (struct tt__VideoResolution *) soap_malloc(soap,
+	videoSource->Resolution = (struct tt__VideoResolution *) my_soap_malloc(soap,
 			sizeof(struct tt__VideoResolution));
 	videoSource->Resolution->Height = onvifVideoChannelInfo->height;
 	videoSource->Resolution->Width = onvifVideoChannelInfo->width;
-	videoSource->token = (char *) soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-	memset(videoSource->token, 0, sizeof(char) * INFO_LENGTH);
+	videoSource->token = (char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
 	getVideoSourceToken(videoSource->token, index); //注意这里需要和GetProfile中的sourcetoken相同
 
-	videoSource->Imaging = (struct tt__ImagingSettings*) soap_malloc(soap,
+	videoSource->Imaging = (struct tt__ImagingSettings*) my_soap_malloc(soap,
 			sizeof(struct tt__ImagingSettings));
-	videoSource->Imaging->Brightness = (float*) soap_malloc(soap,
+	videoSource->Imaging->Brightness = (float*) my_soap_malloc(soap,
 			sizeof(float));
 	videoSource->Imaging->Brightness[0] = onvifVideoChannelInfo->bright;
-	videoSource->Imaging->ColorSaturation = (float*) soap_malloc(soap,
+	videoSource->Imaging->ColorSaturation = (float*) my_soap_malloc(soap,
 			sizeof(float));
 	videoSource->Imaging->ColorSaturation[0] =
 			onvifVideoChannelInfo->saturation;
-	videoSource->Imaging->Contrast = (float*) soap_malloc(soap, sizeof(float));
+	videoSource->Imaging->Contrast = (float*) my_soap_malloc(soap, sizeof(float));
 	videoSource->Imaging->Contrast[0] = onvifVideoChannelInfo->contrast;
 	videoSource->Imaging->IrCutFilter =
-			(enum tt__IrCutFilterMode *) soap_malloc(soap,
+			(enum tt__IrCutFilterMode *) my_soap_malloc(soap,
 					sizeof(enum tt__IrCutFilterMode));
 	*videoSource->Imaging->IrCutFilter = 0;
-	videoSource->Imaging->Sharpness = (float*) soap_malloc(soap, sizeof(float));
+	videoSource->Imaging->Sharpness = (float*) my_soap_malloc(soap, sizeof(float));
 	videoSource->Imaging->Sharpness[0] = onvifVideoChannelInfo->sharpness;
 	videoSource->Imaging->BacklightCompensation =
-			(struct tt__BacklightCompensation*) soap_malloc(soap,
+			(struct tt__BacklightCompensation*) my_soap_malloc(soap,
 					sizeof(struct tt__BacklightCompensation));
 	videoSource->Imaging->BacklightCompensation->Mode =
 			getOnvifBacklightCompensationMode(
@@ -105,13 +104,13 @@ void getVideoSourcesResponseVideoSource(struct soap* soap,
 	videoSource->Imaging->Exposure = NULL;
 	videoSource->Imaging->Focus = NULL;
 	videoSource->Imaging->WideDynamicRange =
-			(struct tt__WideDynamicRange*) soap_malloc(soap,
+			(struct tt__WideDynamicRange*) my_soap_malloc(soap,
 					sizeof(struct tt__WideDynamicRange));
 	videoSource->Imaging->WideDynamicRange->Mode = getOnvifWideDynamicMode(
 			onvifVideoChannelInfo->wideDynamicMode);
 	videoSource->Imaging->WideDynamicRange->Level =
 			onvifVideoChannelInfo->wideDynamicLevel;
-	videoSource->Imaging->WhiteBalance = (struct tt__WhiteBalance*) soap_malloc(
+	videoSource->Imaging->WhiteBalance = (struct tt__WhiteBalance*) my_soap_malloc(
 			soap, sizeof(struct tt__WhiteBalance));
 	videoSource->Imaging->WhiteBalance->Mode = getOnvifWhiteBalanceMode(
 			onvifVideoChannelInfo->wbMode);
@@ -126,15 +125,9 @@ void getVideoSourcesResponseVideoSource(struct soap* soap,
 void getResponseProfileInfoVideoEncoderConfiguration(struct soap* soap,
 		struct tt__VideoEncoderConfiguration * videoEncoderConfiguration,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
-	memset(videoEncoderConfiguration, 0,
-			sizeof(struct tt__VideoEncoderConfiguration));
-	videoEncoderConfiguration->Name = (char *) soap_malloc(soap,
+	videoEncoderConfiguration->Name = (char *) my_soap_malloc(soap,
 			sizeof(char) * SMALL_INFO_LENGTH);
-	memset(videoEncoderConfiguration->Name, 0,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	videoEncoderConfiguration->token = (char *) soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	memset(videoEncoderConfiguration->token, 0,
+	videoEncoderConfiguration->token = (char *) my_soap_malloc(soap,
 			sizeof(char) * SMALL_INFO_LENGTH);
 	getVEName(videoEncoderConfiguration->Name, index);
 	getVEToken(videoEncoderConfiguration->token, index);
@@ -143,18 +136,14 @@ void getResponseProfileInfoVideoEncoderConfiguration(struct soap* soap,
 	videoEncoderConfiguration->Encoding = getVideoEncodeType(
 			onvifVideoChannelInfo->enc_type);
 	videoEncoderConfiguration->Resolution =
-			(struct tt__VideoResolution *) soap_malloc(soap,
+			(struct tt__VideoResolution *) my_soap_malloc(soap,
 					sizeof(struct tt__VideoResolution));
-	memset(videoEncoderConfiguration->Resolution, 0,
-			sizeof(struct tt__VideoResolution));
 	videoEncoderConfiguration->Resolution->Height =
 			onvifVideoChannelInfo->height;
 	videoEncoderConfiguration->Resolution->Width = onvifVideoChannelInfo->width;
 	videoEncoderConfiguration->RateControl =
-			(struct tt__VideoRateControl *) soap_malloc(soap,
+			(struct tt__VideoRateControl *) my_soap_malloc(soap,
 					sizeof(struct tt__VideoRateControl));
-	memset(videoEncoderConfiguration->RateControl, 0,
-			sizeof(struct tt__VideoRateControl));
 	videoEncoderConfiguration->RateControl->FrameRateLimit =
 			onvifVideoChannelInfo->frame_rate;
 	videoEncoderConfiguration->RateControl->EncodingInterval = 1;
@@ -166,20 +155,16 @@ void getResponseProfileInfoVideoEncoderConfiguration(struct soap* soap,
 	/*可选项，可以不配置*/
 	if (tt__VideoEncoding__MPEG4 == videoEncoderConfiguration->Encoding) {
 		videoEncoderConfiguration->MPEG4 =
-				(struct tt__Mpeg4Configuration *) soap_malloc(soap,
+				(struct tt__Mpeg4Configuration *) my_soap_malloc(soap,
 						sizeof(struct tt__Mpeg4Configuration));
-		memset(videoEncoderConfiguration->MPEG4, 0,
-				sizeof(struct tt__Mpeg4Configuration));
 		videoEncoderConfiguration->MPEG4->GovLength =
 				onvifVideoChannelInfo->govLength;
 		videoEncoderConfiguration->MPEG4->Mpeg4Profile =
 				onvifVideoChannelInfo->videoEncodeProfile;
 	} else if (tt__VideoEncoding__H264 == videoEncoderConfiguration->Encoding) {
 		videoEncoderConfiguration->H264 =
-				(struct tt__H264Configuration *) soap_malloc(soap,
+				(struct tt__H264Configuration *) my_soap_malloc(soap,
 						sizeof(struct tt__H264Configuration));
-		memset(videoEncoderConfiguration->H264, 0,
-				sizeof(struct tt__H264Configuration));
 		videoEncoderConfiguration->H264->GovLength =
 				onvifVideoChannelInfo->govLength;
 		videoEncoderConfiguration->H264->H264Profile =
@@ -187,15 +172,13 @@ void getResponseProfileInfoVideoEncoderConfiguration(struct soap* soap,
 	}
 
 	videoEncoderConfiguration->Multicast =
-			(struct tt__MulticastConfiguration *) soap_malloc(soap,
+			(struct tt__MulticastConfiguration *) my_soap_malloc(soap,
 					sizeof(struct tt__MulticastConfiguration));
-	memset(videoEncoderConfiguration->Multicast, 0,
-			sizeof(struct tt__MulticastConfiguration));
 	videoEncoderConfiguration->Multicast->Address =
-			(struct tt__IPAddress *) soap_malloc(soap,
+			(struct tt__IPAddress *) my_soap_malloc(soap,
 					sizeof(struct tt__IPAddress));
 	videoEncoderConfiguration->Multicast->Address->IPv4Address =
-			(char *) soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+			(char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
 	videoEncoderConfiguration->Multicast->Address->IPv6Address = NULL;
 	videoEncoderConfiguration->Multicast->Address->Type = tt__IPType__IPv4;
 	videoEncoderConfiguration->Multicast->Port =
@@ -216,13 +199,11 @@ void getResponseProfileInfoVideoEncoderConfiguration(struct soap* soap,
 void getResponseProfileInfoVideoSourceConfiguration(struct soap* soap,
 		struct tt__VideoSourceConfiguration * videoSourceConfiguration,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
-	memset(videoSourceConfiguration, 0,
-			sizeof(struct tt__VideoSourceConfiguration));
-	videoSourceConfiguration->Name = (char *) soap_malloc(soap,
+	videoSourceConfiguration->Name = (char *) my_soap_malloc(soap,
 			sizeof(char) * SMALL_INFO_LENGTH);
-	videoSourceConfiguration->token = (char *) soap_malloc(soap,
+	videoSourceConfiguration->token = (char *) my_soap_malloc(soap,
 			sizeof(char) * SMALL_INFO_LENGTH);
-	videoSourceConfiguration->SourceToken = (char *) soap_malloc(soap,
+	videoSourceConfiguration->SourceToken = (char *) my_soap_malloc(soap,
 			sizeof(char) * INFO_LENGTH);
 	/*注意SourceToken*/
 	getVEName(videoSourceConfiguration->Name, index);
@@ -232,7 +213,7 @@ void getResponseProfileInfoVideoSourceConfiguration(struct soap* soap,
 	videoSourceConfiguration->__any = NULL;
 	videoSourceConfiguration->__anyAttribute = NULL;
 	videoSourceConfiguration->__size = 0;
-	videoSourceConfiguration->Bounds = (struct tt__IntRectangle *) soap_malloc(
+	videoSourceConfiguration->Bounds = (struct tt__IntRectangle *) my_soap_malloc(
 			soap, sizeof(struct tt__IntRectangle));
 	videoSourceConfiguration->UseCount = 1;
 	videoSourceConfiguration->Bounds->x = 1;
@@ -243,16 +224,13 @@ void getResponseProfileInfoVideoSourceConfiguration(struct soap* soap,
 
 void getResponseProfileInfo(struct soap* soap, struct tt__Profile* destProfile,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
-	memset(destProfile, 0, sizeof(struct tt__Profile));
-	destProfile->Name = (char *) soap_malloc(soap,
+	destProfile->Name = (char *) my_soap_malloc(soap,
 			sizeof(char) * SMALL_INFO_LENGTH);
-	memset(destProfile->Name, 0, sizeof(char) * SMALL_INFO_LENGTH);
 	getResponseProfileName(destProfile->Name, index);
-	destProfile->token = (char *) soap_malloc(soap,
+	destProfile->token = (char *) my_soap_malloc(soap,
 			sizeof(char) * SMALL_INFO_LENGTH);
-	memset(destProfile->token, 0, sizeof(char) * SMALL_INFO_LENGTH);
 	getResponseProfileToken(destProfile->token, index);
-	destProfile->fixed = (enum xsd__boolean *) soap_malloc(soap,
+	destProfile->fixed = (enum xsd__boolean *) my_soap_malloc(soap,
 			sizeof(enum xsd__boolean));
 	*destProfile->fixed = xsd__boolean__false_;
 	destProfile->__anyAttribute = NULL;
@@ -264,7 +242,7 @@ void getResponseProfileInfo(struct soap* soap, struct tt__Profile* destProfile,
 	destProfile->VideoEncoderConfiguration = NULL;
 #if 1
 	destProfile->VideoEncoderConfiguration =
-			(struct tt__VideoEncoderConfiguration *) soap_malloc(soap,
+			(struct tt__VideoEncoderConfiguration *) my_soap_malloc(soap,
 					sizeof(struct tt__VideoEncoderConfiguration));
 	getResponseProfileInfoVideoEncoderConfiguration(soap,
 			destProfile->VideoEncoderConfiguration, onvifVideoChannelInfo,
@@ -309,10 +287,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSources(struct soap* soap,
 	}
 	trt__GetVideoSourcesResponse->__sizeVideoSources = size1;
 	trt__GetVideoSourcesResponse->VideoSources =
-			(struct tt__VideoSource *) soap_malloc(soap,
+			(struct tt__VideoSource *) my_soap_malloc(soap,
 					sizeof(struct tt__VideoSource) * size1);
-	memset(trt__GetVideoSourcesResponse->VideoSources, 0,
-			sizeof(struct tt__VideoSource) * size1);
 	int i = 0;
 	for (i = 0; i < size1; i++) {
 		OnvifVideoChannelInfo onvifVideoChannelInfo;
@@ -385,7 +361,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfiles(struct soap* soap,
 		return getOnvifSoapActionFailedCode(soap, "GetProfiles",
 				"getVideCount failed");
 	}
-	trt__GetProfilesResponse->Profiles = (struct tt__Profile *) soap_malloc(
+	trt__GetProfilesResponse->Profiles = (struct tt__Profile *) my_soap_malloc(
 			soap, sizeof(struct tt__Profile) * size);
 	trt__GetProfilesResponse->__sizeProfiles = size;
 	int i;
@@ -947,9 +923,9 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetStreamUri(struct soap* soap,
 				"getVideoChannelStreamInfo failed");
 	}
 	/* Response */
-	trt__GetStreamUriResponse->MediaUri = (struct tt__MediaUri *) soap_malloc(
+	trt__GetStreamUriResponse->MediaUri = (struct tt__MediaUri *) my_soap_malloc(
 			soap, sizeof(struct tt__MediaUri));
-	trt__GetStreamUriResponse->MediaUri->Uri = (char *) soap_malloc(soap,
+	trt__GetStreamUriResponse->MediaUri->Uri = (char *) my_soap_malloc(soap,
 			sizeof(char) * LARGE_INFO_LENGTH);
 	strcpy(trt__GetStreamUriResponse->MediaUri->Uri,
 			onvifVideoChannelInfo.videoAddr);
@@ -990,9 +966,9 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetSnapshotUri(struct soap* soap,
 		struct _trt__GetSnapshotUri *trt__GetSnapshotUri,
 		struct _trt__GetSnapshotUriResponse *trt__GetSnapshotUriResponse) {
 	logInfo("__trt__GetSnapshotUri");
-	trt__GetSnapshotUriResponse->MediaUri = (struct tt__MediaUri *) soap_malloc(
+	trt__GetSnapshotUriResponse->MediaUri = (struct tt__MediaUri *) my_soap_malloc(
 			soap, sizeof(struct tt__MediaUri));
-	trt__GetSnapshotUriResponse->MediaUri->Uri = (char *) soap_malloc(soap,
+	trt__GetSnapshotUriResponse->MediaUri->Uri = (char *) my_soap_malloc(soap,
 			sizeof(char) * 200);
 	strcpy(trt__GetSnapshotUriResponse->MediaUri->Uri,
 			"http://avatar.csdn.net/7/E/1/1_ghostyu.jpg");
