@@ -15,6 +15,7 @@ void tearDown(void) {
 
 void test_StartOnvifApp() {
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, startOnvifApp());
+	sleep(1);
 	stopOnvifApp();
 }
 

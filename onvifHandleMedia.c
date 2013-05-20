@@ -271,7 +271,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetServiceCapabilities(
 		struct _trt__GetServiceCapabilitiesResponse *trt__GetServiceCapabilitiesResponse) {
 	logInfo("__trt__GetServiceCapabilities");
 	return getOnvifSoapActionNotSupportCode(soap, "GetServiceCapabilities",
-			NULL);
+			"not support");
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSources(struct soap* soap,

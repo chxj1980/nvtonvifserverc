@@ -31,7 +31,6 @@ int startDeviceService() {
 		logInfo("device service bind error");
 		return RET_CODE_ERROR_SOAP_BIND;
 	}
-	debugInfo("startDeviceService thread");
 	deviceServiceServiceInfo.m_Terminate = false;
 	int err = pthread_create(&deviceServiceServiceInfo.m_RunThread, NULL,
 			runDeviceServiceThreadMethod, NULL);
@@ -39,21 +38,16 @@ int startDeviceService() {
 		stopSoap(&deviceServiceServiceInfo.m_Soap);
 		return RET_CODE_ERROR_CREATE_THREAD;
 	}
-	debugInfo("startDeviceService sfs");
 	deviceServiceServiceInfo.m_Active = true;
 	return RET_CODE_SUCCESS;
 }
 
 void stopDeviceService() {
-	debugInfo("stopDeviceService 1");
 	if (!deviceServiceServiceInfo.m_Active)
 		return;
-	debugInfo("stopDeviceService 2");
 	deviceServiceServiceInfo.m_Terminate = true;
-
 	void* status;
 	pthread_join(deviceServiceServiceInfo.m_RunThread, &status);
-	debugInfo("stopDeviceService 3");
 	soap_done(&deviceServiceServiceInfo.m_Soap);
 	deviceServiceServiceInfo.m_Active = false;
 }
