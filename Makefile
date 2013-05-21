@@ -97,7 +97,7 @@ runtest: cleantest buildtest
 		./$(TESTSRC_DIR)/$$testrun1 ; \
 	done
 
-.PHONY: cleantest clean runtest testrunner buildtesttarget runapp
+.PHONY: cleantest clean runtest testrunner buildtesttarget runapp all
 
 runapp: $(TARGET)
 		./$(TARGET)

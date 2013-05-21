@@ -99,8 +99,12 @@ void stopOnvifApp() {
 
 int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo,
 		const char* faultDetail) {
-	return soap_receiver_fault_subcode(soap, "ter:ActionNotSupported",
-			faultInfo, faultDetail);
+	if (NULL == faultDetail)
+		return soap_receiver_fault_subcode(soap, "ter:ActionNotSupported",
+						faultInfo, "not support");
+	else
+		return soap_receiver_fault_subcode(soap, "ter:ActionNotSupported",
+				faultInfo, faultDetail);
 }
 
 int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo,

@@ -499,19 +499,16 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetWsdlUrl(struct soap* soap,
 	return getOnvifSoapActionNotSupportCode(soap, "GetWsdlUrl", NULL);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 getCapabilitiesResponseExtension(struct soap* soap,
-		struct _tds__GetCapabilitiesResponse *tds__GetCapabilitiesResponse,
+SOAP_FMAC5 int SOAP_FMAC6 getCapabilitiesResponseExtensionDeviceIO(struct soap* soap,
+		struct tt__CapabilitiesExtension *capabilitiesExtension,
 		char* address) {
-	tds__GetCapabilitiesResponse->Capabilities->Extension =
-			(struct tt__CapabilitiesExtension*) my_soap_malloc(soap,
-					sizeof(struct tt__CapabilitiesExtension));
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO =
+	capabilitiesExtension->DeviceIO =
 			(struct tt__DeviceIOCapabilities*) my_soap_malloc(soap,
 					sizeof(struct tt__DeviceIOCapabilities));
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->XAddr =
+	capabilitiesExtension->DeviceIO->XAddr =
 			(char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
 	strcpy(
-			tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->XAddr,
+			capabilitiesExtension->DeviceIO->XAddr,
 			address);
 	int vSource = 0;
 	int ret = getVideoCount(&vSource);
@@ -520,20 +517,31 @@ SOAP_FMAC5 int SOAP_FMAC6 getCapabilitiesResponseExtension(struct soap* soap,
 				"getVideCount failed");
 	}
 	//下面的重要，这里只实现视频流，需要设置VideoSources
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->VideoSources =
+	capabilitiesExtension->DeviceIO->VideoSources =
 			vSource;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->VideoOutputs =
+	capabilitiesExtension->DeviceIO->VideoOutputs =
 			0;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->AudioSources =
+	capabilitiesExtension->DeviceIO->AudioSources =
 			0;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->AudioOutputs =
+	capabilitiesExtension->DeviceIO->AudioOutputs =
 			0;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->RelayOutputs =
+	capabilitiesExtension->DeviceIO->RelayOutputs =
 			0;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->__size = 0;
-	tds__GetCapabilitiesResponse->Capabilities->Extension->DeviceIO->__any =
-			NULL;
+	capabilitiesExtension->DeviceIO->__size = 0;
+	capabilitiesExtension->DeviceIO->__any = NULL;
+	return SOAP_OK;
+}
 
+SOAP_FMAC5 int SOAP_FMAC6 getCapabilitiesResponseExtension(struct soap* soap,
+		struct _tds__GetCapabilitiesResponse *tds__GetCapabilitiesResponse,
+		char* address) {
+	tds__GetCapabilitiesResponse->Capabilities->Extension =
+			(struct tt__CapabilitiesExtension*) my_soap_malloc(soap,
+					sizeof(struct tt__CapabilitiesExtension));
+	int result = getCapabilitiesResponseExtensionDeviceIO(soap, tds__GetCapabilitiesResponse->Capabilities->Extension, address);
+	if (SOAP_OK != result) {
+		return result;
+	}
 	tds__GetCapabilitiesResponse->Capabilities->Extension->Display = NULL;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->Recording = NULL;
 	tds__GetCapabilitiesResponse->Capabilities->Extension->Search = NULL;
@@ -703,7 +711,7 @@ void getCapabilitiesResponseMedia(struct soap* soap,
 			sizeof(struct tt__MediaCapabilities));
 	capabilities->Media->XAddr = (char *) my_soap_malloc(soap,
 			sizeof(char) * LARGE_INFO_LENGTH);
-	strcpy(capabilities->Media->XAddr, address);
+	sprintf(capabilities->Media->XAddr, "%smedia/", address);
 	capabilities->Media->StreamingCapabilities =
 			(struct tt__RealTimeStreamingCapabilities*) my_soap_malloc(soap,
 					sizeof(struct tt__RealTimeStreamingCapabilities));
@@ -735,7 +743,7 @@ void getCapabilitiesResponsePTZ(struct soap* soap,
 			sizeof(struct tt__PTZCapabilities));
 	capabilities->PTZ->XAddr = (char *) my_soap_malloc(soap,
 			sizeof(char) * LARGE_INFO_LENGTH);
-	strcpy(capabilities->PTZ->XAddr, address);
+	sprintf(capabilities->PTZ->XAddr, "%sptz/", address);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,
