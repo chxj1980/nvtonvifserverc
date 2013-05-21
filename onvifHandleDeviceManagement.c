@@ -6,45 +6,49 @@
 #include "appTools.h"
 #include "logInfo.h"
 
+void getDeviceManagementServicesResponseService(struct soap* soap,
+		struct tds__Service *service, const char* nameSpace,
+		const char* address) {
+	service->XAddr = (char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+	service->Namespace = (char *) my_soap_malloc(soap,
+			sizeof(char) * INFO_LENGTH);
+	strcpy(service->Namespace, nameSpace);
+	strcpy(service->XAddr, address);
+	service->Capabilities = NULL;
+	service->Version = (struct tt__OnvifVersion *) my_soap_malloc(soap,
+			sizeof(struct tt__OnvifVersion));
+	service->Version->Major = ONVIF_VERSION_MAJOR;
+	service->Version->Minor = ONVIF_VERSION_MINOR;
+	service->__size = 0;
+	service->__anyAttribute = NULL;
+	service->__any = NULL;
+}
+
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 		struct _tds__GetServices *tds__GetServices,
 		struct _tds__GetServicesResponse *tds__GetServicesResponse) {
 	logInfo("__tds__GetServices");
 	char _xmAddr[INFO_LENGTH] = { 0 };
+	char* _services[] = {"event", "media", "ptz"};
+	char* _namespaces[] = {"http://www.onvif.org/ver10/events/wsdl", "http://www.onvif.org/ver10/media/wsdl", "http://www.onvif.org/ver20/ptz/wsdl"};
 	if (RET_CODE_SUCCESS
 			!= getServiceURL(_xmAddr, onvifRunParam.ip,
 					onvifRunParam.servicePort)) {
 		return getOnvifSoapActionFailedCode(soap, "GetServices",
 				"not get service url");
 	}
-	tds__GetServicesResponse->__sizeService = 1;
+	char serviceAddr[INFO_LENGTH] = { 0 };
+	int i;
 	if (!tds__GetServices->IncludeCapability) {
+		tds__GetServicesResponse->__sizeService = 3;
 		tds__GetServicesResponse->Service =
 				(struct tds__Service *) my_soap_malloc(soap,
-						sizeof(struct tds__Service));
-		tds__GetServicesResponse->Service[0].XAddr = (char *) my_soap_malloc(
-				soap, sizeof(char) * INFO_LENGTH);
-		tds__GetServicesResponse->Service[0].Namespace =
-				(char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-		strcpy(tds__GetServicesResponse->Service[0].Namespace,
-				"http://www.onvif.org/ver10/events/wsdl");
-		strcpy(tds__GetServicesResponse->Service[0].XAddr, _xmAddr);
-		tds__GetServicesResponse->Service[0].Capabilities = NULL;
-		tds__GetServicesResponse->Service[0].Version =
-				(struct tt__OnvifVersion *) my_soap_malloc(soap,
-						sizeof(struct tt__OnvifVersion));
-		tds__GetServicesResponse->Service[0].Version->Major =
-				ONVIF_VERSION_MAJOR;
-		tds__GetServicesResponse->Service[0].Version->Minor =
-				ONVIF_VERSION_MINOR;
-//		tds__GetServicesResponse->Service[0].__any = (char **)my_soap_malloc(soap, sizeof(char *));
-//		tds__GetServicesResponse->Service[0].__any[0] = (char *)my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-//		strcpy(tds__GetServicesResponse->Service[0].__any[0],"Any1");
-//		tds__GetServicesResponse->Service[0].__any[1] = (char *)my_soap_malloc(soap,sizeof(char) * INFO_LENGTH);
-//		strcpy(tds__GetServicesResponse->Service[0].__any[1],"Any2");
-		tds__GetServicesResponse->Service[0].__size = 0;
-		tds__GetServicesResponse->Service[0].__anyAttribute = NULL;
-		tds__GetServicesResponse->Service[0].__any = NULL;
+						sizeof(struct tds__Service) * tds__GetServicesResponse->__sizeService);
+		for(i = 0; i < tds__GetServicesResponse->__sizeService; i++) {
+			memset(serviceAddr, 0, INFO_LENGTH);
+			getAppointServiceURL(serviceAddr, _xmAddr, _services[i]);
+			getDeviceManagementServicesResponseService(soap, &(tds__GetServicesResponse->Service[i]), _namespaces[i], serviceAddr);
+		}
 		return SOAP_OK;
 	} else {
 		tds__GetServicesResponse->Service =
@@ -75,182 +79,158 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 	return SOAP_OK;
 }
 
-void getServiceCapabilitiesNetworkSettings(
-		struct soap* soap,
-		struct _tds__GetServiceCapabilitiesResponse *tds__GetServiceCapabilitiesResponse) {
+void getServiceCapabilitiesNetworkSettings(struct soap* soap,
+		struct tds__DeviceServiceCapabilities *deviceServiceCapabilities) {
 	/* NETWORK */
-	tds__GetServiceCapabilitiesResponse->Capabilities->Network =
+	deviceServiceCapabilities->Network =
 			(struct tds__NetworkCapabilities *) my_soap_malloc(soap,
 					sizeof(struct tds__NetworkCapabilities));
-	tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPFilter =
+	deviceServiceCapabilities->Network->IPFilter =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	tds__GetServiceCapabilitiesResponse->Capabilities->Network->ZeroConfiguration =
+	deviceServiceCapabilities->Network->ZeroConfiguration =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPVersion6 =
+	deviceServiceCapabilities->Network->IPVersion6 =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	tds__GetServiceCapabilitiesResponse->Capabilities->Network->DynDNS =
+	deviceServiceCapabilities->Network->DynDNS =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	tds__GetServiceCapabilitiesResponse->Capabilities->Network->Dot11Configuration =
+	deviceServiceCapabilities->Network->Dot11Configuration =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	tds__GetServiceCapabilitiesResponse->Capabilities->Network->HostnameFromDHCP =
+	deviceServiceCapabilities->Network->HostnameFromDHCP =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPFilter =
-			xsd__boolean__false_;
+	*deviceServiceCapabilities->Network->IPFilter = xsd__boolean__false_;
 
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Network->ZeroConfiguration =
+	*deviceServiceCapabilities->Network->ZeroConfiguration =
 			xsd__boolean__false_;
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Network->IPVersion6 =
+	*deviceServiceCapabilities->Network->IPVersion6 = xsd__boolean__false_;
+	*deviceServiceCapabilities->Network->DynDNS = xsd__boolean__false_;
+	*deviceServiceCapabilities->Network->Dot11Configuration =
 			xsd__boolean__false_;
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Network->DynDNS =
+	*deviceServiceCapabilities->Network->HostnameFromDHCP =
 			xsd__boolean__false_;
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Network->Dot11Configuration =
-			xsd__boolean__false_;
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Network->HostnameFromDHCP =
-			xsd__boolean__false_;
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Network->NTP = 1;
+	*deviceServiceCapabilities->Network->NTP = 1;
 }
 
-void getServiceCapabilitiesSystemSettings(
-		struct soap* soap,
-		struct _tds__GetServiceCapabilitiesResponse *tds__GetServiceCapabilitiesResponse) {
+void getServiceCapabilitiesSystemSettings(struct soap* soap,
+		struct tds__DeviceServiceCapabilities *deviceServiceCapabilities) {
 	/* SYSTEM */
-	tds__GetServiceCapabilitiesResponse->Capabilities->System =
+	deviceServiceCapabilities->System =
 			(struct tds__SystemCapabilities *) my_soap_malloc(soap,
 					sizeof(struct tds__SystemCapabilities));
-	tds__GetServiceCapabilitiesResponse->Capabilities->System->DiscoveryResolve =
+	deviceServiceCapabilities->System->DiscoveryResolve =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->System->DiscoveryResolve =
+	*deviceServiceCapabilities->System->DiscoveryResolve = xsd__boolean__false_;
+	deviceServiceCapabilities->System->DiscoveryBye =
+			(enum xsd__boolean *) my_soap_malloc(soap,
+					sizeof(enum xsd__boolean));
+	*deviceServiceCapabilities->System->DiscoveryBye = xsd__boolean__false_;
+	deviceServiceCapabilities->System->RemoteDiscovery =
+			(enum xsd__boolean *) my_soap_malloc(soap,
+					sizeof(enum xsd__boolean));
+	*deviceServiceCapabilities->System->RemoteDiscovery = xsd__boolean__false_;
+	deviceServiceCapabilities->System->SystemBackup =
+			(enum xsd__boolean *) my_soap_malloc(soap,
+					sizeof(enum xsd__boolean));
+	*deviceServiceCapabilities->System->SystemBackup = xsd__boolean__false_;
+	deviceServiceCapabilities->System->FirmwareUpgrade =
+			(enum xsd__boolean *) my_soap_malloc(soap,
+					sizeof(enum xsd__boolean));
+	*deviceServiceCapabilities->System->FirmwareUpgrade = xsd__boolean__false_;
+	deviceServiceCapabilities->System->SystemLogging =
+			(enum xsd__boolean *) my_soap_malloc(soap,
+					sizeof(enum xsd__boolean));
+	*deviceServiceCapabilities->System->SystemLogging = xsd__boolean__false_;
+	deviceServiceCapabilities->System->HttpSystemBackup =
+			(enum xsd__boolean *) my_soap_malloc(soap,
+					sizeof(enum xsd__boolean));
+	*deviceServiceCapabilities->System->HttpSystemBackup = xsd__boolean__false_;
+	deviceServiceCapabilities->System->HttpFirmwareUpgrade =
+			(enum xsd__boolean *) my_soap_malloc(soap,
+					sizeof(enum xsd__boolean));
+	*deviceServiceCapabilities->System->HttpFirmwareUpgrade =
 			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->System->DiscoveryBye =
+	deviceServiceCapabilities->System->HttpSystemLogging =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->System->DiscoveryBye =
+	*deviceServiceCapabilities->System->HttpSystemLogging =
 			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->System->RemoteDiscovery =
+	deviceServiceCapabilities->System->HttpSupportInformation =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->System->RemoteDiscovery =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->System->SystemBackup =
-			(enum xsd__boolean *) my_soap_malloc(soap,
-					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->System->SystemBackup =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->System->FirmwareUpgrade =
-			(enum xsd__boolean *) my_soap_malloc(soap,
-					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->System->FirmwareUpgrade =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->System->SystemLogging =
-			(enum xsd__boolean *) my_soap_malloc(soap,
-					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->System->SystemLogging =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSystemBackup =
-			(enum xsd__boolean *) my_soap_malloc(soap,
-					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSystemBackup =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpFirmwareUpgrade =
-			(enum xsd__boolean *) my_soap_malloc(soap,
-					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpFirmwareUpgrade =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSystemLogging =
-			(enum xsd__boolean *) my_soap_malloc(soap,
-					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSystemLogging =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSupportInformation =
-			(enum xsd__boolean *) my_soap_malloc(soap,
-					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->System->HttpSupportInformation =
+	*deviceServiceCapabilities->System->HttpSupportInformation =
 			xsd__boolean__false_;
 }
 
-void getServiceCapabilitiesSecuritySettings(
-		struct soap* soap,
-		struct _tds__GetServiceCapabilitiesResponse *tds__GetServiceCapabilitiesResponse) {
+void getServiceCapabilitiesSecuritySettings(struct soap* soap,
+		struct tds__DeviceServiceCapabilities *deviceServiceCapabilities) {
 	/* SECURITY */
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security =
+	deviceServiceCapabilities->Security =
 			(struct tds__SecurityCapabilities *) my_soap_malloc(soap,
 					sizeof(struct tds__SecurityCapabilities));
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->TLS1_x002e0 =
+	deviceServiceCapabilities->Security->TLS1_x002e0 =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->TLS1_x002e0 =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->TLS1_x002e1 =
+	*deviceServiceCapabilities->Security->TLS1_x002e0 = xsd__boolean__false_;
+	deviceServiceCapabilities->Security->TLS1_x002e1 =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->TLS1_x002e1 =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->TLS1_x002e2 =
+	*deviceServiceCapabilities->Security->TLS1_x002e1 = xsd__boolean__false_;
+	deviceServiceCapabilities->Security->TLS1_x002e2 =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->TLS1_x002e2 =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->OnboardKeyGeneration =
+	*deviceServiceCapabilities->Security->TLS1_x002e2 = xsd__boolean__false_;
+	deviceServiceCapabilities->Security->OnboardKeyGeneration =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->OnboardKeyGeneration =
+	*deviceServiceCapabilities->Security->OnboardKeyGeneration =
 			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->AccessPolicyConfig =
+	deviceServiceCapabilities->Security->AccessPolicyConfig =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->AccessPolicyConfig =
+	*deviceServiceCapabilities->Security->AccessPolicyConfig =
 			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->Dot1X =
+	deviceServiceCapabilities->Security->Dot1X =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->Dot1X =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->RemoteUserHandling =
+	*deviceServiceCapabilities->Security->Dot1X = xsd__boolean__false_;
+	deviceServiceCapabilities->Security->RemoteUserHandling =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->RemoteUserHandling =
+	*deviceServiceCapabilities->Security->RemoteUserHandling =
 			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->X_x002e509Token =
+	deviceServiceCapabilities->Security->X_x002e509Token =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->X_x002e509Token =
+	*deviceServiceCapabilities->Security->X_x002e509Token =
 			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->SAMLToken =
+	deviceServiceCapabilities->Security->SAMLToken =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->SAMLToken =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->KerberosToken =
+	*deviceServiceCapabilities->Security->SAMLToken = xsd__boolean__false_;
+	deviceServiceCapabilities->Security->KerberosToken =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->KerberosToken =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->UsernameToken =
+	*deviceServiceCapabilities->Security->KerberosToken = xsd__boolean__false_;
+	deviceServiceCapabilities->Security->UsernameToken =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->UsernameToken =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->HttpDigest =
+	*deviceServiceCapabilities->Security->UsernameToken = xsd__boolean__false_;
+	deviceServiceCapabilities->Security->HttpDigest =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->HttpDigest =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->RELToken =
+	*deviceServiceCapabilities->Security->HttpDigest = xsd__boolean__false_;
+	deviceServiceCapabilities->Security->RELToken =
 			(enum xsd__boolean *) my_soap_malloc(soap,
 					sizeof(enum xsd__boolean));
-	*tds__GetServiceCapabilitiesResponse->Capabilities->Security->RELToken =
-			xsd__boolean__false_;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->SupportedEAPMethods =
-			NULL;
-	tds__GetServiceCapabilitiesResponse->Capabilities->Security->__anyAttribute =
-			NULL;
+	*deviceServiceCapabilities->Security->RELToken = xsd__boolean__false_;
+	deviceServiceCapabilities->Security->SupportedEAPMethods = NULL;
+	deviceServiceCapabilities->Security->__anyAttribute = NULL;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServiceCapabilities(
@@ -263,11 +243,11 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServiceCapabilities(
 					sizeof(struct tds__DeviceServiceCapabilities));
 
 	getServiceCapabilitiesNetworkSettings(soap,
-			tds__GetServiceCapabilitiesResponse);
+			tds__GetServiceCapabilitiesResponse->Capabilities);
 	getServiceCapabilitiesSystemSettings(soap,
-			tds__GetServiceCapabilitiesResponse);
+			tds__GetServiceCapabilitiesResponse->Capabilities);
 	getServiceCapabilitiesSecuritySettings(soap,
-			tds__GetServiceCapabilitiesResponse);
+			tds__GetServiceCapabilitiesResponse->Capabilities);
 
 	return SOAP_OK;
 }
@@ -499,17 +479,15 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetWsdlUrl(struct soap* soap,
 	return getOnvifSoapActionNotSupportCode(soap, "GetWsdlUrl", NULL);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 getCapabilitiesResponseExtensionDeviceIO(struct soap* soap,
-		struct tt__CapabilitiesExtension *capabilitiesExtension,
-		char* address) {
+SOAP_FMAC5 int SOAP_FMAC6 getCapabilitiesResponseExtensionDeviceIO(
+		struct soap* soap,
+		struct tt__CapabilitiesExtension *capabilitiesExtension, char* address) {
 	capabilitiesExtension->DeviceIO =
 			(struct tt__DeviceIOCapabilities*) my_soap_malloc(soap,
 					sizeof(struct tt__DeviceIOCapabilities));
-	capabilitiesExtension->DeviceIO->XAddr =
-			(char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-	strcpy(
-			capabilitiesExtension->DeviceIO->XAddr,
-			address);
+	capabilitiesExtension->DeviceIO->XAddr = (char *) my_soap_malloc(soap,
+			sizeof(char) * INFO_LENGTH);
+	strcpy(capabilitiesExtension->DeviceIO->XAddr, address);
 	int vSource = 0;
 	int ret = getVideoCount(&vSource);
 	if (!isRetCodeSuccess(ret)) {
@@ -517,16 +495,11 @@ SOAP_FMAC5 int SOAP_FMAC6 getCapabilitiesResponseExtensionDeviceIO(struct soap* 
 				"getVideCount failed");
 	}
 	//下面的重要，这里只实现视频流，需要设置VideoSources
-	capabilitiesExtension->DeviceIO->VideoSources =
-			vSource;
-	capabilitiesExtension->DeviceIO->VideoOutputs =
-			0;
-	capabilitiesExtension->DeviceIO->AudioSources =
-			0;
-	capabilitiesExtension->DeviceIO->AudioOutputs =
-			0;
-	capabilitiesExtension->DeviceIO->RelayOutputs =
-			0;
+	capabilitiesExtension->DeviceIO->VideoSources = vSource;
+	capabilitiesExtension->DeviceIO->VideoOutputs = 0;
+	capabilitiesExtension->DeviceIO->AudioSources = 0;
+	capabilitiesExtension->DeviceIO->AudioOutputs = 0;
+	capabilitiesExtension->DeviceIO->RelayOutputs = 0;
 	capabilitiesExtension->DeviceIO->__size = 0;
 	capabilitiesExtension->DeviceIO->__any = NULL;
 	return SOAP_OK;
@@ -538,7 +511,8 @@ SOAP_FMAC5 int SOAP_FMAC6 getCapabilitiesResponseExtension(struct soap* soap,
 	tds__GetCapabilitiesResponse->Capabilities->Extension =
 			(struct tt__CapabilitiesExtension*) my_soap_malloc(soap,
 					sizeof(struct tt__CapabilitiesExtension));
-	int result = getCapabilitiesResponseExtensionDeviceIO(soap, tds__GetCapabilitiesResponse->Capabilities->Extension, address);
+	int result = getCapabilitiesResponseExtensionDeviceIO(soap,
+			tds__GetCapabilitiesResponse->Capabilities->Extension, address);
 	if (SOAP_OK != result) {
 		return result;
 	}
@@ -711,7 +685,7 @@ void getCapabilitiesResponseMedia(struct soap* soap,
 			sizeof(struct tt__MediaCapabilities));
 	capabilities->Media->XAddr = (char *) my_soap_malloc(soap,
 			sizeof(char) * LARGE_INFO_LENGTH);
-	sprintf(capabilities->Media->XAddr, "%smedia/", address);
+	getAppointServiceURL(capabilities->Media->XAddr, address, "media");
 	capabilities->Media->StreamingCapabilities =
 			(struct tt__RealTimeStreamingCapabilities*) my_soap_malloc(soap,
 					sizeof(struct tt__RealTimeStreamingCapabilities));
@@ -743,7 +717,7 @@ void getCapabilitiesResponsePTZ(struct soap* soap,
 			sizeof(struct tt__PTZCapabilities));
 	capabilities->PTZ->XAddr = (char *) my_soap_malloc(soap,
 			sizeof(char) * LARGE_INFO_LENGTH);
-	sprintf(capabilities->PTZ->XAddr, "%sptz/", address);
+	getAppointServiceURL(capabilities->PTZ->XAddr, address, "ptz");
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,

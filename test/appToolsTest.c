@@ -32,7 +32,7 @@ void test_IsValidHandle() {
 
 void test_ParseTimeZoneTimeStr() {
 	time_t t1;
-	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, parseTimeZoneTimeStr("2013-12-25 13:58:40", 7, 3, &t1));
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, parseTimeZoneTimeStr("2013-12-25 13:58:40", 3, &t1));
 
 }
 void test_IsRetCodeSuccess() {

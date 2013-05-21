@@ -88,6 +88,10 @@ int getServiceURL(char* value, const char* ip, const int port) {
 	return RET_CODE_SUCCESS;
 }
 
+void getAppointServiceURL(char* value, const char* serviceURL, const char* service) {
+	sprintf(value, "%s%s/", serviceURL, service);
+}
+
 bool isValidHandle(int handle) {
 	return (INVALID_HANDLE != handle);
 }
