@@ -29,8 +29,10 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 		struct _tds__GetServicesResponse *tds__GetServicesResponse) {
 	logInfo("__tds__GetServices");
 	char _xmAddr[INFO_LENGTH] = { 0 };
-	char* _services[] = {"event", "media", "ptz"};
-	char* _namespaces[] = {"http://www.onvif.org/ver10/events/wsdl", "http://www.onvif.org/ver10/media/wsdl", "http://www.onvif.org/ver20/ptz/wsdl"};
+	char* _services[] = { "event", "media", "ptz" };
+	char* _namespaces[] = { "http://www.onvif.org/ver10/events/wsdl",
+			"http://www.onvif.org/ver10/media/wsdl",
+			"http://www.onvif.org/ver20/ptz/wsdl" };
 	if (RET_CODE_SUCCESS
 			!= getServiceURL(_xmAddr, onvifRunParam.ip,
 					onvifRunParam.servicePort)) {
@@ -42,12 +44,16 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 	if (!tds__GetServices->IncludeCapability) {
 		tds__GetServicesResponse->__sizeService = 3;
 		tds__GetServicesResponse->Service =
-				(struct tds__Service *) my_soap_malloc(soap,
-						sizeof(struct tds__Service) * tds__GetServicesResponse->__sizeService);
-		for(i = 0; i < tds__GetServicesResponse->__sizeService; i++) {
+				(struct tds__Service *) my_soap_malloc(
+						soap,
+						sizeof(struct tds__Service)
+								* tds__GetServicesResponse->__sizeService);
+		for (i = 0; i < tds__GetServicesResponse->__sizeService; i++) {
 			memset(serviceAddr, 0, INFO_LENGTH);
 			getAppointServiceURL(serviceAddr, _xmAddr, _services[i]);
-			getDeviceManagementServicesResponseService(soap, &(tds__GetServicesResponse->Service[i]), _namespaces[i], serviceAddr);
+			getDeviceManagementServicesResponseService(soap,
+					&(tds__GetServicesResponse->Service[i]), _namespaces[i],
+					serviceAddr);
 		}
 		return SOAP_OK;
 	} else {
@@ -286,7 +292,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemDateAndTime(
 		struct _tds__SetSystemDateAndTime *tds__SetSystemDateAndTime,
 		struct _tds__SetSystemDateAndTimeResponse *tds__SetSystemDateAndTimeResponse) {
 	logInfo("__tds__SetSystemDateAndTime");
-	return getOnvifSoapActionNotSupportCode(soap, "SetSystemDateAndTime", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager Device Manager SetSystemDateAndTime", NULL);
 
 }
 
@@ -295,7 +302,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemDateAndTime(
 		struct _tds__GetSystemDateAndTime *tds__GetSystemDateAndTime,
 		struct _tds__GetSystemDateAndTimeResponse *tds__GetSystemDateAndTimeResponse) {
 	logInfo("__tds__GetSystemDateAndTime");
-	return getOnvifSoapActionNotSupportCode(soap, "GetSystemDateAndTime", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetSystemDateAndTime", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemFactoryDefault(
@@ -315,7 +323,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__UpgradeSystemFirmware(
 		struct _tds__UpgradeSystemFirmware *tds__UpgradeSystemFirmware,
 		struct _tds__UpgradeSystemFirmwareResponse *tds__UpgradeSystemFirmwareResponse) {
 	logInfo("__tds__UpgradeSystemFirmware");
-	return getOnvifSoapActionNotSupportCode(soap, "UpgradeSystemFirmware", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager UpgradeSystemFirmware", NULL);
 
 }
 
@@ -337,21 +346,24 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__RestoreSystem(struct soap* soap,
 		struct _tds__RestoreSystem *tds__RestoreSystem,
 		struct _tds__RestoreSystemResponse *tds__RestoreSystemResponse) {
 	logInfo("__tds__RestoreSystem");
-	return getOnvifSoapActionNotSupportCode(soap, "RestoreSystem", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager RestoreSystem", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemBackup(struct soap* soap,
 		struct _tds__GetSystemBackup *tds__GetSystemBackup,
 		struct _tds__GetSystemBackupResponse *tds__GetSystemBackupResponse) {
 	logInfo("__tds__GetSystemBackup");
-	return getOnvifSoapActionNotSupportCode(soap, "RestoreSystem", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager RestoreSystem", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemLog(struct soap* soap,
 		struct _tds__GetSystemLog *tds__GetSystemLog,
 		struct _tds__GetSystemLogResponse *tds__GetSystemLogResponse) {
 	logInfo("__tds__GetSystemLog");
-	return getOnvifSoapActionNotSupportCode(soap, "GetSystemLog", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager GetSystemLog",
+			NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemSupportInformation(
@@ -359,8 +371,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemSupportInformation(
 		struct _tds__GetSystemSupportInformation *tds__GetSystemSupportInformation,
 		struct _tds__GetSystemSupportInformationResponse *tds__GetSystemSupportInformationResponse) {
 	logInfo("__tds__GetSystemSupportInformation");
-	return getOnvifSoapActionNotSupportCode(soap, "GetSystemSupportInformation",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetSystemSupportInformation", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetScopes(struct soap* soap,
@@ -381,102 +393,116 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetScopes(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetScopes(struct soap* soap,
 		struct _tds__SetScopes *tds__SetScopes,
 		struct _tds__SetScopesResponse *tds__SetScopesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetScopes", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager SetScopes",
+			NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__AddScopes(struct soap* soap,
 		struct _tds__AddScopes *tds__AddScopes,
 		struct _tds__AddScopesResponse *tds__AddScopesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "AddScopes", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager AddScopes",
+			NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__RemoveScopes(struct soap* soap,
 		struct _tds__RemoveScopes *tds__RemoveScopes,
 		struct _tds__RemoveScopesResponse *tds__RemoveScopesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "RemoveScopes", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager RemoveScopes",
+			NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDiscoveryMode(struct soap* soap,
 		struct _tds__GetDiscoveryMode *tds__GetDiscoveryMode,
 		struct _tds__GetDiscoveryModeResponse *tds__GetDiscoveryModeResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetDiscoveryMode", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetDiscoveryMode", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDiscoveryMode(struct soap* soap,
 		struct _tds__SetDiscoveryMode *tds__SetDiscoveryMode,
 		struct _tds__SetDiscoveryModeResponse *tds__SetDiscoveryModeResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDiscoveryMode", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetDiscoveryMode", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetRemoteDiscoveryMode(
 		struct soap* soap,
 		struct _tds__GetRemoteDiscoveryMode *tds__GetRemoteDiscoveryMode,
 		struct _tds__GetRemoteDiscoveryModeResponse *tds__GetRemoteDiscoveryModeResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetRemoteDiscoveryMode",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetRemoteDiscoveryMode", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetRemoteDiscoveryMode(
 		struct soap* soap,
 		struct _tds__SetRemoteDiscoveryMode *tds__SetRemoteDiscoveryMode,
 		struct _tds__SetRemoteDiscoveryModeResponse *tds__SetRemoteDiscoveryModeResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetRemoteDiscoveryMode",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetRemoteDiscoveryMode", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDPAddresses(struct soap* soap,
 		struct _tds__GetDPAddresses *tds__GetDPAddresses,
 		struct _tds__GetDPAddressesResponse *tds__GetDPAddressesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetDPAddresses", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetDPAddresses", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetEndpointReference(
 		struct soap* soap,
 		struct _tds__GetEndpointReference *tds__GetEndpointReference,
 		struct _tds__GetEndpointReferenceResponse *tds__GetEndpointReferenceResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetEndpointReference", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetEndpointReference", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetRemoteUser(struct soap* soap,
 		struct _tds__GetRemoteUser *tds__GetRemoteUser,
 		struct _tds__GetRemoteUserResponse *tds__GetRemoteUserResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetRemoteUser", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetRemoteUser", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetRemoteUser(struct soap* soap,
 		struct _tds__SetRemoteUser *tds__SetRemoteUser,
 		struct _tds__SetRemoteUserResponse *tds__SetRemoteUserResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetRemoteUser", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetRemoteUser", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetUsers(struct soap* soap,
 		struct _tds__GetUsers *tds__GetUsers,
 		struct _tds__GetUsersResponse *tds__GetUsersResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetUsers", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager GetUsers",
+			NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__CreateUsers(struct soap* soap,
 		struct _tds__CreateUsers *tds__CreateUsers,
 		struct _tds__CreateUsersResponse *tds__CreateUsersResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "CreateUsers", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager CreateUsers",
+			NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__DeleteUsers(struct soap* soap,
 		struct _tds__DeleteUsers *tds__DeleteUsers,
 		struct _tds__DeleteUsersResponse *tds__DeleteUsersResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "DeleteUsers", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager DeleteUsers",
+			NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetUser(struct soap* soap,
 		struct _tds__SetUser *tds__SetUser,
 		struct _tds__SetUserResponse *tds__SetUserResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetUser", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager SetUser",
+			NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetWsdlUrl(struct soap* soap,
 		struct _tds__GetWsdlUrl *tds__GetWsdlUrl,
 		struct _tds__GetWsdlUrlResponse *tds__GetWsdlUrlResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetWsdlUrl", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager GetWsdlUrl",
+			NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 getCapabilitiesResponseExtensionDeviceIO(
@@ -712,7 +738,6 @@ void getCapabilitiesResponseMedia(struct soap* soap,
 
 void getCapabilitiesResponsePTZ(struct soap* soap,
 		struct tt__Capabilities *capabilities, char* address) {
-	//想要对接RTSP视频，必须设置Media
 	capabilities->PTZ = (struct tt__PTZCapabilities*) my_soap_malloc(soap,
 			sizeof(struct tt__PTZCapabilities));
 	capabilities->PTZ->XAddr = (char *) my_soap_malloc(soap,
@@ -763,7 +788,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDPAddresses(struct soap* soap,
 		struct _tds__SetDPAddresses *tds__SetDPAddresses,
 		struct _tds__SetDPAddressesResponse *tds__SetDPAddressesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDPAddresses", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetDPAddresses", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetHostname(struct soap* soap,
@@ -797,19 +823,20 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetHostnameFromDHCP(
 		struct soap* soap,
 		struct _tds__SetHostnameFromDHCP *tds__SetHostnameFromDHCP,
 		struct _tds__SetHostnameFromDHCPResponse *tds__SetHostnameFromDHCPResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetHostnameFromDHCP", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetHostnameFromDHCP", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDNS(struct soap* soap,
 		struct _tds__GetDNS *tds__GetDNS,
 		struct _tds__GetDNSResponse *tds__GetDNSResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager GetDNS", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDNS(struct soap* soap,
 		struct _tds__SetDNS *tds__SetDNS,
 		struct _tds__SetDNSResponse *tds__SetDNSResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap, "Device Manager SetDNS", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetNTP(struct soap* soap,
@@ -818,7 +845,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetNTP(struct soap* soap,
 	logInfo("__tds__GetNTP");
 	OnvifNTPInfo info;
 	if (RET_CODE_SUCCESS != getNTPInfo(&info)) {
-		return getOnvifSoapActionNotSupportCode(soap, "GetNTP",
+		return getOnvifSoapActionNotSupportCode(soap, "Device Manager GetNTP",
 				"get ntp info error");
 	}
 	struct tt__NTPInformation *pNTPInformation =
@@ -846,7 +873,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetNTP(struct soap* soap,
 		struct _tds__SetNTPResponse *tds__SetNTPResponse) {
 	logInfo("__tds__SetNTP");
 	if (xsd__boolean__true_ == tds__SetNTP->FromDHCP) {
-		return getOnvifSoapActionNotSupportCode(soap, "SetNTP",
+		return getOnvifSoapActionNotSupportCode(soap, "Device Manager SetNTP",
 				"DHCPNotSupported");
 	}
 	if (tt__NetworkHostType__IPv4 == tds__SetNTP->NTPManual->Type) {
@@ -864,10 +891,10 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetNTP(struct soap* soap,
 					"invalidIPv4Address IPv4");
 		}
 	} else if (tt__NetworkHostType__IPv6 == tds__SetNTP->NTPManual->Type) {
-		return getOnvifSoapActionNotSupportCode(soap, "SetNTP",
+		return getOnvifSoapActionNotSupportCode(soap, "Device Manager SetNTP",
 				"No Support IPv6");
 	} else if (tt__NetworkHostType__DNS == tds__SetNTP->NTPManual->Type) {
-		return getOnvifSoapActionNotSupportCode(soap, "SetNTP",
+		return getOnvifSoapActionNotSupportCode(soap, "Device Manager SetNTP",
 				"No Support DNS");
 	}
 	return SOAP_OK;
@@ -877,207 +904,232 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDynamicDNS(struct soap* soap,
 		struct _tds__GetDynamicDNS *tds__GetDynamicDNS,
 		struct _tds__GetDynamicDNSResponse *tds__GetDynamicDNSResponse) {
 	logInfo("__tds__GetDynamicDNS");
-	return getOnvifSoapActionNotSupportCode(soap, "GetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetDynamicDNS", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDynamicDNS(struct soap* soap,
 		struct _tds__SetDynamicDNS *tds__SetDynamicDNS,
 		struct _tds__SetDynamicDNSResponse *tds__SetDynamicDNSResponse) {
 	logInfo("__tds__SetDynamicDNS");
-	return getOnvifSoapActionNotSupportCode(soap, "SetDynamicDNS", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetDynamicDNS", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetNetworkInterfaces(
 		struct soap* soap,
 		struct _tds__GetNetworkInterfaces *tds__GetNetworkInterfaces,
 		struct _tds__GetNetworkInterfacesResponse *tds__GetNetworkInterfacesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetNetworkInterfaces", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetNetworkInterfaces", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetNetworkInterfaces(
 		struct soap* soap,
 		struct _tds__SetNetworkInterfaces *tds__SetNetworkInterfaces,
 		struct _tds__SetNetworkInterfacesResponse *tds__SetNetworkInterfacesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetNetworkInterfaces", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetNetworkInterfaces", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetNetworkProtocols(
 		struct soap* soap,
 		struct _tds__GetNetworkProtocols *tds__GetNetworkProtocols,
 		struct _tds__GetNetworkProtocolsResponse *tds__GetNetworkProtocolsResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetNetworkProtocols", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetNetworkProtocols", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetNetworkProtocols(
 		struct soap* soap,
 		struct _tds__SetNetworkProtocols *tds__SetNetworkProtocols,
 		struct _tds__SetNetworkProtocolsResponse *tds__SetNetworkProtocolsResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetNetworkProtocols", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetNetworkProtocols", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetNetworkDefaultGateway(
 		struct soap* soap,
 		struct _tds__GetNetworkDefaultGateway *tds__GetNetworkDefaultGateway,
 		struct _tds__GetNetworkDefaultGatewayResponse *tds__GetNetworkDefaultGatewayResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetNetworkDefaultGateway",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetNetworkDefaultGateway", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetNetworkDefaultGateway(
 		struct soap* soap,
 		struct _tds__SetNetworkDefaultGateway *tds__SetNetworkDefaultGateway,
 		struct _tds__SetNetworkDefaultGatewayResponse *tds__SetNetworkDefaultGatewayResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetNetworkDefaultGateway",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetNetworkDefaultGateway", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetZeroConfiguration(
 		struct soap* soap,
 		struct _tds__GetZeroConfiguration *tds__GetZeroConfiguration,
 		struct _tds__GetZeroConfigurationResponse *tds__GetZeroConfigurationResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetZeroConfiguration", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetZeroConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetZeroConfiguration(
 		struct soap* soap,
 		struct _tds__SetZeroConfiguration *tds__SetZeroConfiguration,
 		struct _tds__SetZeroConfigurationResponse *tds__SetZeroConfigurationResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetZeroConfiguration", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetZeroConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetIPAddressFilter(
 		struct soap* soap,
 		struct _tds__GetIPAddressFilter *tds__GetIPAddressFilter,
 		struct _tds__GetIPAddressFilterResponse *tds__GetIPAddressFilterResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetIPAddressFilter", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetIPAddressFilter", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetIPAddressFilter(
 		struct soap* soap,
 		struct _tds__SetIPAddressFilter *tds__SetIPAddressFilter,
 		struct _tds__SetIPAddressFilterResponse *tds__SetIPAddressFilterResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetIPAddressFilter", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetIPAddressFilter", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__AddIPAddressFilter(
 		struct soap* soap,
 		struct _tds__AddIPAddressFilter *tds__AddIPAddressFilter,
 		struct _tds__AddIPAddressFilterResponse *tds__AddIPAddressFilterResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "AddIPAddressFilter", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager AddIPAddressFilter", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__RemoveIPAddressFilter(
 		struct soap* soap,
 		struct _tds__RemoveIPAddressFilter *tds__RemoveIPAddressFilter,
 		struct _tds__RemoveIPAddressFilterResponse *tds__RemoveIPAddressFilterResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "RemoveIPAddressFilter", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager RemoveIPAddressFilter", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetAccessPolicy(struct soap* soap,
 		struct _tds__GetAccessPolicy *tds__GetAccessPolicy,
 		struct _tds__GetAccessPolicyResponse *tds__GetAccessPolicyResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetAccessPolicy", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetAccessPolicy", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetAccessPolicy(struct soap* soap,
 		struct _tds__SetAccessPolicy *tds__SetAccessPolicy,
 		struct _tds__SetAccessPolicyResponse *tds__SetAccessPolicyResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetAccessPolicy", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetAccessPolicy", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__CreateCertificate(struct soap* soap,
 		struct _tds__CreateCertificate *tds__CreateCertificate,
 		struct _tds__CreateCertificateResponse *tds__CreateCertificateResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "CreateCertificate", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager CreateCertificate", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCertificates(struct soap* soap,
 		struct _tds__GetCertificates *tds__GetCertificates,
 		struct _tds__GetCertificatesResponse *tds__GetCertificatesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetCertificates", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetCertificates", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCertificatesStatus(
 		struct soap* soap,
 		struct _tds__GetCertificatesStatus *tds__GetCertificatesStatus,
 		struct _tds__GetCertificatesStatusResponse *tds__GetCertificatesStatusResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetCertificatesStatus", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetCertificatesStatus", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetCertificatesStatus(
 		struct soap* soap,
 		struct _tds__SetCertificatesStatus *tds__SetCertificatesStatus,
 		struct _tds__SetCertificatesStatusResponse *tds__SetCertificatesStatusResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetCertificatesStatus", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetCertificatesStatus", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__DeleteCertificates(
 		struct soap* soap,
 		struct _tds__DeleteCertificates *tds__DeleteCertificates,
 		struct _tds__DeleteCertificatesResponse *tds__DeleteCertificatesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "DeleteCertificates", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager DeleteCertificates", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetPkcs10Request(struct soap* soap,
 		struct _tds__GetPkcs10Request *tds__GetPkcs10Request,
 		struct _tds__GetPkcs10RequestResponse *tds__GetPkcs10RequestResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetPkcs10Request", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetPkcs10Request", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__LoadCertificates(struct soap* soap,
 		struct _tds__LoadCertificates *tds__LoadCertificates,
 		struct _tds__LoadCertificatesResponse *tds__LoadCertificatesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "LoadCertificates", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager LoadCertificates", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetClientCertificateMode(
 		struct soap* soap,
 		struct _tds__GetClientCertificateMode *tds__GetClientCertificateMode,
 		struct _tds__GetClientCertificateModeResponse *tds__GetClientCertificateModeResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetClientCertificateMode",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetClientCertificateMode", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetClientCertificateMode(
 		struct soap* soap,
 		struct _tds__SetClientCertificateMode *tds__SetClientCertificateMode,
 		struct _tds__SetClientCertificateModeResponse *tds__SetClientCertificateModeResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetClientCertificateMode",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetClientCertificateMode", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetRelayOutputs(struct soap* soap,
 		struct _tds__GetRelayOutputs *tds__GetRelayOutputs,
 		struct _tds__GetRelayOutputsResponse *tds__GetRelayOutputsResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetRelayOutputs", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetRelayOutputs", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetRelayOutputSettings(
 		struct soap* soap,
 		struct _tds__SetRelayOutputSettings *tds__SetRelayOutputSettings,
 		struct _tds__SetRelayOutputSettingsResponse *tds__SetRelayOutputSettingsResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetRelayOutputSettings",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetRelayOutputSettings", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetRelayOutputState(
 		struct soap* soap,
 		struct _tds__SetRelayOutputState *tds__SetRelayOutputState,
 		struct _tds__SetRelayOutputStateResponse *tds__SetRelayOutputStateResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetRelayOutputState", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetRelayOutputState", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SendAuxiliaryCommand(
 		struct soap* soap,
 		struct _tds__SendAuxiliaryCommand *tds__SendAuxiliaryCommand,
 		struct _tds__SendAuxiliaryCommandResponse *tds__SendAuxiliaryCommandResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SendAuxiliaryCommand", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SendAuxiliaryCommand", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCACertificates(struct soap* soap,
 		struct _tds__GetCACertificates *tds__GetCACertificates,
 		struct _tds__GetCACertificatesResponse *tds__GetCACertificatesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetCACertificates", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetCACertificates", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__LoadCertificateWithPrivateKey(
@@ -1085,73 +1137,78 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__LoadCertificateWithPrivateKey(
 		struct _tds__LoadCertificateWithPrivateKey *tds__LoadCertificateWithPrivateKey,
 		struct _tds__LoadCertificateWithPrivateKeyResponse *tds__LoadCertificateWithPrivateKeyResponse) {
 	return getOnvifSoapActionNotSupportCode(soap,
-			"LoadCertificateWithPrivateKey", NULL);
+			"Device Manager LoadCertificateWithPrivateKey", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCertificateInformation(
 		struct soap* soap,
 		struct _tds__GetCertificateInformation *tds__GetCertificateInformation,
 		struct _tds__GetCertificateInformationResponse *tds__GetCertificateInformationResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetCertificateInformation",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetCertificateInformation", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__LoadCACertificates(
 		struct soap* soap,
 		struct _tds__LoadCACertificates *tds__LoadCACertificates,
 		struct _tds__LoadCACertificatesResponse *tds__LoadCACertificatesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "LoadCACertificates", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager LoadCACertificates", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__CreateDot1XConfiguration(
 		struct soap* soap,
 		struct _tds__CreateDot1XConfiguration *tds__CreateDot1XConfiguration,
 		struct _tds__CreateDot1XConfigurationResponse *tds__CreateDot1XConfigurationResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "CreateDot1XConfiguration",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager CreateDot1XConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetDot1XConfiguration(
 		struct soap* soap,
 		struct _tds__SetDot1XConfiguration *tds__SetDot1XConfiguration,
 		struct _tds__SetDot1XConfigurationResponse *tds__SetDot1XConfigurationResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "SetDot1XConfiguration", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager SetDot1XConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDot1XConfiguration(
 		struct soap* soap,
 		struct _tds__GetDot1XConfiguration *tds__GetDot1XConfiguration,
 		struct _tds__GetDot1XConfigurationResponse *tds__GetDot1XConfigurationResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetDot1XConfiguration", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetDot1XConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDot1XConfigurations(
 		struct soap* soap,
 		struct _tds__GetDot1XConfigurations *tds__GetDot1XConfigurations,
 		struct _tds__GetDot1XConfigurationsResponse *tds__GetDot1XConfigurationsResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetDot1XConfigurations",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetDot1XConfigurations", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__DeleteDot1XConfiguration(
 		struct soap* soap,
 		struct _tds__DeleteDot1XConfiguration *tds__DeleteDot1XConfiguration,
 		struct _tds__DeleteDot1XConfigurationResponse *tds__DeleteDot1XConfigurationResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "DeleteDot1XConfiguration",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager DeleteDot1XConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDot11Capabilities(
 		struct soap* soap,
 		struct _tds__GetDot11Capabilities *tds__GetDot11Capabilities,
 		struct _tds__GetDot11CapabilitiesResponse *tds__GetDot11CapabilitiesResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetDot11Capabilities", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetDot11Capabilities", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetDot11Status(struct soap* soap,
 		struct _tds__GetDot11Status *tds__GetDot11Status,
 		struct _tds__GetDot11StatusResponse *tds__GetDot11StatusResponse) {
-	return getOnvifSoapActionNotSupportCode(soap, "GetDot11Status", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetDot11Status", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__ScanAvailableDot11Networks(
@@ -1159,15 +1216,16 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__ScanAvailableDot11Networks(
 		struct _tds__ScanAvailableDot11Networks *tds__ScanAvailableDot11Networks,
 		struct _tds__ScanAvailableDot11NetworksResponse *tds__ScanAvailableDot11NetworksResponse) {
 	logInfo("__tds__ScanAvailableDot11Networks");
-	return getOnvifSoapActionNotSupportCode(soap, "ScanAvailableDot11Networks",
-			NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager ScanAvailableDot11Networks", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemUris(struct soap* soap,
 		struct _tds__GetSystemUris *tds__GetSystemUris,
 		struct _tds__GetSystemUrisResponse *tds__GetSystemUrisResponse) {
 	logInfo("__tds__GetSystemUris");
-	return getOnvifSoapActionNotSupportCode(soap, "GetSystemUris", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager GetSystemUris", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__StartFirmwareUpgrade(
@@ -1175,7 +1233,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__StartFirmwareUpgrade(
 		struct _tds__StartFirmwareUpgrade *tds__StartFirmwareUpgrade,
 		struct _tds__StartFirmwareUpgradeResponse *tds__StartFirmwareUpgradeResponse) {
 	logInfo("__tds__StartFirmwareUpgrade");
-	return getOnvifSoapActionNotSupportCode(soap, "StartFirmwareUpgrade", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager StartFirmwareUpgrade", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__StartSystemRestore(
@@ -1183,6 +1242,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__StartSystemRestore(
 		struct _tds__StartSystemRestore *tds__StartSystemRestore,
 		struct _tds__StartSystemRestoreResponse *tds__StartSystemRestoreResponse) {
 	logInfo("__tds__StartSystemRestore");
-	return getOnvifSoapActionNotSupportCode(soap, "StartSystemRestore", NULL);
+	return getOnvifSoapActionNotSupportCode(soap,
+			"Device Manager StartSystemRestore", NULL);
 }
 
