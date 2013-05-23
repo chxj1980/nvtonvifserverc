@@ -91,12 +91,12 @@ SOAP_FMAC3 int * SOAP_FMAC4 soap_get_int(struct soap*, int *, const char*, const
 #define SOAP_TYPE_xsd__duration (218)
 #endif
 
-// SOAP_FMAC1 void SOAP_FMAC2 soap_default_xsd__duration(struct soap*, LONG64 *);
-#define soap_default_xsd__duration(soap, a) soap_default_unsignedLONG64(soap, (ULONG64 *)a)
-// SOAP_FMAC1 int SOAP_FMAC2 soap_out_xsd__duration(struct soap*, const char*, int, const LONG64 *, const char*);
-#define soap_out_xsd__duration(soap,a,b,c,d) soap_out_unsignedLONG64(soap, a, b, (ULONG64 *)c, d)
-// SOAP_FMAC1 LONG64 * SOAP_FMAC2 soap_in_xsd__duration(struct soap*, const char*, LONG64 *, const char*);
-#define soap_in_xsd__duration(soap, a, b, c) (LONG64*)soap_in_unsignedLONG64(soap,a,(ULONG64 *)b,c)
+SOAP_FMAC1 void SOAP_FMAC2 soap_default_xsd__duration(struct soap*, LONG64 *);
+// #define soap_default_xsd__duration(soap, a) soap_default_unsignedLONG64(soap, (ULONG64 *)a)
+SOAP_FMAC1 int SOAP_FMAC2 soap_out_xsd__duration(struct soap*, const char*, int, const LONG64 *, const char*);
+// #define soap_out_xsd__duration(soap,a,b,c,d) soap_out_unsignedLONG64(soap, a, b, (ULONG64 *)c, d)
+SOAP_FMAC1 LONG64 * SOAP_FMAC2 soap_in_xsd__duration(struct soap*, const char*, LONG64 *, const char*);
+// #define soap_in_xsd__duration(soap, a, b, c) (LONG64*)soap_in_unsignedLONG64(soap,a,(ULONG64 *)b,c)
 
 SOAP_FMAC3S const char* SOAP_FMAC4S soap_xsd__duration2s(struct soap*, LONG64);
 SOAP_FMAC3S int SOAP_FMAC4S soap_s2xsd__duration(struct soap*, const char*, LONG64 *);

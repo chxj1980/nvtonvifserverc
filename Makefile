@@ -14,6 +14,7 @@ endif
 
 OBJECTFILES= soapC.o \
 	soapServer.o \
+	duration.o	\
 	stdsoap2.o	\
 	threads.o	\
 	list.o		\
