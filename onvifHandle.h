@@ -85,6 +85,8 @@ void stopOnvifApp();
 
 int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo,
 		const char* faultDetail);
+int getOnvifSoapActionNotSupportSubCode1(struct soap *soap, const char* subCode1, const char *faultInfo,
+		const char* faultDetail);
 int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo,
 		const char* faultDetail);
 int getOnvifSoapSendInvalidArgFailedCode(struct soap *soap,
@@ -102,6 +104,14 @@ int setDeviceTime(OnvifSystemDateTime* info);
 int getVideoChannelInfo(OnvifVideoChannelInfo* info);
 int getVideoChannelStreamInfo(OnvifVideoChannelInfo* info);
 
+char* getPTZConfigurationToken(struct soap* soap, int index);
+
+int getIndexFromTokenName(const char* tokenName, const char* prefix);
+char* getIndexTokeName(struct soap *soap, const char* prefix, const int index);
+
+SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapSenderSubCode2Fault(struct soap *soap,
+		const char *faultsubcodeQName, const char *faultsubcodeQName1, const char *faultstring,
+		const char *faultdetailXML);
 #ifdef __cplusplus
 }
 #endif

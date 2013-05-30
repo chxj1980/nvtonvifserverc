@@ -5,18 +5,18 @@
 #include "logInfo.h"
 
 #define DEFAULT_SESSION_TIME_OUT 720000
-#define TOKEN_NAME_PREFIX "token_profile"
+#define MEDIA_TOKEN_PREFIX "media_token_profile"
 
-void getVideoSourceToken(char* dest, int index) {
-	sprintf(dest, "%s%d", VIDEO_SOURCE_TOKEN, index);
+char* getVideoSourceToken(struct soap* soap, int index) {
+	return getIndexTokeName(soap, VIDEO_SOURCE_TOKEN, index);
 }
 
-void getVEToken(char* dest, int index) {
-	sprintf(dest, "VE_token%d", index);
+char* getVEToken(struct soap* soap, int index) {
+	return getIndexTokeName(soap, "VE_token", index);
 }
 
-void getVEName(char* dest, int index) {
-	sprintf(dest, "VE_Name%d", index);
+char* getVEName(struct soap* soap, int index) {
+	return getIndexTokeName(soap, "VE_Name", index);
 }
 
 enum tt__VideoEncoding getVideoEncodeType(int encType) {
@@ -32,22 +32,16 @@ enum tt__VideoEncoding getVideoEncodeType(int encType) {
 	return result;
 }
 
-void getResponseProfileName(char* dest, int index) {
-	sprintf(dest, "my_profile%d", index);
+char* getMediaProfileName(struct soap* soap, int index) {
+	return getIndexTokeName(soap, "my_profile", index);
 }
 
-int getIndexFromProfileToken(char* token) {
-	if (NULL == token)
-		return RET_CODE_ERROR_NULL_OBJECT;
-	if (strlen(token) <= strlen(TOKEN_NAME_PREFIX))
-		return RET_CODE_ERROR_INVALID_VALUE;
-	if (NULL == strstr(token, TOKEN_NAME_PREFIX))
-		return RET_CODE_ERROR_INVALID_VALUE;
-	return atoi((char*) (token + strlen(TOKEN_NAME_PREFIX)));
+int getIndexFromMediaProfileToken(char* token) {
+	return getIndexFromTokenName(token, MEDIA_TOKEN_PREFIX);
 }
 
-void getResponseProfileToken(char* dest, int index) {
-	sprintf(dest, "%s%d", TOKEN_NAME_PREFIX, index);
+char* getMediaProfileToken(struct soap* soap, int index) {
+	return getIndexTokeName(soap, MEDIA_TOKEN_PREFIX, index);
 }
 
 enum tt__BacklightCompensationMode getOnvifBacklightCompensationMode(int mode) {
@@ -73,10 +67,7 @@ void getVideoSourcesResponseVideoSource(struct soap* soap,
 			soap, sizeof(struct tt__VideoResolution));
 	videoSource->Resolution->Height = onvifVideoChannelInfo->height;
 	videoSource->Resolution->Width = onvifVideoChannelInfo->width;
-	videoSource->token = (char *) my_soap_malloc(soap,
-			sizeof(char) * INFO_LENGTH);
-	getVideoSourceToken(videoSource->token, index); //注意这里需要和GetProfile中的sourcetoken相同
-
+	videoSource->token =  getVideoSourceToken(soap, index); //注意这里需要和GetProfile中的sourcetoken相同
 	videoSource->Imaging = (struct tt__ImagingSettings*) my_soap_malloc(soap,
 			sizeof(struct tt__ImagingSettings));
 	videoSource->Imaging->Brightness = (float*) my_soap_malloc(soap,
@@ -129,12 +120,8 @@ void getVideoSourcesResponseVideoSource(struct soap* soap,
 void getResponseProfileInfoVideoEncoderConfiguration(struct soap* soap,
 		struct tt__VideoEncoderConfiguration * videoEncoderConfiguration,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
-	videoEncoderConfiguration->Name = (char *) my_soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	videoEncoderConfiguration->token = (char *) my_soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	getVEName(videoEncoderConfiguration->Name, index);
-	getVEToken(videoEncoderConfiguration->token, index);
+	videoEncoderConfiguration->Name = getVEName(soap, index);
+	videoEncoderConfiguration->token = getVEToken(soap, index);
 	videoEncoderConfiguration->UseCount = 1;
 	videoEncoderConfiguration->Quality = onvifVideoChannelInfo->quality;
 	videoEncoderConfiguration->Encoding = getVideoEncodeType(
@@ -203,16 +190,10 @@ void getResponseProfileInfoVideoEncoderConfiguration(struct soap* soap,
 void getResponseProfileInfoVideoSourceConfiguration(struct soap* soap,
 		struct tt__VideoSourceConfiguration * videoSourceConfiguration,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
-	videoSourceConfiguration->Name = (char *) my_soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	videoSourceConfiguration->token = (char *) my_soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	videoSourceConfiguration->SourceToken = (char *) my_soap_malloc(soap,
-			sizeof(char) * INFO_LENGTH);
+	videoSourceConfiguration->Name = getVEName(soap, index);
+	videoSourceConfiguration->token = getVEToken(soap, index);
+	videoSourceConfiguration->SourceToken = getVideoSourceToken(soap, index);/*必须与__tmd__GetVideoSources中的token相同*/
 	/*注意SourceToken*/
-	getVEName(videoSourceConfiguration->Name, index);
-	getVEToken(videoSourceConfiguration->token, index);
-	getVideoSourceToken(videoSourceConfiguration->SourceToken, index); /*必须与__tmd__GetVideoSources中的token相同*/
 	videoSourceConfiguration->Extension = NULL;
 	videoSourceConfiguration->__any = NULL;
 	videoSourceConfiguration->__anyAttribute = NULL;
@@ -229,12 +210,8 @@ void getResponseProfileInfoVideoSourceConfiguration(struct soap* soap,
 
 void getResponseProfileInfo(struct soap* soap, struct tt__Profile* destProfile,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
-	destProfile->Name = (char *) my_soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	getResponseProfileName(destProfile->Name, index);
-	destProfile->token = (char *) my_soap_malloc(soap,
-			sizeof(char) * SMALL_INFO_LENGTH);
-	getResponseProfileToken(destProfile->token, index);
+	destProfile->Name = getMediaProfileName(soap, index);
+	destProfile->token = getMediaProfileToken(soap, index);
 	destProfile->fixed = (enum xsd__boolean *) my_soap_malloc(soap,
 			sizeof(enum xsd__boolean));
 	*destProfile->fixed = xsd__boolean__false_;
@@ -335,7 +312,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetProfile(struct soap* soap,
 		struct _trt__GetProfile *trt__GetProfile,
 		struct _trt__GetProfileResponse *trt__GetProfileResponse) {
 	logInfo("__trt__GetProfile");
-	int index = getIndexFromProfileToken(trt__GetProfile->ProfileToken);
+	int index = getIndexFromMediaProfileToken(trt__GetProfile->ProfileToken);
 	if (index < 0) {
 		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetProfile",
 				"profile token is invalid");
@@ -425,7 +402,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__AddPTZConfiguration(
 		struct _trt__AddPTZConfiguration *trt__AddPTZConfiguration,
 		struct _trt__AddPTZConfigurationResponse *trt__AddPTZConfigurationResponse) {
 	logInfo("__trt__AddPTZConfiguration");
-	return getOnvifSoapActionNotSupportCode(soap, "Media AddPTZConfiguration", NULL);
+	return SOAP_OK;
+	// return getOnvifSoapActionNotSupportCode(soap, "Media AddPTZConfiguration", NULL);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__AddVideoAnalyticsConfiguration(
@@ -916,7 +894,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetStreamUri(struct soap* soap,
 		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetStreamUri",
 				"profile token is null");
 	}
-	int index = getIndexFromProfileToken(trt__GetStreamUri->ProfileToken);
+	int index = getIndexFromMediaProfileToken(trt__GetStreamUri->ProfileToken);
 	if (index < 0) {
 		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetStreamUri",
 				"profile token is invalid");
@@ -931,10 +909,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetStreamUri(struct soap* soap,
 	trt__GetStreamUriResponse->MediaUri =
 			(struct tt__MediaUri *) my_soap_malloc(soap,
 					sizeof(struct tt__MediaUri));
-	trt__GetStreamUriResponse->MediaUri->Uri = (char *) my_soap_malloc(soap,
-			sizeof(char) * LARGE_INFO_LENGTH);
-	strcpy(trt__GetStreamUriResponse->MediaUri->Uri,
-			onvifVideoChannelInfo.videoAddr);
+	trt__GetStreamUriResponse->MediaUri->Uri = soap_strdup(soap, onvifVideoChannelInfo.videoAddr);
 	trt__GetStreamUriResponse->MediaUri->InvalidAfterConnect = 0;
 	trt__GetStreamUriResponse->MediaUri->InvalidAfterReboot = 0;
 	trt__GetStreamUriResponse->MediaUri->Timeout = 200;
@@ -975,10 +950,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetSnapshotUri(struct soap* soap,
 	trt__GetSnapshotUriResponse->MediaUri =
 			(struct tt__MediaUri *) my_soap_malloc(soap,
 					sizeof(struct tt__MediaUri));
-	trt__GetSnapshotUriResponse->MediaUri->Uri = (char *) my_soap_malloc(soap,
-			sizeof(char) * 200);
-	strcpy(trt__GetSnapshotUriResponse->MediaUri->Uri,
-			"http://avatar.csdn.net/7/E/1/1_ghostyu.jpg");
+	trt__GetSnapshotUriResponse->MediaUri->Uri = soap_strdup(soap, "http://avatar.csdn.net/7/E/1/1_ghostyu.jpg");
 	trt__GetSnapshotUriResponse->MediaUri->InvalidAfterConnect = 0;
 	trt__GetSnapshotUriResponse->MediaUri->InvalidAfterReboot = 0;
 	trt__GetSnapshotUriResponse->MediaUri->Timeout = 2; //seconds
