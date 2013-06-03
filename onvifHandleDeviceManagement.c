@@ -292,9 +292,77 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemDateAndTime(
 		struct _tds__SetSystemDateAndTime *tds__SetSystemDateAndTime,
 		struct _tds__SetSystemDateAndTimeResponse *tds__SetSystemDateAndTimeResponse) {
 	logInfo("__tds__SetSystemDateAndTime");
-	return getOnvifSoapActionNotSupportCode(soap,
-			"Device Manager Device Manager SetSystemDateAndTime", NULL);
+	OnvifSystemDateTime info;
+	if (tt__SetDateTimeType__NTP == tds__SetSystemDateAndTime->DateTimeType) {
+		info.ntpSet = true;
+	} else {
+		info.ntpSet = false;
+		if (NULL == tds__SetSystemDateAndTime->TimeZone)
+			logInfo("__tds__SetSystemDateAndTime is NULL");
+		else
+			logInfo("__tds__SetSystemDateAndTime TimeZone %s", tds__SetSystemDateAndTime->TimeZone);
+		info.timeZone = 8;
+		if (NULL == tds__SetSystemDateAndTime->UTCDateTime) {
+			return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
+					"ter:InvalidDateTime", "Device Manager Set SystemDateTime",
+					"UTCDateTime is null");
+		}
+		struct tm tm1;
+		tm1.tm_year = tds__SetSystemDateAndTime->UTCDateTime->Date->Year - 1900;
+		tm1.tm_mon = tds__SetSystemDateAndTime->UTCDateTime->Date->Month;
+		tm1.tm_mday = tds__SetSystemDateAndTime->UTCDateTime->Date->Day;
+		tm1.tm_isdst = 0;
+		tm1.tm_hour = tds__SetSystemDateAndTime->UTCDateTime->Time->Hour;
+		tm1.tm_min = tds__SetSystemDateAndTime->UTCDateTime->Time->Minute;
+		tm1.tm_sec = tds__SetSystemDateAndTime->UTCDateTime->Time->Second;
+		info.localTime = mktime(&tm1);
+	}
+	if (!isRetCodeSuccess(setDeviceTime(&info))) {
+		return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
+				"ter:InvalidDateTime", "Device Manager Set SystemDateTime",
+				"Set Error");
+	}
+	return SOAP_OK;
+}
 
+struct tt__DateTime * getSystemDateAndTimeDateTimeValue(struct soap* soap,
+		struct tm* timeValue) {
+	struct tt__DateTime * result = (struct tt__DateTime *) my_soap_malloc(soap,
+			sizeof(struct tt__DateTime));
+	result->Date = (struct tt__Date *) my_soap_malloc(soap,
+			sizeof(struct tt__Date));
+	result->Date->Year = timeValue->tm_year + 1900;
+	result->Date->Month = timeValue->tm_mon;
+	result->Date->Day = timeValue->tm_mday;
+	result->Time = (struct tt__Time *) my_soap_malloc(soap,
+			sizeof(struct tt__Time));
+	result->Time->Hour = timeValue->tm_hour;
+	result->Time->Minute = timeValue->tm_min;
+	result->Time->Second = timeValue->tm_sec;
+	return result;
+}
+
+struct tt__SystemDateTime* getSystemDateAndTimeSystemTimeInfo(struct soap* soap,
+		OnvifSystemDateTime* info) {
+	struct tt__SystemDateTime* result =
+			(struct tt__SystemDateTime *) my_soap_malloc(soap,
+					sizeof(struct tt__SystemDateTime));
+	result->DateTimeType = tt__SetDateTimeType__Manual;
+	if (info->ntpSet) {
+		result->DateTimeType = tt__SetDateTimeType__NTP;
+		return result;
+	}
+	result->DaylightSavings = xsd__boolean__false_;
+	struct tm* tm1;
+	tm1 = localtime(&info->localTime);
+	result->LocalDateTime = getSystemDateAndTimeDateTimeValue(soap, tm1);
+	tm1 = gmtime(&info->localTime);
+	result->UTCDateTime = getSystemDateAndTimeDateTimeValue(soap, tm1);
+	result->TimeZone = (struct tt__TimeZone *) my_soap_malloc(soap,
+			sizeof(struct tt__TimeZone));
+	result->TimeZone->TZ = (char*) my_soap_malloc(soap, SMALL_INFO_LENGTH);
+	sprintf(result->TimeZone->TZ, "GMT+%d", info->timeZone);
+	return result;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemDateAndTime(
@@ -302,8 +370,15 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemDateAndTime(
 		struct _tds__GetSystemDateAndTime *tds__GetSystemDateAndTime,
 		struct _tds__GetSystemDateAndTimeResponse *tds__GetSystemDateAndTimeResponse) {
 	logInfo("__tds__GetSystemDateAndTime");
-	return getOnvifSoapActionNotSupportCode(soap,
-			"Device Manager GetSystemDateAndTime", NULL);
+	OnvifSystemDateTime info;
+	if (!isRetCodeSuccess(getDeviceTime(&info))) {
+		return getOnvifSoapActionNotSupportCode(soap,
+				"Device Manager GetSystemDateAndTime", NULL);
+	}
+	tds__GetSystemDateAndTimeResponse->SystemDateAndTime =
+			getSystemDateAndTimeSystemTimeInfo(soap, &info);
+	return SOAP_OK;
+
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemFactoryDefault(

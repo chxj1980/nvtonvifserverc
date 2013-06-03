@@ -191,7 +191,7 @@ int getDeviceTime_ParseCmd(const Map outList, const void* info1) {
 		return result;
 	info->ntpSet = ntp;
 	int zone = 0;
-	result = getIntValueFromList(outList, e_time_ntpenable, &zone);
+	result = getIntValueFromList(outList, e_time_Zone, &zone);
 	if (!isRetCodeSuccess(result))
 		return result;
 	if (zone > 24) {
@@ -215,6 +215,26 @@ int getDeviceTime_ParseCmd(const Map outList, const void* info1) {
 int getDeviceTime(OnvifSystemDateTime* info) {
 	return sendCommIPCFunc(T_Get, info, getDeviceTime_PushCmd,
 			getDeviceTime_ParseCmd);
+}
+
+int setDeviceTime_PushCmd(const Map inList, const void* info1) {
+	OnvifSystemDateTime* info = (OnvifSystemDateTime*) info1;
+	if (info->ntpSet) {
+		putIntValueInList(inList, e_time_ntpenable, ENABLE_YES);
+	} else {
+		putIntValueInList(inList, e_time_ntpenable, ENABLE_NO);
+		putIntValueInList(inList, e_time_Zone, info->timeZone);
+		char dt[30] = {0};
+		getDateTimeStr(dt, 30, info->localTime);
+		putStrValueInList(inList, e_time_systime, dt);
+	}
+	return RET_CODE_SUCCESS;
+}
+
+int setDeviceTime(OnvifSystemDateTime* info) {
+	if (NULL == info)
+		return RET_CODE_ERROR_NULL_VALUE;
+	return sendCommIPCFunc(T_Set, info, setDeviceTime_PushCmd, NULL);
 }
 
 int getVideoChannelInfo_PushCmd(const Map inList, const void* info1) {
