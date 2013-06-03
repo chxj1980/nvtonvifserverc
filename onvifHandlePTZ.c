@@ -26,11 +26,11 @@ int getIndexFromPTZConfigToken(char* token) {
 	return getIndexFromTokenName(token, PTZ_CONFIG_TOKEN_PREFIX);
 }
 
-int getOnvifPTZSoapActionNotSupport(struct soap *soap, const char *faultInfo, const char* faultDetail) {
-	return getOnvifPTZSoapActionNotSupport(soap, faultInfo,
-			faultDetail);
+int getOnvifPTZSoapActionNotSupport(struct soap *soap, const char *faultInfo,
+		const char* faultDetail) {
+	return getOnvifSoapActionNotSupportSubCode1(soap, "ter:PTZNotSupported",
+			faultInfo, faultDetail);
 }
-
 
 struct tt__Vector2D* getVector2D(struct soap* soap, char* uri, const float x,
 		const float y) {
@@ -47,6 +47,35 @@ struct tt__Vector1D* getVector1D(struct soap* soap, char* uri, const float x) {
 			sizeof(struct tt__Vector1D));
 	result->space = uri;
 	result->x = x;
+	return result;
+}
+
+struct tt__FloatRange* getFloatRange(struct soap* soap, int min, int max) {
+	struct tt__FloatRange* result = (struct tt__FloatRange*) my_soap_malloc(
+			soap, sizeof(struct tt__FloatRange));
+	result->Min = min;
+	result->Max = max;
+	return result;
+}
+
+struct tt__Space2DDescription* getPTZSpace2DDescription(struct soap* soap,
+		char* uri, int xmin, int xmax, int ymin, int ymax) {
+	struct tt__Space2DDescription* result =
+			(struct tt__Space2DDescription*) my_soap_malloc(soap,
+					sizeof(struct tt__Space2DDescription));
+	result->URI = uri;
+	result->XRange = getFloatRange(soap, xmin, xmax);
+	result->YRange = getFloatRange(soap, ymin, ymax);
+	return result;
+}
+
+struct tt__Space1DDescription* getPTZSpace1DDescription(struct soap* soap,
+		char* uri, int xmin, int xmax) {
+	struct tt__Space1DDescription* result =
+			(struct tt__Space1DDescription*) my_soap_malloc(soap,
+					sizeof(struct tt__Space1DDescription));
+	result->URI = uri;
+	result->XRange = getFloatRange(soap, xmin, xmax);
 	return result;
 }
 
@@ -99,9 +128,26 @@ struct tt__PTZSpeed* getPTZConfigurationPTZSpeed(struct soap* soap) {
 	struct tt__PTZSpeed* result = (struct tt__PTZSpeed*) my_soap_malloc(soap,
 			sizeof(struct tt__PTZSpeed));
 	result->PanTilt = getVector2D(soap,
-			getRelativePanTiltTranslationSpaceURI(soap), 0.0, 0.0);
-	result->Zoom = getVector1D(soap, getRelativeZoomTranslationSpaceURI(soap),
+			getContinuousPanTiltVelocitySpaceURI(soap), 0.0, 0.0);
+	result->Zoom = getVector1D(soap, getContinuousZoomVelocitySpaceURI(soap),
 			0.0);
+	return result;
+}
+
+struct tt__PanTiltLimits* getPTZConfigurationPanTiltLimits(struct soap* soap) {
+	struct tt__PanTiltLimits* result =
+			(struct tt__PanTiltLimits*) my_soap_malloc(soap,
+					sizeof(struct tt__PanTiltLimits));
+	result->Range = getPTZSpace2DDescription(soap,
+			getContinuousPanTiltVelocitySpaceURI(soap), -100, 100, -100, 100);
+	return result;
+}
+
+struct tt__ZoomLimits* getPTZConfigurationZoomLimits(struct soap* soap) {
+	struct tt__ZoomLimits* result = (struct tt__ZoomLimits*) my_soap_malloc(
+			soap, sizeof(struct tt__PanTiltLimits));
+	result->Range = getPTZSpace1DDescription(soap,
+			getContinuousPanTiltVelocitySpaceURI(soap), -100, 100);
 	return result;
 }
 
@@ -109,24 +155,26 @@ struct tt__PTZConfiguration* getPTZConfiguration(struct soap* soap) {
 	struct tt__PTZConfiguration* result =
 			(struct tt__PTZConfiguration*) my_soap_malloc(soap,
 					sizeof(struct tt__PTZConfiguration));
-	result->DefaultAbsolutePantTiltPositionSpace =
-			getAbsolutePantTiltPositionSpaceURI(soap);
-	result->DefaultAbsoluteZoomPositionSpace = getAbsoluteZoomPositionSpaceURI(
-			soap);
+//	result->DefaultAbsolutePantTiltPositionSpace =
+//			getAbsolutePantTiltPositionSpaceURI(soap);
+//	result->DefaultAbsoluteZoomPositionSpace = getAbsoluteZoomPositionSpaceURI(
+//			soap);
 	result->DefaultContinuousPanTiltVelocitySpace =
 			getContinuousPanTiltVelocitySpaceURI(soap);
 	result->DefaultContinuousZoomVelocitySpace =
 			getContinuousZoomVelocitySpaceURI(soap);
-	result->DefaultRelativePanTiltTranslationSpace =
-			getRelativePanTiltTranslationSpaceURI(soap);
-	result->DefaultRelativeZoomTranslationSpace =
-			getRelativeZoomTranslationSpaceURI(soap);
+//	result->DefaultRelativePanTiltTranslationSpace =
+//			getRelativePanTiltTranslationSpaceURI(soap);
+//	result->DefaultRelativeZoomTranslationSpace =
+//			getRelativeZoomTranslationSpaceURI(soap);
 	result->DefaultPTZSpeed = getPTZConfigurationPTZSpeed(soap);
 	result->DefaultPTZTimeout = (LONG64*) my_soap_malloc(soap, sizeof(LONG64));
 	*result->DefaultPTZTimeout = 0;
 	result->Name = getPTZName(soap, 0);
 	result->token = getPTZConfigurationToken(soap, 0);
 	result->NodeToken = getPTZNodeToken(soap, 0);
+	result->PanTiltLimits = getPTZConfigurationPanTiltLimits(soap);
+	result->ZoomLimits = getPTZConfigurationZoomLimits(soap);
 	return result;
 }
 
@@ -179,35 +227,36 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetStatus(struct soap* soap,
 SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetConfiguration(struct soap* soap,
 		struct _tptz__GetConfiguration *tptz__GetConfiguration,
 		struct _tptz__GetConfigurationResponse *tptz__GetConfigurationResponse) {
-	logInfo("__tptz__GetConfiguration %s", tptz__GetConfiguration->PTZConfigurationToken);
-	int index = getIndexFromPTZConfigToken(tptz__GetConfiguration->PTZConfigurationToken);
+	logInfo("__tptz__GetConfiguration %s",
+			tptz__GetConfiguration->PTZConfigurationToken);
+	int index = getIndexFromPTZConfigToken(
+			tptz__GetConfiguration->PTZConfigurationToken);
 	if (index < 0) {
 		return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
-				"ter:ter:NoConfig", "ptz get configuration", "name token is invalid");
+				"ter:NoConfig", "ptz get configuration",
+				"name token is invalid");
 	}
 	tptz__GetConfigurationResponse->PTZConfiguration = getPTZConfiguration(
 			soap);
 	return SOAP_OK;
 }
 
-struct tt__FloatRange* getFloatRange(struct soap* soap, int min, int max) {
-	struct tt__FloatRange* result = (struct tt__FloatRange*) my_soap_malloc(
-			soap, sizeof(struct tt__FloatRange));
-	result->Min = min;
-	result->Max = max;
-	return result;
-}
-
 void getPTZNodeInfoSupportRelateSpace(struct soap* soap,
 		struct tt__PTZSpaces* ptzSpaces) {
-	ptzSpaces->RelativePanTiltTranslationSpace =
-			(struct tt__Space2DDescription*) my_soap_malloc(soap,
-					sizeof(struct tt__Space2DDescription));
-	ptzSpaces->RelativePanTiltTranslationSpace->URI = soap_strdup(soap, "http://www.onvif.org/ver10/tptz/PanTiltSpaces/TranslationGenericSpace");
-	ptzSpaces->RelativePanTiltTranslationSpace->XRange = getFloatRange(soap, 0,
-			100);
-	ptzSpaces->RelativePanTiltTranslationSpace->YRange = getFloatRange(soap, 0,
-			100);
+	ptzSpaces->RelativePanTiltTranslationSpace = getPTZSpace2DDescription(soap,
+			getRelativePanTiltTranslationSpaceURI(soap), -100, 100, -100, 100);
+}
+
+void getPTZNodeInfoSupportAbsoluteSpace(struct soap* soap,
+		struct tt__PTZSpaces* ptzSpaces) {
+	ptzSpaces->AbsolutePanTiltPositionSpace = getPTZSpace2DDescription(soap,
+			getAbsolutePantTiltPositionSpaceURI(soap), -100, 100, -100, 100);
+}
+
+void getPTZNodeInfoSupportContinuousSpace(struct soap* soap,
+		struct tt__PTZSpaces* ptzSpaces) {
+	ptzSpaces->ContinuousPanTiltVelocitySpace = getPTZSpace2DDescription(soap,
+			getContinuousPanTiltVelocitySpaceURI(soap), -100, 100, -100, 100);
 }
 
 void getPTZNodeInfo(struct soap* soap, struct tt__PTZNode* ptzNode, int index) {
@@ -219,7 +268,9 @@ void getPTZNodeInfo(struct soap* soap, struct tt__PTZNode* ptzNode, int index) {
 	ptzNode->MaximumNumberOfPresets = 1;
 	ptzNode->SupportedPTZSpaces = (struct tt__PTZSpaces*) my_soap_malloc(soap,
 			sizeof(struct tt__PTZSpaces));
-	getPTZNodeInfoSupportRelateSpace(soap, ptzNode->SupportedPTZSpaces);
+	// getPTZNodeInfoSupportRelateSpace(soap, ptzNode->SupportedPTZSpaces);
+	// getPTZNodeInfoSupportAbsoluteSpace(soap, ptzNode->SupportedPTZSpaces);
+	getPTZNodeInfoSupportContinuousSpace(soap, ptzNode->SupportedPTZSpaces);
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetNodes(struct soap* soap,
@@ -282,7 +333,38 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__ContinuousMove(struct soap* soap,
 		struct _tptz__ContinuousMove *tptz__ContinuousMove,
 		struct _tptz__ContinuousMoveResponse *tptz__ContinuousMoveResponse) {
 	logInfo("__tptz__ContinuousMove");
-	return getOnvifPTZSoapActionNotSupport(soap, "PTZ ContinuousMove", NULL);
+	if (NULL != tptz__ContinuousMove->Timeout) {
+		logInfo("__tptz__ContinuousMove timeout %d",
+				*(tptz__ContinuousMove->Timeout));
+	}
+	if (NULL != tptz__ContinuousMove->ProfileToken) {
+		logInfo("__tptz__ContinuousMove token %s",
+				tptz__ContinuousMove->ProfileToken);
+	}
+	if (NULL != tptz__ContinuousMove->Velocity) {
+		if (NULL != tptz__ContinuousMove->Velocity->PanTilt) {
+			if (NULL != tptz__ContinuousMove->Velocity->PanTilt->space)
+				logInfo("__tptz__ContinuousMove pantilt x:%f y:%f space:%s",
+						tptz__ContinuousMove->Velocity->PanTilt->x,
+						tptz__ContinuousMove->Velocity->PanTilt->y,
+						tptz__ContinuousMove->Velocity->PanTilt->space);
+			else
+				logInfo("__tptz__ContinuousMove pantilt x:%f y:%f",
+						tptz__ContinuousMove->Velocity->PanTilt->x,
+						tptz__ContinuousMove->Velocity->PanTilt->y);
+		}
+		if (NULL != tptz__ContinuousMove->Velocity->Zoom) {
+			if (NULL != tptz__ContinuousMove->Velocity->Zoom->space)
+				logInfo("__tptz__ContinuousMove Zoom x:%f space:%s",
+						tptz__ContinuousMove->Velocity->Zoom->x,
+						tptz__ContinuousMove->Velocity->Zoom->space);
+			else
+				logInfo("__tptz__ContinuousMove Zoom x:%f",
+						tptz__ContinuousMove->Velocity->Zoom->x);
+		}
+
+	}
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tptz__RelativeMove(struct soap* soap,

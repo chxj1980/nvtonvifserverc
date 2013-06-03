@@ -242,7 +242,7 @@ void getResponseProfileInfo(struct soap* soap, struct tt__Profile* destProfile,
 
 	destProfile->AudioEncoderConfiguration = NULL;
 	destProfile->AudioSourceConfiguration = NULL;
-	destProfile->PTZConfiguration = NULL;
+	destProfile->PTZConfiguration = getPTZConfiguration(soap);
 	destProfile->MetadataConfiguration = NULL;
 	destProfile->Extension = NULL;
 }
@@ -483,8 +483,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__RemovePTZConfiguration(
 		struct _trt__RemovePTZConfiguration *trt__RemovePTZConfiguration,
 		struct _trt__RemovePTZConfigurationResponse *trt__RemovePTZConfigurationResponse) {
 	logInfo("__trt__RemovePTZConfiguration");
-	return getOnvifSoapActionNotSupportCode(soap, "Media RemovePTZConfiguration",
-			NULL);
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__RemoveVideoAnalyticsConfiguration(

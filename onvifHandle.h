@@ -112,6 +112,7 @@ char* getIndexTokeName(struct soap *soap, const char* prefix, const int index);
 SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapSenderSubCode2Fault(struct soap *soap,
 		const char *faultsubcodeQName, const char *faultsubcodeQName1, const char *faultstring,
 		const char *faultdetailXML);
+struct tt__PTZConfiguration* getPTZConfiguration(struct soap* soap);
 #ifdef __cplusplus
 }
 #endif
