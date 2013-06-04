@@ -319,7 +319,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemDateAndTime(
 		}
 		struct tm tm1;
 		tm1.tm_year = tds__SetSystemDateAndTime->UTCDateTime->Date->Year - 1900;
-		tm1.tm_mon = tds__SetSystemDateAndTime->UTCDateTime->Date->Month;
+		tm1.tm_mon = tds__SetSystemDateAndTime->UTCDateTime->Date->Month - 1;
 		tm1.tm_mday = tds__SetSystemDateAndTime->UTCDateTime->Date->Day;
 		tm1.tm_isdst = 0;
 		tm1.tm_hour = tds__SetSystemDateAndTime->UTCDateTime->Time->Hour;
@@ -345,7 +345,7 @@ struct tt__DateTime * getSystemDateAndTimeDateTimeValue(struct soap* soap,
 	result->Date = (struct tt__Date *) my_soap_malloc(soap,
 			sizeof(struct tt__Date));
 	result->Date->Year = timeValue->tm_year + 1900;
-	result->Date->Month = timeValue->tm_mon;
+	result->Date->Month = timeValue->tm_mon + 1;
 	result->Date->Day = timeValue->tm_mday;
 	result->Time = (struct tt__Time *) my_soap_malloc(soap,
 			sizeof(struct tt__Time));
