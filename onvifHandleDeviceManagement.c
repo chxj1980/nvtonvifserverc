@@ -294,18 +294,28 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemDateAndTime(
 	logInfo("__tds__SetSystemDateAndTime");
 	OnvifSystemDateTime info;
 	if (tt__SetDateTimeType__NTP == tds__SetSystemDateAndTime->DateTimeType) {
+		logInfo("__tds__SetSystemDateAndTime is set ntp");
 		info.ntpSet = true;
 	} else {
 		info.ntpSet = false;
 		if (NULL == tds__SetSystemDateAndTime->TimeZone)
-			logInfo("__tds__SetSystemDateAndTime is NULL");
+			logInfo("__tds__SetSystemDateAndTime is TimeZone NULL");
 		else
-			logInfo("__tds__SetSystemDateAndTime TimeZone %s", tds__SetSystemDateAndTime->TimeZone);
+			logInfo("__tds__SetSystemDateAndTime TimeZone %s",
+					tds__SetSystemDateAndTime->TimeZone);
 		info.timeZone = 8;
 		if (NULL == tds__SetSystemDateAndTime->UTCDateTime) {
 			return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
 					"ter:InvalidDateTime", "Device Manager Set SystemDateTime",
 					"UTCDateTime is null");
+		} else if (NULL == tds__SetSystemDateAndTime->UTCDateTime->Date) {
+			return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
+					"ter:InvalidDateTime", "Device Manager Set SystemDateTime",
+					"UTCDateTime  Date is null");
+		} else if (NULL == tds__SetSystemDateAndTime->UTCDateTime->Time) {
+			return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
+					"ter:InvalidDateTime", "Device Manager Set SystemDateTime",
+					"UTCDateTime  Time is null");
 		}
 		struct tm tm1;
 		tm1.tm_year = tds__SetSystemDateAndTime->UTCDateTime->Date->Year - 1900;
@@ -316,6 +326,9 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemDateAndTime(
 		tm1.tm_min = tds__SetSystemDateAndTime->UTCDateTime->Time->Minute;
 		tm1.tm_sec = tds__SetSystemDateAndTime->UTCDateTime->Time->Second;
 		info.localTime = mktime(&tm1);
+		char dtinfo[INFO_LENGTH] = {0};
+		getDateTimeStr(dtinfo, INFO_LENGTH, info.localTime);
+		logInfo("__tds__SetSystemDateAndTime set time %s", dtinfo);
 	}
 	if (!isRetCodeSuccess(setDeviceTime(&info))) {
 		return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",

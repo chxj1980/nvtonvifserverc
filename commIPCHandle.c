@@ -179,7 +179,7 @@ int getVideoCount(int* count) {
 int getDeviceTime_PushCmd(const Map inList, const void* info1) {
 	putNullValueInList(inList, e_time_ntpenable);
 	putNullValueInList(inList, e_time_systime);
-	putNullValueInList(inList, e_time_Zone);
+//	putNullValueInList(inList, e_time_Zone);
 	return RET_CODE_SUCCESS;
 }
 
@@ -187,27 +187,33 @@ int getDeviceTime_ParseCmd(const Map outList, const void* info1) {
 	OnvifSystemDateTime* info = (OnvifSystemDateTime*) info1;
 	int ntp;
 	int result = getIntValueFromList(outList, e_time_ntpenable, &ntp);
-	if (!isRetCodeSuccess(result))
+	if (!isRetCodeSuccess(result)) {
+		logInfo("getDeviceTime_ParseCmd get e_time_ntpenable failed");
 		return result;
-	info->ntpSet = ntp;
-	int zone = 0;
-	result = getIntValueFromList(outList, e_time_Zone, &zone);
-	if (!isRetCodeSuccess(result))
-		return result;
-	if (zone > 24) {
-		zone = zone / 60;
 	}
+	info->ntpSet = ntp;
+	int zone = 8;
+//	result = getIntValueFromList(outList, e_time_Zone, &zone);
+//	if (!isRetCodeSuccess(result))
+//		return result;
+//	if (zone > 24) {
+//		zone = zone / 60;
+//	}
 	info->timeZone = zone;
 	char localTime1[INFO_LENGTH] = { 0 };
 	result = getStrValueFromList(outList, e_time_systime, localTime1);
-	if (!isRetCodeSuccess(result))
+	if (!isRetCodeSuccess(result)) {
+		logInfo("getDeviceTime_ParseCmd get e_time_systime failed");
 		return result;
+	}
 	if (strlen(localTime1) < 1)
 		return RET_CODE_ERROR_NULL_VALUE;
 	time_t tim;
 	result = parseTimeZoneTimeStr(localTime1, zone, zone, &tim);
-	if (!isRetCodeSuccess(result))
+	if (!isRetCodeSuccess(result)) {
+		logInfo("getDeviceTime_ParseCmd parseTimeZoneTimeStr %s failed", localTime1);
 		return result;
+	}
 	info->localTime = tim;
 	return result;
 }
@@ -223,9 +229,9 @@ int setDeviceTime_PushCmd(const Map inList, const void* info1) {
 		putIntValueInList(inList, e_time_ntpenable, ENABLE_YES);
 	} else {
 		putIntValueInList(inList, e_time_ntpenable, ENABLE_NO);
-		putIntValueInList(inList, e_time_Zone, info->timeZone);
-		char dt[30] = {0};
-		getDateTimeStr(dt, 30, info->localTime);
+		// putIntValueInList(inList, e_time_Zone, info->timeZone);
+		char dt[INFO_LENGTH] = {0};
+		getDateTimeStr(dt, INFO_LENGTH, info->localTime);
 		putStrValueInList(inList, e_time_systime, dt);
 	}
 	return RET_CODE_SUCCESS;
