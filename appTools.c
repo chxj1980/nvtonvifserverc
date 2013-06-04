@@ -106,7 +106,7 @@ void getCurrentDateTimeStr(char* info, const int len) {
 
 void getDateTimeStr(char* info, const int len, const time_t dtValue) {
 	struct tm* today = localtime(&dtValue);
-	strftime(info, len, "%Y-%m-%d %H:%M:%S ", today);
+	strftime(info, len, "%Y-%m-%d %H:%M:%S", today);
 }
 
 int parseTimeZoneTimeStr(const char* timeinfo, const short srcTimeZone, const short destTimeZone,
