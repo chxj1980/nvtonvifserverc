@@ -211,7 +211,8 @@ int getDeviceTime_ParseCmd(const Map outList, const void* info1) {
 	time_t tim;
 	result = parseTimeZoneTimeStr(localTime1, zone, zone, &tim);
 	if (!isRetCodeSuccess(result)) {
-		logInfo("getDeviceTime_ParseCmd parseTimeZoneTimeStr %s failed", localTime1);
+		logInfo("getDeviceTime_ParseCmd parseTimeZoneTimeStr %s failed",
+				localTime1);
 		return result;
 	}
 	info->localTime = tim;
@@ -230,7 +231,7 @@ int setDeviceTime_PushCmd(const Map inList, const void* info1) {
 	} else {
 		putIntValueInList(inList, e_time_ntpenable, ENABLE_NO);
 		// putIntValueInList(inList, e_time_Zone, info->timeZone);
-		char dt[INFO_LENGTH] = {0};
+		char dt[INFO_LENGTH] = { 0 };
 		getDateTimeStr(dt, INFO_LENGTH, info->localTime);
 		putStrValueInList(inList, e_time_systime, dt);
 	}
@@ -410,3 +411,36 @@ int getVideoChannelStreamInfo(OnvifVideoChannelInfo* info) {
 			getVideoChannelStreamInfo_ParseCmd);
 }
 
+int setPTZStop_PushCmd(const Map inList, const void* info1) {
+	OnvifPTZStopInfo* info = (OnvifPTZStopInfo*) info1;
+	putIntValueInList(inList, e_ptz_stop_pt, info->stopPt);
+	putIntValueInList(inList, e_ptz_stop_zoom, info->stopZoom);
+	return RET_CODE_SUCCESS;
+}
+
+int setPTZStopInfo(OnvifPTZStopInfo* info) {
+	if (NULL == info)
+		return RET_CODE_ERROR_NULL_VALUE;
+	return sendCommIPCFunc(T_Set, info, setPTZStop_PushCmd, NULL);
+}
+
+int setPTZContinousMove_PushCmd(const Map inList, const void* info1) {
+	OnvifPTZContinousMoveInfo* info = (OnvifPTZContinousMoveInfo*) info1;
+	if (info->setPt) {
+		putFloatValueInList(inList, e_ptz_continue_move_vx, info->x);
+		putFloatValueInList(inList, e_ptz_continue_move_vy, info->y);
+	}
+	if (info->setZoom) {
+		putFloatValueInList(inList, e_ptz_continue_move_vzoom, info->zoom);
+	}
+	if (info->setTimeOut) {
+		putIntValueInList(inList, e_ptz_continue_move_timeout, info->timeOut);
+	}
+	return RET_CODE_SUCCESS;
+}
+
+int setPTZContinousMoveInfo(OnvifPTZContinousMoveInfo* info) {
+	if (NULL == info)
+		return RET_CODE_ERROR_NULL_VALUE;
+	return sendCommIPCFunc(T_Set, info, setPTZContinousMove_PushCmd, NULL);
+}

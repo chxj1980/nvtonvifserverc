@@ -78,6 +78,25 @@ typedef struct St_OnvifVideoChannelInfo {
 	char videoAddr[LARGE_INFO_LENGTH];
 } OnvifVideoChannelInfo;
 
+typedef struct St_OnvifPTZConfiguration {
+	int defaultTimeout;  // continous move default time out
+} OnvifPTZConfiguration;
+
+typedef struct St_OnvifPTZContinousMoveInfo {
+	bool setTimeOut;	// set timeout flag
+	int timeOut;	// timeout value
+	bool setZoom;	// set zoom flag
+	float zoom;		// zoom value
+	bool setPt;		// set pan /tilt
+	float x;		// pan value
+	float y;		// tilt value
+} OnvifPTZContinousMoveInfo;
+
+typedef struct St_OnvifPTZStopInfo {
+	int stopPt;		// stop pan tilt
+	int stopZoom;	// stop zoom
+} OnvifPTZStopInfo;
+
 extern OnvifRunParam onvifRunParam;
 void* my_soap_malloc(struct soap* soap, size_t n);
 int startOnvifApp();
@@ -103,7 +122,8 @@ int getDeviceTime(OnvifSystemDateTime* info);
 int setDeviceTime(OnvifSystemDateTime* info);
 int getVideoChannelInfo(OnvifVideoChannelInfo* info);
 int getVideoChannelStreamInfo(OnvifVideoChannelInfo* info);
-
+int setPTZStopInfo(OnvifPTZStopInfo* info);
+int setPTZContinousMoveInfo(OnvifPTZContinousMoveInfo* info);
 char* getPTZConfigurationToken(struct soap* soap, int index);
 
 int getIndexFromTokenName(const char* tokenName, const char* prefix);

@@ -73,6 +73,12 @@ void putIntValueInList(const Map inList, const int key, const int value) {
 	putStrValueInList(inList, key, cValue);
 }
 
+void putFloatValueInList(const Map inList, const int key, const float value) {
+	char cValue[20];
+	sprintf(cValue, "%f", value);
+	putStrValueInList(inList, key, cValue);
+}
+
 void putNullValueInList(const Map inList, const int key) {
 	putStrValueInList(inList, key, NULL);
 }
