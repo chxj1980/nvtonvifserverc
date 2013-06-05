@@ -444,3 +444,28 @@ int setPTZContinousMoveInfo(OnvifPTZContinousMoveInfo* info) {
 		return RET_CODE_ERROR_NULL_VALUE;
 	return sendCommIPCFunc(T_Set, info, setPTZContinousMove_PushCmd, NULL);
 }
+
+int getPTZConfigurationInfo_PushCmd(const Map inList, const void* info1) {
+	OnvifPTZConfigurationInfo* info = (OnvifPTZConfigurationInfo*) info1;
+	if (NULL == info) {
+		return RET_CODE_ERROR_NULL_OBJECT;
+	}
+	putNullValueInList(inList, e_ptz_continue_move_default_timeout);
+	return RET_CODE_SUCCESS;
+}
+
+int getPTZConfigurationInfo_ParseCmd(const Map outList, const void* info1) {
+	OnvifPTZConfigurationInfo* info = (OnvifPTZConfigurationInfo*) info1;
+	memset(info, 0, sizeof(OnvifPTZConfigurationInfo));
+	int value;
+	int result = getIntValueFromList(outList, e_ptz_continue_move_default_timeout, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->defaultTimeout = value;
+	return result;
+}
+
+int getPTZConfigurationInfo(OnvifPTZConfigurationInfo* info) {
+	return sendCommIPCFunc(T_Get, info, getPTZConfigurationInfo_PushCmd,
+			getPTZConfigurationInfo_ParseCmd);
+}

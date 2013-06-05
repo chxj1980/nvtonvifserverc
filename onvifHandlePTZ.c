@@ -8,6 +8,7 @@
 
 #define PTZ_NODE_TOKEN_PREFIX "PTZ_node_token"
 #define PTZ_CONFIG_TOKEN_PREFIX "PTZ_config_token"
+#define PTZ_DEFAULT_TIMEOUT 10
 
 char* getPTZNodeToken(struct soap* soap, int index) {
 	return getIndexTokeName(soap, PTZ_NODE_TOKEN_PREFIX, index);
@@ -154,6 +155,15 @@ struct tt__ZoomLimits* getPTZConfigurationZoomLimits(struct soap* soap) {
 	return result;
 }
 
+int getDefaultPTZTimeout() {
+	int result = PTZ_DEFAULT_TIMEOUT;
+	OnvifPTZConfigurationInfo onvifPTZConfigurationInfo;
+	if (isRetCodeSuccess(getPTZConfigurationInfo(&onvifPTZConfigurationInfo))) {
+		result = onvifPTZConfigurationInfo.defaultTimeout;
+	}
+	return result;
+}
+
 struct tt__PTZConfiguration* getPTZConfiguration(struct soap* soap) {
 	struct tt__PTZConfiguration* result =
 			(struct tt__PTZConfiguration*) my_soap_malloc(soap,
@@ -172,7 +182,7 @@ struct tt__PTZConfiguration* getPTZConfiguration(struct soap* soap) {
 //			getRelativeZoomTranslationSpaceURI(soap);
 //	result->DefaultPTZSpeed = getPTZConfigurationPTZSpeed(soap);
 	result->DefaultPTZTimeout = (LONG64*) my_soap_malloc(soap, sizeof(LONG64));
-	*result->DefaultPTZTimeout = 0;
+	*result->DefaultPTZTimeout = getDefaultPTZTimeout();
 	result->Name = getPTZName(soap, 0);
 	result->token = getPTZConfigurationToken(soap, 0);
 	result->NodeToken = getPTZNodeToken(soap, 0);

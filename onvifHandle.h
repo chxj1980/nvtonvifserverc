@@ -78,9 +78,9 @@ typedef struct St_OnvifVideoChannelInfo {
 	char videoAddr[LARGE_INFO_LENGTH];
 } OnvifVideoChannelInfo;
 
-typedef struct St_OnvifPTZConfiguration {
+typedef struct St_OnvifPTZConfigurationInfo {
 	int defaultTimeout;  // continous move default time out
-} OnvifPTZConfiguration;
+} OnvifPTZConfigurationInfo;
 
 typedef struct St_OnvifPTZContinousMoveInfo {
 	bool setTimeOut;	// set timeout flag
@@ -125,7 +125,7 @@ int getVideoChannelStreamInfo(OnvifVideoChannelInfo* info);
 int setPTZStopInfo(OnvifPTZStopInfo* info);
 int setPTZContinousMoveInfo(OnvifPTZContinousMoveInfo* info);
 char* getPTZConfigurationToken(struct soap* soap, int index);
-
+int getPTZConfigurationInfo(OnvifPTZConfigurationInfo* info);
 int getIndexFromTokenName(const char* tokenName, const char* prefix);
 char* getIndexTokeName(struct soap *soap, const char* prefix, const int index);
 
