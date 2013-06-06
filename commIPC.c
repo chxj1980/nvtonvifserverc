@@ -12,9 +12,17 @@ IPCRunInfo ipcRunInfo = {.ipcConnectHandle = INVALID_HANDLE};
 int startIPCComm() {
 	if (isValidHandle(ipcRunInfo.ipcConnectHandle))
 		stopIPCComm();
-	int cHandle = connect_local("/tmp/avserver.domain");
+	int cHandle = INVALID_HANDLE;
+	int i;
+	for(i = 0; i < 3; i++) {
+		cHandle = connect_local("/tmp/avserver.domain");
+		if (isValidHandle(cHandle)) {
+			logInfo("connect ipc success");
+			break;
+		}
+		sleep(5);
+	}
 	if (!isValidHandle(cHandle)) {
-		logInfo("connect ipc failed");
 		return RET_CODE_ERROR_CONNECT;
 	}
 	ipcRunInfo.ipcConnectHandle = cHandle;
