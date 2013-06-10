@@ -100,13 +100,22 @@ bool isRetCodeSuccess(int retCode) {
 	return RET_CODE_SUCCESS == retCode;
 }
 
+void getDateTimeStr(char* info, const int len, const time_t dtValue) {
+	struct tm* today = localtime(&dtValue);
+	strftime(info, len, "%F %T", today);
+}
+
 void getCurrentDateTimeStr(char* info, const int len) {
 	getDateTimeStr(info, len, time(NULL));
 }
 
-void getDateTimeStr(char* info, const int len, const time_t dtValue) {
-	struct tm* today = localtime(&dtValue);
-	strftime(info, len, "%Y-%m-%d %H:%M:%S", today);
+void getCurrentDateTimeMSecStr(char* info, const int len) {
+	struct timeval tv;
+	struct tm tm;
+	gettimeofday(&tv, NULL);
+	getDateTimeStr(info, len, tv.tv_sec);
+	int len1 = strlen(info);
+	sprintf(info + len1, ".%06.6d", (int)(tv.tv_usec));
 }
 
 int parseTimeZoneTimeStr(const char* timeinfo, const short srcTimeZone, const short destTimeZone,

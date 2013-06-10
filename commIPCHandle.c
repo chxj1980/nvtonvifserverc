@@ -22,24 +22,31 @@ int sendCommIPCFunc(const int type, const void* info,
 	if (NULL == pushFunc) {
 		return RET_CODE_ERROR_NULL_OBJECT;
 	}
+	logInfo("sendCommIPCFunc create in list");
 	Map inList = createIPCCmdInfoMapList();
+	logInfo("sendCommIPCFunc pushFunc");
 	int result = pushFunc(inList, info);
 	if (!isRetCodeSuccess(result)) {
 		destroyIPCCmdInfoMapList(inList);
 		return result;
 	}
+	logInfo("sendCommIPCFunc create out list");
 	Map outList = createIPCCmdInfoMapList();
+	logInfo("sendCommIPCFunc send start");
 	result = sendAndRetList(type, inList, outList);
+	logInfo("sendCommIPCFunc send end");
 	if (!isRetCodeSuccess(result)) {
 		destroyIPCCmdInfoMapList(inList);
 		destroyIPCCmdInfoMapList(outList);
 		return result;
 	}
+	logInfo("sendCommIPCFunc parse Func");
 	if (NULL != parseFunc) {
 		result = parseFunc(outList, info);
 	}
 	destroyIPCCmdInfoMapList(inList);
 	destroyIPCCmdInfoMapList(outList);
+	logInfo("sendCommIPCFunc end");
 	return result;
 }
 
