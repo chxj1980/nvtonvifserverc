@@ -387,6 +387,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__ContinuousMove(struct soap* soap,
 		}
 	}
 	if (!isRetCodeSuccess(setPTZContinousMoveInfo(&onvifPTZContinousMoveInfo))) {
+		logInfo("__tptz__ContinuousMove setPTZContinousMoveInfo failed");
 		return getOnvifPTZSoapActionNotSupport(soap, "PTZ ContinuousMove",
 				"setPTZContinousMoveInfo failed");
 	}
