@@ -7,6 +7,8 @@
 #include "logInfo.h"
 
 #define PTZ_NODE_TOKEN_PREFIX "PTZ_node_token"
+#define PTZ_PRESET_NAME_PREFIX "PTZ_preset_name"
+#define PTZ_PRESET_TOKEN_PREFIX "PTZ_preset_token"
 #define PTZ_CONFIG_TOKEN_PREFIX "PTZ_config_token"
 #define PTZ_DEFAULT_TIMEOUT 500
 
@@ -22,12 +24,24 @@ char* getPTZName(struct soap* soap, int index) {
 	return getIndexTokeName(soap, "PTZ_Name", index);
 }
 
+char* getPTZPresetName(struct soap* soap, int index) {
+	return getIndexTokeName(soap, PTZ_PRESET_NAME_PREFIX, index);
+}
+
+char* getPTZPresetToken(struct soap* soap, int index) {
+	return getIndexTokeName(soap, PTZ_PRESET_TOKEN_PREFIX, index);
+}
+
 int getIndexFromPTZNodeToken(char* token) {
 	return getIndexFromTokenName(token, PTZ_NODE_TOKEN_PREFIX);
 }
 
 int getIndexFromPTZConfigToken(char* token) {
 	return getIndexFromTokenName(token, PTZ_CONFIG_TOKEN_PREFIX);
+}
+
+int getIndexFromPTZPresetToken(char* token) {
+	return getIndexFromTokenName(token, PTZ_PRESET_TOKEN_PREFIX);
 }
 
 int getOnvifPTZSoapActionNotSupport(struct soap *soap, const char *faultInfo,
@@ -124,8 +138,14 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetServiceCapabilities(
 		struct _tptz__GetServiceCapabilities *tptz__GetServiceCapabilities,
 		struct _tptz__GetServiceCapabilitiesResponse *tptz__GetServiceCapabilitiesResponse) {
 	logInfo("__tptz__GetServiceCapabilities");
-	return getOnvifPTZSoapActionNotSupport(soap, "PTZ GetServiceCapabilities",
-			NULL);
+	tptz__GetServiceCapabilitiesResponse->Capabilities =
+			(struct tptz__Capabilities*) my_soap_malloc(soap,
+					sizeof(struct tptz__Capabilities));
+	tptz__GetServiceCapabilitiesResponse->Capabilities->EFlip = getxsdBoolean(
+			soap, false);
+	tptz__GetServiceCapabilitiesResponse->Capabilities->Reverse = getxsdBoolean(
+			soap, false);
+	return SOAP_OK;
 }
 
 struct tt__PTZSpeed* getPTZConfigurationPTZSpeed(struct soap* soap) {
@@ -212,7 +232,7 @@ void getPTZNodeInfoSupportContinuousSpace(struct soap* soap,
 
 struct tt__PTZSpaces* getPTZSpaces(struct soap* soap) {
 	struct tt__PTZSpaces* result = (struct tt__PTZSpaces*) my_soap_malloc(soap,
-				sizeof(struct tt__PTZSpaces));
+			sizeof(struct tt__PTZSpaces));
 	// getPTZNodeInfoSupportRelateSpace(soap, result);
 	// getPTZNodeInfoSupportAbsoluteSpace(soap, result);
 	getPTZNodeInfoSupportContinuousSpace(soap, result);
@@ -223,22 +243,24 @@ struct tt__PTZSpaces* getPTZSpaces(struct soap* soap) {
 	return result;
 }
 
-struct tt__PTZNode* getPTZNodeInfo(struct soap* soap,  int index) {
+struct tt__PTZNode* getPTZNodeInfo(struct soap* soap, int index) {
 	struct tt__PTZNode* result = (struct tt__PTZNode*) my_soap_malloc(soap,
-				sizeof(struct tt__PTZNode));
+			sizeof(struct tt__PTZNode));
 	result->Name = getPTZName(soap, index);
 	result->token = getPTZNodeToken(soap, index);
-	result->FixedHomePosition = (enum xsd__boolean *) my_soap_malloc(soap,
-			sizeof(enum xsd__boolean));
-	*result->FixedHomePosition = xsd__boolean__false_;
-	result->MaximumNumberOfPresets = 1;
+	result->FixedHomePosition = getxsdBoolean(soap, false);
+	int presets = 0;
+	getPTZPresetsCapacity(&presets);
+	result->MaximumNumberOfPresets = presets;
 	result->SupportedPTZSpaces = getPTZSpaces(soap);
 	return result;
 }
 
-struct tt__DurationRange* getDurationRange(struct soap* soap, LONG64 lMin, LONG64 lMax) {
-	struct tt__DurationRange* result = (struct tt__DurationRange*) my_soap_malloc(soap,
-			sizeof(struct tt__DurationRange));
+struct tt__DurationRange* getDurationRange(struct soap* soap, LONG64 lMin,
+		LONG64 lMax) {
+	struct tt__DurationRange* result =
+			(struct tt__DurationRange*) my_soap_malloc(soap,
+					sizeof(struct tt__DurationRange));
 	result->Max = lMax;
 	result->Min = lMin;
 	return result;
@@ -255,32 +277,99 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetConfigurations(
 	return SOAP_OK;
 }
 
+void getPreset(struct soap* soap, struct tt__PTZPreset* ptzPreset,
+		OnvifPTZPreset* onvifPTZPreset) {
+	ptzPreset->Name = getPTZPresetName(soap, onvifPTZPreset->index);
+	ptzPreset->token = getPTZPresetToken(soap, onvifPTZPreset->index);
+}
+
 SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetPresets(struct soap* soap,
 		struct _tptz__GetPresets *tptz__GetPresets,
 		struct _tptz__GetPresetsResponse *tptz__GetPresetsResponse) {
 	logInfo("__tptz__GetPresets");
-	return getOnvifPTZSoapActionNotSupport(soap, "PTZ GetPresets", NULL);
+	OnvifPTZAllPresets onvifPTZAllPresets;
+	if (!isRetCodeSuccess(getPTZAllPresets(&onvifPTZAllPresets))) {
+		logInfo("__tptz__GetPresets getPTZAllPresets failed");
+		return getOnvifPTZSoapActionNotSupport(soap, "PTZ GetPresets",
+				"getPTZAllPresets failed");
+	}
+	tptz__GetPresetsResponse->__sizePreset = onvifPTZAllPresets.size;
+	int i;
+	for (i = 0; i < onvifPTZAllPresets.size; i++) {
+		tptz__GetPresetsResponse->Preset =
+				(struct tt__PTZPreset*) my_soap_malloc(soap,
+						sizeof(struct tt__PTZPreset) * onvifPTZAllPresets.size);
+		getPreset(soap, &(tptz__GetPresetsResponse->Preset[i]),
+				&(onvifPTZAllPresets.presets[i]));
+	}
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tptz__SetPreset(struct soap* soap,
 		struct _tptz__SetPreset *tptz__SetPreset,
 		struct _tptz__SetPresetResponse *tptz__SetPresetResponse) {
 	logInfo("__tptz__SetPreset");
-	return getOnvifPTZSoapActionNotSupport(soap, "PTZ SetPreset", NULL);
+	if (NULL != tptz__SetPreset->ProfileToken) {
+		logInfo("__tptz__SetPreset profile token %s",
+				tptz__SetPreset->ProfileToken);
+	}
+	if (NULL != tptz__SetPreset->PresetName) {
+		logInfo("__tptz__SetPreset Preset Name %s",
+				tptz__SetPreset->PresetName);
+	}
+	logInfo("__tptz__SetPreset Preset token %s", tptz__SetPreset->PresetToken);
+	int index = getIndexFromPTZPresetToken(tptz__SetPreset->PresetToken);
+	OnvifPTZPreset onvifPTZPreset;
+	onvifPTZPreset.index = index;
+	if (!isRetCodeSuccess(setPTZPreset(&onvifPTZPreset))) {
+		logInfo("__tptz__SetPreset setPTZPreset index %d failed", index);
+		return getOnvifPTZSoapActionNotSupport(soap, "PTZ SetPreset",
+				"setPTZPreset failed");
+	}
+	tptz__SetPresetResponse->PresetToken = getPTZPresetToken(soap, index);
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tptz__RemovePreset(struct soap* soap,
 		struct _tptz__RemovePreset *tptz__RemovePreset,
 		struct _tptz__RemovePresetResponse *tptz__RemovePresetResponse) {
 	logInfo("__tptz__RemovePreset");
-	return getOnvifPTZSoapActionNotSupport(soap, "PTZ RemovePreset", NULL);
+	if (NULL != tptz__RemovePreset->ProfileToken) {
+		logInfo("__tptz__RemovePreset profile token %s",
+				tptz__RemovePreset->ProfileToken);
+	}
+
+	logInfo("__tptz__RemovePreset Preset token %s", tptz__RemovePreset->PresetToken);
+	int index = getIndexFromPTZPresetToken(tptz__RemovePreset->PresetToken);
+	OnvifPTZPreset onvifPTZPreset;
+	onvifPTZPreset.index = index;
+	if (!isRetCodeSuccess(removePTZPreset(&onvifPTZPreset))) {
+		logInfo("__tptz__RemovePreset removePTZPreset index %d failed", index);
+		return getOnvifPTZSoapActionNotSupport(soap, "PTZ RemovePreset",
+				"removePTZPreset failed");
+	}
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tptz__GotoPreset(struct soap* soap,
 		struct _tptz__GotoPreset *tptz__GotoPreset,
 		struct _tptz__GotoPresetResponse *tptz__GotoPresetResponse) {
 	logInfo("__tptz__GotoPreset");
-	return getOnvifPTZSoapActionNotSupport(soap, "PTZ GotoPreset", NULL);
+	if (NULL != tptz__GotoPreset->ProfileToken) {
+		logInfo("__tptz__GotoPreset profile token %s",
+				tptz__GotoPreset->ProfileToken);
+	}
+
+	logInfo("__tptz__GotoPreset Preset token %s", tptz__GotoPreset->PresetToken);
+	int index = getIndexFromPTZPresetToken(tptz__GotoPreset->PresetToken);
+	OnvifPTZPreset onvifPTZPreset;
+	onvifPTZPreset.index = index;
+	if (!isRetCodeSuccess(gotoPTZPreset(&onvifPTZPreset))) {
+		logInfo("__tptz__GotoPreset gotoPTZPreset index %d failed", index);
+		return getOnvifPTZSoapActionNotSupport(soap, "PTZ GotoPreset",
+				"gotoPTZPreset failed");
+	}
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetStatus(struct soap* soap,
@@ -306,7 +395,6 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetConfiguration(struct soap* soap,
 			soap);
 	return SOAP_OK;
 }
-
 
 SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetNodes(struct soap* soap,
 		struct _tptz__GetNodes *tptz__GetNodes,
@@ -338,16 +426,17 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__SetConfiguration(struct soap* soap,
 	return getOnvifPTZSoapActionNotSupport(soap, "PTZ SetConfiguration", NULL);
 }
 
-
-
-struct tt__PTZConfigurationOptions* getPTZConfigurationOptions(struct soap* soap) {
-	struct tt__PTZConfigurationOptions* result = (struct tt__PTZConfigurationOptions*) my_soap_malloc(soap,
-			sizeof(struct tt__PTZConfigurationOptions));
+struct tt__PTZConfigurationOptions* getPTZConfigurationOptions(
+		struct soap* soap) {
+	struct tt__PTZConfigurationOptions* result =
+			(struct tt__PTZConfigurationOptions*) my_soap_malloc(soap,
+					sizeof(struct tt__PTZConfigurationOptions));
 	result->PTZTimeout = getDurationRange(soap, 0, getDefaultPTZTimeout());
 	result->PTControlDirection = NULL;
 	result->Spaces = getPTZSpaces(soap);
-	result->PTControlDirection = (struct tt__PTControlDirectionOptions*) my_soap_malloc(soap,
-			sizeof(struct tt__PTControlDirectionOptions));
+	result->PTControlDirection =
+			(struct tt__PTControlDirectionOptions*) my_soap_malloc(soap,
+					sizeof(struct tt__PTControlDirectionOptions));
 	return result;
 }
 
@@ -357,8 +446,10 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetConfigurationOptions(
 		struct _tptz__GetConfigurationOptionsResponse *tptz__GetConfigurationOptionsResponse) {
 	logInfo("__tptz__GetConfigurationOptions");
 	if (NULL != tptz__GetConfigurationOptions->ConfigurationToken)
-		logInfo("__tptz__GetConfigurationOptions ConfigurationToken %s", tptz__GetConfigurationOptions->ConfigurationToken);
-	tptz__GetConfigurationOptionsResponse->PTZConfigurationOptions = getPTZConfigurationOptions(soap);
+		logInfo("__tptz__GetConfigurationOptions ConfigurationToken %s",
+				tptz__GetConfigurationOptions->ConfigurationToken);
+	tptz__GetConfigurationOptionsResponse->PTZConfigurationOptions =
+			getPTZConfigurationOptions(soap);
 	return SOAP_OK;
 }
 
@@ -395,8 +486,10 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__ContinuousMove(struct soap* soap,
 	if (NULL != tptz__ContinuousMove->Velocity) {
 		if (NULL != tptz__ContinuousMove->Velocity->PanTilt) {
 			onvifPTZContinousMoveInfo.setPt = true;
-			onvifPTZContinousMoveInfo.x = tptz__ContinuousMove->Velocity->PanTilt->x;
-			onvifPTZContinousMoveInfo.y = tptz__ContinuousMove->Velocity->PanTilt->y;
+			onvifPTZContinousMoveInfo.x =
+					tptz__ContinuousMove->Velocity->PanTilt->x;
+			onvifPTZContinousMoveInfo.y =
+					tptz__ContinuousMove->Velocity->PanTilt->y;
 
 			if (NULL != tptz__ContinuousMove->Velocity->PanTilt->space)
 				logInfo("__tptz__ContinuousMove pantilt x:%f y:%f space:%s",
@@ -410,7 +503,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__ContinuousMove(struct soap* soap,
 		}
 		if (NULL != tptz__ContinuousMove->Velocity->Zoom) {
 			onvifPTZContinousMoveInfo.setZoom = true;
-			onvifPTZContinousMoveInfo.zoom = tptz__ContinuousMove->Velocity->Zoom->x;
+			onvifPTZContinousMoveInfo.zoom =
+					tptz__ContinuousMove->Velocity->Zoom->x;
 			if (NULL != tptz__ContinuousMove->Velocity->Zoom->space)
 				logInfo("__tptz__ContinuousMove Zoom x:%f space:%s",
 						tptz__ContinuousMove->Velocity->Zoom->x,
@@ -421,7 +515,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__ContinuousMove(struct soap* soap,
 		}
 	}
 	logInfo("__tptz__ContinuousMove setPTZContinousMoveInfo start");
-	if (!isRetCodeSuccess(setPTZContinousMoveInfo(&onvifPTZContinousMoveInfo))) {
+	if (!isRetCodeSuccess(
+			setPTZContinousMoveInfo(&onvifPTZContinousMoveInfo))) {
 		logInfo("__tptz__ContinuousMove setPTZContinousMoveInfo failed");
 		return getOnvifPTZSoapActionNotSupport(soap, "PTZ ContinuousMove",
 				"setPTZContinousMoveInfo failed");
@@ -460,18 +555,19 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__Stop(struct soap* soap,
 	OnvifPTZStopInfo onvifPTZStopInfo;
 	memset(&onvifPTZStopInfo, 0, sizeof(OnvifPTZStopInfo));
 	if (NULL != tptz__Stop->ProfileToken) {
-		logInfo("__tptz__Stop token %s",
-				tptz__Stop->ProfileToken);
+		logInfo("__tptz__Stop token %s", tptz__Stop->ProfileToken);
 	}
 	if (NULL != tptz__Stop->Zoom) {
-		logInfo("__tptz__Stop Zoom %d",
-						*tptz__Stop->Zoom);
-		onvifPTZStopInfo.stopZoom = xsd__boolean__true_ == *tptz__Stop->Zoom ? ENABLE_YES: ENABLE_NO;
+		logInfo("__tptz__Stop Zoom %d", *tptz__Stop->Zoom);
+		onvifPTZStopInfo.stopZoom =
+				xsd__boolean__true_ == *tptz__Stop->Zoom ?
+						ENABLE_YES : ENABLE_NO;
 	}
 	if (NULL != tptz__Stop->PanTilt) {
-		logInfo("__tptz__Stop PanTilt %d",
-						*tptz__Stop->PanTilt);
-		onvifPTZStopInfo.stopPt = xsd__boolean__true_ == *tptz__Stop->PanTilt ? ENABLE_YES: ENABLE_NO;
+		logInfo("__tptz__Stop PanTilt %d", *tptz__Stop->PanTilt);
+		onvifPTZStopInfo.stopPt =
+				xsd__boolean__true_ == *tptz__Stop->PanTilt ?
+						ENABLE_YES : ENABLE_NO;
 	}
 	if (!isRetCodeSuccess(setPTZStopInfo(&onvifPTZStopInfo))) {
 		return getOnvifPTZSoapActionNotSupport(soap, "PTZ Stop",

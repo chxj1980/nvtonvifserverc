@@ -212,9 +212,7 @@ void getResponseProfileInfo(struct soap* soap, struct tt__Profile* destProfile,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
 	destProfile->Name = getMediaProfileName(soap, index);
 	destProfile->token = getMediaProfileToken(soap, index);
-	destProfile->fixed = (enum xsd__boolean *) my_soap_malloc(soap,
-			sizeof(enum xsd__boolean));
-	*destProfile->fixed = xsd__boolean__false_;
+	destProfile->fixed = getxsdBoolean(soap, false);
 	destProfile->__anyAttribute = NULL;
 	destProfile->VideoAnalyticsConfiguration = NULL;
 

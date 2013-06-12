@@ -22,31 +22,24 @@ int sendCommIPCFunc(const int type, const void* info,
 	if (NULL == pushFunc) {
 		return RET_CODE_ERROR_NULL_OBJECT;
 	}
-	logInfo("sendCommIPCFunc create in list");
 	Map inList = createIPCCmdInfoMapList();
-	logInfo("sendCommIPCFunc pushFunc");
 	int result = pushFunc(inList, info);
 	if (!isRetCodeSuccess(result)) {
 		destroyIPCCmdInfoMapList(inList);
 		return result;
 	}
-	logInfo("sendCommIPCFunc create out list");
 	Map outList = createIPCCmdInfoMapList();
-	logInfo("sendCommIPCFunc send start");
 	result = sendAndRetList(type, inList, outList);
-	logInfo("sendCommIPCFunc send end");
 	if (!isRetCodeSuccess(result)) {
 		destroyIPCCmdInfoMapList(inList);
 		destroyIPCCmdInfoMapList(outList);
 		return result;
 	}
-	logInfo("sendCommIPCFunc parse Func");
 	if (NULL != parseFunc) {
 		result = parseFunc(outList, info);
 	}
 	destroyIPCCmdInfoMapList(inList);
 	destroyIPCCmdInfoMapList(outList);
-	logInfo("sendCommIPCFunc end");
 	return result;
 }
 
@@ -475,4 +468,108 @@ int getPTZConfigurationInfo_ParseCmd(const Map outList, const void* info1) {
 int getPTZConfigurationInfo(OnvifPTZConfigurationInfo* info) {
 	return sendCommIPCFunc(T_Get, info, getPTZConfigurationInfo_PushCmd,
 			getPTZConfigurationInfo_ParseCmd);
+}
+
+int getPTZPresetsCapacity_PushCmd(const Map inList, const void* info1) {
+	int* info = (int*) info1;
+	if (NULL == info) {
+		return RET_CODE_ERROR_NULL_OBJECT;
+	}
+	putNullValueInList(inList, e_ptz_presets_capacity);
+	return RET_CODE_SUCCESS;
+}
+
+int getPTZPresetsCapacity_ParseCmd(const Map outList, const void* info1) {
+	int* info = (int*) info1;
+	memset(info, 0, sizeof(int));
+	int value;
+	int result = getIntValueFromList(outList, e_ptz_presets_capacity, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	*info = value;
+	return result;
+}
+
+int getPTZPresetsCapacity(int* info) {
+	return sendCommIPCFunc(T_Get, info, getPTZPresetsCapacity_PushCmd,
+			getPTZPresetsCapacity_ParseCmd);
+}
+
+int getPTZAllPresets_PushCmd(const Map inList, const void* info1) {
+	OnvifPTZAllPresets* info = (OnvifPTZAllPresets*) info1;
+	if (NULL == info) {
+		return RET_CODE_ERROR_NULL_OBJECT;
+	}
+	putNullValueInList(inList, e_ptz_allpresets);
+	return RET_CODE_SUCCESS;
+}
+
+int getPTZAllPresets_ParseCmd(const Map outList, const void* info1) {
+	OnvifPTZAllPresets* info = (OnvifPTZAllPresets*) info1;
+	memset(info, 0, sizeof(OnvifPTZAllPresets));
+	char value[2048] = {0};
+	int result = getStrValueFromList(outList, e_ptz_allpresets, value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	char delims[] = "/";
+	char *preset = NULL;
+	int pos = 0;
+	preset = strtok(value, delims);
+	while(preset != NULL){
+		info->presets[pos++].index = convertBCDToDec(preset, strlen(preset));
+		preset = strtok(NULL, delims);
+	}
+	info->size = pos;
+	return result;
+}
+
+int getPTZAllPresets(OnvifPTZAllPresets* info){
+	return sendCommIPCFunc(T_Get, info, getPTZAllPresets_PushCmd,
+			getPTZAllPresets_ParseCmd);
+}
+
+int gotoPTZPreset_PushCmd(const Map inList, const void* info1) {
+	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
+	char value[INFO_LENGTH] = {0};
+	int result = convertDecToBCD(info->index, value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	putStrValueInList(inList, e_ptz_goto_preset, value);
+	return RET_CODE_SUCCESS;
+}
+
+int gotoPTZPreset(OnvifPTZPreset* info) {
+	if (NULL == info)
+		return RET_CODE_ERROR_NULL_VALUE;
+	return sendCommIPCFunc(T_Set, info, gotoPTZPreset_PushCmd, NULL);
+}
+
+int removePTZPreset_PushCmd(const Map inList, const void* info1) {
+	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
+	char value[INFO_LENGTH] = {0};
+	int result = convertDecToBCD(info->index, value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	putStrValueInList(inList, e_ptz_deletepreset, value);
+	return RET_CODE_SUCCESS;
+}
+
+int removePTZPreset(OnvifPTZPreset* info) {
+	if (NULL == info)
+		return RET_CODE_ERROR_NULL_VALUE;
+	return sendCommIPCFunc(T_Set, info, removePTZPreset_PushCmd, NULL);
+}
+
+int setPTZPreset_PushCmd(const Map inList, const void* info1) {
+	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
+	char value[INFO_LENGTH] = {0};
+	int result = convertDecToBCD(info->index, value);
+	putStrValueInList(inList, e_ptz_preset, value);
+	return RET_CODE_SUCCESS;
+}
+
+int setPTZPreset(OnvifPTZPreset* info) {
+	if (NULL == info)
+		return RET_CODE_ERROR_NULL_VALUE;
+	return sendCommIPCFunc(T_Set, info, setPTZPreset_PushCmd, NULL);
 }

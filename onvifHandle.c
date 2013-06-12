@@ -192,7 +192,14 @@ return atoi((char*) (tokenName + strlen(prefix)));
 }
 
 char* getIndexTokeName(struct soap *soap, const char* prefix, const int index) {
-char* result = (char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-sprintf(result, "%s%d", prefix, index);
-return result;
+	char* result = (char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+	sprintf(result, "%s%d", prefix, index);
+	return result;
+}
+
+enum xsd__boolean * getxsdBoolean(struct soap* soap, bool value) {
+	enum xsd__boolean * result = (enum xsd__boolean *) my_soap_malloc(soap,
+				sizeof(enum xsd__boolean));
+	*result = value ? xsd__boolean__true_: xsd__boolean__false_;
+	return result;
 }

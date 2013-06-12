@@ -12,6 +12,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <sys/time.h>
+#include <math.h>
 
 #include "logInfo.h"
 
@@ -111,11 +112,10 @@ void getCurrentDateTimeStr(char* info, const int len) {
 
 void getCurrentDateTimeMSecStr(char* info, const int len) {
 	struct timeval tv;
-	struct tm tm;
 	gettimeofday(&tv, NULL);
 	getDateTimeStr(info, len, tv.tv_sec);
 	int len1 = strlen(info);
-	sprintf(info + len1, ".%06.6d", (int)(tv.tv_usec));
+	sprintf(info + len1, ".%6.6d", (int)(tv.tv_usec));
 }
 
 int parseTimeZoneTimeStr(const char* timeinfo, const short srcTimeZone, const short destTimeZone,
@@ -156,4 +156,53 @@ int parseTimeZoneTimeStr(const char* timeinfo, const short srcTimeZone, const sh
 	*value = (destTimeZone - localZone) * 60 * 60 + srctx;
 	getDateTimeStr(dd, 200, *value);
 	return RET_CODE_SUCCESS;
+}
+
+char *reverseStr(char *str, int len)
+{
+
+    char    *start = str;
+    char    *end = str + len - 1;
+    char    ch;
+
+    if (str != NULL)
+    {
+        while (start < end)
+        {
+            ch = *start;
+            *start++ = *end;
+            *end-- = ch;
+        }
+    }
+    return str;
+}
+
+int convertBCDToDec(const unsigned char *bcd, int length)
+{
+    int tmp;
+    int dec = 0;
+    int i;
+    for(i = 0; i < length; i++)
+    {
+        tmp = ((bcd[i] >> 4) & 0x0F) * 10 + (bcd[i] & 0x0F);
+        dec += tmp * pow(100, length - 1 - i);
+    }
+    return dec;
+}
+
+int convertDecToBCD(int value, unsigned char *bcd)
+{
+    int tmp;
+    int pos = 0;
+    if (0 == value) {
+    	bcd[0] = 0x0;
+    	return 1;
+    }
+    while(value != 0) {
+        tmp = value % 100;
+        bcd[pos++] = ((tmp / 10) << 4) + ((tmp % 10) & 0x0F);
+        pos /= 100;
+    }
+    reverseStr(bcd, pos);
+    return pos;
 }

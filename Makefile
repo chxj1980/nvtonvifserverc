@@ -37,7 +37,7 @@ OBJECTFILES= soapC.o \
 	
 RUNAPPFILES = nvtonvifserverc.o
 TARGET = onvifserver$(TARGET_EXTENSION)
-LIBS=-lpthread -lipc #-lssl -lcrypto
+LIBS=-lm -lpthread -lipc #-lssl -lcrypto
 
 CMOCK_DIR = ../cmock
 CMOCK_SRC = $(CMOCK_DIR)/src

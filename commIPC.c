@@ -41,19 +41,16 @@ int sendIPCCmd(const void* cmd, const int len) {
 
 int sendAndRecvIPCCmd(const void* incmd, const int inlen, void* outInfo,
 		int* outlen) {
-	logInfo("sendAndRecvIPCCmd send");
 	int result = sendIPCCmd(incmd, inlen);
 	if (!isRetCodeSuccess(result)) {
 		return result;
 	}
-	logInfo("sendAndRecvIPCCmd recv start");
 	int size = recv_local(ipcRunInfo.ipcConnectHandle, (char*) outInfo,
 			*outlen);
 	if (size < 0) {
 		return RET_CODE_ERROR_RECV;
 	}
 	*outlen = size;
-	logInfo("sendAndRecvIPCCmd end");
 	return RET_CODE_SUCCESS;
 }
 

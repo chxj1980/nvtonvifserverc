@@ -97,6 +97,15 @@ typedef struct St_OnvifPTZStopInfo {
 	int stopZoom;	// stop zoom
 } OnvifPTZStopInfo;
 
+typedef struct St_OnvifPTZPreset {
+	int index;  // 索引号
+} OnvifPTZPreset;
+
+typedef struct St_OnvifPTZAllPresets {
+	int size;  // 长度
+	OnvifPTZPreset presets[1024];  // 预制位
+} OnvifPTZAllPresets;
+
 extern OnvifRunParam onvifRunParam;
 void* my_soap_malloc(struct soap* soap, size_t n);
 int startOnvifApp();
@@ -126,13 +135,20 @@ int setPTZStopInfo(OnvifPTZStopInfo* info);
 int setPTZContinousMoveInfo(OnvifPTZContinousMoveInfo* info);
 char* getPTZConfigurationToken(struct soap* soap, int index);
 int getPTZConfigurationInfo(OnvifPTZConfigurationInfo* info);
+int getPTZPresetsCapacity(int* info);
+int getPTZAllPresets(OnvifPTZAllPresets* info);
 int getIndexFromTokenName(const char* tokenName, const char* prefix);
+int gotoPTZPreset(OnvifPTZPreset* info);
+int removePTZPreset(OnvifPTZPreset* info);
+int setPTZPreset(OnvifPTZPreset* info);
 char* getIndexTokeName(struct soap *soap, const char* prefix, const int index);
 
 SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapSenderSubCode2Fault(struct soap *soap,
 		const char *faultsubcodeQName, const char *faultsubcodeQName1, const char *faultstring,
 		const char *faultdetailXML);
 struct tt__PTZConfiguration* getPTZConfiguration(struct soap* soap);
+enum xsd__boolean * getxsdBoolean(struct soap* soap, bool value);
+
 #ifdef __cplusplus
 }
 #endif

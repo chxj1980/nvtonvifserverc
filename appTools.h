@@ -21,6 +21,8 @@
 	void getCurrentDateTimeMSecStr(char* info, const int len);
 	int parseTimeZoneTimeStr(const char* timeInfo, const short srcTimeZone, const short destTimeZone,
 			time_t* value);
+	int convertBCDToDec(const unsigned char *bcd, int length);
+	int convertDecToBCD(int value, unsigned char *bcd);
 #ifdef __cplusplus
 	}
 #endif
