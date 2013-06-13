@@ -50,3 +50,17 @@ void test_GetDateTimeStr() {
 	getDateTimeStr(dtStr, INFO_LENGTH, time(NULL));
 	TEST_ASSERT_TRUE(strlen(dtStr) > 0);
 }
+
+void test_ConvertDecToHexStr() {
+	char dtStr[INFO_LENGTH] = {0};
+	convertDecToHexStr(7, dtStr);
+	TEST_ASSERT_EQUAL_STRING("7", dtStr);
+}
+
+void test_ConvertHexStrToDec() {
+	char strv[] ="9";
+	int iv = 0;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, convertHexStrToDec(strv, &iv));
+	TEST_ASSERT_EQUAL(9, iv);
+
+}

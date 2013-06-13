@@ -515,8 +515,11 @@ int getPTZAllPresets_ParseCmd(const Map outList, const void* info1) {
 	char *preset = NULL;
 	int pos = 0;
 	preset = strtok(value, delims);
+	int iv = 0;
 	while(preset != NULL){
-		info->presets[pos++].index = convertBCDToDec(preset, strlen(preset));
+		if (!isRetCodeSuccess(convertHexStrToDec(preset, &iv)))
+			continue;
+		info->presets[pos++].index = iv;
 		preset = strtok(NULL, delims);
 	}
 	info->size = pos;
@@ -531,9 +534,7 @@ int getPTZAllPresets(OnvifPTZAllPresets* info){
 int gotoPTZPreset_PushCmd(const Map inList, const void* info1) {
 	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
 	char value[INFO_LENGTH] = {0};
-	int result = convertDecToBCD(info->index, value);
-	if (!isRetCodeSuccess(result))
-		return result;
+	convertDecToHexStr(info->index, value);
 	putStrValueInList(inList, e_ptz_goto_preset, value);
 	return RET_CODE_SUCCESS;
 }
@@ -547,9 +548,7 @@ int gotoPTZPreset(OnvifPTZPreset* info) {
 int removePTZPreset_PushCmd(const Map inList, const void* info1) {
 	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
 	char value[INFO_LENGTH] = {0};
-	int result = convertDecToBCD(info->index, value);
-	if (!isRetCodeSuccess(result))
-		return result;
+	convertDecToHexStr(info->index, value);
 	putStrValueInList(inList, e_ptz_deletepreset, value);
 	return RET_CODE_SUCCESS;
 }
@@ -563,7 +562,7 @@ int removePTZPreset(OnvifPTZPreset* info) {
 int setPTZPreset_PushCmd(const Map inList, const void* info1) {
 	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
 	char value[INFO_LENGTH] = {0};
-	int result = convertDecToBCD(info->index, value);
+	convertDecToHexStr(info->index, value);
 	putStrValueInList(inList, e_ptz_preset, value);
 	return RET_CODE_SUCCESS;
 }

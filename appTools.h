@@ -23,6 +23,8 @@
 			time_t* value);
 	int convertBCDToDec(const unsigned char *bcd, int length);
 	int convertDecToBCD(int value, unsigned char *bcd);
+	void convertDecToHexStr(const int src, char* dest);
+	int convertHexStrToDec(const char* src, int* dest);
 #ifdef __cplusplus
 	}
 #endif

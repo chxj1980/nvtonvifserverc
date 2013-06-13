@@ -206,3 +206,20 @@ int convertDecToBCD(int value, unsigned char *bcd)
     reverseStr(bcd, pos);
     return pos;
 }
+
+void convertDecToHexStr(const int src, char* dest) {
+	sprintf(dest, "%x", src);
+}
+
+int convertHexStrToDec(const char* src, int* dest) {
+	if (NULL == src) {
+		return RET_CODE_ERROR_NULL_VALUE;
+	}
+	if (NULL == dest) {
+		return RET_CODE_ERROR_NULL_VALUE;
+	}
+	int value;
+	sscanf(src, "%x", &value);
+	*dest = value;
+	return RET_CODE_SUCCESS;
+}
