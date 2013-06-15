@@ -70,12 +70,3 @@ void test_SetPTZContinousMoveInfo() {
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setPTZContinousMoveInfo(&onvifPTZContinousMoveInfo));
 }
 
-void test_SetPTZContinousMoveEmptyInfo() {
-	OnvifPTZContinousMoveInfo onvifPTZContinousMoveInfo;
-	memset(&onvifPTZContinousMoveInfo, 0, sizeof(OnvifPTZContinousMoveInfo));
-	onvifPTZContinousMoveInfo.setPt = true;
-	onvifPTZContinousMoveInfo.x = -0.542805;
-	onvifPTZContinousMoveInfo.y = 0;
-	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setPTZContinousMoveInfo(&onvifPTZContinousMoveInfo));
-	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setPTZContinousMoveInfo(&onvifPTZContinousMoveInfo));
-}
