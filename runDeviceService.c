@@ -23,6 +23,7 @@ bool checkDeviceServiceSoapAcceptTimeOut() {
 
 void * runDeviceServiceThreadMethod() {
 	while (!deviceServiceServiceInfo.m_Terminate) {
+		usleep(10000);
 		if (!soap_valid_socket(soap_accept(&deviceServiceServiceInfo.m_Soap))) {
 			if (checkDeviceServiceSoapAcceptTimeOut()) {
 				stopSoap(&deviceServiceServiceInfo.m_Soap);

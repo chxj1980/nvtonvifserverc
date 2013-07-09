@@ -24,6 +24,7 @@ bool checkProbeServerSoapAcceptTimeOut() {
 void * runProbeServerThreadMethod() {
 	int count = 0;
 	while (!probeServerServiceInfo.m_Terminate) {
+		usleep(10000);
 		if (soap_serve(&probeServerServiceInfo.m_Soap)) {
 			if (checkProbeServerSoapAcceptTimeOut()) {
 				stopSoap(&probeServerServiceInfo.m_Soap);
