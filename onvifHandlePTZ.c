@@ -213,12 +213,14 @@ struct tt__PTZConfiguration* getPTZConfiguration(struct soap* soap) {
 
 void getPTZNodeInfoSupportRelateSpace(struct soap* soap,
 		struct tt__PTZSpaces* ptzSpaces) {
+	ptzSpaces->__sizeRelativePanTiltTranslationSpace = 1;
 	ptzSpaces->RelativePanTiltTranslationSpace = getPTZSpace2DDescription(soap,
 			getRelativePanTiltTranslationSpaceURI(soap), -100, 100, -100, 100);
 }
 
 void getPTZNodeInfoSupportAbsoluteSpace(struct soap* soap,
 		struct tt__PTZSpaces* ptzSpaces) {
+	ptzSpaces->__sizeAbsolutePanTiltPositionSpace = 1;
 	ptzSpaces->AbsolutePanTiltPositionSpace = getPTZSpace2DDescription(soap,
 			getAbsolutePantTiltPositionSpaceURI(soap), -100, 100, -100, 100);
 }
@@ -294,11 +296,11 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetPresets(struct soap* soap,
 				"getPTZAllPresets failed");
 	}
 	tptz__GetPresetsResponse->__sizePreset = onvifPTZAllPresets.size;
+	tptz__GetPresetsResponse->Preset =
+			(struct tt__PTZPreset*) my_soap_malloc(soap,
+					sizeof(struct tt__PTZPreset) * onvifPTZAllPresets.size);
 	int i;
 	for (i = 0; i < onvifPTZAllPresets.size; i++) {
-		tptz__GetPresetsResponse->Preset =
-				(struct tt__PTZPreset*) my_soap_malloc(soap,
-						sizeof(struct tt__PTZPreset) * onvifPTZAllPresets.size);
 		getPreset(soap, &(tptz__GetPresetsResponse->Preset[i]),
 				&(onvifPTZAllPresets.presets[i]));
 	}

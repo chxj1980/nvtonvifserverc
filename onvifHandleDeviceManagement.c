@@ -97,6 +97,8 @@ void getServiceCapabilitiesNetworkSettings(struct soap* soap,
 	deviceServiceCapabilities->Network->DynDNS = getxsdBoolean(soap, false);
 	deviceServiceCapabilities->Network->Dot11Configuration = getxsdBoolean(soap, false);
 	deviceServiceCapabilities->Network->HostnameFromDHCP = getxsdBoolean(soap, false);
+	deviceServiceCapabilities->Network->NTP = (int *) my_soap_malloc(soap,
+			sizeof(int));
 	*deviceServiceCapabilities->Network->NTP = 1;
 }
 

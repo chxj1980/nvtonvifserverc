@@ -161,16 +161,12 @@ int sendAndRetList(const int type, const Map inList, Map outList) {
 	int outlen = 1000;
 	memset(outvalue, 0, 1000);
 	getSendListCmd(invalue, type, inList);
-	logInfo("sendAndRetList sendAndRecvIPCCmd start");
 	int result = sendAndRecvIPCCmd(invalue, strlen(invalue), outvalue, &outlen);
-	logInfo("sendAndRetList sendAndRecvIPCCmd finished");
 	if (!isRetCodeSuccess(result))
 		return result;
-	logInfo("sendAndRetList recv len %d", outlen);
 	if (outlen > 0) {
 		parseRecvListCmd(outvalue, outList);
 	}
-	logInfo("sendAndRetList finished");
 	return result;
 }
 
