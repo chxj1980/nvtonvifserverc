@@ -70,3 +70,26 @@ void test_SetPTZContinousMoveInfo() {
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setPTZContinousMoveInfo(&onvifPTZContinousMoveInfo));
 }
 
+void test_SetPTZCreatePreset() {
+	OnvifPTZPreset onvifPTZPreset;
+	memset(&onvifPTZPreset, 0, sizeof(OnvifPTZPreset));
+	onvifPTZPreset.index = 0;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setPTZPreset(&onvifPTZPreset));
+	TEST_ASSERT_EQUAL(23, onvifPTZPreset.index);
+}
+
+void test_SetPTZOverritePreset() {
+	OnvifPTZPreset onvifPTZPreset;
+	memset(&onvifPTZPreset, 0, sizeof(OnvifPTZPreset));
+	onvifPTZPreset.index = 44;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setPTZPreset(&onvifPTZPreset));
+	TEST_ASSERT_EQUAL(44, onvifPTZPreset.index);
+}
+
+void test_SetPTZInvalidPreset() {
+	OnvifPTZPreset onvifPTZPreset;
+	memset(&onvifPTZPreset, 0, sizeof(OnvifPTZPreset));
+	onvifPTZPreset.index = 96;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setPTZPreset(&onvifPTZPreset));
+	TEST_ASSERT_EQUAL(0, onvifPTZPreset.index);
+}

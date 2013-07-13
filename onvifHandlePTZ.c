@@ -319,8 +319,19 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__SetPreset(struct soap* soap,
 		logInfo("__tptz__SetPreset Preset Name %s",
 				tptz__SetPreset->PresetName);
 	}
-	logInfo("__tptz__SetPreset Preset token %s", tptz__SetPreset->PresetToken);
-	int index = getIndexFromPTZPresetToken(tptz__SetPreset->PresetToken);
+	int index = 0;
+	if (NULL != tptz__SetPreset->PresetToken) {
+		logInfo("__tptz__SetPreset Preset Token %s",
+				tptz__SetPreset->PresetToken);
+		index = getIndexFromPTZPresetToken(tptz__SetPreset->PresetToken);
+	}
+
+	if (index < 0) {
+		logInfo("__tptz__SetPreset get Preset index error %d",
+				index);
+		return getOnvifPTZSoapActionNotSupport(soap, "PTZ SetPreset",
+				"setPTZPreset get index failed");
+	}
 	OnvifPTZPreset onvifPTZPreset;
 	onvifPTZPreset.index = index;
 	if (!isRetCodeSuccess(setPTZPreset(&onvifPTZPreset))) {
@@ -328,7 +339,12 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__SetPreset(struct soap* soap,
 		return getOnvifPTZSoapActionNotSupport(soap, "PTZ SetPreset",
 				"setPTZPreset failed");
 	}
-	tptz__SetPresetResponse->PresetToken = getPTZPresetToken(soap, index);
+	if (onvifPTZPreset.index < 1) {
+		logInfo("__tptz__SetPreset setPTZPreset index %d failed", index);
+		return getOnvifPTZSoapActionNotSupport(soap, "PTZ SetPreset",
+				"setPTZPreset failed");
+	}
+	tptz__SetPresetResponse->PresetToken = getPTZPresetToken(soap, onvifPTZPreset.index);
 	return SOAP_OK;
 }
 

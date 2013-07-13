@@ -567,8 +567,28 @@ int setPTZPreset_PushCmd(const Map inList, const void* info1) {
 	return RET_CODE_SUCCESS;
 }
 
+int setPTZPreset_ParseCmd(const Map outList, const void* info1) {
+	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
+	char value[INFO_LENGTH] = {0};
+	int result = getStrValueFromList(outList, e_ptz_preset, value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	if (strlen(value) < 1) {
+		info->index = 0;  // 返回值0代表失败
+	}
+	else {
+		int index = -1;
+		index = strtol(value, NULL, 16);
+		if (index < 0) {
+			index = 0;
+		}
+		info->index = index;
+	}
+	return RET_CODE_SUCCESS;
+}
+
 int setPTZPreset(OnvifPTZPreset* info) {
 	if (NULL == info)
 		return RET_CODE_ERROR_NULL_VALUE;
-	return sendCommIPCFunc(T_Set, info, setPTZPreset_PushCmd, NULL);
+	return sendCommIPCFunc(T_Set, info, setPTZPreset_PushCmd, setPTZPreset_ParseCmd);
 }

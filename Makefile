@@ -1,5 +1,5 @@
 GSOAP_ROOT = /home/pc01/Source/c++/gsoap-2.8/gsoap
-CFLAGS = -Wall -g -DDEBUG -O2 
+CFLAGS = -Wall -g -O2 #-DDEBUG
 CC = gcc
 INCLUDE = -I../libipnc/inc
 LIBDIR = -L../libipnc/src
