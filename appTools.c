@@ -218,6 +218,8 @@ int convertHexStrToDec(const char* src, int* dest) {
 	if (NULL == dest) {
 		return RET_CODE_ERROR_NULL_VALUE;
 	}
+	if (strlen(src) < 1)
+		return RET_CODE_ERROR_NULL_VALUE;
 	int value;
 	sscanf(src, "%x", &value);
 	*dest = value;

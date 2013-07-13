@@ -21,7 +21,7 @@ typedef struct St_IPCRunInfo {
 
 typedef struct ST_IPCCmdInfo{
 	int key;
-	char value[INFO_LENGTH];
+	char value[500];
 }IPCCmdInfo;
 
 extern IPCRunInfo ipcRunInfo;

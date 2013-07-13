@@ -562,6 +562,7 @@ int removePTZPreset(OnvifPTZPreset* info) {
 int setPTZPreset_PushCmd(const Map inList, const void* info1) {
 	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
 	char value[INFO_LENGTH] = {0};
+	memset(value, 0 ,INFO_LENGTH);
 	convertDecToHexStr(info->index, value);
 	putStrValueInList(inList, e_ptz_preset, value);
 	return RET_CODE_SUCCESS;
@@ -570,6 +571,7 @@ int setPTZPreset_PushCmd(const Map inList, const void* info1) {
 int setPTZPreset_ParseCmd(const Map outList, const void* info1) {
 	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
 	char value[INFO_LENGTH] = {0};
+	memset(value, 0 ,INFO_LENGTH);
 	int result = getStrValueFromList(outList, e_ptz_preset, value);
 	if (!isRetCodeSuccess(result))
 		return result;

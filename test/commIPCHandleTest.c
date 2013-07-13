@@ -70,6 +70,13 @@ void test_SetPTZContinousMoveInfo() {
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setPTZContinousMoveInfo(&onvifPTZContinousMoveInfo));
 }
 
+void test_RemovePreset() {
+	OnvifPTZPreset onvifPTZPreset;
+	memset(&onvifPTZPreset, 0, sizeof(OnvifPTZPreset));
+	onvifPTZPreset.index = 1;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, removePTZPreset(&onvifPTZPreset));
+}
+
 void test_SetPTZCreatePreset() {
 	OnvifPTZPreset onvifPTZPreset;
 	memset(&onvifPTZPreset, 0, sizeof(OnvifPTZPreset));
@@ -92,4 +99,24 @@ void test_SetPTZInvalidPreset() {
 	onvifPTZPreset.index = 96;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setPTZPreset(&onvifPTZPreset));
 	TEST_ASSERT_EQUAL(0, onvifPTZPreset.index);
+}
+
+void test_GetPresets() {
+	OnvifPTZAllPresets onvifPTZAllPresets;
+	memset(&onvifPTZAllPresets, 0, sizeof(OnvifPTZAllPresets));
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getPTZAllPresets(&onvifPTZAllPresets));
+	TEST_ASSERT_EQUAL(128, onvifPTZAllPresets.size);
+}
+
+void test_GetEmptyPresets() {
+	OnvifPTZAllPresets onvifPTZAllPresets;
+	memset(&onvifPTZAllPresets, 0, sizeof(OnvifPTZAllPresets));
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getPTZAllPresets(&onvifPTZAllPresets));
+	TEST_ASSERT_EQUAL(0, onvifPTZAllPresets.size);
+}
+
+void test_GetPTZPresetsCapacity() {
+	int v = -1;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getPTZPresetsCapacity(&v));
+	TEST_ASSERT_EQUAL(128, v);
 }
