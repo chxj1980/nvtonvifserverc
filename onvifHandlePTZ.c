@@ -391,6 +391,12 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__GotoPreset(struct soap* soap,
 	logInfo("__tptz__GotoPreset Preset token %s",
 			tptz__GotoPreset->PresetToken);
 	int index = getIndexFromPTZPresetToken(tptz__GotoPreset->PresetToken);
+	if (index < 1) {
+		logInfo("__tptz__GotoPreset get index %d failed",
+				index);
+		return getOnvifPTZSoapActionNotSupport(soap, "PTZ GotoPreset",
+				"gotoPTZPreset failed");
+	}
 	OnvifPTZPreset onvifPTZPreset;
 	onvifPTZPreset.index = index;
 	if (!isRetCodeSuccess(gotoPTZPreset(&onvifPTZPreset))) {

@@ -4,9 +4,18 @@
 #include "onvifHandle.h"
 #include "parseUserInputCmd.h"
 #include "logInfo.h"
+#include <signal.h>
 
 CmdParam cmdParam = {false, false, DEVICE_WEBSERVICE_PORT};
 bool runAppTerminate;
+
+void catchSignalInt(int signo) {
+	runAppTerminate = true;
+}
+
+void catchSignalTerm(int signo) {
+	runAppTerminate = true;
+}
 
 int runApp(int argc, char **argv) {
 	runAppTerminate = FALSE;
@@ -18,8 +27,11 @@ int runApp(int argc, char **argv) {
 	if (!isRetCodeSuccess(result)) {
 		return result;
 	}
+	signal(SIGINT, &catchSignalInt);
+	signal(SIGTERM, &catchSignalTerm);
 	while(!runAppTerminate) {
-		parseUserInputCmd();
+		usleep(10000);
+		// parseUserInputCmd();
 	}
 	logInfo("Quit Program...");
 	stopOnvifApp();
