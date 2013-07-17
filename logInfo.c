@@ -5,8 +5,8 @@
 
 void logIntoFile(FILE* file, char* level, const char* fmt, va_list argptr) {
 	char value[500] = { 0 };
-	char dt[40] = {0};
-	getCurrentDateTimeMSecStr(dt, 40);
+	char dt[40];
+	getCurrentDateTimeStr(dt, 40);
 	vsnprintf(value, 500, fmt, argptr);
 	fprintf(file, "%s %s: %s\n", dt, level, value);
 }

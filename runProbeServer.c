@@ -52,7 +52,7 @@ int startProbeServer() {
 	soap_init1(&probeServerServiceInfo.m_Soap, SOAP_IO_UDP | SOAP_XML_IGNORENS);
 	soap_set_namespaces(&probeServerServiceInfo.m_Soap, namespaces);
 	probeServerServiceInfo.m_Soap.recv_timeout = SOAP_RECV_TIMEOUT;
-	if (!soap_valid_socket(soap_bind(&probeServerServiceInfo.m_Soap, NULL, MULTI_CAST_PORT, 10))) {
+	if (!soap_valid_socket(soap_bind(&probeServerServiceInfo.m_Soap, NULL, MULTI_CAST_PORT, 100))) {
 		soap_print_fault(&probeServerServiceInfo.m_Soap, stderr);
 		return RET_CODE_ERROR_SOAP_BIND;
 	}
