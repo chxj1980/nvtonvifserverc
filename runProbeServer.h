@@ -4,10 +4,9 @@
 #ifdef __cplusplus
 	extern "C" {
 #endif
-	void initProbeServer();
 	int startProbeServer();
 	void stopProbeServer();
-
+	void runProbeSoapServe();
 #ifdef __cplusplus
 	}
 #endif

@@ -3,6 +3,7 @@
 #include "parseCmdParam.h"
 #include "onvifHandle.h"
 #include "parseUserInputCmd.h"
+#include "runProbeServer.h"
 #include "logInfo.h"
 #include <signal.h>
 
@@ -31,6 +32,7 @@ int runApp(int argc, char **argv) {
 	signal(SIGTERM, &catchSignalTerm);
 	while(!runAppTerminate) {
 		usleep(10000);
+		runProbeSoapServe();
 		// parseUserInputCmd();
 	}
 	logInfo("Quit Program...");

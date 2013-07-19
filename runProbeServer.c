@@ -21,26 +21,28 @@ bool checkProbeServerSoapAcceptTimeOut() {
 	return result;
 }
 
+void runProbeSoapServe() {
+	if (soap_serve(&probeServerServiceInfo.m_Soap)) {
+		if (checkProbeServerSoapAcceptTimeOut()) {
+			stopSoap(&probeServerServiceInfo.m_Soap);
+			return;
+		}
+		soap_print_fault(&probeServerServiceInfo.m_Soap, stderr);
+	}
+	stopSoap(&probeServerServiceInfo.m_Soap);
+	logInfo(
+			"Accepted connection from IP = %lu.%lu.%lu.%lu socket = %d \r",
+			((probeServerServiceInfo.m_Soap.ip) >> 24) & 0xFF,
+			((probeServerServiceInfo.m_Soap.ip) >> 16) & 0xFF,
+			((probeServerServiceInfo.m_Soap.ip) >> 8) & 0xFF,
+			(probeServerServiceInfo.m_Soap.ip) & 0xFF,
+			(probeServerServiceInfo.m_Soap.socket));
+}
+
 void * runProbeServerThreadMethod() {
-	int count = 0;
 	while (!probeServerServiceInfo.m_Terminate) {
 		usleep(10000);
-		if (soap_serve(&probeServerServiceInfo.m_Soap)) {
-			if (checkProbeServerSoapAcceptTimeOut()) {
-				stopSoap(&probeServerServiceInfo.m_Soap);
-				continue;
-			}
-			soap_print_fault(&probeServerServiceInfo.m_Soap, stderr);
-		}
-		stopSoap(&probeServerServiceInfo.m_Soap);
-		logInfo(
-				"Accepted count %d, connection from IP = %lu.%lu.%lu.%lu socket = %d \r",
-				count, ((probeServerServiceInfo.m_Soap.ip) >> 24) & 0xFF,
-				((probeServerServiceInfo.m_Soap.ip) >> 16) & 0xFF,
-				((probeServerServiceInfo.m_Soap.ip) >> 8) & 0xFF,
-				(probeServerServiceInfo.m_Soap.ip) & 0xFF,
-				(probeServerServiceInfo.m_Soap.socket));
-		count++;
+		runProbeSoapServe();
 	}
 	return (void*) RET_CODE_SUCCESS;
 }
@@ -65,13 +67,13 @@ int startProbeServer() {
 				strerror(errno));
 		return RET_CODE_ERROR_SETSOCKOPT;
 	}
-	int err = pthread_create(&probeServerServiceInfo.m_RunThread, NULL,
-			runProbeServerThreadMethod, NULL);
-	if (0 != err) {
-		stopSoap(&probeServerServiceInfo.m_Soap);
-		soap_done(&probeServerServiceInfo.m_Soap);
-		return RET_CODE_ERROR_CREATE_THREAD;
-	}
+//	int err = pthread_create(&probeServerServiceInfo.m_RunThread, NULL,
+//			runProbeServerThreadMethod, NULL);
+//	if (0 != err) {
+//		stopSoap(&probeServerServiceInfo.m_Soap);
+//		soap_done(&probeServerServiceInfo.m_Soap);
+//		return RET_CODE_ERROR_CREATE_THREAD;
+//	}
 	probeServerServiceInfo.m_Active = true;
 	return RET_CODE_SUCCESS;
 
@@ -81,8 +83,8 @@ void stopProbeServer() {
 	if (!probeServerServiceInfo.m_Active)
 		return;
 	probeServerServiceInfo.m_Terminate = true;
-	void* status;
-	pthread_join(probeServerServiceInfo.m_RunThread, &status);
+//	void* status;
+//	pthread_join(probeServerServiceInfo.m_RunThread, &status);
 	soap_done(&probeServerServiceInfo.m_Soap);
 	logInfo("stopProbeServer success");
 	probeServerServiceInfo.m_Active = false;
