@@ -10,7 +10,8 @@
 #define DEFAULT_HARDWARE_ID "3707D96D27A4"
 #define DEFAULT_URN_HARDWARE_ID_PREFIX "urn:uuid:D149F919-4013-437E-B480-"
 #define DEVICE_TYPE "tdn:NetworkVideoTransmitter"
-#define VIDEO_SOURCE_TOKEN "CaoYonghuaSource_token"
+#define VIDEO_SOURCE_TOKEN "CYH_Video_Source_token"
+#define AUDIO_SOURCE_TOKEN "CYH_Audio_Source_token"
 #define ALL 1
 #define HOST_NAME "NVTCYH"
 #define ONVIF_VERSION_MAJOR 2
@@ -78,6 +79,17 @@ typedef struct St_OnvifVideoChannelInfo {
 	char videoAddr[LARGE_INFO_LENGTH];
 } OnvifVideoChannelInfo;
 
+typedef struct St_OnvifAudioChannelInfo {
+	int channelNo; // channel No, start from 0
+	int stream_enable; ///< 0:disable, 1:enable
+	int enc_type; ///< 0:ENC_TYPE_G711, 1:ENC_TYPE_G726, 2:ENC_TYPE_AAC
+	int bit_rate; ///< Bitrate per second
+	int sample_size;
+	int sample_rate;
+	int rtspPort;
+	char audioAddr[LARGE_INFO_LENGTH];
+} OnvifAudioChannelInfo;
+
 typedef struct St_OnvifPTZConfigurationInfo {
 	int defaultTimeout;  // continous move default time out
 } OnvifPTZConfigurationInfo;
@@ -127,10 +139,13 @@ int getNetCardInfo(OnvifNetCardInfo* info);
 int deviceReboot();
 int setSystemFactoryDefault();
 int getVideoCount(int* count);
+int getAudioCount(int* count);
 int getDeviceTime(OnvifSystemDateTime* info);
 int setDeviceTime(OnvifSystemDateTime* info);
 int getVideoChannelInfo(OnvifVideoChannelInfo* info);
 int getVideoChannelStreamInfo(OnvifVideoChannelInfo* info);
+int getAudioChannelInfo(OnvifAudioChannelInfo* info);
+int getAudioChannelStreamInfo(OnvifAudioChannelInfo* info);
 int setPTZStopInfo(OnvifPTZStopInfo* info);
 int setPTZContinousMoveInfo(OnvifPTZContinousMoveInfo* info);
 char* getPTZConfigurationToken(struct soap* soap, int index);

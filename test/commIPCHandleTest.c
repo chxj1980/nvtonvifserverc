@@ -44,8 +44,15 @@ void test_SetSystemFactoryDefault() {
 }
 
 void test_GetVideoCount() {
-	int videoCount;
+	int videoCount = 0;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getVideoCount(&videoCount));
+	TEST_ASSERT_TRUE(videoCount  > 0);
+}
+
+void test_GetAudioCount() {
+	int audioCount;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getAudioCount(&audioCount));
+	TEST_ASSERT_TRUE(audioCount  > 0);
 }
 
 void test_GetVideoChannelInfo() {
@@ -58,6 +65,19 @@ void test_GetVideoChannelStreamInfo() {
 	OnvifVideoChannelInfo onvifVideoChannelInfo;
 	onvifVideoChannelInfo.channelNo = 1;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getVideoChannelStreamInfo(&onvifVideoChannelInfo));
+
+}
+
+void test_GetAudioChannelInfo() {
+	OnvifAudioChannelInfo onvifAudioChannelInfo;
+	onvifAudioChannelInfo.channelNo = 1;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getAudioChannelInfo(&onvifAudioChannelInfo));
+}
+
+void test_GetAudioChannelStreamInfo() {
+	OnvifAudioChannelInfo onvifAudioChannelInfo;
+	onvifAudioChannelInfo.channelNo = 1;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getAudioChannelStreamInfo(&onvifAudioChannelInfo));
 
 }
 

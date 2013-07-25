@@ -176,6 +176,20 @@ int getVideoCount(int* count) {
 			getVideoCount_ParseCmd);
 }
 
+int getAudioCount_PushCmd(const Map inList, const void* info1) {
+	putNullValueInList(inList, e_audio_chn_num);
+	return RET_CODE_SUCCESS;
+}
+
+int getAudioCount_ParseCmd(const Map outList, const void* info1) {
+	return getIntValueFromList(outList, e_audio_chn_num, (int*) info1);
+}
+
+int getAudioCount(int* count) {
+	return sendCommIPCFunc(T_Get, count, getAudioCount_PushCmd,
+			getAudioCount_ParseCmd);
+}
+
 int getDeviceTime_PushCmd(const Map inList, const void* info1) {
 	putNullValueInList(inList, e_time_ntpenable);
 	putNullValueInList(inList, e_time_systime);
@@ -378,6 +392,64 @@ int getVideoChannelInfo(OnvifVideoChannelInfo* info) {
 			getVideoChannelInfo_ParseCmd);
 }
 
+int getAudioChannelInfo_PushCmd(const Map inList, const void* info1) {
+	OnvifAudioChannelInfo* info = (OnvifAudioChannelInfo*) info1;
+	if (NULL == info) {
+		return RET_CODE_ERROR_NULL_OBJECT;
+	}
+	if (info->channelNo < 0) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	putIntValueInList(inList, e_audio_Chn, info->channelNo);
+	putNullValueInList(inList, e_audio_enable);
+	putNullValueInList(inList, e_audio_enc_type);
+	putNullValueInList(inList, e_audio_bitrate);
+	putNullValueInList(inList, e_audio_samplesize);
+	putNullValueInList(inList, e_audio_samplerate);
+	putNullValueInList(inList, e_audio_rtspport);
+	return RET_CODE_SUCCESS;
+}
+
+int getAudioChannelInfo_ParseCmd(const Map outList, const void* info1) {
+	OnvifAudioChannelInfo* info = (OnvifAudioChannelInfo*) info1;
+	memset(info, 0, sizeof(OnvifAudioChannelInfo));
+	int value;
+	int result = getIntValueFromList(outList, e_audio_Chn, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->channelNo = value;
+	result = getIntValueFromList(outList, e_audio_enable, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->stream_enable = value;
+	result = getIntValueFromList(outList, e_audio_enc_type, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->enc_type = value;
+	result = getIntValueFromList(outList, e_audio_bitrate, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->bit_rate = value;
+	result = getIntValueFromList(outList, e_audio_samplesize, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->sample_size = value;
+	result = getIntValueFromList(outList, e_audio_samplerate, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->sample_rate = value;
+	result = getIntValueFromList(outList, e_audio_rtspport, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->rtspPort = value;
+	return result;
+}
+
+int getAudioChannelInfo(OnvifAudioChannelInfo* info) {
+	return sendCommIPCFunc(T_Get, info, getAudioChannelInfo_PushCmd,
+			getAudioChannelInfo_ParseCmd);
+}
+
 int getVideoChannelStreamInfo_PushCmd(const Map inList, const void* info1) {
 	OnvifVideoChannelInfo* info = (OnvifVideoChannelInfo*) info1;
 	if (NULL == info) {
@@ -409,6 +481,38 @@ int getVideoChannelStreamInfo_ParseCmd(const Map outList, const void* info1) {
 int getVideoChannelStreamInfo(OnvifVideoChannelInfo* info) {
 	return sendCommIPCFunc(T_Get, info, getVideoChannelStreamInfo_PushCmd,
 			getVideoChannelStreamInfo_ParseCmd);
+}
+
+int getAudioChannelStreamInfo_PushCmd(const Map inList, const void* info1) {
+	OnvifAudioChannelInfo* info = (OnvifAudioChannelInfo*) info1;
+	if (NULL == info) {
+		return RET_CODE_ERROR_NULL_OBJECT;
+	}
+	if (info->channelNo < 0) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	putIntValueInList(inList, e_audio_Chn, info->channelNo);
+	putNullValueInList(inList, e_audio_addr);
+	return RET_CODE_SUCCESS;
+}
+
+int getAudioChannelStreamInfo_ParseCmd(const Map outList, const void* info1) {
+	OnvifAudioChannelInfo* info = (OnvifAudioChannelInfo*) info1;
+	memset(info, 0, sizeof(OnvifAudioChannelInfo));
+	int value;
+	int result = getIntValueFromList(outList, e_audio_Chn, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->channelNo = value;
+	result = getStrValueFromList(outList, e_audio_addr, info->audioAddr);
+	if (!isRetCodeSuccess(result))
+		return result;
+	return result;
+}
+
+int getAudioChannelStreamInfo(OnvifAudioChannelInfo* info) {
+	return sendCommIPCFunc(T_Get, info, getAudioChannelStreamInfo_PushCmd,
+			getAudioChannelStreamInfo_ParseCmd);
 }
 
 int setPTZStop_PushCmd(const Map inList, const void* info1) {
