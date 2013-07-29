@@ -177,12 +177,12 @@ int getVideoCount(int* count) {
 }
 
 int getAudioCount_PushCmd(const Map inList, const void* info1) {
-	putNullValueInList(inList, e_audio_chn_num);
+	putNullValueInList(inList, e_video_chn_num);
 	return RET_CODE_SUCCESS;
 }
 
 int getAudioCount_ParseCmd(const Map outList, const void* info1) {
-	return getIntValueFromList(outList, e_audio_chn_num, (int*) info1);
+	return getIntValueFromList(outList, e_video_chn_num, (int*) info1);
 }
 
 int getAudioCount(int* count) {
@@ -400,7 +400,7 @@ int getAudioChannelInfo_PushCmd(const Map inList, const void* info1) {
 	if (info->channelNo < 0) {
 		return RET_CODE_ERROR_INVALID_VALUE;
 	}
-	putIntValueInList(inList, e_audio_Chn, info->channelNo);
+	putIntValueInList(inList, e_Chn, info->channelNo);
 	putNullValueInList(inList, e_audio_enable);
 	putNullValueInList(inList, e_audio_enc_type);
 	putNullValueInList(inList, e_audio_bitrate);
@@ -414,7 +414,7 @@ int getAudioChannelInfo_ParseCmd(const Map outList, const void* info1) {
 	OnvifAudioChannelInfo* info = (OnvifAudioChannelInfo*) info1;
 	memset(info, 0, sizeof(OnvifAudioChannelInfo));
 	int value;
-	int result = getIntValueFromList(outList, e_audio_Chn, &value);
+	int result = getIntValueFromList(outList, e_Chn, &value);
 	if (!isRetCodeSuccess(result))
 		return result;
 	info->channelNo = value;
@@ -491,8 +491,8 @@ int getAudioChannelStreamInfo_PushCmd(const Map inList, const void* info1) {
 	if (info->channelNo < 0) {
 		return RET_CODE_ERROR_INVALID_VALUE;
 	}
-	putIntValueInList(inList, e_audio_Chn, info->channelNo);
-	putNullValueInList(inList, e_audio_addr);
+	putIntValueInList(inList, e_Chn, info->channelNo);
+	putNullValueInList(inList, e_video_addr);
 	return RET_CODE_SUCCESS;
 }
 
@@ -500,11 +500,11 @@ int getAudioChannelStreamInfo_ParseCmd(const Map outList, const void* info1) {
 	OnvifAudioChannelInfo* info = (OnvifAudioChannelInfo*) info1;
 	memset(info, 0, sizeof(OnvifAudioChannelInfo));
 	int value;
-	int result = getIntValueFromList(outList, e_audio_Chn, &value);
+	int result = getIntValueFromList(outList, e_Chn, &value);
 	if (!isRetCodeSuccess(result))
 		return result;
 	info->channelNo = value;
-	result = getStrValueFromList(outList, e_audio_addr, info->audioAddr);
+	result = getStrValueFromList(outList, e_video_addr, info->audioAddr);
 	if (!isRetCodeSuccess(result))
 		return result;
 	return result;
@@ -697,4 +697,14 @@ int setPTZPreset(OnvifPTZPreset* info) {
 	if (NULL == info)
 		return RET_CODE_ERROR_NULL_VALUE;
 	return sendCommIPCFunc(T_Set, info, setPTZPreset_PushCmd, setPTZPreset_ParseCmd);
+}
+
+int setVideoSynchronizationPoint_PushCmd(const Map inList, const void* info1) {
+	int* info = (int*) info1;
+	putIntValueInList(inList, e_video_SynchronizationPoint, *info);
+	return RET_CODE_SUCCESS;
+}
+
+int setVideoSynchronizationPoint(int index) {
+	return sendCommIPCFunc(T_Set, &index, setVideoSynchronizationPoint_PushCmd, NULL);
 }

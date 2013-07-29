@@ -140,3 +140,8 @@ void test_GetPTZPresetsCapacity() {
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getPTZPresetsCapacity(&v));
 	TEST_ASSERT_EQUAL(128, v);
 }
+
+void test_SetVideoSynchronizationPoint() {
+	int v = 5;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setVideoSynchronizationPoint(v));
+}

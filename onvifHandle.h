@@ -156,6 +156,7 @@ int getIndexFromTokenName(const char* tokenName, const char* prefix);
 int gotoPTZPreset(OnvifPTZPreset* info);
 int removePTZPreset(OnvifPTZPreset* info);
 int setPTZPreset(OnvifPTZPreset* info);
+int setVideoSynchronizationPoint(int index);
 char* getIndexTokeName(struct soap *soap, const char* prefix, const int index);
 
 SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapSenderSubCode2Fault(struct soap *soap,
