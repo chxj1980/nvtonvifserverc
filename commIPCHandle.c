@@ -422,6 +422,8 @@ int getAudioChannelInfo_ParseCmd(const Map outList, const void* info1) {
 	if (!isRetCodeSuccess(result))
 		return result;
 	info->stream_enable = value;
+	if (FALSE == info->stream_enable)
+		return result;
 	result = getIntValueFromList(outList, e_audio_enc_type, &value);
 	if (!isRetCodeSuccess(result))
 		return result;

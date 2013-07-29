@@ -9,6 +9,8 @@
 #define MEDIA_TOKEN_AUDIO_PREFIX "media_token_profile"
 #define MEDIA_TOKENNAME_VIDEO_PREFIX "media_token_name_profile"
 #define MEDIA_TOKENNAME_AUDIO_PREFIX "media_token_name_profile"
+#define VIDEO_SOURCE_CONFIG_TOKEN_PREFIX "VE_token"
+#define AUDIO_SOURCE_CONFIG_TOKEN_PREFIX "AE_token"
 #define AUDIO_CHANNEL_MONO 1
 
 char* getVideoSourceToken(struct soap* soap, int index) {
@@ -19,18 +21,25 @@ char* getAudioSourceToken(struct soap* soap, int index) {
 	return getIndexTokeName(soap, AUDIO_SOURCE_TOKEN, index);
 }
 
-char* getVEToken(struct soap* soap, int index) {
-	return getIndexTokeName(soap, "VE_token", index);
+char* getVideoSourceConfigToken(struct soap* soap, int index) {
+	return getIndexTokeName(soap, VIDEO_SOURCE_CONFIG_TOKEN_PREFIX, index);
+}
+
+int getIndexFromVideoSourceConfigToken(char* token) {
+	return getIndexFromTokenName(token, VIDEO_SOURCE_CONFIG_TOKEN_PREFIX);
 }
 
 char* getVEName(struct soap* soap, int index) {
 	return getIndexTokeName(soap, "VE_Name", index);
 }
 
-char* getAEToken(struct soap* soap, int index) {
-	return getIndexTokeName(soap, "AE_token", index);
+char* getAudioSourceConfigToken(struct soap* soap, int index) {
+	return getIndexTokeName(soap, AUDIO_SOURCE_CONFIG_TOKEN_PREFIX, index);
 }
 
+int getIndexFromAudioSourceConfigToken(char* token) {
+	return getIndexFromTokenName(token, AUDIO_SOURCE_CONFIG_TOKEN_PREFIX);
+}
 char* getAEName(struct soap* soap, int index) {
 	return getIndexTokeName(soap, "AE_Name", index);
 }
@@ -171,7 +180,7 @@ void getResponseProfileInfoAudioEncoderConfiguration(struct soap* soap,
 		struct tt__AudioEncoderConfiguration* audioEncoderConfiguration,
 		OnvifAudioChannelInfo* onvifAudioChannelInfo, int index) {
 	audioEncoderConfiguration->Name = getAEName(soap, index);
-	audioEncoderConfiguration->token = getAEToken(soap, index);
+	audioEncoderConfiguration->token = getAudioSourceConfigToken(soap, index);
 	audioEncoderConfiguration->Bitrate = onvifAudioChannelInfo->bit_rate;
 	audioEncoderConfiguration->Encoding = getAudioEncodeType(
 			onvifAudioChannelInfo->enc_type);
@@ -205,7 +214,7 @@ void getResponseProfileInfoAudioSourceConfiguration(struct soap* soap,
 		struct tt__AudioSourceConfiguration * audioSourceConfiguration,
 		int index) {
 	audioSourceConfiguration->Name = getAEName(soap, index);
-	audioSourceConfiguration->token = getAEToken(soap, index);
+	audioSourceConfiguration->token = getAudioSourceConfigToken(soap, index);
 	audioSourceConfiguration->SourceToken = getAudioSourceToken(soap, index);/*必须与__tmd__GetVideoSources中的token相同*/
 	/*注意SourceToken*/
 	audioSourceConfiguration->UseCount = 1;
@@ -215,7 +224,7 @@ void getResponseProfileInfoVideoEncoderConfiguration(struct soap* soap,
 		struct tt__VideoEncoderConfiguration * videoEncoderConfiguration,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
 	videoEncoderConfiguration->Name = getVEName(soap, index);
-	videoEncoderConfiguration->token = getVEToken(soap, index);
+	videoEncoderConfiguration->token = getVideoSourceConfigToken(soap, index);
 	videoEncoderConfiguration->UseCount = 1;
 	videoEncoderConfiguration->Quality = onvifVideoChannelInfo->quality;
 	videoEncoderConfiguration->Encoding = getVideoEncodeType(
@@ -285,7 +294,7 @@ void getResponseProfileInfoVideoSourceConfiguration(struct soap* soap,
 		struct tt__VideoSourceConfiguration * videoSourceConfiguration,
 		OnvifVideoChannelInfo* onvifVideoChannelInfo, int index) {
 	videoSourceConfiguration->Name = getVEName(soap, index);
-	videoSourceConfiguration->token = getVEToken(soap, index);
+	videoSourceConfiguration->token = getVideoSourceConfigToken(soap, index);
 	videoSourceConfiguration->SourceToken = getVideoSourceToken(soap, index);/*必须与__tmd__GetVideoSources中的token相同*/
 	/*注意SourceToken*/
 	videoSourceConfiguration->Extension = NULL;
@@ -875,6 +884,22 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSourceConfiguration(
 		struct _trt__GetVideoSourceConfiguration *trt__GetVideoSourceConfiguration,
 		struct _trt__GetVideoSourceConfigurationResponse *trt__GetVideoSourceConfigurationResponse) {
 	logInfo("__trt__GetVideoSourceConfiguration");
+	logInfo("__trt__GetVideoSourceConfiguration ConfigurationToken %s", trt__GetVideoSourceConfiguration->ConfigurationToken);
+	int index = getIndexFromVideoSourceConfigToken(trt__GetVideoSourceConfiguration->ConfigurationToken);
+	if (index < 0) {
+		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetVideoSourceConfiguration",
+				"ConfigurationToken is invalid");
+	}
+
+	trt__GetVideoSourceConfigurationResponse->Configuration = (struct tt__VideoSourceConfiguration *) my_soap_malloc(soap,
+			sizeof(struct tt__VideoSourceConfiguration));
+	OnvifVideoChannelInfo onvifVideoChannelInfo;
+	onvifVideoChannelInfo.channelNo = index;
+	if (!isRetCodeSuccess(getVideoChannelInfo(&onvifVideoChannelInfo))) {
+		return getOnvifSoapActionFailedCode(soap, "GetVideoSourceConfiguration",
+				"getVideoChannelInfo failed");
+	}
+	getResponseProfileInfoVideoSourceConfiguration(soap, trt__GetVideoSourceConfigurationResponse->Configuration, &onvifVideoChannelInfo, index);
 	return SOAP_OK;
 }
 
@@ -883,6 +908,22 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoEncoderConfiguration(
 		struct _trt__GetVideoEncoderConfiguration *trt__GetVideoEncoderConfiguration,
 		struct _trt__GetVideoEncoderConfigurationResponse *trt__GetVideoEncoderConfigurationResponse) {
 	logInfo("__trt__GetVideoEncoderConfiguration");
+	logInfo("__trt__GetVideoEncoderConfiguration ConfigurationToken %s", trt__GetVideoEncoderConfiguration->ConfigurationToken);
+	int index = getIndexFromVideoSourceConfigToken(trt__GetVideoEncoderConfiguration->ConfigurationToken);
+	if (index < 0) {
+		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetVideoEncoderConfiguration",
+				"ConfigurationToken is invalid");
+	}
+
+	trt__GetVideoEncoderConfigurationResponse->Configuration = (struct tt__VideoEncoderConfiguration *) my_soap_malloc(soap,
+			sizeof(struct tt__VideoEncoderConfiguration));
+	OnvifVideoChannelInfo onvifVideoChannelInfo;
+	onvifVideoChannelInfo.channelNo = index;
+	if (!isRetCodeSuccess(getVideoChannelInfo(&onvifVideoChannelInfo))) {
+		return getOnvifSoapActionFailedCode(soap, "GetVideoEncoderConfiguration",
+				"getVideoChannelInfo failed");
+	}
+	getResponseProfileInfoVideoEncoderConfiguration(soap, trt__GetVideoEncoderConfigurationResponse->Configuration, &onvifVideoChannelInfo, index);
 	return SOAP_OK;
 }
 
@@ -891,6 +932,16 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioSourceConfiguration(
 		struct _trt__GetAudioSourceConfiguration *trt__GetAudioSourceConfiguration,
 		struct _trt__GetAudioSourceConfigurationResponse *trt__GetAudioSourceConfigurationResponse) {
 	logInfo("__trt__GetAudioSourceConfiguration");
+	logInfo("__trt__GetAudioSourceConfiguration ConfigurationToken %s", trt__GetAudioSourceConfiguration->ConfigurationToken);
+	int index = getIndexFromAudioSourceConfigToken(trt__GetAudioSourceConfiguration->ConfigurationToken);
+	if (index < 0) {
+		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetAudioSourceConfiguration",
+				"ConfigurationToken is invalid");
+	}
+
+	trt__GetAudioSourceConfigurationResponse->Configuration = (struct tt__AudioSourceConfiguration *) my_soap_malloc(soap,
+			sizeof(struct tt__AudioSourceConfiguration));
+	getResponseProfileInfoAudioSourceConfiguration(soap, trt__GetAudioSourceConfigurationResponse->Configuration, index);
 	return SOAP_OK;
 }
 
@@ -899,6 +950,22 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioEncoderConfiguration(
 		struct _trt__GetAudioEncoderConfiguration *trt__GetAudioEncoderConfiguration,
 		struct _trt__GetAudioEncoderConfigurationResponse *trt__GetAudioEncoderConfigurationResponse) {
 	logInfo("__trt__GetAudioEncoderConfiguration");
+	logInfo("__trt__GetAudioEncoderConfiguration ConfigurationToken %s", trt__GetAudioEncoderConfiguration->ConfigurationToken);
+	int index = getIndexFromAudioSourceConfigToken(trt__GetAudioEncoderConfiguration->ConfigurationToken);
+	if (index < 0) {
+		return getOnvifSoapSendInvalidArgFailedCode(soap, "GetAudioEncoderConfiguration",
+				"ConfigurationToken is invalid");
+	}
+
+	trt__GetAudioEncoderConfigurationResponse->Configuration = (struct tt__AudioEncoderConfiguration *) my_soap_malloc(soap,
+			sizeof(struct tt__AudioEncoderConfiguration));
+	OnvifAudioChannelInfo onvifAudioChannelInfo;
+	onvifAudioChannelInfo.channelNo = index;
+	if (!isRetCodeSuccess(getAudioChannelInfo(&onvifAudioChannelInfo))) {
+		return getOnvifSoapActionFailedCode(soap, "GetAudioEncoderConfiguration",
+				"getAudioChannelInfo failed");
+	}
+	getResponseProfileInfoAudioEncoderConfiguration(soap, trt__GetAudioEncoderConfigurationResponse->Configuration, &onvifAudioChannelInfo, index);
 	return SOAP_OK;
 }
 
