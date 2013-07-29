@@ -1115,8 +1115,19 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__SetSynchronizationPoint(
 		struct _trt__SetSynchronizationPoint *trt__SetSynchronizationPoint,
 		struct _trt__SetSynchronizationPointResponse *trt__SetSynchronizationPointResponse) {
 	logInfo("__trt__SetSynchronizationPoint");
-	return getOnvifSoapActionNotSupportCode(soap,
-			"Media SetSynchronizationPoint", NULL);
+	logInfo("__trt__SetSynchronizationPoint Profile token %s",
+			trt__SetSynchronizationPoint->ProfileToken);
+	int index = getIndexFromVideoMediaProfileToken(
+			trt__SetSynchronizationPoint->ProfileToken);
+	if (index < 0) {
+		return getOnvifSoapSendInvalidArgFailedCode(soap, "SetSynchronizationPoint",
+				"profile token is invalid");
+	}
+	if (!isRetCodeSuccess(setVideoSynchronizationPoint(index))) {
+		return getOnvifSoapActionFailedCode(soap, "SetSynchronizationPoint",
+				"setVideoSynchronizationPoint failed");
+	}
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 __trt__GetSnapshotUri(struct soap* soap,
