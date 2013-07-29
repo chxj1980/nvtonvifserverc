@@ -29,10 +29,9 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 		struct _tds__GetServicesResponse *tds__GetServicesResponse) {
 	logInfo("__tds__GetServices");
 	char _xmAddr[INFO_LENGTH] = { 0 };
-	char* _services[] = { "event", "media", "ptz" };
-	char* _namespaces[] = { "http://www.onvif.org/ver10/events/wsdl",
-			"http://www.onvif.org/ver10/media/wsdl",
-			"http://www.onvif.org/ver20/ptz/wsdl" };
+	char* _services[] = {"media", "ptz", "event"};
+	char* _namespaces[] = {"http://www.onvif.org/ver10/media/wsdl",
+			"http://www.onvif.org/ver20/ptz/wsdl", "http://www.onvif.org/ver10/events/wsdl"};
 	if (RET_CODE_SUCCESS
 			!= getServiceURL(_xmAddr, onvifRunParam.ip,
 					onvifRunParam.servicePort)) {
@@ -42,7 +41,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 	char serviceAddr[INFO_LENGTH] = { 0 };
 	int i;
 	if (!tds__GetServices->IncludeCapability) {
-		tds__GetServicesResponse->__sizeService = 3;
+		tds__GetServicesResponse->__sizeService = 2;
 		tds__GetServicesResponse->Service =
 				(struct tds__Service *) my_soap_malloc(
 						soap,
@@ -71,16 +70,16 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap* soap,
 						sizeof(struct tt__OnvifVersion));
 		tds__GetServicesResponse->Service->Version->Major = ONVIF_VERSION_MAJOR;
 		tds__GetServicesResponse->Service->Version->Minor = ONVIF_VERSION_MINOR;
-		tds__GetServicesResponse->Service->__size = 2;
-		char** pot = (char **) my_soap_malloc(soap,
-				sizeof(char *) * tds__GetServicesResponse->Service->__size);
-
-		pot[0] = (char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-		strcpy(pot[0], "Any1");
-		pot[1] = (char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
-		strcpy(pot[1], "Any2");
-		tds__GetServicesResponse->Service->__any = pot;
-		tds__GetServicesResponse->Service->__anyAttribute = NULL;
+//		tds__GetServicesResponse->Service->__size = 2;
+//		char** pot = (char **) my_soap_malloc(soap,
+//				sizeof(char *) * tds__GetServicesResponse->Service->__size);
+//
+//		pot[0] = (char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+//		strcpy(pot[0], "Any1");
+//		pot[1] = (char *) my_soap_malloc(soap, sizeof(char) * INFO_LENGTH);
+//		strcpy(pot[1], "Any2");
+//		tds__GetServicesResponse->Service->__any = pot;
+//		tds__GetServicesResponse->Service->__anyAttribute = NULL;
 	}
 	return SOAP_OK;
 }
@@ -510,12 +509,18 @@ SOAP_FMAC5 int SOAP_FMAC6 getCapabilitiesResponseExtensionDeviceIO(
 	int ret = getVideoCount(&vSource);
 	if (!isRetCodeSuccess(ret)) {
 		return getOnvifSoapActionFailedCode(soap, "GetCapabilities",
-				"getVideCount failed");
+				"getVideoCount failed");
+	}
+	int aSource = 0;
+	ret = getAudioCount(&aSource);
+	if (!isRetCodeSuccess(ret)) {
+		return getOnvifSoapActionFailedCode(soap, "GetCapabilities",
+				"getAudioCount failed");
 	}
 	//下面的重要，这里只实现视频流，需要设置VideoSources
 	capabilitiesExtension->DeviceIO->VideoSources = vSource;
 	capabilitiesExtension->DeviceIO->VideoOutputs = 0;
-	capabilitiesExtension->DeviceIO->AudioSources = 0;
+	capabilitiesExtension->DeviceIO->AudioSources = aSource;
 	capabilitiesExtension->DeviceIO->AudioOutputs = 0;
 	capabilitiesExtension->DeviceIO->RelayOutputs = 0;
 	capabilitiesExtension->DeviceIO->__size = 0;
