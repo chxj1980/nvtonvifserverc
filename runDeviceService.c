@@ -22,20 +22,28 @@ bool checkDeviceServiceSoapAcceptTimeOut() {
 }
 
 void * runDeviceServiceThreadMethod() {
+	bool stopSoapF = false;
 	while (!deviceServiceServiceInfo.m_Terminate) {
 		usleep(10000);
+		stopSoapF = false;
 		if (!soap_valid_socket(soap_accept(&deviceServiceServiceInfo.m_Soap))) {
 			if (checkDeviceServiceSoapAcceptTimeOut()) {
 				stopSoap(&deviceServiceServiceInfo.m_Soap);
+				stopSoapF = true;
 				continue;
 			}
 			soap_print_fault(&deviceServiceServiceInfo.m_Soap, stderr);
 			stopSoap(&deviceServiceServiceInfo.m_Soap);
+			stopSoapF = true;
 			return (void*) RET_CODE_ERROR_SOAP_ACCEPT;
 		}
 		if (soap_serve(&deviceServiceServiceInfo.m_Soap)) {
 			soap_print_fault(&deviceServiceServiceInfo.m_Soap, stderr);
 		}
+		stopSoap(&deviceServiceServiceInfo.m_Soap);
+		stopSoapF = true;
+	}
+	if (!stopSoapF) {
 		stopSoap(&deviceServiceServiceInfo.m_Soap);
 	}
 	return (void*) RET_CODE_SUCCESS;
