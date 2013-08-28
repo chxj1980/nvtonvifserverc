@@ -106,6 +106,10 @@ void getDateTimeStr(char* info, const int len, const time_t dtValue) {
 	strftime(info, len, "%F %T", today);
 }
 
+void myThreadSleep() {
+	usleep(10000);
+}
+
 void getCurrentDateTimeStr(char* info, const int len) {
 	getDateTimeStr(info, len, time(NULL));
 }

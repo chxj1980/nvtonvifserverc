@@ -41,7 +41,7 @@ void runProbeSoapServe() {
 
 void * runProbeServerThreadMethod() {
 	while (!probeServerServiceInfo.m_Terminate) {
-		usleep(10000);
+		myThreadSleep();
 		runProbeSoapServe();
 	}
 	return (void*) RET_CODE_SUCCESS;

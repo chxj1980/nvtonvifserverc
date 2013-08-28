@@ -25,6 +25,7 @@
 	int convertDecToBCD(int value, unsigned char *bcd);
 	void convertDecToHexStr(const int src, char* dest);
 	int convertHexStrToDec(const char* src, int* dest);
+	void myThreadSleep();
 #ifdef __cplusplus
 	}
 #endif
