@@ -7,18 +7,12 @@
 #include "onvifHandle.h"
 #include "logInfo.h"
 
+#define BACKLOG 100
+
 RunServiceInfo deviceServiceServiceInfo = { .m_Active = FALSE };
 
 bool checkDeviceServiceSoapAcceptTimeOut() {
-	bool result = false;
-	const char **s;
-	if (NULL != deviceServiceServiceInfo.m_Soap.fault) {
-		s = soap_faultstring(&deviceServiceServiceInfo.m_Soap);
-		if (0 == strcmp("Timeout", *s)) {
-			result = true;
-		}
-	}
-	return result;
+	return (!deviceServiceServiceInfo.m_Soap.errnum);
 }
 
 void * runDeviceServiceThreadMethod() {
@@ -40,6 +34,7 @@ void * runDeviceServiceThreadMethod() {
 		if (soap_serve(&deviceServiceServiceInfo.m_Soap)) {
 			soap_print_fault(&deviceServiceServiceInfo.m_Soap, stderr);
 		}
+
 		stopSoap(&deviceServiceServiceInfo.m_Soap);
 		stopSoapF = true;
 	}
@@ -55,7 +50,7 @@ int startDeviceService() {
 	soap_set_namespaces(&deviceServiceServiceInfo.m_Soap, namespaces);
 	deviceServiceServiceInfo.m_Soap.accept_timeout = SOAP_ACCEPT_TIMEOUT;
 	debugInfo("startDeviceService bind");
-	if (!soap_valid_socket(soap_bind(&deviceServiceServiceInfo.m_Soap, NULL, onvifRunParam.servicePort, 100))) {
+	if (!soap_valid_socket(soap_bind(&deviceServiceServiceInfo.m_Soap, NULL, onvifRunParam.servicePort, BACKLOG))) {
 		logInfo("device service bind error");
 		return RET_CODE_ERROR_SOAP_BIND;
 	}
