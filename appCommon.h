@@ -46,8 +46,8 @@
 #define true 1
 #define false 0
 
-#define SOAP_ACCEPT_TIMEOUT 5 // 5s
-#define SOAP_RECV_TIMEOUT 5 // 5s
+#define SOAP_ACCEPT_TIMEOUT 10 // 5s
+#define SOAP_RECV_TIMEOUT 10 // 5s
 
 #ifdef __cplusplus
 extern "C" {

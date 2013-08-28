@@ -6,6 +6,7 @@
 #include "logInfo.h"
 
 #define METADATA_VERSION    1
+#define INTERFACE_NUM 1
 #define SOAP_WSA_ID "SOAP-WSA-1.3"
 const char soap_wsa_id[] = SOAP_WSA_ID;
 
@@ -661,74 +662,68 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__ProbeMatches(struct soap *soap,
 	return SOAP_OK;
 }
 
+void getWSA__EndpointReferenceInfo(struct soap* soap, wsa__EndpointReferenceType* info) {
+	info->ReferenceProperties =
+			(struct wsa__ReferencePropertiesType*) my_soap_malloc(soap,
+					sizeof(struct wsa__ReferencePropertiesType));
+	info->ReferenceProperties->__size =	0;
+	info->ReferenceProperties->__any =	NULL;
+
+	info->ReferenceParameters = (struct wsa__ReferenceParametersType*) my_soap_malloc(soap,
+					sizeof(struct wsa__ReferenceParametersType));
+	info->ReferenceParameters->__size =	0;
+	info->ReferenceParameters->__any =	NULL;
+	info->PortType = (char **) my_soap_malloc(soap, sizeof(char*) * SMALL_INFO_LENGTH);
+	info->PortType[0] = soap_strdup(soap, "ttl");
+
+	info->ServiceName =	(struct wsa__ServiceNameType*) my_soap_malloc(soap,
+					sizeof(struct wsa__ServiceNameType));
+	info->ServiceName->__item =	NULL;
+	info->ServiceName->PortName = NULL;
+	info->ServiceName->__anyAttribute =	NULL;
+	//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , __any
+	info->__any = (char **) my_soap_malloc(soap, sizeof(char*) * SMALL_INFO_LENGTH);
+	info->__any[0] = soap_strdup(soap,  "Any");
+	//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , __anyAttribute
+	info->__anyAttribute = soap_strdup(soap, "Attribute");
+	info->__size = 0;
+	//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , Address
+	info->Address =soap_strdup(soap, onvifRunParam.urnHardwareId);
+}
+
+void getProbeMatchesInfo(struct soap* soap, wsdd__ProbeMatchesType* info, int size, char* xaddr) {
+	info->__sizeProbeMatch = size;
+	info->ProbeMatch = (struct wsdd__ProbeMatchType *) my_soap_malloc(soap,
+			sizeof(struct wsdd__ProbeMatchType) * size);
+	int i = 0;
+	for (i = 0; i < size; i++) {
+		info->ProbeMatch[i].MetadataVersion = METADATA_VERSION;
+		// should be onvif device mgmt address
+		info->ProbeMatch[i].XAddrs = soap_strdup(soap, xaddr);
+		// probe type
+		info->ProbeMatch[i].Types = soap_strdup(soap, DEVICE_TYPE);
+		// Scope
+		info->ProbeMatch[i].Scopes =
+				(struct wsdd__ScopesType*) my_soap_malloc(soap,
+						sizeof(struct wsdd__ScopesType));
+		info->ProbeMatch[i].Scopes->__item = soap_strdup(soap, ONVIF_SCOPE_NAME);
+		info->ProbeMatch[i].Scopes->MatchBy = NULL;
+		getWSA__EndpointReferenceInfo(soap, &(info->ProbeMatch[i].wsa__EndpointReference));
+	}
+}
+
 SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 		struct wsdd__ProbeType *wsdd__Probe) {
 	logInfo("__wsdd__Probe %s", onvifRunParam.ip);
 	char _xmaddr[256] = { 0 };
-	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort))
-		return GSOAP_RET_CODE_NOT_IMPLEMENT;
-	logInfo("service url %s", _xmaddr);
-	int interface_num = 1;
-	wsdd__ProbeMatchesType ProbeMatches;
-	ProbeMatches.__sizeProbeMatch = interface_num;
-	ProbeMatches.ProbeMatch = (struct wsdd__ProbeMatchType *) my_soap_malloc(soap,
-			sizeof(struct wsdd__ProbeMatchType) * interface_num);
-	int i = 0;
-	for (i = 0; i < interface_num; i++) {
-		ProbeMatches.ProbeMatch->MetadataVersion = METADATA_VERSION;
-		// should be onvif device mgmt address
-		ProbeMatches.ProbeMatch->XAddrs = soap_strdup(soap, _xmaddr);
-		// probe type
-		ProbeMatches.ProbeMatch->Types = soap_strdup(soap, DEVICE_TYPE);
-		// Scope
-		ProbeMatches.ProbeMatch->Scopes =
-				(struct wsdd__ScopesType*) my_soap_malloc(soap,
-						sizeof(struct wsdd__ScopesType));
-		ProbeMatches.ProbeMatch->Scopes->__item = soap_strdup(soap, ONVIF_SCOPE_NAME);
-		ProbeMatches.ProbeMatch->Scopes->MatchBy = NULL;
-
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceProperties =
-				(struct wsa__ReferencePropertiesType*) my_soap_malloc(soap,
-						sizeof(struct wsa__ReferencePropertiesType));
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceProperties->__size =
-				0;
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceProperties->__any =
-				NULL;
-
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceParameters =
-				(struct wsa__ReferenceParametersType*) my_soap_malloc(soap,
-						sizeof(struct wsa__ReferenceParametersType));
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceParameters->__size =
-				0;
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.ReferenceParameters->__any =
-				NULL;
-
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.PortType =
-				(char **) my_soap_malloc(soap, sizeof(char*) * SMALL_INFO_LENGTH);
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.PortType[0] =soap_strdup(soap,
-				"ttl");
-
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.ServiceName =
-				(struct wsa__ServiceNameType*) my_soap_malloc(soap,
-						sizeof(struct wsa__ServiceNameType));
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.ServiceName->__item =
-				NULL;
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.ServiceName->PortName =
-				NULL;
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.ServiceName->__anyAttribute =
-				NULL;
-		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , __any
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.__any =
-				(char **) my_soap_malloc(soap, sizeof(char*) * SMALL_INFO_LENGTH);
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.__any[0] =soap_strdup(soap,  "Any");
-		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , __anyAttribute
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.__anyAttribute =soap_strdup(soap,
-				"Attribute");
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.__size = 0;
-		//ws-discovery¹æ¶¨ Îª¿ÉÑ¡Ïî , Address
-		ProbeMatches.ProbeMatch->wsa__EndpointReference.Address =soap_strdup(soap,
-				onvifRunParam.urnHardwareId);
+	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
+		return getOnvifSoapActionFailedCode(soap, "__wsdd__Probe",
+				"getServiceURL failed");
 	}
+	logInfo("service url %s", _xmaddr);
+	wsdd__ProbeMatchesType wProbeMatches;
+
+	getProbeMatchesInfo(soap, &wProbeMatches, INTERFACE_NUM, _xmaddr);
 
 	if (soap->header == NULL) {
 		soap->header = (struct SOAP_ENV__Header*) my_soap_malloc(soap,
@@ -759,7 +754,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 	soap->header->wsa__Action = soap_strdup(soap, "http://schemas.xmlsoap.org/ws/2005/04/discovery/ProbeMatches");
 
 	/* send over current socket as HTTP OK response: */
-	soap_send___wsdd__ProbeMatches(soap, "http://", NULL, &ProbeMatches);
+	soap_send___wsdd__ProbeMatches(soap, "http://", NULL, &wProbeMatches);
 	logInfo("__wsdd__Probe end");
 	return SOAP_OK;
 }
@@ -768,8 +763,14 @@ SOAP_FMAC5 int SOAP_FMAC6 __tdn__Probe(struct soap* soap,
 		struct wsdd__ProbeType tdn__Probe,
 		struct wsdd__ProbeMatchesType* tdn__ProbeResponse) {
 	logInfo("__tdn__Probe");
-	return getOnvifSoapActionNotSupportCode(soap, "tdn probe not support",
-			NULL);
+	char _xmaddr[256] = { 0 };
+	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
+		return getOnvifSoapActionFailedCode(soap, "__tdn__Probe",
+				"getServiceURL failed");
+	}
+	logInfo("service url %s", _xmaddr);
+	getProbeMatchesInfo(soap, tdn__ProbeResponse, INTERFACE_NUM, _xmaddr);
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__Hello(struct soap *soap,
@@ -929,8 +930,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tdn__Hello(struct soap* soap,
 		struct wsdd__HelloType tdn__Hello,
 		struct wsdd__ResolveType* tdn__HelloResponse) {
 	logInfo("__tdn__Hello");
-	return getOnvifSoapActionNotSupportCode(soap, "tdn Hello not support",
-			NULL);
+	getWSA__EndpointReferenceInfo(soap, &tdn__HelloResponse->wsa__EndpointReference);
+	return SOAP_OK;
 }
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__Bye(struct soap *soap,
@@ -1079,8 +1080,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tdn__Bye(struct soap* soap,
 		struct wsdd__ByeType tdn__Bye,
 		struct wsdd__ResolveType* tdn__ByeResponse) {
 	logInfo("__tdn__Bye");
-	return getOnvifSoapActionNotSupportCode(soap, "tdn Bye not support",
-			NULL);
+	getWSA__EndpointReferenceInfo(soap, &tdn__ByeResponse->wsa__EndpointReference);
+	return SOAP_OK;
 }
 
 void wsdd_event_ProbeMatches(struct soap *soap, unsigned int InstanceId,
@@ -1167,31 +1168,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_send___wsdd__ResolveMatches(struct soap *soap,
 soap_wsdd_mode wsdd_event_Resolve(struct soap *soap, const char *MessageID,
 		const char *ReplyTo, const char *EndpointReference,
 		struct wsdd__ResolveMatchType *match) {
-	match->wsa__EndpointReference.ReferenceProperties =
-			(struct wsa__ReferencePropertiesType*) my_soap_malloc(soap,
-					sizeof(struct wsa__ReferencePropertiesType));
-	match->wsa__EndpointReference.ReferenceProperties->__size = 0;
-	match->wsa__EndpointReference.ReferenceProperties->__any = NULL;
-	match->wsa__EndpointReference.ReferenceParameters =
-			(struct wsa__ReferenceParametersType*) my_soap_malloc(soap,
-					sizeof(struct wsa__ReferenceParametersType));
-	match->wsa__EndpointReference.ReferenceParameters->__size = 0;
-	match->wsa__EndpointReference.ReferenceParameters->__any = NULL;
-	match->wsa__EndpointReference.PortType = (char **) my_soap_malloc(soap,
-			sizeof(char*) * SMALL_INFO_LENGTH);
-	match->wsa__EndpointReference.PortType[0] = soap_strdup(soap,  "ttl");
-	match->wsa__EndpointReference.ServiceName =
-			(struct wsa__ServiceNameType*) my_soap_malloc(soap,
-					sizeof(struct wsa__ServiceNameType));
-	match->wsa__EndpointReference.ServiceName->__item = NULL;
-	match->wsa__EndpointReference.ServiceName->PortName = NULL;
-	match->wsa__EndpointReference.ServiceName->__anyAttribute = NULL;
-	match->wsa__EndpointReference.__any = (char **) my_soap_malloc(soap,
-			sizeof(char*) * SMALL_INFO_LENGTH);
-	match->wsa__EndpointReference.__any[0] = soap_strdup(soap,  "Any");
-	match->wsa__EndpointReference.__anyAttribute = soap_strdup(soap,  "Attribute");
-	match->wsa__EndpointReference.__size = 0;
-	match->wsa__EndpointReference.Address = soap_strdup(soap,  onvifRunParam.urnHardwareId);
+	getWSA__EndpointReferenceInfo(soap, &match->wsa__EndpointReference);
 	return SOAP_WSDD_MANAGED;
 }
 

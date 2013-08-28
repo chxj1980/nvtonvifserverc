@@ -605,9 +605,11 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__Stop(struct soap* soap,
 						ENABLE_YES : ENABLE_NO;
 	}
 	if (!isRetCodeSuccess(setPTZStopInfo(&onvifPTZStopInfo))) {
+		logInfo("__tptz__Stop setPTZStopInfo failed");
 		return getOnvifPTZSoapActionNotSupport(soap, "PTZ Stop",
 				"setPTZStopInfo failed");
 	}
+	logInfo("__tptz__Stop success");
 	return SOAP_OK;
 }
 

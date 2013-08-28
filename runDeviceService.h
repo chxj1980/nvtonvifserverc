@@ -4,7 +4,7 @@
 #ifdef __cplusplus
 	extern "C" {
 #endif
-	void initDeviceService();
+
 	int startDeviceService();
 	void stopDeviceService();
 

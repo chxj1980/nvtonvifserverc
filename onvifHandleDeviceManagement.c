@@ -270,8 +270,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetSystemDateAndTime(
 	logInfo("__tds__GetSystemDateAndTime");
 	OnvifSystemDateTime info;
 	if (!isRetCodeSuccess(getDeviceTime(&info))) {
-		return getOnvifSoapActionNotSupportCode(soap,
-				"Device Manager GetSystemDateAndTime", NULL);
+		return getOnvifSoapActionFailedCode(soap, "GetSystemDateAndTime",
+				"Device Manager getDeviceTime Failed");
 	}
 	tds__GetSystemDateAndTimeResponse->SystemDateAndTime =
 			getSystemDateAndTimeSystemTimeInfo(soap, &info);
@@ -784,8 +784,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetNTP(struct soap* soap,
 	logInfo("__tds__GetNTP");
 	OnvifNTPInfo info;
 	if (RET_CODE_SUCCESS != getNTPInfo(&info)) {
-		return getOnvifSoapActionNotSupportCode(soap, "Device Manager GetNTP",
-				"get ntp info error");
+		return getOnvifSoapActionFailedCode(soap, "GetNTP",
+				"Device Manager getNTPInfo Failed");
 	}
 	struct tt__NTPInformation *pNTPInformation =
 			(struct tt__NTPInformation*) my_soap_malloc(soap,
@@ -812,7 +812,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetNTP(struct soap* soap,
 		struct _tds__SetNTPResponse *tds__SetNTPResponse) {
 	logInfo("__tds__SetNTP");
 	if (xsd__boolean__true_ == tds__SetNTP->FromDHCP) {
-		return getOnvifSoapActionNotSupportCode(soap, "Device Manager SetNTP",
+		return getOnvifSoapActionFailedCode(soap, "SetNTP",
 				"DHCPNotSupported");
 	}
 	if (tt__NetworkHostType__IPv4 == tds__SetNTP->NTPManual->Type) {
@@ -823,7 +823,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetNTP(struct soap* soap,
 			int ret = setNTPInfo(&ntpInfo);
 			if (RET_CODE_SUCCESS != ret) {
 				return getOnvifSoapActionFailedCode(soap, "SetNTP",
-						"set ntp failed");
+						"setNTPInfo failed");
 			}
 		} else {
 			return getOnvifSoapActionFailedCode(soap, "SetNTP",
