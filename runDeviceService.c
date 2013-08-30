@@ -8,12 +8,12 @@
 #include "logInfo.h"
 
 #define BACKLOG 100
-#define DEVICE_SERVICE_MAX_THR (5) // Size of thread pool
-#define DEVICE_SERVICE_MAX_QUEUE (1000) // Max. size of request queue
+#define DEVICE_SERVICE_MAX_THR 3 // Size of thread pool
+#define DEVICE_SERVICE_MAX_QUEUE 1000 // Max. size of request queue
 SOAP_SOCKET deviceService_queue[DEVICE_SERVICE_MAX_QUEUE]; // The global request queue of sockets
 int deviceService_queue_head = 0, deviceService_queue_tail = 0; // Queue deviceService_queue_head and deviceService_queue_tail
-pthread_mutex_t deviceService_queue_cs;
-pthread_cond_t deviceService_queue_cv;
+pthread_mutex_t deviceService_queue_mutex;
+pthread_cond_t deviceService_queue_cond;
 struct soap *deviceService_thread_soaps[DEVICE_SERVICE_MAX_THR];
 pthread_t deviceService_threadIds[DEVICE_SERVICE_MAX_THR];
 
@@ -47,8 +47,8 @@ int startDeviceService() {
 		soap_done(&deviceServiceServiceInfo.m_Soap);
 		return RET_CODE_ERROR_CREATE_THREAD;
 	}
-	pthread_mutex_init(&deviceService_queue_cs, NULL);
-	pthread_cond_init(&deviceService_queue_cv, NULL);
+	pthread_mutex_init(&deviceService_queue_mutex, NULL);
+	pthread_cond_init(&deviceService_queue_cond, NULL);
 	int i;
 	for (i = 0; i < DEVICE_SERVICE_MAX_THR; i++) {
 		deviceService_thread_soaps[i] = soap_copy(&deviceServiceServiceInfo.m_Soap);
@@ -100,8 +100,8 @@ void * runDeviceServiceThreadMethod() {
 		soap_done(deviceService_thread_soaps[i]);
 		free(deviceService_thread_soaps[i]);
 	}
-	pthread_mutex_destroy(&deviceService_queue_cs);
-	pthread_cond_destroy(&deviceService_queue_cv);
+	pthread_mutex_destroy(&deviceService_queue_mutex);
+	pthread_cond_destroy(&deviceService_queue_cond);
 	return (void*) RET_CODE_SUCCESS;
 }
 
@@ -120,7 +120,7 @@ void *deviceService_process_queue(void *soap) {
 int deviceService_enqueue(SOAP_SOCKET sock) {
 	int status = SOAP_OK;
 	int next = 0;
-	pthread_mutex_lock(&deviceService_queue_cs);
+	pthread_mutex_lock(&deviceService_queue_mutex);
 	next = deviceService_queue_tail + 1;
 	if (next >= DEVICE_SERVICE_MAX_QUEUE)
 		next = 0;
@@ -130,19 +130,19 @@ int deviceService_enqueue(SOAP_SOCKET sock) {
 		deviceService_queue[deviceService_queue_tail] = sock;
 		deviceService_queue_tail = next;
 	}
-	pthread_cond_signal(&deviceService_queue_cv);
-	pthread_mutex_unlock(&deviceService_queue_cs);
+	pthread_cond_signal(&deviceService_queue_cond);
+	pthread_mutex_unlock(&deviceService_queue_mutex);
 	return status;
 }
 
 SOAP_SOCKET deviceService_dequeue() {
 	SOAP_SOCKET sock;
-	pthread_mutex_lock(&deviceService_queue_cs);
+	pthread_mutex_lock(&deviceService_queue_mutex);
 	while (deviceService_queue_head == deviceService_queue_tail)
-		pthread_cond_wait(&deviceService_queue_cv, &deviceService_queue_cs);
+		pthread_cond_wait(&deviceService_queue_cond, &deviceService_queue_mutex);
 	sock = deviceService_queue[deviceService_queue_head++];
 	if (deviceService_queue_head >= DEVICE_SERVICE_MAX_QUEUE)
 		deviceService_queue_head = 0;
-	pthread_mutex_unlock(&deviceService_queue_cs);
+	pthread_mutex_unlock(&deviceService_queue_mutex);
 	return sock;
 }
