@@ -8,14 +8,14 @@
 #include "logInfo.h"
 
 #define BACKLOG 100
-#define DEVICE_SERVICE_MAX_THR 3 // Size of thread pool
+#define DEVICE_SERVICE_MAX_THREAD 3 // Size of thread pool
 #define DEVICE_SERVICE_MAX_QUEUE 1000 // Max. size of request queue
 SOAP_SOCKET deviceService_queue[DEVICE_SERVICE_MAX_QUEUE]; // The global request queue of sockets
 int deviceService_queue_head = 0, deviceService_queue_tail = 0; // Queue deviceService_queue_head and deviceService_queue_tail
 pthread_mutex_t deviceService_queue_mutex;
 pthread_cond_t deviceService_queue_cond;
-struct soap *deviceService_thread_soaps[DEVICE_SERVICE_MAX_THR];
-pthread_t deviceService_threadIds[DEVICE_SERVICE_MAX_THR];
+struct soap *deviceService_thread_soaps[DEVICE_SERVICE_MAX_THREAD];
+pthread_t deviceService_threadIds[DEVICE_SERVICE_MAX_THREAD];
 
 RunServiceInfo deviceServiceServiceInfo = { .m_Active = FALSE };
 
@@ -50,7 +50,7 @@ int startDeviceService() {
 	pthread_mutex_init(&deviceService_queue_mutex, NULL);
 	pthread_cond_init(&deviceService_queue_cond, NULL);
 	int i;
-	for (i = 0; i < DEVICE_SERVICE_MAX_THR; i++) {
+	for (i = 0; i < DEVICE_SERVICE_MAX_THREAD; i++) {
 		deviceService_thread_soaps[i] = soap_copy(&deviceServiceServiceInfo.m_Soap);
 		deviceService_thread_soaps[i]->recv_timeout = SOAP_RECV_TIMEOUT;
 		deviceService_thread_soaps[i]->send_timeout = SOAP_SEND_TIMEOUT;
@@ -91,11 +91,11 @@ void * runDeviceServiceThreadMethod() {
 			myThreadSleep();
 		}
 	}
-	for (i = 0; i < DEVICE_SERVICE_MAX_THR; i++) {
+	for (i = 0; i < DEVICE_SERVICE_MAX_THREAD; i++) {
 		while (deviceService_enqueue(SOAP_INVALID_SOCKET) == SOAP_EOM)
 			sleep(1);
 	}
-	for (i = 0; i < DEVICE_SERVICE_MAX_THR; i++) {
+	for (i = 0; i < DEVICE_SERVICE_MAX_THREAD; i++) {
 		pthread_join(deviceService_threadIds[i], NULL);
 		soap_done(deviceService_thread_soaps[i]);
 		free(deviceService_thread_soaps[i]);
