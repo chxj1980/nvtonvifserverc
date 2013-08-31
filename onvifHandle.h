@@ -6,7 +6,7 @@
 
 #define GSOAP_RET_CODE_NOT_IMPLEMENT -1
 
-#define ONVIF_SCOPE_NAME "onvif://www.onvif.org/type/NetworkVideoTransmitter"
+#define ONVIF_SCOPE_NAME "onvif://www.onvif.org/type/video_encoder onvif://www.onvif.org/type/audio_encoder onvif://www.onvif.org/type/ptz onvif://www.onvif.org/location/country/china onvif://www.onvif.org/name/NVTCYH onvif://www.onvif.org/hardware/NVT20130806-01"
 #define DEFAULT_HARDWARE_ID "3707D96D27A4"
 #define DEFAULT_URN_HARDWARE_ID_PREFIX "urn:uuid:D149F919-4013-437E-B480-"
 #define DEVICE_TYPE "tdn:NetworkVideoTransmitter"
