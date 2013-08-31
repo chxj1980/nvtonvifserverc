@@ -14,7 +14,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 #define SOAP_WSA_200408
 #define SOAP_NAMESPACE_OF_wsdd	"http://schemas.xmlsoap.org/ws/2005/04/discovery"
 #define SOAP_WSA_2005
-#define SOAP_NAMESPACE_OF_tdn	"http://www.onvif.org/ver10/network/wsdl"
+#define SOAP_NAMESPACE_OF_dn	"http://www.onvif.org/ver10/network/wsdl"
 #define SOAP_NAMESPACE_OF_tds	"http://www.onvif.org/ver10/device/wsdl"
 #define SOAP_NAMESPACE_OF_tt	"http://www.onvif.org/ver10/schema"
 #define SOAP_NAMESPACE_OF_wsnt	"http://docs.oasis-open.org/wsn/b-2"
@@ -12222,30 +12222,30 @@ struct wstop__TopicSetType
 };
 #endif
 
-#ifndef SOAP_TYPE___tdn__Hello
-#define SOAP_TYPE___tdn__Hello (1772)
+#ifndef SOAP_TYPE___dn__Hello
+#define SOAP_TYPE___dn__Hello (1772)
 /* Operation wrapper: */
-struct __tdn__Hello
+struct __dn__Hello
 {
-	struct wsdd__HelloType tdn__Hello;	/* required element of type wsdd:HelloType */
+	struct wsdd__HelloType dn__Hello;	/* required element of type wsdd:HelloType */
 };
 #endif
 
-#ifndef SOAP_TYPE___tdn__Bye
-#define SOAP_TYPE___tdn__Bye (1774)
+#ifndef SOAP_TYPE___dn__Bye
+#define SOAP_TYPE___dn__Bye (1774)
 /* Operation wrapper: */
-struct __tdn__Bye
+struct __dn__Bye
 {
-	struct wsdd__ByeType tdn__Bye;	/* required element of type wsdd:ByeType */
+	struct wsdd__ByeType dn__Bye;	/* required element of type wsdd:ByeType */
 };
 #endif
 
-#ifndef SOAP_TYPE___tdn__Probe
-#define SOAP_TYPE___tdn__Probe (1776)
+#ifndef SOAP_TYPE___dn__Probe
+#define SOAP_TYPE___dn__Probe (1776)
 /* Operation wrapper: */
-struct __tdn__Probe
+struct __dn__Probe
 {
-	struct wsdd__ProbeType tdn__Probe;	/* required element of type wsdd:ProbeType */
+	struct wsdd__ProbeType dn__Probe;	/* required element of type wsdd:ProbeType */
 };
 #endif
 
@@ -14255,11 +14255,11 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Resolve(struct soap*, struct wsdd__ResolveType
 
 SOAP_FMAC5 int SOAP_FMAC6 __wsdd__ResolveMatches(struct soap*, struct wsdd__ResolveMatchesType *wsdd__ResolveMatches);
 
-SOAP_FMAC5 int SOAP_FMAC6 __tdn__Hello(struct soap*, struct wsdd__HelloType tdn__Hello, struct wsdd__ResolveType *tdn__HelloResponse);
+SOAP_FMAC5 int SOAP_FMAC6 __dn__Hello(struct soap*, struct wsdd__HelloType dn__Hello, struct wsdd__ResolveType *dn__HelloResponse);
 
-SOAP_FMAC5 int SOAP_FMAC6 __tdn__Bye(struct soap*, struct wsdd__ByeType tdn__Bye, struct wsdd__ResolveType *tdn__ByeResponse);
+SOAP_FMAC5 int SOAP_FMAC6 __dn__Bye(struct soap*, struct wsdd__ByeType dn__Bye, struct wsdd__ResolveType *dn__ByeResponse);
 
-SOAP_FMAC5 int SOAP_FMAC6 __tdn__Probe(struct soap*, struct wsdd__ProbeType tdn__Probe, struct wsdd__ProbeMatchesType *tdn__ProbeResponse);
+SOAP_FMAC5 int SOAP_FMAC6 __dn__Probe(struct soap*, struct wsdd__ProbeType dn__Probe, struct wsdd__ProbeMatchesType *dn__ProbeResponse);
 
 SOAP_FMAC5 int SOAP_FMAC6 __tds__GetServices(struct soap*, struct _tds__GetServices *tds__GetServices, struct _tds__GetServicesResponse *tds__GetServicesResponse);
 
@@ -14643,11 +14643,11 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve___wsdd__Resolve(struct soap*);
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve___wsdd__ResolveMatches(struct soap*);
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Hello(struct soap*);
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___dn__Hello(struct soap*);
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Bye(struct soap*);
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___dn__Bye(struct soap*);
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Probe(struct soap*);
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___dn__Probe(struct soap*);
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tds__GetServices(struct soap*);
 

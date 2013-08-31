@@ -90,16 +90,14 @@ SOAP_FMAC3 int * SOAP_FMAC4 soap_get_int(struct soap*, int *, const char*, const
 #ifndef SOAP_TYPE_xsd__duration
 #define SOAP_TYPE_xsd__duration (218)
 #endif
-
 SOAP_FMAC1 void SOAP_FMAC2 soap_default_xsd__duration(struct soap*, LONG64 *);
-// #define soap_default_xsd__duration(soap, a) soap_default_unsignedLONG64(soap, (ULONG64 *)a)
-SOAP_FMAC1 int SOAP_FMAC2 soap_out_xsd__duration(struct soap*, const char*, int, const LONG64 *, const char*);
-// #define soap_out_xsd__duration(soap,a,b,c,d) soap_out_unsignedLONG64(soap, a, b, (ULONG64 *)c, d)
-SOAP_FMAC1 LONG64 * SOAP_FMAC2 soap_in_xsd__duration(struct soap*, const char*, LONG64 *, const char*);
-// #define soap_in_xsd__duration(soap, a, b, c) (LONG64*)soap_in_unsignedLONG64(soap,a,(ULONG64 *)b,c)
 
 SOAP_FMAC3S const char* SOAP_FMAC4S soap_xsd__duration2s(struct soap*, LONG64);
+SOAP_FMAC1 int SOAP_FMAC2 soap_out_xsd__duration(struct soap*, const char*, int, const LONG64 *, const char*);
+
 SOAP_FMAC3S int SOAP_FMAC4S soap_s2xsd__duration(struct soap*, const char*, LONG64 *);
+SOAP_FMAC1 LONG64 * SOAP_FMAC2 soap_in_xsd__duration(struct soap*, const char*, LONG64 *, const char*);
+
 SOAP_FMAC3 int SOAP_FMAC4 soap_put_xsd__duration(struct soap*, const LONG64 *, const char*, const char*);
 
 #ifndef soap_write_xsd__duration
@@ -5526,66 +5524,66 @@ SOAP_FMAC3 struct __tds__GetServices * SOAP_FMAC4 soap_get___tds__GetServices(st
 #endif
 
 
-#ifndef SOAP_TYPE___tdn__Probe
-#define SOAP_TYPE___tdn__Probe (1776)
+#ifndef SOAP_TYPE___dn__Probe
+#define SOAP_TYPE___dn__Probe (1776)
 #endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_default___tdn__Probe(struct soap*, struct __tdn__Probe *);
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tdn__Probe(struct soap*, const struct __tdn__Probe *);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out___tdn__Probe(struct soap*, const char*, int, const struct __tdn__Probe *, const char*);
-SOAP_FMAC3 struct __tdn__Probe * SOAP_FMAC4 soap_in___tdn__Probe(struct soap*, const char*, struct __tdn__Probe *, const char*);
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___dn__Probe(struct soap*, struct __dn__Probe *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___dn__Probe(struct soap*, const struct __dn__Probe *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___dn__Probe(struct soap*, const char*, int, const struct __dn__Probe *, const char*);
+SOAP_FMAC3 struct __dn__Probe * SOAP_FMAC4 soap_in___dn__Probe(struct soap*, const char*, struct __dn__Probe *, const char*);
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put___tdn__Probe(struct soap*, const struct __tdn__Probe *, const char*, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___dn__Probe(struct soap*, const struct __dn__Probe *, const char*, const char*);
 
-#ifndef soap_write___tdn__Probe
-#define soap_write___tdn__Probe(soap, data) ( soap_begin(soap), soap_serialize___tdn__Probe(soap, data), soap_begin_send(soap) || soap_put___tdn__Probe(soap, data, "-tdn:Probe", NULL) || soap_end_send(soap), soap->error )
-#endif
-
-SOAP_FMAC3 struct __tdn__Probe * SOAP_FMAC4 soap_get___tdn__Probe(struct soap*, struct __tdn__Probe *, const char*, const char*);
-
-#ifndef soap_read___tdn__Probe
-#define soap_read___tdn__Probe(soap, data) ( soap_begin_recv(soap) || !soap_get___tdn__Probe(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#ifndef soap_write___dn__Probe
+#define soap_write___dn__Probe(soap, data) ( soap_begin(soap), soap_serialize___dn__Probe(soap, data), soap_begin_send(soap) || soap_put___dn__Probe(soap, data, "-dn:Probe", NULL) || soap_end_send(soap), soap->error )
 #endif
 
+SOAP_FMAC3 struct __dn__Probe * SOAP_FMAC4 soap_get___dn__Probe(struct soap*, struct __dn__Probe *, const char*, const char*);
 
-#ifndef SOAP_TYPE___tdn__Bye
-#define SOAP_TYPE___tdn__Bye (1774)
-#endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_default___tdn__Bye(struct soap*, struct __tdn__Bye *);
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tdn__Bye(struct soap*, const struct __tdn__Bye *);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out___tdn__Bye(struct soap*, const char*, int, const struct __tdn__Bye *, const char*);
-SOAP_FMAC3 struct __tdn__Bye * SOAP_FMAC4 soap_in___tdn__Bye(struct soap*, const char*, struct __tdn__Bye *, const char*);
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put___tdn__Bye(struct soap*, const struct __tdn__Bye *, const char*, const char*);
-
-#ifndef soap_write___tdn__Bye
-#define soap_write___tdn__Bye(soap, data) ( soap_begin(soap), soap_serialize___tdn__Bye(soap, data), soap_begin_send(soap) || soap_put___tdn__Bye(soap, data, "-tdn:Bye", NULL) || soap_end_send(soap), soap->error )
-#endif
-
-SOAP_FMAC3 struct __tdn__Bye * SOAP_FMAC4 soap_get___tdn__Bye(struct soap*, struct __tdn__Bye *, const char*, const char*);
-
-#ifndef soap_read___tdn__Bye
-#define soap_read___tdn__Bye(soap, data) ( soap_begin_recv(soap) || !soap_get___tdn__Bye(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#ifndef soap_read___dn__Probe
+#define soap_read___dn__Probe(soap, data) ( soap_begin_recv(soap) || !soap_get___dn__Probe(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
 #endif
 
 
-#ifndef SOAP_TYPE___tdn__Hello
-#define SOAP_TYPE___tdn__Hello (1772)
+#ifndef SOAP_TYPE___dn__Bye
+#define SOAP_TYPE___dn__Bye (1774)
 #endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_default___tdn__Hello(struct soap*, struct __tdn__Hello *);
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___tdn__Hello(struct soap*, const struct __tdn__Hello *);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out___tdn__Hello(struct soap*, const char*, int, const struct __tdn__Hello *, const char*);
-SOAP_FMAC3 struct __tdn__Hello * SOAP_FMAC4 soap_in___tdn__Hello(struct soap*, const char*, struct __tdn__Hello *, const char*);
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___dn__Bye(struct soap*, struct __dn__Bye *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___dn__Bye(struct soap*, const struct __dn__Bye *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___dn__Bye(struct soap*, const char*, int, const struct __dn__Bye *, const char*);
+SOAP_FMAC3 struct __dn__Bye * SOAP_FMAC4 soap_in___dn__Bye(struct soap*, const char*, struct __dn__Bye *, const char*);
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put___tdn__Hello(struct soap*, const struct __tdn__Hello *, const char*, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___dn__Bye(struct soap*, const struct __dn__Bye *, const char*, const char*);
 
-#ifndef soap_write___tdn__Hello
-#define soap_write___tdn__Hello(soap, data) ( soap_begin(soap), soap_serialize___tdn__Hello(soap, data), soap_begin_send(soap) || soap_put___tdn__Hello(soap, data, "-tdn:Hello", NULL) || soap_end_send(soap), soap->error )
+#ifndef soap_write___dn__Bye
+#define soap_write___dn__Bye(soap, data) ( soap_begin(soap), soap_serialize___dn__Bye(soap, data), soap_begin_send(soap) || soap_put___dn__Bye(soap, data, "-dn:Bye", NULL) || soap_end_send(soap), soap->error )
 #endif
 
-SOAP_FMAC3 struct __tdn__Hello * SOAP_FMAC4 soap_get___tdn__Hello(struct soap*, struct __tdn__Hello *, const char*, const char*);
+SOAP_FMAC3 struct __dn__Bye * SOAP_FMAC4 soap_get___dn__Bye(struct soap*, struct __dn__Bye *, const char*, const char*);
 
-#ifndef soap_read___tdn__Hello
-#define soap_read___tdn__Hello(soap, data) ( soap_begin_recv(soap) || !soap_get___tdn__Hello(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#ifndef soap_read___dn__Bye
+#define soap_read___dn__Bye(soap, data) ( soap_begin_recv(soap) || !soap_get___dn__Bye(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
+#endif
+
+
+#ifndef SOAP_TYPE___dn__Hello
+#define SOAP_TYPE___dn__Hello (1772)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default___dn__Hello(struct soap*, struct __dn__Hello *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize___dn__Hello(struct soap*, const struct __dn__Hello *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out___dn__Hello(struct soap*, const char*, int, const struct __dn__Hello *, const char*);
+SOAP_FMAC3 struct __dn__Hello * SOAP_FMAC4 soap_in___dn__Hello(struct soap*, const char*, struct __dn__Hello *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put___dn__Hello(struct soap*, const struct __dn__Hello *, const char*, const char*);
+
+#ifndef soap_write___dn__Hello
+#define soap_write___dn__Hello(soap, data) ( soap_begin(soap), soap_serialize___dn__Hello(soap, data), soap_begin_send(soap) || soap_put___dn__Hello(soap, data, "-dn:Hello", NULL) || soap_end_send(soap), soap->error )
+#endif
+
+SOAP_FMAC3 struct __dn__Hello * SOAP_FMAC4 soap_get___dn__Hello(struct soap*, struct __dn__Hello *, const char*, const char*);
+
+#ifndef soap_read___dn__Hello
+#define soap_read___dn__Hello(soap, data) ( soap_begin_recv(soap) || !soap_get___dn__Hello(soap, data, NULL, NULL) || soap_end_recv(soap), soap->error )
 #endif
 
 

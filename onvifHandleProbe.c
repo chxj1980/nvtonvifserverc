@@ -759,17 +759,17 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 	return SOAP_OK;
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 __tdn__Probe(struct soap* soap,
-		struct wsdd__ProbeType tdn__Probe,
-		struct wsdd__ProbeMatchesType* tdn__ProbeResponse) {
-	logInfo("__tdn__Probe");
+SOAP_FMAC5 int SOAP_FMAC6 __dn__Probe(struct soap* soap,
+		struct wsdd__ProbeType dn__Probe,
+		struct wsdd__ProbeMatchesType* dn__ProbeResponse) {
+	logInfo("__dn__Probe");
 	char _xmaddr[256] = { 0 };
 	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
 		return getOnvifSoapActionFailedCode(soap, "__tdn__Probe",
 				"getServiceURL failed");
 	}
 	logInfo("service url %s", _xmaddr);
-	getProbeMatchesInfo(soap, tdn__ProbeResponse, INTERFACE_NUM, _xmaddr);
+	getProbeMatchesInfo(soap, dn__ProbeResponse, INTERFACE_NUM, _xmaddr);
 	return SOAP_OK;
 }
 
@@ -926,11 +926,11 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Hello(struct soap* soap,
 	return SOAP_OK;
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 __tdn__Hello(struct soap* soap,
-		struct wsdd__HelloType tdn__Hello,
-		struct wsdd__ResolveType* tdn__HelloResponse) {
-	logInfo("__tdn__Hello");
-	getWSA__EndpointReferenceInfo(soap, &tdn__HelloResponse->wsa__EndpointReference);
+SOAP_FMAC5 int SOAP_FMAC6 __dn__Hello(struct soap* soap,
+		struct wsdd__HelloType dn__Hello,
+		struct wsdd__ResolveType* dn__HelloResponse) {
+	logInfo("__dn__Hello");
+	getWSA__EndpointReferenceInfo(soap, &dn__HelloResponse->wsa__EndpointReference);
 	return SOAP_OK;
 }
 
@@ -1076,11 +1076,11 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Bye(struct soap* soap,
 	return SOAP_OK;
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 __tdn__Bye(struct soap* soap,
-		struct wsdd__ByeType tdn__Bye,
-		struct wsdd__ResolveType* tdn__ByeResponse) {
-	logInfo("__tdn__Bye");
-	getWSA__EndpointReferenceInfo(soap, &tdn__ByeResponse->wsa__EndpointReference);
+SOAP_FMAC5 int SOAP_FMAC6 __dn__Bye(struct soap* soap,
+		struct wsdd__ByeType dn__Bye,
+		struct wsdd__ResolveType* dn__ByeResponse) {
+	logInfo("__dn__Bye");
+	getWSA__EndpointReferenceInfo(soap, &dn__ByeResponse->wsa__EndpointReference);
 	return SOAP_OK;
 }
 

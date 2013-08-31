@@ -17,7 +17,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 extern "C" {
 #endif
 
-SOAP_SOURCE_STAMP("@(#) soapServer.c ver 2.8.14 2013-05-02 13:51:23 GMT")
+SOAP_SOURCE_STAMP("@(#) soapServer.c ver 2.8.14 2013-08-31 04:18:53 GMT")
 
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve(struct soap *soap)
@@ -59,10 +59,10 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve(struct soap *soap)
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve_request(struct soap *soap)
 {
 	soap_peek_element(soap);
-#if 0
+#if 0	
 	if (!soap_match_tag(soap, soap->tag, "SOAP-ENV:Fault"))
 		return soap_serve_SOAP_ENV__Fault(soap);
-#endif
+#endif		
 	if (!soap_match_tag(soap, soap->tag, "wsdd:Hello"))
 		return soap_serve___wsdd__Hello(soap);
 	if (!soap_match_tag(soap, soap->tag, "wsdd:Bye"))
@@ -75,12 +75,12 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_request(struct soap *soap)
 		return soap_serve___wsdd__Resolve(soap);
 	if (!soap_match_tag(soap, soap->tag, "wsdd:ResolveMatches"))
 		return soap_serve___wsdd__ResolveMatches(soap);
-	if (!soap_match_tag(soap, soap->tag, "tdn:Hello"))
-		return soap_serve___tdn__Hello(soap);
-	if (!soap_match_tag(soap, soap->tag, "tdn:Bye"))
-		return soap_serve___tdn__Bye(soap);
-	if (!soap_match_tag(soap, soap->tag, "tdn:Probe"))
-		return soap_serve___tdn__Probe(soap);
+	if (!soap_match_tag(soap, soap->tag, "dn:Hello"))
+		return soap_serve___dn__Hello(soap);
+	if (!soap_match_tag(soap, soap->tag, "dn:Bye"))
+		return soap_serve___dn__Bye(soap);
+	if (!soap_match_tag(soap, soap->tag, "dn:Probe"))
+		return soap_serve___dn__Probe(soap);
 	if (!soap_match_tag(soap, soap->tag, "tds:GetServices"))
 		return soap_serve___tds__GetServices(soap);
 	if (!soap_match_tag(soap, soap->tag, "tds:GetServiceCapabilities"))
@@ -442,6 +442,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_request(struct soap *soap)
 	return soap->error = SOAP_NO_METHOD;
 }
 #endif
+
 #if 0
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve_SOAP_ENV__Fault(struct soap *soap)
 {	struct SOAP_ENV__Fault soap_tmp_SOAP_ENV__Fault;
@@ -459,6 +460,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_SOAP_ENV__Fault(struct soap *soap)
 	return soap_closesock(soap);
 }
 #endif
+
 SOAP_FMAC5 int SOAP_FMAC6 soap_serve___wsdd__Hello(struct soap *soap)
 {	struct __wsdd__Hello soap_tmp___wsdd__Hello;
 	soap_default___wsdd__Hello(soap, &soap_tmp___wsdd__Hello);
@@ -555,30 +557,30 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve___wsdd__ResolveMatches(struct soap *soap)
 	return soap_closesock(soap);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Hello(struct soap *soap)
-{	struct __tdn__Hello soap_tmp___tdn__Hello;
-	struct wsdd__ResolveType tdn__HelloResponse;
-	soap_default_wsdd__ResolveType(soap, &tdn__HelloResponse);
-	soap_default___tdn__Hello(soap, &soap_tmp___tdn__Hello);
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___dn__Hello(struct soap *soap)
+{	struct __dn__Hello soap_tmp___dn__Hello;
+	struct wsdd__ResolveType dn__HelloResponse;
+	soap_default_wsdd__ResolveType(soap, &dn__HelloResponse);
+	soap_default___dn__Hello(soap, &soap_tmp___dn__Hello);
 	soap->encodingStyle = NULL;
-	if (!soap_get___tdn__Hello(soap, &soap_tmp___tdn__Hello, "-tdn:Hello", NULL))
+	if (!soap_get___dn__Hello(soap, &soap_tmp___dn__Hello, "-dn:Hello", NULL))
 		return soap->error;
 	if (soap_body_end_in(soap)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = __tdn__Hello(soap, soap_tmp___tdn__Hello.tdn__Hello, &tdn__HelloResponse);
+	soap->error = __dn__Hello(soap, soap_tmp___dn__Hello.dn__Hello, &dn__HelloResponse);
 	if (soap->error)
 		return soap->error;
 	soap_serializeheader(soap);
-	soap_serialize_wsdd__ResolveType(soap, &tdn__HelloResponse);
+	soap_serialize_wsdd__ResolveType(soap, &dn__HelloResponse);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_wsdd__ResolveType(soap, &tdn__HelloResponse, "tdn:HelloResponse", NULL)
+		 || soap_put_wsdd__ResolveType(soap, &dn__HelloResponse, "dn:HelloResponse", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -588,7 +590,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Hello(struct soap *soap)
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_wsdd__ResolveType(soap, &tdn__HelloResponse, "tdn:HelloResponse", NULL)
+	 || soap_put_wsdd__ResolveType(soap, &dn__HelloResponse, "dn:HelloResponse", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
@@ -596,30 +598,30 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Hello(struct soap *soap)
 	return soap_closesock(soap);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Bye(struct soap *soap)
-{	struct __tdn__Bye soap_tmp___tdn__Bye;
-	struct wsdd__ResolveType tdn__ByeResponse;
-	soap_default_wsdd__ResolveType(soap, &tdn__ByeResponse);
-	soap_default___tdn__Bye(soap, &soap_tmp___tdn__Bye);
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___dn__Bye(struct soap *soap)
+{	struct __dn__Bye soap_tmp___dn__Bye;
+	struct wsdd__ResolveType dn__ByeResponse;
+	soap_default_wsdd__ResolveType(soap, &dn__ByeResponse);
+	soap_default___dn__Bye(soap, &soap_tmp___dn__Bye);
 	soap->encodingStyle = NULL;
-	if (!soap_get___tdn__Bye(soap, &soap_tmp___tdn__Bye, "-tdn:Bye", NULL))
+	if (!soap_get___dn__Bye(soap, &soap_tmp___dn__Bye, "-dn:Bye", NULL))
 		return soap->error;
 	if (soap_body_end_in(soap)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = __tdn__Bye(soap, soap_tmp___tdn__Bye.tdn__Bye, &tdn__ByeResponse);
+	soap->error = __dn__Bye(soap, soap_tmp___dn__Bye.dn__Bye, &dn__ByeResponse);
 	if (soap->error)
 		return soap->error;
 	soap_serializeheader(soap);
-	soap_serialize_wsdd__ResolveType(soap, &tdn__ByeResponse);
+	soap_serialize_wsdd__ResolveType(soap, &dn__ByeResponse);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_wsdd__ResolveType(soap, &tdn__ByeResponse, "tdn:ByeResponse", NULL)
+		 || soap_put_wsdd__ResolveType(soap, &dn__ByeResponse, "dn:ByeResponse", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -629,7 +631,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Bye(struct soap *soap)
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_wsdd__ResolveType(soap, &tdn__ByeResponse, "tdn:ByeResponse", NULL)
+	 || soap_put_wsdd__ResolveType(soap, &dn__ByeResponse, "dn:ByeResponse", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
@@ -637,30 +639,30 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Bye(struct soap *soap)
 	return soap_closesock(soap);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Probe(struct soap *soap)
-{	struct __tdn__Probe soap_tmp___tdn__Probe;
-	struct wsdd__ProbeMatchesType tdn__ProbeResponse;
-	soap_default_wsdd__ProbeMatchesType(soap, &tdn__ProbeResponse);
-	soap_default___tdn__Probe(soap, &soap_tmp___tdn__Probe);
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve___dn__Probe(struct soap *soap)
+{	struct __dn__Probe soap_tmp___dn__Probe;
+	struct wsdd__ProbeMatchesType dn__ProbeResponse;
+	soap_default_wsdd__ProbeMatchesType(soap, &dn__ProbeResponse);
+	soap_default___dn__Probe(soap, &soap_tmp___dn__Probe);
 	soap->encodingStyle = NULL;
-	if (!soap_get___tdn__Probe(soap, &soap_tmp___tdn__Probe, "-tdn:Probe", NULL))
+	if (!soap_get___dn__Probe(soap, &soap_tmp___dn__Probe, "-dn:Probe", NULL))
 		return soap->error;
 	if (soap_body_end_in(soap)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = __tdn__Probe(soap, soap_tmp___tdn__Probe.tdn__Probe, &tdn__ProbeResponse);
+	soap->error = __dn__Probe(soap, soap_tmp___dn__Probe.dn__Probe, &dn__ProbeResponse);
 	if (soap->error)
 		return soap->error;
 	soap_serializeheader(soap);
-	soap_serialize_wsdd__ProbeMatchesType(soap, &tdn__ProbeResponse);
+	soap_serialize_wsdd__ProbeMatchesType(soap, &dn__ProbeResponse);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_wsdd__ProbeMatchesType(soap, &tdn__ProbeResponse, "tdn:ProbeResponse", NULL)
+		 || soap_put_wsdd__ProbeMatchesType(soap, &dn__ProbeResponse, "dn:ProbeResponse", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -670,7 +672,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve___tdn__Probe(struct soap *soap)
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_wsdd__ProbeMatchesType(soap, &tdn__ProbeResponse, "tdn:ProbeResponse", NULL)
+	 || soap_put_wsdd__ProbeMatchesType(soap, &dn__ProbeResponse, "dn:ProbeResponse", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
