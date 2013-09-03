@@ -750,10 +750,13 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 	soap->header->wsa__ReplyTo = 0;
 	soap->header->wsa__FaultTo = 0;
 	soap->header->wsdd__AppSequence = 0;
-	soap->header->wsa__To = soap_strdup(soap, "http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous");
-	soap->header->wsa__Action = soap_strdup(soap, "http://schemas.xmlsoap.org/ws/2005/04/discovery/ProbeMatches");
+
+	/*注释的部分为可选，注释掉onvif test也能发现ws-d*/
+//	soap->header->wsa__To = soap_strdup(soap, "http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous");
+//	soap->header->wsa__Action = soap_strdup(soap, "http://schemas.xmlsoap.org/ws/2005/04/discovery/ProbeMatches");
 
 	/* send over current socket as HTTP OK response: */
+	 /*测试过，第二参数必须http，action随意*/
 	soap_send___wsdd__ProbeMatches(soap, "http://", NULL, &wProbeMatches);
 	logInfo("__wsdd__Probe end");
 	return SOAP_OK;
