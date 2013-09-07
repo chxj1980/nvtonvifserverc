@@ -7,7 +7,6 @@
 #include "logInfo.h"
 
 #define PTZ_NODE_TOKEN_PREFIX "PTZ_node_token"
-#define PTZ_PRESET_NAME_PREFIX "PTZ_preset_name"
 #define PTZ_PRESET_TOKEN_PREFIX "PTZ_preset_token"
 #define PTZ_CONFIG_TOKEN_PREFIX "PTZ_config_token"
 #define PTZ_DEFAULT_TIMEOUT 500
@@ -24,10 +23,6 @@ char* getPTZName(struct soap* soap, int index) {
 	return getIndexTokeName(soap, "PTZ_Name", index);
 }
 
-char* getPTZPresetName(struct soap* soap, int index) {
-	return getIndexTokeName(soap, PTZ_PRESET_NAME_PREFIX, index);
-}
-
 char* getPTZPresetToken(struct soap* soap, int index) {
 	return getIndexTokeName(soap, PTZ_PRESET_TOKEN_PREFIX, index);
 }
@@ -41,13 +36,53 @@ int getIndexFromPTZConfigToken(char* token) {
 }
 
 int getIndexFromPTZPresetToken(char* token) {
-	return getIndexFromTokenName(token, PTZ_PRESET_TOKEN_PREFIX);
+	int result = getIndexFromTokenName(token, PTZ_PRESET_TOKEN_PREFIX);
+	if (result > 0) {
+		return result;
+	}
+	result = getIndexFromTokenName(token, "Preset");
+	if (result > 0) {
+		return result;
+	}
+	return atoi(token);
 }
 
 int getOnvifPTZSoapActionNotSupport(struct soap *soap, const char *faultInfo,
 		const char* faultDetail) {
 	return getOnvifSoapActionNotSupportSubCode1(soap, "ter:PTZNotSupported",
 			faultInfo, faultDetail);
+}
+
+int handleOnvifPTZPresetActionError(struct soap *soap, OnvifPTZPreset* preset) {
+	char v[LARGE_INFO_LENGTH] = {0};
+	int result = SOAP_OK;
+	switch(preset->error) {
+	case ERROR_PTZ_INDEX_NOT_EXIST:
+		sprintf(v, "preset token %d is not exist", preset->index);
+		result = getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal", "ter:NoToken", v, NULL);
+		break;
+	case ERROR_PTZ_INDEX_OUT_RANGE:
+		sprintf(v, "preset token index %d out of range", preset->index);
+		result = getOnvifSoapReceiverSubCode2Fault(soap, "ter:Action", "ter:TooManyPresets", v, NULL);
+		break;
+	case ERROR_PTZ_PRESETNAME_NOT_EXIST:
+		sprintf(v, "preset name %s is not valid", preset->name);
+		result = getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal", "ter:InvalidPresetName", v, NULL);
+		break;
+	case ERROR_PTZ_INDEX_OVER:
+		sprintf(v, "preset token index %d is reached max", preset->index);
+		result = getOnvifSoapReceiverSubCode2Fault(soap, "ter:Action", "ter:TooManyPresets", v, NULL);
+		break;
+	case ERROR_PTZ_PRESETNAME_EMPTY:
+		sprintf(v, "preset name is empty");
+		result = getOnvifPTZSoapActionNotSupport(soap, v, NULL);
+		break;
+	case ERROR_PTZ_PRESETNAME_REPEAT:
+		sprintf(v, "preset name %s is repeat", preset->name);
+		result = getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal", "ter:PresetExist", v, NULL);
+		break;
+	}
+	return result;
 }
 
 struct tt__Vector2D* getVector2D(struct soap* soap, char* uri, const float x,
@@ -281,7 +316,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__GetConfigurations(
 
 void getPreset(struct soap* soap, struct tt__PTZPreset* ptzPreset,
 		OnvifPTZPreset* onvifPTZPreset) {
-	ptzPreset->Name = getPTZPresetName(soap, onvifPTZPreset->index);
+	ptzPreset->Name = soap_strdup(soap, onvifPTZPreset->name);
 	ptzPreset->token = getPTZPresetToken(soap, onvifPTZPreset->index);
 }
 
@@ -336,10 +371,17 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__SetPreset(struct soap* soap,
 	}
 	OnvifPTZPreset onvifPTZPreset;
 	onvifPTZPreset.index = index;
+	if (NULL != tptz__SetPreset->PresetName) {
+		strcpy(onvifPTZPreset.name, tptz__SetPreset->PresetName);
+	}
 	if (!isRetCodeSuccess(setPTZPreset(&onvifPTZPreset))) {
 		logInfo("__tptz__SetPreset setPTZPreset index %d failed", index);
 		return getOnvifPTZSoapActionNotSupport(soap, "PTZ SetPreset",
 				"setPTZPreset failed");
+	}
+	if (RESULT_OK != onvifPTZPreset.error) {
+		logInfo("__tptz__SetPreset setPTZPreset onvifPTZPreset error code %d", onvifPTZPreset.error);
+		return handleOnvifPTZPresetActionError(soap, &onvifPTZPreset);
 	}
 	if (onvifPTZPreset.index < 1) {
 		logInfo("__tptz__SetPreset setPTZPreset index %d failed", index);
@@ -376,6 +418,10 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__RemovePreset(struct soap* soap,
 		return getOnvifPTZSoapActionNotSupport(soap, "PTZ RemovePreset",
 				"removePTZPreset failed");
 	}
+	if (RESULT_OK != onvifPTZPreset.error) {
+		logInfo("__tptz__RemovePreset removePTZPreset onvifPTZPreset error code %d", onvifPTZPreset.error);
+		return handleOnvifPTZPresetActionError(soap, &onvifPTZPreset);
+	}
 	return SOAP_OK;
 }
 
@@ -403,6 +449,10 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__GotoPreset(struct soap* soap,
 		logInfo("__tptz__GotoPreset gotoPTZPreset index %d failed", index);
 		return getOnvifPTZSoapActionNotSupport(soap, "PTZ GotoPreset",
 				"gotoPTZPreset failed");
+	}
+	if (RESULT_OK != onvifPTZPreset.error) {
+		logInfo("__tptz__GotoPreset gotoPTZPreset onvifPTZPreset error code %d", onvifPTZPreset.error);
+		return handleOnvifPTZPresetActionError(soap, &onvifPTZPreset);
 	}
 	return SOAP_OK;
 }

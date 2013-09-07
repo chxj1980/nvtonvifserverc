@@ -110,6 +110,18 @@ void myThreadSleep() {
 	usleep(10000);
 }
 
+void squeezeChar(char s[], char c) {
+    int i,j;
+    for (i = 0, j = 0; s[i] != '\0'; i++)
+    {
+        if (s[i] != c)
+        {
+            s[j++] = s[i];
+        }
+    }
+    s[j] = '\0';
+}
+
 void getCurrentDateTimeStr(char* info, const int len) {
 	getDateTimeStr(info, len, time(NULL));
 }

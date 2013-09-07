@@ -35,6 +35,7 @@ typedef struct St_OnvifDeviceInfo {
 	char manufacturer[SMALL_INFO_LENGTH];
 	char model[SMALL_INFO_LENGTH];
 	char serialNumber[INFO_LENGTH];
+	char macAddr[SMALL_INFO_LENGTH];
 } OnvifDeviceInfo;
 
 typedef struct St_OnvifNTPInfo {
@@ -111,6 +112,8 @@ typedef struct St_OnvifPTZStopInfo {
 
 typedef struct St_OnvifPTZPreset {
 	int index;  // Ë÷ÒýºÅ
+	char name[INFO_LENGTH]; // Ãû³Æ
+	int error; //´íÎóÂë
 } OnvifPTZPreset;
 
 typedef struct St_OnvifPTZAllPresets {
@@ -152,14 +155,19 @@ char* getPTZConfigurationToken(struct soap* soap, int index);
 int getPTZConfigurationInfo(OnvifPTZConfigurationInfo* info);
 int getPTZPresetsCapacity(int* info);
 int getPTZAllPresets(OnvifPTZAllPresets* info);
-int getIndexFromTokenName(const char* tokenName, const char* prefix);
 int gotoPTZPreset(OnvifPTZPreset* info);
 int removePTZPreset(OnvifPTZPreset* info);
 int setPTZPreset(OnvifPTZPreset* info);
+int getPTZPreset(OnvifPTZPreset* info);
 int setVideoSynchronizationPoint(int index);
+
 char* getIndexTokeName(struct soap *soap, const char* prefix, const int index);
+int getIndexFromTokenName(const char* tokenName, const char* prefix);
 
 SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapSenderSubCode2Fault(struct soap *soap,
+		const char *faultsubcodeQName, const char *faultsubcodeQName1, const char *faultstring,
+		const char *faultdetailXML);
+SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapReceiverSubCode2Fault(struct soap *soap,
 		const char *faultsubcodeQName, const char *faultsubcodeQName1, const char *faultstring,
 		const char *faultdetailXML);
 struct tt__PTZConfiguration* getPTZConfiguration(struct soap* soap);

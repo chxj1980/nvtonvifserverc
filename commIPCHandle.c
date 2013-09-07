@@ -119,6 +119,7 @@ int getDeviceInfo_PushCmd(const Map inList, const void* info1) {
 	putNullValueInList(inList, e_sys_Model);
 	putNullValueInList(inList, e_sys_serialNumber);
 	putNullValueInList(inList, e_sys_hdversion);
+	putNullValueInList(inList, e_net_macaddr);
 	return RET_CODE_SUCCESS;
 }
 
@@ -126,16 +127,20 @@ int getDeviceInfo_ParseCmd(const Map outList, const void* info1) {
 	OnvifDeviceInfo* info = (OnvifDeviceInfo*) info1;
 	memset(info, 0, sizeof(OnvifDeviceInfo));
 	getStrValueFromList(outList, e_sys_hardwareId, info->hardwareId);
-	if (strlen(info->hardwareId) > 0) {
-		strcpy(onvifRunParam.hardwareId, info->hardwareId);
-		memset(onvifRunParam.urnHardwareId, 0, INFO_LENGTH);
-		sprintf(onvifRunParam.urnHardwareId, "%s%s",
-				DEFAULT_URN_HARDWARE_ID_PREFIX, onvifRunParam.hardwareId);
-	}
 	getStrValueFromList(outList, e_sys_manufacturer, info->manufacturer);
 	getStrValueFromList(outList, e_sys_Model, info->model);
 	getStrValueFromList(outList, e_sys_serialNumber, info->serialNumber);
 	getStrValueFromList(outList, e_sys_hdversion, info->firmwareVersion);
+	getStrValueFromList(outList, e_net_macaddr, info->macAddr);
+	if (strlen(info->hardwareId) > 0) {
+		strcpy(onvifRunParam.hardwareId, info->hardwareId);
+	}
+	if (strlen(info->macAddr) > 0) {
+		squeezeChar(info->macAddr, '-');
+		memset(onvifRunParam.urnHardwareId, 0, INFO_LENGTH);
+		sprintf(onvifRunParam.urnHardwareId, "%s%s",
+				DEFAULT_URN_HARDWARE_ID_PREFIX, info->macAddr);
+	}
 	return RET_CODE_SUCCESS;
 }
 
@@ -622,10 +627,13 @@ int getPTZAllPresets_ParseCmd(const Map outList, const void* info1) {
 	int pos = 0;
 	preset = strtok(value, delims);
 	int iv = 0;
+	OnvifPTZPreset* opreset;
 	while(preset != NULL){
 		if (!isRetCodeSuccess(convertHexStrToDec(preset, &iv)))
 			continue;
-		info->presets[pos++].index = iv;
+		opreset = &(info->presets[pos++]);
+		opreset->index = iv;
+		getPTZPreset(opreset);
 		preset = strtok(NULL, delims);
 	}
 	info->size = pos;
@@ -637,61 +645,91 @@ int getPTZAllPresets(OnvifPTZAllPresets* info){
 			getPTZAllPresets_ParseCmd);
 }
 
+void getPTZErrorFromList(const Map outList, OnvifPTZPreset* info) {
+	info->error = RESULT_OK;
+	getIntValueFromList(outList, e_error, &(info->error));
+}
+
 int gotoPTZPreset_PushCmd(const Map inList, const void* info1) {
 	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
-	char value[INFO_LENGTH] = {0};
-	convertDecToHexStr(info->index, value);
-	putStrValueInList(inList, e_ptz_goto_preset, value);
+	putIntValueInList(inList, e_ptz_goto_preset, info->index);
 	return RET_CODE_SUCCESS;
+}
+
+int gotoPTZPreset_ParseCmd(const Map outList, const void* info1) {
+	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
+	int result = getIntValueFromList(outList, e_ptz_goto_preset, &(info->index));
+	if (!isRetCodeSuccess(result))
+		return result;
+	getPTZErrorFromList(outList, info);
+	return result;
 }
 
 int gotoPTZPreset(OnvifPTZPreset* info) {
 	if (NULL == info)
 		return RET_CODE_ERROR_NULL_VALUE;
-	return sendCommIPCFunc(T_Set, info, gotoPTZPreset_PushCmd, NULL);
+	return sendCommIPCFunc(T_Set, info, gotoPTZPreset_PushCmd, gotoPTZPreset_ParseCmd);
+}
+
+int getPTZPreset_PushCmd(const Map inList, const void* info1) {
+	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
+	putIntValueInList(inList, e_ptz_preset, info->index);
+	putNullValueInList(inList, e_ptz_presetname);
+	return RET_CODE_SUCCESS;
+}
+
+int getPTZPreset_ParseCmd(const Map outList, const void* info1) {
+	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
+	int result = getIntValueFromList(outList, e_ptz_preset, &(info->index));
+	if (!isRetCodeSuccess(result))
+		return result;
+	getPTZErrorFromList(outList, info);
+	getStrValueFromList(outList, e_ptz_presetname, info->name);
+	return result;
+}
+
+int getPTZPreset(OnvifPTZPreset* info) {
+	if (NULL == info)
+		return RET_CODE_ERROR_NULL_VALUE;
+	return sendCommIPCFunc(T_Get, info, getPTZPreset_PushCmd, getPTZPreset_ParseCmd);
 }
 
 int removePTZPreset_PushCmd(const Map inList, const void* info1) {
 	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
-	char value[INFO_LENGTH] = {0};
-	convertDecToHexStr(info->index, value);
-	putStrValueInList(inList, e_ptz_deletepreset, value);
+	putIntValueInList(inList, e_ptz_deletepreset, info->index);
 	return RET_CODE_SUCCESS;
+}
+
+int removePTZPreset_ParseCmd(const Map outList, const void* info1) {
+	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
+	int result = getIntValueFromList(outList, e_ptz_deletepreset, &(info->index));
+	if (!isRetCodeSuccess(result)) {
+		return result;
+	}
+	getPTZErrorFromList(outList, info);
+	return result;
 }
 
 int removePTZPreset(OnvifPTZPreset* info) {
 	if (NULL == info)
 		return RET_CODE_ERROR_NULL_VALUE;
-	return sendCommIPCFunc(T_Set, info, removePTZPreset_PushCmd, NULL);
+	return sendCommIPCFunc(T_Set, info, removePTZPreset_PushCmd, removePTZPreset_ParseCmd);
 }
 
 int setPTZPreset_PushCmd(const Map inList, const void* info1) {
 	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
-	char value[INFO_LENGTH] = {0};
-	memset(value, 0 ,INFO_LENGTH);
-	convertDecToHexStr(info->index, value);
-	putStrValueInList(inList, e_ptz_preset, value);
+	putIntValueInList(inList, e_ptz_preset, info->index);
+	putStrValueInList(inList, e_ptz_presetname, info->name);
 	return RET_CODE_SUCCESS;
 }
 
 int setPTZPreset_ParseCmd(const Map outList, const void* info1) {
 	OnvifPTZPreset* info = (OnvifPTZPreset*) info1;
-	char value[INFO_LENGTH] = {0};
-	memset(value, 0 ,INFO_LENGTH);
-	int result = getStrValueFromList(outList, e_ptz_preset, value);
+	int result = getIntValueFromList(outList, e_ptz_preset, &(info->index));
 	if (!isRetCodeSuccess(result))
 		return result;
-	if (strlen(value) < 1) {
-		info->index = 0;  // 返回值0代表失败
-	}
-	else {
-		int index = -1;
-		index = strtol(value, NULL, 16);
-		if (index < 0) {
-			index = 0;
-		}
-		info->index = index;
-	}
+	getPTZErrorFromList(outList, info);
+	getStrValueFromList(outList, e_ptz_presetname, info->name);
 	return RET_CODE_SUCCESS;
 }
 

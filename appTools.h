@@ -26,6 +26,7 @@
 	void convertDecToHexStr(const int src, char* dest);
 	int convertHexStrToDec(const char* src, int* dest);
 	void myThreadSleep();
+	void squeezeChar(char s[], char c);
 #ifdef __cplusplus
 	}
 #endif

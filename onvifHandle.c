@@ -164,31 +164,37 @@ int getOnvifSoapActionNotSupportCode(struct soap *soap, const char *faultInfo,
 int getOnvifSoapActionNotSupportSubCode1(struct soap *soap,
 		const char* subCode1, const char *faultInfo, const char* faultDetail) {
 	if (NULL == faultDetail)
-		return my_soap_subcode2_fault(soap,
-				soap->version == 2 ? "SOAP-ENV:Receiver" : "SOAP-ENV:Server",
-				"ter:ActionNotSupported", subCode1, faultInfo, "not support");
+		return getOnvifSoapReceiverSubCode2Fault(soap, "ter:ActionNotSupported",
+				subCode1, faultInfo, "not support");
 	else
-		return my_soap_subcode2_fault(soap,
-				soap->version == 2 ? "SOAP-ENV:Receiver" : "SOAP-ENV:Server",
-				"ter:ActionNotSupported", subCode1, faultInfo, faultDetail);
+		return getOnvifSoapReceiverSubCode2Fault(soap, "ter:ActionNotSupported",
+				subCode1, faultInfo, faultDetail);
+}
+
+SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapReceiverSubCode2Fault(struct soap *soap,
+		const char *faultsubcodeQName, const char *faultsubcodeQName1,
+		const char *faultstring, const char *faultdetailXML) {
+	return my_soap_subcode2_fault(soap,
+			soap->version == 2 ? "SOAP-ENV:Receiver" : "SOAP-ENV:Server",
+			faultsubcodeQName, faultsubcodeQName1, faultstring, faultdetailXML);
 }
 
 SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapSenderSubCode2Fault(struct soap *soap,
-	const char *faultsubcodeQName, const char *faultsubcodeQName1,
-	const char *faultstring, const char *faultdetailXML) {
-return my_soap_subcode2_fault(soap,
-		soap->version == 2 ? "SOAP-ENV:Sender" : "SOAP-ENV:Client",
-		faultsubcodeQName, faultsubcodeQName1, faultstring, faultdetailXML);
+		const char *faultsubcodeQName, const char *faultsubcodeQName1,
+		const char *faultstring, const char *faultdetailXML) {
+	return my_soap_subcode2_fault(soap,
+			soap->version == 2 ? "SOAP-ENV:Sender" : "SOAP-ENV:Client",
+			faultsubcodeQName, faultsubcodeQName1, faultstring, faultdetailXML);
 }
 
 int getIndexFromTokenName(const char* tokenName, const char* prefix) {
-if (NULL == tokenName)
-	return RET_CODE_ERROR_NULL_OBJECT;
-if (strlen(tokenName) <= strlen(prefix))
-	return RET_CODE_ERROR_INVALID_VALUE;
-if (NULL == strstr(tokenName, prefix))
-	return RET_CODE_ERROR_INVALID_VALUE;
-return atoi((char*) (tokenName + strlen(prefix)));
+	if (NULL == tokenName)
+		return RET_CODE_ERROR_NULL_OBJECT;
+	if (strlen(tokenName) <= strlen(prefix))
+		return RET_CODE_ERROR_INVALID_VALUE;
+	if (NULL == strstr(tokenName, prefix))
+		return RET_CODE_ERROR_INVALID_VALUE;
+	return atoi((char*) (tokenName + strlen(prefix)));
 }
 
 char* getIndexTokeName(struct soap *soap, const char* prefix, const int index) {
@@ -199,7 +205,7 @@ char* getIndexTokeName(struct soap *soap, const char* prefix, const int index) {
 
 enum xsd__boolean * getxsdBoolean(struct soap* soap, bool value) {
 	enum xsd__boolean * result = (enum xsd__boolean *) my_soap_malloc(soap,
-				sizeof(enum xsd__boolean));
-	*result = value ? xsd__boolean__true_: xsd__boolean__false_;
+			sizeof(enum xsd__boolean));
+	*result = value ? xsd__boolean__true_ : xsd__boolean__false_;
 	return result;
 }
