@@ -748,3 +748,96 @@ int setVideoSynchronizationPoint_PushCmd(const Map inList, const void* info1) {
 int setVideoSynchronizationPoint(int index) {
 	return sendCommIPCFunc(T_Set, &index, setVideoSynchronizationPoint_PushCmd, NULL);
 }
+
+int getVideoEncoderConfigurationOptionInfo_PushCmd(const Map inList, const void* info1) {
+	OnvifVideoEncoderConfigurationOptionInfo* info = (OnvifVideoEncoderConfigurationOptionInfo*) info1;
+	if (NULL == info) {
+		return RET_CODE_ERROR_NULL_OBJECT;
+	}
+	if (info->channelNo < 0) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	putIntValueInList(inList, e_Chn, info->channelNo);
+	putNullValueInList(inList, e_min_quant);
+	putNullValueInList(inList, e_max_quant);
+	putNullValueInList(inList, e_videoResolutions);
+	putNullValueInList(inList, e_min_ip_interval);
+	putNullValueInList(inList, e_max_ip_interval);
+	putNullValueInList(inList, e_min_frame_rate);
+	putNullValueInList(inList, e_max_frame_rate);
+	putNullValueInList(inList, e_min_videoEncodingInterval);
+	putNullValueInList(inList, e_max_videoEncodingInterval);
+	putNullValueInList(inList, e_profile_levels);
+	return RET_CODE_SUCCESS;
+}
+
+int getVideoEncoderConfigurationOptionInfo_ParseCmd(const Map outList, const void* info1) {
+	OnvifVideoEncoderConfigurationOptionInfo* info = (OnvifVideoEncoderConfigurationOptionInfo*) info1;
+	memset(info, 0, sizeof(OnvifVideoEncoderConfigurationOptionInfo));
+	int value;
+	int result = getIntValueFromList(outList, e_Chn, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->channelNo = value;
+	result = getIntValueFromList(outList, e_min_quant, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->quality.min = value;
+	result = getIntValueFromList(outList, e_max_quant, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->quality.max = value;
+	result = getIntValueFromList(outList, e_min_ip_interval, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->govLength.min = value;
+	result = getIntValueFromList(outList, e_max_ip_interval, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->govLength.max = value;
+	result = getIntValueFromList(outList, e_min_frame_rate, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->frameRate.min = value;
+	result = getIntValueFromList(outList, e_max_frame_rate, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->frameRate.max = value;
+	result = getIntValueFromList(outList, e_min_videoEncodingInterval, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->encodingInterval.min = value;
+	result = getIntValueFromList(outList, e_max_videoEncodingInterval, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	info->encodingInterval.max = value;
+	result = getIntValueFromList(outList, e_profile_levels, &value);
+	if (!isRetCodeSuccess(result))
+		return result;
+	int pCount = 0;
+	if (value & 0x01) {
+		info->profiles[pCount++] = H264_Baseline;
+	}
+	if (value & 0x02) {
+		info->profiles[pCount++] = H264_Main;
+	}
+	if (value & 0x04) {
+		info->profiles[pCount++] = H264_High;
+	}
+	info->profileCount = pCount;
+
+	info->resolutionCount = 3;
+	info->resolutions[2].width = 1920;
+	info->resolutions[2].height = 1072;
+	info->resolutions[1].width = 1280;
+	info->resolutions[1].height = 720;
+	info->resolutions[0].width = 352;
+	info->resolutions[0].height = 288;
+	return result;
+}
+
+int getVideoEncoderConfigurationOptionInfo(OnvifVideoEncoderConfigurationOptionInfo* info) {
+	if (NULL == info)
+		return RET_CODE_ERROR_NULL_VALUE;
+	return sendCommIPCFunc(T_Get, info, getVideoEncoderConfigurationOptionInfo_PushCmd, getVideoEncoderConfigurationOptionInfo_ParseCmd);
+}

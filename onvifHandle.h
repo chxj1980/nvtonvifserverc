@@ -121,6 +121,32 @@ typedef struct St_OnvifPTZAllPresets {
 	OnvifPTZPreset presets[1024];  // Ô¤ÖÆÎ»
 } OnvifPTZAllPresets;
 
+typedef struct St_OnvifVideoResolution {
+	int width;
+	int height;
+} OnvifVideoResolution;
+
+typedef struct St_OnvifRange {
+	int min;
+	int max;
+} OnvifRange;
+
+typedef enum St_OnvifVideoH264Profile {
+	H264_Baseline, H264_Main, H264_High
+} OnvifVideoH264Profile;
+
+typedef struct St_OnvifVideoEncoderConfigurationOptionInfo {
+	int channelNo; // channel No, start from 0
+	OnvifRange quality;
+	int resolutionCount;
+	OnvifVideoResolution resolutions[5];
+	OnvifRange govLength;
+	OnvifRange frameRate;
+	OnvifRange encodingInterval;
+	int profileCount;
+	OnvifVideoH264Profile profiles[3];
+} OnvifVideoEncoderConfigurationOptionInfo;
+
 extern OnvifRunParam onvifRunParam;
 void* my_soap_malloc(struct soap* soap, size_t n);
 int startOnvifApp();
@@ -163,6 +189,7 @@ int setVideoSynchronizationPoint(int index);
 
 char* getIndexTokeName(struct soap *soap, const char* prefix, const int index);
 int getIndexFromTokenName(const char* tokenName, const char* prefix);
+int getVideoEncoderConfigurationOptionInfo(OnvifVideoEncoderConfigurationOptionInfo* info);
 
 SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapSenderSubCode2Fault(struct soap *soap,
 		const char *faultsubcodeQName, const char *faultsubcodeQName1, const char *faultstring,
@@ -172,6 +199,7 @@ SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapReceiverSubCode2Fault(struct soap *soap,
 		const char *faultdetailXML);
 struct tt__PTZConfiguration* getPTZConfiguration(struct soap* soap);
 enum xsd__boolean * getxsdBoolean(struct soap* soap, bool value);
+struct tt__IntRange* getIntRangeByOnvifRange(struct soap* soap, OnvifRange* range);
 
 #ifdef __cplusplus
 }

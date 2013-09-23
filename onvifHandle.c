@@ -209,3 +209,11 @@ enum xsd__boolean * getxsdBoolean(struct soap* soap, bool value) {
 	*result = value ? xsd__boolean__true_ : xsd__boolean__false_;
 	return result;
 }
+
+struct tt__IntRange* getIntRangeByOnvifRange(struct soap* soap, OnvifRange* range) {
+	struct tt__IntRange* result = (struct tt__IntRange *) my_soap_malloc(soap,
+			sizeof(struct tt__IntRange));
+	result->Min = range->min;
+	result->Max = range->max;
+	return result;
+}
