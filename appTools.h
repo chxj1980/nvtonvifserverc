@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <sys/time.h>
 #include "appCommon.h"
+#include "strList.h"
 
 #ifdef __cplusplus
 	extern "C" {
@@ -27,6 +28,8 @@
 	int convertHexStrToDec(const char* src, int* dest);
 	void myThreadSleep();
 	void squeezeChar(char s[], char c);
+	void parseListByDiv(const PStrList list, const char* value, const char* div);
+
 #ifdef __cplusplus
 	}
 #endif

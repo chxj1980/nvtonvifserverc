@@ -125,23 +125,22 @@ void test_GetPresets() {
 	OnvifPTZAllPresets onvifPTZAllPresets;
 	memset(&onvifPTZAllPresets, 0, sizeof(OnvifPTZAllPresets));
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getPTZAllPresets(&onvifPTZAllPresets));
-	TEST_ASSERT_EQUAL(128, onvifPTZAllPresets.size);
-}
-
-void test_GetEmptyPresets() {
-	OnvifPTZAllPresets onvifPTZAllPresets;
-	memset(&onvifPTZAllPresets, 0, sizeof(OnvifPTZAllPresets));
-	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getPTZAllPresets(&onvifPTZAllPresets));
-	TEST_ASSERT_EQUAL(0, onvifPTZAllPresets.size);
+	TEST_ASSERT_EQUAL(9, onvifPTZAllPresets.size);
 }
 
 void test_GetPTZPresetsCapacity() {
 	int v = -1;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getPTZPresetsCapacity(&v));
-	TEST_ASSERT_EQUAL(128, v);
+	TEST_ASSERT_EQUAL(9, v);
 }
 
 void test_SetVideoSynchronizationPoint() {
 	int v = 5;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, setVideoSynchronizationPoint(v));
+}
+
+void test_GetVideoEncoderConfigurationOptionInfo() {
+	OnvifVideoEncoderConfigurationOptionInfo info;
+	memset(&info, 0, sizeof(OnvifVideoEncoderConfigurationOptionInfo));
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getVideoEncoderConfigurationOptionInfo(&info));
 }

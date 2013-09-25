@@ -126,6 +126,19 @@ ListNode list_get(List this, int index) {
 	return result;
 }
 
+void list_clearAll(List this) {
+	if (NULL == this)
+		return;
+	ListNode node;
+	ListNode p = this->dataNodes;
+	while (p != NULL) {
+		node = p->nextNode;
+		this->clearNode(this, p);
+		p = node;
+	}
+	this->dataNodes = NULL;
+}
+
 void list_deleteIndex(List this, int index) {
 	if (NULL == this)
 		return;
@@ -180,6 +193,7 @@ List newList(void (*_clearElement)(ListElement element)) {
 	L->size = list_Size;
 	L->get = list_get;
 	L->deleteIndex = list_deleteIndex;
+	L->clearAll = list_clearAll;
 	return L;
 }
 
@@ -189,13 +203,7 @@ List newList(void (*_clearElement)(ListElement element)) {
 void delList(List this) {
 	if (NULL == this)
 		return;
-	ListNode node;
-	ListNode p = this->dataNodes;
-	while (p != NULL) {
-		node = p->nextNode;
-		this->clearNode(this, p);
-		p = node;
-	}
+	this->clearAll(this);
 	free(this);
 }
 

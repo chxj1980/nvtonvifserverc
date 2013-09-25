@@ -1184,20 +1184,18 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoEncoderConfigurationOptions(
 		struct _trt__GetVideoEncoderConfigurationOptions *trt__GetVideoEncoderConfigurationOptions,
 		struct _trt__GetVideoEncoderConfigurationOptionsResponse *trt__GetVideoEncoderConfigurationOptionsResponse) {
 	logInfo("__trt__GetVideoEncoderConfigurationOptions");
-	if (NULL != trt__GetVideoEncoderConfigurationOptions->ConfigurationToken) {
-		logInfo(
-				"__trt__GetVideoEncoderConfigurationOptions ConfigurationToken %s",
-				trt__GetVideoEncoderConfigurationOptions->ConfigurationToken);
+	int index = getIndexFromVideoSourceConfigToken(trt__GetVideoEncoderConfigurationOptions->ConfigurationToken);
+	if (index < 0) {
+		index = getIndexFromVideoMediaProfileToken(trt__GetVideoEncoderConfigurationOptions->ProfileToken);
+
 	}
-	if (NULL != trt__GetVideoEncoderConfigurationOptions->ProfileToken) {
-		logInfo("__trt__GetVideoEncoderConfigurationOptions ProfileToken %s",
-				trt__GetVideoEncoderConfigurationOptions->ProfileToken);
-	}
+	if (index < 0)
+		index = 0;
 	trt__GetVideoEncoderConfigurationOptionsResponse->Options =
 			(struct tt__VideoEncoderConfigurationOptions *) my_soap_malloc(soap,
 					sizeof(struct tt__VideoEncoderConfigurationOptions));
 	OnvifVideoEncoderConfigurationOptionInfo onvifVideoEncoderConfigurationOptionInfo;
-	onvifVideoEncoderConfigurationOptionInfo.channelNo = 0;
+	onvifVideoEncoderConfigurationOptionInfo.channelNo = index;
 	if (!isRetCodeSuccess(
 			getVideoEncoderConfigurationOptionInfo(
 					&onvifVideoEncoderConfigurationOptionInfo))) {

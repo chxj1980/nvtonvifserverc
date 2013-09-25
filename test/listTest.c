@@ -124,3 +124,13 @@ void test_DeleteIndex() {
 	node = list1->get(list1, 2);
 	TEST_ASSERT_EQUAL(30, *((int*)(node->element)));
 }
+
+void test_ClearAll() {
+	int i;
+	for (i = 0; i < 10; i++) {
+		list1->addLast(list1, createTestObj(i * 10));
+	}
+	TEST_ASSERT_EQUAL(10, list1->size(list1));
+	list1->clearAll(list1);
+	TEST_ASSERT_EQUAL(0, list1->size(list1));
+}

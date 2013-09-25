@@ -622,21 +622,27 @@ int getPTZAllPresets_ParseCmd(const Map outList, const void* info1) {
 	int result = getStrValueFromList(outList, e_ptz_allpresets, value);
 	if (!isRetCodeSuccess(result))
 		return result;
-	char delims[] = "/";
-	char *preset = NULL;
-	int pos = 0;
-	preset = strtok(value, delims);
+	int sz = 0;
 	int iv = 0;
 	OnvifPTZPreset* opreset;
-	while(preset != NULL){
+	char* preset;
+	PStrList list = newStrList();
+	parseListByDiv(list, value, "/");
+	int i;
+	for(i = 0; i < list->size(list); i++) {
+		preset = list->get(list, i);
+		if (NULL == preset)
+			continue;
+		if (strlen(preset) < 1)
+			continue;
 		if (!isRetCodeSuccess(convertHexStrToDec(preset, &iv)))
 			continue;
-		opreset = &(info->presets[pos++]);
+		opreset = &(info->presets[sz++]);
 		opreset->index = iv;
 		getPTZPreset(opreset);
-		preset = strtok(NULL, delims);
 	}
-	info->size = pos;
+	info->size = sz;
+	delStrList(list);
 	return result;
 }
 
@@ -825,14 +831,28 @@ int getVideoEncoderConfigurationOptionInfo_ParseCmd(const Map outList, const voi
 		info->profiles[pCount++] = H264_High;
 	}
 	info->profileCount = pCount;
-
-	info->resolutionCount = 3;
-	info->resolutions[2].width = 1920;
-	info->resolutions[2].height = 1072;
-	info->resolutions[1].width = 1280;
-	info->resolutions[1].height = 720;
-	info->resolutions[0].width = 352;
-	info->resolutions[0].height = 288;
+	char profilesv[INFO_LENGTH] = {0};
+	getStrValueFromList(outList, e_videoResolutions, profilesv);
+	if (strlen(profilesv) < 1) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	PStrList list = newStrList();
+	PStrList list1 = newStrList();
+	parseListByDiv(list, profilesv, "/");
+	info->resolutionCount = list->size(list);
+	int i;
+	char* pData;
+	for(i = 0; i < info->resolutionCount; i++) {
+		list1->clearAll(list1);
+		pData = list->get(list, i);
+		parseListByDiv(list1, pData, ",");
+		if (list1->size(list1) < 2)
+			continue;
+		info->resolutions[i].width = atoi(list1->get(list1, 0));
+		info->resolutions[i].height = atoi(list1->get(list1, 1));
+	}
+	delStrList(list);
+	delStrList(list1);
 	return result;
 }
 

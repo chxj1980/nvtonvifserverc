@@ -241,3 +241,14 @@ int convertHexStrToDec(const char* src, int* dest) {
 	*dest = value;
 	return RET_CODE_SUCCESS;
 }
+
+void parseListByDiv(const PStrList list, const char* value, const char* div) {
+	if (NULL == list)
+		return;
+	char *preset = NULL;
+	preset = strtok(value, div);
+	while(preset != NULL){
+		list->addLast(list, preset);
+		preset = strtok(NULL, div);
+	}
+}

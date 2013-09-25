@@ -28,6 +28,7 @@ struct list{
     void (*forEach)(List this, void(*)(ListNode, void*), void*);          //遍历节点
     ListNode (*get)(List this, int index);  // 得到指定位置的节点
     void (*deleteIndex)(List this, int index);  // 得到指定位置的节点
+    void (*clearAll) (List this);   // 清除所有
 };
 
 List newList(void (*clearElement)(ListElement));      //new一个列表对象

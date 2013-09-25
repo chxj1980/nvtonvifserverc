@@ -17,7 +17,7 @@ void test_GetLocalIp() {
 }
 
 void test_GetNetCardMac() {
-	char mac[INFO_LENGTH] = {0};
+	unsigned char mac[INFO_LENGTH] = {0};
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getNetCardMac(mac));
 }
 
@@ -62,5 +62,28 @@ void test_ConvertHexStrToDec() {
 	int iv = 0;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, convertHexStrToDec(strv, &iv));
 	TEST_ASSERT_EQUAL(9, iv);
+}
 
+void test_ParseListByDiv() {
+	char strV[] = "sfsdf/sdfs1";
+	PStrList list = newStrList();
+	parseListByDiv(list, strV, "/");
+	TEST_ASSERT_EQUAL(2, list->size(list));
+	delStrList(list);
+}
+
+void test_ParseListByInvalidDiv() {
+	char strV[] = "sfsdf/sdfs1";
+	PStrList list = newStrList();
+	parseListByDiv(list, strV, ",");
+	TEST_ASSERT_EQUAL(1, list->size(list));
+	delStrList(list);
+}
+
+void test_ParseListByOneDiv() {
+	char strV[] = "sfsdf/";
+	PStrList list = newStrList();
+	parseListByDiv(list, strV, "/");
+	TEST_ASSERT_EQUAL(1, list->size(list));
+	delStrList(list);
 }
