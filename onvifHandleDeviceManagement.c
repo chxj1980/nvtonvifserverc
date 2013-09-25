@@ -184,10 +184,10 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemDateAndTime(
 	} else {
 		info.ntpSet = false;
 		if (NULL == tds__SetSystemDateAndTime->TimeZone)
-			logInfo("__tds__SetSystemDateAndTime is TimeZone NULL");
+			logInfo("__tds__SetSystemDateAndTime TimeZone is null");
 		else
 			logInfo("__tds__SetSystemDateAndTime TimeZone %s",
-					tds__SetSystemDateAndTime->TimeZone);
+					tds__SetSystemDateAndTime->TimeZone->TZ);
 		info.timeZone = 8;
 		if (NULL == tds__SetSystemDateAndTime->UTCDateTime) {
 			return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
