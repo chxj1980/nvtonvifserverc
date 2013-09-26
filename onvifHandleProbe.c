@@ -715,15 +715,15 @@ void getProbeMatchesInfo(struct soap* soap, wsdd__ProbeMatchesType* info, int si
 SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 		struct wsdd__ProbeType *wsdd__Probe) {
 	logInfo("__wsdd__Probe %s", onvifRunParam.ip);
-	char _xmaddr[256] = { 0 };
-	if (RET_CODE_SUCCESS != getProbeServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
+	char _serviceURL[256] = { 0 };
+	if (RET_CODE_SUCCESS != getServiceURL(_serviceURL, onvifRunParam.ip, onvifRunParam.servicePort)) {
 		return getOnvifSoapActionFailedCode(soap, "__wsdd__Probe",
-				"getProbeServiceURL failed");
+				"getServiceURL failed");
 	}
-	logInfo("service url %s", _xmaddr);
+	logInfo("service url %s", _serviceURL);
 	wsdd__ProbeMatchesType wProbeMatches;
 
-	getProbeMatchesInfo(soap, &wProbeMatches, INTERFACE_NUM, _xmaddr);
+	getProbeMatchesInfo(soap, &wProbeMatches, INTERFACE_NUM, _serviceURL);
 
 	if (soap->header == NULL) {
 		soap->header = (struct SOAP_ENV__Header*) my_soap_malloc(soap,
@@ -766,13 +766,13 @@ SOAP_FMAC5 int SOAP_FMAC6 __dn__Probe(struct soap* soap,
 		struct wsdd__ProbeType dn__Probe,
 		struct wsdd__ProbeMatchesType* dn__ProbeResponse) {
 	logInfo("__dn__Probe");
-	char _xmaddr[256] = { 0 };
-	if (RET_CODE_SUCCESS != getProbeServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
+	char _serviceURL[256] = { 0 };
+	if (RET_CODE_SUCCESS != getServiceURL(_serviceURL, onvifRunParam.ip, onvifRunParam.servicePort)) {
 		return getOnvifSoapActionFailedCode(soap, "__tdn__Probe",
-				"getProbeServiceURL failed");
+				"getServiceURL failed");
 	}
-	logInfo("service url %s", _xmaddr);
-	getProbeMatchesInfo(soap, dn__ProbeResponse, INTERFACE_NUM, _xmaddr);
+	logInfo("service url %s", _serviceURL);
+	getProbeMatchesInfo(soap, dn__ProbeResponse, INTERFACE_NUM, _serviceURL);
 	return SOAP_OK;
 }
 

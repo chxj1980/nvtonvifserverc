@@ -684,9 +684,9 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,
 		struct _tds__GetCapabilities *tds__GetCapabilities,
 		struct _tds__GetCapabilitiesResponse *tds__GetCapabilitiesResponse) {
 	logInfo("__tds__GetCapabilities");
-	char _IPv4Address[LARGE_INFO_LENGTH];
+	char _serviceURL[LARGE_INFO_LENGTH];
 	if (RET_CODE_SUCCESS
-			!= getServiceURL(_IPv4Address, onvifRunParam.ip,
+			!= getServiceURL(_serviceURL, onvifRunParam.ip,
 					onvifRunParam.servicePort))
 		return getOnvifSoapActionFailedCode(soap, "GetCapabilities",
 				"not get service url");;
@@ -707,16 +707,16 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__GetCapabilities(struct soap* soap,
 	tds__GetCapabilitiesResponse->Capabilities->Media = NULL;
 	tds__GetCapabilitiesResponse->Capabilities->PTZ = NULL;
 	int result = getCapabilitiesResponseExtension(soap,
-			tds__GetCapabilitiesResponse, _IPv4Address);
+			tds__GetCapabilitiesResponse, _serviceURL);
 	if (SOAP_OK != result) {
 		return result;
 	}
 	getCapabilitiesResponseDevice(soap,
-			tds__GetCapabilitiesResponse->Capabilities, _IPv4Address);
+			tds__GetCapabilitiesResponse->Capabilities, _serviceURL);
 	getCapabilitiesResponseMedia(soap,
-			tds__GetCapabilitiesResponse->Capabilities, _IPv4Address);
+			tds__GetCapabilitiesResponse->Capabilities, _serviceURL);
 	getCapabilitiesResponsePTZ(soap, tds__GetCapabilitiesResponse->Capabilities,
-			_IPv4Address);
+			_serviceURL);
 	return SOAP_OK;
 }
 
