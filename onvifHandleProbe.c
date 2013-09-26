@@ -712,13 +712,20 @@ void getProbeMatchesInfo(struct soap* soap, wsdd__ProbeMatchesType* info, int si
 	}
 }
 
+void getProbeServiceURL(char* value, const char* ip, const int port) {
+	if (strlen(ip) < 1)
+		return RET_CODE_ERROR_INVALID_IP;
+	sprintf(value, "http://%s:%d", ip, port);
+	return RET_CODE_SUCCESS;
+}
+
 SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 		struct wsdd__ProbeType *wsdd__Probe) {
 	logInfo("__wsdd__Probe %s", onvifRunParam.ip);
 	char _xmaddr[256] = { 0 };
-	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
+	if (RET_CODE_SUCCESS != getProbeServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
 		return getOnvifSoapActionFailedCode(soap, "__wsdd__Probe",
-				"getServiceURL failed");
+				"getProbeServiceURL failed");
 	}
 	logInfo("service url %s", _xmaddr);
 	wsdd__ProbeMatchesType wProbeMatches;
@@ -752,8 +759,8 @@ SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 	soap->header->wsdd__AppSequence = 0;
 
 	/*注释的部分为可选，注释掉onvif test也能发现ws-d*/
-//	soap->header->wsa__To = soap_strdup(soap, "http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous");
-//	soap->header->wsa__Action = soap_strdup(soap, "http://schemas.xmlsoap.org/ws/2005/04/discovery/ProbeMatches");
+	soap->header->wsa__To = soap_strdup(soap, "http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous");
+	soap->header->wsa__Action = soap_strdup(soap, "http://schemas.xmlsoap.org/ws/2005/04/discovery/ProbeMatches");
 
 	/* send over current socket as HTTP OK response: */
 	 /*测试过，第二参数必须http，action随意*/
@@ -767,9 +774,9 @@ SOAP_FMAC5 int SOAP_FMAC6 __dn__Probe(struct soap* soap,
 		struct wsdd__ProbeMatchesType* dn__ProbeResponse) {
 	logInfo("__dn__Probe");
 	char _xmaddr[256] = { 0 };
-	if (RET_CODE_SUCCESS != getServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
+	if (RET_CODE_SUCCESS != getProbeServiceURL(_xmaddr, onvifRunParam.ip, onvifRunParam.servicePort)) {
 		return getOnvifSoapActionFailedCode(soap, "__tdn__Probe",
-				"getServiceURL failed");
+				"getProbeServiceURL failed");
 	}
 	logInfo("service url %s", _xmaddr);
 	getProbeMatchesInfo(soap, dn__ProbeResponse, INTERFACE_NUM, _xmaddr);
