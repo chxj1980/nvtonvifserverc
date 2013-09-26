@@ -14,6 +14,7 @@
 	int getNetCardMac(unsigned char *pMac);
 	void stopSoap(struct soap* soap1);
 	int getServiceURL(char* value, const char* ip, const int port);
+	int getProbeServiceURL(char* value, const char* ip, const int port);
 	void getAppointServiceURL(char* value, const char* serviceURL, const char* service);
 	bool isValidHandle(int handle);
 	bool isRetCodeSuccess(int retCode);

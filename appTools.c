@@ -83,14 +83,23 @@ void stopSoap(struct soap* soap1) {
 }
 
 int getServiceURL(char* value, const char* ip, const int port) {
+	char addr[LARGE_INFO_LENGTH] = {0};
+	int result = getProbeServiceURL(addr, ip, port);
+	if (!isRetCodeSuccess(result))
+		return result;
+	sprintf(value, "%s/", addr);
+	return RET_CODE_SUCCESS;
+}
+
+int getProbeServiceURL(char* value, const char* ip, const int port) {
 	if (strlen(ip) < 1)
 		return RET_CODE_ERROR_INVALID_IP;
-	sprintf(value, "http://%s:%d/", ip, port);
+	sprintf(value, "http://%s:%d/onvif/device_service", ip, port);
 	return RET_CODE_SUCCESS;
 }
 
 void getAppointServiceURL(char* value, const char* serviceURL, const char* service) {
-	sprintf(value, "%s%s/", serviceURL, service);
+	sprintf(value, "%s%s", serviceURL, service);
 }
 
 bool isValidHandle(int handle) {

@@ -712,13 +712,6 @@ void getProbeMatchesInfo(struct soap* soap, wsdd__ProbeMatchesType* info, int si
 	}
 }
 
-void getProbeServiceURL(char* value, const char* ip, const int port) {
-	if (strlen(ip) < 1)
-		return RET_CODE_ERROR_INVALID_IP;
-	sprintf(value, "http://%s:%d", ip, port);
-	return RET_CODE_SUCCESS;
-}
-
 SOAP_FMAC5 int SOAP_FMAC6 __wsdd__Probe(struct soap* soap,
 		struct wsdd__ProbeType *wsdd__Probe) {
 	logInfo("__wsdd__Probe %s", onvifRunParam.ip);
