@@ -389,7 +389,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __tptz__SetPreset(struct soap* soap,
 				"setPTZPreset failed");
 	}
 	if ((index > 0) && (onvifPTZPreset.index == index)) {
-		tptz__SetPresetResponse->PresetToken = soap_strdup(tptz__SetPreset->PresetToken);
+		tptz__SetPresetResponse->PresetToken = soap_strdup(soap, tptz__SetPreset->PresetToken);
 	}
 	else {
 		tptz__SetPresetResponse->PresetToken = getPTZPresetToken(soap,
