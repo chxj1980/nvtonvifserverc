@@ -6,9 +6,9 @@
 #include "appTools.h"
 #include "logInfo.h"
 
-#define PTZ_NODE_TOKEN_PREFIX "PTZ_node_token"
-#define PTZ_PRESET_TOKEN_PREFIX "PTZ_preset_token"
-#define PTZ_CONFIG_TOKEN_PREFIX "PTZ_config_token"
+#define PTZ_NODE_TOKEN_PREFIX "PTZ_nd_token"
+#define PTZ_PRESET_TOKEN_PREFIX "PTZ_pt_token"
+#define PTZ_CONFIG_TOKEN_PREFIX "PTZ_cfg_token"
 #define PTZ_DEFAULT_TIMEOUT 500
 
 char* getPTZNodeToken(struct soap* soap, int index) {
