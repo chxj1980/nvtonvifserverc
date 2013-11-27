@@ -53,7 +53,7 @@ TESTTARGETBASE = test
 
 TESTSRC_DIR = $(TESTTARGETBASE)
 TESTINCLUDE = $(INCLUDE) -I$(CMOCK_SRC) -I$(UNITY_SRC)  -I.
-TESTFILES = commIPCHandleTest appToolsTest  listTest mapTest onvifHandleTest strListTest
+TESTFILES = appToolsTest commIPCHandleTest   listTest mapTest onvifHandleTest strListTest
 TESTOBJECTFILES = $(foreach n, $(TESTFILES), $(n).o)
 
 TESTRUNNERFILE = test_Runner

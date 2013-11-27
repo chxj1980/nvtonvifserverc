@@ -183,36 +183,40 @@ SOAP_FMAC5 int SOAP_FMAC6 __tds__SetSystemDateAndTime(
 		info.ntpSet = true;
 	} else {
 		info.ntpSet = false;
+		info.timeZone = INVALID_TIME_ZONE;
 		if (NULL == tds__SetSystemDateAndTime->TimeZone)
+		{
 			logInfo("__tds__SetSystemDateAndTime TimeZone is null");
-		else
+		}
+		else {
 			logInfo("__tds__SetSystemDateAndTime TimeZone %s",
 					tds__SetSystemDateAndTime->TimeZone->TZ);
-		info.timeZone = 8;
+			if (isRetCodeSuccess(parsePosixTimeZone(tds__SetSystemDateAndTime->TimeZone->TZ, &(info.timeZone)))) {
+				if (info.timeZone > 12)
+					info.timeZone = info.timeZone - 12;
+			}
+		}
 		if (NULL == tds__SetSystemDateAndTime->UTCDateTime) {
-			return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
-					"ter:InvalidDateTime", "Device Manager Set SystemDateTime",
+			return getOnvifSoapSendInvalidArgSubCodeFailedCode(soap, "ter:InvalidDateTime", "Device Manager Set SystemDateTime",
 					"UTCDateTime is null");
 		} else if (NULL == tds__SetSystemDateAndTime->UTCDateTime->Date) {
-			return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
-					"ter:InvalidDateTime", "Device Manager Set SystemDateTime",
+			return getOnvifSoapSendInvalidArgSubCodeFailedCode(soap, "ter:InvalidDateTime", "Device Manager Set SystemDateTime",
 					"UTCDateTime  Date is null");
 		} else if (NULL == tds__SetSystemDateAndTime->UTCDateTime->Time) {
-			return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
-					"ter:InvalidDateTime", "Device Manager Set SystemDateTime",
+			return getOnvifSoapSendInvalidArgSubCodeFailedCode(soap, "ter:InvalidDateTime", "Device Manager Set SystemDateTime",
 					"UTCDateTime  Time is null");
 		}
 		struct tm tm1;
-		tm1.tm_year = tds__SetSystemDateAndTime->UTCDateTime->Date->Year - 1900;
+		tm1.tm_year = tds__SetSystemDateAndTime->UTCDateTime->Date->Year - START_TIME_YEAR;
 		tm1.tm_mon = tds__SetSystemDateAndTime->UTCDateTime->Date->Month - 1;
 		tm1.tm_mday = tds__SetSystemDateAndTime->UTCDateTime->Date->Day;
 		tm1.tm_isdst = 0;
 		tm1.tm_hour = tds__SetSystemDateAndTime->UTCDateTime->Time->Hour;
 		tm1.tm_min = tds__SetSystemDateAndTime->UTCDateTime->Time->Minute;
 		tm1.tm_sec = tds__SetSystemDateAndTime->UTCDateTime->Time->Second;
-		info.localTime = mktime(&tm1);
+		info.utcTime = mktime(&tm1);
 		char dtinfo[INFO_LENGTH] = { 0 };
-		getDateTimeStr(dtinfo, INFO_LENGTH, info.localTime);
+		getDateTimeStr(dtinfo, INFO_LENGTH, info.utcTime);
 		logInfo("__tds__SetSystemDateAndTime set time %s", dtinfo);
 	}
 	if (!isRetCodeSuccess(setDeviceTime(&info))) {
@@ -229,7 +233,7 @@ struct tt__DateTime * getSystemDateAndTimeDateTimeValue(struct soap* soap,
 			sizeof(struct tt__DateTime));
 	result->Date = (struct tt__Date *) my_soap_malloc(soap,
 			sizeof(struct tt__Date));
-	result->Date->Year = timeValue->tm_year + 1900;
+	result->Date->Year = timeValue->tm_year + START_TIME_YEAR;
 	result->Date->Month = timeValue->tm_mon + 1;
 	result->Date->Day = timeValue->tm_mday;
 	result->Time = (struct tt__Time *) my_soap_malloc(soap,
@@ -252,9 +256,9 @@ struct tt__SystemDateTime* getSystemDateAndTimeSystemTimeInfo(struct soap* soap,
 	}
 	result->DaylightSavings = xsd__boolean__false_;
 	struct tm* tm1;
-	tm1 = localtime(&info->localTime);
+	tm1 = localtime(&info->utcTime);
 	result->LocalDateTime = getSystemDateAndTimeDateTimeValue(soap, tm1);
-	tm1 = gmtime(&info->localTime);
+	tm1 = gmtime(&info->utcTime);
 	result->UTCDateTime = getSystemDateAndTimeDateTimeValue(soap, tm1);
 	result->TimeZone = (struct tt__TimeZone *) my_soap_malloc(soap,
 			sizeof(struct tt__TimeZone));

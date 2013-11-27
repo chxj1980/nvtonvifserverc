@@ -50,7 +50,7 @@ typedef struct St_OnvifNetCardInfo {
 
 typedef struct St_OnvifSystemDateTime {
 	bool ntpSet;
-	time_t localTime;
+	time_t utcTime;
 	int timeZone;
 } OnvifSystemDateTime;
 
@@ -159,6 +159,8 @@ int getOnvifSoapActionNotSupportSubCode1(struct soap *soap, const char* subCode1
 int getOnvifSoapActionFailedCode(struct soap *soap, const char *faultInfo,
 		const char* faultDetail);
 int getOnvifSoapSendInvalidArgFailedCode(struct soap *soap,
+		const char *faultInfo, const char* faultDetail);
+int getOnvifSoapSendInvalidArgSubCodeFailedCode(struct soap *soap, const char *faultsubcodeQName1,
 		const char *faultInfo, const char* faultDetail);
 int setNTPInfo(OnvifNTPInfo* info);
 int getNTPInfo(OnvifNTPInfo* info);

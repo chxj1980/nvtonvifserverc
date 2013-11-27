@@ -87,3 +87,23 @@ void test_ParseListByOneDiv() {
 	TEST_ASSERT_EQUAL(1, list->size(list));
 	delStrList(list);
 }
+
+void test_ParsePosixTimeZone() {
+	char strV[] = "EST+8";
+	int v = 0;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, parsePosixTimeZone(strV, &v));
+	TEST_ASSERT_EQUAL(8, v);
+}
+
+void test_ParsePosixTimeZoneNeg() {
+	char strV[] = "EST-24";
+	int v = 0;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, parsePosixTimeZone(strV, &v));
+	TEST_ASSERT_EQUAL(-24, v);
+}
+
+void test_ParseTimeStr() {
+	char strV[] = "2013-11-23 02:11:33";
+	time_t t;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, parseTimeStr(strV, &t));
+}

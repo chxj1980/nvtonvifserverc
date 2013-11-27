@@ -28,7 +28,7 @@ struct strList{
     void (*forEach)(PStrList this, void(*)(char*, void*), void*);          //遍历节点
     char* (*get)(PStrList this, int index);  // 得到指定位置的节点
     void (*deleteIndex)(PStrList this, int index);  // 得到指定位置的节点
-    void (*clearAll) (List this);   // 清除所有
+    void (*clearAll) (PStrList this);   // 清除所有
 };
 
 PStrList newStrList();      //new一个列表对象

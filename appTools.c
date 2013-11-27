@@ -89,7 +89,8 @@ int getServiceURL(char* value, const char* ip, const int port) {
 	return RET_CODE_SUCCESS;
 }
 
-void getAppointServiceURL(char* value, const char* serviceURL, const char* service) {
+void getAppointServiceURL(char* value, const char* serviceURL,
+		const char* service) {
 	sprintf(value, "%s/%s", serviceURL, service);
 }
 
@@ -111,15 +112,13 @@ void myThreadSleep() {
 }
 
 void squeezeChar(char s[], char c) {
-    int i,j;
-    for (i = 0, j = 0; s[i] != '\0'; i++)
-    {
-        if (s[i] != c)
-        {
-            s[j++] = s[i];
-        }
-    }
-    s[j] = '\0';
+	int i, j;
+	for (i = 0, j = 0; s[i] != '\0'; i++) {
+		if (s[i] != c) {
+			s[j++] = s[i];
+		}
+	}
+	s[j] = '\0';
 }
 
 void getCurrentDateTimeStr(char* info, const int len) {
@@ -131,11 +130,11 @@ void getCurrentDateTimeMSecStr(char* info, const int len) {
 	gettimeofday(&tv, NULL);
 	getDateTimeStr(info, len, tv.tv_sec);
 	int len1 = strlen(info);
-	sprintf(info + len1, ".%6.6d", (int)(tv.tv_usec));
+	sprintf(info + len1, ".%6.6d", (int) (tv.tv_usec));
 }
 
-int parseTimeZoneTimeStr(const char* timeinfo, const short srcTimeZone, const short destTimeZone,
-		time_t* value) {
+int parseTimeZoneTimeStr(const char* timeinfo, const short srcTimeZone,
+		const short destTimeZone, time_t* value) {
 	if (NULL == value) {
 		return RET_CODE_ERROR_NULL_VALUE;
 	}
@@ -147,12 +146,12 @@ int parseTimeZoneTimeStr(const char* timeinfo, const short srcTimeZone, const sh
 	}
 	struct timeb timeb1;
 	ftime(&timeb1);
-	int localZone = -timeb1.timezone / 60;
+	int localZone = -timeb1.timezone / ONE_HOUR_MIN;
 	char pt[5];
 	memset(pt, 0, 5);
 	struct tm tm1;
 	strncpy(pt, timeinfo, 4);
-	tm1.tm_year = atoi(pt) - 1900;
+	tm1.tm_year = atoi(pt) - START_TIME_YEAR;
 	memset(pt, 0, 5);
 	strncpy(pt, timeinfo + 5, 2);
 	tm1.tm_mon = atoi(pt) - 1;
@@ -164,63 +163,76 @@ int parseTimeZoneTimeStr(const char* timeinfo, const short srcTimeZone, const sh
 	tm1.tm_min = atoi(pt);
 	strncpy(pt, timeinfo + 17, 2);
 	tm1.tm_sec = atoi(pt);
-	tm1.tm_isdst=0;
+	tm1.tm_isdst = 0;
 	time_t ltx = mktime(&tm1);
 	char dd[200];
-	time_t srctx = (localZone - srcTimeZone) * 60 * 60 + ltx;
+	time_t srctx = (localZone - srcTimeZone) * ONE_HOUR_SEC + ltx;
 	getDateTimeStr(dd, 200, srctx);
-	*value = (destTimeZone - localZone) * 60 * 60 + srctx;
+	*value = (destTimeZone - localZone) * ONE_HOUR_SEC + srctx;
 	getDateTimeStr(dd, 200, *value);
 	return RET_CODE_SUCCESS;
 }
 
-char *reverseStr(char *str, int len)
-{
-
-    char    *start = str;
-    char    *end = str + len - 1;
-    char    ch;
-
-    if (str != NULL)
-    {
-        while (start < end)
-        {
-            ch = *start;
-            *start++ = *end;
-            *end-- = ch;
-        }
-    }
-    return str;
+int parseTimeStr(const char* timeInfo, time_t* value) {
+	if (NULL == value) {
+		return RET_CODE_ERROR_NULL_VALUE;
+	}
+	if (NULL == timeInfo) {
+		return RET_CODE_ERROR_NULL_VALUE;
+	}
+	if (strlen(timeInfo) < 19) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	struct tm p;
+	sscanf(timeInfo, "%d-%d-%d %d:%d:%d", &(p.tm_year), &(p.tm_mon),
+			&(p.tm_mday), &(p.tm_hour), &(p.tm_min), &(p.tm_sec));
+	p.tm_year -= START_TIME_YEAR;
+	*value = mktime(&p);
+	return RET_CODE_SUCCESS;
 }
 
-int convertBCDToDec(const unsigned char *bcd, int length)
-{
-    int tmp;
-    int dec = 0;
-    int i;
-    for(i = 0; i < length; i++)
-    {
-        tmp = ((bcd[i] >> 4) & 0x0F) * 10 + (bcd[i] & 0x0F);
-        dec += tmp * pow(100, length - 1 - i);
-    }
-    return dec;
+char *reverseStr(char *str, int len) {
+
+	char *start = str;
+	char *end = str + len - 1;
+	char ch;
+
+	if (str != NULL)
+	{
+		while (start < end) {
+			ch = *start;
+			*start++ = *end;
+			*end-- = ch;
+		}
+	}
+	return str;
 }
 
-int convertDecToBCD(int value, unsigned char *bcd)
-{
-    int tmp;
-    int pos = 0;
-    if (0 == value) {
-    	bcd[0] = 0x0;
-    	return 1;
-    }
-    while(value != 0) {
-        tmp = value % 100;
-        bcd[pos++] = ((tmp / 10) << 4) + ((tmp % 10) & 0x0F);
-        pos /= 100;
-    }
-    reverseStr(bcd, pos);
-    return pos;
+int convertBCDToDec(const unsigned char *bcd, int length) {
+	int tmp;
+	int dec = 0;
+	int i;
+	for (i = 0; i < length; i++) {
+		tmp = ((bcd[i] >> 4) & 0x0F) * 10 + (bcd[i] & 0x0F);
+		dec += tmp * pow(100, length - 1 - i);
+	}
+	return dec;
+}
+
+int convertDecToBCD(int value, unsigned char *bcd) {
+	int tmp;
+	int pos = 0;
+	if (0 == value) {
+		bcd[0] = 0x0;
+		return 1;
+	}
+	while (value != 0) {
+		tmp = value % 100;
+		bcd[pos++] = ((tmp / 10) << 4) + ((tmp % 10) & 0x0F);
+		pos /= 100;
+	}
+	reverseStr((char*)bcd, pos);
+	return pos;
 }
 
 void convertDecToHexStr(const int src, char* dest) {
@@ -246,9 +258,54 @@ void parseListByDiv(const PStrList list, const char* value, const char* div) {
 	if (NULL == list)
 		return;
 	char *preset = NULL;
-	preset = strtok(value, div);
-	while(preset != NULL){
+	preset = strtok(value, (char*)div);
+	while (preset != NULL) {
 		list->addLast(list, preset);
-		preset = strtok(NULL, div);
+		preset = strtok(NULL, (char*)div);
 	}
+}
+
+bool charIsPositive(char c) {
+	return (c == '+');
+}
+
+bool charIsNegative(char c) {
+	return (c == '-');
+}
+
+bool charIsNumber(char c) {
+	return ((c >= '0') && (c <= '9'));
+}
+
+int parsePosixTimeZone(const char* tzone, int* tz) {
+	if (NULL == tzone) {
+		return RET_CODE_ERROR_NULL_VALUE;
+	}
+	if (NULL == tz) {
+		return RET_CODE_ERROR_NULL_VALUE;
+	}
+	if (strlen(tzone) < 4) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	bool hasNumber = charIsNumber(tzone[3]);
+	if ((!hasNumber) && (!charIsNegative(tzone[3]))
+			&& (!charIsPositive(tzone[3])))
+		return RET_CODE_ERROR_INVALID_VALUE;
+	char val[4] = { 0, 0, 0, 0 };
+	val[0] = tzone[3];
+	int i = 1;
+	for (i = 1; i < 3; i++) {
+		if (!charIsNumber(tzone[i + 3])) {
+			if (!hasNumber)
+				return RET_CODE_ERROR_INVALID_VALUE;
+			break;
+		}
+		hasNumber = true;
+		val[i] = tzone[i + 3];
+	}
+	*tz = atoi(val);
+	if (*tz > 23) {
+		return RET_CODE_ERROR_INVALID_VALUE;
+	}
+	return RET_CODE_SUCCESS;
 }

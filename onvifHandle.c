@@ -110,6 +110,12 @@ int getOnvifSoapSendInvalidArgFailedCode(struct soap *soap,
 			faultDetail);
 }
 
+int getOnvifSoapSendInvalidArgSubCodeFailedCode(struct soap *soap, const char *faultsubcodeQName1,
+		const char *faultInfo, const char* faultDetail) {
+	return getOnvifSoapSenderSubCode2Fault(soap, "ter:InvalidArgVal",
+			faultsubcodeQName1, faultInfo, faultDetail);
+}
+
 static int my_soap_set_error(struct soap *soap, const char *faultcode,
 		const char *faultsubcodeQName, const char *faultstring,
 		const char *faultdetailXML, int soaperror) {

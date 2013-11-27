@@ -22,6 +22,7 @@
 	void getCurrentDateTimeMSecStr(char* info, const int len);
 	int parseTimeZoneTimeStr(const char* timeInfo, const short srcTimeZone, const short destTimeZone,
 			time_t* value);
+	int parseTimeStr(const char* timeInfo, time_t* value);
 	int convertBCDToDec(const unsigned char *bcd, int length);
 	int convertDecToBCD(int value, unsigned char *bcd);
 	void convertDecToHexStr(const int src, char* dest);
@@ -29,7 +30,10 @@
 	void myThreadSleep();
 	void squeezeChar(char s[], char c);
 	void parseListByDiv(const PStrList list, const char* value, const char* div);
-
+	bool charIsPositive(char c);
+	bool charIsNegative(char c);
+	bool charIsNumber(char c);
+	int parsePosixTimeZone(const char* tzone, int* tz);
 #ifdef __cplusplus
 	}
 #endif

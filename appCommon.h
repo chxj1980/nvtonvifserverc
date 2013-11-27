@@ -43,12 +43,19 @@
 #define TRUE 1
 #define FALSE 0
 
+
 #define true 1
 #define false 0
 
 #define SOAP_ACCEPT_TIMEOUT 5 // 5s
 #define SOAP_RECV_TIMEOUT 5 // 5s
 #define SOAP_SEND_TIMEOUT 5 // 5s
+
+#define INVALID_TIME_ZONE 200000
+#define START_TIME_YEAR 1900
+#define ONE_HOUR_MIN 60
+#define ONE_MIN_SEC 60
+#define ONE_HOUR_SEC ONE_HOUR_MIN * ONE_MIN_SEC
 
 #ifdef __cplusplus
 extern "C" {
