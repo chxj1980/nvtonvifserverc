@@ -17,6 +17,7 @@ extern "C" {
 
 typedef struct St_IPCRunInfo {
 	int ipcConnectHandle;
+	pthread_mutex_t* lockPtr;
 }IPCRunInfo;
 
 typedef struct ST_IPCCmdInfo{

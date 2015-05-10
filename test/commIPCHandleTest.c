@@ -55,17 +55,28 @@ void test_GetAudioCount() {
 	TEST_ASSERT_TRUE(audioCount  > 0);
 }
 
-void test_GetVideoChannelInfo() {
+void test_GetVideoChannelInfo_1_Success() {
 	OnvifVideoChannelInfo onvifVideoChannelInfo;
 	onvifVideoChannelInfo.channelNo = 1;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getVideoChannelInfo(&onvifVideoChannelInfo));
 }
 
-void test_GetVideoChannelStreamInfo() {
+void test_GetVideoChannelInfo_0_Success() {
+	OnvifVideoChannelInfo onvifVideoChannelInfo;
+	onvifVideoChannelInfo.channelNo = 0;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getVideoChannelInfo(&onvifVideoChannelInfo));
+}
+
+void test_GetVideoChannelStreamInfo_1_Success() {
 	OnvifVideoChannelInfo onvifVideoChannelInfo;
 	onvifVideoChannelInfo.channelNo = 1;
 	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getVideoChannelStreamInfo(&onvifVideoChannelInfo));
+}
 
+void test_GetVideoChannelStreamInfo_0_Success() {
+	OnvifVideoChannelInfo onvifVideoChannelInfo;
+	onvifVideoChannelInfo.channelNo = 0;
+	TEST_ASSERT_EQUAL(RET_CODE_SUCCESS, getVideoChannelStreamInfo(&onvifVideoChannelInfo));
 }
 
 void test_GetAudioChannelInfo() {

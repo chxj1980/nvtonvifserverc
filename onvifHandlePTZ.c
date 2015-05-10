@@ -241,6 +241,7 @@ struct tt__PTZConfiguration* getPTZConfiguration(struct soap* soap) {
 	result->Name = getPTZName(soap, 0);
 	result->token = getPTZConfigurationToken(soap, 0);
 	result->NodeToken = getPTZNodeToken(soap, 0);
+	result->UseCount = 2;
 //	result->PanTiltLimits = getPTZConfigurationPanTiltLimits(soap);
 //	result->ZoomLimits = getPTZConfigurationZoomLimits(soap);
 	return result;

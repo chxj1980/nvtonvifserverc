@@ -7,7 +7,7 @@
 #include "onvifHandle.h"
 #include "logInfo.h"
 
-IPCRunInfo ipcRunInfo = {.ipcConnectHandle = INVALID_HANDLE};
+IPCRunInfo ipcRunInfo = {.ipcConnectHandle = INVALID_HANDLE, .lockPtr = NULL};
 
 int startIPCComm() {
 	if (isValidHandle(ipcRunInfo.ipcConnectHandle))
@@ -26,6 +26,8 @@ int startIPCComm() {
 		return RET_CODE_ERROR_CONNECT;
 	}
 	ipcRunInfo.ipcConnectHandle = cHandle;
+	ipcRunInfo.lockPtr = malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(ipcRunInfo.lockPtr, NULL);
 	return RET_CODE_SUCCESS;
 }
 
@@ -41,16 +43,20 @@ int sendIPCCmd(const void* cmd, const int len) {
 
 int sendAndRecvIPCCmd(const void* incmd, const int inlen, void* outInfo,
 		int* outlen) {
+	pthread_mutex_lock(ipcRunInfo.lockPtr);
 	int result = sendIPCCmd(incmd, inlen);
 	if (!isRetCodeSuccess(result)) {
+		pthread_mutex_unlock(ipcRunInfo.lockPtr);
 		return result;
 	}
 	int size = recv_local(ipcRunInfo.ipcConnectHandle, (char*) outInfo,
 			*outlen);
 	if (size < 0) {
+		pthread_mutex_unlock(ipcRunInfo.lockPtr);
 		return RET_CODE_ERROR_RECV;
 	}
 	*outlen = size;
+	pthread_mutex_unlock(ipcRunInfo.lockPtr);
 	return RET_CODE_SUCCESS;
 }
 
@@ -60,6 +66,8 @@ void stopIPCComm() {
 	}
 	close_local(ipcRunInfo.ipcConnectHandle);
 	ipcRunInfo.ipcConnectHandle = INVALID_HANDLE;
+	pthread_mutex_destroy(ipcRunInfo.lockPtr);
+	ipcRunInfo.lockPtr = NULL;
 }
 
 void putStrValueInList(const Map inList, const int key, const char* value) {
