@@ -54,19 +54,39 @@ int startProbeServer() {
 	soap_init1(&probeServerServiceInfo.m_Soap, SOAP_IO_UDP | SOAP_XML_IGNORENS);
 	soap_set_namespaces(&probeServerServiceInfo.m_Soap, namespaces);
 	probeServerServiceInfo.m_Soap.recv_timeout = SOAP_RECV_TIMEOUT;
+	logInfo("probe soap bind");
+	char* addr = onvifRunParam.address;
+	if (strlen(addr) < 1) {
+		addr = NULL;
+	} else {
+		probeServerServiceInfo.m_Soap.bind_flags = SO_REUSEADDR;
+	}
+	if (NULL != addr) {
+		struct in_addr if_req;
+		if_req.s_addr = inet_addr(addr);  // 想绑定的IP地址
+		probeServerServiceInfo.m_Soap.ipv4_multicast_if = (char*)my_soap_malloc(&probeServerServiceInfo.m_Soap, sizeof(struct in_addr));
+		memcpy(probeServerServiceInfo.m_Soap.ipv4_multicast_if, (char*)&if_req, sizeof(if_req));
+	}
 	if (!soap_valid_socket(soap_bind(&probeServerServiceInfo.m_Soap, NULL, MULTI_CAST_PORT, 100))) {
 		soap_print_fault(&probeServerServiceInfo.m_Soap, stderr);
 		return RET_CODE_ERROR_SOAP_BIND;
 	}
 	mcast.imr_multiaddr.s_addr = inet_addr(MULTI_CAST_IP);
-	mcast.imr_interface.s_addr = htonl(INADDR_ANY);
-
+	if (NULL != addr) {
+		mcast.imr_interface.s_addr = inet_addr(addr);  // 想绑定的IP地址
+	} else {
+		mcast.imr_interface.s_addr = htonl(INADDR_ANY);
+	}
 	if (setsockopt(probeServerServiceInfo.m_Soap.master, IPPROTO_IP,
 			IP_ADD_MEMBERSHIP, (char*) &mcast, sizeof(mcast)) < 0) {
 		logInfo("setsockopt error! error code = %d,err string = %s", errno,
 				strerror(errno));
 		return RET_CODE_ERROR_SETSOCKOPT;
 	}
+
+
+
+
 //	int err = pthread_create(&probeServerServiceInfo.m_RunThread, NULL,
 //			runProbeServerThreadMethod, NULL);
 //	if (0 != err) {

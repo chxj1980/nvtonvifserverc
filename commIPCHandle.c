@@ -138,8 +138,7 @@ int getDeviceInfo_ParseCmd(const Map outList, const void* info1) {
 	if (strlen(info->macAddr) > 0) {
 		squeezeChar(info->macAddr, '-');
 		memset(onvifRunParam.urnHardwareId, 0, INFO_LENGTH);
-		sprintf(onvifRunParam.urnHardwareId, "%s%s",
-				DEFAULT_URN_HARDWARE_ID_PREFIX, info->macAddr);
+		setRunParamUrnHardwareId(info->macAddr);
 	}
 	return RET_CODE_SUCCESS;
 }

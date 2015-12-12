@@ -13,7 +13,7 @@
 
 OnvifRunParam onvifRunParam = { .ip = { 0 }, .servicePort =
 		DEVICE_WEBSERVICE_PORT, .hardwareId = DEFAULT_HARDWARE_ID,
-		.urnHardwareId = { 0 } };
+		.urnHardwareId = { 0 }, .address = {0}, .urnIndex = 0 };
 
 #define ONVIF_RETURN_OK(soap, namespaces)   \
 	ONVIF_SERVER_CALL();    \
@@ -29,6 +29,9 @@ static inline int onvif_receiver_fault_subcode_oom(struct soap *soap) {
 }
 
 int getLocalIPInfo() {
+	if (strlen(onvifRunParam.address) > 0) {
+		return RET_CODE_SUCCESS;
+	}
 	OnvifNetCardInfo onvifNetCardInfo;
 	int result = getNetCardInfo(&onvifNetCardInfo);
 	if (!isRetCodeSuccess(result)) {
@@ -47,16 +50,20 @@ int getLocalIPInfo() {
 	}
 	return RET_CODE_SUCCESS;
 }
+void setRunParamUrnHardwareId(char* info) {
+	sprintf(onvifRunParam.urnHardwareId, "%s%s-%d", DEFAULT_URN_HARDWARE_ID_PREFIX,
+				info, onvifRunParam.urnIndex + 1);
+}
 
 int getHardwareIdInfo() {
-	sprintf(onvifRunParam.urnHardwareId, "%s%s", DEFAULT_URN_HARDWARE_ID_PREFIX,
-			onvifRunParam.hardwareId);
+	setRunParamUrnHardwareId(onvifRunParam.hardwareId);
 	OnvifDeviceInfo onvifDeviceInfo;
 	int result = getDeviceInfo(&onvifDeviceInfo);
 	if (!isRetCodeSuccess(result)) {
 		logInfo("Get Device Info Error");
 		return result;
 	}
+
 	return RET_CODE_SUCCESS;
 }
 

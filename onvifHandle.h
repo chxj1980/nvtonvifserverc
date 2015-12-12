@@ -27,6 +27,8 @@ typedef struct St_OnvifRunParam {
 	char ip[IPV4_LEN];
 	char hardwareId[SMALL_INFO_LENGTH];
 	char urnHardwareId[INFO_LENGTH];
+	char address[IPV4_LEN]; // …Ë÷√µƒµÿ÷∑.
+	int urnIndex;
 } OnvifRunParam;
 
 typedef struct St_OnvifDeviceInfo {
@@ -193,6 +195,7 @@ char* getIndexTokeName(struct soap *soap, const char* prefix, const int index);
 int getIndexFromTokenName(const char* tokenName, const char* prefix);
 int getVideoEncoderConfigurationOptionInfo(OnvifVideoEncoderConfigurationOptionInfo* info);
 
+void setRunParamUrnHardwareId(char* info);
 SOAP_FMAC1 int SOAP_FMAC2 getOnvifSoapSenderSubCode2Fault(struct soap *soap,
 		const char *faultsubcodeQName, const char *faultsubcodeQName1, const char *faultstring,
 		const char *faultdetailXML);

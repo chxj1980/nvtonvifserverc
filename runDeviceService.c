@@ -35,7 +35,12 @@ int startDeviceService() {
 	soap_set_namespaces(&deviceServiceServiceInfo.m_Soap, namespaces);
 	deviceServiceServiceInfo.m_Soap.accept_timeout = SOAP_ACCEPT_TIMEOUT;
 	debugInfo("startDeviceService bind");
-	if (!soap_valid_socket(soap_bind(&deviceServiceServiceInfo.m_Soap, NULL, onvifRunParam.servicePort, BACKLOG))) {
+	char* addr = onvifRunParam.address;
+	if (strlen(addr) < 1) {
+		addr = NULL;
+	}
+	logInfo("device service soap bind");
+	if (!soap_valid_socket(soap_bind(&deviceServiceServiceInfo.m_Soap, addr, onvifRunParam.servicePort, BACKLOG))) {
 		logInfo("device service bind error");
 		return RET_CODE_ERROR_SOAP_BIND;
 	}

@@ -7,15 +7,18 @@ int parseCmd(int argc, char **argv) {
 	int cmdFlag = 0;
 	opterr = 0;
 	int port = 0;
-	while ((cmdFlag = getopt(argc, argv, "dhp:")) != -1) {
+	int ui = 0;
+	while ((cmdFlag = getopt(argc, argv, "a:dhp:i:")) != -1) {
 		switch (cmdFlag) {
 		case 'h':
 			cmdParam.help = true;
 			if (cmdParam.help) {
 				logRawLineInfo("Usage: onvifserver [options]");
 				logRawLineInfo("Options");
+				logRawLineInfo("-a <ip or host>\t Onvif service address");
 				logRawLineInfo("-d\t Display debug information");
 				logRawLineInfo("-p <port>\t Onvif service port");
+				logRawLineInfo("-i <urn index>\t Onvif service urn postfix index for multi ip");
 				logRawLineInfo("-h\t Display this informateion");
 			}
 			result = RET_CODE_ERROR_UNKNOWN;
@@ -34,6 +37,17 @@ int parseCmd(int argc, char **argv) {
 			onvifRunParam.runFlag = true;
 			onvifRunParam.servicePort = cmdParam.port;
 			strcpy(onvifRunParam.ip, "");
+			break;
+		case 'a':
+			strcpy(onvifRunParam.address, optarg);
+			strcpy(onvifRunParam.ip, onvifRunParam.address);
+			break;
+		case 'i':
+			ui = atoi(optarg);
+			if (ui < 0) {
+				ui = 0;
+			}
+			onvifRunParam.urnIndex = ui;
 			break;
 		default:
 			break;
