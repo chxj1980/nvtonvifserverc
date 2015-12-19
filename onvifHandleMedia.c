@@ -419,9 +419,6 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSources(struct soap* soap,
 		return getOnvifSoapActionFailedCode(soap, "GetVideoSources",
 				"getVideoCount failed");
 	}
-	if (size1 > 1) {
-		size1 = 1;
-	}
 	trt__GetVideoSourcesResponse->__sizeVideoSources = size1;
 	trt__GetVideoSourcesResponse->VideoSources =
 			(struct tt__VideoSource *) my_soap_malloc(soap,
@@ -453,9 +450,6 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetAudioSources(struct soap* soap,
 	if (!isRetCodeSuccess(ret)) {
 		return getOnvifSoapActionFailedCode(soap, "GetAudioSources",
 				"getAudioCount failed");
-	}
-	if (size1 > 1) {
-		size1 = 1;
 	}
 	trt__GetAudioSourcesResponse->__sizeAudioSources = size1;
 	trt__GetAudioSourcesResponse->AudioSources =
