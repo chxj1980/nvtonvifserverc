@@ -13,7 +13,7 @@
 
 OnvifRunParam onvifRunParam = { .ip = { 0 }, .servicePort =
 		DEVICE_WEBSERVICE_PORT, .hardwareId = DEFAULT_HARDWARE_ID,
-		.urnHardwareId = { 0 }, .address = {0}, .urnIndex = 0 };
+		.urnHardwareId = { 0 }, .address = {0}, .urnIndex = 0, .subVideoChannelNo = 0 };
 
 #define ONVIF_RETURN_OK(soap, namespaces)   \
 	ONVIF_SERVER_CALL();    \

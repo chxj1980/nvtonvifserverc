@@ -28,7 +28,8 @@ typedef struct St_OnvifRunParam {
 	char hardwareId[SMALL_INFO_LENGTH];
 	char urnHardwareId[INFO_LENGTH];
 	char address[IPV4_LEN]; // 设置的地址.
-	int urnIndex;
+	int urnIndex; // urn index
+	int subVideoChannelNo; // 视频子通道编号
 } OnvifRunParam;
 
 typedef struct St_OnvifDeviceInfo {

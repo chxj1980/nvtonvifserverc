@@ -466,7 +466,7 @@ int getVideoChannelStreamInfo_PushCmd(const Map inList, const void* info1) {
 		return RET_CODE_ERROR_INVALID_VALUE;
 	}
 	putIntValueInList(inList, e_Chn, info->channelNo);
-	putIntValueInList(inList, e_Sub_Chn, 0);
+	putIntValueInList(inList, e_Sub_Chn, onvifRunParam->subVideoChannelNo);
 	putNullValueInList(inList, e_video_addr);
 	return RET_CODE_SUCCESS;
 }

@@ -413,7 +413,7 @@ SOAP_FMAC5 int SOAP_FMAC6 __trt__GetVideoSources(struct soap* soap,
 		struct _trt__GetVideoSourcesResponse *trt__GetVideoSourcesResponse) {
 	logInfo("__trt__GetVideoSources");
 
-	int size1 = 0;
+	int size1 =0;
 	int ret = getVideoCount(&size1);
 	if (!isRetCodeSuccess(ret)) {
 		return getOnvifSoapActionFailedCode(soap, "GetVideoSources",
